@@ -8,7 +8,7 @@
     {
       "id": "pd-ed-013",
       "front": "(ED — EAC2 / UML) Describe un diagrama de actividades UML para el flujo de \"solicitar vacaciones\" (empleado solicita → jefe aprueba/rechaza → RRHH registra).\n\n1. ¿Qué elementos tiene?\n2. ¿Dónde usarías fork/join?\n3. ¿Qué son las guardas [condición]?",
-      "back": "**1. Elementos:**\n- Nodo inicio: círculo negro\n- Nodo final: círculo doble\n- Actividades: rectángulos redondeados (\"Solicitar\", \"Aprobar\", \"Registrar\")\n- Decisiones: rombo con guardas [condición] (\"[Aprobado]\", \"[Rechazado]\")\n- Bifurcaciones fork/join: barras negras\n\n**2. Fork/Join:**\n- **Fork** (bifurcación paralela): cuando varias actividades\n  ocurren simultáneamente. Ej: \"Notificar a empleado\" y\n  \"Actualizar calendario\" pueden hacerse en paralelo. (bifurcación paralela): cuando varias actividades ocurren simultáneamente. Ej: \"Notificar a empleado\" y \"Actualizar calendario\" pueden hacerse en paralelo.\n- **Join** (unión): espera a que todos los hilos paralelos terminen.\n\n**3. Guardas [condición]:\nExpresiones booleanas entre corchetes que determinan qué camino tomar\nen una decisión. Ej:  → aprobar,  → rechazar.** Expresiones booleanas entre corchetes que determinan qué camino tomar en una decisión. Ej: `[Saldo > 0]` → aprobar, `[Saldo <= 0]` → rechazar.\n\n**Ejemplo flujo:**\n`(inicio) → Solicitar → [Aprobado?] → (Sí) → Aprobar → [Fork] → (Notificar + Registrar en paralelo) → [Join] → Fin`\n`                              → (No) → Rechazar → Fin`\n\n📊 **[Ver diagrama](/diagrama-flujo.html)** — Abre el diagrama de actividades visual en nueva pestaña.",
+      "back": "**1. Elementos del diagrama de actividades**\n\n● **Nodo inicio:** círculo negro\n● **Nodo final:** círculo doble\n● **Actividades:** rectángulos redondeados (\"Solicitar\", \"Aprobar\", \"Registrar\")\n● **Decisiones:** rombo con guardas [condición] (\"[Aprobado]\", \"[Rechazado]\")\n● **Fork/Join:** barras negras\n\n---\n\n**2. Fork / Join (bifurcación paralela)**\n\n**Fork** — cuando varias actividades ocurren simultáneamente.\n\nEjemplo: \"Notificar a empleado\" y \"Actualizar calendario\" se ejecutan en paralelo.\n\n**Join** — espera a que todos los hilos paralelos terminen antes de continuar.\n\n---\n\n**3. Guardas [condición]**\n\nExpresiones booleanas entre corchetes que determinan qué camino tomar en una decisión.\n\nEjemplo:\n- `[Saldo > 0]` → aprobar\n- `[Saldo <= 0]` → rechazar\n\n---\n\n**Ejemplo de flujo completo**\n\n```\n(inicio) → Solicitar → [Aprobado?]\n            ├─ (Sí) → Aprobar → [Fork] → Notificar ─┐\n            │                              Registrar ─┤\n            └─ (No) → Rechazar ──────────────────────┘→ [Join] → Fin\n```",
       "tags": [
         "ed",
         "uml",
@@ -1420,6 +1420,222 @@
         "http",
         "fetch",
         "eac5"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-dwec-013",
+      "front": "(DWEC — Examen 1ª eval / Arrays) Escribe un script que:\n\n1. Solicite datos de **3 personas** (nombre, apellido, fecha nacimiento, teléfono)\n   mediante `prompt()` y almacene en **arrays separados**.\n\n2. **Normalice** los datos guardándolos en minúsculas.\n\n3. **Valide** antes de almacenar:\n   - Teléfono: empiece con 6, 7 o 9 y tenga **9 dígitos exactos**\n   - Fecha: formato **dd-mm-aaaa**\n\n4. Si falla la validación, muestre aviso y **no almacene**.\n\n5. Función `imprimePersonasOrdenadas()`: imprime en consola los nombres\n   ordenados alfabéticamente con primera letra mayúscula.\n   Formato: `[Nombre]`",
+      "back": "```javascript\n// Arrays para almacenar\nconst nombres = [];\nconst apellidos = [];\nconst fechasNac = [];\nconst telefonos = [];\n\n// Solicitar datos de 3 personas\nfor (let i = 0; i < 3; i++) {\n  let nombre = prompt(\"Nombre persona \" + (i + 1) + \":\");\n  let apellido = prompt(\"Apellido persona \" + (i + 1) + \":\");\n  let fecha = prompt(\"Fecha nacimiento (dd-mm-aaaa) persona \" + (i + 1) + \":\");\n  let tlf = prompt(\"Teléfono persona \" + (i + 1) + \":\");\n\n  // Validar teléfono: 9 dígitos y empieza con 6, 7 o 9\n  const tlfValido = /^[679]\\d{8}$/.test(tlf);\n  // Validar fecha: formato dd-mm-aaaa\n  const fechaValida = /^\\d{2}-\\d{2}-\\d{4}$/.test(fecha);\n\n  if (!tlfValido) {\n    alert(\"Teléfono inválido. Debe tener 9 dígitos y empezar por 6, 7 o 9.\");\n  }\n  if (!fechaValida) {\n    alert(\"Fecha inválida. Debe tener formato dd-mm-aaaa.\");\n  }\n\n  // Solo almacenar si ambas validaciones pasan\n  if (tlfValido && fechaValida) {\n    nombres.push(nombre.toLowerCase());\n    apellidos.push(apellido.toLowerCase());\n    fechasNac.push(fecha);\n    telefonos.push(tlf);\n  }\n}\n\n// Función que imprime ordenado\nfunction imprimePersonasOrdenadas() {\n  const ordenados = [...nombres].sort();\n  ordenados.forEach(n => {\n    const capitalizada = n.charAt(0).toUpperCase() + n.slice(1);\n    console.log(\"[\" + capitalizada + \"]\");\n  });\n}\n\nimprimePersonasOrdenadas();\n```",
+      "tags": [
+        "dwec",
+        "examen",
+        "arrays",
+        "validacion",
+        "1eval"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "pd-dwec-014",
+      "front": "(DWEC — Examen 1ª eval / Clases) Crea en JavaScript:\n\n1. Clase **Persona** con propiedades privadas `nombre`, `apellido`, `fechaNacimiento`.\n   - Getters: `getNombre()`, `getApellido()`, `getNacimiento()`\n   - Setters: `setNombre()`, `setApellido()`, `setNacimiento()`\n     que **no acepten datos vacíos**.\n\n2. Clase **PersonaCivil** que **herede** de Persona y añada:\n   - Propiedades `dni`, `telefono`\n   - Getters/setters correspondientes\n   - Método `imprimirDatos()` que saque:\n     `[nombre][apellido][fechaNacimiento][DNI][teléfono]`\n\n3. Crea **3 instancias** de PersonaCivil e imprime sus datos.",
+      "back": "```javascript\nclass Persona {\n  #nombre;\n  #apellido;\n  #fechaNacimiento;\n\n  constructor(nombre, apellido, fechaNacimiento) {\n    this.#nombre = nombre;\n    this.#apellido = apellido;\n    this.#fechaNacimiento = fechaNacimiento;\n  }\n\n  getNombre() { return this.#nombre; }\n  getApellido() { return this.#apellido; }\n  getNacimiento() { return this.#fechaNacimiento; }\n\n  setNombre(n) { if (n.trim() !== \"\") this.#nombre = n; }\n  setApellido(a) { if (a.trim() !== \"\") this.#apellido = a; }\n  setNacimiento(f) { if (f.trim() !== \"\") this.#fechaNacimiento = f; }\n}\n\nclass PersonaCivil extends Persona {\n  #dni;\n  #telefono;\n\n  constructor(nombre, apellido, fechaNacimiento, dni, telefono) {\n    super(nombre, apellido, fechaNacimiento);\n    this.#dni = dni;\n    this.#telefono = telefono;\n  }\n\n  getDNI() { return this.#dni; }\n  getTelefono() { return this.#telefono; }\n  setDNI(d) { if (d.trim() !== \"\") this.#dni = d; }\n  setTelefono(t) { if (t.trim() !== \"\") this.#telefono = t; }\n\n  imprimirDatos() {\n    console.log(\"[\" + this.getNombre() + \"][\" + this.getApellido()\n      + \"][\" + this.getNacimiento() + \"][\" + this.#dni\n      + \"][\" + this.#telefono + \"]\");\n  }\n}\n\n// Crear 3 instancias\nconst p1 = new PersonaCivil(\"ana\", \"lópez\", \"15-03-2000\", \"12345678Z\", \"612345678\");\nconst p2 = new PersonaCivil(\"luis\", \"garcía\", \"22-07-1999\", \"87654321X\", \"722334455\");\nconst p3 = new PersonaCivil(\"carla\", \"martínez\", \"10-11-2001\", \"45678901B\", \"998877665\");\n\np1.imprimirDatos();\np2.imprimirDatos();\np3.imprimirDatos();\n```",
+      "tags": [
+        "dwec",
+        "examen",
+        "clases",
+        "herencia",
+        "1eval"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "pd-dwec-015",
+      "front": "(DWEC — Examen 1ª eval / Formulario) Dado un formulario HTML con los campos:\nNombre*, 1er Apellido*, 2º Apellido, Fecha nacimiento, DNI, Email*, Contraseña*, Repetir contraseña*\n\nImplementa las siguientes validaciones:\n1. **Mayúsculas automáticas** en Nombre, 1er Apellido, 2º Apellido al escribir\n2. **Fecha** (dd/mm/aaaa) con regex y edad > 16 años al salir del campo\n3. **DNI**: 8 dígitos + letra (regex) al salir del campo\n4. **Email**: alfanumérico + . - antes @, dominio de 2-3 letras\n5. **Contraseñas**: coinciden, ≥ 8 chars, min 1 mayúscula, 1 minúscula, 1 dígito al salir del repetir\n6. **Campos obligatorios** (*) al pulsar Enviar",
+      "back": "**validacion.js completo:**\n\n```javascript\n// 1. Mayúsculas automáticas al escribir\ndocument.getElementById(\"nombre\").addEventListener(\"input\", function() {\n  this.value = this.value.toUpperCase();\n});\ndocument.getElementById(\"apellido1\").addEventListener(\"input\", function() {\n  this.value = this.value.toUpperCase();\n});\ndocument.getElementById(\"apellido2\").addEventListener(\"input\", function() {\n  this.value = this.value.toUpperCase();\n});\n\n// 2. Validar fecha (dd/mm/aaaa) y edad > 16 al salir del campo\ndocument.getElementById(\"fechaNac\").addEventListener(\"blur\", function() {\n  const val = this.value.trim();\n  const regex = /^\\d{2}\\/\\d{2}\\/\\d{4}$/;\n  if (!regex.test(val)) {\n    alert(\"Formato fecha inválido. Use dd/mm/aaaa.\");\n    return;\n  }\n  const [dia, mes, anyo] = val.split(\"/\").map(Number);\n  const nacimiento = new Date(anyo, mes - 1, dia);\n  const hoy = new Date();\n  let edad = hoy.getFullYear() - nacimiento.getFullYear();\n  const m = hoy.getMonth() - nacimiento.getMonth();\n  if (m < 0 || (m === 0 && hoy.getDate() < nacimiento.getDate())) {\n    edad--;\n  }\n  if (edad <= 16) {\n    alert(\"Debe ser mayor de 16 años.\");\n  }\n});\n\n// 3. Validar DNI (8 dígitos + letra) al salir\ndocument.getElementById(\"dni\").addEventListener(\"blur\", function() {\n  const regex = /^\\d{8}[A-Za-z]$/;\n  if (!regex.test(this.value.trim())) {\n    alert(\"DNI inválido. Debe tener 8 dígitos y una letra.\");\n  }\n});\n\n// 4. Validar email al salir\ndocument.getElementById(\"email\").addEventListener(\"blur\", function() {\n  const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9]+\\.[a-zA-Z]{2,3}$/;\n  if (!regex.test(this.value.trim())) {\n    alert(\"Email inválido.\");\n  }\n});\n\n// 5. Validar contraseñas al salir de repetir\ndocument.getElementById(\"pass2\").addEventListener(\"blur\", function() {\n  const p1 = document.getElementById(\"pass1\").value;\n  const p2 = this.value;\n  if (p1 !== p2) {\n    alert(\"Las contraseñas no coinciden.\");\n    return;\n  }\n  if (p1.length < 8) {\n    alert(\"La contraseña debe tener al menos 8 caracteres.\");\n    return;\n  }\n  if (!/[A-Z]/.test(p1)) {\n    alert(\"Debe contener al menos una mayúscula.\");\n    return;\n  }\n  if (!/[a-z]/.test(p1)) {\n    alert(\"Debe contener al menos una minúscula.\");\n    return;\n  }\n  if (!/\\d/.test(p1)) {\n    alert(\"Debe contener al menos un dígito.\");\n  }\n});\n\n// 6. Campos obligatorios al enviar\ndocument.getElementById(\"formRegistro\").addEventListener(\"submit\", function(e) {\n  e.preventDefault();\n  const obligatorios = [\n    { id: \"nombre\", label: \"Nombre\" },\n    { id: \"apellido1\", label: \"Primer Apellido\" },\n    { id: \"email\", label: \"Email\" },\n    { id: \"pass1\", label: \"Contraseña\" },\n    { id: \"pass2\", label: \"Repetir Contraseña\" }\n  ];\n  let vacios = obligatorios.filter(c =>\n    document.getElementById(c.id).value.trim() === \"\"\n  ).map(c => c.label);\n  if (vacios.length > 0) {\n    alert(\"Campos obligatorios vacíos: \" + vacios.join(\", \"));\n  }\n});\n```",
+      "tags": [
+        "dwec",
+        "examen",
+        "formulario",
+        "validacion",
+        "1eval"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "pd-dwec-016",
+      "front": "(DWEC — Examen 2ª eval / XMLHttpRequest) Crea una página HTML con:\n\n1. Un formulario con un campo para el nombre de un país y un botón de búsqueda.\n\n2. Usa **XMLHttpRequest** para hacer GET a:\n   `https://restcountries.com/v3.1/name/{name}`\n\n3. Muestra en la página: **capital**, **población** y **moneda**.\n\n4. Manejo de errores: alerta si no hay resultados.",
+      "back": "```html\n<!DOCTYPE html>\n<html>\n<head><title>Buscar País</title></head>\n<body>\n  <h1>Buscar información de un país</h1>\n  <input type=\"text\" id=\"paisInput\" placeholder=\"Nombre del país\">\n  <button id=\"btnBuscar\">Buscar</button>\n  <div id=\"resultado\"></div>\n\n  <script>\n  document.getElementById(\"btnBuscar\").addEventListener(\"click\", function() {\n    const nombre = document.getElementById(\"paisInput\").value.trim();\n    if (!nombre) return;\n\n    const xhr = new XMLHttpRequest();\n    xhr.open(\"GET\", \"https://restcountries.com/v3.1/name/\" + nombre);\n    xhr.onload = function() {\n      if (xhr.status === 200) {\n        const datos = JSON.parse(xhr.responseText);\n        const pais = datos[0];\n        const monedas = Object.values(pais.currencies)\n          .map(m => m.name + \" (\" + m.symbol + \")\").join(\", \");\n\n        document.getElementById(\"resultado\").innerHTML =\n          \"<p><strong>Capital:</strong> \" + (pais.capital ? pais.capital[0] : \"N/A\") + \"</p>\" +\n          \"<p><strong>Población:</strong> \" + pais.population.toLocaleString() + \"</p>\" +\n          \"<p><strong>Moneda:</strong> \" + monedas + \"</p>\";\n      } else {\n        alert(\"País no encontrado. Verifica el nombre.\");\n      }\n    };\n    xhr.onerror = function() {\n      alert(\"Error de conexión.\");\n    };\n    xhr.send();\n  });\n  </script>\n</body>\n</html>\n```",
+      "tags": [
+        "dwec",
+        "examen",
+        "ajax",
+        "xmlhttprequest",
+        "api",
+        "2eval"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "pd-dwec-017",
+      "front": "(DWEC — Examen 2ª eval / jQuery AJAX) Crea una página HTML con:\n\n1. Un formulario con un campo para introducir un **idioma** y un botón de búsqueda.\n\n2. Usa **jQuery.ajax()** para GET a:\n   `https://restcountries.com/v3.1/lang/{idioma}`\n\n3. Muestra los **nombres de los países** que hablan ese idioma, en columna.\n\n4. Manejo de errores: notificar si el código de idioma es inválido.",
+      "back": "```html\n<!DOCTYPE html>\n<html>\n<head>\n  <title>Buscar por Idioma</title>\n  <script src=\"https://code.jquery.com/jquery-3.7.1.min.js\"></script>\n</head>\n<body>\n  <h1>Países por idioma</h1>\n  <input type=\"text\" id=\"idiomaInput\" placeholder=\"Código de idioma (ej: es, en, fr)\">\n  <button id=\"btnBuscar\">Buscar</button>\n  <ul id=\"listaPaises\"></ul>\n\n  <script>\n  $(\"#btnBuscar\").on(\"click\", function() {\n    const idioma = $(\"#idiomaInput\").val().trim();\n    if (!idioma) return;\n\n    $.ajax({\n      url: \"https://restcountries.com/v3.1/lang/\" + idioma,\n      method: \"GET\",\n      success: function(datos) {\n        let html = \"\";\n        datos.forEach(function(pais) {\n          html += \"<li>\" + pais.name.common + \"</li>\";\n        });\n        $(\"#listaPaises\").html(html);\n      },\n      error: function() {\n        alert(\"Código de idioma no válido o sin resultados.\");\n      }\n    });\n  });\n  </script>\n</body>\n</html>\n```",
+      "tags": [
+        "dwec",
+        "examen",
+        "jquery",
+        "ajax",
+        "api",
+        "2eval"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "pd-dwec-018",
+      "front": "(DWEC — Examen 2ª eval / Formulario dinámico) Desarrolla una página que:\n\n1. **Cree dinámicamente** un formulario dentro de `#formContainer` con:\n   - Nombre (text)\n   - Email (email)\n   - Mensaje (textarea)\n   - Botón de envío\n\n2. **Valide** al enviar:\n   - Todos los campos obligatorios\n   - Email con formato válido\n   - Muestre mensajes de error específicos\n\n3. **Simule POST** a `https://example.com/contacto`\n   y muestre \"Formulario enviado con éxito\".\n\n4. Aplique estilos CSS al formulario.",
+      "back": "```html\n<!DOCTYPE html>\n<html>\n<head>\n  <title>Formulario de Contacto</title>\n  <style>\n    body { font-family: Arial; padding: 20px; background: #f5f5f5; }\n    #formContainer {\n      max-width: 400px; margin: 0 auto;\n      background: white; padding: 20px;\n      border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);\n    }\n    input, textarea {\n      width: 100%; padding: 8px; margin: 5px 0 10px 0;\n      border: 1px solid #ccc; border-radius: 4px;\n    }\n    button {\n      background: #007bff; color: white; padding: 10px 20px;\n      border: none; border-radius: 4px; cursor: pointer;\n    }\n    .error { color: red; font-size: 0.9em; margin-bottom: 10px; }\n  </style>\n</head>\n<body>\n  <div id=\"formContainer\"></div>\n\n  <script>\n  const container = document.getElementById(\"formContainer\");\n\n  // Crear formulario dinámicamente\n  const form = document.createElement(\"form\");\n  form.id = \"contactForm\";\n\n  const campos = [\n    { label: \"Nombre\", type: \"text\", id: \"nombre\", required: true },\n    { label: \"Email\", type: \"email\", id: \"email\", required: true },\n    { label: \"Mensaje\", type: \"textarea\", id: \"mensaje\", required: true }\n  ];\n\n  campos.forEach(function(campo) {\n    const label = document.createElement(\"label\");\n    label.textContent = campo.label + \":\";\n    form.appendChild(label);\n\n    if (campo.type === \"textarea\") {\n      const ta = document.createElement(\"textarea\");\n      ta.id = campo.id; ta.rows = 4;\n      form.appendChild(ta);\n    } else {\n      const input = document.createElement(\"input\");\n      input.type = campo.type; input.id = campo.id;\n      form.appendChild(input);\n    }\n\n    const error = document.createElement(\"div\");\n    error.className = \"error\"; error.id = campo.id + \"Error\";\n    form.appendChild(error);\n  });\n\n  const btn = document.createElement(\"button\");\n  btn.type = \"submit\"; btn.textContent = \"Enviar\";\n  form.appendChild(btn);\n\n  container.appendChild(form);\n\n  // Validación y envío\n  form.addEventListener(\"submit\", function(e) {\n    e.preventDefault();\n    let valido = true;\n\n    // Limpiar errores\n    document.querySelectorAll(\".error\").forEach(function(el) {\n      el.textContent = \"\";\n    });\n\n    const nombre = document.getElementById(\"nombre\").value.trim();\n    const email = document.getElementById(\"email\").value.trim();\n    const mensaje = document.getElementById(\"mensaje\").value.trim();\n\n    if (!nombre) {\n      document.getElementById(\"nombreError\").textContent = \"El nombre es obligatorio.\";\n      valido = false;\n    }\n    if (!email) {\n      document.getElementById(\"emailError\").textContent = \"El email es obligatorio.\";\n      valido = false;\n    } else if (!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email)) {\n      document.getElementById(\"emailError\").textContent = \"Email no válido.\";\n      valido = false;\n    }\n    if (!mensaje) {\n      document.getElementById(\"mensajeError\").textContent = \"El mensaje es obligatorio.\";\n      valido = false;\n    }\n\n    if (valido) {\n      fetch(\"https://example.com/contacto\", {\n        method: \"POST\",\n        headers: { \"Content-Type\": \"application/json\" },\n        body: JSON.stringify({ nombre: nombre, email: email, mensaje: mensaje })\n      })\n      .then(function() {\n        console.log(\"Formulario enviado con éxito\");\n        alert(\"Formulario enviado con éxito\");\n      })\n      .catch(function() {\n        alert(\"Error al enviar el formulario.\");\n      });\n    }\n  });\n  </script>\n</body>\n</html>\n```",
+      "tags": [
+        "dwec",
+        "examen",
+        "formulario",
+        "dom",
+        "validacion",
+        "fetch",
+        "2eval"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "pd-si-027",
+      "front": "(SI — EAC1 / Diagnóstico) Un equipo va lento tras instalar varias aplicaciones.\n\nDescribe un **protocolo de análisis** paso a paso para determinar\nsi el problema es de software, falta de recursos o configuración.\n\nPropón medidas preventivas.",
+      "back": "**Protocolo de análisis:**\n\n1. Comparar estado actual con anterior: desde cuándo empezó la lentitud,\n   qué programas se instalaron, si ocurre siempre o solo en ciertas tareas.\n\n2. Revisar consumo de CPU, RAM, disco y red con el administrador de tareas.\n   Si la RAM está casi llena o el disco al 100%, puede ser falta de recursos.\n\n3. Comprobar programas de inicio y servicios en segundo plano.\n   Utilidades residentes, antivirus duplicados o sincronizadores pueden ralentizar.\n\n4. Revisar espacio libre en disco, errores del sistema, actualizaciones pendientes\n   y posibles conflictos de controladores.\n\n5. Arrancar en modo seguro o hacer inicio limpio para separar\n   si el problema es de software instalado o de configuración.\n\n**Medidas preventivas:**\n- Instalar solo software necesario\n- Mantener actualizado el sistema\n- Controlar arranque automático\n- Dejar espacio libre en disco\n- Crear puntos de restauración antes de cambios importantes",
+      "tags": [
+        "si",
+        "eac1",
+        "diagnostico",
+        "rendimiento"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-si-028",
+      "front": "(SI — EAC3 / Red) Configura la red de Ubuntu de forma **temporal**\n(se pierde al reiniciar) usando el comando `ip`:\n\na) Asigna IP estática\nb) Configura máscara de red\nc) Define puerta de enlace\nd) Configura DNS\ne) Comprueba conectividad con ping a IP y nombre",
+      "back": "```bash\n# Configurar interfaz como bridge y asignar IP/máscara\nsudo ip link set eth0 up\nsudo ip addr add 192.168.1.100/24 dev eth0\n\n# Definir puerta de enlace\nsudo ip route add default via 192.168.1.1\n\n# Configurar DNS (temporal, en /etc/resolv.conf)\necho \"nameserver 8.8.8.8\" | sudo tee /etc/resolv.conf\necho \"nameserver 1.1.1.1\" | sudo tee -a /etc/resolv.conf\n\n# Comprobar configuración\nip addr show eth0\nip route show\n\n# Verificar conectividad\nping -c 4 192.168.1.1     # Gateway\nping -c 4 8.8.8.8          # DNS externo\nping -c 4 google.com       # Resolución DNS\n```\n\n**Nota:** La configuración con `ip` es **temporal**.\nPara hacerla permanente usa **Netplan** (`/etc/netplan/01-netcfg.yaml`).",
+      "tags": [
+        "si",
+        "eac3",
+        "red",
+        "ip",
+        "temporal"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-si-029",
+      "front": "(SI — EAC3 / Red Windows) Configura la red en Windows 11\nde forma estática:\n\na) Asigna IP estática, máscara y puerta de enlace\nb) Configura servidor DNS\nc) Comprueba conectividad\nd) Comando para consultar configuración desde línea de comandos",
+      "back": "**Configurar IP estática en Windows 11:**\n\n1. Panel de Control > Centro de redes y recursos compartidos\n   > Cambiar configuración del adaptador\n\n2. Click derecho en el adaptador > Propiedades\n   > Seleccionar \"Protocolo de Internet versión 4 (TCP/IPv4)\" > Propiedades\n\n3. Marcar \"Usar la siguiente dirección IP\":\n   - IP: 192.168.1.100\n   - Máscara: 255.255.255.0\n   - Puerta de enlace: 192.168.1.1\n\n4. DNS: 8.8.8.8 y 1.1.1.1\n\n**Comandos de verificación:**\n\n```powershell\n# Ver configuración actual\nipconfig /all\n\n# Probar conectividad\nping 192.168.1.1\nping 8.8.8.8\nping google.com\n```",
+      "tags": [
+        "si",
+        "eac3",
+        "red",
+        "windows",
+        "ip-estatica"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "pd-si-030",
+      "front": "(SI — EAC3 / Puertos) Analiza puertos en escucha con **netstat**\ny configura vsftpd:\n\na) Muestra todos los puertos TCP en escucha con netstat\nb) Muestra todos los puertos UDP en escucha\nc) Identifica procesos asociados a cada puerto\nd) Instala e inicia vsftpd\ne) Verifica que FTP escucha en puerto 21\nf) Conéctate por FTP a localhost\ng) Identifica conexiones ESTABLISHED\nh) Diferencia LISTEN vs ESTABLISHED",
+      "back": "```bash\n# Puertos TCP en escucha\nsudo netstat -tlnp\n\n# Puertos UDP en escucha\nsudo netstat -ulnp\n\n# Ver procesos asociados a cada puerto\nsudo netstat -tlnp | grep -E \"22|21|80\"\n\n# Instalar vsftpd\nsudo apt install vsftpd -y\nsudo systemctl start vsftpd\nsudo systemctl enable vsftpd\n\n# Verificar que FTP escucha en puerto 21\nsudo netstat -tlnp | grep :21\n# Salida: tcp 0 0 0.0.0.0:21 0.0.0.0:* LISTEN .../vsftpd\n\n# Conectarse por FTP a localhost\nftp localhost\n# Usuario: tu_usuario, Contraseña: tu_password\n\n# En otra terminal, ver conexión establecida\nsudo netstat -tnp | grep :21\n# Salida: tcp 0 0 192.168.1.100:21 192.168.1.100:54321 ESTABLISHED\n```\n\n**Diferencia:**\n- **LISTEN**: el servicio espera conexiones entrantes\n- **ESTABLISHED**: hay una conexión activa en curso",
+      "tags": [
+        "si",
+        "eac3",
+        "netstat",
+        "ftp",
+        "vsftpd",
+        "puertos"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-si-031",
+      "front": "(SI — EAC3 / Impresoras) Comparte una **impresora** en Windows Server 2019:\n\n1. Instala un servidor de impresión\n2. Añade una impresora (real o virtual como Bullzip PDF)\n3. Compártela en red\n4. Imprime un documento desde un cliente Windows 11\n\nExplica los pasos y permisos necesarios.",
+      "back": "**Pasos para compartir impresora en Windows Server 2019:**\n\n**1. Instalar rol de impresión:**\n- Administrador del servidor > Agregar roles y características\n- Seleccionar \"Servicios de impresión y documentos\"\n- Incluir \"Servidor de impresión\"\n\n**2. Añadir impresora virtual (Bullzip):**\n- Descargar e instalar Bullzip PDF Printer desde bullzip.com\n- La impresora aparece como dispositivo instalado\n\n**3. Compartir la impresora:**\n- Configuración de impresoras > Click derecho > Propiedades\n- Pestaña \"Compartir\" > Marcar \"Compartir esta impresora\"\n- Nombre de recurso compartido: \"ImpresoraPDF\"\n\n**4. Permisos:**\n- Pestaña \"Seguridad\": asignar \"Imprimir\" a grupo Usuarios del dominio\n- Asignar \"Administrar impresoras\" a Administradores\n\n**5. Desde cliente Windows 11:**\n- Conectarse a \\\\servidor\\ImpresoraPDF\n- Abrir un documento > Imprimir > Seleccionar la impresora compartida",
+      "tags": [
+        "si",
+        "eac3",
+        "impresoras",
+        "windows-server",
+        "compartir"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-si-032",
+      "front": "(SI — EAC3 / Samba AD DC) Configura Ubuntu como **Controlador de Dominio**\nusando Samba en modo Active Directory:\n\na) Instala paquetes Samba y dependencias\nb) Configura IP estática\nc) Provisiona el dominio con samba-tool\nd) Configura DNS integrado de Samba\ne) Inicia el servicio y verifica con samba-tool domain level show\nf) Une un cliente Windows al dominio\ng) Inicia sesión con usuario del dominio",
+      "back": "```bash\n# 1. Instalar paquetes\nsudo apt install samba smbclient winbind -y\n\n# 2. Configurar IP estática (Netplan o ip)\n# 3. Provisionar el dominio\nsudo samba-tool domain provision \\\n  --use-rfc2307 \\\n  --domain=EAC3 \\\n  --realm=eac3.tudominio.home \\\n  --adminpass=ContraseñaSegura1\n\n# 4. Configurar resolv.conf para que apunte a sí mismo\necho \"nameserver 127.0.0.1\" | sudo tee /etc/resolv.conf\necho \"search eac3.tudominio.home\" | sudo tee -a /etc/resolv.conf\n\n# 5. Deshabilitar servicios conflictivos\nsudo systemctl disable --now systemd-resolved\nsudo systemctl disable --now bind9 2>/dev/null\n\n# 6. Iniciar Samba AD DC\nsudo systemctl unmask samba-ad-dc\nsudo systemctl enable samba-ad-dc\nsudo systemctl start samba-ad-dc\n\n# 7. Verificar nivel de dominio\nsudo samba-tool domain level show\n\n# 8. Verificar DNS\nnslookup eac3.tudominio.home localhost\n```\n\n**Unir cliente Windows 11 al dominio:**\n- Configurar DNS del cliente apuntando al servidor Ubuntu\n- Configuración > Sistema > Acerca de > Unir al dominio\n- Introducir: eac3.tudominio.home\n- Usar credenciales del administrador del dominio",
+      "tags": [
+        "si",
+        "eac3",
+        "samba",
+        "ad",
+        "domain-controller",
+        "ubuntu"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "pd-si-033",
+      "front": "(SI — EAC3 / Compilación C) Compila un programa en C en Ubuntu:\n\na) Compila con gcc manualmente generando un binario ejecutable\nb) Crea un Makefile para automatizar la compilación\nc) Ejecuta el programa con un parámetro de prueba\nd) Crea una página de manual en formato roff\n   (secciones: NAME, SYNOPSIS, DESCRIPTION, OPTIONS, FILES, AUTHOR)\ne) Visualiza con groff antes de instalar\nf) Instala en /usr/share/man/man3/\ng) Verifica con man",
+      "back": "**Programa ejemplo (saludo.c):**\n\n```c\n#include <stdio.h>\n#include <string.h>\n\nint main(int argc, char *argv[]) {\n  if (argc < 2) {\n    printf(\"Uso: %s <nombre>\\n\", argv[0]);\n    return 1;\n  }\n  printf(\"Hola, %s!\\n\", argv[1]);\n  return 0;\n}\n```\n\n**Compilar y ejecutar:**\n\n```bash\n# Compilación manual\ngcc -o saludo saludo.c\n\n# Ejecutar con parámetro\n./saludo Mundo\n# Salida: Hola, Mundo!\n```\n\n**Makefile:**\n\n```makefile\nall: saludo\n\nsaludo: saludo.c\n\tgcc -o saludo saludo.c\n\nclean:\n\trm -f saludo\n```\n\n**Página de manual (saludo.3):**\n\n```roff\n.TH SALUDO 3 \"2024\" \"Ejemplo\"\n.SH NAME\nsaludo \\- imprime un saludo personalizado\n.SH SYNOPSIS\n.B saludo\n.I nombre\n.SH DESCRIPTION\nImprime \\\"Hola, nombre!\\\" en la salida estándar.\n.SH OPTIONS\nNo tiene opciones. Solo recibe un argumento obligatorio.\n.SH FILES\n/usr/local/bin/saludo\n.SH AUTHOR\nTu Nombre\n```\n\n**Instalar página de manual:**\n\n```bash\n# Visualizar con groff\ngroff -man -Tascii saludo.3\n\n# Copiar al directorio de manuales\nsudo cp saludo.3 /usr/share/man/man3/\n\n# Actualizar base de datos\nsudo mandb\n\n# Verificar\nman 3 saludo\n```",
+      "tags": [
+        "si",
+        "eac3",
+        "compilacion",
+        "c",
+        "makefile",
+        "man-page",
+        "roff"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "pd-si-034",
+      "front": "(SI — EAC1 / PRL) Identifica los principales **riesgos ergonómicos**\nen un puesto informático y las **correcciones** para cada uno:\n\na) Postura y silla\nb) Pantalla e iluminación\nc) Teclado y ratón\nd) Pausas y ejercicios",
+      "back": "**Riesgos y correcciones:**\n\n**a) Postura y silla:**\n- Riesgo: dolor de espalda, cervicales\n- Corrección: silla ajustable con soporte lumbar,\n  pies apoyados en el suelo, muslos paralelos al suelo\n\n**b) Pantalla e iluminación:**\n- Riesgo: fatiga visual, dolor de cabeza\n- Corrección: pantalla a la altura de los ojos,\n  distancia de 50-70 cm, evitar reflejos,\n  iluminación ambiental adecuada, parpadeo frecuente\n\n**c) Teclado y ratón:**\n- Riesgo: síndrome del túnel carpiano, tendinitis\n- Corrección: muñecas rectas al escribir,\n  reposamuñecas, ratón cerca del teclado,\n  usar atajos de teclado para reducir uso del ratón\n\n**d) Pausas y ejercicios:**\n- Riesgo: fatiga muscular, circulación\n- Corrección: pausas de 5 min cada hora,\n  regla 20-20-20 (cada 20 min, mirar a 20 pies durante 20 seg),\n  estiramientos de cuello, hombros y muñecas",
+      "tags": [
+        "si",
+        "eac1",
+        "prl",
+        "ergonomia",
+        "prevencion"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "pd-ed-070",
+      "front": "(ED — EAC2 / Testing) Explica las **técnicas de caja negra**\npara diseñar casos de prueba:\n\n1. **Particiones equivalentes**: en qué consiste, ejemplo\n2. **Valores límite**: en qué consiste, ejemplo\n3. **Tabla de decisiones**: cuándo usarla",
+      "back": "**1. Particiones equivalentes (Equivalence Partitioning):**\n\nConsiste en dividir los valores de entrada en grupos (particiones)\ndonde se espera el mismo comportamiento. Se prueba un valor\nrepresentativo de cada partición.\n\nEjemplo: campo edad acepta 18-65 años\n- Válida: 18 a 65 (ej: 30)\n- Inválida baja: < 18 (ej: 15)\n- Inválida alta: > 65 (ej: 70)\n\n**2. Valores límite (Boundary Value Analysis):**\n\nSe prueban los valores en los bordes de las particiones,\ndonde es más probable encontrar errores.\n\nEjemplo: campo edad 18-65\n- Límite inferior: 17 (inválido), 18 (válido), 19 (válido)\n- Límite superior: 64 (válido), 65 (válido), 66 (inválido)\n\n**3. Tabla de decisiones (Decision Table):**\n\nSe usa cuando hay múltiples condiciones que afectan el resultado.\nEjemplo: validar pedido (cliente registrado AND stock disponible AND pago OK).\nSe listan todas las combinaciones de condiciones y su resultado esperado.",
+      "tags": [
+        "ed",
+        "eac2",
+        "testing",
+        "caja-negra",
+        "particiones-equivalentes"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-ed-071",
+      "front": "(ED — EAC2 / Integración continua) Explica los conceptos de:\n\n1. **Integración continua (CI)**: definición y beneficios\n2. **Entrega continua (CD)**: diferencia con CI\n3. Herramientas comunes: Jenkins, GitHub Actions, GitLab CI\n4. Pipeline típico: compilar, testear, desplegar",
+      "back": "**1. Integración Continua (CI):**\n\nPráctica de desarrollo donde los cambios de código se integran\nen el repositorio principal varias veces al día. Cada integración\nse verifica automáticamente con compilación y pruebas.\n\nBeneficios:\n- Detectar errores rápidamente\n- Reducir problemas de integración\n- Feedback inmediato al desarrollador\n- Código siempre en estado funcional\n\n**2. Entrega Continua (CD):**\n\nExtensión de CI donde el código compilado y probado\nse despliega automáticamente en producción.\nCI = integrar + testear | CD = CI + desplegar\n\n**3. Herramientas:**\n- **Jenkins**: servidor CI/CD extensible con pipelines\n- **GitHub Actions**: CI/CD integrado en GitHub\n- **GitLab CI**: pipeline definido en .gitlab-ci.yml\n\n**4. Pipeline típico:**\n\n```\nCommit → Compilar → Tests unitarios → Tests integración → Desplegar\n```",
+      "tags": [
+        "ed",
+        "eac2",
+        "ci",
+        "cd",
+        "integracion-continua",
+        "devops"
       ],
       "difficulty": "medium"
     }

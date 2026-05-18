@@ -1,0 +1,398 @@
+Pablo Martin Machado Viera 
+ 
+ 
+ 
+CFGS Desenvolupament d'Aplicacions Multiplataforma (DAM) 
+CFGS Desenvolupament d'Aplicacions Web (DAW) 
+​ 
+​Mòdul 0487 – Entorns de Desenvolupament 
+​Unitat 2 – Desenvolupament de programari 
+ 
+EAC2 
+(Curs 2025–26 / 2n semestre) 
+ 
+ 
+ 
+ 
+RESPOSTES 
+ 
+1 
+2 
+3 
+4 
+5 
+6 
+7 
+8 
+9 
+10 
+a 
+b 
+d 
+a 
+a 
+c 
+a 
+b 
+d 
+c 
+ 
+ 
+ 
+ 
+Codi: I71 
+Exercici d'avaluació contínua 2 
+Pàgina 1 de 7 
+Versió: 03 
+DA2_M0487_EAC2_Enunciat_2526S2 
+Lliurament:  
+22/04/2026 
+ 
+Formació professional 
+Pablo Martin Machado Viera 
+Apartat 2: Instal·lació i ús d'entorns de desenvolupament  (8 punts) 
+ 
+Ajuts: 
+​
+· A la carpeta Material complementari U2 de l’aula trobareu vídeos i documents .pdf on es mostra la 
+descàrrega i instal·lació d’Eclipse, la instal·lació de WindowBuilder, Spring, del servidor Tomcat i de 
+Codeium i com treballar amb aquestes eines. 
+​
+· Si a l’entorn us falta alguna finestra, podeu obrir-la des del menú Window, opció Show view. 
+ 
+11. (5 punts) Amb l'entorn Eclipse, realitzeu una aplicació d'escriptori independent en Java amb interfície 
+gràfica (de finestres) que simuli el pressupost d’un pack mensual de serveis de màrqueting digital. La 
+pantalla a l'inici tindrà el següent aspecte (al títol de la finestra, a on posa «Profe», haureu de posar el 
+vostre cognom): 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Com podeu veure, la pantalla està dividida en quatre blocs o parts: la superior «Dades client», inicialment 
+activada, la segona, «Campanya», inicialment desactivada i les dues inferiors, «Preus» i «Errors i Alertes», 
+ 
+ 
+Codi: I71 
+ 
+Exercici d'avaluació contínua 2 
+ 
+Pàgina 2 de 7 
+Versió: 03 
+DA2_M0487_EAC2_Enunciat_2526S2 
+ 
+Lliurament:  
+22/04/2026 
+ 
+Formació professional 
+Pablo Martin Machado Viera 
+que contindran camps de tipus text (a la imatge es veu com quadres grisos), que servirà per notificar per 
+pantalla els preus i els errors que es produeixin en les validacions dels camps d’entrada, respectivament. 
+Cal tenir en compte que el contingut del camp «Errors i Alertes» s’ha d’anar actualitzant o esborrant 
+depenent de si volem o no informar d’algun error en aquell moment. 
+ 
+El funcionament és el següent: 
+ 
+​
+Primer s'introdueixen les següents dades: a la primera caixa de text s’introduirà l’antiguitat de l’empresa 
+client, en el menú desplegable (combo) anomenat «Pack de serveis» s’escollirà si vol un pack bàsic, un 
+estàndard, un full o un prèmium. Al segon menú desplegable s’haurà de seleccionar el tipus de negoci és 
+un autònom, una PIME o una gran empresa. Quan es prem el botó «Validar»: 
+◦​ Si hi ha alguna errada a les dades, es selecciona tot el quadre de text / combo que conté aquesta 
+dada, es fa que guanyi el focus, es mostra l’error al quadre de text llarg del final i no es realitza cap 
+acció més. S’ha de tenir en compte que totes les dades són obligatòries i que l’antiguitat de l’empresa 
+ha de ser un nombre positiu, que no pot tenir decimals i ha de ser un nombre comprès entre 0 i 150. Si 
+l’antiguitat té un format incorrecte, sortirà un missatge d’error al camp de text d’Errors i Alertes, dient 
+que l’antiguitat introduïda no és correcta (nombre enter entre 0 i 150). 
+◦​ També ha de comprovar que s’ha introduït un tipus de pack de serveis vàlid, que s’ha indicat el tipus 
+d’empresa i si no s’han deixat els desplegables sense marcar. Si fos així, s’ha de notificar al camp de 
+text d'Errors i Alertes. 
+◦​ En cas contrari, quan la validació és correcta, es deshabiliten tots els camps i botons de la part superior 
+(secció/bloc Dades Client) i s'habiliten els combos Gestió de XXSS i Publicitat SEM i la caixa de text 
+Dte. (descompte promocional), així com els botons «Esborrar tot» i «Calcular».  
+◦​ Les caixes del bloc «PREUS» no són editables; serviran per mostrar els resultats dels càlculs. 
+​
+Seguidament, l’usuari selecciona del desplegable Gestió de XXSS (xarxes socials) SÍ o NO i de Publicitat 
+SEM (Google Ads) també SÍ o NO depenent de si vol contractar aquests serveis o no. A Dte. (descompte 
+promocional) s’introduirà els euros que es volen descomptar mensualment al client. 
+​
+Quan es prem el botó «Calcular», es comprova  que s’ha introduït si es desitja o no contractar la gestió de 
+xarxes socials i la publicitat SEM i que no s’ha deixat cap desplegable sense marcar. Si fos així, s’ha de 
+notificar al camp de text d'Errors i Alertes. També s’ha de comprovar que s’ha escrit el descompte per al 
+client (si no es vol aplicar un descompte s’ha de posar un 0) i que el número introduït és major o igual a 0 
+i menor que el preu base del pack de serveis. En cas que el format o els valors dels números introduïts en 
+la caixa del descompte sigui incorrecte, els càlculs no es realitzaran i el quadre de text que conté la dada 
+incorrecta guanyarà el focus i es seleccionarà tot el quadre de text. Al quadre de text llarg del final es 
+mostrarà també l'error corresponent. 
+​
+Si les dades entrades són correctes, es calculen les dades de sortida:  
+ 
+Per calcular el Preu Base:  
+​
+Per a cada tipus de pack hi ha un preu diferent: 
+​
+BÀSIC: 200€ 
+​
+ESTÀNDARD: 450€ 
+​
+FULL: 800€ 
+​
+PRÈMIUM: 1200€ 
+ 
+Per calcular el Preu Abans d’Impostos: 
+ 
+ 
+Codi: I71 
+ 
+Exercici d'avaluació contínua 2 
+ 
+Pàgina 3 de 7 
+Versió: 03 
+DA2_M0487_EAC2_Enunciat_2526S2 
+ 
+Lliurament:  
+22/04/2026 
+ 
+Formació professional 
+Pablo Martin Machado Viera 
+​
+Es tindrà en compte l’antiguitat de l’empresa: 
+​
+​
+si té menys de 10 anys s’ha de multiplicar el preu base per 1 
+si té 10 o més anys d’antiguitat s’ha de multiplicar el preu base per 0,9 (se li fa un 
+descompte del 10%) 
+​
+A més, depenent del tipus de negoci s’aplica un altre factor :​
+​
+​
+si és autònom es 
+multiplicarà per 0,8 (descompte del 20%)​
+​
+si és una PIME es multiplicarà per 1​
+​
+​
+si és una gran empresa es multiplicarà per 1.2 (recàrrec del 20%) 
+​ Si s’ha seleccionat la gestió de xarxes socials se sumarà un import de 150€ i la publicitat SEM té un 
+cost de 250€ 
+​ Així el preu abans d’impostos serà: el preu base multiplicat pels factors de l’antiguitat i del tipus de 
+negoci i, un cop es tingui aquest preu, se li sumaran els serveis addicionals i se li restarà el 
+descompte. 
+Per calcular l’IVA:  es calcula el 21% del Preu Abans d’Impostos 
+Per calcular el TOTAL: se sumen el Preu Abans d’Impostos i l’IVA. 
+ 
+​
+Si l’usuari prem el botó de «Esborrar tot», es podrà tornar a iniciar la configuració dels paràmetres del 
+càlcul, habilitar camps i botons de la part superior possibilitant l’opció de reintroduir valors a la part 
+superior i inhabilitant i esborrant el contingut dels camps de la secció Campanya. 
+ 
+Un cop acabat l'exercici, comprimiu la carpeta src del vostre projecte en un fitxer que s'anomenarà 
+exercici11.zip i adjunteu-la al fitxer comprimit que s'indica a l'apartat "Forma i data de lliurament". 
+ 
+ 
+RESTRICCIONS: 
+ 
+​ Cal posar un text d'ajut (tooltip) a cada quadre de text editable amb informació sobre quina dada ha 
+d'entrar l'usuari a cadascun. 
+​ Cal utilitzar el component WindowBuilder Pro amb components Swing. S'ha d'evitar l'ús d'SWT. 
+​ No pot utilitzar-se cap altra biblioteca (a part de les estàndard de Java i les pròpies del component 
+esmentat al punt anterior). 
+ 
+AJUTS: 
+ 
+A)​Recordeu que a la carpeta Material complementari U2 teniu diversos recursos que poden ajudar-vos. 
+B)​Cal que tingueu en compte les següents propietats (la majoria són aplicables a diferents controls): 
+​
+Editable (quadres de text): editable 
+​
+Text d'ajut: toolTipText. 
+​
+Text: text (mètodes getText i setText). 
+​
+Habilitat: enabled (mètodes getEnabled i setEnabled). 
+C)​ Si volem seleccionar tot el contingut d'un quadre de text i fer que guanyi el focus, l’objecte que 
+representa aquest quadre de text ha de cridar als seus mètodes requestFocus() i selectAll(), un rere 
+l'altre. El primer li fa guanyar el focus i el segon selecciona tot el quadre. 
+D)​ El component combo:  
+​
+Poden afegir-se elements amb addItem(item). Si els afegiu amb l'assistent, no us caldrà utilitzar 
+aquest mètode. 
+​
+Té el mètode getSelectedIndex(), que permet consultar l'element seleccionat. 
+​
+Té el mètode getItemCount(), que retorna el nombre d'elements. 
+ 
+ 
+ 
+Codi: I71 
+ 
+Exercici d'avaluació contínua 2 
+ 
+Pàgina 4 de 7 
+Versió: 03 
+DA2_M0487_EAC2_Enunciat_2526S2 
+ 
+Lliurament:  
+22/04/2026 
+ 
+Formació professional 
+Pablo Martin Machado Viera 
+E)​Podeu trobar els javadoc dels diferents componetns de Swing en aquesta adreça (on XX és la versió 
+de Java que estiguis utilitzant): 
+javax.swing (Java SE XX & JDK XX) (oracle.com) 
+https://docs.oracle.com/en/java/javase/XX/docs/api/java.desktop/javax/swing/package-summary.html 
+ 
+ 
+12. (2 punts) La finalitat d'aquesta activitat és que utilitzeu l'entorn de desenvolupament per treballar amb 
+una aplicació client-servidor, fent ús en aquest cas de Spring. 
+ 
+Per tant, cal que utilitzeu l'entorn Eclipse amb el servidor d'aplicacions Apache Tomcat per a realitzar una 
+aplicació de Spring que faci exactament el mateix que l'activitat anomenada ‘Spring’ del material (està al 
+Material complementari U2).  
+ 
+Podeu utilitzar el mateix codi que apareix a DA2_M05_Exemple_Spring.pdf, tant pel que fa a la pàgina 
+HTML com pel que fa a la mateixa aplicació.  
+ 
+Quan ja us funcioni la pàgina web, realitzeu una captura de pantalla similar a la que segueix, però posant 
+també, a sota del títol i abans del resultat, el vostre dni i fent que calculi el quíntuple del valor entrat (en 
+comptes de calcular el doble, com es fa a l'exemple, que multipliqui la xifra per 5). Graveu la captura en un 
+fitxer anomenat exercici12.jpg (Atenció: heu de fer i lliurar una captura del resultat de l’execució del 
+formulari!). 
+ 
+ 
+ 
+ 
+ 
+Codi: I71 
+ 
+Exercici d'avaluació contínua 2 
+ 
+Pàgina 5 de 7 
+Versió: 03 
+DA2_M0487_EAC2_Enunciat_2526S2 
+ 
+Lliurament:  
+22/04/2026 
+ 
+Formació professional 
+Pablo Martin Machado Viera 
+ 
+ 
+Un cop acabat l'exercici, comprimiu aquest fitxer gràfic (exercici12.jpg) juntament amb la carpeta src del 
+vostre projecte en un fitxer que s'anomenarà exercici12.zip i adjunteu-lo al fitxer comprimit que s'indica a 
+l'apartat "Forma i data de lliurament".  
+ 
+  
+13. (1 punt) La finalitat d'aquesta activitat és introduir-vos en l'ús del connector d'Eclipse Codeium, que 
+incorpora a l'entorn un assistent a la programació basat en la Intel·ligència Artificial. A l'aula teniu el 
+document DA2_M05_Codeium.pdf on s'explica breument com treballar amb Codeium. També us pot ser útil 
+llegir aquest article (tot i que s'ha enfocat cap a un altre entorn, quasi tot ell fa consideracions generals de 
+l'ús d'aquest connector i de la Intel·ligència Artificial en la programació): Descubre el innovador plugin 
+Codeium para Visual Studio Code (toolify.ai)  
+ 
+A – Instal·leu el connector Codeium. 
+ 
+B – Amb l'ajut de l'assistent, creeu una classe amb dos mètodes estàtics. Tots dos rebran una cadena de 
+caràcters com a argument i retornaran: 
+ 
+​
+El primer mètode ha de retornar el nombre total de vocals que conté la cadena (sense accents). 
+ 
+​
+El segon mètode ha de retornar la mateixa cadena però substituint tots els espais en blanc per 
+guions baixos (_). 
+ 
+Per exemple, si la cadena rebuda és "Entorns de Desenvolupament", la cadena resultant hauria 
+de ser "Entorns_de_desenvolupament". Considereu que no hi ha ni accents ni lletres estranyes a 
+l'idioma anglès, com ho serien ç, ñ, l· ... 
+ 
+​
+Al requadre següent: 
+◦​
+Inseriu una captura de pantalla on es vegi la classe resultant. Hi heu d'incloure els comentaris /* 
+*/ on expliqueu què ha de fer cadascun dels mètodes. 
+◦​
+Responeu a continuació, les següents qüestions: 
+▪​
+Per a cadascun dels mètodes: què heu escrit vosaltres i què ha suggerit Codeium. 
+▪​
+Trobeu que us ha estalviat feina? Ha estat fàcil utilitzar l'assistent? 
+ 
+ 
+ 
+ 
+ 
+Codi: I71 
+ 
+Exercici d'avaluació contínua 2 
+ 
+Pàgina 6 de 7 
+Versió: 03 
+DA2_M0487_EAC2_Enunciat_2526S2 
+ 
+Lliurament:  
+22/04/2026 
+ 
+Formació professional 
+Pablo Martin Machado Viera 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Codi: I71 
+ 
+Exercici d'avaluació contínua 2 
+ 
+Pàgina 7 de 7 
+Versió: 03 
+DA2_M0487_EAC2_Enunciat_2526S2 
+ 
+Lliurament:  
+22/04/2026 
+ 

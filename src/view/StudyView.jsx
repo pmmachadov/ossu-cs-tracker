@@ -265,30 +265,27 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
     const normalized = normalizeText(text);
     const lines = normalized.split("\n");
     const elements = [];
-    let currentText = [];
     let codeBlock = null;
     let codeLines = [];
 
-    // Procesa acumulador de texto normal
-    const flushText = (keySuffix) => {
-      if (currentText.length === 0) return;
-      const paragraph = currentText.join("\\n");
-      currentText = [];
+    // Procesa una línea de texto como párrafo individual
+    const processLine = (line, keyIdx) => {
+      if (!line.trim()) return;
 
       // Procesa enlaces markdown [texto](url) ANTES de dividir por paréntesis
       const mdLinkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
       const linkParts = [];
       let lastMdIdx = 0;
       let mdMatch;
-      while ((mdMatch = mdLinkRegex.exec(paragraph)) !== null) {
+      while ((mdMatch = mdLinkRegex.exec(line)) !== null) {
         if (mdMatch.index > lastMdIdx) {
-          linkParts.push(paragraph.slice(lastMdIdx, mdMatch.index));
+          linkParts.push(line.slice(lastMdIdx, mdMatch.index));
         }
         linkParts.push({ type: "link", text: mdMatch[1], url: mdMatch[2] });
         lastMdIdx = mdMatch.index + mdMatch[0].length;
       }
-      if (lastMdIdx < paragraph.length) {
-        linkParts.push(paragraph.slice(lastMdIdx));
+      if (lastMdIdx < line.length) {
+        linkParts.push(line.slice(lastMdIdx));
       }
 
       // Si hay enlaces markdown, usa el nuevo pipeline
@@ -297,7 +294,7 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
           if (typeof part === "object" && part.type === "link") {
             return (
               <a
-                key={`mdlink-${keySuffix}-${lpi}`}
+                key={`mdlink-${keyIdx}-${lpi}`}
                 href={part.url}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -311,11 +308,11 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
           const innerParts = part.split(/`([^`]+)`/g);
           return innerParts.map((inner, ii) => {
             if (ii % 2 === 1) {
-              return renderInlineCode(inner, `md-inline-${keySuffix}-${lpi}-${ii}`);
+              return renderInlineCode(inner, `md-inline-${keyIdx}-${lpi}-${ii}`);
             } else if (inner) {
               return renderTextWithParens(
                 inner,
-                `md-p-${keySuffix}-${lpi}-${ii}`,
+                `md-p-${keyIdx}-${lpi}-${ii}`,
               );
             }
             return null;
@@ -323,31 +320,31 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
         });
 
         elements.push(
-          <p key={`text-${keySuffix}`} className="card-text-paragraph">
+          <p key={`text-${keyIdx}`} className="card-text-paragraph">
             {mixed}
           </p>,
         );
         return;
       }
 
-      // Divide el párrafo en partes para detectar código inline \`...\`
-      const parts = paragraph.split(/`([^`]+)`/g);
+      // Divide la línea en partes para detectar código inline \\`...\\`
+      const parts = line.split(/`([^`]+)`/g);
       const mixed = [];
       parts.forEach((part, idx) => {
         if (idx % 2 === 1) {
-          mixed.push(renderInlineCode(part, `inline-${keySuffix}-${idx}`));
+          mixed.push(renderInlineCode(part, `inline-${keyIdx}-${idx}`));
         } else if (part) {
           // Replace parentheses characters with colored spans
           const parenNodes = renderTextWithParens(
             part,
-            `p-${keySuffix}-${idx}`,
+            `p-${keyIdx}-${idx}`,
           );
           mixed.push(...parenNodes);
         }
       });
 
       elements.push(
-        <p key={`text-${keySuffix}`} className="card-text-paragraph">
+        <p key={`text-${keyIdx}`} className="card-text-paragraph">
           {mixed}
         </p>,
       );
@@ -391,18 +388,16 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
       const codeBlockEnd = trimmed === "```";
 
       if (codeBlockStart && !codeBlock) {
-        flushText(index);
         codeBlock = codeBlockStart[1] || "text";
       } else if (codeBlockEnd && codeBlock) {
         flushCode(index);
       } else if (codeBlock) {
         codeLines.push(line);
       } else {
-        currentText.push(line);
+        processLine(line, index);
       }
     });
 
-    flushText("final");
     flushCode("final");
 
     return elements;
