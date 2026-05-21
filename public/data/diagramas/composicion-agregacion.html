@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Composición vs Agregación</title>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+<style>
+  body {
+    background: #0d1117;
+    color: #c9d1d9;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+  }
+  h1 {
+    color: #58a6ff;
+    margin-bottom: 10px;
+  }
+  .subtitle {
+    color: #8b949e;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  .diagram-container {
+    background: #161b22;
+    border-radius: 12px;
+    padding: 30px;
+    border: 1px solid #30363d;
+    max-width: 100%;
+    overflow-x: auto;
+  }
+  .legend {
+    display: flex;
+    gap: 40px;
+    margin-top: 30px;
+    padding: 20px;
+    background: #161b22;
+    border-radius: 12px;
+    border: 1px solid #30363d;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .legend-composition {
+    width: 40px;
+    height: 40px;
+    border: 3px solid #f0883e;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: #f0883e;
+    position: relative;
+  }
+  .legend-composition::after {
+    content: "◆";
+    color: #f0883e;
+    position: absolute;
+    left: -18px;
+    font-size: 14px;
+  }
+  .legend-aggregation {
+    width: 40px;
+    height: 40px;
+    border: 3px solid #58a6ff;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: #58a6ff;
+    position: relative;
+  }
+  .legend-aggregation::after {
+    content: "◇";
+    color: #58a6ff;
+    position: absolute;
+    left: -18px;
+    font-size: 14px;
+  }
+</style>
+</head>
+<body>
+  <h1>Diagrama de Clases UML</h1>
+  <p class="subtitle">Composición (◆ rombo relleno) vs Agregación (◇ rombo vacío)</p>
+  
+  <div class="diagram-container">
+    <pre class="mermaid">
+classDiagram
+    class Cientifico {
+        +String nombre
+        +String especialidad
+        +investigar()
+    }
+    class Proyecto {
+        +String nombre
+        +String fechaInicio
+        +ejecutar()
+    }
+    class Asignacion {
+        +String rol
+        +Date fechaInicio
+    }
+    class Especialidad {
+        &lt;&lt;enumeration&gt;&gt;
+        BIOLOGIA
+        GEOLOGIA
+        OCEANOGRAFIA
+    }
+
+    Proyecto o-- Cientifico : agregacion
+    Proyecto *-- Asignacion : composicion
+    Cientifico *-- Asignacion : composicion
+    Cientifico --&gt; Especialidad : usa
+    </pre>
+  </div>
+
+  <script>
+    mermaid.initialize({
+      theme: 'dark',
+      themeVariables: {
+        primaryColor: '#1f2937',
+        primaryTextColor: '#c9d1d9',
+        primaryBorderColor: '#30363d',
+        lineColor: '#58a6ff',
+        secondaryColor: '#161b22',
+        tertiaryColor: '#0d1117',
+        clusterBkg: '#161b22',
+        clusterBorder: '#30363d'
+      }
+    });
+
+    function colorear() {
+      var svg = document.querySelector('svg');
+      if (!svg) { setTimeout(colorear, 300); return; }
+      
+      var defs = svg.querySelector('defs');
+      if (!defs) return;
+
+      // 1. Colorear markers de composicion (relleno negro) -> naranja
+      defs.querySelectorAll('marker polygon').forEach(function(poly) {
+        var fill = (poly.getAttribute('fill') || '').toLowerCase();
+        var stroke = (poly.getAttribute('stroke') || '').toLowerCase();
+        var hasFill = fill && fill !== 'none' && fill !== '#ffffff' && fill !== 'white' && fill !== 'transparent';
+        
+        if (hasFill && fill !== '#f0883e') {
+          poly.setAttribute('fill', '#f0883e');
+          poly.setAttribute('stroke', '#f0883e');
+        }
+      });
+
+      // 2. Colorear paths de composicion (usan markers con fill) -> naranja
+      svg.querySelectorAll('path').forEach(function(path) {
+        var style = (path.getAttribute('style') || '').toLowerCase();
+        var marker = (path.getAttribute('marker-end') || path.getAttribute('marker-start') || '').toLowerCase();
+        
+        if (style.indexOf('fill:black') >= 0 || style.indexOf('fill:#000') >= 0 || 
+            marker.indexOf('fillblack') >= 0 || marker.indexOf('composition') >= 0) {
+          path.setAttribute('stroke', '#f0883e');
+          path.setAttribute('fill', '#f0883e');
+        }
+      });
+
+      // 3. Colorear las lineas y poligonos de relacion por el texto etiqueta
+      var textos = svg.querySelectorAll('text');
+      textos.forEach(function(t) {
+        var txt = (t.textContent || '').toLowerCase();
+        var g = t.parentElement;
+        if (!g) return;
+        
+        var lineas = g.querySelectorAll('path');
+        var polis = g.querySelectorAll('polygon');
+        
+        if (txt.indexOf('composicion') >= 0) {
+          lineas.forEach(function(p) { p.setAttribute('stroke', '#f0883e'); });
+          polis.forEach(function(p) { 
+            p.setAttribute('fill', '#f0883e'); 
+            p.setAttribute('stroke', '#f0883e'); 
+          });
+        } else if (txt.indexOf('agregacion') >= 0) {
+          lineas.forEach(function(p) { p.setAttribute('stroke', '#58a6ff'); });
+          polis.forEach(function(p) { 
+            p.setAttribute('stroke', '#58a6ff'); 
+          });
+        }
+      });
+    }
+
+    setTimeout(colorear, 1500);
+  </script>
+</body>
+</html>

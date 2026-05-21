@@ -259,7 +259,7 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
   };
 
   // Función para procesar texto y resaltar código
-  const renderCardContent = (text) => {
+  const renderCardContent = (text, cardImageUrl) => {
     if (!text) return null;
 
     const normalized = normalizeText(text);
@@ -287,6 +287,9 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
       if (lastMdIdx < line.length) {
         linkParts.push(line.slice(lastMdIdx));
       }
+
+      const isSubtitle = /^[¿¡]?[A-ZÁÉÍÓÚÑ][^.:]{0,60}[:?]$/.test(line.trim());
+      const pClassName = isSubtitle ? "card-text-paragraph card-subtitle" : "card-text-paragraph";
 
       // Si hay enlaces markdown, usa el nuevo pipeline
       if (linkParts.some((p) => typeof p === "object")) {
@@ -320,7 +323,7 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
         });
 
         elements.push(
-          <p key={`text-${keyIdx}`} className="card-text-paragraph">
+          <p key={`text-${keyIdx}`} className={pClassName} style={{textAlign: 'left'}}>
             {mixed}
           </p>,
         );
@@ -344,10 +347,69 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
       });
 
       elements.push(
-        <p key={`text-${keyIdx}`} className="card-text-paragraph">
+        <p key={`text-${keyIdx}`} className={pClassName} style={{textAlign: 'left'}}>
           {mixed}
         </p>,
       );
+    };
+
+    // Colector de secciones Mermaid (diagrama + resumen bajo botón)
+    let pendingMermaid = null; // { code, summaryLines: [] }
+
+    const flushMermaid = (keySuffix) => {
+      if (!pendingMermaid) return;
+      const summaryHtml = pendingMermaid.summaryLines
+        .map(
+          (l) =>
+            "<p>" +
+            l
+              .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
+              .replace(
+                /`([^`]+)`/g,
+                '<code class="inline-code">$1</code>',
+              ) +
+            "</p>",
+        )
+        .join("\n");
+      elements.push(
+        <div key={`mermaid-${keySuffix}`} className="code-block-wrapper">
+          <div className="mermaid-img-wrapper">
+            <img
+              className="mermaid-img"
+              src={cardImageUrl || `https://mermaid.ink/img/${btoa(unescape(encodeURIComponent(pendingMermaid.code)))}`}
+              alt="Diagrama"
+              onError={(e) => {
+                e.target.style.display = "none";
+                e.target.nextSibling.style.display = "block";
+              }}
+            />
+            <div className="mermaid-img-fallback" style={{ display: "none" }}>
+              <SyntaxHighlighter
+                language={"mermaid"}
+                style={codeTheme}
+                customStyle={{
+                  margin: "0",
+                  borderRadius: "0",
+                  fontSize: "1.1rem",
+                  lineHeight: "1.6",
+                  background: "#1e1e1e",
+                  padding: "16px 20px",
+                }}
+                wrapLongLines={true}
+              >
+                {pendingMermaid.code}
+              </SyntaxHighlighter>
+            </div>
+          </div>
+          {pendingMermaid.summaryLines.length > 0 && (
+            <div
+              className="mermaid-summary-text"
+              dangerouslySetInnerHTML={{ __html: summaryHtml }}
+            />
+          )}
+        </div>,
+      );
+      pendingMermaid = null;
     };
 
     // Procesa acumulador de bloque de código
@@ -357,6 +419,14 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
       const lang = codeBlock || "text";
       codeLines = [];
       codeBlock = null;
+
+      // Flush any pending mermaid before this new code block
+      flushMermaid(`before-${keySuffix}`);
+
+      if (lang === "mermaid") {
+        pendingMermaid = { code, summaryLines: [] };
+        return; // Don't render now – start collecting summary lines
+      }
 
       elements.push(
         <div key={`code-${keySuffix}`} className="code-block-wrapper">
@@ -382,10 +452,27 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
       );
     };
 
+    let prevLineWasBlank = false;
     lines.forEach((line, index) => {
       const trimmed = line.trim();
       const codeBlockStart = line.match(/^```(\w+)?$/);
       const codeBlockEnd = trimmed === "```";
+      const isBlank = !trimmed;
+
+      // Si estamos recolectando resumen de un mermaid…
+      if (pendingMermaid && !isBlank && !codeBlockStart) {
+        // ¿Separador --- ? → fin de colección
+        if (trimmed === "---" || trimmed === "___" || trimmed === "***") {
+          flushMermaid(`sep-${index}`);
+          return;
+        }
+        // Seguir recolectando líneas de texto
+        pendingMermaid.summaryLines.push(line);
+        prevLineWasBlank = false;
+        return;
+      }
+
+      prevLineWasBlank = isBlank;
 
       if (codeBlockStart && !codeBlock) {
         codeBlock = codeBlockStart[1] || "text";
@@ -399,6 +486,7 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
     });
 
     flushCode("final");
+    flushMermaid("final");
 
     return elements;
   };
@@ -551,21 +639,13 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
           <p className="complete-subtitle">Has estudiado {total} tarjetas</p>
 
           <div className="session-stats">
-            <div className="session-stat again">
-              <span className="session-stat-value">{sessionStats.again}</span>
-              <span className="session-stat-label">Otra vez</span>
-            </div>
-            <div className="session-stat hard">
-              <span className="session-stat-value">{sessionStats.hard}</span>
-              <span className="session-stat-label">Dificil</span>
-            </div>
             <div className="session-stat good">
               <span className="session-stat-value">{sessionStats.good}</span>
-              <span className="session-stat-label">Bien</span>
+              <span className="session-stat-label">Procesando</span>
             </div>
             <div className="session-stat easy">
               <span className="session-stat-value">{sessionStats.easy}</span>
-              <span className="session-stat-label">Facil</span>
+              <span className="session-stat-label">Aprendido</span>
             </div>
           </div>
 
@@ -683,37 +763,9 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
             </div>
             <div className="flashcard-back">
               <div className="card-content card-content-code">
-                {currentCard.imageUrl && (
-                  <div className="card-image-wrapper">
-                    {currentCard.imageUrl.endsWith('.html') ? (
-                      <a
-                        href={currentCard.imageUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="btn btn-card-diagram"
-                      >
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ width: "18px", height: "18px" }}>
-                          <rect x="3" y="3" width="7" height="7" />
-                          <rect x="14" y="3" width="7" height="7" />
-                          <rect x="14" y="14" width="7" height="7" />
-                          <rect x="3" y="14" width="7" height="7" />
-                        </svg>
-                        Ver diagrama de actividades
-                      </a>
-                    ) : (
-                      <img
-                        src={currentCard.imageUrl}
-                        alt="Diagrama de ejemplo"
-                        className="card-image"
-                        onError={(e) => {
-                          e.target.style.display = "none";
-                          e.target.parentElement.style.display = "none";
-                        }}
-                      />
-                    )}
-                  </div>
-                )}
-                {renderCardContent(currentCard.back)}
+                <div style={{ width: "100%", textAlign: "left" }}>
+                  {renderCardContent(currentCard.back, currentCard.imageUrl)}
+                </div>
               </div>
             </div>
           </div>
@@ -723,28 +775,16 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
       {isFlipped ? (
         <div className="rating-buttons">
           <button
-            className="rating-btn again"
-            onClick={() => handleRate(DIFFICULTY.AGAIN)}
-          >
-            Otra vez
-          </button>
-          <button
-            className="rating-btn hard"
-            onClick={() => handleRate(DIFFICULTY.HARD)}
-          >
-            Dificil
-          </button>
-          <button
             className="rating-btn good"
             onClick={() => handleRate(DIFFICULTY.GOOD)}
           >
-            Bien
+            Procesando
           </button>
           <button
             className="rating-btn easy"
             onClick={() => handleRate(DIFFICULTY.EASY)}
           >
-            Facil
+            Aprendido
           </button>
         </div>
       ) : (
