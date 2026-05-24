@@ -288,7 +288,7 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
         linkParts.push(line.slice(lastMdIdx));
       }
 
-      const isSubtitle = /^[¿¡]?[A-ZÁÉÍÓÚÑ][^.:]{0,60}[:?]$/.test(line.trim());
+      const isSubtitle = /^(?:[¿¡]?[A-ZÁÉÍÓÚÑ]|\d+\.\s*)[A-Za-zÁÉÍÓÚÑáéíóúñ0-9 (),./@]{0,70}[:?]$/.test(line.trim());
       const pClassName = isSubtitle ? "card-text-paragraph card-subtitle" : "card-text-paragraph";
 
       // Si hay enlaces markdown, usa el nuevo pipeline
