@@ -2,7 +2,7 @@
   "id": "prueba-dwec-proyecto",
   "name": "Prueba - Proyecto Taller DWEC",
   "description": "Fetch API, Express, CRUD, async/await, validaciones, persistencia JSON y gestión de eventos en un proyecto completo",
-  "subject": "Desarrollo Web en Entorno Cliente",
+  "subject": "Materias salvadas",
   "cards": [
     {
       "id": "p1-proy-001",

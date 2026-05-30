@@ -330,6 +330,31 @@ const MAIN_SUBJECTS = [
   "Desarrollo Web en Entorno Cliente",
 ];
 
+// Materias que entran en el examen (ED y SI)
+const EXAM_SUBJECTS = [
+  "Sistemas Informaticos",
+  "Sistemes Informàtics",
+  "Entornos de Desarrollo",
+  "Preguntas Directas",
+];
+
+const isExamSubject = (subject) => EXAM_SUBJECTS.includes(subject);
+
+// Detecta si un mazo es de materia de examen por su ID
+const isExamDeck = (deck) => {
+  if (!deck) return false;
+  const id = deck.id || '';
+  const subj = deck.subject || '';
+  // Por subject
+  if (isExamSubject(subj)) return true;
+  // Por ID: ED y SI tienen patrones especificos
+  return /-(?:ed|si)-/.test(id) || 
+         /^(?:entornos-desarrollo|sistemas-informaticos|interconexion-redes)/.test(id) ||
+         /^unidad\d/.test(id) ||
+         id === 'pd-all' ||
+         /^practicas-(?:ed|si)/.test(id);
+};
+
 export function DeckList({
   decks,
   onCreateDeck,
@@ -361,8 +386,9 @@ export function DeckList({
   const [showPracticas, setShowPracticas] = useState(false);
   const [showExamenes, setShowExamenes] = useState(false);
   const [showPreguntasDirectas, setShowPreguntasDirectas] = useState(true);
-  const [showLibros, setShowLibros] = useState(true);
+  const [showLibros, setShowLibros] = useState(false);
   const [showMateriasSalvadas, setShowMateriasSalvadas] = useState(false);
+  const [showMas, setShowMas] = useState(false);
 
   // Map de mazos marcados como hechos: { [deckId]: true }
   // Inicializado directamente desde localStorage para evitar race conditions con StrictMode
@@ -446,8 +472,10 @@ export function DeckList({
     }
   };
 
-  const totalCards = decks.reduce((acc, d) => acc + d.cards.length, 0);
-  const totalStudied = decks.reduce((acc, d) => {
+  const examOnlyDecks = decks.filter(d => isExamDeck(d));
+
+  const totalCards = examOnlyDecks.reduce((acc, d) => acc + d.cards.length, 0);
+  const totalStudied = examOnlyDecks.reduce((acc, d) => {
     return acc + d.cards.filter((c) => c.status !== "new").length;
   }, 0);
 
@@ -471,12 +499,12 @@ export function DeckList({
 
   // Mazos de examen
   const examenDecks = filteredDecks.filter(
-    (d) => d.id?.startsWith("examen-"),
+    (d) => d.id?.startsWith("examen-") && d.subject !== "Materias salvadas",
   );
 
   // Mazos de prueba (agrupados en folder por materia)
   const pruebaDecks = filteredDecks.filter(
-    (d) => d.id?.startsWith("prueba-") || d.name?.startsWith("Prueba -"),
+    (d) => (d.id?.startsWith("prueba-") || d.name?.startsWith("Prueba -")) && d.subject !== "Materias salvadas",
   );
 
   const pruebaGroups = pruebaDecks.reduce((acc, deck) => {
@@ -573,6 +601,9 @@ export function DeckList({
             >
               {subjectIcon} {deck.subject}
             </span>
+          )}
+          {isExamDeck(deck) && (
+            <span className="exam-badge">📘 Examen</span>
           )}
           {hasDueCards && (
             <div className="due-badge-inline">
@@ -769,8 +800,9 @@ export function DeckList({
             onClick={() => setShowPreguntasDirectas(!showPreguntasDirectas)}
             aria-expanded={showPreguntasDirectas}
           >
-            <span className="pd-icon">🎯</span>
-            <span className="pd-label">1. Preguntas Directas</span>
+          <span className="pd-icon">🎯</span>
+            <span className="pd-label">Preguntas Directas</span>
+            <span className="exam-folder-dot" title="Materia de examen">🟢</span>
             <span className="pd-count">
               {preguntasDirectasDecks.length} mazo{preguntasDirectasDecks.length !== 1 ? "s" : ""}
             </span>
@@ -782,66 +814,13 @@ export function DeckList({
           {showPreguntasDirectas && (
             <div className="decks-grid pd-grid animate-fade-in">
               {preguntasDirectasDecks.map((d) =>
-                renderDeckCard(d, false, "theme-pd"),
+                renderDeckCard(d, false, "theme-green"),
               )}
             </div>
           )}
         </div>
       )}
 
-      {/* 2. Libros Collapsible Folder */}
-      {librosDecks.length > 0 && (
-        <div className="pd-section">
-          <button
-            className="pd-toggle"
-            onClick={() => setShowLibros(!showLibros)}
-            aria-expanded={showLibros}
-          >
-            <span className="pd-icon">📚</span>
-            <span className="pd-label">2. Libros</span>
-            <span className="pd-count">
-              {librosDecks.length} mazo{librosDecks.length !== 1 ? "s" : ""}
-            </span>
-            <span className={`pd-chevron ${showLibros ? "open" : ""}`}>
-              {showLibros ? Icons.chevronUp : Icons.chevronDown}
-            </span>
-          </button>
-
-          {showLibros && (
-            <div className="decks-grid pd-grid animate-fade-in">
-              {librosDecks.map((d) => renderDeckCard(d, true))}
-            </div>
-          )}
-        </div>
-      )}
-
-      {/* 3. Materias Salvadas Collapsible Folder */}
-      {materiasSalvadasDecks.length > 0 && (
-        <div className="pd-section">
-          <button
-            className="pd-toggle"
-            onClick={() => setShowMateriasSalvadas(!showMateriasSalvadas)}
-            aria-expanded={showMateriasSalvadas}
-          >
-            <span className="pd-icon">💾</span>
-            <span className="pd-label">3. Materias salvadas</span>
-            <span className="pd-count">
-              {materiasSalvadasDecks.length} mazo{materiasSalvadasDecks.length !== 1 ? "s" : ""}
-            </span>
-            <span className={`pd-chevron ${showMateriasSalvadas ? "open" : ""}`}>
-              {showMateriasSalvadas ? Icons.chevronUp : Icons.chevronDown}
-            </span>
-          </button>
-
-          {showMateriasSalvadas && (
-            <div className="decks-grid pd-grid animate-fade-in">
-              {materiasSalvadasDecks.map((d) =>
-                renderDeckCard(d, false, "theme-salvadas"),
-              )}
-            </div>
-          )}
-        </div>
-      )}
 
       {/* Materias Collapsible Folder */}
       {mainDecks.length > 0 && (
@@ -853,6 +832,7 @@ export function DeckList({
           >
             <span className="materias-icon">📁</span>
             <span className="materias-label">Materias</span>
+            <span className="exam-folder-dot" title="Materia de examen">🟢</span>
             <span className="materias-count">
               {mainDecks.length} mazo{mainDecks.length !== 1 ? "s" : ""}
             </span>
@@ -882,7 +862,7 @@ export function DeckList({
                       </span>
                     </div>
                     <div className="decks-grid materias-subgrid">
-                      {subjectDecks.map((d) => renderDeckCard(d))}
+                      {subjectDecks.map((d) => renderDeckCard(d, false, "theme-green"))}
                     </div>
                   </div>
                 );
@@ -902,6 +882,9 @@ export function DeckList({
           >
             <span className="practicas-icon">📝</span>
             <span className="practicas-label">Prácticas</span>
+            {practicaDecks.some(d => isExamDeck(d)) && (
+              <span className="exam-folder-dot" title="Materia de examen">🟢</span>
+            )}
             <span className="practicas-count">
               {practicaDecks.length} mazo{practicaDecks.length !== 1 ? "s" : ""}
             </span>
@@ -932,6 +915,9 @@ export function DeckList({
           >
             <span className="examenes-icon">📋</span>
             <span className="examenes-label">Exámenes</span>
+            {examenDecks.some(d => isExamDeck(d)) && (
+              <span className="exam-folder-dot" title="Materia de examen">🟢</span>
+            )}
             <span className="examenes-count">
               {examenDecks.length} mazo{examenDecks.length !== 1 ? "s" : ""}
             </span>
@@ -983,6 +969,9 @@ export function DeckList({
           >
             <span className="pruebas-icon">📁</span>
             <span className="pruebas-label">Pruebas</span>
+            {pruebaDecks.some(d => isExamDeck(d)) && (
+              <span className="exam-folder-dot" title="Materia de examen">🟢</span>
+            )}
             <span className="pruebas-count">
               {pruebaDecks.length} mazo{pruebaDecks.length !== 1 ? "s" : ""}
             </span>
@@ -1019,6 +1008,84 @@ export function DeckList({
                   </div>
                 );
               })}
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Más Collapsible Folder (Libros + Materias salvadas) */}
+      {(librosDecks.length > 0 || materiasSalvadasDecks.length > 0) && (
+        <div className="mas-section">
+          <button
+            className="mas-toggle"
+            onClick={() => setShowMas(!showMas)}
+            aria-expanded={showMas}
+          >
+            <span className="mas-icon">➕</span>
+            <span className="mas-label">Más</span>
+            <span className="mas-count">
+              {(librosDecks.length + materiasSalvadasDecks.length)} mazo{(librosDecks.length + materiasSalvadasDecks.length) !== 1 ? "s" : ""}
+            </span>
+            <span className={`mas-chevron ${showMas ? "open" : ""}`}>
+              {showMas ? Icons.chevronUp : Icons.chevronDown}
+            </span>
+          </button>
+
+          {showMas && (
+            <div className="mas-content animate-fade-in">
+              {/* 2. Libros Collapsible Folder */}
+              {librosDecks.length > 0 && (
+                <div className="pd-section">
+                  <button
+                    className="pd-toggle"
+                    onClick={(e) => { e.stopPropagation(); setShowLibros(!showLibros); }}
+                    aria-expanded={showLibros}
+                  >
+                    <span className="pd-icon">📚</span>
+                    <span className="pd-label">Libros</span>
+                    <span className="pd-count">
+                      {librosDecks.length} mazo{librosDecks.length !== 1 ? "s" : ""}
+                    </span>
+                    <span className={`pd-chevron ${showLibros ? "open" : ""}`}>
+                      {showLibros ? Icons.chevronUp : Icons.chevronDown}
+                    </span>
+                  </button>
+
+                  {showLibros && (
+                    <div className="decks-grid pd-grid animate-fade-in">
+                      {librosDecks.map((d) => renderDeckCard(d, true))}
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {/* 3. Materias Salvadas Collapsible Folder */}
+              {materiasSalvadasDecks.length > 0 && (
+                <div className="pd-section">
+                  <button
+                    className="pd-toggle"
+                    onClick={(e) => { e.stopPropagation(); setShowMateriasSalvadas(!showMateriasSalvadas); }}
+                    aria-expanded={showMateriasSalvadas}
+                  >
+                    <span className="pd-icon">💾</span>
+                    <span className="pd-label">Materias salvadas</span>
+                    <span className="pd-count">
+                      {materiasSalvadasDecks.length} mazo{materiasSalvadasDecks.length !== 1 ? "s" : ""}
+                    </span>
+                    <span className={`pd-chevron ${showMateriasSalvadas ? "open" : ""}`}>
+                      {showMateriasSalvadas ? Icons.chevronUp : Icons.chevronDown}
+                    </span>
+                  </button>
+
+                  {showMateriasSalvadas && (
+                    <div className="decks-grid pd-grid animate-fade-in">
+                      {materiasSalvadasDecks.map((d) =>
+                        renderDeckCard(d, false, "theme-salvadas"),
+                      )}
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
           )}
         </div>

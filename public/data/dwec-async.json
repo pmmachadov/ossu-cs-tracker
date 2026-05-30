@@ -2,7 +2,7 @@
   "id": "dwec-async",
   "name": "DWEC: Comunicación Asíncrona y AJAX",
   "description": "AJAX, XMLHttpRequest, Fetch API, Promesas, async/await, APIs REST y proyectos CRUD",
-  "subject": "Desenvolupament Web en Entorn Client",
+  "subject": "Materias salvadas",
   "cards": [
     {
       "id": "async-001",

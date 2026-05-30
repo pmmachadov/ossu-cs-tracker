@@ -2,7 +2,7 @@
   "id": "dwec-u3l2-actualizacion-dom",
   "name": "DWEC U3L2 - Actualización de los elementos del DOM",
   "description": "Actividad práctica IOC: modificación dinámica del contenido de una página web mediante el DOM. Catálogo de productos con textContent, innerHTML, atributos, createElement, cloneNode y eliminación de elementos.",
-  "subject": "Desarrollo Web en Entorno Cliente",
+  "subject": "Materias salvadas",
   "created": "2026-04-11",
   "cards": [
     {
