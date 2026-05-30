@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "hermes-proxy": "node hermes-proxy/index.js",
     "build": "vite build && node scripts/fix-css-vars.js",
     "format:cards": "node scripts/format-cards.js",
     "lint": "eslint .",

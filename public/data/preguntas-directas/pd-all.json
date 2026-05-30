@@ -1675,6 +1675,102 @@
         "clean-code"
       ],
       "difficulty": "medium"
+    },
+    {
+      "id": "pd-si-035",
+      "front": "(SI — Linux / Comandos) ¿Para que sirve `sudo` y cuando se usa?",
+      "back": "`sudo` ejecuta un comando con privilegios de administrador (root).\n\nSe usa cuando necesitas permisos elevados para tareas del sistema, por ejemplo instalar paquetes o editar archivos en /etc.\n\nEjemplo:\n```bash\nsudo apt install git\n```",
+      "tags": [
+        "si",
+        "linux",
+        "comandos",
+        "sudo"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "pd-si-036",
+      "front": "(SI — Linux / Comandos) ¿Que hace `aptitude` y en que se diferencia de `apt`?",
+      "back": "`aptitude` es una interfaz de gestion de paquetes de Debian/Ubuntu (CLI y modo interactivo).\n\nDiferencia principal: `aptitude` tiene un resolver de dependencias mas avanzado y puede ofrecer soluciones alternativas.\n\nEjemplo:\n```bash\nsudo aptitude install nginx\n```",
+      "tags": [
+        "si",
+        "linux",
+        "comandos",
+        "aptitude"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "pd-si-037",
+      "front": "(SI — Linux / Comandos) ¿Que hace `kill` y como se usa para finalizar un proceso?",
+      "back": "`kill` envia una senal a un proceso por PID. La senal por defecto es SIGTERM (15), que pide finalizar de forma limpia.\n\nEjemplo:\n```bash\nkill 1234\n# Forzar si no responde\nkill -9 1234\n```",
+      "tags": [
+        "si",
+        "linux",
+        "comandos",
+        "kill"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "pd-si-038",
+      "front": "(SI — Linux / Comandos) ¿Que hace `killall` y en que se diferencia de `kill`?",
+      "back": "`killall` envia una senal a procesos por NOMBRE, no por PID.\n\nEjemplo:\n```bash\nkillall firefox\n```\n\nDiferencia: `kill` usa PID; `killall` usa el nombre del proceso.",
+      "tags": [
+        "si",
+        "linux",
+        "comandos",
+        "killall"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "pd-si-039",
+      "front": "(SI — Linux / Comandos) ¿Para que sirve `service`? Da un ejemplo.",
+      "back": "`service` es un comando para gestionar servicios en sistemas con init scripts (SysV) o como wrapper de systemd.\n\nEjemplo:\n```bash\nsudo service ssh status\nsudo service ssh restart\n```",
+      "tags": [
+        "si",
+        "linux",
+        "comandos",
+        "service"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "pd-si-040",
+      "front": "(SI — Linux / Comandos) ¿Que hace `userdel` y cual es el parametro para borrar tambien el home?",
+      "back": "`userdel` elimina un usuario del sistema.\n\nPara borrar tambien su directorio home y correo: `-r`.\n\nEjemplo:\n```bash\nsudo userdel -r jordi\n```",
+      "tags": [
+        "si",
+        "linux",
+        "comandos",
+        "userdel"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "pd-si-041",
+      "front": "(SI — Linux / Comandos) ¿Que es `visudo` y por que se recomienda usarlo?",
+      "back": "`visudo` edita el archivo sudoers con validacion de sintaxis. Evita errores que podrian bloquear el acceso con sudo.\n\nEjemplo:\n```bash\nsudo visudo\n```",
+      "tags": [
+        "si",
+        "linux",
+        "comandos",
+        "visudo"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "pd-si-042",
+      "front": "(SI — Linux / Comandos) ¿Para que sirve `xargs`? Da un ejemplo practico.",
+      "back": "`xargs` convierte la salida de un comando en argumentos para otro comando.\n\nEjemplo: borrar archivos .log listados por find:\n```bash\nfind /var/log -name \"*.log\" | xargs rm -f\n```",
+      "tags": [
+        "si",
+        "linux",
+        "comandos",
+        "xargs"
+      ],
+      "difficulty": "easy"
     }
   ]
 }
