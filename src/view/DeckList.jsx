@@ -362,6 +362,7 @@ export function DeckList({
   const [showExamenes, setShowExamenes] = useState(false);
   const [showPreguntasDirectas, setShowPreguntasDirectas] = useState(true);
   const [showLibros, setShowLibros] = useState(true);
+  const [showMateriasSalvadas, setShowMateriasSalvadas] = useState(false);
 
   // Map de mazos marcados como hechos: { [deckId]: true }
   // Inicializado directamente desde localStorage para evitar race conditions con StrictMode
@@ -504,8 +505,13 @@ export function DeckList({
     (d) => d.subject === "Libros",
   );
 
+  // Mazos de materias salvadas
+  const materiasSalvadasDecks = filteredDecks.filter(
+    (d) => d.subject === "Materias salvadas",
+  );
+
   const mainDecks = filteredDecks.filter(
-    (d) => MAIN_SUBJECTS.includes(d.subject) && !pruebaDecks.includes(d) && !examenDecks.includes(d) && !preguntasDirectasDecks.includes(d),
+    (d) => MAIN_SUBJECTS.includes(d.subject) && !pruebaDecks.includes(d) && !examenDecks.includes(d) && !preguntasDirectasDecks.includes(d) && !materiasSalvadasDecks.includes(d),
   );
   const extraDecks = filteredDecks.filter(
     (d) =>
@@ -514,7 +520,8 @@ export function DeckList({
       !practicaDecks.includes(d) &&
       !examenDecks.includes(d) &&
       !preguntasDirectasDecks.includes(d) &&
-      !librosDecks.includes(d),
+      !librosDecks.includes(d) &&
+      !materiasSalvadasDecks.includes(d),
   );
 
   const mainGroups = mainDecks.reduce((acc, deck) => {
@@ -804,6 +811,34 @@ export function DeckList({
           {showLibros && (
             <div className="decks-grid pd-grid animate-fade-in">
               {librosDecks.map((d) => renderDeckCard(d, true))}
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* 3. Materias Salvadas Collapsible Folder */}
+      {materiasSalvadasDecks.length > 0 && (
+        <div className="pd-section">
+          <button
+            className="pd-toggle"
+            onClick={() => setShowMateriasSalvadas(!showMateriasSalvadas)}
+            aria-expanded={showMateriasSalvadas}
+          >
+            <span className="pd-icon">💾</span>
+            <span className="pd-label">3. Materias salvadas</span>
+            <span className="pd-count">
+              {materiasSalvadasDecks.length} mazo{materiasSalvadasDecks.length !== 1 ? "s" : ""}
+            </span>
+            <span className={`pd-chevron ${showMateriasSalvadas ? "open" : ""}`}>
+              {showMateriasSalvadas ? Icons.chevronUp : Icons.chevronDown}
+            </span>
+          </button>
+
+          {showMateriasSalvadas && (
+            <div className="decks-grid pd-grid animate-fade-in">
+              {materiasSalvadasDecks.map((d) =>
+                renderDeckCard(d, false, "theme-salvadas"),
+              )}
             </div>
           )}
         </div>
