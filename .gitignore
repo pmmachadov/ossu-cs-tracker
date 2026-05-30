@@ -1,3 +1,6 @@
+# Markdown documentation (not pushed to GitHub)
+*.md
+
 # Logs
 logs
 *.log
