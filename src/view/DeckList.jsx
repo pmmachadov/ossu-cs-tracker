@@ -496,18 +496,17 @@ export function DeckList({
   const practicaDecks = filteredDecks.filter((d) => d.subject === "Practicas");
 
   // Mazos de preguntas directas (id empieza por pd-)
+  const materiasSalvadasDecks = filteredDecks.filter(
+    (d) => d.subject === "Materias salvadas",
+  );
+
   const preguntasDirectasDecks = filteredDecks.filter(
-    (d) => d.id?.startsWith("pd-"),
+    (d) => d.id?.startsWith("pd-") && !materiasSalvadasDecks.includes(d),
   );
 
   // Mazos de libros
   const librosDecks = filteredDecks.filter(
     (d) => d.subject === "Libros",
-  );
-
-  // Mazos de materias salvadas
-  const materiasSalvadasDecks = filteredDecks.filter(
-    (d) => d.subject === "Materias salvadas",
   );
 
   const mainDecks = filteredDecks.filter(

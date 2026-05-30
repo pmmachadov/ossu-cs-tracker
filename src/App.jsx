@@ -53,7 +53,7 @@ function App() {
           "/data/examenes/ed-eac3.json",
           "/data/examenes/si-comandos.json",
           "/data/preguntas-directas/pd-all.json",
-          "/data/preguntas-directas/pd-dwec.json",
+          "/data/preguntas-directas/materias salvadas/pd-dwec.json",
           "/data/libros/tips-web-dev.json",
           "/data/libros/eloquent-js.json",
         ];

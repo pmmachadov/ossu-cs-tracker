@@ -251,8 +251,8 @@
   gap: 6px;
   padding: 6px 14px;
   border-radius: 8px;
-  background: #1f2937;
-  border: 1px solid #30363d;
+  background: #141414;
+  border: 1px solid #1f1f1f;
   color: #58a6ff;
   font-size: 13px;
   font-weight: 500;
@@ -262,7 +262,7 @@
   white-space: nowrap;
 }
 .btn-diagram:hover {
-  background: #30363d;
+  background: #1a1a1a;
   border-color: #58a6ff;
   color: #79c0ff;
 }

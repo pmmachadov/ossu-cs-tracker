@@ -1,9 +1,9 @@
-/* === VARIABLES CSS - Deben ir primero === */
+/* === VARIABLES CSS - Black Theme === */
 :root {
   --bg-primary: #000000;
-  --bg-secondary: #161b22;
-  --bg-tertiary: #21262d;
-  --bg-elevated: #30363d;
+  --bg-secondary: #0a0a0a;
+  --bg-tertiary: #141414;
+  --bg-elevated: #1a1a1a;
   
   --text-primary: #f0f6fc;
   --text-secondary: #8b949e;
@@ -15,8 +15,8 @@
   --accent-warning: #FBBC04;
   --accent-danger: #EA4335;
   
-  --border-color: #30363d;
-  --border-light: #21262d;
+  --border-color: #1f1f1f;
+  --border-light: #0f0f0f;
   
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
   --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);

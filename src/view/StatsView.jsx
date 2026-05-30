@@ -332,7 +332,7 @@ export function StatsView({ deck, onBack, onResetProgress }) {
                     <stop offset="95%" stopColor="#8b5cf6" stopOpacity={0}/>
                   </linearGradient>
                 </defs>
-                <CartesianGrid strokeDasharray="3 3" stroke="#30363d" vertical={false} />
+                <CartesianGrid strokeDasharray="3 3" stroke="#1f1f1f" vertical={false} />
                 <XAxis 
                   dataKey="date" 
                   stroke="#6e7681"
@@ -377,7 +377,7 @@ export function StatsView({ deck, onBack, onResetProgress }) {
           <div className="chart-container">
             <ResponsiveContainer width="100%" height={220}>
               <BarChart data={difficultyData} layout="vertical" margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#30363d" horizontal={false} />
+                <CartesianGrid strokeDasharray="3 3" stroke="#1f1f1f" horizontal={false} />
                 <XAxis type="number" stroke="#6e7681" fontSize={11} tickLine={false} axisLine={false} />
                 <YAxis 
                   dataKey="name" 
