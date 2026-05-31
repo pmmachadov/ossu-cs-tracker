@@ -42,9 +42,10 @@
     {
       "id": "p2-eac2-006",
       "front": "¿Qué es un diagrama de casos de uso y qué elementos contiene?",
-      "back": "Muestra la funcionalidad del sistema desde la perspectiva del usuario.\n\nElementos:\n- **Actor**: figura humana que representa un rol externo (Científico/a, Administrador, Responsable de Almacén)\n- **Caso de uso**: óvalo con una acción del sistema (Registrar nueva muestra, Gestionar stock)\n- **Sistema**: rectángulo que delimita el alcance\n- **Relaciones**:\n  - `<<include>>`: un caso de uso obligatoriamente incluye otro\n  - `<<extend>>`: un caso de uso opcionalmente extiende otro",
+      "back": "Muestra la funcionalidad del sistema desde la perspectiva del usuario.\n\nElementos:\n- **Actor**: figura humana que representa un rol externo (Científico/a, Administrador, Responsable de Almacén)\n- **Caso de uso**: óvalo con una acción del sistema (Registrar nueva muestra, Gestionar stock)\n- **Sistema**: rectángulo que delimita el alcance\n- **Relaciones**:\n  - `<<include>>`: un caso de uso obligatoriamente incluye otro\n  - `<<extend>>`: un caso de uso opcionalmente extiende otro\n\nDiagrama:\n```mermaid\nflowchart TB\n    subgraph Sistema[\"Sistema de Gesti\u00f3n\"]\n        direction TB\n        UC1[\"(Registrar nueva muestra)\"]\n        UC1E[\"(Adjuntar fotograf\u00eda)\"]\n        UC1E2[\"(Adjuntar coordenadas GPS)\"]\n        UC2[\"(Gestionar stock)\"]\n        UC3[\"(Solicitar material especializado)\"]\n        UC4[\"(Validar solicitud de material)\"]\n    end\n\n    C[\"<b>Cient\u00edfico/a</b>\"]\n    A[\"<b>Administrador/a</b>\"]\n    R[\"<b>Resp. Almac\u00e9n</b>\"]\n\n    C --> UC1\n    C --> UC3\n    A --> UC2\n    R --> UC2\n    UC3 -.->|#lt;#lt;include#gt;#gt;| UC4\n    UC1 -.->|#lt;#lt;extend#gt;#gt;| UC1E\n    UC1 -.->|#lt;#lt;extend#gt;#gt;| UC1E2\n```",
       "tags": ["uml", "casos-de-uso", "actores", "requisitos"],
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "imageUrl": "/data/diagrams/mermaid_31.svg"
     },
     {
       "id": "p2-eac2-007",
