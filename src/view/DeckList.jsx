@@ -590,7 +590,7 @@ export function DeckList({
             }
           }}
         >
-          {isDone ? "Hecho ✓" : "Pendiente"}
+          <span className="badge-text">{isDone ? "Hecho ✓" : "Pendiente"}</span>
         </div>
         {/* Card Content */}
         <div className="deck-card-content">
@@ -802,7 +802,7 @@ export function DeckList({
           >
           <span className="pd-icon">🎯</span>
             <span className="pd-label">Preguntas Directas</span>
-            <span className="exam-folder-dot" title="Materia de examen">🟢</span>
+            <span className="exam-folder-dot" title="Materia de examen"></span>
             <span className="pd-count">
               {preguntasDirectasDecks.length} mazo{preguntasDirectasDecks.length !== 1 ? "s" : ""}
             </span>
@@ -832,7 +832,7 @@ export function DeckList({
           >
             <span className="materias-icon">📁</span>
             <span className="materias-label">Materias</span>
-            <span className="exam-folder-dot" title="Materia de examen">🟢</span>
+            <span className="exam-folder-dot" title="Materia de examen"></span>
             <span className="materias-count">
               {mainDecks.length} mazo{mainDecks.length !== 1 ? "s" : ""}
             </span>
@@ -883,7 +883,7 @@ export function DeckList({
             <span className="practicas-icon">📝</span>
             <span className="practicas-label">Prácticas</span>
             {practicaDecks.some(d => isExamDeck(d)) && (
-              <span className="exam-folder-dot" title="Materia de examen">🟢</span>
+              <span className="exam-folder-dot" title="Materia de examen"></span>
             )}
             <span className="practicas-count">
               {practicaDecks.length} mazo{practicaDecks.length !== 1 ? "s" : ""}
@@ -916,7 +916,7 @@ export function DeckList({
             <span className="examenes-icon">📋</span>
             <span className="examenes-label">Exámenes</span>
             {examenDecks.some(d => isExamDeck(d)) && (
-              <span className="exam-folder-dot" title="Materia de examen">🟢</span>
+              <span className="exam-folder-dot" title="Materia de examen"></span>
             )}
             <span className="examenes-count">
               {examenDecks.length} mazo{examenDecks.length !== 1 ? "s" : ""}
@@ -970,7 +970,7 @@ export function DeckList({
             <span className="pruebas-icon">📁</span>
             <span className="pruebas-label">Pruebas</span>
             {pruebaDecks.some(d => isExamDeck(d)) && (
-              <span className="exam-folder-dot" title="Materia de examen">🟢</span>
+              <span className="exam-folder-dot" title="Materia de examen"></span>
             )}
             <span className="pruebas-count">
               {pruebaDecks.length} mazo{pruebaDecks.length !== 1 ? "s" : ""}
