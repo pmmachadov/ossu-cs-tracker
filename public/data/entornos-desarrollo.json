@@ -1741,7 +1741,7 @@
     {
       "id": "ed-241",
       "front": "Diagrama de clases - Elementos",
-      "back": "Representa las clases del sistema y sus relaciones.\n\nElementos:\n• Clase (nombre, atributos, métodos)\n• Atributos: características/estado\n• Operaciones/Métodos: comportamiento\n• Visibilidad: + público, - privado, # protegido\n• Relaciones: herencia, asociación, agregación, composición",
+      "back": "Representa las clases del sistema y sus relaciones.\n\nElementos:\n• Clase (nombre, atributos, métodos)\n• Atributos: características/estado\n• Operaciones/Métodos: comportamiento\n• Visibilidad: + público, - privado, # protegido\n• Relaciones: herencia, asociación, agregación, composición\n\n[Ver video: Construcción de diagramas de clases - UPV](https://www.youtube.com/watch?v=Wr-z7dOzUwE)",
       "tags": ["uml", "diagrama-clases", "elementos", "clase"],
       "difficulty": "easy"
     },
