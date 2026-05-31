@@ -505,6 +505,10 @@
 .deck-card.done .deck-name {
   text-decoration: line-through;
 }
+.deck-card.in-progress {
+  background: rgba(0,0,0,1);
+  border-color: rgba(255,193,7,0.15);
+}
 
 /* Prominent top-right badge showing done state */
 .deck-done-badge {
@@ -523,6 +527,46 @@
 }
 .deck-done-badge { cursor: pointer; }
 .deck-done-badge:focus { outline: none; box-shadow: 0 0 0 4px rgba(66,133,244,0.12); }
+.deck-done-badge.progress {
+  color: white;
+  overflow: hidden;
+  animation: badge-breathe-progress 14s ease-in-out infinite;
+}
+
+.deck-done-badge.progress::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(255,193,7,0.6), rgba(230,160,0,0.6));
+}
+
+.deck-done-badge.progress::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+  background: rgba(20,15,0,0.95);
+  animation: due-overlay-progress 14s ease-in-out infinite;
+}
+
+.deck-done-badge.progress > * {
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes badge-breathe-progress {
+  0%, 100% { box-shadow: 0 0 1px rgba(255,193,7,0.02); }
+  50% { box-shadow: 0 0 6px rgba(255,193,7,0.2); }
+}
+
+@keyframes due-overlay-progress {
+  0%, 100% { opacity: 0.85; }
+  50% { opacity: 0.65; }
+}
+
 .deck-done-badge.on {
   color: white;
   overflow: hidden;

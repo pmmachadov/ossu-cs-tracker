@@ -415,8 +415,10 @@ export function DeckList({
     if (!deckId) return;
     setDoneMap((prev) => {
       const next = { ...prev };
-      if (next[deckId]) delete next[deckId];
-      else next[deckId] = true;
+      const current = next[deckId];
+      if (!current) next[deckId] = "progress";       // pending → progress
+      else if (current === "progress") next[deckId] = true;  // progress → done
+      else delete next[deckId];                        // done → pending
       return next;
     });
   };
@@ -565,23 +567,25 @@ export function DeckList({
     const hasDueCards = stats.due > 0;
     const themeClass = theme || (isExtra ? "theme-blue" : "");
 
-    const isDone = !!doneMap[deck.id];
+    const status = doneMap[deck.id];
+    const isProgress = status === "progress";
+    const isDone = status === true;
 
     return (
       <div
         key={deck.id}
         className={`deck-card ${hasDueCards ? "has-due" : ""} ${themeClass} ${
-          isDone ? "done" : ""
+          isDone ? "done" : isProgress ? "in-progress" : ""
         }`}
         style={{ borderLeft: `3px solid ${subjectColor.accent}` }}
       >
         {/* Large top-right done badge */}
         <div
-          className={`deck-done-badge ${isDone ? "on" : "off"}`}
-          title={isDone ? "Mazo marcado como hecho" : "Mazo pendiente"}
+          className={`deck-done-badge ${isDone ? "on" : isProgress ? "progress" : "off"}`}
+          title={isDone ? "Mazo completado" : isProgress ? "Mazo en progreso" : "Mazo pendiente"}
           role="button"
           tabIndex={0}
-          aria-pressed={isDone}
+          aria-pressed={isDone ? true : isProgress ? "mixed" : false}
           onClick={() => toggleDone(deck.id)}
           onKeyDown={(e) => {
             if (e.key === "Enter" || e.key === " ") {
@@ -590,7 +594,7 @@ export function DeckList({
             }
           }}
         >
-          <span className="badge-text">{isDone ? "Hecho ✓" : "Pendiente"}</span>
+          <span className="badge-text">{isDone ? "Hecho ✓" : isProgress ? "En proceso" : "Pendiente"}</span>
         </div>
         {/* Card Content */}
         <div className="deck-card-content">
