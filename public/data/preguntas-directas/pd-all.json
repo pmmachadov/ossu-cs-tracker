@@ -36,15 +36,14 @@
     {
       "id": "pd-ed-002",
       "front": "(ED — EAC3 / Testing) Calcula la complejidad ciclomática de McCabe del siguiente código:\n\n```java\npublic String clasificarEdad(int edad) {\n    if (edad < 0) {\n        return \"No válida\";\n    }\n    if (edad < 12) {\n        return \"Niño\";\n    }\n    if (edad < 18) {\n        return \"Adolescente\";\n    }\n    if (edad < 65) {\n        return \"Adulto\";\n    }\n    return \"Jubilado\";\n}\n```\n\nUsa las dos fórmulas: CC = condiciones + 1 y CC = aristas - nodos + 2. ¿En qué rango está?",
-      "back": "CC = 5 — Rango simple (1-10)\n\nFórmula 1 (condiciones + 1):\n- Hay 4 condiciones (los 4 if)\n- CC = 4 + 1 = 5\n\nFórmula 2 (aristas - nodos + 2):\n\nGrafo de flujo:\n```mermaid\nflowchart TD\n    S([Inicio]) -->|1| D1{edad < 0}\n    D1 -->|2 ✗| D2{edad < 12}\n    D1 -->|3 ✓| E([Fin])\n    D2 -->|4 ✗| D3{edad < 18}\n    D2 -->|5 ✓| E\n    D3 -->|6 ✗| D4{edad < 65}\n    D3 -->|7 ✓| E\n    D4 -->|8 ✗| E\n    D4 -->|9 ✓| E\n```\n\nNodos (6): `S`, `D1`, `D2`, `D3`, `D4`, `E` → inicio, 4 decisiones, fin\n\nAristas (9): Cada flecha numerada del grafo\n\nFórmula:\n\n`CC = Aristas − Nodos + 2`  \n`CC = 9 − 6 + 2`  \n`CC = 5 ✅`\n\n---\n\nInterpretación:\n\n- 1-10: simple\n- 11-20: moderado\n- 21-50: complejo\n- >50: muy complejo",
+      "back": "CC = 5 — Rango simple (1-10)\n\nGrafo de flujo:\n```mermaid\n%%{init: {'theme': 'dark', 'fontSize': 10}}%%\nflowchart TD\n    S([Inicio]) -->|1| D1{edad < 0}\n    D1 -->|2 ✗| D2{edad < 12}\n    D1 -->|3 ✓| E([Fin])\n    D2 -->|4 ✗| D3{edad < 18}\n    D2 -->|5 ✓| E\n    D3 -->|6 ✗| D4{edad < 65}\n    D3 -->|7 ✓| E\n    D4 -->|8 ✗| E\n    D4 -->|9 ✓| E\n```\n\n```mermaid\n%%{init: {'theme': 'dark', 'fontSize': 10}}%%\nflowchart TB\n    subgraph F1[\"Fórmula 1: CC = condiciones + 1\"]\n        direction TB\n        C0[\"if (edad < 0)\\nes 1 condición\"]\n        C1[\"+ if (edad < 12)\\nes otra condición\"]\n        C2[\"+ if (edad < 18)\\nes otra condición\"]\n        C3[\"+ if (edad < 65)\\nes otra condición\"]\n        C0 --> C1 --> C2 --> C3\n        C3 --> CT[\"Total: 4 condiciones\"]\n        CT --> R1[\"CC = 4 + 1 = 5\"]:::result\n    end\n    subgraph F2[\"Fórmula 2: CC = aristas - nodos + 2\"]\n        direction TB\n        N[\"Nodos del grafo\\nS, D1, D2, D3, D4, E\\n= 6 nodos\"]\n        A[\"Aristas del grafo\\n9 flechas (1 al 9)\\n= 9 aristas\"]\n        N --> R2[\"CC = 9 - 6 + 2 = 5\"]:::result\n        A --> R2\n    end\n    classDef result fill:#1a3a1a,stroke:#34A853,stroke-width:2,color:#f0f6fc\n```\n\nInterpretación:\n\n- 1-10: simple\n- 11-20: moderado\n- 21-50: complejo\n- >50: muy complejo",
       "tags": [
         "ed",
         "testing",
         "mccabe",
         "complejidad-ciclomatica"
       ],
-      "difficulty": "medium",
-      "imageUrl": "/data/diagrams/mermaid_3.svg"
+      "difficulty": "medium"
     },
     {
       "id": "pd-ed-004",

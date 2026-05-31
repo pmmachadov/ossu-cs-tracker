@@ -47,6 +47,8 @@
 
 /* Card Progress Dots - Minimalista y sobrio */
 .card-progress-wrapper {
+  position: relative;
+  isolation: isolate;
   display: flex;
   align-items: center;
   gap: 16px;
@@ -61,10 +63,32 @@
   margin-right: auto;
 }
 
+.card-progress-wrapper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: #000000;
+  border-radius: inherit;
+  opacity: 0;
+  animation: breathe-wrapper 14s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.card-progress-wrapper > * {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes breathe-wrapper {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 0.9; }
+}
+
 .card-progress-track {
   flex: 1;
   height: 16px;
-  background: var(--bg-tertiary);
+  background: #000000;
   border-radius: 4px;
   position: relative;
   cursor: grab;

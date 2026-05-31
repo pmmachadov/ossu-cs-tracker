@@ -229,8 +229,8 @@
 
 .filter-pill.active {
   border-color: var(--accent-primary);
-  background: rgba(109, 40, 217, 0.1);
-  color: var(--accent-secondary);
+  background: rgba(66, 133, 244, 0.12);
+  color: #8AB8FF;
 }
 
 /* Decks Grid */
@@ -1172,8 +1172,8 @@
   gap: 12px;
   width: 100%;
   padding: 16px 20px;
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-color);
+  background: linear-gradient(135deg, rgba(66, 133, 244, 0.08), var(--bg-secondary));
+  border: 1px solid rgba(66, 133, 244, 0.3);
   border-radius: 16px;
   color: var(--text-primary);
   font-size: 1rem;
@@ -1183,8 +1183,8 @@
 }
 
 .extras-toggle:hover {
-  border-color: var(--bg-elevated);
-  background: var(--bg-tertiary);
+  border-color: rgba(66, 133, 244, 0.6);
+  background: linear-gradient(135deg, rgba(66, 133, 244, 0.15), var(--bg-tertiary));
 }
 
 .extras-icon {
@@ -1193,7 +1193,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #FDD835;
+  color: #8AB8FF;
   flex-shrink: 0;
 }
 
@@ -1954,8 +1954,8 @@
   align-items: center;
   width: 100%;
   padding: 14px 18px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid var(--border);
+  background: linear-gradient(135deg, rgba(66, 133, 244, 0.06), rgba(255, 255, 255, 0.02));
+  border: 1px solid rgba(66, 133, 244, 0.2);
   border-radius: 10px;
   cursor: pointer;
   color: var(--text-primary);
@@ -1966,8 +1966,8 @@
 }
 
 .mas-toggle:hover {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(255, 255, 255, 0.1);
+  background: linear-gradient(135deg, rgba(66, 133, 244, 0.12), rgba(255, 255, 255, 0.05));
+  border-color: rgba(66, 133, 244, 0.4);
 }
 
 .mas-icon {
