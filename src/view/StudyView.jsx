@@ -413,19 +413,7 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
 
     const flushMermaid = (keySuffix) => {
       if (!pendingMermaid) return;
-      const summaryHtml = pendingMermaid.summaryLines
-        .map(
-          (l) =>
-            "<p>" +
-            l
-              .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
-              .replace(
-                /`([^`]+)`/g,
-                '<code class="inline-code">$1</code>',
-              ) +
-            "</p>",
-        )
-        .join("\n");
+
       elements.push(
         <div key={`mermaid-${keySuffix}`} className="code-block-wrapper">
           <div className="mermaid-img-wrapper">
@@ -456,14 +444,12 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
               </SyntaxHighlighter>
             </div>
           </div>
-          {pendingMermaid.summaryLines.length > 0 && (
-            <div
-              className="mermaid-summary-text"
-              dangerouslySetInnerHTML={{ __html: summaryHtml }}
-            />
-          )}
         </div>,
       );
+      // Process summary lines through the normal pipeline for markdown/YouTube support
+      pendingMermaid.summaryLines.forEach((line, i) => {
+        processLine(line, `mermaid-summary-${keySuffix}-${i}`);
+      });
       pendingMermaid = null;
     };
 
