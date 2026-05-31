@@ -1,18 +1,21 @@
 // Modelo: Deck - Gestiona las tarjetas y el algoritmo de repetición espaciada
+import { NEW_CARDS_PER_SESSION } from "../config";
 
 export const DIFFICULTY = {
-  AGAIN: 0, // No la sabía - repetir inmediatamente
-  HARD: 1, // Difícil - intervalo corto
-  GOOD: 2, // Bien - intervalo normal
-  EASY: 3, // Fácil - intervalo largo
+  AGAIN: 0,
+  HARD: 1,
+  GOOD: 2,
+  EASY: 3,
 };
+
+export { NEW_CARDS_PER_SESSION };
 
 // Factores de intervalo base (en días)
 const INTERVAL_FACTORS = {
-  [DIFFICULTY.AGAIN]: 1, // 1 día
-  [DIFFICULTY.HARD]: 2, // 2 días
-  [DIFFICULTY.GOOD]: 3, // 3 días
-  [DIFFICULTY.EASY]: 4, // 4 días
+  [DIFFICULTY.AGAIN]: 1,
+  [DIFFICULTY.HARD]: 2,
+  [DIFFICULTY.GOOD]: 3,
+  [DIFFICULTY.EASY]: 4,
 };
 
 export class Card {

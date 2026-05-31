@@ -1,33 +1,32 @@
-import { readdirSync, readFileSync, writeFileSync } from 'fs'
-import { resolve } from 'path'
-import process from 'node:process'
+/**
+ * fix-css-vars.js
+ * Post-build script: reemplaza variables CSS por valores estáticos
+ * Cross-platform (Node.js), reemplaza al antiguo fix-css-vars.ps1 de PowerShell
+ *
+ * Uso: node scripts/fix-css-vars.js
+ * Se ejecuta automáticamente tras `npm run build`
+ */
 
-const distAssets = resolve('./dist/assets')
+import { readFileSync, writeFileSync, readdirSync, existsSync } from 'fs';
+import { join, extname } from 'path';
+import { fileURLToPath } from 'url';
 
-const files = readdirSync(distAssets).filter(f => f.startsWith('style-') && f.endsWith('.css'))
-if (files.length === 0) {
-  console.error('No se encontró archivo CSS')
-  process.exit(1)
-}
-
-const cssFile = resolve(distAssets, files[0])
-let css = readFileSync(cssFile, 'utf-8')
-
-const vars = {
-  '--bg-primary': '#0d1117',
-  '--bg-secondary': '#161b22',
-  '--bg-tertiary': '#21262d',
-  '--bg-elevated': '#30363d',
+// Mapa de variables CSS → valores estáticos (debe coincidir con index.css)
+const CSS_VARS = {
+  '--bg-primary': '#000000',
+  '--bg-secondary': '#0a0a0a',
+  '--bg-tertiary': '#141414',
+  '--bg-elevated': '#1a1a1a',
   '--text-primary': '#f0f6fc',
   '--text-secondary': '#8b949e',
   '--text-muted': '#6e7681',
-  '--accent-primary': '#6d28d9',
-  '--accent-secondary': '#7c3aed',
-  '--accent-success': '#238636',
-  '--accent-warning': '#d29922',
-  '--accent-danger': '#da3633',
-  '--border-color': '#30363d',
-  '--border-light': '#21262d',
+  '--accent-primary': '#4285F4',
+  '--accent-secondary': '#1A73E8',
+  '--accent-success': '#34A853',
+  '--accent-warning': '#FBBC04',
+  '--accent-danger': '#EA4335',
+  '--border-color': '#1f1f1f',
+  '--border-light': '#0f0f0f',
   '--shadow-sm': '0 1px 2px rgba(0, 0, 0, 0.3)',
   '--shadow-md': '0 4px 12px rgba(0, 0, 0, 0.4)',
   '--shadow-lg': '0 8px 24px rgba(0, 0, 0, 0.5)',
@@ -36,12 +35,45 @@ const vars = {
   '--radius-md': '8px',
   '--radius-lg': '12px',
   '--transition': 'all 0.2s ease',
+};
+
+const __dirname = fileURLToPath(new URL('.', import.meta.url));
+const distDir = join(__dirname, '..', 'dist');
+
+if (!existsSync(distDir)) {
+  console.error('Directorio dist/ no encontrado. Ejecuta "npm run build" primero.');
+  process.exit(1);
 }
 
-for (const [key, value] of Object.entries(vars)) {
-  const pattern = new RegExp(`var\\(${key.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&')}\\)`, 'g')
-  css = css.replace(pattern, value)
+function processDirectory(dirPath) {
+  const entries = readdirSync(dirPath, { withFileTypes: true });
+  for (const entry of entries) {
+    const fullPath = join(dirPath, entry.name);
+    if (entry.isDirectory()) {
+      processDirectory(fullPath);
+    } else if (extname(entry.name) === '.css') {
+      processCssFile(fullPath);
+    }
+  }
 }
 
-writeFileSync(cssFile, css)
-console.log(`Variables CSS reemplazadas correctamente en ${files[0]}`)
+function processCssFile(filePath) {
+  let content = readFileSync(filePath, 'utf-8');
+  let replacedCount = 0;
+  for (const [varName, value] of Object.entries(CSS_VARS)) {
+    const regex = new RegExp(`var\\(${varName}(?:\\s*,\\s*[^)]*)?\\)`, 'g');
+    const matches = content.match(regex);
+    if (matches) {
+      replacedCount += matches.length;
+      content = content.replace(regex, value);
+    }
+  }
+  if (replacedCount > 0) {
+    writeFileSync(filePath, content, 'utf-8');
+    console.log(`  ${filePath}: ${replacedCount} variables reemplazadas`);
+  }
+}
+
+console.log('Procesando archivos CSS en dist/...');
+processDirectory(distDir);
+console.log('Hecho.');
