@@ -51,6 +51,52 @@
 .stat-card-green::before { background: linear-gradient(90deg, #34A853, #81C995); }
 .stat-card-green .stat-icon { color: #81C995; }
 
+/* Section Progress Watermark */
+.section-progress {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Progress-based background tints */
+.section-progress.progress-0 {
+  background: transparent;
+}
+
+.section-progress.progress-start {
+  background: linear-gradient(135deg, rgba(234, 67, 53, 0.04) 0%, transparent 80%);
+}
+
+.section-progress.progress-mid {
+  background: linear-gradient(135deg, rgba(251, 188, 4, 0.04) 0%, transparent 80%);
+}
+
+.section-progress.progress-high {
+  background: linear-gradient(135deg, rgba(52, 168, 83, 0.04) 0%, transparent 80%);
+}
+
+.section-progress.progress-done {
+  background: linear-gradient(135deg, rgba(52, 168, 83, 0.08) 0%, transparent 80%);
+}
+
+/* Ensure section content sits above the watermark */
+.section-progress .pd-toggle,
+.section-progress .materias-toggle,
+.section-progress .practicas-toggle,
+.section-progress .examenes-toggle,
+.section-progress .pruebas-toggle,
+.section-progress .mas-toggle,
+.section-progress .extras-toggle,
+.section-progress .pd-grid,
+.section-progress .materias-content,
+.section-progress .practicas-grid,
+.section-progress .examenes-content,
+.section-progress .pruebas-content,
+.section-progress .mas-content,
+.section-progress .extras-grid {
+  position: relative;
+  z-index: 1;
+}
+
 
 
 .stat-icon {

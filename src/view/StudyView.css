@@ -134,8 +134,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  /* Ensure some vertical space so centering looks good */
-  min-height: 48vh;
+  /* Allow card height to adapt to content */
+  min-height: auto;
 }
 
 .flashcard {
@@ -172,6 +172,11 @@
 
 .flashcard-front {
   position: relative;
+}
+
+/* La pregunta se alinea arriba, no al centro, para que se vea sin hacer scroll */
+.flashcard-front .card-content {
+  justify-content: flex-start;
 }
 
 .flashcard-back {

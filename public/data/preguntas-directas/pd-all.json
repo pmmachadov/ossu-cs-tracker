@@ -102,20 +102,6 @@
       "difficulty": "medium"
     },
     {
-      "id": "pd-ed-010",
-      "front": "(ED — EAC3 / JUnit 5) Dada la clase Calculadora:\n\n```java\npublic class Calculadora {\n    public int sumar(int a, int b) { return a + b; }\n    public int dividir(int a, int b) {\n        if (b == 0) throw new ArithmeticException(\"No se puede dividir por cero\");\n        return a / b;\n    }\n}\n```\n\nEscribe un test JUnit 5 que:\n1. Use @Test para sumar(2,3) → espere 5\n2. Use @Test para probar que dividir(10,0) lanza ArithmeticException\n3. Use @BeforeEach para crear instancia antes de cada test\n4. ¿Qué anotación se usa para código que corre UNA VEZ antes de todos los tests?",
-      "back": "```java\nimport org.junit.jupiter.api.*;\nimport static org.junit.jupiter.api.Assertions.*;\n\npublic class CalculadoraTest {\n    private Calculadora calculadora;\n\n    @BeforeAll\n    static void initAll() { /* Una vez antes de TODOS los tests - debe ser static */ }\n\n    @BeforeEach\n    void setUp() { calculadora = new Calculadora(); }\n\n    @Test\n    void testSumar() { assertEquals(5, calculadora.sumar(2, 3)); }\n\n    @Test\n    void testDividirPorCero() {\n        assertThrows(ArithmeticException.class, () -> calculadora.dividir(10, 0));\n    }\n}\n```\n\nAnotaciones JUnit 5:\n\n\n\n```mermaid\n%%{init: {'fontSize': 11}}%%\nflowchart LR\n    subgraph Col0[\"Anotación\"]\n        direction TB\n        C0R0[\"@BeforeAll\"]\n        C0R1[\"@AfterAll\"]\n        C0R2[\"@BeforeEach\"]\n        C0R3[\"@AfterEach\"]\n    end\n    subgraph Col1[\"¿Static?\"]\n        direction TB\n        C1R0[\"✅\"]\n        C1R1[\"✅\"]\n        C1R2[\"❌\"]\n        C1R3[\"❌\"]\n    end\n    subgraph Col2[\"Cuándo\"]\n        direction TB\n        C2R0[\"Una vez antes de todos\"]\n        C2R1[\"Una vez después de todos\"]\n        C2R2[\"Antes de cada test\"]\n        C2R3[\"Después de cada test\"]\n    end\n    C0R0 --- C1R0\n    C1R0 --- C2R0\n    C0R1 --- C1R1\n    C1R1 --- C2R1\n    C0R2 --- C1R2\n    C1R2 --- C2R2\n    C0R3 --- C1R3\n    C1R3 --- C2R3\n```\n\nAserciones: `assertEquals`, `assertTrue`, `assertThrows`",
-      "tags": [
-        "ed",
-        "junit",
-        "testing",
-        "tdd",
-        "java"
-      ],
-      "difficulty": "medium",
-      "imageUrl": "/data/diagrams/mermaid_14.svg"
-    },
-    {
       "id": "pd-ed-011",
       "front": "(ED — EAC2 / UML) En un diagrama de casos de uso UML:\n\n1. ¿Qué elementos lo componen?\n2. ¿Qué diferencia hay entre <<include>> y <<extend>>?\n3. Pon un ejemplo de cada relación en un sistema de biblioteca (prestar libro, validar usuario, pagar multa).",
       "back": "1. Elementos:\n\n- Actor: figura humana, representa quien interactua\n- Caso de uso: ovalo con la accion (verbo + sustantivo)\n- Relaciones: lineas con flechas y estereotipos (<<include>>, <<extend>>)\n\n2. Diferencia:\n\n- <<include>>: OBLIGATORIO. Un caso SIEMPRE incluye otro.\n  La flecha va del caso BASE al incluido.\n- <<extend>>: OPCIONAL. Extension bajo condicion.\n  La flecha va del caso OPCIONAL al BASE.\n\n3. Ejemplos biblioteca:\n\n- <<include>>: Prestar libro ---incluye siempre--> Validar carnet\n- <<extend>>: Pagar multa ---extiende si hay multa--> Devolver libro\n- <<extend>>: Enviar recordatorio ---extiende si esta vencido--> Devolver libro\n\nDiagrama:\n```mermaid\nflowchart LR\n    subgraph Biblioteca[Sistema de Biblioteca]\n        direction TB\n        A[Prestar libro]\n        B[Validar carnet]\n        C[Devolver libro]\n        D[Pagar multa]\n        E[Enviar recordatorio]\n    end\n    Actor((Bibliotecario))\n    Actor --> A\n    Actor --> C\n    Actor --> D\n    A -->|<<include>>| B\n    D -.->|<<extend>> si hay multa| C\n    E -.->|<<extend>> si esta vencido| C\n```\n\nEl <<include>> es obligatorio (linea solida).\nEl <<extend>> es opcional (linea punteada) y solo se activa bajo condicion.\n---\n\n[Ver video explicativo: Casos de uso UML](https://www.youtube.com/watch?v=iFcDoP6jEeE)",

@@ -16,11 +16,18 @@ export function PreguntasDirectasFolder({
   onStatsDeck,
   onEditDeck,
   onOpenResetModal,
+  sectionProgress = 0,
 }) {
   if (decks.length === 0) return null;
 
+  const progClass = sectionProgress === 0 ? "progress-0"
+    : sectionProgress === 100 ? "progress-done"
+    : sectionProgress <= 33 ? "progress-start"
+    : sectionProgress <= 66 ? "progress-mid"
+    : "progress-high";
+
   return (
-    <div className="pd-section">
+    <div className={`pd-section section-progress ${progClass}`} data-progress={sectionProgress}>
       <button
         className="pd-toggle"
         onClick={onToggle}
@@ -68,6 +75,7 @@ export function MateriasFolder({
   onStatsDeck,
   onEditDeck,
   onOpenResetModal,
+  sectionProgress = 0,
 }) {
   const total = Object.values(groups).reduce(
     (acc, arr) => acc + arr.length,
@@ -75,8 +83,14 @@ export function MateriasFolder({
   );
   if (total === 0) return null;
 
+  const progClass = sectionProgress === 0 ? "progress-0"
+    : sectionProgress === 100 ? "progress-done"
+    : sectionProgress <= 33 ? "progress-start"
+    : sectionProgress <= 66 ? "progress-mid"
+    : "progress-high";
+
   return (
-    <div className="materias-section">
+    <div className={`materias-section section-progress ${progClass}`} data-progress={sectionProgress}>
       <button
         className="materias-toggle"
         onClick={onToggle}
@@ -147,11 +161,18 @@ export function PracticasFolder({
   onStatsDeck,
   onEditDeck,
   onOpenResetModal,
+  sectionProgress = 0,
 }) {
   if (decks.length === 0) return null;
 
+  const progClass = sectionProgress === 0 ? "progress-0"
+    : sectionProgress === 100 ? "progress-done"
+    : sectionProgress <= 33 ? "progress-start"
+    : sectionProgress <= 66 ? "progress-mid"
+    : "progress-high";
+
   return (
-    <div className="practicas-section">
+    <div className={`practicas-section section-progress ${progClass}`} data-progress={sectionProgress}>
       <button
         className="practicas-toggle"
         onClick={onToggle}
@@ -201,6 +222,7 @@ export function ExamenesFolder({
   onStatsDeck,
   onEditDeck,
   onOpenResetModal,
+  sectionProgress = 0,
 }) {
   const total = Object.values(groups).reduce(
     (acc, arr) => acc + arr.length,
@@ -208,8 +230,14 @@ export function ExamenesFolder({
   );
   if (total === 0) return null;
 
+  const progClass = sectionProgress === 0 ? "progress-0"
+    : sectionProgress === 100 ? "progress-done"
+    : sectionProgress <= 33 ? "progress-start"
+    : sectionProgress <= 66 ? "progress-mid"
+    : "progress-high";
+
   return (
-    <div className="examenes-section">
+    <div className={`examenes-section section-progress ${progClass}`} data-progress={sectionProgress}>
       <button
         className="examenes-toggle"
         onClick={onToggle}
@@ -279,6 +307,7 @@ export function PruebasFolder({
   onStatsDeck,
   onEditDeck,
   onOpenResetModal,
+  sectionProgress = 0,
 }) {
   const total = Object.values(groups).reduce(
     (acc, arr) => acc + arr.length,
@@ -286,8 +315,14 @@ export function PruebasFolder({
   );
   if (total === 0) return null;
 
+  const progClass = sectionProgress === 0 ? "progress-0"
+    : sectionProgress === 100 ? "progress-done"
+    : sectionProgress <= 33 ? "progress-start"
+    : sectionProgress <= 66 ? "progress-mid"
+    : "progress-high";
+
   return (
-    <div className="pruebas-section">
+    <div className={`pruebas-section section-progress ${progClass}`} data-progress={sectionProgress}>
       <button
         className="pruebas-toggle"
         onClick={onToggle}
@@ -362,12 +397,21 @@ export function MasFolder({
   onStatsDeck,
   onEditDeck,
   onOpenResetModal,
+  sectionProgress = 0,
+  librosProgress = 0,
+  materiasSalvadasProgress = 0,
 }) {
   if (librosDecks.length === 0 && materiasSalvadasDecks.length === 0)
     return null;
 
+  const progClass = sectionProgress === 0 ? "progress-0"
+    : sectionProgress === 100 ? "progress-done"
+    : sectionProgress <= 33 ? "progress-start"
+    : sectionProgress <= 66 ? "progress-mid"
+    : "progress-high";
+
   return (
-    <div className="mas-section">
+    <div className={`mas-section section-progress ${progClass}`} data-progress={sectionProgress}>
       <button
         className="mas-toggle"
         onClick={onToggleMas}
@@ -398,6 +442,7 @@ export function MasFolder({
             onStatsDeck={onStatsDeck}
             onEditDeck={onEditDeck}
             onOpenResetModal={onOpenResetModal}
+            sectionProgress={librosProgress}
           />
           <MateriasSalvadasFolder
             decks={materiasSalvadasDecks}
@@ -409,6 +454,7 @@ export function MasFolder({
             onStatsDeck={onStatsDeck}
             onEditDeck={onEditDeck}
             onOpenResetModal={onOpenResetModal}
+            sectionProgress={materiasSalvadasProgress}
           />
         </div>
       )}
@@ -426,11 +472,18 @@ function LibrosFolder({
   onStatsDeck,
   onEditDeck,
   onOpenResetModal,
+  sectionProgress = 0,
 }) {
   if (decks.length === 0) return null;
 
+  const progClass = sectionProgress === 0 ? "progress-0"
+    : sectionProgress === 100 ? "progress-done"
+    : sectionProgress <= 33 ? "progress-start"
+    : sectionProgress <= 66 ? "progress-mid"
+    : "progress-high";
+
   return (
-    <div className="pd-section">
+    <div className={`pd-section section-progress ${progClass}`} data-progress={sectionProgress}>
       <button
         className="pd-toggle"
         onClick={(e) => {
@@ -480,11 +533,18 @@ function MateriasSalvadasFolder({
   onStatsDeck,
   onEditDeck,
   onOpenResetModal,
+  sectionProgress = 0,
 }) {
   if (decks.length === 0) return null;
 
+  const progClass = sectionProgress === 0 ? "progress-0"
+    : sectionProgress === 100 ? "progress-done"
+    : sectionProgress <= 33 ? "progress-start"
+    : sectionProgress <= 66 ? "progress-mid"
+    : "progress-high";
+
   return (
-    <div className="pd-section">
+    <div className={`pd-section section-progress ${progClass}`} data-progress={sectionProgress}>
       <button
         className="pd-toggle"
         onClick={(e) => {
@@ -534,11 +594,18 @@ export function ExtrasFolder({
   onStatsDeck,
   onEditDeck,
   onOpenResetModal,
+  sectionProgress = 0,
 }) {
   if (decks.length === 0) return null;
 
+  const progClass = sectionProgress === 0 ? "progress-0"
+    : sectionProgress === 100 ? "progress-done"
+    : sectionProgress <= 33 ? "progress-start"
+    : sectionProgress <= 66 ? "progress-mid"
+    : "progress-high";
+
   return (
-    <div className="extras-section">
+    <div className={`extras-section section-progress ${progClass}`} data-progress={sectionProgress}>
       <button
         className="extras-toggle"
         onClick={onToggle}

@@ -202,6 +202,26 @@ export function DeckList({
     return acc;
   }, {});
 
+  const calcSectionProgress = (sectionDecks) => {
+    if (!sectionDecks || sectionDecks.length === 0) return 0;
+    const total = sectionDecks.reduce((acc, d) => acc + d.cards.length, 0);
+    if (total === 0) return 0;
+    const studied = sectionDecks.reduce(
+      (acc, d) => acc + d.cards.filter((c) => c.status !== "new").length,
+      0,
+    );
+    return Math.round((studied / total) * 100);
+  };
+
+  const preguntasDirectasProgress = calcSectionProgress(preguntasDirectasDecks);
+  const mainProgress = calcSectionProgress(mainDecks);
+  const practicasProgress = calcSectionProgress(practicaDecks);
+  const examenesProgress = calcSectionProgress(examenDecks);
+  const pruebasProgress = calcSectionProgress(pruebaDecks);
+  const librosProgress = calcSectionProgress(librosDecks);
+  const materiasSalvadasProgress = calcSectionProgress(materiasSalvadasDecks);
+  const extraProgress = calcSectionProgress(extraDecks);
+
   const folderProps = {
     doneMap,
     onToggleDone: toggleDone,
@@ -308,6 +328,7 @@ export function DeckList({
         decks={preguntasDirectasDecks}
         show={showPreguntasDirectas}
         onToggle={() => setShowPreguntasDirectas(!showPreguntasDirectas)}
+        sectionProgress={preguntasDirectasProgress}
         {...folderProps}
       />
 
@@ -315,6 +336,7 @@ export function DeckList({
         groups={mainGroups}
         show={showMaterias}
         onToggle={() => setShowMaterias(!showMaterias)}
+        sectionProgress={mainProgress}
         {...folderProps}
       />
 
@@ -322,6 +344,7 @@ export function DeckList({
         decks={practicaDecks}
         show={showPracticas}
         onToggle={() => setShowPracticas(!showPracticas)}
+        sectionProgress={practicasProgress}
         {...folderProps}
       />
 
@@ -329,6 +352,7 @@ export function DeckList({
         groups={examenGroups}
         show={showExamenes}
         onToggle={() => setShowExamenes(!showExamenes)}
+        sectionProgress={examenesProgress}
         {...folderProps}
       />
 
@@ -336,6 +360,7 @@ export function DeckList({
         groups={pruebaGroups}
         show={showPruebas}
         onToggle={() => setShowPruebas(!showPruebas)}
+        sectionProgress={pruebasProgress}
         {...folderProps}
       />
 
@@ -350,6 +375,9 @@ export function DeckList({
         onToggleMateriasSalvadas={() =>
           setShowMateriasSalvadas(!showMateriasSalvadas)
         }
+        sectionProgress={mainProgress}
+        librosProgress={librosProgress}
+        materiasSalvadasProgress={materiasSalvadasProgress}
         {...folderProps}
       />
 
@@ -357,6 +385,7 @@ export function DeckList({
         decks={extraDecks}
         show={showExtras}
         onToggle={() => setShowExtras(!showExtras)}
+        sectionProgress={extraProgress}
         {...folderProps}
       />
 
