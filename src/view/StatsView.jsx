@@ -104,6 +104,7 @@ const CustomTooltip = ({ active, payload, label }) => {
 export function StatsView({ deck, onBack, onResetProgress }) {
   const [showResetConfirm, setShowResetConfirm] = useState(false)
   const [timeRange, setTimeRange] = useState('week')
+  const [progressRange, setProgressRange] = useState('all')
 
   const stats = useMemo(() => {
     const cards = deck.cards
@@ -167,6 +168,52 @@ export function StatsView({ deck, onBack, onResetProgress }) {
       }
     })
   }, [deck, timeRange])
+
+  // Progreso de aprendiendo → aprendida a lo largo del tiempo (basado en viewLog)
+  const progressOverTime = useMemo(() => {
+    const days = progressRange === 'week' ? 7 : progressRange === 'month' ? 30 : 90
+    const viewLog = deck.viewLog || []
+    
+    if (viewLog.length === 0) return []
+    
+    return Array.from({ length: days }, (_, i) => {
+      const date = new Date()
+      date.setDate(date.getDate() - (days - 1 - i))
+      const dayEnd = new Date(date)
+      dayEnd.setHours(23, 59, 59, 999)
+      const dayEndTs = dayEnd.getTime()
+      
+      // Encontrar el último estado registrado de cada tarjeta hasta este día
+      const cardStatusMap = {}
+      viewLog.forEach(entry => {
+        if (entry.timestamp <= dayEndTs) {
+          cardStatusMap[entry.cardId] = entry.status
+        }
+      })
+      
+      let aprendiendo = 0 // learning + relearning
+      let aprendida = 0   // review
+      
+      Object.values(cardStatusMap).forEach(status => {
+        if (status === 'review') {
+          aprendida++
+        } else if (status === 'learning' || status === 'relearning') {
+          aprendiendo++
+        }
+      })
+      
+      return {
+        date: date.toLocaleDateString('es', {
+          weekday: days <= 7 ? 'short' : undefined,
+          day: 'numeric',
+          month: days > 7 ? 'short' : undefined,
+          year: days > 60 ? '2-digit' : undefined,
+        }),
+        aprendiendo,
+        aprendida,
+      }
+    })
+  }, [deck, progressRange])
 
   const difficultyData = [
     { name: 'Otra vez', count: deck.studyStats?.again || 0, color: COLORS.relearning, icon: '😰' },
@@ -363,6 +410,103 @@ export function StatsView({ deck, onBack, onResetProgress }) {
                 />
               </AreaChart>
             </ResponsiveContainer>
+          </div>
+        </div>
+
+        {/* Progreso Aprendiendo → Aprendida */}
+        <div className="chart-card wide">
+          <div className="chart-header">
+            <div className="chart-title">
+              <div className="chart-icon">{Icons.brain}</div>
+              <h3>Progreso: Aprendiendo → Aprendida</h3>
+            </div>
+            <div className="time-range">
+              {['week', 'month', 'all'].map(range => (
+                <button
+                  key={range}
+                  className={`range-btn ${progressRange === range ? 'active' : ''}`}
+                  onClick={() => setProgressRange(range)}
+                >
+                  {range === 'week' ? '7 días' : range === 'month' ? '30 días' : 'Todo'}
+                </button>
+              ))}
+            </div>
+          </div>
+          <div className="chart-container">
+            {progressOverTime.length === 0 ? (
+              <div className="empty-progress">
+                <p>Aún no hay datos. Estudia algunas tarjetas para ver tu progreso.</p>
+              </div>
+            ) : (
+              <ResponsiveContainer width="100%" height={220}>
+                <AreaChart data={progressOverTime} margin={{ top: 10, right: 10, left: -10, bottom: 0 }}>
+                  <defs>
+                    <linearGradient id="colorAprendiendo" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="5%" stopColor="#4285F4" stopOpacity={0.35}/>
+                      <stop offset="95%" stopColor="#4285F4" stopOpacity={0}/>
+                    </linearGradient>
+                    <linearGradient id="colorAprendida" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="5%" stopColor="#EA4335" stopOpacity={0.35}/>
+                      <stop offset="95%" stopColor="#EA4335" stopOpacity={0}/>
+                    </linearGradient>
+                  </defs>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#1f1f1f" vertical={false} />
+                  <XAxis 
+                    dataKey="date" 
+                    stroke="#6e7681"
+                    fontSize={11}
+                    tickLine={false}
+                    axisLine={false}
+                    dy={10}
+                  />
+                  <YAxis 
+                    stroke="#6e7681"
+                    fontSize={11}
+                    tickLine={false}
+                    axisLine={false}
+                  />
+                  <Tooltip content={<CustomTooltip />} />
+                  <Area
+                    type="monotone"
+                    dataKey="aprendiendo"
+                    stackId="1"
+                    stroke="#4285F4"
+                    strokeWidth={2}
+                    fillOpacity={1}
+                    fill="url(#colorAprendiendo)"
+                    name="Aprendiendo/Entendiendo"
+                    isAnimationActive={true}
+                    animationDuration={1000}
+                    animationEasing="ease-out"
+                  />
+                  <Area
+                    type="monotone"
+                    dataKey="aprendida"
+                    stackId="1"
+                    stroke="#EA4335"
+                    strokeWidth={2}
+                    fillOpacity={1}
+                    fill="url(#colorAprendida)"
+                    name="Aprendida"
+                    isAnimationActive={true}
+                    animationDuration={1000}
+                    animationEasing="ease-out"
+                  />
+                </AreaChart>
+              </ResponsiveContainer>
+            )}
+          </div>
+          <div className="chart-legend">
+            <div className="legend-item">
+              <span className="legend-dot" style={{ background: '#4285F4' }} />
+              <span className="legend-name">📖 Aprendiendo / Entendiendo</span>
+              <span className="legend-value">{progressOverTime.length > 0 ? progressOverTime[progressOverTime.length-1]?.aprendiendo || 0 : 0}</span>
+            </div>
+            <div className="legend-item">
+              <span className="legend-dot" style={{ background: '#EA4335' }} />
+              <span className="legend-name">✅ Aprendida</span>
+              <span className="legend-value">{progressOverTime.length > 0 ? progressOverTime[progressOverTime.length-1]?.aprendida || 0 : 0}</span>
+            </div>
           </div>
         </div>
 

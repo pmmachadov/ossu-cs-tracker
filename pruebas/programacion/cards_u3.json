@@ -1,0 +1,316 @@
+{
+  "id": "programacion-uf3",
+  "name": "Programación - UF3",
+  "description": "Tipo de datos compuestos: arrays y cadenas",
+  "subject": "Programación",
+  "cards": [
+    {
+      "id": "prog-u3-001",
+      "front": "¿Qué es un array en Java?",
+      "back": "Un array es un tipo de dato compuesto que permite almacenar múltiples valores del mismo tipo bajo un único identificador, accediendo a cada valor mediante un índice numérico que comienza en 0.",
+      "tags": ["programacion", "unidad-3", "arrays"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u3-002",
+      "front": "Sintaxis para declarar un array unidimensional en Java",
+      "back": "tipo[] nombreArray;\nEjemplo: int[] numeros;\nTambién válido: int numeros[]; (pero se recomienda la primera forma)",
+      "tags": ["programacion", "unidad-3", "arrays"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u3-003",
+      "front": "¿Cómo se inicializa un array con valores concretos en Java?",
+      "back": "tipo[] nombre = {valor1, valor2, ..., valorN};\nEjemplo: int[] numeros = {10, 20, 30, 40, 50};\nfloat[] notas = {2f, 5.5f, 9f, 10f};",
+      "tags": ["programacion", "unidad-3", "arrays"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u3-004",
+      "front": "¿Cómo se inicializa un array con valores por defecto usando new?",
+      "back": "tipo[] nombre = new tipo[tamaño];\nEjemplo: int[] numeros = new int[10];\n- Los valores numéricos se inicializan a 0.\n- Los boolean a false.\n- Los objetos (incluido String) a null.",
+      "tags": ["programacion", "unidad-3", "arrays"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u3-005",
+      "front": "¿Qué es la propiedad length en un array y cómo se usa?",
+      "back": "length es un atributo (no un método, no lleva paréntesis) que devuelve el número de posiciones del array.\nEjemplo: int[] arr = {1,2,3};  arr.length → 3\nfor (int i = 0; i < arr.length; i++) { ... }",
+      "tags": ["programacion", "unidad-3", "arrays"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u3-006",
+      "front": "¿Cómo se recorre un array completo con un bucle for?",
+      "back": "for (int i = 0; i < array.length; i++) {\n    // acceder a array[i]\n}\nLa variable i actúa como índice, comenzando en 0 hasta length-1.",
+      "tags": ["programacion", "unidad-3", "arrays"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u3-007",
+      "front": "¿Cómo se recorre un array usando un bucle while?",
+      "back": "int i = 0;\nwhile (i < array.length) {\n    // acceder a array[i]\n    i++;\n}\nEs importante incrementar el contador manualmente para evitar bucles infinitos.",
+      "tags": ["programacion", "unidad-3", "arrays"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u3-008",
+      "front": "¿Qué es el esquema de búsqueda con semáforo en un array?",
+      "back": "Se usa una variable booleana (semáforo) para saber si se ha encontrado el valor buscado:\nboolean encontrado = false;\nint i = 0;\nwhile (i < array.length && !encontrado) {\n    if (array[i] == valorBuscado) {\n        encontrado = true;\n    }\n    i++;\n}\nif (encontrado) { ... } else { ... }",
+      "tags": ["programacion", "unidad-3", "arrays"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u3-009",
+      "front": "¿En qué consiste el algoritmo de ordenación de la burbuja (BubbleSort)?",
+      "back": "Consiste en recorrer el array múltiples veces, comparando pares de elementos adyacentes e intercambiándolos si están en orden incorrecto. Los valores más pequeños 'suben' como burbujas. Se usan dos bucles anidados: el externo controla las pasadas y el interno las comparaciones.",
+      "tags": ["programacion", "unidad-3", "arrays"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u3-010",
+      "front": "¿Cómo se intercambian dos valores dentro de un array?",
+      "back": "Se necesita una variable auxiliar:\nint aux = array[i];\narray[i] = array[j];\narray[j] = aux;\nSin la variable auxiliar se perdería uno de los valores al sobrescribirlo.",
+      "tags": ["programacion", "unidad-3", "arrays"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u3-011",
+      "front": "¿Qué ocurre al asignar un array a otro con '=' ?",
+      "back": "No se crea una copia de los datos. Ambos identificadores apuntan al mismo array en memoria. Cualquier modificación a través de uno afecta al otro.\nEjemplo: int[] a = {1,2,3};  int[] b = a;  b[0] = 99;  // a[0] también es 99",
+      "tags": ["programacion", "unidad-3", "arrays"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u3-012",
+      "front": "¿Cómo se hace una copia independiente de un array?",
+      "back": "1. Crear un nuevo array del mismo tamaño:\n   int[] copia = new int[original.length];\n2. Copiar posición por posición:\n   for (int i = 0; i < original.length; i++) {\n       copia[i] = original[i];\n   }\nAmbos arrays son independientes.",
+      "tags": ["programacion", "unidad-3", "arrays"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u3-013",
+      "front": "¿Cómo se aumenta el tamaño de un array en Java (cambio de tamaño)?",
+      "back": "Como los arrays tienen tamaño fijo, se debe:\n1. Crear un nuevo array más grande.\n2. Copiar los datos del original al nuevo.\n3. Asignar el nuevo array a la variable original.\nEjemplo:\nfloat[] nuevo = new float[original.length + MAX];\nfor (int i = 0; i < original.length; i++) nuevo[i] = original[i];\noriginal = nuevo;",
+      "tags": ["programacion", "unidad-3", "arrays"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u3-014",
+      "front": "¿Qué provoca un ArrayIndexOutOfBoundsException?",
+      "back": "Ocurre cuando se intenta acceder a una posición del array con un índice menor que 0 o mayor o igual que array.length. Ejemplo: int[] a = new int[5];  a[5] = 10;  // Error, índice 5 no existe (válidos: 0 a 4).",
+      "tags": ["programacion", "unidad-3", "arrays"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u3-015",
+      "front": "¿Qué es un array bidimensional en Java?",
+      "back": "Es un array que necesita dos índices para acceder a cada posición: uno para la fila y otro para la columna. Se visualiza como una tabla o matriz. int[][] matriz = new int[3][4]; // 3 filas, 4 columnas.",
+      "tags": ["programacion", "unidad-3", "arrays-bidimensionales"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u3-016",
+      "front": "Sintaxis para declarar e inicializar un array bidimensional con valores concretos",
+      "back": "int[][] matriz = {\n    {1, 2, 3, 4},\n    {5, 6, 7, 8},\n    {9, 10, 11, 12}\n};\nCada fila es un array unidimensional. Las filas se separan por comas y todo se envuelve en corchetes.",
+      "tags": ["programacion", "unidad-3", "arrays-bidimensionales"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u3-017",
+      "front": "Sintaxis para declarar un array bidimensional con valores por defecto (new)",
+      "back": "tipo[][] nombre = new tipo[numFilas][numColumnas];\nEjemplo: int[][] matriz = new int[4][5];\nCrea una matriz de 4 filas y 5 columnas, todos los valores inicializados a 0.",
+      "tags": ["programacion", "unidad-3", "arrays-bidimensionales"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u3-018",
+      "front": "¿Cómo funciona length en un array bidimensional?",
+      "back": "- array.length → número de filas.\n- array[fila].length → número de columnas de esa fila.\nEjemplo: int[][] m = new int[3][5];\n  m.length → 3\n  m[0].length → 5",
+      "tags": ["programacion", "unidad-3", "arrays-bidimensionales"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u3-019",
+      "front": "¿Cómo se recorre un array bidimensional completo con bucles anidados?",
+      "back": "for (int i = 0; i < matriz.length; i++) {       // recorre filas\n    for (int j = 0; j < matriz[i].length; j++) {  // recorre columnas\n        // acceder a matriz[i][j]\n    }\n}\nEl bucle externo recorre las filas, el interno las columnas de cada fila.",
+      "tags": ["programacion", "unidad-3", "arrays-bidimensionales"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u3-020",
+      "front": "¿Cómo se busca un valor en un array bidimensional con salida temprana?",
+      "back": "Se usan dos bucles anidados con un semáforo:\nboolean encontrado = false;\nfor (int i = 0; i < matriz.length && !encontrado; i++) {\n    for (int j = 0; j < matriz[i].length && !encontrado; j++) {\n        if (matriz[i][j] == valor) {\n            encontrado = true;\n        }\n    }\n}\nEl break solo sale del bucle interno; el semáforo permite salir de ambos.",
+      "tags": ["programacion", "unidad-3", "arrays-bidimensionales"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u3-021",
+      "front": "¿Qué es la clase String en Java?",
+      "back": "String es una clase (tipo de dato compuesto) que representa una cadena de texto o secuencia de caracteres. Las variables de tipo String almacenan objetos, no valores primitivos. Ejemplo: String saludo = \"Hola mundo\";",
+      "tags": ["programacion", "unidad-3", "string"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u3-022",
+      "front": "¿Qué es una cadena vacía en Java?",
+      "back": "Una cadena vacía es un objeto String que no contiene ningún carácter. Se representa con comillas dobles sin nada dentro: String vacia = \"\";\nSu longitud (length()) es 0. No es lo mismo que null.",
+      "tags": ["programacion", "unidad-3", "string"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u3-023",
+      "front": "¿Cómo se concatena cadenas de texto en Java?",
+      "back": "Con el operador +:\nString saludo = \"Hola \" + \"mundo\";\nTambién concatena automáticamente con tipos primitivos:\nString msg = \"El resultado es \" + 42;\nLa concatenación siempre produce una nueva cadena de texto (String).",
+      "tags": ["programacion", "unidad-3", "string"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u3-024",
+      "front": "¿Qué significa que String es inmutable en Java?",
+      "back": "Significa que una vez creado un objeto String, su contenido no puede modificarse. Cualquier método que parezca modificarlo (toUpperCase, replace, trim, etc.) en realidad crea y devuelve un NUEVO objeto String, dejando el original intacto.",
+      "tags": ["programacion", "unidad-3", "string"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u3-025",
+      "front": "¿Qué devuelve el método length() de String?",
+      "back": "Devuelve el número de caracteres de la cadena de texto. A diferencia de la propiedad length de los arrays, String usa un método (con paréntesis).\nEjemplo: \"Hola\".length() → 4\n\"\".length() → 0",
+      "tags": ["programacion", "unidad-3", "string"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u3-026",
+      "front": "¿Qué hace el método charAt(posicion) de String?",
+      "back": "Devuelve el carácter (char) que se encuentra en la posición indicada. Las posiciones empiezan en 0.\nEjemplo: String s = \"Hola\";  s.charAt(1) → 'o'\nSi la posición no existe, lanza StringIndexOutOfBoundsException.",
+      "tags": ["programacion", "unidad-3", "string"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u3-027",
+      "front": "¿Cómo se recorren los caracteres de un String con un bucle?",
+      "back": "for (int i = 0; i < texto.length(); i++) {\n    char c = texto.charAt(i);\n    // procesar el carácter c\n}\nSe usa length() para el límite y charAt(i) para acceder a cada carácter.",
+      "tags": ["programacion", "unidad-3", "string"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u3-028",
+      "front": "¿Qué hace el método substring(inicio, fin) de String?",
+      "back": "Devuelve una nueva cadena con los caracteres desde la posición inicio (incluida) hasta fin (excluida).\nEjemplo: \"Hola mundo\".substring(0, 4) → \"Hola\"\n\"Hola mundo\".substring(5, 10) → \"mundo\"\nLos valores deben estar dentro del rango válido.",
+      "tags": ["programacion", "unidad-3", "string"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u3-029",
+      "front": "¿Qué hace el método indexOf(texto) de String?",
+      "back": "Busca la primera aparición del texto indicado dentro de la cadena y devuelve su posición (int). Si no lo encuentra, devuelve -1.\nEjemplo: \"Hola mundo\".indexOf(\"mun\") → 5\n\"Hola mundo\".indexOf(\"x\") → -1",
+      "tags": ["programacion", "unidad-3", "string"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u3-030",
+      "front": "¿Qué hace el método lastIndexOf(texto) de String?",
+      "back": "Similar a indexOf, pero busca la ÚLTIMA aparición del texto dentro de la cadena.\nEjemplo: \"banana\".lastIndexOf(\"na\") → 4\n\"banana\".indexOf(\"na\") → 2",
+      "tags": ["programacion", "unidad-3", "string"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u3-031",
+      "front": "¿Por qué NO se debe usar '==' para comparar Strings?",
+      "back": "El operador == compara referencias (direcciones de memoria), no el contenido. Para comparar si dos cadenas tienen el mismo texto se debe usar el método equals().\nEjemplo correcto: if (s1.equals(s2)) { ... }\nEjemplo incorrecto: if (s1 == s2) { ... }",
+      "tags": ["programacion", "unidad-3", "string"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u3-032",
+      "front": "¿Qué hace el método equals(otroString) de String?",
+      "back": "Compara el contenido de dos cadenas de texto. Devuelve true si son exactamente iguales (incluyendo mayúsculas/minúsculas), false en caso contrario.\nEjemplo: \"Hola\".equals(\"Hola\") → true\n\"Hola\".equals(\"hola\") → false",
+      "tags": ["programacion", "unidad-3", "string"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u3-033",
+      "front": "¿Qué hace el método compareTo(otroString) de String?",
+      "back": "Compara dos cadenas alfabéticamente. Devuelve:\n- 0 si son iguales.\n- Valor negativo si la cadena es alfabéticamente anterior a la otra.\n- Valor positivo si es posterior.\nEjemplo: \"casa\".compareTo(\"perro\") → negativo (casa va antes que perro).",
+      "tags": ["programacion", "unidad-3", "string"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u3-034",
+      "front": "¿Qué hace el método toUpperCase() de String?",
+      "back": "Devuelve una nueva cadena con todos los caracteres convertidos a mayúsculas. La cadena original no se modifica (inmutabilidad).\nEjemplo: \"Hola Mundo\".toUpperCase() → \"HOLA MUNDO\"\nExiste también toLowerCase(): \"Hola\".toLowerCase() → \"hola\".",
+      "tags": ["programacion", "unidad-3", "string"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u3-035",
+      "front": "¿Qué hace el método trim() de String?",
+      "back": "Elimina los espacios en blanco al principio y al final de la cadena. No elimina espacios intermedios. La cadena original no se modifica.\nEjemplo: \" Hola mundo \".trim() → \"Hola mundo\"",
+      "tags": ["programacion", "unidad-3", "string"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u3-036",
+      "front": "¿Qué hace el método replace(caracterViejo, caracterNuevo) de String?",
+      "back": "Reemplaza TODAS las apariciones de un carácter (o CharSequence) por otro. Devuelve una nueva cadena.\nEjemplo: \"Hola mundo\".replace('o', 'a') → \"Hala munda\"\nTambién funciona con String: \"casa\".replace(\"a\", \"e\") → \"cese\"",
+      "tags": ["programacion", "unidad-3", "string"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u3-037",
+      "front": "¿Qué hace el método split(separador) de String?",
+      "back": "Divide la cadena en partes usando el separador indicado y devuelve un array de Strings con los trozos.\nEjemplo: \"Hola mundo Java\".split(\" \") → [\"Hola\", \"mundo\", \"Java\"]\nEl separador puede ser cualquier texto (coma, punto, espacio, etc.) y se elimina del resultado.",
+      "tags": ["programacion", "unidad-3", "string"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u3-038",
+      "front": "¿Cómo se declara e inicializa un array de Strings en Java?",
+      "back": "Con valores concretos:\nString[] nombres = {\"Ana\", \"Luis\", \"Carlos\"};\nCon valores por defecto (null):\nString[] nombres = new String[5];\nCada posición se inicializa a null.",
+      "tags": ["programacion", "unidad-3", "arrays-strings"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u3-039",
+      "front": "¿Cómo se recorre un array de Strings llamando a métodos de cada String?",
+      "back": "for (int i = 0; i < array.length; i++) {\n    System.out.println(array[i].length());\n}\nSe puede invocar cualquier método de String (length(), charAt(), equals(), etc.) sobre cada posición del array.",
+      "tags": ["programacion", "unidad-3", "arrays-strings"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u3-040",
+      "front": "¿Qué valor toman por defecto las posiciones de un array de Strings?",
+      "back": "Se inicializan a null. null es un valor especial que indica que la posición está vacía, no es una cadena vacía \"\".\n- Invocar un método sobre null causa NullPointerException.\n- Mostrar null por pantalla muestra el texto \"null\".",
+      "tags": ["programacion", "unidad-3", "arrays-strings"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u3-041",
+      "front": "¿Cómo se convierte un tipo primitivo a String en Java?",
+      "back": "1. Concatenación automática con +: \"Valor: \" + 42\n2. String.valueOf(valor): String s = String.valueOf(3.1416);\nAmbos métodos convierten cualquier tipo primitivo a su representación como cadena de texto.",
+      "tags": ["programacion", "unidad-3", "string"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u3-042",
+      "front": "¿Cómo se convierte un String a un tipo numérico primitivo?",
+      "back": "Usando los métodos parse de cada tipo:\n- Integer.parseInt(\"123\") → int 123\n- Double.parseDouble(\"3.14\") → double 3.14\n- Float.parseFloat(\"2.5\") → float 2.5\nSi el texto no es un número válido, lanza NumberFormatException.",
+      "tags": ["programacion", "unidad-3", "string"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u3-043",
+      "front": "¿Qué representa el parámetro String[] args en el método main?",
+      "back": "Es un array de Strings que contiene los argumentos pasados al programa al ejecutarlo desde la línea de comandos. args.length indica cuántos argumentos hay. args[0] es el primer argumento, args[1] el segundo, etc. Si no hay argumentos, args.length es 0.",
+      "tags": ["programacion", "unidad-3", "arrays-strings"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u3-044",
+      "front": "¿Cuál es la diferencia entre next() y nextLine() de Scanner para leer texto?",
+      "back": "- next(): Lee una palabra individual (hasta el primer espacio).\n- nextLine(): Lee toda la línea completa incluyendo espacios (hasta el salto de línea).\nEjemplo: entrada \"Hola mundo\"\n  next() → \"Hola\"\n  nextLine() → \"Hola mundo\"",
+      "tags": ["programacion", "unidad-3", "string"],
+      "difficulty": "medium"
+    }
+  ]
+}

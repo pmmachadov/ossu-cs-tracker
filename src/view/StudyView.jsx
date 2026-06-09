@@ -137,6 +137,9 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
       // Actualizar tarjeta
       const result = currentCard.review(difficulty);
 
+      // Registrar evaluación en log permanente
+      deck.logCardReview(currentCard.id, difficulty);
+
       // Actualizar estadísticas de sesión
       setSessionStats((prev) => ({
         ...prev,
@@ -164,6 +167,14 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [currentCardIndex]);
+
+  // Registrar visualización de tarjeta en el log permanente
+  useEffect(() => {
+    if (currentCard) {
+      deck.logCardView(currentCard.id);
+      onUpdateDeck(deck);
+    }
+  }, [currentCard?.id, currentCardIndex]);
 
   // Auto-scroll para mantener el punto actual visible en la fila
   useEffect(() => {

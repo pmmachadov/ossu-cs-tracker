@@ -1,0 +1,302 @@
+{
+  "id": "programacion-uf6",
+  "name": "Programación - UF6",
+  "description": "Archivos y flujos de datos",
+  "subject": "Programación",
+  "cards": [
+    {
+      "id": "prog-u6-001",
+      "front": "¿Qué clase de Java se utiliza para representar la ruta de un archivo o directorio en el sistema de archivos?",
+      "back": "La clase java.io.File.\\nNo representa el contenido del archivo, solo su ubicación en el sistema de archivos.\\nSe usa para comprobar si existe (isFile()), obtener tamaño (length()), borrar (delete()), renombrar (renameTo()), etc.",
+      "tags": ["programacion", "unidad-6", "clase-file"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u6-002",
+      "front": "¿Cómo se crea un objeto File para referenciar un archivo llamado \"datos.txt\" en la carpeta de trabajo?",
+      "back": "File f = new File(\"datos.txt\");\\nTambién se puede usar una ruta absoluta:\\nFile f = new File(\"C:\\\\carpeta\\\\datos.txt\");",
+      "tags": ["programacion", "unidad-6", "clase-file"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u6-003",
+      "front": "¿Qué diferencia hay entre FileInputStream/FileOutputStream y FileReader/FileWriter?",
+      "back": "FileInputStream y FileOutputStream son flujos de bytes (binarios), para leer/escribir datos binarios (imágenes, archivos comprimidos, etc.).\\nFileReader y FileWriter son flujos de caracteres (texto), para leer/escribir archivos de texto plano.",
+      "tags": ["programacion", "unidad-6", "flujos-byte", "flujos-caracter"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u6-004",
+      "front": "¿Cómo se lee un archivo de texto usando FileReader y BufferedReader en Java?",
+      "back": "FileReader fr = new FileReader(\"archivo.txt\");\\nBufferedReader br = new BufferedReader(fr);\\nString linea = br.readLine();\\nwhile (linea != null) {\\n    System.out.println(linea);\\n    linea = br.readLine();\\n}\\nbr.close();",
+      "tags": ["programacion", "unidad-6", "lectura-texto", "bufferedreader"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u6-005",
+      "front": "¿Qué ventaja aporta BufferedReader frente a FileReader solo?",
+      "back": "BufferedReader incorpora un buffer en memoria que reduce el número de accesos al disco.\\nAdemás, proporciona el método readLine() que lee una línea completa de texto, algo que FileReader no tiene directamente.",
+      "tags": ["programacion", "unidad-6", "bufferedreader", "flujos-caracter"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u6-006",
+      "front": "¿Cómo se escribe en un archivo de texto usando FileWriter y PrintWriter?",
+      "back": "FileWriter fw = new FileWriter(\"salida.txt\");\\nPrintWriter pw = new PrintWriter(fw);\\npw.println(\"Línea de texto\");\\npw.printf(\"Número: %d\", 42);\\npw.close();\\nPrintWriter permite usar print(), println() y printf() igual que System.out.",
+      "tags": ["programacion", "unidad-6", "escritura-texto", "printwriter"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u6-007",
+      "front": "¿Qué clases se usan para leer y escribir datos binarios (bytes) en Java?",
+      "back": "FileInputStream para leer bytes de un archivo.\\nFileOutputStream para escribir bytes en un archivo.\\nAmbos trabajan con arrays de bytes (byte[]).\\nEjemplo: FileInputStream fis = new FileInputStream(\"imagen.jpg\");\\nint byteLeido = fis.read();",
+      "tags": ["programacion", "unidad-6", "flujos-byte", "fileinputstream", "fileoutputstream"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u6-008",
+      "front": "¿Qué es la serialización de objetos en Java y qué clases intervienen?",
+      "back": "La serialización convierte un objeto en una secuencia de bytes para almacenarlo en un archivo o transmitirlo por red.\\nObjectOutputStream escribe objetos: writeObject(objeto).\\nObjectInputStream lee objetos: Object obj = readObject().\\nLa clase debe implementar la interfaz Serializable.",
+      "tags": ["programacion", "unidad-6", "serializacion", "objectinputstream", "objectoutputstream"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u6-009",
+      "front": "¿Cómo se escribe un objeto serializado en un archivo usando ObjectOutputStream?",
+      "back": "FileOutputStream fos = new FileOutputStream(\"datos.obj\");\\nObjectOutputStream oos = new ObjectOutputStream(fos);\\noos.writeObject(miObjeto);\\noos.close();\\nLa clase del objeto debe implementar java.io.Serializable.",
+      "tags": ["programacion", "unidad-6", "serializacion", "objectoutputstream"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u6-010",
+      "front": "¿Cómo se lee un objeto serializado desde un archivo usando ObjectInputStream?",
+      "back": "FileInputStream fis = new FileInputStream(\"datos.obj\");\\nObjectInputStream ois = new ObjectInputStream(fis);\\nMiClase obj = (MiClase) ois.readObject();\\nois.close();\\nEs necesario hacer casting al tipo original. Puede lanzar ClassNotFoundException.",
+      "tags": ["programacion", "unidad-6", "serializacion", "objectinputstream"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u6-011",
+      "front": "¿Qué excepción se lanza cuando se intenta abrir un archivo que no existe en Java?",
+      "back": "FileNotFoundException.\\nEs una subclase de IOException.\\nSe lanza al intentar crear FileInputStream, FileReader, RandomAccessFile (modo \"r\"), etc. con una ruta que no corresponde a un archivo existente.",
+      "tags": ["programacion", "unidad-6", "excepciones", "filenotfoundexception"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u6-012",
+      "front": "¿Qué es IOException y por qué es importante al trabajar con archivos?",
+      "back": "IOException es una excepción checked que representa errores de entrada/salida.\\nEs la superclase de muchas excepciones de E/S: FileNotFoundException, EOFException, etc.\\nAl ser checked, el compilador obliga a tratarla con try-catch o declararla con throws.",
+      "tags": ["programacion", "unidad-6", "excepciones", "ioexception"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u6-013",
+      "front": "¿Qué es try-with-resources en Java?",
+      "back": "Es una sintaxis que cierra automáticamente los recursos que implementan AutoCloseable.\\nSintaxis:\\ntry (FileReader fr = new FileReader(\"archivo.txt\");\\n     BufferedReader br = new BufferedReader(fr)) {\\n    // usar br\\n} catch (IOException e) {\\n    // tratar error\\n}\\nNo es necesario llamar a close() explícitamente.",
+      "tags": ["programacion", "unidad-6", "excepciones", "try-catch-recursos"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u6-014",
+      "front": "¿Qué es la clase RandomAccessFile y para qué sirve?",
+      "back": "RandomAccessFile (java.io) permite leer y escribir archivos orientados a byte con acceso secuencial o relativo (aleatorio).\\nSe inicializa con una ruta y un modo: \"r\" (solo lectura) o \"rw\" (lectura y escritura).\\nPermite posicionar el apuntador con seek() y skipBytes().",
+      "tags": ["programacion", "unidad-6", "randomaccessfile"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u6-015",
+      "front": "¿Cómo se crea un RandomAccessFile en modo lectura?",
+      "back": "File f = new File(\"datos.bin\");\\nRandomAccessFile raf = new RandomAccessFile(f, \"r\");\\nEl modo \"r\" solo permite leer. Si se intenta escribir, se produce un error.\\nEs útil para evitar sobreescribir accidentalmente.",
+      "tags": ["programacion", "unidad-6", "randomaccessfile"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u6-016",
+      "front": "¿Cuál es la diferencia entre los modos \"r\" y \"rw\" de RandomAccessFile?",
+      "back": "\"r\" (read): solo permite leer datos. El archivo debe existir.\\n\"rw\" (read-write): permite leer y escribir. Si el archivo no existe, lo crea vacío.\\nEn modo \"rw\", al escribir sobre un archivo existente, no se borra su contenido previo: los nuevos datos sobrescriben byte a byte.",
+      "tags": ["programacion", "unidad-6", "randomaccessfile"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u6-017",
+      "front": "¿Qué métodos de escritura proporciona RandomAccessFile para tipos primitivos?",
+      "back": "writeByte(byte v) - 1 byte\\nwriteShort(short s) - 2 bytes\\nwriteChar(char c) - 2 bytes\\nwriteInt(int i) - 4 bytes\\nwriteLong(long l) - 8 bytes\\nwriteFloat(float f) - 4 bytes\\nwriteDouble(double d) - 8 bytes\\nwriteBoolean(boolean b) - 1 byte\\nCada método escribe la representación binaria del valor.",
+      "tags": ["programacion", "unidad-6", "randomaccessfile", "escritura-binaria"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u6-018",
+      "front": "¿Qué métodos de lectura proporciona RandomAccessFile para tipos primitivos?",
+      "back": "readByte() - byte\\nreadShort() - short\\nreadChar() - char\\nreadInt() - int\\nreadLong() - long\\nreadFloat() - float\\nreadDouble() - double\\nreadBoolean() - boolean\\nCada método lee el número de bytes correspondiente y los interpreta según el tipo.",
+      "tags": ["programacion", "unidad-6", "randomaccessfile", "lectura-binaria"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u6-019",
+      "front": "¿Qué hace el método seek(long pos) de RandomAccessFile?",
+      "back": "seek(long pos) ubica el apuntador del archivo exactamente en la posición especificada, medida en bytes desde el inicio del archivo (posición 0).\\nNo hay restricción en el valor: se puede posicionar más allá del final del archivo.\\nEjemplo: raf.seek(20); // apuntador al byte 20",
+      "tags": ["programacion", "unidad-6", "randomaccessfile", "posicionamiento"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u6-020",
+      "front": "¿Qué hace el método skipBytes(int n) de RandomAccessFile?",
+      "back": "skipBytes(int n) avanza el apuntador n bytes desde la posición actual.\\nDevuelve el número de bytes realmente avanzados (int).\\nSi se llega al final del archivo, el avance se detiene.\\nEjemplo: int avanzados = raf.skipBytes(20);",
+      "tags": ["programacion", "unidad-6", "randomaccessfile", "posicionamiento"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u6-021",
+      "front": "¿Qué devuelve getFilePointer() de RandomAccessFile?",
+      "back": "getFilePointer() devuelve un long que indica la posición actual del apuntador dentro del archivo, medida en bytes desde el inicio.\\nÚtil para saber dónde se está leyendo o escribiendo.\\nEjemplo: long pos = raf.getFilePointer();",
+      "tags": ["programacion", "unidad-6", "randomaccessfile", "posicionamiento"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u6-022",
+      "front": "¿Qué hace el método setLength(long tamano) de RandomAccessFile?",
+      "back": "setLength(long tamano) modifica el tamaño del archivo.\\nSi el nuevo tamaño es menor, se eliminan los bytes sobrantes.\\nSi es mayor, se rellena con bytes a 0.\\nEs útil para truncar el archivo después de una escritura parcial, evitando que queden datos basura al final.",
+      "tags": ["programacion", "unidad-6", "randomaccessfile"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u6-023",
+      "front": "¿Cuántos bytes ocupa cada tipo primitivo de Java al escribirse con RandomAccessFile?",
+      "back": "byte - 1 byte\\nshort - 2 bytes\\nchar - 2 bytes\\nint - 4 bytes\\nlong - 8 bytes\\nfloat - 4 bytes\\ndouble - 8 bytes\\nboolean - 1 byte\\nConocer estos tamaños es necesario para calcular posiciones al usar seek().",
+      "tags": ["programacion", "unidad-6", "randomaccessfile", "escritura-binaria"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u6-024",
+      "front": "¿Cómo se puede calcular el número de valores enteros en un archivo binario usando RandomAccessFile?",
+      "back": "long numEnters = f.length() / 4;\\nComo cada entero (int) ocupa 4 bytes, dividiendo el tamaño total del archivo en bytes entre 4 se obtiene la cantidad de enteros almacenados.",
+      "tags": ["programacion", "unidad-6", "randomaccessfile", "lectura-binaria"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u6-025",
+      "front": "¿Qué sucede si se usa readDouble() sobre un archivo que contiene enteros (int)?",
+      "back": "No se produce una excepción, pero el resultado es incorrecto.\\nreadDouble() lee 8 bytes consecutivos y los interpreta como un double, aunque en realidad sean dos enteros de 4 bytes cada uno.\\nEsto puede provocar comportamientos erráticos sin aviso, a diferencia de Scanner que sí lanza excepción.",
+      "tags": ["programacion", "unidad-6", "randomaccessfile", "lectura-binaria"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u6-026",
+      "front": "¿Cómo se escribe un archivo binario con 20 valores enteros (del 1, 2, 4, 8... duplicando cada uno) usando RandomAccessFile?",
+      "back": "RandomAccessFile raf = new RandomAccessFile(f, \"rw\");\\nint valor = 1;\\nfor (int i = 0; i < 20; i++) {\\n    raf.writeInt(valor);\\n    valor = valor * 2;\\n}\\nraf.close();\\nEl archivo ocupará 20 * 4 = 80 bytes.",
+      "tags": ["programacion", "unidad-6", "randomaccessfile", "escritura-binaria"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u6-027",
+      "front": "¿Cómo se lee el valor en la posición 2 (tercer entero) de un archivo binario de enteros usando RandomAccessFile?",
+      "back": "raf.seek(2 * 4); // posición del tercer entero (0, 4, 8...)\\nint valor = raf.readInt();\\nCada entero ocupa 4 bytes, por lo que la posición = índice * 4.",
+      "tags": ["programacion", "unidad-6", "randomaccessfile", "posicionamiento", "lectura-binaria"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u6-028",
+      "front": "¿Qué diferencia hay entre acceso secuencial y acceso relativo (aleatorio) a archivos?",
+      "back": "Acceso secuencial: los datos se leen uno tras otro desde el inicio. Para llegar al décimo elemento hay que leer (y descartar) los nueve anteriores.\\nAcceso relativo (aleatorio): se puede acceder directamente a cualquier posición usando seek(), sin procesar los anteriores.\\nRandomAccessFile permite ambos tipos de acceso.",
+      "tags": ["programacion", "unidad-6", "randomaccessfile", "acceso-relativo"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u6-029",
+      "front": "¿Qué sucede cuando se hace seek() más allá del tamaño del archivo y luego se escribe?",
+      "back": "El tamaño del archivo se incrementa automáticamente hasta la posición del apuntador, rellenando los nuevos bytes con 0.\\nLuego se materializa la escritura.\\nEjemplo: si el archivo tiene 80 bytes y se hace seek(100), el archivo crece a 100 bytes (bytes 80-99 a 0) y luego se escribe.",
+      "tags": ["programacion", "unidad-6", "randomaccessfile", "posicionamiento"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u6-030",
+      "front": "¿Qué característica especial tiene la escritura de RandomAccessFile sobre un archivo existente respecto a PrintStream?",
+      "back": "RandomAccessFile en modo \"rw\" no borra el archivo existente: sobreescribe byte a byte solo donde está el apuntador.\\nPrintStream, en cambio, borra todo el contenido del archivo al abrirlo y escribe desde cero.\\nCon RandomAccessFile se pueden modificar valores concretos sin afectar al resto.",
+      "tags": ["programacion", "unidad-6", "randomaccessfile", "escritura-binaria"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u6-031",
+      "front": "¿Qué es la propagación de errores en el contexto del tratamiento de archivos?",
+      "back": "Es el mecanismo mediante el cual un método avisa al código que lo invocó si pudo realizar su tarea correctamente.\\nNormalmente se usa el valor de retorno: 0 si todo fue bien, -1 si hubo error.\\nEjemplo: si un método que lee un archivo encuentra una excepción, devuelve -1 o null para indicar el fallo.",
+      "tags": ["programacion", "unidad-6", "excepciones", "propagacion-errores"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u6-032",
+      "front": "¿Qué ventajas y desventajas tiene un archivo orientado a carácter frente a uno orientado a byte?",
+      "back": "Ventajas carácter: fáciles de crear y editar con editor de texto, fáciles de depurar.\\nDesventajas carácter: tamaño variable por valor, solo acceso secuencial, hay que reescribir todo al modificar.\\nVentajas byte: tamaño fijo por valor, permiten acceso relativo, sobreescrituras parciales.\\nDesventajas byte: no legibles directamente, código más complejo.",
+      "tags": ["programacion", "unidad-6", "comparativa"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u6-033",
+      "front": "¿Cómo se detecta el final de un archivo orientado a carácter usando Scanner?",
+      "back": "Hay tres estrategias principales:\\n1) Número conocido de valores a priori (leer exactamente N valores).\\n2) Marca de finalización (un valor especial que indica el fin, ej: -100 o \"fin\").\\n3) Número de valores indicado al inicio del archivo (el primer valor dice cuántos hay).\\nSin estas estrategias, intentar leer más allá del final produce una excepción.",
+      "tags": ["programacion", "unidad-6", "lectura-texto", "scanner"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u6-034",
+      "front": "¿Por qué es importante cerrar un archivo con close() después de usarlo?",
+      "back": "close() indica al sistema operativo que el archivo ya no está en uso.\\nMientras un archivo está abierto, su acceso puede estar limitado para otros procesos.\\nEn escritura, close() fuerza la escritura definitiva de todos los datos pendientes (flush).\\nSi no se cierra, los datos podrían perderse o corromperse.",
+      "tags": ["programacion", "unidad-6", "gestion-archivos"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u6-035",
+      "front": "¿Cómo se fuerza la escritura de los datos pendientes en un flujo de salida antes de cerrarlo?",
+      "back": "Mediante el método flush().\\nflush() obliga a que todos los datos en el búfer se escriban físicamente en el archivo.\\nclose() llama automáticamente a flush(), pero se puede invocar explícitamente si se necesita garantizar la escritura en un momento concreto.",
+      "tags": ["programacion", "unidad-6", "escritura-texto", "flush"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u6-036",
+      "front": "¿Qué es un archivo orientado a byte y cómo se diferencia de uno orientado a carácter?",
+      "back": "En un archivo orientado a byte, los datos se almacenan en su representación binaria directamente, sin convertir a texto.\\nNo se pueden crear con un editor de texto normal.\\nCada valor del mismo tipo ocupa siempre el mismo espacio.\\nNo hay delimitadores entre valores.\\nEn cambio, un archivo orientado a carácter almacena los datos como cadenas de texto legibles.",
+      "tags": ["programacion", "unidad-6", "flujos-byte"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u6-037",
+      "front": "¿Cómo se escribe un archivo de texto con PrintStream (o PrintWriter) y qué métodos se usan?",
+      "back": "PrintStream escritor = new PrintStream(new File(\"salida.txt\"));\\nescritor.print(\"texto\");  // escribe sin salto de línea\\nescritor.println(\"texto\"); // escribe con salto de línea\\nescritor.close();\\nTambién se puede usar PrintWriter con FileWriter para especificar codificación.",
+      "tags": ["programacion", "unidad-6", "escritura-texto", "printstream"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u6-038",
+      "front": "¿Cómo se leen diferentes tipos de datos mezclados en un archivo de texto usando Scanner?",
+      "back": "Scanner lector = new Scanner(new File(\"datos.txt\"));\\nString nombre = lector.next();\\nString apellido = lector.next();\\nint edad = lector.nextInt();\\ndouble nota = lector.nextDouble();\\nEs necesario conocer el formato exacto del archivo y llamar al método correspondiente a cada tipo esperado.",
+      "tags": ["programacion", "unidad-6", "lectura-texto", "scanner"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u6-039",
+      "front": "¿Qué diferencia hay entre next() y nextLine() en Scanner?",
+      "back": "next() lee una sola palabra (hasta encontrar un espacio o salto de línea).\\nnextLine() lee toda la línea completa (hasta el salto de línea).\\nnext() considera \"palabra\" cualquier secuencia sin espacios.\\nnextLine() lee desde la posición actual hasta el siguiente salto de línea inclusive.",
+      "tags": ["programacion", "unidad-6", "lectura-texto", "scanner"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u6-040",
+      "front": "¿Cómo se modifica un único valor dentro de un archivo orientado a carácter?",
+      "back": "No es posible modificar un único valor directamente.\\nHay que leer todos los valores del archivo a un array, modificar el valor deseado en memoria, y luego reescribir el archivo completo desde cero con PrintStream.\\nCon RandomAccessFile (archivo binario) sí es posible modificar un valor concreto sin reescribir todo.",
+      "tags": ["programacion", "unidad-6", "modificacion"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u6-041",
+      "front": "¿Cómo se puede pasar un Scanner como parámetro a un método auxiliar?",
+      "back": "Un Scanner es un tipo compuesto (objeto), por lo que se puede pasar como parámetro igual que un String o un array.\\nEjemplo:\\npublic double leerNotas(Scanner lector) {\\n    // usar lector para leer datos\\n}\\nEsto permite modularizar el código que lee archivos con diferentes formatos.",
+      "tags": ["programacion", "unidad-6", "scanner", "modularidad"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u6-042",
+      "front": "¿Qué sucede si se intenta escribir en un RandomAccessFile abierto en modo \"r\"?",
+      "back": "Se produce un error (excepción).\\nEl modo \"r\" solo permite operaciones de lectura.\\nCualquier intento de invocar métodos de escritura como writeInt(), writeDouble(), etc. generará una excepción.\\nPor eso es útil usar \"r\" cuando solo se quiere leer, para proteger el archivo de escrituras accidentales.",
+      "tags": ["programacion", "unidad-6", "randomaccessfile"],
+      "difficulty": "easy"
+    }
+  ]
+}

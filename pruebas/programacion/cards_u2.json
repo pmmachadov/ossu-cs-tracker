@@ -1,0 +1,288 @@
+{
+  "id": "programacion-uf2",
+  "name": "Programación - UF2",
+  "description": "Programación estructurada: condicionales y bucles",
+  "subject": "Programación",
+  "cards": [
+    {
+      "id": "prog-u2-001",
+      "front": "¿Qué es una estructura de selección simple en programación?",
+      "back": "Es una estructura que permite ejecutar un bloque de código solo si se cumple una condición lógica (expresión booleana). En Java se implementa con la sentencia if. Si la expresión evalúa a true, se ejecuta el bloque; si evalúa a false, se ignora y continúa con la instrucción siguiente.",
+      "tags": ["programacion", "unidad-2", "if"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u2-002",
+      "front": "¿Cuál es la sintaxis básica de la sentencia if en Java?",
+      "back": "if (expresión booleana) {\n  // Instrucciones a ejecutar si la condición es true\n}",
+      "tags": ["programacion", "unidad-2", "if"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u2-003",
+      "front": "¿Qué es una estructura de selección doble y cómo se escribe en Java?",
+      "back": "Es una estructura que ofrece dos caminos alternativos: uno si la condición es true (bloque if) y otro si es false (bloque else).\n\nSintaxis:\nif (expresión booleana) {\n  // Instrucciones si true\n} else {\n  // Instrucciones si false\n}",
+      "tags": ["programacion", "unidad-2", "if-else"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u2-004",
+      "front": "¿Cómo funciona la sentencia if-else if-else en Java?",
+      "back": "Permite evaluar múltiples condiciones en orden. Se evalúa la primera expresión booleana; si es true, se ejecuta su bloque y se ignora el resto. Si es false, se pasa a la siguiente condición (else if). Si ninguna condición se cumple, se ejecuta el bloque else (opcional).\n\nSintaxis:\nif (condición1) {\n  // Bloque 1\n} else if (condición2) {\n  // Bloque 2\n} else {\n  // Bloque por defecto\n}",
+      "tags": ["programacion", "unidad-2", "if-else"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u2-005",
+      "front": "En una sentencia if-else if-else, ¿qué ocurre si más de una condición evalúa a true?",
+      "back": "Solo se ejecuta el bloque asociado a la primera condición que evalúa a true, en el orden de escritura. Una vez ejecutado ese bloque, se ignora el resto de condiciones y bloques, incluso si también evaluarían a true.",
+      "tags": ["programacion", "unidad-2", "if-else"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u2-006",
+      "front": "¿Qué son los operadores de comparación en Java y cuáles son?",
+      "back": "Los operadores de comparación se usan para comparar valores y devuelven un resultado booleano (true o false).\n\n==  igual a\n!=  distinto de\n<   menor que\n>   mayor que\n<=  menor o igual que\n>=  mayor o igual que",
+      "tags": ["programacion", "unidad-2", "operadores-comparacion"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u2-007",
+      "front": "¿Qué diferencia hay entre el operador = y == en Java?",
+      "back": "El operador = es el operador de asignación: asigna un valor a una variable.\nEl operador == es el operador de comparación: comprueba si dos valores son iguales y devuelve true o false.\n\nEjemplo:\nint x = 5;  // Asignación\nif (x == 5) // Comparación",
+      "tags": ["programacion", "unidad-2", "operadores-comparacion"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u2-008",
+      "front": "¿Qué son los operadores lógicos en Java y cuáles son los principales?",
+      "back": "Los operadores lógicos permiten combinar expresiones booleanas para formar condiciones más complejas.\n\n&&  AND (Y lógico): true si ambas expresiones son true\n||  OR (O lógico): true si al menos una expresión es true\n!   NOT (Negación): invierte el valor booleano",
+      "tags": ["programacion", "unidad-2", "operadores-logicos"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u2-009",
+      "front": "¿Cómo funciona el operador && (AND) en Java?",
+      "back": "El operador && evalúa a true solo si ambas expresiones booleanas son true. Si la primera expresión es false, la segunda no se evalúa (cortocircuito).\n\ntrue && true = true\ntrue && false = false\nfalse && true = false\nfalse && false = false",
+      "tags": ["programacion", "unidad-2", "operadores-logicos"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u2-010",
+      "front": "¿Cómo funciona el operador || (OR) en Java?",
+      "back": "El operador || evalúa a true si al menos una de las expresiones booleanas es true. Si la primera expresión es true, la segunda no se evalúa (cortocircuito).\n\ntrue || true = true\ntrue || false = true\nfalse || true = true\nfalse || false = false",
+      "tags": ["programacion", "unidad-2", "operadores-logicos"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u2-011",
+      "front": "¿Cómo funciona el operador ! (NOT) en Java?",
+      "back": "El operador ! invierte el valor de una expresión booleana. Si la expresión es true, devuelve false, y viceversa.\n\n!true = false\n!false = true\n\nEjemplo:\nboolean acertado = false;\nwhile (!acertado) {  // Se repite mientras NO se haya acertado\n  // ...\n}",
+      "tags": ["programacion", "unidad-2", "operadores-logicos"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u2-012",
+      "front": "¿Qué es la sentencia switch en Java y para qué sirve?",
+      "back": "Es una estructura de selección múltiple que permite elegir entre varios caminos según el valor de una expresión de tipo entero o carácter. Evalúa la expresión y ejecuta el bloque del caso (case) cuyo valor coincida. Si no hay coincidencia, ejecuta el caso default (opcional). Es útil para mejorar la legibilidad cuando se comparan muchos valores discretos.",
+      "tags": ["programacion", "unidad-2", "switch"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u2-013",
+      "front": "¿Cuál es la sintaxis básica de la sentencia switch en Java?",
+      "back": "switch (expresión) {\n  case valor1:\n    // Instrucciones para valor1\n    break;\n  case valor2:\n    // Instrucciones para valor2\n    break;\n  default:\n    // Instrucciones si ningún caso coincide\n}",
+      "tags": ["programacion", "unidad-2", "switch"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u2-014",
+      "front": "¿Qué función tiene la instrucción break dentro de un switch?",
+      "back": "La instrucción break dentro de un switch sirve para salir de la sentencia switch una vez ejecutado el bloque de un caso. Si no se pone break, se produce una propagación (fall-through): se siguen ejecutando las instrucciones de los casos siguientes hasta encontrar un break o llegar al final del switch.",
+      "tags": ["programacion", "unidad-2", "switch"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u2-015",
+      "front": "¿Qué es la propagación (fall-through) en un switch y cómo se puede aprovechar?",
+      "back": "La propagación ocurre cuando un caso no termina en break, por lo que la ejecución continúa con el siguiente caso. Se puede aprovechar para agrupar varios valores que compartan el mismo comportamiento.\n\nEjemplo: varios meses con 30 días\ncase 4: case 6: case 9: case 11:\n  System.out.println(\"30 días\");\n  break;",
+      "tags": ["programacion", "unidad-2", "switch"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u2-016",
+      "front": "¿Qué es un bucle o estructura de repetición en programación?",
+      "back": "Es una estructura de control que permite ejecutar un bloque de instrucciones varias veces mientras se cumpla una condición lógica. Cada ejecución del bloque se llama iteración. Sin los bucles, habría que escribir el mismo código repetidamente.",
+      "tags": ["programacion", "unidad-2", "bucles"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u2-017",
+      "front": "¿Cómo funciona la sentencia while en Java?",
+      "back": "La sentencia while evalúa la condición al principio de cada iteración. Si la condición es true, ejecuta el bloque y vuelve a evaluar. Si es false desde el principio, el bloque no se ejecuta nunca.\n\nSintaxis:\nwhile (expresión booleana) {\n  // Instrucciones del bucle\n}",
+      "tags": ["programacion", "unidad-2", "while"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u2-018",
+      "front": "¿Qué es un bucle infinito y cómo se produce?",
+      "back": "Un bucle infinito es un error semántico en el que la condición del bucle siempre evalúa a true, por lo que nunca se sale del bucle. El programa compila correctamente pero no termina nunca. Se produce cuando la variable de控制 no se modifica adecuadamente para que la condición llegue a ser false.",
+      "tags": ["programacion", "unidad-2", "bucles"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u2-019",
+      "front": "¿Qué tipos de variables de control existen en un bucle?",
+      "back": "Tres tipos principales:\n1. Contador: variable entera que aumenta o disminuye para contar iteraciones.\n2. Acumulador: variable donde se acumulan cálculos; cuando alcanza cierto valor, se deja de iterar.\n3. Semáforo (flag): variable booleana que actúa como interruptor explícito; cuando se asigna un valor concreto, la condición del bucle evalúa a false.",
+      "tags": ["programacion", "unidad-2", "bucles"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u2-020",
+      "front": "¿Cómo funciona la sentencia do-while en Java?",
+      "back": "La sentencia do-while evalúa la condición al final de cada iteración, lo que garantiza que el bloque se ejecuta al menos una vez, independientemente de si la condición se cumple o no.\n\nSintaxis:\ndo {\n  // Instrucciones del bucle\n} while (expresión booleana);",
+      "tags": ["programacion", "unidad-2", "do-while"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u2-021",
+      "front": "¿Cuál es la diferencia principal entre while y do-while?",
+      "back": "En while, la condición se evalúa al principio: si es false la primera vez, el bloque no se ejecuta nunca.\nEn do-while, la condición se evalúa al final: el bloque se ejecuta siempre al menos una vez, incluso si la condición es false desde el principio.",
+      "tags": ["programacion", "unidad-2", "do-while"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u2-022",
+      "front": "¿Para qué tipo de problemas es especialmente útil la sentencia do-while?",
+      "back": "Es especialmente útil para el control de entrada de datos por teclado, cuando se necesita preguntar al usuario al menos una vez y repetir la pregunta hasta que introduzca un valor válido. Primero se lee el dato, luego se evalúa si es correcto, y si no, se repite.",
+      "tags": ["programacion", "unidad-2", "do-while"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u2-023",
+      "front": "¿Cuál es la sintaxis de la sentencia for en Java?",
+      "back": "for (inicialización; expresión booleana; incremento) {\n  // Instrucciones del bucle\n}\n\n- Inicialización: se ejecuta una vez al principio (ej: int i = 0)\n- Expresión booleana: condición evaluada antes de cada iteración\n- Incremento: se ejecuta al final de cada iteración (ej: i++)",
+      "tags": ["programacion", "unidad-2", "for"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u2-024",
+      "front": "¿A qué estructura equivale un bucle for en Java?",
+      "back": "Un bucle for equivale a un bucle while con la siguiente estructura:\n\ninicialización;\nwhile (expresión booleana) {\n  // Instrucciones\n  incremento;\n}",
+      "tags": ["programacion", "unidad-2", "for"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u2-025",
+      "front": "¿Qué son los operadores ++ y -- en Java?",
+      "back": "Son los operadores de postincremento (++) y postdecremento (--).\n\n- i++ equivale a i = i + 1 (suma 1 a la variable)\n- i-- equivale a i = i - 1 (resta 1 a la variable)\n\nSon muy útiles en el tercer apartado de la sentencia for para modificar el contador automáticamente al final de cada iteración.",
+      "tags": ["programacion", "unidad-2", "for"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u2-026",
+      "front": "¿Se puede modificar el contador de un for con operaciones distintas a ++ o --?",
+      "back": "Sí. El tercer apartado del for puede contener cualquier expresión válida, no solo incrementos de 1. Por ejemplo:\n\nfor (int i = 0; i <= limite; i = i + 3)  // Incremento de 3 en 3\nfor (int i = 1; i <= valor; i = i * 2)    // Multiplicación (duplicar)",
+      "tags": ["programacion", "unidad-2", "for"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u2-027",
+      "front": "¿Para qué tipo de bucles se usa normalmente la sentencia for?",
+      "back": "La sentencia for se usa normalmente cuando se conoce de antemano el número exacto de iteraciones, especialmente cuando se necesita una variable de control (contador) que varía en una cantidad fija en cada iteración. Es más compacta que while para estos casos porque la inicialización, condición e incremento están en una misma línea.",
+      "tags": ["programacion", "unidad-2", "for"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u2-028",
+      "front": "¿Qué son los bucles anidados en programación?",
+      "back": "Son bucles que contienen otros bucles dentro de su bloque de instrucciones. El bucle interior se ejecuta completamente por cada iteración del bucle exterior. Se usan para tareas que requieren repeticiones dentro de repeticiones, como generar tablas de multiplicar múltiples o recorrer matrices.",
+      "tags": ["programacion", "unidad-2", "bucles-anidados"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u2-029",
+      "front": "En un bucle anidado con for, ¿cuántas veces se ejecuta el bloque interior si el exterior itera 5 veces y el interior 10?",
+      "back": "El bloque interior se ejecuta 5 * 10 = 50 veces. Por cada iteración del bucle exterior, el bucle interior se ejecuta completo (sus 10 iteraciones). El producto de las iteraciones da el total de ejecuciones del bloque más interno.",
+      "tags": ["programacion", "unidad-2", "bucles-anidados"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u2-030",
+      "front": "¿Qué precauciones hay que tener al escribir bucles anidados?",
+      "back": "1. Sangrar correctamente el código para identificar dónde empieza y termina cada bucle.\n2. Usar nombres de variables de control diferentes para cada bucle (típicamente i, j, k...).\n3. Respetar el ámbito de las variables: una variable declarada en el bucle exterior puede usarse dentro del interior, pero no al revés.",
+      "tags": ["programacion", "unidad-2", "bucles-anidados"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u2-031",
+      "front": "¿Qué hace la instrucción break dentro de un bucle (no switch)?",
+      "back": "Dentro de un bucle (while, do-while, for), la instrucción break provoca la salida inmediata del bucle, saltando a la instrucción siguiente fuera del bucle. Es útil para terminar un bucle prematuramente cuando se cumple una condición especial.",
+      "tags": ["programacion", "unidad-2", "break"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u2-032",
+      "front": "¿Qué hace la instrucción continue dentro de un bucle?",
+      "back": "La instrucción continue salta a la siguiente iteración del bucle, ignorando el resto del código dentro del bloque para la iteración actual. En for, además ejecuta el incremento antes de evaluar la condición de nuevo. Es útil para saltarse ciertos valores sin romper el bucle.",
+      "tags": ["programacion", "unidad-2", "continue"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u2-033",
+      "front": "¿Cuál es la diferencia entre break y continue en un bucle?",
+      "back": "break: sale completamente del bucle y continúa con la instrucción posterior al bucle.\ncontinue: salta el resto del código de la iteración actual y pasa a la siguiente iteración (vuelve a evaluar la condición). No sale del bucle, solo salta una iteración.",
+      "tags": ["programacion", "unidad-2", "break", "continue"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u2-034",
+      "front": "¿Qué es un diagrama de flujo de control en programación?",
+      "back": "Es una representación gráfica del flujo de ejecución de un programa. Muestra el orden en que se ejecutan las instrucciones, las decisiones (bifurcaciones), las repeticiones y el flujo entre bloques. Es útil para diseñar y comprender algoritmos antes de escribir código.",
+      "tags": ["programacion", "unidad-2", "diagramas-flujo"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u2-035",
+      "front": "¿Cómo se representa una estructura if-else en un diagrama de flujo?",
+      "back": "Se representa con un rombo (decisión) que contiene la condición. Del rombo salen dos flechas: una etiquetada como \"true\" que lleva al bloque de instrucciones del if, y otra etiquetada como \"false\" que lleva al bloque del else (si existe). Ambos caminos convergen después en el flujo principal.",
+      "tags": ["programacion", "unidad-2", "diagramas-flujo"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u2-036",
+      "front": "¿Cómo se representa un bucle while en un diagrama de flujo?",
+      "back": "Se representa con un rombo (decisión) que contiene la condición del bucle. La flecha \"true\" lleva al bloque de instrucciones, y al final de ese bloque hay una flecha que vuelve al rombo para evaluar la condición de nuevo. La flecha \"false\" sale del bucle y continúa con el resto del programa.",
+      "tags": ["programacion", "unidad-2", "diagramas-flujo"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u2-037",
+      "front": "¿Qué diferencia hay en el diagrama de flujo entre un bucle while y un do-while?",
+      "back": "En while, el rombo de condición está antes del bloque de instrucciones: primero se evalúa, luego se ejecuta.\nEn do-while, el bloque de instrucciones está antes del rombo: primero se ejecuta, luego se evalúa la condición al final para decidir si repetir. Esto refleja que do-while siempre ejecuta al menos una iteración.",
+      "tags": ["programacion", "unidad-2", "diagramas-flujo"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u2-038",
+      "front": "¿Qué es una variable semáforo (flag) en el contexto de bucles?",
+      "back": "Es una variable booleana que sirve como indicador explícito de si se debe continuar iterando o no. Cuando se cumple la condición de salida, el código asigna a la variable un valor que hace que la condición del bucle evalúe a false. Por ejemplo:\n\nboolean acertado = false;\nwhile (!acertado) {\n  if (valor == secreto) acertado = true;\n}",
+      "tags": ["programacion", "unidad-2", "bucles"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u2-039",
+      "front": "¿Qué es el ámbito (scope) de una variable y cómo afecta en estructuras de control?",
+      "back": "El ámbito de una variable es la región del código donde esa variable existe y puede usarse. En Java, una variable declarada dentro de un bloque (entre llaves {}) solo es válida dentro de ese bloque. Si se declara dentro de un if o un bucle, no puede usarse fuera. Para solucionarlo, la variable debe declararse en un bloque exterior (antes de la estructura de control).",
+      "tags": ["programacion", "unidad-2", "ambito"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u2-040",
+      "front": "¿Qué es la combinación de estructuras de selección y para qué sirve?",
+      "back": "Consiste en colocar estructuras de selección (if, else) dentro de otras estructuras de selección. Es útil cuando hay que verificar condiciones en varios niveles: primero una condición general, y solo si se cumple, comprobar condiciones más específicas. Por ejemplo: verificar si un precio es positivo, y si lo es, comprobar si aplica descuento.",
+      "tags": ["programacion", "unidad-2", "if-else"],
+      "difficulty": "hard"
+    }
+  ]
+}

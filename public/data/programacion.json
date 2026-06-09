@@ -1,0 +1,3232 @@
+{
+  "id": "programacion",
+  "name": "Programación",
+  "description": "Módulo 3: Programación en Java. Cubre 6 unidades: programa y datos simples, estructurada, datos compuestos, modular, bibliotecas/pruebas/recursividad, y archivos.",
+  "subject": "Programacion",
+  "cards": [
+    {
+      "id": "prog-u1-001",
+      "front": "¿Qué comando se usa para compilar un archivo de código fuente Java?",
+      "back": "javac NombreArchivo.java\\nPor ejemplo: javac HolaMon.java\\nEn Windows el ejecutable es javac.exe",
+      "tags": [
+        "programacion",
+        "unidad-1",
+        "compilacion"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u1-002",
+      "front": "¿Qué comando se usa para ejecutar un programa Java compilado?",
+      "back": "java NombreClase\\nPor ejemplo: java HolaMon\\nNo se escribe la extensión .class, Java la deduce automáticamente.",
+      "tags": [
+        "programacion",
+        "unidad-1",
+        "compilacion"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u1-003",
+      "front": "¿Qué es el bytecode en Java?",
+      "back": "Es el código resultante de la compilación de un archivo .java.\\nSe genera un archivo .class con el mismo nombre.\\nEl bytecode es independiente de la plataforma y lo ejecuta la JVM.",
+      "tags": [
+        "programacion",
+        "unidad-1",
+        "compilacion"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u1-004",
+      "front": "¿Qué extensión tiene el archivo de bytecode generado por el compilador de Java?",
+      "back": "La extensión .class\\nPor ejemplo: HolaMon.java se compila a HolaMon.class",
+      "tags": [
+        "programacion",
+        "unidad-1",
+        "compilacion"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u1-005",
+      "front": "¿Qué significan las siglas JVM, JRE y JDK?",
+      "back": "JVM: Java Virtual Machine (intérprete de bytecode)\\nJRE: Java Runtime Environment (entorno de ejecución, incluye la JVM)\\nJDK: Java Development Kit (kit de desarrollo, incluye el JRE y herramientas como javac)",
+      "tags": [
+        "programacion",
+        "unidad-1",
+        "compilacion"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u1-006",
+      "front": "Si solo quieres ejecutar un programa Java ya compilado, ¿qué necesitas instalar como mínimo?",
+      "back": "El JRE (Java Runtime Environment).\\nNo es necesario el JDK completo si solo vas a ejecutar programas que ya están compilados.",
+      "tags": [
+        "programacion",
+        "unidad-1",
+        "compilacion"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u1-007",
+      "front": "¿Qué es la máquina virtual de Java (JVM)?",
+      "back": "Es el intérprete de Java que ejecuta el bytecode.\\nEstá incluida dentro del JRE.\\nPermite que el mismo bytecode se ejecute en cualquier sistema operativo.",
+      "tags": [
+        "programacion",
+        "unidad-1",
+        "compilacion"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u1-008",
+      "front": "¿Cuál es la estructura básica de un programa \"Hola Mundo\" en Java?",
+      "back": "public class NombreClase {\\n  public static void main(String[] args) {\\n    System.out.println(\"Texto\");\\n  }\\n}",
+      "tags": [
+        "programacion",
+        "unidad-1",
+        "hola-mundo"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u1-009",
+      "front": "¿Cómo se llama el método que contiene la primera instrucción que se ejecuta en un programa Java?",
+      "back": "El método principal (main method).\\nSu firma exacta es: public static void main(String[] args)",
+      "tags": [
+        "programacion",
+        "unidad-1",
+        "hola-mundo"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u1-010",
+      "front": "¿Qué carácter se usa en Java para delimitar bloques de código?",
+      "back": "Las llaves (claves) { }\\nIndican el inicio y el fin de un bloque de instrucciones.",
+      "tags": [
+        "programacion",
+        "unidad-1",
+        "estructura"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u1-011",
+      "front": "¿Qué carácter termina cada instrucción en Java?",
+      "back": "El punto y coma (;)\\nToda sentencia en Java debe terminar con punto y coma.",
+      "tags": [
+        "programacion",
+        "unidad-1",
+        "estructura"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u1-012",
+      "front": "¿Cómo se escriben los comentarios de una sola línea en Java?",
+      "back": "Con dos barras inclinadas: //\\nEjemplo: // Esto es un comentario\\nEl compilador ignora todo el texto después de // hasta el final de la línea.",
+      "tags": [
+        "programacion",
+        "unidad-1",
+        "comentarios"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u1-013",
+      "front": "¿Cómo se escriben los comentarios de varias líneas en Java?",
+      "back": "Se escriben entre /* y */\\nEjemplo:\\n/* Este es un\\n   comentario de\\n   varias líneas */",
+      "tags": [
+        "programacion",
+        "unidad-1",
+        "comentarios"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u1-014",
+      "front": "¿Qué es una variable en programación?",
+      "back": "Es un dato almacenado en la memoria que puede ver modificado su valor en cualquier momento durante la ejecución del programa.",
+      "tags": [
+        "programacion",
+        "unidad-1",
+        "variables"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u1-015",
+      "front": "¿Cuál es la sintaxis para declarar una variable en Java?",
+      "back": "tipo identificador = valorInicial;\\nEjemplo: int miEntero = 2;\\nLos tres elementos necesarios son: tipo, identificador y valor inicial.",
+      "tags": [
+        "programacion",
+        "unidad-1",
+        "variables"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u1-016",
+      "front": "¿Por qué es importante inicializar las variables en Java?",
+      "back": "Si no se inicializa una variable, puede contener cualquier valor residual de la memoria (basura), lo que hace que el resultado de las operaciones sea impredecible.",
+      "tags": [
+        "programacion",
+        "unidad-1",
+        "variables"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u1-017",
+      "front": "¿Qué es una constante en Java?",
+      "back": "Es un tipo especial de variable cuyo valor solo puede ser leído pero nunca modificado durante la ejecución del programa.",
+      "tags": [
+        "programacion",
+        "unidad-1",
+        "constantes"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u1-018",
+      "front": "¿Cuál es la sintaxis para declarar una constante en Java?",
+      "back": "private static final tipo IDENTIFICADOR = valor;\\nEjemplo: private static final double IVA = 0.18;\\nSe usa la palabra clave 'final' para indicar que no puede modificarse.",
+      "tags": [
+        "programacion",
+        "unidad-1",
+        "constantes"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u1-019",
+      "front": "¿Qué ventajas tiene usar constantes en lugar de literales?",
+      "back": "1. El código es más legible y fácil de entender.\\n2. Si hay que cambiar el valor, solo se modifica en un sitio.\\n3. El compilador detecta si se intenta modificar por error.",
+      "tags": [
+        "programacion",
+        "unidad-1",
+        "constantes"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u1-020",
+      "front": "¿Cuáles son los cuatro tipos de datos primitivos principales en Java?",
+      "back": "int (entero), double (real), boolean (booleano), char (carácter)",
+      "tags": [
+        "programacion",
+        "unidad-1",
+        "tipos-primitivos"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u1-021",
+      "front": "¿Qué tipo de datos es 'int' en Java y qué representa?",
+      "back": "int es el tipo de dato entero simple.\\nRepresenta valores numéricos, positivos o negativos, sin decimales.\\nEjemplos: 3, 0, -345, 138764",
+      "tags": [
+        "programacion",
+        "unidad-1",
+        "tipos-primitivos"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u1-022",
+      "front": "¿Qué tipo de datos es 'double' en Java y qué representa?",
+      "back": "double es el tipo de dato real de doble precisión.\\nRepresenta valores numéricos con decimales.\\nEjemplos: 2.25, 4.0, -9653.3333",
+      "tags": [
+        "programacion",
+        "unidad-1",
+        "tipos-primitivos"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u1-023",
+      "front": "¿Qué valores puede tomar un dato de tipo 'boolean' en Java?",
+      "back": "Solo dos valores: true (verdadero) y false (falso).\\nSe usa para representar estados lógicos (certeza o falsedad).",
+      "tags": [
+        "programacion",
+        "unidad-1",
+        "tipos-primitivos"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u1-024",
+      "front": "¿Cómo se escribe un literal de tipo 'char' en Java?",
+      "back": "Se escribe entre comillas simples: 'a', 'A', '4', '>', '?'\\nSolo puede contener un único carácter entre las comillas simples.",
+      "tags": [
+        "programacion",
+        "unidad-1",
+        "tipos-primitivos"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u1-025",
+      "front": "¿Cuál es la diferencia entre '4' (con comillas) y 4 (sin comillas) en Java?",
+      "back": "'4' es un literal de tipo carácter (char).\\n4 es un literal de tipo entero (int).\\nSon tipos diferentes y no se pueden operar directamente entre ellos.",
+      "tags": [
+        "programacion",
+        "unidad-1",
+        "tipos-primitivos"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u1-026",
+      "front": "¿Por qué es más eficiente usar int que double para datos que no necesitan decimales?",
+      "back": "Representar y realizar operaciones con enteros es más sencillo y rápido internamente en binario.\\nAdemás, un entero requiere menos espacio en memoria.",
+      "tags": [
+        "programacion",
+        "unidad-1",
+        "tipos-primitivos"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u1-027",
+      "front": "¿Cuáles son los operadores aritméticos básicos en Java?",
+      "back": "Cambio de signo: - (unario)\\nSuma: +\\nResta: - (binario)\\nMultiplicación: *\\nDivisión: /\\nMódulo (resto de división): %",
+      "tags": [
+        "programacion",
+        "unidad-1",
+        "operadores"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u1-028",
+      "front": "¿Qué resultado da la operación 10 / 3 entre enteros en Java?",
+      "back": "Da como resultado 3 (entero).\\nEn la división de enteros se trunca la parte decimal, se pierden todos los decimales.",
+      "tags": [
+        "programacion",
+        "unidad-1",
+        "operadores"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u1-029",
+      "front": "¿Qué operador devuelve el resto de una división entre enteros y cómo funciona?",
+      "back": "El operador módulo (%).\\nEjemplo: 10 % 3 = 1 (resto de dividir 10 entre 3).\\nDivide A entre B y devuelve lo que sobra.",
+      "tags": [
+        "programacion",
+        "unidad-1",
+        "operadores"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u1-030",
+      "front": "¿Cuáles son los operadores lógicos en Java para booleanos?",
+      "back": "Negación: ! (unario)\\nConjunción (Y): &&\\nDisyunción (O): ||\\nIgualdad: ==\\nDiferente: !=",
+      "tags": [
+        "programacion",
+        "unidad-1",
+        "operadores"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u1-031",
+      "front": "¿Cuándo es cierta la conjunción (&&) entre dos booleanos?",
+      "back": "La conjunción es cierta solo si ambos operandos son true.\\nSi alguno es false, el resultado es false.",
+      "tags": [
+        "programacion",
+        "unidad-1",
+        "operadores"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u1-032",
+      "front": "¿Cuándo es cierta la disyunción (||) entre dos booleanos?",
+      "back": "La disyunción es cierta si al menos uno de los operandos es true.\\nSolo es false cuando ambos operandos son false.",
+      "tags": [
+        "programacion",
+        "unidad-1",
+        "operadores"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u1-033",
+      "front": "¿Cuáles son los operadores relacionales en Java?",
+      "back": "== (igual), != (diferente)\\n> (mayor que), < (menor que)\\n>= (mayor o igual), <= (menor o igual)\\nEl resultado de una operación relacional siempre es un boolean.",
+      "tags": [
+        "programacion",
+        "unidad-1",
+        "operadores"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u1-034",
+      "front": "¿Qué es una expresión en programación?",
+      "back": "Es una combinación cualquiera de operadores y operandos.\\nUna expresión siempre se evalúa para producir un resultado de un tipo de dato concreto.",
+      "tags": [
+        "programacion",
+        "unidad-1",
+        "expresiones"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u1-035",
+      "front": "¿Cuáles son las dos condiciones semánticas que debe cumplir una expresión válida?",
+      "back": "1. Cualquier operación debe ser entre datos del mismo tipo.\\n2. La operación usada debe existir para ese tipo de dato.",
+      "tags": [
+        "programacion",
+        "unidad-1",
+        "expresiones"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u1-036",
+      "front": "¿Qué orden de precedencia siguen los operadores en Java? (de mayor a menor prioridad)",
+      "back": "1. Cambio de signo - (unario)\\n2. *, /, % (producto, división, módulo)\\n3. +, - (suma, resta)\\n4. >, <, >=, <= (relacionales de comparación)\\n5. ==, != (relacionales de igualdad)\\n6. && (conjunción)\\n7. || (disyunción)\\n8. ! (negación)",
+      "tags": [
+        "programacion",
+        "unidad-1",
+        "expresiones"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u1-037",
+      "front": "¿Qué es el ámbito (scope) de una variable?",
+      "back": "Es el contexto bajo el que se considera declarada una variable.\\nUna variable solo es válida desde la línea donde se declara hasta el final del bloque ({...}) en el que se declaró.",
+      "tags": [
+        "programacion",
+        "unidad-1",
+        "ambito-variables"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u1-038",
+      "front": "¿Qué convención de nomenclatura se usa para las clases en Java?",
+      "back": "UpperCamelCase (notación de camello con mayúsculas).\\nCada palabra comienza con mayúscula, sin espacios ni guiones bajos.\\nEjemplos: HolaMon, MiPrograma, Prueba",
+      "tags": [
+        "programacion",
+        "unidad-1",
+        "convenciones"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u1-039",
+      "front": "¿Qué convención de nomenclatura se usa para las variables en Java?",
+      "back": "lowerCamelCase (notación de camello con minúscula).\\nLa primera palabra va en minúscula y las siguientes en mayúscula.\\nEjemplos: divisor, resultadoDivision, miEntero",
+      "tags": [
+        "programacion",
+        "unidad-1",
+        "convenciones"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u1-040",
+      "front": "¿Qué convención de nomenclatura se usa para las constantes en Java?",
+      "back": "Todas las letras en mayúsculas, separando palabras con guión bajo (_).\\nEjemplos: CONSTANTE, MI_CONSTANTE, CONVERSION_EURO_A_DOLAR",
+      "tags": [
+        "programacion",
+        "unidad-1",
+        "convenciones"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u1-041",
+      "front": "¿Qué reglas debe cumplir un identificador de variable en Java?",
+      "back": "1. No puede contener espacios.\\n2. No puede empezar con un número.\\n3. No puede ser una palabra clave/reservada del lenguaje.\\n4. Se recomienda no usar acentos.\\n5. Java es sensible a mayúsculas/minúsculas (case-sensitive).",
+      "tags": [
+        "programacion",
+        "unidad-1",
+        "convenciones"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u1-042",
+      "front": "¿Qué instrucción se usa en Java para mostrar datos por pantalla con salto de línea al final?",
+      "back": "System.out.println(valor);\\nMuestra el valor y añade un salto de línea al final.",
+      "tags": [
+        "programacion",
+        "unidad-1",
+        "entrada-salida"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u1-043",
+      "front": "¿Qué instrucción se usa en Java para mostrar datos por pantalla sin salto de línea al final?",
+      "back": "System.out.print(valor);\\nMuestra el valor y deja el cursor en la misma línea.",
+      "tags": [
+        "programacion",
+        "unidad-1",
+        "entrada-salida"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u1-044",
+      "front": "¿Cómo se lee un número entero desde el teclado en Java usando Scanner?",
+      "back": "import java.util.Scanner;\\nScanner lector = new Scanner(System.in);\\nint numero = lector.nextInt();\\nEs necesario importar la biblioteca java.util.Scanner.",
+      "tags": [
+        "programacion",
+        "unidad-1",
+        "entrada-salida"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u1-045",
+      "front": "¿Qué métodos de Scanner se usan para leer diferentes tipos de datos por teclado?",
+      "back": "lector.nextInt() -> int\\nlector.nextDouble() -> double\\nlector.nextBoolean() -> boolean\\nlector.next() -> String\\nlector.nextLine() -> String (línea completa)",
+      "tags": [
+        "programacion",
+        "unidad-1",
+        "entrada-salida"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u1-046",
+      "front": "¿Qué es el operador de asignación y cómo funciona en Java?",
+      "back": "El operador de asignación es '='.\\nPrimero se evalúa la expresión de la derecha y luego se almacena el resultado en la variable de la izquierda.\\nEjemplo: resultado = dividendo / divisor;",
+      "tags": [
+        "programacion",
+        "unidad-1",
+        "variables"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u1-047",
+      "front": "¿Qué son las secuencias de escape en Java y da ejemplos?",
+      "back": "Son combinaciones de contrabarra (\\) y un carácter para representar símbolos especiales.\\n\\n -> salto de línea\\n\\t -> tabulación\\n\\\" -> comillas dobles\\n\\\\ -> contrabarra\\n\\' -> comilla simple",
+      "tags": [
+        "programacion",
+        "unidad-1",
+        "entrada-salida"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u1-048",
+      "front": "¿Qué es el tipo String en Java?",
+      "back": "String es un tipo de dato (no primitivo) que permite representar cualquier secuencia de caracteres de longitud arbitraria.\\nSe escribe entre comillas dobles (\"\").\\nEjemplo: \"Hola, mundo!\"",
+      "tags": [
+        "programacion",
+        "unidad-1",
+        "tipos-primitivos"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u1-049",
+      "front": "¿Qué operación permite el operador + con cadenas de texto (String) en Java?",
+      "back": "La concatenación.\\nUne dos cadenas de texto en una nueva cadena.\\nTambién permite concatenar cualquier tipo primitivo con un String, convirtiéndolo automáticamente a su representación textual.",
+      "tags": [
+        "programacion",
+        "unidad-1",
+        "operadores"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u1-050",
+      "front": "¿Qué es el desbordamiento (overflow) en Java?",
+      "back": "Ocurre cuando el resultado de una operación supera el rango máximo de valores que puede representar un tipo numérico.\\nEl resultado será incorrecto.\\nCada tipo numérico tiene un rango limitado de valores.",
+      "tags": [
+        "programacion",
+        "unidad-1",
+        "expresiones"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u1-051",
+      "front": "¿Qué es un programa informático?",
+      "back": "Es un conjunto de órdenes o eventos ordenados de forma secuencial que una máquina sigue de forma autónoma para realizar una tarea de cierta complejidad.",
+      "tags": [
+        "programacion",
+        "unidad-1",
+        "fundamentos"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u1-052",
+      "front": "¿En qué consiste la tarea del programador?",
+      "back": "Consiste en escoger las órdenes, determinar su orden y definir sobre qué datos deben aplicarse para resolver un problema.",
+      "tags": [
+        "programacion",
+        "unidad-1",
+        "fundamentos"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u1-053",
+      "front": "¿Qué es la ejecución de un programa?",
+      "back": "Es el proceso en el que el ordenador sigue todas las órdenes del programa, de la primera a la última.",
+      "tags": [
+        "programacion",
+        "unidad-1",
+        "fundamentos"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u1-054",
+      "front": "¿Cuáles son los tres componentes básicos de un ordenador en relación con la ejecución de programas?",
+      "back": "1. Procesador (CPU): centro neurálgico que realiza las operaciones de manipulación y transformación de datos.\\n2. Memoria (RAM): almacena los datos mientras no están siendo manipulados; es dinámica y no persistente.\\n3. Sistema de Entrada/Salida (E/S): permite el intercambio de datos con el exterior (teclado, ratón, pantalla).",
+      "tags": [
+        "programacion",
+        "unidad-1",
+        "fundamentos"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u1-055",
+      "front": "¿Qué es un lenguaje de programación?",
+      "back": "Es un lenguaje artificial diseñado para crear algoritmos ejecutables por el ordenador.",
+      "tags": [
+        "programacion",
+        "unidad-1",
+        "lenguajes"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u1-056",
+      "front": "¿Cómo se clasifican los lenguajes de programación según su nivel?",
+      "back": "• Nivel bajo: lenguaje de máquina (binario) y ensamblador (mnemotécnicos). Dependen directamente del hardware del procesador.\\n• Nivel alto: lenguajes más abstractos y cercanos al lenguaje humano (Java, C, Pascal). No dependen de un procesador específico.",
+      "tags": [
+        "programacion",
+        "unidad-1",
+        "lenguajes"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u1-057",
+      "front": "¿Qué es el código fuente en programación?",
+      "back": "Son los archivos de texto escritos por el programador que contienen las instrucciones del programa en un lenguaje de programación de alto nivel.",
+      "tags": [
+        "programacion",
+        "unidad-1",
+        "compilacion"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u1-058",
+      "front": "¿Cuáles son las etapas del proceso de creación de un programa compilado desde el código fuente hasta el ejecutable?",
+      "back": "1. Código fuente: archivos de texto con las instrucciones del programa.\\n2. Compilación: traducción del código fuente a código objeto (formato binario que entiende el procesador).\\n3. Enlazamiento (link): combinación de varios archivos de código objeto para generar un único archivo ejecutable.",
+      "tags": [
+        "programacion",
+        "unidad-1",
+        "compilacion"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u1-059",
+      "front": "¿Qué es el código objeto?",
+      "back": "Es el resultado de la compilación del código fuente: un formato binario que entiende el procesador. En lenguajes como C, estos archivos tienen extensión .obj o .o y luego se combinan mediante el enlazador.",
+      "tags": [
+        "programacion",
+        "unidad-1",
+        "compilacion"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u1-060",
+      "front": "¿Qué diferencia hay entre compilación e interpretación?",
+      "back": "Compilación: traduce todo el código fuente a código objeto/máquina de una sola vez, generando un archivo ejecutable independiente.\\nInterpretación: usa un programa auxiliar (intérprete) que procesa el código fuente o bytecode y gestiona su ejecución directamente, sin generar un ejecutable independiente.\\nJava usa un híbrido: compila a bytecode y luego la JVM lo interpreta.",
+      "tags": [
+        "programacion",
+        "unidad-1",
+        "compilacion"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u1-061",
+      "front": "¿Qué es un IDE (Entorno Integrado de Desarrollo)?",
+      "back": "Es una herramienta que integra editor de código, compilador, depurador y gestor de proyectos en una misma aplicación.\\nEjemplos: NetBeans, Eclipse, IntelliJ IDEA, VS Code.",
+      "tags": [
+        "programacion",
+        "unidad-1",
+        "lenguajes"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u1-062",
+      "front": "¿Qué es un dato en programación?",
+      "back": "Es toda información que el ordenador utiliza en las ejecuciones de los programas. Los datos se almacenan en la memoria y pueden ser de diferentes tipos (números, texto, booleanos, etc.).",
+      "tags": [
+        "programacion",
+        "unidad-1",
+        "tipos-primitivos"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u1-063",
+      "front": "¿Cuáles son los tipos de datos enteros en Java y qué rango aproximado tienen?",
+      "back": "• byte: 8 bits (-128 a 127)\\n• short: 16 bits (-32.768 a 32.767)\\n• int: 32 bits (-2³¹ a 2³¹-1)\\n• long: 64 bits (-2⁶³ a 2⁶³-1)\\nEl tipo más usado es int. Si se necesita un rango mayor, se usa long.",
+      "tags": [
+        "programacion",
+        "unidad-1",
+        "tipos-primitivos"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u1-064",
+      "front": "¿Cuáles son los tipos de datos reales en Java y cuál se usa por defecto?",
+      "back": "• float: 32 bits (precisión simple). Se escribe con sufijo f: 3.14f\\n• double: 64 bits (doble precisión). Es el tipo por defecto para números con decimales.\\nEjemplo: double precio = 19.99;",
+      "tags": [
+        "programacion",
+        "unidad-1",
+        "tipos-primitivos"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u1-065",
+      "front": "¿Qué es una conversión de tipo (casting) en Java?",
+      "back": "Es la transformación de un valor de un tipo de dato a otro tipo de dato compatible. Puede ser implícita (automática, sin pérdida de datos) o explícita (forzada por el programador, con posible pérdida de precisión).",
+      "tags": [
+        "programacion",
+        "unidad-1",
+        "casting"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u1-066",
+      "front": "¿Cuándo ocurre una conversión implícita (widening) en Java?",
+      "back": "Ocurre automáticamente cuando se asigna un valor de un tipo con menor capacidad a un tipo con mayor capacidad, sin que haya pérdida de datos.\\nOrden de promoción: byte → short → int → long → float → double\\nEjemplo: int a = 5; double b = a; // conversión implícita de int a double",
+      "tags": [
+        "programacion",
+        "unidad-1",
+        "casting"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u1-067",
+      "front": "¿Cómo se hace una conversión explícita (narrowing) en Java y qué riesgo tiene?",
+      "back": "Se escribe el tipo deseado entre paréntesis antes de la expresión.\\nSintaxis: (tipoDestino) expresión\\n\\nEjemplo:\\ndouble d = 9.78;\\nint i = (int) d; // i vale 9 (se pierde la parte decimal)\\n\\nRiesgo: puede haber pérdida de precisión o desbordamiento (overflow) si el valor no cabe en el tipo destino.",
+      "tags": [
+        "programacion",
+        "unidad-1",
+        "casting"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u1-068",
+      "front": "¿Qué resultado da (int) 7.9 en Java y por qué?",
+      "back": "Da como resultado 7.\\nAl convertir un double a int explícitamente, se trunca la parte decimal (no se redondea, se descarta).",
+      "tags": [
+        "programacion",
+        "unidad-1",
+        "casting"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u2-001",
+      "front": "¿Qué es una estructura de selección simple en programación?",
+      "back": "Es una estructura que permite ejecutar un bloque de código solo si se cumple una condición lógica (expresión booleana). En Java se implementa con la sentencia if. Si la expresión evalúa a true, se ejecuta el bloque; si evalúa a false, se ignora y continúa con la instrucción siguiente.",
+      "tags": [
+        "programacion",
+        "unidad-2",
+        "if"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u2-002",
+      "front": "¿Cuál es la sintaxis básica de la sentencia if en Java?",
+      "back": "if (expresión booleana) {\n  // Instrucciones a ejecutar si la condición es true\n}",
+      "tags": [
+        "programacion",
+        "unidad-2",
+        "if"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u2-003",
+      "front": "¿Qué es una estructura de selección doble y cómo se escribe en Java?",
+      "back": "Es una estructura que ofrece dos caminos alternativos: uno si la condición es true (bloque if) y otro si es false (bloque else).\n\nSintaxis:\nif (expresión booleana) {\n  // Instrucciones si true\n} else {\n  // Instrucciones si false\n}",
+      "tags": [
+        "programacion",
+        "unidad-2",
+        "if-else"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u2-004",
+      "front": "¿Cómo funciona la sentencia if-else if-else en Java?",
+      "back": "Permite evaluar múltiples condiciones en orden. Se evalúa la primera expresión booleana; si es true, se ejecuta su bloque y se ignora el resto. Si es false, se pasa a la siguiente condición (else if). Si ninguna condición se cumple, se ejecuta el bloque else (opcional).\n\nSintaxis:\nif (condición1) {\n  // Bloque 1\n} else if (condición2) {\n  // Bloque 2\n} else {\n  // Bloque por defecto\n}",
+      "tags": [
+        "programacion",
+        "unidad-2",
+        "if-else"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u2-005",
+      "front": "En una sentencia if-else if-else, ¿qué ocurre si más de una condición evalúa a true?",
+      "back": "Solo se ejecuta el bloque asociado a la primera condición que evalúa a true, en el orden de escritura. Una vez ejecutado ese bloque, se ignora el resto de condiciones y bloques, incluso si también evaluarían a true.",
+      "tags": [
+        "programacion",
+        "unidad-2",
+        "if-else"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u2-006",
+      "front": "¿Qué son los operadores de comparación en Java y cuáles son?",
+      "back": "Los operadores de comparación se usan para comparar valores y devuelven un resultado booleano (true o false).\n\n==  igual a\n!=  distinto de\n<   menor que\n>   mayor que\n<=  menor o igual que\n>=  mayor o igual que",
+      "tags": [
+        "programacion",
+        "unidad-2",
+        "operadores-comparacion"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u2-007",
+      "front": "¿Qué diferencia hay entre el operador = y == en Java?",
+      "back": "El operador = es el operador de asignación: asigna un valor a una variable.\nEl operador == es el operador de comparación: comprueba si dos valores son iguales y devuelve true o false.\n\nEjemplo:\nint x = 5;  // Asignación\nif (x == 5) // Comparación",
+      "tags": [
+        "programacion",
+        "unidad-2",
+        "operadores-comparacion"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u2-008",
+      "front": "¿Qué son los operadores lógicos en Java y cuáles son los principales?",
+      "back": "Los operadores lógicos permiten combinar expresiones booleanas para formar condiciones más complejas.\n\n&&  AND (Y lógico): true si ambas expresiones son true\n||  OR (O lógico): true si al menos una expresión es true\n!   NOT (Negación): invierte el valor booleano",
+      "tags": [
+        "programacion",
+        "unidad-2",
+        "operadores-logicos"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u2-009",
+      "front": "¿Cómo funciona el operador && (AND) en Java?",
+      "back": "El operador && evalúa a true solo si ambas expresiones booleanas son true. Si la primera expresión es false, la segunda no se evalúa (cortocircuito).\n\ntrue && true = true\ntrue && false = false\nfalse && true = false\nfalse && false = false",
+      "tags": [
+        "programacion",
+        "unidad-2",
+        "operadores-logicos"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u2-010",
+      "front": "¿Cómo funciona el operador || (OR) en Java?",
+      "back": "El operador || evalúa a true si al menos una de las expresiones booleanas es true. Si la primera expresión es true, la segunda no se evalúa (cortocircuito).\n\ntrue || true = true\ntrue || false = true\nfalse || true = true\nfalse || false = false",
+      "tags": [
+        "programacion",
+        "unidad-2",
+        "operadores-logicos"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u2-011",
+      "front": "¿Cómo funciona el operador ! (NOT) en Java?",
+      "back": "El operador ! invierte el valor de una expresión booleana. Si la expresión es true, devuelve false, y viceversa.\n\n!true = false\n!false = true\n\nEjemplo:\nboolean acertado = false;\nwhile (!acertado) {  // Se repite mientras NO se haya acertado\n  // ...\n}",
+      "tags": [
+        "programacion",
+        "unidad-2",
+        "operadores-logicos"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u2-012",
+      "front": "¿Qué es la sentencia switch en Java y para qué sirve?",
+      "back": "Es una estructura de selección múltiple que permite elegir entre varios caminos según el valor de una expresión de tipo entero o carácter. Evalúa la expresión y ejecuta el bloque del caso (case) cuyo valor coincida. Si no hay coincidencia, ejecuta el caso default (opcional). Es útil para mejorar la legibilidad cuando se comparan muchos valores discretos.",
+      "tags": [
+        "programacion",
+        "unidad-2",
+        "switch"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u2-013",
+      "front": "¿Cuál es la sintaxis básica de la sentencia switch en Java?",
+      "back": "switch (expresión) {\n  case valor1:\n    // Instrucciones para valor1\n    break;\n  case valor2:\n    // Instrucciones para valor2\n    break;\n  default:\n    // Instrucciones si ningún caso coincide\n}",
+      "tags": [
+        "programacion",
+        "unidad-2",
+        "switch"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u2-014",
+      "front": "¿Qué función tiene la instrucción break dentro de un switch?",
+      "back": "La instrucción break dentro de un switch sirve para salir de la sentencia switch una vez ejecutado el bloque de un caso. Si no se pone break, se produce una propagación (fall-through): se siguen ejecutando las instrucciones de los casos siguientes hasta encontrar un break o llegar al final del switch.",
+      "tags": [
+        "programacion",
+        "unidad-2",
+        "switch"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u2-015",
+      "front": "¿Qué es la propagación (fall-through) en un switch y cómo se puede aprovechar?",
+      "back": "La propagación ocurre cuando un caso no termina en break, por lo que la ejecución continúa con el siguiente caso. Se puede aprovechar para agrupar varios valores que compartan el mismo comportamiento.\n\nEjemplo: varios meses con 30 días\ncase 4: case 6: case 9: case 11:\n  System.out.println(\"30 días\");\n  break;",
+      "tags": [
+        "programacion",
+        "unidad-2",
+        "switch"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u2-016",
+      "front": "¿Qué es un bucle o estructura de repetición en programación?",
+      "back": "Es una estructura de control que permite ejecutar un bloque de instrucciones varias veces mientras se cumpla una condición lógica. Cada ejecución del bloque se llama iteración. Sin los bucles, habría que escribir el mismo código repetidamente.",
+      "tags": [
+        "programacion",
+        "unidad-2",
+        "bucles"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u2-017",
+      "front": "¿Cómo funciona la sentencia while en Java?",
+      "back": "La sentencia while evalúa la condición al principio de cada iteración. Si la condición es true, ejecuta el bloque y vuelve a evaluar. Si es false desde el principio, el bloque no se ejecuta nunca.\n\nSintaxis:\nwhile (expresión booleana) {\n  // Instrucciones del bucle\n}",
+      "tags": [
+        "programacion",
+        "unidad-2",
+        "while"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u2-018",
+      "front": "¿Qué es un bucle infinito y cómo se produce?",
+      "back": "Un bucle infinito es un error semántico en el que la condición del bucle siempre evalúa a true, por lo que nunca se sale del bucle. El programa compila correctamente pero no termina nunca. Se produce cuando la variable de控制 no se modifica adecuadamente para que la condición llegue a ser false.",
+      "tags": [
+        "programacion",
+        "unidad-2",
+        "bucles"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u2-019",
+      "front": "¿Qué tipos de variables de control existen en un bucle?",
+      "back": "Tres tipos principales:\n1. Contador: variable entera que aumenta o disminuye para contar iteraciones.\n2. Acumulador: variable donde se acumulan cálculos; cuando alcanza cierto valor, se deja de iterar.\n3. Semáforo (flag): variable booleana que actúa como interruptor explícito; cuando se asigna un valor concreto, la condición del bucle evalúa a false.",
+      "tags": [
+        "programacion",
+        "unidad-2",
+        "bucles"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u2-020",
+      "front": "¿Cómo funciona la sentencia do-while en Java?",
+      "back": "La sentencia do-while evalúa la condición al final de cada iteración, lo que garantiza que el bloque se ejecuta al menos una vez, independientemente de si la condición se cumple o no.\n\nSintaxis:\ndo {\n  // Instrucciones del bucle\n} while (expresión booleana);",
+      "tags": [
+        "programacion",
+        "unidad-2",
+        "do-while"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u2-021",
+      "front": "¿Cuál es la diferencia principal entre while y do-while?",
+      "back": "En while, la condición se evalúa al principio: si es false la primera vez, el bloque no se ejecuta nunca.\nEn do-while, la condición se evalúa al final: el bloque se ejecuta siempre al menos una vez, incluso si la condición es false desde el principio.",
+      "tags": [
+        "programacion",
+        "unidad-2",
+        "do-while"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u2-022",
+      "front": "¿Para qué tipo de problemas es especialmente útil la sentencia do-while?",
+      "back": "Es especialmente útil para el control de entrada de datos por teclado, cuando se necesita preguntar al usuario al menos una vez y repetir la pregunta hasta que introduzca un valor válido. Primero se lee el dato, luego se evalúa si es correcto, y si no, se repite.",
+      "tags": [
+        "programacion",
+        "unidad-2",
+        "do-while"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u2-023",
+      "front": "¿Cuál es la sintaxis de la sentencia for en Java?",
+      "back": "for (inicialización; expresión booleana; incremento) {\n  // Instrucciones del bucle\n}\n\n- Inicialización: se ejecuta una vez al principio (ej: int i = 0)\n- Expresión booleana: condición evaluada antes de cada iteración\n- Incremento: se ejecuta al final de cada iteración (ej: i++)",
+      "tags": [
+        "programacion",
+        "unidad-2",
+        "for"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u2-024",
+      "front": "¿A qué estructura equivale un bucle for en Java?",
+      "back": "Un bucle for equivale a un bucle while con la siguiente estructura:\n\ninicialización;\nwhile (expresión booleana) {\n  // Instrucciones\n  incremento;\n}",
+      "tags": [
+        "programacion",
+        "unidad-2",
+        "for"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u2-025",
+      "front": "¿Qué son los operadores ++ y -- en Java?",
+      "back": "Son los operadores de postincremento (++) y postdecremento (--).\n\n- i++ equivale a i = i + 1 (suma 1 a la variable)\n- i-- equivale a i = i - 1 (resta 1 a la variable)\n\nSon muy útiles en el tercer apartado de la sentencia for para modificar el contador automáticamente al final de cada iteración.",
+      "tags": [
+        "programacion",
+        "unidad-2",
+        "for"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u2-026",
+      "front": "¿Se puede modificar el contador de un for con operaciones distintas a ++ o --?",
+      "back": "Sí. El tercer apartado del for puede contener cualquier expresión válida, no solo incrementos de 1. Por ejemplo:\n\nfor (int i = 0; i <= limite; i = i + 3)  // Incremento de 3 en 3\nfor (int i = 1; i <= valor; i = i * 2)    // Multiplicación (duplicar)",
+      "tags": [
+        "programacion",
+        "unidad-2",
+        "for"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u2-027",
+      "front": "¿Para qué tipo de bucles se usa normalmente la sentencia for?",
+      "back": "La sentencia for se usa normalmente cuando se conoce de antemano el número exacto de iteraciones, especialmente cuando se necesita una variable de control (contador) que varía en una cantidad fija en cada iteración. Es más compacta que while para estos casos porque la inicialización, condición e incremento están en una misma línea.",
+      "tags": [
+        "programacion",
+        "unidad-2",
+        "for"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u2-028",
+      "front": "¿Qué son los bucles anidados en programación?",
+      "back": "Son bucles que contienen otros bucles dentro de su bloque de instrucciones. El bucle interior se ejecuta completamente por cada iteración del bucle exterior. Se usan para tareas que requieren repeticiones dentro de repeticiones, como generar tablas de multiplicar múltiples o recorrer matrices.",
+      "tags": [
+        "programacion",
+        "unidad-2",
+        "bucles-anidados"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u2-029",
+      "front": "En un bucle anidado con for, ¿cuántas veces se ejecuta el bloque interior si el exterior itera 5 veces y el interior 10?",
+      "back": "El bloque interior se ejecuta 5 * 10 = 50 veces. Por cada iteración del bucle exterior, el bucle interior se ejecuta completo (sus 10 iteraciones). El producto de las iteraciones da el total de ejecuciones del bloque más interno.",
+      "tags": [
+        "programacion",
+        "unidad-2",
+        "bucles-anidados"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u2-030",
+      "front": "¿Qué precauciones hay que tener al escribir bucles anidados?",
+      "back": "1. Sangrar correctamente el código para identificar dónde empieza y termina cada bucle.\n2. Usar nombres de variables de control diferentes para cada bucle (típicamente i, j, k...).\n3. Respetar el ámbito de las variables: una variable declarada en el bucle exterior puede usarse dentro del interior, pero no al revés.",
+      "tags": [
+        "programacion",
+        "unidad-2",
+        "bucles-anidados"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u2-031",
+      "front": "¿Qué hace la instrucción break dentro de un bucle (no switch)?",
+      "back": "Dentro de un bucle (while, do-while, for), la instrucción break provoca la salida inmediata del bucle, saltando a la instrucción siguiente fuera del bucle. Es útil para terminar un bucle prematuramente cuando se cumple una condición especial.",
+      "tags": [
+        "programacion",
+        "unidad-2",
+        "break"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u2-032",
+      "front": "¿Qué hace la instrucción continue dentro de un bucle?",
+      "back": "La instrucción continue salta a la siguiente iteración del bucle, ignorando el resto del código dentro del bloque para la iteración actual. En for, además ejecuta el incremento antes de evaluar la condición de nuevo. Es útil para saltarse ciertos valores sin romper el bucle.",
+      "tags": [
+        "programacion",
+        "unidad-2",
+        "continue"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u2-033",
+      "front": "¿Cuál es la diferencia entre break y continue en un bucle?",
+      "back": "break: sale completamente del bucle y continúa con la instrucción posterior al bucle.\ncontinue: salta el resto del código de la iteración actual y pasa a la siguiente iteración (vuelve a evaluar la condición). No sale del bucle, solo salta una iteración.",
+      "tags": [
+        "programacion",
+        "unidad-2",
+        "break",
+        "continue"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u2-034",
+      "front": "¿Qué es un diagrama de flujo de control en programación?",
+      "back": "Es una representación gráfica del flujo de ejecución de un programa. Muestra el orden en que se ejecutan las instrucciones, las decisiones (bifurcaciones), las repeticiones y el flujo entre bloques. Es útil para diseñar y comprender algoritmos antes de escribir código.",
+      "tags": [
+        "programacion",
+        "unidad-2",
+        "diagramas-flujo"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u2-035",
+      "front": "¿Cómo se representa una estructura if-else en un diagrama de flujo?",
+      "back": "Se representa con un rombo (decisión) que contiene la condición. Del rombo salen dos flechas: una etiquetada como \"true\" que lleva al bloque de instrucciones del if, y otra etiquetada como \"false\" que lleva al bloque del else (si existe). Ambos caminos convergen después en el flujo principal.",
+      "tags": [
+        "programacion",
+        "unidad-2",
+        "diagramas-flujo"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u2-036",
+      "front": "¿Cómo se representa un bucle while en un diagrama de flujo?",
+      "back": "Se representa con un rombo (decisión) que contiene la condición del bucle. La flecha \"true\" lleva al bloque de instrucciones, y al final de ese bloque hay una flecha que vuelve al rombo para evaluar la condición de nuevo. La flecha \"false\" sale del bucle y continúa con el resto del programa.",
+      "tags": [
+        "programacion",
+        "unidad-2",
+        "diagramas-flujo"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u2-037",
+      "front": "¿Qué diferencia hay en el diagrama de flujo entre un bucle while y un do-while?",
+      "back": "En while, el rombo de condición está antes del bloque de instrucciones: primero se evalúa, luego se ejecuta.\nEn do-while, el bloque de instrucciones está antes del rombo: primero se ejecuta, luego se evalúa la condición al final para decidir si repetir. Esto refleja que do-while siempre ejecuta al menos una iteración.",
+      "tags": [
+        "programacion",
+        "unidad-2",
+        "diagramas-flujo"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u2-038",
+      "front": "¿Qué es una variable semáforo (flag) en el contexto de bucles?",
+      "back": "Es una variable booleana que sirve como indicador explícito de si se debe continuar iterando o no. Cuando se cumple la condición de salida, el código asigna a la variable un valor que hace que la condición del bucle evalúe a false. Por ejemplo:\n\nboolean acertado = false;\nwhile (!acertado) {\n  if (valor == secreto) acertado = true;\n}",
+      "tags": [
+        "programacion",
+        "unidad-2",
+        "bucles"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u2-039",
+      "front": "¿Qué es el ámbito (scope) de una variable y cómo afecta en estructuras de control?",
+      "back": "El ámbito de una variable es la región del código donde esa variable existe y puede usarse. En Java, una variable declarada dentro de un bloque (entre llaves {}) solo es válida dentro de ese bloque. Si se declara dentro de un if o un bucle, no puede usarse fuera. Para solucionarlo, la variable debe declararse en un bloque exterior (antes de la estructura de control).",
+      "tags": [
+        "programacion",
+        "unidad-2",
+        "ambito"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u2-040",
+      "front": "¿Qué es la combinación de estructuras de selección y para qué sirve?",
+      "back": "Consiste en colocar estructuras de selección (if, else) dentro de otras estructuras de selección. Es útil cuando hay que verificar condiciones en varios niveles: primero una condición general, y solo si se cumple, comprobar condiciones más específicas. Por ejemplo: verificar si un precio es positivo, y si lo es, comprobar si aplica descuento.",
+      "tags": [
+        "programacion",
+        "unidad-2",
+        "if-else"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u3-001",
+      "front": "¿Qué es un array en Java?",
+      "back": "Un array es un tipo de dato compuesto que permite almacenar múltiples valores del mismo tipo bajo un único identificador, accediendo a cada valor mediante un índice numérico que comienza en 0.",
+      "tags": [
+        "programacion",
+        "unidad-3",
+        "arrays"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u3-002",
+      "front": "Sintaxis para declarar un array unidimensional en Java",
+      "back": "tipo[] nombreArray;\nEjemplo: int[] numeros;\nTambién válido: int numeros[]; (pero se recomienda la primera forma)",
+      "tags": [
+        "programacion",
+        "unidad-3",
+        "arrays"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u3-003",
+      "front": "¿Cómo se inicializa un array con valores concretos en Java?",
+      "back": "tipo[] nombre = {valor1, valor2, ..., valorN};\nEjemplo: int[] numeros = {10, 20, 30, 40, 50};\nfloat[] notas = {2f, 5.5f, 9f, 10f};",
+      "tags": [
+        "programacion",
+        "unidad-3",
+        "arrays"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u3-004",
+      "front": "¿Cómo se inicializa un array con valores por defecto usando new?",
+      "back": "tipo[] nombre = new tipo[tamaño];\nEjemplo: int[] numeros = new int[10];\n- Los valores numéricos se inicializan a 0.\n- Los boolean a false.\n- Los objetos (incluido String) a null.",
+      "tags": [
+        "programacion",
+        "unidad-3",
+        "arrays"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u3-005",
+      "front": "¿Qué es la propiedad length en un array y cómo se usa?",
+      "back": "length es un atributo (no un método, no lleva paréntesis) que devuelve el número de posiciones del array.\nEjemplo: int[] arr = {1,2,3};  arr.length → 3\nfor (int i = 0; i < arr.length; i++) { ... }",
+      "tags": [
+        "programacion",
+        "unidad-3",
+        "arrays"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u3-006",
+      "front": "¿Cómo se recorre un array completo con un bucle for?",
+      "back": "for (int i = 0; i < array.length; i++) {\n    // acceder a array[i]\n}\nLa variable i actúa como índice, comenzando en 0 hasta length-1.",
+      "tags": [
+        "programacion",
+        "unidad-3",
+        "arrays"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u3-007",
+      "front": "¿Cómo se recorre un array usando un bucle while?",
+      "back": "int i = 0;\nwhile (i < array.length) {\n    // acceder a array[i]\n    i++;\n}\nEs importante incrementar el contador manualmente para evitar bucles infinitos.",
+      "tags": [
+        "programacion",
+        "unidad-3",
+        "arrays"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u3-008",
+      "front": "¿Qué es el esquema de búsqueda con semáforo en un array?",
+      "back": "Se usa una variable booleana (semáforo) para saber si se ha encontrado el valor buscado:\nboolean encontrado = false;\nint i = 0;\nwhile (i < array.length && !encontrado) {\n    if (array[i] == valorBuscado) {\n        encontrado = true;\n    }\n    i++;\n}\nif (encontrado) { ... } else { ... }",
+      "tags": [
+        "programacion",
+        "unidad-3",
+        "arrays"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u3-009",
+      "front": "¿En qué consiste el algoritmo de ordenación de la burbuja (BubbleSort)?",
+      "back": "Consiste en recorrer el array múltiples veces, comparando pares de elementos adyacentes e intercambiándolos si están en orden incorrecto. Los valores más pequeños 'suben' como burbujas. Se usan dos bucles anidados: el externo controla las pasadas y el interno las comparaciones.",
+      "tags": [
+        "programacion",
+        "unidad-3",
+        "arrays"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u3-010",
+      "front": "¿Cómo se intercambian dos valores dentro de un array?",
+      "back": "Se necesita una variable auxiliar:\nint aux = array[i];\narray[i] = array[j];\narray[j] = aux;\nSin la variable auxiliar se perdería uno de los valores al sobrescribirlo.",
+      "tags": [
+        "programacion",
+        "unidad-3",
+        "arrays"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u3-011",
+      "front": "¿Qué ocurre al asignar un array a otro con '=' ?",
+      "back": "No se crea una copia de los datos. Ambos identificadores apuntan al mismo array en memoria. Cualquier modificación a través de uno afecta al otro.\nEjemplo: int[] a = {1,2,3};  int[] b = a;  b[0] = 99;  // a[0] también es 99",
+      "tags": [
+        "programacion",
+        "unidad-3",
+        "arrays"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u3-012",
+      "front": "¿Cómo se hace una copia independiente de un array?",
+      "back": "1. Crear un nuevo array del mismo tamaño:\n   int[] copia = new int[original.length];\n2. Copiar posición por posición:\n   for (int i = 0; i < original.length; i++) {\n       copia[i] = original[i];\n   }\nAmbos arrays son independientes.",
+      "tags": [
+        "programacion",
+        "unidad-3",
+        "arrays"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u3-013",
+      "front": "¿Cómo se aumenta el tamaño de un array en Java (cambio de tamaño)?",
+      "back": "Como los arrays tienen tamaño fijo, se debe:\n1. Crear un nuevo array más grande.\n2. Copiar los datos del original al nuevo.\n3. Asignar el nuevo array a la variable original.\nEjemplo:\nfloat[] nuevo = new float[original.length + MAX];\nfor (int i = 0; i < original.length; i++) nuevo[i] = original[i];\noriginal = nuevo;",
+      "tags": [
+        "programacion",
+        "unidad-3",
+        "arrays"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u3-014",
+      "front": "¿Qué provoca un ArrayIndexOutOfBoundsException?",
+      "back": "Ocurre cuando se intenta acceder a una posición del array con un índice menor que 0 o mayor o igual que array.length. Ejemplo: int[] a = new int[5];  a[5] = 10;  // Error, índice 5 no existe (válidos: 0 a 4).",
+      "tags": [
+        "programacion",
+        "unidad-3",
+        "arrays"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u3-015",
+      "front": "¿Qué es un array bidimensional en Java?",
+      "back": "Es un array que necesita dos índices para acceder a cada posición: uno para la fila y otro para la columna. Se visualiza como una tabla o matriz. int[][] matriz = new int[3][4]; // 3 filas, 4 columnas.",
+      "tags": [
+        "programacion",
+        "unidad-3",
+        "arrays-bidimensionales"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u3-016",
+      "front": "Sintaxis para declarar e inicializar un array bidimensional con valores concretos",
+      "back": "int[][] matriz = {\n    {1, 2, 3, 4},\n    {5, 6, 7, 8},\n    {9, 10, 11, 12}\n};\nCada fila es un array unidimensional. Las filas se separan por comas y todo se envuelve en corchetes.",
+      "tags": [
+        "programacion",
+        "unidad-3",
+        "arrays-bidimensionales"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u3-017",
+      "front": "Sintaxis para declarar un array bidimensional con valores por defecto (new)",
+      "back": "tipo[][] nombre = new tipo[numFilas][numColumnas];\nEjemplo: int[][] matriz = new int[4][5];\nCrea una matriz de 4 filas y 5 columnas, todos los valores inicializados a 0.",
+      "tags": [
+        "programacion",
+        "unidad-3",
+        "arrays-bidimensionales"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u3-018",
+      "front": "¿Cómo funciona length en un array bidimensional?",
+      "back": "- array.length → número de filas.\n- array[fila].length → número de columnas de esa fila.\nEjemplo: int[][] m = new int[3][5];\n  m.length → 3\n  m[0].length → 5",
+      "tags": [
+        "programacion",
+        "unidad-3",
+        "arrays-bidimensionales"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u3-019",
+      "front": "¿Cómo se recorre un array bidimensional completo con bucles anidados?",
+      "back": "for (int i = 0; i < matriz.length; i++) {       // recorre filas\n    for (int j = 0; j < matriz[i].length; j++) {  // recorre columnas\n        // acceder a matriz[i][j]\n    }\n}\nEl bucle externo recorre las filas, el interno las columnas de cada fila.",
+      "tags": [
+        "programacion",
+        "unidad-3",
+        "arrays-bidimensionales"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u3-020",
+      "front": "¿Cómo se busca un valor en un array bidimensional con salida temprana?",
+      "back": "Se usan dos bucles anidados con un semáforo:\nboolean encontrado = false;\nfor (int i = 0; i < matriz.length && !encontrado; i++) {\n    for (int j = 0; j < matriz[i].length && !encontrado; j++) {\n        if (matriz[i][j] == valor) {\n            encontrado = true;\n        }\n    }\n}\nEl break solo sale del bucle interno; el semáforo permite salir de ambos.",
+      "tags": [
+        "programacion",
+        "unidad-3",
+        "arrays-bidimensionales"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u3-021",
+      "front": "¿Qué es la clase String en Java?",
+      "back": "String es una clase (tipo de dato compuesto) que representa una cadena de texto o secuencia de caracteres. Las variables de tipo String almacenan objetos, no valores primitivos. Ejemplo: String saludo = \"Hola mundo\";",
+      "tags": [
+        "programacion",
+        "unidad-3",
+        "string"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u3-022",
+      "front": "¿Qué es una cadena vacía en Java?",
+      "back": "Una cadena vacía es un objeto String que no contiene ningún carácter. Se representa con comillas dobles sin nada dentro: String vacia = \"\";\nSu longitud (length()) es 0. No es lo mismo que null.",
+      "tags": [
+        "programacion",
+        "unidad-3",
+        "string"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u3-023",
+      "front": "¿Cómo se concatena cadenas de texto en Java?",
+      "back": "Con el operador +:\nString saludo = \"Hola \" + \"mundo\";\nTambién concatena automáticamente con tipos primitivos:\nString msg = \"El resultado es \" + 42;\nLa concatenación siempre produce una nueva cadena de texto (String).",
+      "tags": [
+        "programacion",
+        "unidad-3",
+        "string"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u3-024",
+      "front": "¿Qué significa que String es inmutable en Java?",
+      "back": "Significa que una vez creado un objeto String, su contenido no puede modificarse. Cualquier método que parezca modificarlo (toUpperCase, replace, trim, etc.) en realidad crea y devuelve un NUEVO objeto String, dejando el original intacto.",
+      "tags": [
+        "programacion",
+        "unidad-3",
+        "string"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u3-025",
+      "front": "¿Qué devuelve el método length() de String?",
+      "back": "Devuelve el número de caracteres de la cadena de texto. A diferencia de la propiedad length de los arrays, String usa un método (con paréntesis).\nEjemplo: \"Hola\".length() → 4\n\"\".length() → 0",
+      "tags": [
+        "programacion",
+        "unidad-3",
+        "string"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u3-026",
+      "front": "¿Qué hace el método charAt(posicion) de String?",
+      "back": "Devuelve el carácter (char) que se encuentra en la posición indicada. Las posiciones empiezan en 0.\nEjemplo: String s = \"Hola\";  s.charAt(1) → 'o'\nSi la posición no existe, lanza StringIndexOutOfBoundsException.",
+      "tags": [
+        "programacion",
+        "unidad-3",
+        "string"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u3-027",
+      "front": "¿Cómo se recorren los caracteres de un String con un bucle?",
+      "back": "for (int i = 0; i < texto.length(); i++) {\n    char c = texto.charAt(i);\n    // procesar el carácter c\n}\nSe usa length() para el límite y charAt(i) para acceder a cada carácter.",
+      "tags": [
+        "programacion",
+        "unidad-3",
+        "string"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u3-028",
+      "front": "¿Qué hace el método substring(inicio, fin) de String?",
+      "back": "Devuelve una nueva cadena con los caracteres desde la posición inicio (incluida) hasta fin (excluida).\nEjemplo: \"Hola mundo\".substring(0, 4) → \"Hola\"\n\"Hola mundo\".substring(5, 10) → \"mundo\"\nLos valores deben estar dentro del rango válido.",
+      "tags": [
+        "programacion",
+        "unidad-3",
+        "string"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u3-029",
+      "front": "¿Qué hace el método indexOf(texto) de String?",
+      "back": "Busca la primera aparición del texto indicado dentro de la cadena y devuelve su posición (int). Si no lo encuentra, devuelve -1.\nEjemplo: \"Hola mundo\".indexOf(\"mun\") → 5\n\"Hola mundo\".indexOf(\"x\") → -1",
+      "tags": [
+        "programacion",
+        "unidad-3",
+        "string"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u3-030",
+      "front": "¿Qué hace el método lastIndexOf(texto) de String?",
+      "back": "Similar a indexOf, pero busca la ÚLTIMA aparición del texto dentro de la cadena.\nEjemplo: \"banana\".lastIndexOf(\"na\") → 4\n\"banana\".indexOf(\"na\") → 2",
+      "tags": [
+        "programacion",
+        "unidad-3",
+        "string"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u3-031",
+      "front": "¿Por qué NO se debe usar '==' para comparar Strings?",
+      "back": "El operador == compara referencias (direcciones de memoria), no el contenido. Para comparar si dos cadenas tienen el mismo texto se debe usar el método equals().\nEjemplo correcto: if (s1.equals(s2)) { ... }\nEjemplo incorrecto: if (s1 == s2) { ... }",
+      "tags": [
+        "programacion",
+        "unidad-3",
+        "string"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u3-032",
+      "front": "¿Qué hace el método equals(otroString) de String?",
+      "back": "Compara el contenido de dos cadenas de texto. Devuelve true si son exactamente iguales (incluyendo mayúsculas/minúsculas), false en caso contrario.\nEjemplo: \"Hola\".equals(\"Hola\") → true\n\"Hola\".equals(\"hola\") → false",
+      "tags": [
+        "programacion",
+        "unidad-3",
+        "string"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u3-033",
+      "front": "¿Qué hace el método compareTo(otroString) de String?",
+      "back": "Compara dos cadenas alfabéticamente. Devuelve:\n- 0 si son iguales.\n- Valor negativo si la cadena es alfabéticamente anterior a la otra.\n- Valor positivo si es posterior.\nEjemplo: \"casa\".compareTo(\"perro\") → negativo (casa va antes que perro).",
+      "tags": [
+        "programacion",
+        "unidad-3",
+        "string"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u3-034",
+      "front": "¿Qué hace el método toUpperCase() de String?",
+      "back": "Devuelve una nueva cadena con todos los caracteres convertidos a mayúsculas. La cadena original no se modifica (inmutabilidad).\nEjemplo: \"Hola Mundo\".toUpperCase() → \"HOLA MUNDO\"\nExiste también toLowerCase(): \"Hola\".toLowerCase() → \"hola\".",
+      "tags": [
+        "programacion",
+        "unidad-3",
+        "string"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u3-035",
+      "front": "¿Qué hace el método trim() de String?",
+      "back": "Elimina los espacios en blanco al principio y al final de la cadena. No elimina espacios intermedios. La cadena original no se modifica.\nEjemplo: \" Hola mundo \".trim() → \"Hola mundo\"",
+      "tags": [
+        "programacion",
+        "unidad-3",
+        "string"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u3-036",
+      "front": "¿Qué hace el método replace(caracterViejo, caracterNuevo) de String?",
+      "back": "Reemplaza TODAS las apariciones de un carácter (o CharSequence) por otro. Devuelve una nueva cadena.\nEjemplo: \"Hola mundo\".replace('o', 'a') → \"Hala munda\"\nTambién funciona con String: \"casa\".replace(\"a\", \"e\") → \"cese\"",
+      "tags": [
+        "programacion",
+        "unidad-3",
+        "string"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u3-037",
+      "front": "¿Qué hace el método split(separador) de String?",
+      "back": "Divide la cadena en partes usando el separador indicado y devuelve un array de Strings con los trozos.\nEjemplo: \"Hola mundo Java\".split(\" \") → [\"Hola\", \"mundo\", \"Java\"]\nEl separador puede ser cualquier texto (coma, punto, espacio, etc.) y se elimina del resultado.",
+      "tags": [
+        "programacion",
+        "unidad-3",
+        "string"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u3-038",
+      "front": "¿Cómo se declara e inicializa un array de Strings en Java?",
+      "back": "Con valores concretos:\nString[] nombres = {\"Ana\", \"Luis\", \"Carlos\"};\nCon valores por defecto (null):\nString[] nombres = new String[5];\nCada posición se inicializa a null.",
+      "tags": [
+        "programacion",
+        "unidad-3",
+        "arrays-strings"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u3-039",
+      "front": "¿Cómo se recorre un array de Strings llamando a métodos de cada String?",
+      "back": "for (int i = 0; i < array.length; i++) {\n    System.out.println(array[i].length());\n}\nSe puede invocar cualquier método de String (length(), charAt(), equals(), etc.) sobre cada posición del array.",
+      "tags": [
+        "programacion",
+        "unidad-3",
+        "arrays-strings"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u3-040",
+      "front": "¿Qué valor toman por defecto las posiciones de un array de Strings?",
+      "back": "Se inicializan a null. null es un valor especial que indica que la posición está vacía, no es una cadena vacía \"\".\n- Invocar un método sobre null causa NullPointerException.\n- Mostrar null por pantalla muestra el texto \"null\".",
+      "tags": [
+        "programacion",
+        "unidad-3",
+        "arrays-strings"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u3-041",
+      "front": "¿Cómo se convierte un tipo primitivo a String en Java?",
+      "back": "1. Concatenación automática con +: \"Valor: \" + 42\n2. String.valueOf(valor): String s = String.valueOf(3.1416);\nAmbos métodos convierten cualquier tipo primitivo a su representación como cadena de texto.",
+      "tags": [
+        "programacion",
+        "unidad-3",
+        "string"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u3-042",
+      "front": "¿Cómo se convierte un String a un tipo numérico primitivo?",
+      "back": "Usando los métodos parse de cada tipo:\n- Integer.parseInt(\"123\") → int 123\n- Double.parseDouble(\"3.14\") → double 3.14\n- Float.parseFloat(\"2.5\") → float 2.5\nSi el texto no es un número válido, lanza NumberFormatException.",
+      "tags": [
+        "programacion",
+        "unidad-3",
+        "string"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u3-043",
+      "front": "¿Qué representa el parámetro String[] args en el método main?",
+      "back": "Es un array de Strings que contiene los argumentos pasados al programa al ejecutarlo desde la línea de comandos. args.length indica cuántos argumentos hay. args[0] es el primer argumento, args[1] el segundo, etc. Si no hay argumentos, args.length es 0.",
+      "tags": [
+        "programacion",
+        "unidad-3",
+        "arrays-strings"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u3-044",
+      "front": "¿Cuál es la diferencia entre next() y nextLine() de Scanner para leer texto?",
+      "back": "- next(): Lee una palabra individual (hasta el primer espacio).\n- nextLine(): Lee toda la línea completa incluyendo espacios (hasta el salto de línea).\nEjemplo: entrada \"Hola mundo\"\n  next() → \"Hola\"\n  nextLine() → \"Hola mundo\"",
+      "tags": [
+        "programacion",
+        "unidad-3",
+        "string"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u4-001",
+      "front": "¿Qué es un método en Java?",
+      "back": "Un método es un bloque de código identificado por un nombre, que realiza una tarea concreta y autocontenida. Se declara dentro de una clase y puede recibir parámetros de entrada y/o devolver un valor de salida. Los métodos permiten aplicar diseño descendente, reutilizar código y mejorar la legibilidad.",
+      "tags": [
+        "programacion",
+        "unidad-4",
+        "metodos"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u4-002",
+      "front": "¿Cuál es la sintaxis general para declarar un método en Java?",
+      "back": "public tipoRetorno nombreMetodo(tipoParam1 nombreParam1, tipoParam2 nombreParam2, ...) {\n    // código del método\n    return valor; // si tiene tipo de retorno distinto de void\n}",
+      "tags": [
+        "programacion",
+        "unidad-4",
+        "declaracion"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u4-003",
+      "front": "¿Qué significa 'public' en la declaración de un método Java?",
+      "back": "'public' es un modificador de acceso que indica que el método es accesible desde cualquier otra clase. Es el nivel de acceso más permisivo. Otros modificadores son 'private' (solo accesible desde la misma clase) y 'protected' (accesible desde el mismo paquete y subclases).",
+      "tags": [
+        "programacion",
+        "unidad-4",
+        "declaracion",
+        "modificadores"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u4-004",
+      "front": "¿Qué son los parámetros formales en un método Java?",
+      "back": "Los parámetros formales son las variables declaradas en la lista de parámetros de la definición del método. Actúan como variables locales dentro del método y reciben los valores que se pasan en la invocación. Se escriben como 'tipo nombreVariable' separados por comas.",
+      "tags": [
+        "programacion",
+        "unidad-4",
+        "parametros"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u4-005",
+      "front": "¿Qué son los parámetros reales (o argumentos) en la invocación de un método?",
+      "back": "Los parámetros reales son los valores concretos que se pasan al método cuando se invoca. Se escriben entre los paréntesis de la llamada, separados por comas. Deben coincidir en número, tipo y orden con los parámetros formales declarados.",
+      "tags": [
+        "programacion",
+        "unidad-4",
+        "parametros"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u4-006",
+      "front": "¿Qué es el valor de retorno de un método y cómo se indica?",
+      "back": "El valor de retorno es el resultado que el método produce y devuelve al punto desde donde fue invocado. Se indica con la palabra reservada 'return' seguida del valor a devolver. El tipo del valor debe coincidir con el tipo de retorno declarado en la cabecera del método.",
+      "tags": [
+        "programacion",
+        "unidad-4",
+        "return"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u4-007",
+      "front": "¿Qué hace la sentencia 'return' dentro de un método?",
+      "back": "La sentencia 'return' finaliza inmediatamente la ejecución del método y devuelve el control al punto desde donde fue invocado. Si el método tiene un tipo de retorno distinto de void, debe incluir un valor a devolver (return expresion). Puede haber múltiples return en un método, pero solo se ejecuta el primero que se encuentre.",
+      "tags": [
+        "programacion",
+        "unidad-4",
+        "return"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u4-008",
+      "front": "¿Qué significa que un método sea de tipo 'void'?",
+      "back": "Un método declarado como 'void' indica que no devuelve ningún valor. Se usa cuando el método realiza una acción (como mostrar algo por pantalla) pero no produce un resultado tangible que deba ser manipulado posteriormente. En estos métodos no es obligatorio usar 'return', aunque se puede usar 'return;' sin valor para salir antes.",
+      "tags": [
+        "programacion",
+        "unidad-4",
+        "void"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u4-009",
+      "front": "¿En qué consiste el paso por valor en Java?",
+      "back": "En Java, todos los parámetros se pasan por valor. Esto significa que cuando se invoca un método, se crea una copia del valor del argumento y se asigna al parámetro formal. Cualquier modificación del parámetro dentro del método NO afecta a la variable original.",
+      "tags": [
+        "programacion",
+        "unidad-4",
+        "paso-por-valor"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u4-010",
+      "front": "¿Cómo afecta el paso por valor a los parámetros de tipo primitivo?",
+      "back": "Cuando se pasa una variable de tipo primitivo (int, double, char, boolean, etc.) como argumento, se copia su valor. Modificar el parámetro dentro del método no tiene ningún efecto sobre la variable original. Por ejemplo, si se pasa 'int i = 10' y se asigna 'a = 0' dentro del método, la variable 'i' sigue valiendo 10 fuera del método.",
+      "tags": [
+        "programacion",
+        "unidad-4",
+        "paso-por-valor",
+        "tipos-primitivos"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u4-011",
+      "front": "¿Cómo afecta el paso por valor a los parámetros de tipo array (tipo compuesto)?",
+      "back": "Cuando se pasa un array, se copia la referencia (dirección de memoria), no los datos. Por tanto, el parámetro y la variable original apuntan al MISMO array. Si se modifica el contenido del array a través del parámetro (ej: a[3] = 0), el cambio se refleja en el array original. Sin embargo, si se asigna una nueva referencia al parámetro, la variable original no se ve afectada.",
+      "tags": [
+        "programacion",
+        "unidad-4",
+        "paso-por-valor",
+        "arrays"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u4-012",
+      "front": "¿Cómo se comportan los objetos String cuando se pasan como parámetros?",
+      "back": "Los objetos String se comportan como tipos primitivos cuando se pasan como parámetros. Aunque son objetos, son inmutables (no se puede modificar su contenido). Al pasarlos por valor, se copia la referencia, pero como String es inmutable, cualquier 'modificación' crea un nuevo objeto y no afecta a la variable original.",
+      "tags": [
+        "programacion",
+        "unidad-4",
+        "paso-por-valor",
+        "String"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u4-013",
+      "front": "¿Qué es la sobrecarga (overloading) de métodos en Java?",
+      "back": "La sobrecarga de métodos consiste en declarar varios métodos con el mismo nombre pero distinta lista de parámetros (diferente número, tipo u orden de parámetros). Java distingue cuál invocar según los argumentos proporcionados en la llamada. El tipo de retorno NO puede usarse para diferenciar métodos sobrecargados.",
+      "tags": [
+        "programacion",
+        "unidad-4",
+        "sobrecarga"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u4-014",
+      "front": "¿Qué es el ámbito (scope) de una variable local?",
+      "back": "Una variable local es aquella declarada dentro de un método o bloque de código. Su ámbito (alcance) se limita al bloque donde fue declarada. Solo existe mientras se ejecuta ese bloque y no es accesible desde fuera del mismo. Las variables locales deben inicializarse antes de usarse.",
+      "tags": [
+        "programacion",
+        "unidad-4",
+        "ambito",
+        "variables-locales"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u4-015",
+      "front": "¿Qué es una variable global en Java y cómo se declara?",
+      "back": "Una variable global (o de instancia) se declara dentro de la clase pero fuera de cualquier método. Es accesible desde todos los métodos de la clase. Se declara con modificadores como 'private' o 'public' y puede tener un valor inicial. Las variables globales pueden ser inicializadas solo con literales o expresiones que usen otras variables globales, no con valores que dependan de entradas de teclado o argumentos de métodos.",
+      "tags": [
+        "programacion",
+        "unidad-4",
+        "ambito",
+        "variables-globales"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u4-016",
+      "front": "¿Qué es la inicialización diferida de variables?",
+      "back": "La inicialización diferida consiste en declarar una variable sin asignarle un valor inicial útil y asignárselo más adelante. Para tipos primitivos se suele usar 0 como valor temporal. Para tipos complejos (arrays, String) se usa 'null'. Luego, cuando se conoce el valor real (por ejemplo, tras leer del teclado), se sobrescribe.",
+      "tags": [
+        "programacion",
+        "unidad-4",
+        "inicializacion"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u4-017",
+      "front": "¿Qué indica el valor 'null' en Java?",
+      "back": "'null' es una palabra reservada de Java que indica que una variable de tipo objeto o array está declarada pero no apunta a ningún objeto en memoria. Es el valor inicial especial para variables de tipos complejos (arrays, String) cuando se usa inicialización diferida. Operar con una variable null siempre resulta en un programa erróneo (NullPointerException).",
+      "tags": [
+        "programacion",
+        "unidad-4",
+        "null"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u4-018",
+      "front": "¿Cómo se pasan arrays como parámetros a un método?",
+      "back": "Los arrays se pasan como parámetros indicando el tipo seguido de corchetes (int[] array). Se invoca pasando el nombre del array. Al pasarse por valor la referencia, el método puede modificar el contenido del array original (pero no reasignar la referencia). Ejemplo: public double media(int[] array) {} y se invoca con media(valores).",
+      "tags": [
+        "programacion",
+        "unidad-4",
+        "arrays",
+        "parametros"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u4-019",
+      "front": "¿Cómo se declara un método que devuelve un array?",
+      "back": "Se declara indicando el tipo del array como tipo de retorno. Ejemplo: public int[] generarArray() { int[] resultado = new int[10]; return resultado; }. El método debe crear y devolver el array mediante 'return'. Quien invoca el método recibe la referencia al array devuelto.",
+      "tags": [
+        "programacion",
+        "unidad-4",
+        "arrays",
+        "return"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u4-020",
+      "front": "¿Qué es el diseño descendente (top-down design)?",
+      "back": "Es una metodología de programación que consiste en dividir un problema complejo en subproblemas más simples y fáciles de resolver. Cada subproblema se asocia a un método. Se va descomponiendo nivel por nivel hasta llegar a problemas lo suficientemente simples que puedan codificarse directamente.",
+      "tags": [
+        "programacion",
+        "unidad-4",
+        "diseno-descendente"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u4-021",
+      "front": "¿Cuál es la diferencia entre parámetros de entrada y de salida en un método?",
+      "back": "Los parámetros de entrada son los valores que el método necesita para realizar su tarea (datos de entrada). El parámetro de salida es el resultado que el método produce y devuelve (valor de retorno). Los parámetros de entrada se escriben entre paréntesis en la declaración y el de salida se indica mediante el tipo de retorno antes del nombre del método.",
+      "tags": [
+        "programacion",
+        "unidad-4",
+        "parametros",
+        "entrada-salida"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u4-022",
+      "front": "¿Qué establece el principio de encapsulación/ocultación en programación modular?",
+      "back": "El principio de encapsulación (u ocultación) establece que un método debe separar su interfaz (qué hace y qué parámetros necesita) de su implementación (cómo lo hace internamente). Para invocar un método correctamente, solo es necesario saber qué hace y qué datos espera, no cómo funciona internamente. Esto se consigue usando parámetros de entrada y salida, evitando variables globales.",
+      "tags": [
+        "programacion",
+        "unidad-4",
+        "encapsulacion"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u4-023",
+      "front": "¿Qué es la propagación de parámetros entre métodos?",
+      "back": "La propagación de parámetros ocurre cuando un método recibe valores como parámetros de entrada y los pasa a otros métodos que invoca internamente. Los valores se copian sucesivamente a las variables definidas por los parámetros de cada método, incluso si los nombres de las variables van variando en cada nivel de descomposición.",
+      "tags": [
+        "programacion",
+        "unidad-4",
+        "parametros",
+        "propagacion"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u4-024",
+      "front": "¿Por qué se recomienda usar parámetros en lugar de variables globales?",
+      "back": "Por tres razones principales:\n1. Legibilidad: con parámetros se ve claramente qué datos entran y qué resultado produce un método.\n2. Encapsulación: el método es autocontenido y no depende de variables externas.\n3. Reutilización: el método puede usarse con diferentes valores sin depender del contexto. Las variables globales solo deberían usarse cuando un dato debe ser accedido desde múltiples métodos y no tiene sentido pasarlo como parámetro.",
+      "tags": [
+        "programacion",
+        "unidad-4",
+        "parametros",
+        "variables-globales"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u4-025",
+      "front": "¿Qué parámetros de entrada y salida tiene el método 'main' en Java?",
+      "back": "El método main se declara como: public static void main(String[] args).\n- Parámetro de entrada: 'String[] args', un array de cadenas de texto que recibe los argumentos pasados desde la línea de comandos.\n- Parámetro de salida: ninguno (tipo void).",
+      "tags": [
+        "programacion",
+        "unidad-4",
+        "main",
+        "parametros"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u4-026",
+      "front": "¿Qué sucede si se declara un método con tipo de retorno distinto de void pero no se incluye 'return'?",
+      "back": "Se produce un error de compilación. Si un método declara un tipo de retorno distinto de void, todas las rutas de ejecución del método deben terminar con una sentencia 'return' que devuelva un valor del tipo declarado (o de un tipo compatible). El compilador verifica que esto se cumpla.",
+      "tags": [
+        "programacion",
+        "unidad-4",
+        "return",
+        "compilacion"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u4-027",
+      "front": "¿Cómo se invoca un método que tiene parámetros de entrada?",
+      "back": "Se invoca escribiendo el nombre del método seguido de los valores entre paréntesis, separados por comas. Los valores deben coincidir en orden y tipo con los parámetros formales. Ejemplo: si el método se declara como 'public void mostrarMaximo(int a, int b)', se invoca como 'mostrarMaximo(4, 10)' o 'mostrarMaximo(x, y+3)'.",
+      "tags": [
+        "programacion",
+        "unidad-4",
+        "invocacion"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u4-028",
+      "front": "¿Qué significa que un método tenga 'public static void' en su declaración?",
+      "back": "- 'public': el método es accesible desde otras clases.\n- 'static': el método pertenece a la clase y no necesita una instancia para ser invocado (aunque en los ejemplos vistos se invoca a través de un objeto).\n- 'void': el método no devuelve ningún valor.\nEsta combinación es típica del método 'main' y de los métodos que no necesitan instancia.",
+      "tags": [
+        "programacion",
+        "unidad-4",
+        "declaracion",
+        "static"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u4-029",
+      "front": "¿Qué es un método parametrizado?",
+      "back": "Un método parametrizado es aquel que utiliza parámetros de entrada y/o salida para que su comportamiento dependa de los valores que recibe. La parametrización permite que un mismo método pueda resolver problemas similares variando los datos de entrada, aumentando así la reutilización del código.",
+      "tags": [
+        "programacion",
+        "unidad-4",
+        "parametrizacion"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u4-030",
+      "front": "¿Cuándo se dice que un método debe tener un único parámetro de salida?",
+      "back": "Se recomienda que cada método produzca un único resultado tangible. Si un subproblema genera más de un resultado, probablemente no se ha descompuesto suficientemente y debería dividirse en subproblemas más pequeños. Así se mantiene el principio de que cada método realiza una única tarea concreta.",
+      "tags": [
+        "programacion",
+        "unidad-4",
+        "diseño",
+        "cohesion"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u4-031",
+      "front": "¿Cuál es la diferencia entre parámetros formales y reales?",
+      "back": "Parámetros formales: son los que aparecen en la declaración del método (definen el tipo y nombre de las variables que recibirá el método).\nParámetros reales (o argumentos): son los valores concretos que se pasan al método cuando se invoca.\nEjemplo: en 'public void sumar(int a, int b)', 'a' y 'b' son formales; en 'sumar(5, 3)', 5 y 3 son reales.",
+      "tags": [
+        "programacion",
+        "unidad-4",
+        "parametros"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u4-032",
+      "front": "¿Cómo se pueden usar constantes en lugar de valores literales en un método?",
+      "back": "Se pueden declarar constantes usando 'public final static tipo NOMBRE = valor;' fuera de los métodos (a nivel de clase). Por ejemplo: 'public final static int MAX_SETMANES = 52;'. Las constantes mejoran la legibilidad del código y facilitan el mantenimiento al centralizar valores que no cambian.",
+      "tags": [
+        "programacion",
+        "unidad-4",
+        "constantes"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u4-033",
+      "front": "¿Qué es un 'esqueleto' de una clase cuando se aplica diseño descendente?",
+      "back": "El esqueleto es una primera versión de la clase que contiene la declaración de las variables globales y de todos los métodos identificados durante la descomposición, pero con los cuerpos de los métodos vacíos o con código mínimo. Sirve para tener una organización general del código fuente y poder compilarlo, aunque al ejecutarse no haga nada todavía.",
+      "tags": [
+        "programacion",
+        "unidad-4",
+        "diseno-descendente",
+        "esqueleto"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u4-034",
+      "front": "¿Cómo se implementa el diseño descendente nivel por nivel?",
+      "back": "Se empieza por los niveles más bajos de descomposición (los subproblemas más simples) y se va subiendo hasta llegar al problema general. Una vez codificados todos los métodos de un nivel, se puede compilar y probar. Luego se pasa al nivel superior, aprovechando los métodos ya implementados. Si al final algún método es demasiado corto (1-2 líneas) o demasiado largo, se refina.",
+      "tags": [
+        "programacion",
+        "unidad-4",
+        "diseno-descendente",
+        "implementacion"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u4-035",
+      "front": "¿Qué tres preguntas clave ayudan a identificar parámetros de entrada y salida de un método?",
+      "back": "1. ¿Qué valores (datos) necesita el método para realizar su tarea? -> Parámetros de entrada.\n2. ¿Qué tipo de valor genera el método como resultado? -> Tipo de retorno.\n3. Una vez realizado el cálculo, ¿qué variable contiene el resultado y cómo se devuelve? -> Sentencia return.",
+      "tags": [
+        "programacion",
+        "unidad-4",
+        "parametros",
+        "analisis"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u4-036",
+      "front": "¿Cómo se puede refinar (mejorar) un programa tras codificarlo con diseño descendente?",
+      "back": "Dos principios de refinamiento:\n1. Eliminar métodos demasiado cortos: si un método tiene 1-2 líneas, solo se usa en un sitio y no se reaprovecha, puede eliminarse y poner su código directamente donde se invoca.\n2. Mejorar métodos demasiado largos: si un método es muy largo o complejo, probablemente no se ha descompuesto suficientemente y hay que dividirlo en subproblemas más pequeños.",
+      "tags": [
+        "programacion",
+        "unidad-4",
+        "refinamiento",
+        "mejora"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u4-037",
+      "front": "¿Qué sucede cuando dentro de un método se modifican los valores de sus parámetros de entrada?",
+      "back": "Para tipos primitivos: la modificación solo afecta dentro del método; la variable original no se modifica (paso por valor).\nPara arrays: modificar el contenido del array (ej: a[0] = 5) sí afecta al array original porque ambas referencias apuntan al mismo objeto. Pero reasignar el parámetro (ej: a = new int[5]) no afecta a la referencia original.",
+      "tags": [
+        "programacion",
+        "unidad-4",
+        "parametros",
+        "modificacion"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u4-038",
+      "front": "¿Qué condición debe cumplirse para que el uso de variables globales sea aceptable?",
+      "back": "El uso de variables globales se considera aceptable cuando un dato debe ser accedido (compartido) por varios métodos de distintos niveles de descomposición y no tiene sentido pasarlo como parámetro en cada invocación. Sin embargo, en general se recomienda evitarlas y usar parámetros de entrada y salida para favorecer la encapsulación y la legibilidad del código.",
+      "tags": [
+        "programacion",
+        "unidad-4",
+        "variables-globales",
+        "buenas-practicas"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u4-039",
+      "front": "¿Cómo se crea un método que lea un entero del teclado y lo devuelva?",
+      "back": "public int leerEnteroTeclado() {\n    Scanner lector = new Scanner(System.in);\n    boolean leido = false;\n    int enteroLeido = 0;\n    while (!leido) {\n        if (lector.hasNextInt()) {\n            enteroLeido = lector.nextInt();\n            leido = true;\n        } else {\n            System.out.println(\"Esto no es un entero.\");\n            lector.next();\n        }\n        lector.nextLine();\n    }\n    return enteroLeido;\n}",
+      "tags": [
+        "programacion",
+        "unidad-4",
+        "ejemplo",
+        "return"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u4-040",
+      "front": "¿Cómo se declara un método que calcule la media de los valores de un array de enteros?",
+      "back": "public double media(int[] array) {\n    // Parám. entrada: el array de enteros\n    // Parám. salida: la media (double)\n    double acumulador = 0;\n    for (int i = 0; i < array.length; i++) {\n        acumulador = acumulador + array[i];\n    }\n    return acumulador / array.length;\n}",
+      "tags": [
+        "programacion",
+        "unidad-4",
+        "ejemplo",
+        "arrays"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u4-041",
+      "front": "¿Qué es un método de validación (como 'comprobarRespuesta')?",
+      "back": "Es un método que verifica si un valor cumple ciertas condiciones y devuelve un booleano (true si es correcto, false si no). Sigue el formato: entrada son los valores a comprobar, salida es un booleano. Ejemplo: 'public boolean comprobarRespuesta(String respuesta)' que verifica si la respuesta tiene 5 letras y solo contiene caracteres del alfabeto.",
+      "tags": [
+        "programacion",
+        "unidad-4",
+        "validacion",
+        "boolean"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u4-042",
+      "front": "¿Cuándo no es necesario declarar parámetros de entrada en un método?",
+      "back": "No es necesario cuando el método obtiene toda la información que necesita de fuentes externas que no son argumentos de llamada. Por ejemplo:\n- Métodos que generan valores aleatorios (como 'generarLetraAleatoria()' que usa System.nanoTime()).\n- Métodos que leen del teclado (como 'preguntarRespuesta()').\n- Métodos que solo muestran información por pantalla sin necesidad de datos externos.",
+      "tags": [
+        "programacion",
+        "unidad-4",
+        "parametros",
+        "cuando-usar"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u4-043",
+      "front": "¿Cuál es la estructura típica de un programa con diseño descendente?",
+      "back": "1. Clase principal con variables globales (si son necesarias).\n2. Método main: crea una instancia de la clase e invoca al método inicio.\n3. Método inicio: método principal que organiza el flujo del programa.\n4. Métodos de primer nivel de descomposición (mostrarMenu, tratarOpcion, etc.).\n5. Métodos de niveles inferiores según sea necesario.\n6. Cada método resuelve un subproblema concreto y autocontenido.",
+      "tags": [
+        "programacion",
+        "unidad-4",
+        "estructura",
+        "diseno-descendente"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u5-001",
+      "front": "Que son los packages en Java?",
+      "back": "Los packages son una forma de organizar las clases en Java en grupos tematicos. Proporcionan una estructura jerarquica de directorios que permite evitar colisiones de nombres y ordenar el codigo de forma modular.",
+      "tags": [
+        "programacion",
+        "unidad-5",
+        "packages"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u5-002",
+      "front": "Como se declara un package en Java?",
+      "back": "Se declara al inicio del archivo fuente con la palabra clave 'package' seguida del nombre del package. Por ejemplo: package utilidades.arrays;",
+      "tags": [
+        "programacion",
+        "unidad-5",
+        "packages"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u5-003",
+      "front": "Que es la sentencia import en Java y para que sirve?",
+      "back": "La sentencia import permite usar clases de otros packages sin tener que escribir su nombre completo (nombre calificado). Se coloca al inicio del codigo fuente, despues de la declaracion de package. Por ejemplo: import java.util.Random;",
+      "tags": [
+        "programacion",
+        "unidad-5",
+        "import"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u5-004",
+      "front": "Que package de Java es la unica excepcion que no requiere ser importada?",
+      "back": "El package java.lang es la unica excepcion. Las clases de java.lang (como String, Math, System) pueden usarse sin necesidad de importarlas explicitamente porque Java las importa automaticamente.",
+      "tags": [
+        "programacion",
+        "unidad-5",
+        "packages",
+        "import"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u5-005",
+      "front": "Que relacion debe haber entre la estructura de directorios y los packages en Java?",
+      "back": "La estructura de directorios debe coincidir con la jerarquia de nombres de los packages. Por ejemplo, si una clase pertenece al package utilidades.arrays, su archivo .java debe estar en la carpeta utilidades/arrays/. Si se copian clases entre proyectos, hay que mantener esta estructura de carpetas.",
+      "tags": [
+        "programacion",
+        "unidad-5",
+        "packages"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u5-006",
+      "front": "Que ventaja ofrece tener dos clases con el mismo nombre en diferentes packages?",
+      "back": "Permite que dentro de dos packages diferentes pueda haber clases con el mismo nombre sin que implique ninguna colision en el sistema de archivos (los archivos .java no se sobreescriben) y sin conflictos de nombres al usarlas.",
+      "tags": [
+        "programacion",
+        "unidad-5",
+        "packages"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u5-007",
+      "front": "A que package pertenece la clase Math en Java?",
+      "back": "La clase Math pertenece al package java.lang, por lo que puede usarse sin necesidad de importarla.",
+      "tags": [
+        "programacion",
+        "unidad-5",
+        "math"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u5-008",
+      "front": "Que son los metodos estaticos y como se invocan?",
+      "back": "Los metodos estaticos pueden ser invocados sin tener que inicializar (instanciar) su clase. Se identifican porque en la documentacion aparecen marcados con la palabra clave 'static'. Se invocan usando el nombre de la clase como prefijo: NombreClase.nombreMetodo(parametros);",
+      "tags": [
+        "programacion",
+        "unidad-5",
+        "metodos-estaticos"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u5-009",
+      "front": "Que hace el metodo Math.abs()?",
+      "back": "Math.abs() devuelve el valor absoluto de un numero. Por ejemplo: Math.abs(-5) devuelve 5.",
+      "tags": [
+        "programacion",
+        "unidad-5",
+        "math"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u5-010",
+      "front": "Que hace el metodo Math.pow() y que tipo de parametros acepta?",
+      "back": "Math.pow(base, exponente) calcula la potencia (base elevada a exponente). Acepta dos parametros de tipo double y devuelve un resultado de tipo double. Por ejemplo: Math.pow(2, 3) devuelve 8.0.",
+      "tags": [
+        "programacion",
+        "unidad-5",
+        "math"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u5-011",
+      "front": "Que hace el metodo Math.sqrt() y que precaucion hay que tener?",
+      "back": "Math.sqrt(valor) calcula la raiz cuadrada de un numero. Acepta un parametro de tipo double y devuelve un double. Hay que tener cuidado de no invocarlo con un parametro de entrada negativo, ya que el resultado sera siempre incorrecto (NaN).",
+      "tags": [
+        "programacion",
+        "unidad-5",
+        "math"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u5-012",
+      "front": "Que hace Math.random() en Java?",
+      "back": "Math.random() devuelve un numero real (double) aleatorio entre 0.0 (incluido) y 1.0 (excluido). Para obtener un numero en un rango diferente, se multiplica el resultado por el valor maximo deseado.",
+      "tags": [
+        "programacion",
+        "unidad-5",
+        "math"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u5-013",
+      "front": "Que hacen los metodos Math.max() y Math.min()?",
+      "back": "Math.max(a, b) devuelve el valor maximo entre dos numeros. Math.min(a, b) devuelve el valor minimo. Aceptan parametros de cualquier tipo primitivo numerico (int, long, float, double) y ambos parametros deben ser del mismo tipo. El tipo del resultado es el mismo que el de los parametros.",
+      "tags": [
+        "programacion",
+        "unidad-5",
+        "math"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u5-014",
+      "front": "Que hace Math.round() y que devuelve?",
+      "back": "Math.round(valor) redondea un numero real (float o double) al entero mas cercano. Si la parte decimal es 0.5 o superior, redondea hacia arriba; si es menor, redondea hacia abajo. Devuelve un valor de tipo int (si se pasa float) o long (si se pasa double).",
+      "tags": [
+        "programacion",
+        "unidad-5",
+        "math"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u5-015",
+      "front": "Que hacen Math.floor() y Math.ceil()?",
+      "back": "Math.floor(x) redondea un numero real hacia abajo (al entero menor o igual). Math.ceil(x) redondea hacia arriba (al entero mayor o igual). Ambos devuelven un valor de tipo double.",
+      "tags": [
+        "programacion",
+        "unidad-5",
+        "math"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u5-016",
+      "front": "Cuales son las constantes PI y E en la clase Math?",
+      "back": "Math.PI es la constante pi (aproximadamente 3.141592653589793). Math.E es la constante de Euler, base de los logaritmos naturales (aproximadamente 2.718281828459045). Son constantes estaticas de tipo double.",
+      "tags": [
+        "programacion",
+        "unidad-5",
+        "math"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u5-017",
+      "front": "Que es Javadoc y para que sirve?",
+      "back": "Javadoc es una herramienta auxiliar proporcionada por el JDK de Java que permite generar automaticamente documentacion en formato HTML a partir de comentarios especiales insertados en el codigo fuente. Busca palabras clave distintivas en los comentarios y genera la documentacion de clases, metodos y paquetes.",
+      "tags": [
+        "programacion",
+        "unidad-5",
+        "javadoc"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u5-018",
+      "front": "Cual es la sintaxis de los comentarios de Javadoc?",
+      "back": "Los comentarios de Javadoc comienzan con /** y terminan con */. Pueden tener varias lineas, cada una comenzando con *. Solo se pueden usar estos comentarios de bloque; no se pueden usar comentarios de una linea (//). Ejemplo:\\n/**\\n * Descripcion de la clase o metodo.\\n */",
+      "tags": [
+        "programacion",
+        "unidad-5",
+        "javadoc"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u5-019",
+      "front": "Donde se deben colocar los comentarios Javadoc en el codigo?",
+      "back": "Los comentarios Javadoc se colocan en las lineas inmediatamente anteriores tanto a la declaracion de la clase (public class ...) como a la declaracion de los metodos. El texto escrito en el comentario sera la explicacion detallada de esa clase o metodo en la documentacion final.",
+      "tags": [
+        "programacion",
+        "unidad-5",
+        "javadoc"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u5-020",
+      "front": "Que significa la palabra clave @author en Javadoc?",
+      "back": "@author se usa despues del texto asociado a la descripcion de la clase. Indica quien ha sido el autor de la clase. Solo se usa a nivel de clase, no de metodo. Ejemplo: @author Pablo",
+      "tags": [
+        "programacion",
+        "unidad-5",
+        "javadoc"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u5-021",
+      "front": "Que significan las palabras clave @param y @return en Javadoc?",
+      "back": "@param se usa en la descripcion de un metodo para describir uno de sus parametros. Se indica el nombre del parametro seguido de su descripcion. @return describe que evalua el metodo (el valor devuelto). Si el metodo no devuelve nada (void), no es necesario incluir @return.",
+      "tags": [
+        "programacion",
+        "unidad-5",
+        "javadoc"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u5-022",
+      "front": "Que significa la palabra clave @see en Javadoc?",
+      "back": "@see se puede utilizar tanto en la descripcion de un metodo como de una clase. Sirve para referirse a la pagina de documentacion de otras clases dentro del mismo programa, indicando: 'ver tambien la documentacion de...'. Se debe poner el nombre calificado de la clase a la que se refiere.",
+      "tags": [
+        "programacion",
+        "unidad-5",
+        "javadoc"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u5-023",
+      "front": "Que son las pruebas unitarias y cual es su proposito?",
+      "back": "Las pruebas unitarias son un metodo de testing que verifica el correcto funcionamiento de las unidades de codigo mas pequenas (metodos o clases) de forma aislada. Su proposito es detectar errores tempranamente, asegurar que el codigo funciona como se espera y facilitar la refactorizacion y el mantenimiento.",
+      "tags": [
+        "programacion",
+        "unidad-5",
+        "testing"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u5-024",
+      "front": "Que es JUnit?",
+      "back": "JUnit es un framework de pruebas unitarias para Java. Proporciona anotaciones como @Test para marcar metodos de prueba, y metodos de asercion como assertEquals(), assertTrue(), assertFalse() para verificar resultados esperados. Es ampliamente utilizado en desarrollo de software para pruebas automatizadas.",
+      "tags": [
+        "programacion",
+        "unidad-5",
+        "junit"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u5-025",
+      "front": "Cual es la estructura basica de una prueba en JUnit?",
+      "back": "Una prueba en JUnit es un metodo anotado con @Test. Sigue el patron Arrange-Act-Assert (AAA):\\n1. Arrange: preparar los datos y objetos necesarios\\n2. Act: ejecutar el metodo a probar\\n3. Assert: verificar que el resultado es el esperado usando aserciones.",
+      "tags": [
+        "programacion",
+        "unidad-5",
+        "junit"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u5-026",
+      "front": "Que son los asserts en programacion y para que sirven?",
+      "back": "Los asserts (aserciones) son comprobaciones que verifican si una condicion es verdadera. En Java, se usan con la palabra clave 'assert'. Si la condicion es falsa, se lanza una AssertionError. Sirven para validar invariantes, precondiciones y postcondiciones durante el desarrollo. Se pueden desactivar en produccion.",
+      "tags": [
+        "programacion",
+        "unidad-5",
+        "asserts"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u5-027",
+      "front": "Como se usa assert en Java?",
+      "back": "En Java se usa la palabra clave 'assert' seguida de una expresion booleana. Si la expresion es true, el programa continua. Si es false, se lanza un AssertionError. Tambien se puede anadir un mensaje: assert condicion : \"Mensaje de error\"; Los asserts deben activarse con -ea al ejecutar.",
+      "tags": [
+        "programacion",
+        "unidad-5",
+        "asserts"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u5-028",
+      "front": "Que es la recursividad en programacion?",
+      "back": "La recursividad es una forma de describir un proceso para resolver un problema de modo que, a lo largo de la descripcion, se usa el mismo proceso que se esta describiendo, pero aplicado a un caso mas simple. En Java, un metodo recursivo es aquel que, dentro de su bloque de instrucciones, tiene alguna invocacion a si mismo.",
+      "tags": [
+        "programacion",
+        "unidad-5",
+        "recursividad"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u5-029",
+      "front": "Que es el caso base en un metodo recursivo?",
+      "back": "El caso base contiene un bloque de instrucciones dentro de las cuales no hay ninguna llamada al metodo mismo. Se ejecuta cuando se considera que, a partir de los parametros de entrada, el problema ya es lo suficientemente simple como para ser resuelto directamente. Sin caso base, la recursion nunca terminaria.",
+      "tags": [
+        "programacion",
+        "unidad-5",
+        "recursividad"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u5-030",
+      "front": "Que es el caso recursivo en un metodo recursivo?",
+      "back": "El caso recursivo contiene un bloque de instrucciones dentro de las cuales hay un llamamiento al propio metodo, dado que se considera que todavia no se puede resolver el problema facilmente. Los valores usados como parametros de esta nueva llamada deben acercarse al caso base, garantizando que la recursion terminara.",
+      "tags": [
+        "programacion",
+        "unidad-5",
+        "recursividad"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u5-031",
+      "front": "Que estructura de control se usa siempre en un metodo recursivo?",
+      "back": "El bloque de codigo de un metodo recursivo siempre se basa en una estructura de seleccion (if-else o switch), donde cada rama corresponde a un caso base o a un caso recursivo. Normalmente hay al menos un caso base y un caso recursivo.",
+      "tags": [
+        "programacion",
+        "unidad-5",
+        "recursividad"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u5-032",
+      "front": "Que ocurre si un metodo recursivo no se aproxima al caso base?",
+      "back": "Si los casos recursivos no garantizan que sucesivos llamamientos van aproximando los valores de los parametros de entrada a algun caso base, el programa nunca termina. Se produce un error de StackOverflowError (desbordamiento de pila), similar a un bucle infinito.",
+      "tags": [
+        "programacion",
+        "unidad-5",
+        "recursividad"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u5-033",
+      "front": "Como se define recursivamente el factorial de un numero n?",
+      "back": "La definicion recursiva del factorial es:\\n- Caso base: 0! = 1\\n- Caso recursivo: n! = n * (n-1)!\\nEn Java: if (n == 0) return 1; else return n * factorial(n-1);",
+      "tags": [
+        "programacion",
+        "unidad-5",
+        "recursividad",
+        "factorial"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u5-034",
+      "front": "Como se define recursivamente la sucesion de Fibonacci?",
+      "back": "La definicion recursiva de Fibonacci es:\\n- Casos base: fib(0) = 0, fib(1) = 1\\n- Caso recursivo: fib(n) = fib(n-1) + fib(n-2) para n > 1\\nEs un ejemplo clasico de recursion multiple (dos llamadas recursivas por cada invocacion).",
+      "tags": [
+        "programacion",
+        "unidad-5",
+        "recursividad",
+        "fibonacci"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u5-035",
+      "front": "Que es la busqueda binaria o dicotomica?",
+      "back": "La busqueda binaria (o dicotomica) es un algoritmo eficiente para encontrar un valor en un array ordenado. Funciona dividiendo repetidamente el intervalo de busqueda a la mitad: si el valor buscado es menor que el del medio, se busca en la mitad inferior; si es mayor, en la mitad superior. Su complejidad es O(log n).",
+      "tags": [
+        "programacion",
+        "unidad-5",
+        "busqueda-binaria"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u5-036",
+      "front": "Cuales son los casos base en la busqueda binaria recursiva?",
+      "back": "En la busqueda binaria recursiva hay dos casos base:\\n1. Si inicio > fin, el valor no existe en el array: se devuelve -1.\\n2. Si array[posicionCentral] == valor, se ha encontrado: se devuelve la posicion.\\nEl caso recursivo sigue buscando en la mitad izquierda o derecha segun corresponda.",
+      "tags": [
+        "programacion",
+        "unidad-5",
+        "busqueda-binaria",
+        "recursividad"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u5-037",
+      "front": "En que consiste el problema de las Torres de Hanoi?",
+      "back": "Las Torres de Hanoi es un problema clasico de recursion. Consiste en tres varillas y n discos de diferentes tamanos apilados en la primera varilla. El objetivo es mover todos los discos a la tercera varilla, siguiendo estas reglas: solo se puede mover un disco a la vez, y un disco grande nunca puede estar sobre uno mas pequeno.",
+      "tags": [
+        "programacion",
+        "unidad-5",
+        "torres-hanoi"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u5-038",
+      "front": "Cual es la solucion recursiva de las Torres de Hanoi?",
+      "back": "Para mover n discos de origen a destino usando auxiliar:\\n- Caso base: si n == 1, mover el disco directamente de origen a destino.\\n- Caso recursivo:\\n  1. Mover n-1 discos de origen a auxiliar (usando destino como auxiliar)\\n  2. Mover el disco n de origen a destino\\n  3. Mover n-1 discos de auxiliar a destino (usando origen como auxiliar)",
+      "tags": [
+        "programacion",
+        "unidad-5",
+        "torres-hanoi"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u5-039",
+      "front": "Que diferencias hay entre recursion e iteracion?",
+      "back": "La iteracion usa estructuras de repeticion (for, while, do-while) y suele ser mas eficiente en memoria porque no acumula llamadas en la pila. La recursion usa metodos que se llaman a si mismos, ofreciendo un codigo mas legible y cercano a la definicion matematica del problema, pero puede consumir mas memoria (riesgo de StackOverflow) y ser mas lenta.",
+      "tags": [
+        "programacion",
+        "unidad-5",
+        "recursion-vs-iteracion"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u5-040",
+      "front": "Cuando es preferible usar recursion en lugar de iteracion?",
+      "back": "La recursion es preferible cuando: el problema se define naturalmente de forma recursiva (como factorial, Fibonacci, arboles), cuando la solucion iterativa es demasiado compleja o dificil de entender, o cuando se trabaja con estructuras de datos recursivas (arboles, grafos). Para problemas simples con iteraciones claras, la iteracion suele ser mejor opcion.",
+      "tags": [
+        "programacion",
+        "unidad-5",
+        "recursion-vs-iteracion"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u5-041",
+      "front": "Que es la API de Java?",
+      "back": "La API de Java (Application Programming Interface) es un cuantioso repositorio de clases, organizadas por distintos packages de acuerdo a su tematica, que vienen incorporadas en el JDK. Proporciona funcionalidades listas para usar que extienden el lenguaje de programacion mas alla de su sintaxis basica.",
+      "tags": [
+        "programacion",
+        "unidad-5",
+        "api"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u5-042",
+      "front": "Cuales son los packages principales de la API de Java?",
+      "back": "Los packages principales de la API de Java incluyen:\\n- java.lang: clases esenciales (String, Math, System)\\n- java.io: clases de entrada/salida (tratamiento de archivos)\\n- java.util: clases de proposito general (Random, Scanner, Arrays)\\n- javax.swing: clases para interfaces graficas de usuario",
+      "tags": [
+        "programacion",
+        "unidad-5",
+        "api",
+        "packages"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u5-043",
+      "front": "Como funciona el metodo hashCode() y equals() en Java?",
+      "back": "equals() compara si dos objetos son logicamente iguales (por su contenido). hashCode() devuelve un entero que representa al objeto. Por contrato, si dos objetos son iguales segun equals(), deben tener el mismo hashCode(). Estos metodos se sobrescriben para definir la igualdad personalizada de objetos.",
+      "tags": [
+        "programacion",
+        "unidad-5",
+        "equals-hashcode"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u5-044",
+      "front": "Que metodos estaticos principales ofrece la clase Arrays?",
+      "back": "La clase Arrays (java.util) ofrece metodos estaticos para manipular arrays:\\n- Arrays.sort(array): ordena los elementos\\n- Arrays.binarySearch(array, clave): busqueda binaria\\n- Arrays.copyOfRange(array, inicio, fin): copia un rango\\n- Arrays.equals(array1, array2): compara si son iguales\\n- Arrays.toString(array): convierte a cadena de texto",
+      "tags": [
+        "programacion",
+        "unidad-5",
+        "arrays"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u5-045",
+      "front": "Que hace el metodo Arrays.binarySearch() y que requisito debe cumplir el array?",
+      "back": "Arrays.binarySearch(array, clave) busca un valor en un array ordenado. Devuelve la posicion donde se encuentra el valor, o un valor negativo si no se encuentra (la posicion de insercion es -(valorNegativo) - 1). El array debe estar previamente ordenado, de lo contrario no se garantiza la correccion de la busqueda.",
+      "tags": [
+        "programacion",
+        "unidad-5",
+        "arrays"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u5-046",
+      "front": "Que es el constructor de una clase y como se identifica en la documentacion?",
+      "back": "El constructor es un metodo especial que se invoca al inicializar una clase con 'new'. En la documentacion de la API de Java, el apartado 'Constructor Summary' indica los parametros que necesita cada constructor. Se puede elegir entre diferentes constructores, y segun cual se elija, la clase puede comportarse de manera diferente.",
+      "tags": [
+        "programacion",
+        "unidad-5",
+        "constructores"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u5-047",
+      "front": "Como se genera un numero aleatorio entre 0 y 100 usando la clase Random?",
+      "back": "Para generar un numero aleatorio entre 0 y 100 con la clase Random:\\n1. Importar java.util.Random\\n2. Crear una instancia: Random rnd = new Random();\\n3. Generar el valor: double valor = rnd.nextDouble() * 100;\\nnextDouble() genera un valor entre 0.0 y 1.0, y al multiplicarlo por 100 se obtiene el rango deseado.",
+      "tags": [
+        "programacion",
+        "unidad-5",
+        "random"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u5-048",
+      "front": "Que son las anotaciones @Before, @After, @BeforeClass y @AfterClass en JUnit?",
+      "back": "Son anotaciones de JUnit para configurar y limpiar pruebas:\\n- @Before: se ejecuta antes de cada metodo @Test\\n- @After: se ejecuta despues de cada metodo @Test\\n- @BeforeClass: se ejecuta una vez antes de todos los tests (metodo static)\\n- @AfterClass: se ejecuta una vez despues de todos los tests (metodo static)",
+      "tags": [
+        "programacion",
+        "unidad-5",
+        "junit"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u5-049",
+      "front": "Cuales son los metodos de asercion mas comunes en JUnit?",
+      "back": "Los metodos de asercion mas comunes en JUnit son:\\n- assertEquals(esperado, real): verifica igualdad\\n- assertTrue(condicion): verifica que es true\\n- assertFalse(condicion): verifica que es false\\n- assertNull(objeto): verifica que es null\\n- assertNotNull(objeto): verifica que no es null\\n- assertThrows(excepcion, ejecutable): verifica que se lanza una excepcion",
+      "tags": [
+        "programacion",
+        "unidad-5",
+        "junit"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u5-050",
+      "front": "Que papel juega el metodo compareTo() de String en la busqueda dicotomica?",
+      "back": "El metodo compareTo() de String compara dos cadenas lexicograficamente. Devuelve 0 si son iguales, un valor negativo si la cadena es anterior alfabeticamente, y un valor positivo si es posterior. En la busqueda dicotomica, se usa compareTo() para decidir si buscar en la mitad izquierda (resultado > 0) o derecha (resultado < 0) del array de nombres.",
+      "tags": [
+        "programacion",
+        "unidad-5",
+        "recursividad",
+        "busqueda-binaria"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u6-001",
+      "front": "¿Qué clase de Java se utiliza para representar la ruta de un archivo o directorio en el sistema de archivos?",
+      "back": "La clase java.io.File.\\nNo representa el contenido del archivo, solo su ubicación en el sistema de archivos.\\nSe usa para comprobar si existe (isFile()), obtener tamaño (length()), borrar (delete()), renombrar (renameTo()), etc.",
+      "tags": [
+        "programacion",
+        "unidad-6",
+        "clase-file"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u6-002",
+      "front": "¿Cómo se crea un objeto File para referenciar un archivo llamado \"datos.txt\" en la carpeta de trabajo?",
+      "back": "File f = new File(\"datos.txt\");\\nTambién se puede usar una ruta absoluta:\\nFile f = new File(\"C:\\\\carpeta\\\\datos.txt\");",
+      "tags": [
+        "programacion",
+        "unidad-6",
+        "clase-file"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u6-003",
+      "front": "¿Qué diferencia hay entre FileInputStream/FileOutputStream y FileReader/FileWriter?",
+      "back": "FileInputStream y FileOutputStream son flujos de bytes (binarios), para leer/escribir datos binarios (imágenes, archivos comprimidos, etc.).\\nFileReader y FileWriter son flujos de caracteres (texto), para leer/escribir archivos de texto plano.",
+      "tags": [
+        "programacion",
+        "unidad-6",
+        "flujos-byte",
+        "flujos-caracter"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u6-004",
+      "front": "¿Cómo se lee un archivo de texto usando FileReader y BufferedReader en Java?",
+      "back": "FileReader fr = new FileReader(\"archivo.txt\");\\nBufferedReader br = new BufferedReader(fr);\\nString linea = br.readLine();\\nwhile (linea != null) {\\n    System.out.println(linea);\\n    linea = br.readLine();\\n}\\nbr.close();",
+      "tags": [
+        "programacion",
+        "unidad-6",
+        "lectura-texto",
+        "bufferedreader"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u6-005",
+      "front": "¿Qué ventaja aporta BufferedReader frente a FileReader solo?",
+      "back": "BufferedReader incorpora un buffer en memoria que reduce el número de accesos al disco.\\nAdemás, proporciona el método readLine() que lee una línea completa de texto, algo que FileReader no tiene directamente.",
+      "tags": [
+        "programacion",
+        "unidad-6",
+        "bufferedreader",
+        "flujos-caracter"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u6-006",
+      "front": "¿Cómo se escribe en un archivo de texto usando FileWriter y PrintWriter?",
+      "back": "FileWriter fw = new FileWriter(\"salida.txt\");\\nPrintWriter pw = new PrintWriter(fw);\\npw.println(\"Línea de texto\");\\npw.printf(\"Número: %d\", 42);\\npw.close();\\nPrintWriter permite usar print(), println() y printf() igual que System.out.",
+      "tags": [
+        "programacion",
+        "unidad-6",
+        "escritura-texto",
+        "printwriter"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u6-007",
+      "front": "¿Qué clases se usan para leer y escribir datos binarios (bytes) en Java?",
+      "back": "FileInputStream para leer bytes de un archivo.\\nFileOutputStream para escribir bytes en un archivo.\\nAmbos trabajan con arrays de bytes (byte[]).\\nEjemplo: FileInputStream fis = new FileInputStream(\"imagen.jpg\");\\nint byteLeido = fis.read();",
+      "tags": [
+        "programacion",
+        "unidad-6",
+        "flujos-byte",
+        "fileinputstream",
+        "fileoutputstream"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u6-008",
+      "front": "¿Qué es la serialización de objetos en Java y qué clases intervienen?",
+      "back": "La serialización convierte un objeto en una secuencia de bytes para almacenarlo en un archivo o transmitirlo por red.\\nObjectOutputStream escribe objetos: writeObject(objeto).\\nObjectInputStream lee objetos: Object obj = readObject().\\nLa clase debe implementar la interfaz Serializable.",
+      "tags": [
+        "programacion",
+        "unidad-6",
+        "serializacion",
+        "objectinputstream",
+        "objectoutputstream"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u6-009",
+      "front": "¿Cómo se escribe un objeto serializado en un archivo usando ObjectOutputStream?",
+      "back": "FileOutputStream fos = new FileOutputStream(\"datos.obj\");\\nObjectOutputStream oos = new ObjectOutputStream(fos);\\noos.writeObject(miObjeto);\\noos.close();\\nLa clase del objeto debe implementar java.io.Serializable.",
+      "tags": [
+        "programacion",
+        "unidad-6",
+        "serializacion",
+        "objectoutputstream"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u6-010",
+      "front": "¿Cómo se lee un objeto serializado desde un archivo usando ObjectInputStream?",
+      "back": "FileInputStream fis = new FileInputStream(\"datos.obj\");\\nObjectInputStream ois = new ObjectInputStream(fis);\\nMiClase obj = (MiClase) ois.readObject();\\nois.close();\\nEs necesario hacer casting al tipo original. Puede lanzar ClassNotFoundException.",
+      "tags": [
+        "programacion",
+        "unidad-6",
+        "serializacion",
+        "objectinputstream"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u6-011",
+      "front": "¿Qué excepción se lanza cuando se intenta abrir un archivo que no existe en Java?",
+      "back": "FileNotFoundException.\\nEs una subclase de IOException.\\nSe lanza al intentar crear FileInputStream, FileReader, RandomAccessFile (modo \"r\"), etc. con una ruta que no corresponde a un archivo existente.",
+      "tags": [
+        "programacion",
+        "unidad-6",
+        "excepciones",
+        "filenotfoundexception"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u6-012",
+      "front": "¿Qué es IOException y por qué es importante al trabajar con archivos?",
+      "back": "IOException es una excepción checked que representa errores de entrada/salida.\\nEs la superclase de muchas excepciones de E/S: FileNotFoundException, EOFException, etc.\\nAl ser checked, el compilador obliga a tratarla con try-catch o declararla con throws.",
+      "tags": [
+        "programacion",
+        "unidad-6",
+        "excepciones",
+        "ioexception"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u6-013",
+      "front": "¿Qué es try-with-resources en Java?",
+      "back": "Es una sintaxis que cierra automáticamente los recursos que implementan AutoCloseable.\\nSintaxis:\\ntry (FileReader fr = new FileReader(\"archivo.txt\");\\n     BufferedReader br = new BufferedReader(fr)) {\\n    // usar br\\n} catch (IOException e) {\\n    // tratar error\\n}\\nNo es necesario llamar a close() explícitamente.",
+      "tags": [
+        "programacion",
+        "unidad-6",
+        "excepciones",
+        "try-catch-recursos"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u6-014",
+      "front": "¿Qué es la clase RandomAccessFile y para qué sirve?",
+      "back": "RandomAccessFile (java.io) permite leer y escribir archivos orientados a byte con acceso secuencial o relativo (aleatorio).\\nSe inicializa con una ruta y un modo: \"r\" (solo lectura) o \"rw\" (lectura y escritura).\\nPermite posicionar el apuntador con seek() y skipBytes().",
+      "tags": [
+        "programacion",
+        "unidad-6",
+        "randomaccessfile"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u6-015",
+      "front": "¿Cómo se crea un RandomAccessFile en modo lectura?",
+      "back": "File f = new File(\"datos.bin\");\\nRandomAccessFile raf = new RandomAccessFile(f, \"r\");\\nEl modo \"r\" solo permite leer. Si se intenta escribir, se produce un error.\\nEs útil para evitar sobreescribir accidentalmente.",
+      "tags": [
+        "programacion",
+        "unidad-6",
+        "randomaccessfile"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u6-016",
+      "front": "¿Cuál es la diferencia entre los modos \"r\" y \"rw\" de RandomAccessFile?",
+      "back": "\"r\" (read): solo permite leer datos. El archivo debe existir.\\n\"rw\" (read-write): permite leer y escribir. Si el archivo no existe, lo crea vacío.\\nEn modo \"rw\", al escribir sobre un archivo existente, no se borra su contenido previo: los nuevos datos sobrescriben byte a byte.",
+      "tags": [
+        "programacion",
+        "unidad-6",
+        "randomaccessfile"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u6-017",
+      "front": "¿Qué métodos de escritura proporciona RandomAccessFile para tipos primitivos?",
+      "back": "writeByte(byte v) - 1 byte\\nwriteShort(short s) - 2 bytes\\nwriteChar(char c) - 2 bytes\\nwriteInt(int i) - 4 bytes\\nwriteLong(long l) - 8 bytes\\nwriteFloat(float f) - 4 bytes\\nwriteDouble(double d) - 8 bytes\\nwriteBoolean(boolean b) - 1 byte\\nCada método escribe la representación binaria del valor.",
+      "tags": [
+        "programacion",
+        "unidad-6",
+        "randomaccessfile",
+        "escritura-binaria"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u6-018",
+      "front": "¿Qué métodos de lectura proporciona RandomAccessFile para tipos primitivos?",
+      "back": "readByte() - byte\\nreadShort() - short\\nreadChar() - char\\nreadInt() - int\\nreadLong() - long\\nreadFloat() - float\\nreadDouble() - double\\nreadBoolean() - boolean\\nCada método lee el número de bytes correspondiente y los interpreta según el tipo.",
+      "tags": [
+        "programacion",
+        "unidad-6",
+        "randomaccessfile",
+        "lectura-binaria"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u6-019",
+      "front": "¿Qué hace el método seek(long pos) de RandomAccessFile?",
+      "back": "seek(long pos) ubica el apuntador del archivo exactamente en la posición especificada, medida en bytes desde el inicio del archivo (posición 0).\\nNo hay restricción en el valor: se puede posicionar más allá del final del archivo.\\nEjemplo: raf.seek(20); // apuntador al byte 20",
+      "tags": [
+        "programacion",
+        "unidad-6",
+        "randomaccessfile",
+        "posicionamiento"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u6-020",
+      "front": "¿Qué hace el método skipBytes(int n) de RandomAccessFile?",
+      "back": "skipBytes(int n) avanza el apuntador n bytes desde la posición actual.\\nDevuelve el número de bytes realmente avanzados (int).\\nSi se llega al final del archivo, el avance se detiene.\\nEjemplo: int avanzados = raf.skipBytes(20);",
+      "tags": [
+        "programacion",
+        "unidad-6",
+        "randomaccessfile",
+        "posicionamiento"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u6-021",
+      "front": "¿Qué devuelve getFilePointer() de RandomAccessFile?",
+      "back": "getFilePointer() devuelve un long que indica la posición actual del apuntador dentro del archivo, medida en bytes desde el inicio.\\nÚtil para saber dónde se está leyendo o escribiendo.\\nEjemplo: long pos = raf.getFilePointer();",
+      "tags": [
+        "programacion",
+        "unidad-6",
+        "randomaccessfile",
+        "posicionamiento"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u6-022",
+      "front": "¿Qué hace el método setLength(long tamano) de RandomAccessFile?",
+      "back": "setLength(long tamano) modifica el tamaño del archivo.\\nSi el nuevo tamaño es menor, se eliminan los bytes sobrantes.\\nSi es mayor, se rellena con bytes a 0.\\nEs útil para truncar el archivo después de una escritura parcial, evitando que queden datos basura al final.",
+      "tags": [
+        "programacion",
+        "unidad-6",
+        "randomaccessfile"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u6-023",
+      "front": "¿Cuántos bytes ocupa cada tipo primitivo de Java al escribirse con RandomAccessFile?",
+      "back": "byte - 1 byte\\nshort - 2 bytes\\nchar - 2 bytes\\nint - 4 bytes\\nlong - 8 bytes\\nfloat - 4 bytes\\ndouble - 8 bytes\\nboolean - 1 byte\\nConocer estos tamaños es necesario para calcular posiciones al usar seek().",
+      "tags": [
+        "programacion",
+        "unidad-6",
+        "randomaccessfile",
+        "escritura-binaria"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u6-024",
+      "front": "¿Cómo se puede calcular el número de valores enteros en un archivo binario usando RandomAccessFile?",
+      "back": "long numEnters = f.length() / 4;\\nComo cada entero (int) ocupa 4 bytes, dividiendo el tamaño total del archivo en bytes entre 4 se obtiene la cantidad de enteros almacenados.",
+      "tags": [
+        "programacion",
+        "unidad-6",
+        "randomaccessfile",
+        "lectura-binaria"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u6-025",
+      "front": "¿Qué sucede si se usa readDouble() sobre un archivo que contiene enteros (int)?",
+      "back": "No se produce una excepción, pero el resultado es incorrecto.\\nreadDouble() lee 8 bytes consecutivos y los interpreta como un double, aunque en realidad sean dos enteros de 4 bytes cada uno.\\nEsto puede provocar comportamientos erráticos sin aviso, a diferencia de Scanner que sí lanza excepción.",
+      "tags": [
+        "programacion",
+        "unidad-6",
+        "randomaccessfile",
+        "lectura-binaria"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u6-026",
+      "front": "¿Cómo se escribe un archivo binario con 20 valores enteros (del 1, 2, 4, 8... duplicando cada uno) usando RandomAccessFile?",
+      "back": "RandomAccessFile raf = new RandomAccessFile(f, \"rw\");\\nint valor = 1;\\nfor (int i = 0; i < 20; i++) {\\n    raf.writeInt(valor);\\n    valor = valor * 2;\\n}\\nraf.close();\\nEl archivo ocupará 20 * 4 = 80 bytes.",
+      "tags": [
+        "programacion",
+        "unidad-6",
+        "randomaccessfile",
+        "escritura-binaria"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u6-027",
+      "front": "¿Cómo se lee el valor en la posición 2 (tercer entero) de un archivo binario de enteros usando RandomAccessFile?",
+      "back": "raf.seek(2 * 4); // posición del tercer entero (0, 4, 8...)\\nint valor = raf.readInt();\\nCada entero ocupa 4 bytes, por lo que la posición = índice * 4.",
+      "tags": [
+        "programacion",
+        "unidad-6",
+        "randomaccessfile",
+        "posicionamiento",
+        "lectura-binaria"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u6-028",
+      "front": "¿Qué diferencia hay entre acceso secuencial y acceso relativo (aleatorio) a archivos?",
+      "back": "Acceso secuencial: los datos se leen uno tras otro desde el inicio. Para llegar al décimo elemento hay que leer (y descartar) los nueve anteriores.\\nAcceso relativo (aleatorio): se puede acceder directamente a cualquier posición usando seek(), sin procesar los anteriores.\\nRandomAccessFile permite ambos tipos de acceso.",
+      "tags": [
+        "programacion",
+        "unidad-6",
+        "randomaccessfile",
+        "acceso-relativo"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u6-029",
+      "front": "¿Qué sucede cuando se hace seek() más allá del tamaño del archivo y luego se escribe?",
+      "back": "El tamaño del archivo se incrementa automáticamente hasta la posición del apuntador, rellenando los nuevos bytes con 0.\\nLuego se materializa la escritura.\\nEjemplo: si el archivo tiene 80 bytes y se hace seek(100), el archivo crece a 100 bytes (bytes 80-99 a 0) y luego se escribe.",
+      "tags": [
+        "programacion",
+        "unidad-6",
+        "randomaccessfile",
+        "posicionamiento"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u6-030",
+      "front": "¿Qué característica especial tiene la escritura de RandomAccessFile sobre un archivo existente respecto a PrintStream?",
+      "back": "RandomAccessFile en modo \"rw\" no borra el archivo existente: sobreescribe byte a byte solo donde está el apuntador.\\nPrintStream, en cambio, borra todo el contenido del archivo al abrirlo y escribe desde cero.\\nCon RandomAccessFile se pueden modificar valores concretos sin afectar al resto.",
+      "tags": [
+        "programacion",
+        "unidad-6",
+        "randomaccessfile",
+        "escritura-binaria"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u6-031",
+      "front": "¿Qué es la propagación de errores en el contexto del tratamiento de archivos?",
+      "back": "Es el mecanismo mediante el cual un método avisa al código que lo invocó si pudo realizar su tarea correctamente.\\nNormalmente se usa el valor de retorno: 0 si todo fue bien, -1 si hubo error.\\nEjemplo: si un método que lee un archivo encuentra una excepción, devuelve -1 o null para indicar el fallo.",
+      "tags": [
+        "programacion",
+        "unidad-6",
+        "excepciones",
+        "propagacion-errores"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u6-032",
+      "front": "¿Qué ventajas y desventajas tiene un archivo orientado a carácter frente a uno orientado a byte?",
+      "back": "Ventajas carácter: fáciles de crear y editar con editor de texto, fáciles de depurar.\\nDesventajas carácter: tamaño variable por valor, solo acceso secuencial, hay que reescribir todo al modificar.\\nVentajas byte: tamaño fijo por valor, permiten acceso relativo, sobreescrituras parciales.\\nDesventajas byte: no legibles directamente, código más complejo.",
+      "tags": [
+        "programacion",
+        "unidad-6",
+        "comparativa"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u6-033",
+      "front": "¿Cómo se detecta el final de un archivo orientado a carácter usando Scanner?",
+      "back": "Hay tres estrategias principales:\\n1) Número conocido de valores a priori (leer exactamente N valores).\\n2) Marca de finalización (un valor especial que indica el fin, ej: -100 o \"fin\").\\n3) Número de valores indicado al inicio del archivo (el primer valor dice cuántos hay).\\nSin estas estrategias, intentar leer más allá del final produce una excepción.",
+      "tags": [
+        "programacion",
+        "unidad-6",
+        "lectura-texto",
+        "scanner"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u6-034",
+      "front": "¿Por qué es importante cerrar un archivo con close() después de usarlo?",
+      "back": "close() indica al sistema operativo que el archivo ya no está en uso.\\nMientras un archivo está abierto, su acceso puede estar limitado para otros procesos.\\nEn escritura, close() fuerza la escritura definitiva de todos los datos pendientes (flush).\\nSi no se cierra, los datos podrían perderse o corromperse.",
+      "tags": [
+        "programacion",
+        "unidad-6",
+        "gestion-archivos"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u6-035",
+      "front": "¿Cómo se fuerza la escritura de los datos pendientes en un flujo de salida antes de cerrarlo?",
+      "back": "Mediante el método flush().\\nflush() obliga a que todos los datos en el búfer se escriban físicamente en el archivo.\\nclose() llama automáticamente a flush(), pero se puede invocar explícitamente si se necesita garantizar la escritura en un momento concreto.",
+      "tags": [
+        "programacion",
+        "unidad-6",
+        "escritura-texto",
+        "flush"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u6-036",
+      "front": "¿Qué es un archivo orientado a byte y cómo se diferencia de uno orientado a carácter?",
+      "back": "En un archivo orientado a byte, los datos se almacenan en su representación binaria directamente, sin convertir a texto.\\nNo se pueden crear con un editor de texto normal.\\nCada valor del mismo tipo ocupa siempre el mismo espacio.\\nNo hay delimitadores entre valores.\\nEn cambio, un archivo orientado a carácter almacena los datos como cadenas de texto legibles.",
+      "tags": [
+        "programacion",
+        "unidad-6",
+        "flujos-byte"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u6-037",
+      "front": "¿Cómo se escribe un archivo de texto con PrintStream (o PrintWriter) y qué métodos se usan?",
+      "back": "PrintStream escritor = new PrintStream(new File(\"salida.txt\"));\\nescritor.print(\"texto\");  // escribe sin salto de línea\\nescritor.println(\"texto\"); // escribe con salto de línea\\nescritor.close();\\nTambién se puede usar PrintWriter con FileWriter para especificar codificación.",
+      "tags": [
+        "programacion",
+        "unidad-6",
+        "escritura-texto",
+        "printstream"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u6-038",
+      "front": "¿Cómo se leen diferentes tipos de datos mezclados en un archivo de texto usando Scanner?",
+      "back": "Scanner lector = new Scanner(new File(\"datos.txt\"));\\nString nombre = lector.next();\\nString apellido = lector.next();\\nint edad = lector.nextInt();\\ndouble nota = lector.nextDouble();\\nEs necesario conocer el formato exacto del archivo y llamar al método correspondiente a cada tipo esperado.",
+      "tags": [
+        "programacion",
+        "unidad-6",
+        "lectura-texto",
+        "scanner"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u6-039",
+      "front": "¿Qué diferencia hay entre next() y nextLine() en Scanner?",
+      "back": "next() lee una sola palabra (hasta encontrar un espacio o salto de línea).\\nnextLine() lee toda la línea completa (hasta el salto de línea).\\nnext() considera \"palabra\" cualquier secuencia sin espacios.\\nnextLine() lee desde la posición actual hasta el siguiente salto de línea inclusive.",
+      "tags": [
+        "programacion",
+        "unidad-6",
+        "lectura-texto",
+        "scanner"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u6-040",
+      "front": "¿Cómo se modifica un único valor dentro de un archivo orientado a carácter?",
+      "back": "No es posible modificar un único valor directamente.\\nHay que leer todos los valores del archivo a un array, modificar el valor deseado en memoria, y luego reescribir el archivo completo desde cero con PrintStream.\\nCon RandomAccessFile (archivo binario) sí es posible modificar un valor concreto sin reescribir todo.",
+      "tags": [
+        "programacion",
+        "unidad-6",
+        "modificacion"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u6-041",
+      "front": "¿Cómo se puede pasar un Scanner como parámetro a un método auxiliar?",
+      "back": "Un Scanner es un tipo compuesto (objeto), por lo que se puede pasar como parámetro igual que un String o un array.\\nEjemplo:\\npublic double leerNotas(Scanner lector) {\\n    // usar lector para leer datos\\n}\\nEsto permite modularizar el código que lee archivos con diferentes formatos.",
+      "tags": [
+        "programacion",
+        "unidad-6",
+        "scanner",
+        "modularidad"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u6-042",
+      "front": "¿Qué sucede si se intenta escribir en un RandomAccessFile abierto en modo \"r\"?",
+      "back": "Se produce un error (excepción).\\nEl modo \"r\" solo permite operaciones de lectura.\\nCualquier intento de invocar métodos de escritura como writeInt(), writeDouble(), etc. generará una excepción.\\nPor eso es útil usar \"r\" cuando solo se quiere leer, para proteger el archivo de escrituras accidentales.",
+      "tags": [
+        "programacion",
+        "unidad-6",
+        "randomaccessfile"
+      ],
+      "difficulty": "easy"
+    }
+  ]
+}

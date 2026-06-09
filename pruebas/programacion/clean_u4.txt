@@ -1,0 +1,2358 @@
+Por  ejemplo,  suponga  que  desea  modificar  el  programa  anterior  de  forma  que,  en
+lugar  de  entrar  diez  valores  por  el  teclado,  puede  entrar  un  número  arbitrario.  En
+La  necesidad  de  declarar  variables  globales  comporta  una  problemática  en  casos
+muy  específicos.  Hasta  ahora,  en  el  momento  de  declarar  una  variable,  inmediato  le
+ha  asignado  un  valor  inicial.  Este  valor  podía  ser  tanto  el  resultado  de  asignar
+directamente  un  literal  como  una  expresión  o  una  entrada  de  datos  por  parte  del
+usuario.  Sin  embargo,  al  declarar  una  variable  como  global,  sólo  puede  ser  inicializada
+directamente  mediante  un  literal  o  expresiones  donde  se  usan  otras  variables
+globales.  No  existe  la  posibilidad  de  hacerlo  mediante  un  valor  que  dependa  de  una
+entrada,  por  teclado  o  de  los  argumentos  del  método  principal.  Esto  significa  que  la
+declaración  de  la  variable  y  la  asignación  del  valor  que  se  quiere  tratar  realmente  no
+puede  realizarse  en  la  misma  instrucción.  Sin  embargo,  siempre  que  se  declara  una
+variable  es  necesario  asignarle  un  valor  inicial.
+Después  de  mostrar  la  lista  ordenada,  en  una  nueva  línea,  debe  decir  cuántos  de
+los  valores  son  inferiores  a  la  mitad  del  mayor  valor  almacenado.  Aplique  diseño
+descendente  para  añadir  esta  nueva  tarea,  declarando  e  invocando  los  nuevos
+métodos  que  haga  falta.
+Reto  1:  Modifique  el  programa  de  ejemplo  de  forma  que  haga  lo  siguiente.
+1.2.6  Inicialización  diferida  de  variables
+Operar  con  cualquier  variable  tipo  complejo  con  un  valor  null  asignado  siempre
+resultará  en  un  programa  erróneo.
+Para  el  caso  de  variables  de  tipos  primitivos,  resolver  este  problema  es  simple.  Por
+convención,  se  le  asigna  inicialmente  el  valor  0  y  más  adelante  ya  se  sobreescribirá
+su  valor  con  otro  válido.  Ahora  bien,  para  el  caso  de  variables  complejas  (como  las
+de  tipo  array  o  String),  es  necesario  asignar  un  valor  especial  que  en  Java  se  llama  null.
+Esta  cadena  de  texto  es  una  palabra  reservada  del  lenguaje  que  sirve  para  decir
+que,  de  momento,  la  variable  está  declarada  pero  más  adelante  ya  se  le  asignará  un
+valor  correcto,  tan  pronto  como  sea  posible.
+Programación  (DAM)
+Programación  básica  (ASX)
+Programación  (DAW)
+Programación  modular
+F  igura  1.  7.  Flujo  de  control  de  las  instrucciones  cuando  se  invoca  el  método  leerLista.
+
+Se  ha  aplicado  diseño  descendente  para  dividirlo  en  dos  subproblemas:  leer  el  tamaño
+requiere  que  éste  sea  declarado  como  una  variable  global.  Por  tanto,  hay  que  diferir
+seguido  por  el  teclado.  En  un  caso  como  éste,  es  imposible  inicializar  el  array  con  una
+partir  de  la  secuencia  escrita,  el  primer  valor  indicará  cuántos  enteros  hay  que  leer  todo
+tamaño  concreto,  ya  que  ésta  depende  de  una  entrada  por  el  teclado.  Pero  el  programa
+la  inicialización.
+El  código  que  resuelve  esta  situación  sería  el  siguiente.  Dado  que  leer  la  secuencia
+de  enteros  del  teclado  ahora  es  un  problema  más  complejo,  es  necesario  leer  el  tamaño  y  los  valores.
+de  la  secuencia  y  la  secuencia  propiamente.  Compruebe  que  funciona  en  su
+entorno  de  trabajo.
+44 }
+Programación  básica  (ASX)
+1 //Variable  global.  Array  no  inicializado.
+Programación  (DAM)
+Programación  (DAW)
+Programación  modular
+lector.next();
+System.out.println("Escribe  una  lista  de  valores  enteros  y  pulsa  retorno.");
+}
+}  else  {
+programa.inicio();
+//Método  con  las  instrucciones  para  leer  la  lista.
+System.out.println("El  primer  valor  indica  el  tamaño  de  la  secuencia.");
+lector.next();
+public  void  inicio()  {
+listaEnters[index]  =  lector.nextInt();
+leerLista();
+//Al  aplicar  diseño  descendente,  ahora  es  necesario  declarar  "lector"  como  global
+}
+Scanner  lector  =  new  Scanner(System.in);
+}
+public  static  void  main  (String[]  args)  {
+ordenarLista();
+public  void  leerValores()  {
+}
+public  void  leerMida()  { //Lectura
+int  índice  =  0;
+while  (index  <  listaEnters.length)  {
+//Metodo  que  lee  el  primer  valor
+leerMida();
+public  void  leerLista()  {
+}  else  {
+}
+index++;
+mostrarLista();
+}
+//El  resto  de  métodos  no  cambian ...
+tamaño  =  lector.nextInt();
+lector.nextLine();
+}
+private  int[]  listaEnters  =  null;
+OrdenarDescendentVariable  programa  =  new  OrdenarDescendentVariable();
+leerValores();
+}
+listaEnters  =  new  int[tamaño]; //Inicialitización  diferida  del  array
+if  (lector.hasNextInt())  {
+//El  primer  valor  será  la  longitud
+int  tamaño  =  0;
+if  (lector.hasNextInt())  {
+
+Para  dejar  más  claro  el  comportamiento  esperado,  a  continuación  se  muestra  un  prototipo
+de  lo  que  se  esperaría  mostrar  con  su  ejecución:
+Lo  que  se  quiere  hacer  es  un  gestor  de  registro  de  temperaturas  tomadas  semanalmente
+por  un  observatorio.  Se  presupone  que  el  programa  se  pone  en  marcha  a  principios  de
+año  (1  de  enero)  y  al  principio  de  cada  semana.  A  lo  largo  de  52  semanas  que  tiene  un
+año,  se  van  registrando  las  temperaturas  medidas  cada  día  de  la  semana  anterior  (o  sea,
+siete  en  total  cada  vez).  Cada  vez  que  se  realiza  un  registro,  sabiendo  que  ha  pasado
+una  semana,  el  programa  calcula  automáticamente  qué  día  y  mes  es  el  actual.  A  partir  de
+estos  datos,  es  posible  consultar  en  cualquier  momento  cuál  ha  sido  la  temperatura  media
+y  la  diferencia  entre  el  valor  máximo  y  mínimo  registrados.
+1.3  Un  ejemplo  más  complejo
+Una  vez  visto  un  ejemplo  sencillo  de  aplicación  de  diseño  descendente,  básicamente  con
+el  objetivo  de  introducir  la  sintaxis  para  la  declaración  de  métodos  y  variables  globales  en
+Java,  es  el  momento  de  proponer  otro  más  complejo,  que  requiera  varios  grados  de
+descomposición.
+Todas  estas  acciones  se  llevan  a  cabo  usando  un  menú.  Evidentemente,  la  aplicación
+debe  ser  lo  suficientemente  robusta  como  para  tratar  casos  erróneos  (por  ejemplo,
+consultar  valores  cuando  todavía  no  hay  fecha  registrada,  o  intentar  registrar  como
+temperatura  valores  de  tipo  incorrecto).
+Al  hacerlo,  la  fecha  actual  también  se  muestra  en  pantalla.
+25  [FI]  Salir.
+32  [MJ]  Consultar  temperatura  media.
+23  [MJ]  Consultar  temperatura  media.
+Programación  (DAM)
+33  [DF]  Consultar  diferencia  máxima.
+29  Bienvenido  al  registro  de  temperaturas
+24  [DF]  Consultar  diferencia  máxima.
+10  Bienvenido  al  registro  de  temperaturas
+11  −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+30  −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+3  [RT]  Registrar  temperaturas  semanales.
+Programación  básica  (ASX)
+16  Opción:  RT  17
+Escribe  las  temperaturas  de  esta  semana:  18  20,5  21,1  21  21,7
+20,9  20,6  19,9
+22  [RT]  Registrar  temperaturas  semanales.
+5  [DF]  Consultar  diferencia  máxima.
+7  Opción:  MJ  8
+No  hay  temperaturas  registradas.
+4  [MJ]  Consultar  temperatura  media.
+26  Opción:  MJ  27
+Hasta  la  fecha  8  de  enero  la  media  ha  sido  de  20.814285  grados.
+12  [RT]  Registrar  temperaturas  semanales.
+31  [RT]  Registrar  temperaturas  semanales.
+2  −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+Programación  modular
+14  [DF]  Consultar  diferencia  máxima.
+13  [MJ]  Consultar  temperatura  media.
+Programación  (DAW)
+1  Bienvenido  al  registro  de  temperaturas
+20  Bienvenido  al  registro  de  temperaturas
+15  [FI]  Salir.
+6  [FI]  Salir.
+21  −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+
+Cuando  llegue  el  momento  habrá  que  considerar  si  declararlos  como  variables  globales,
+dependiendo  de  si  estos  datos  se  usan  dentro  de  más  de  un  subproblema  o  no.
+1.  Identificación  de  los  datos  a  tratar
+Para  ver  con  más  detalle  el  proceso,  esta  vez  se  irá  haciendo  despacio  y  nivel  por  nivel.
+1.3.1  Descomposición  de  problema
+Una  vez  planteado  con  cierto  detalle  el  problema  a  resolver  (qué  debe  hacer  el
+programa),  es  posible  iniciar  la  descomposición  mediante  diseño  descendente.
+De  esta  forma,  resulta  más  fácil  evaluar  por  cada  subproblema  qué  debe  llevar  a  cabo  y
+si  se  trata  de  una  tarea  compleja  o  no.  En  este  caso,  es  necesario  gestionar  de  una  lista
+de  temperaturas,  que  se  puede  almacenar  usando  un  array  de  reales,  y  una  fecha
+dentro  de  un  mismo  año,  que  se  puede  almacenar  usando  dos  enteros,  día  y  mes.
+El  array  deberá  tener  espacio  para  almacenar  los  valores  de  los  días  a  52  semanas
+(52*7  =  364)  y  habrá  que  controlar  el  hecho  de  que  existen  posiciones  “vacías”  y  otras
+con  valores  correctos  asignados.  Por  ejemplo,  después  de  la  primera  semana,  sólo  los
+7  primeros  valores,  las  posiciones  0  a  6,  son  válidos.  El  resto  de  posiciones  carecen  de
+valores  válidos  asignados.
+Antes  de  empezar  la  descomposición,  como  paso  previo,  es  interesante  establecer  qué
+tipo  de  datos  es  necesario  manipular  y  cómo  almacenarlos  dentro  del  programa.
+2.  Primer  nivel  de  descomposición
+El  resultado  de  aplicar  el  primer  nivel  de  descomposición  puede  resultar  en  muchos  o
+pocos  subproblemas  dependiendo  del  grado  de  granularidad  con  el  que  decida  tratar  las
+tareas  que  realiza  el  programa.  Inicialmente,  es  recomendable  no  usar  una  granularidad
+alta  y  mantener  un  alto  nivel  de  abstracción.  Normalmente,  es  importante  no  bajar
+rápidamente  de  nivel  y  empezar  a  resolver  problemas  muy  concretos  en  un  solo  pase.
+Una  estrategia  para  evitar  esto  es  plantearse  qué  acciones  es  necesario  emprender
+antes  de  poder  llevar  a  cabo  otras.
+Partiendo  de  la  descripción  del  problema,  una  posible  descomposición  en  niveles  sería
+la  siguiente,  todavía  bastante  general.  El  programa  es  básicamente  una  estructura  de
+repetición  que  va  iterando  sobre  estas  dos  tareas:
+38  Bienvenido  al  registro  de  temperaturas
+Programación  (DAM)
+Programación  modular
+42  [DF]  Consultar  diferencia  máxima.
+43  [FI]  Salir.
+Programación  (DAW)
+Programación  básica  (ASX)
+34  [FI]  Salir.
+35  Opción:  DF  36
+Hasta  la  fecha  8  de  enero  la  diferencia  máxima  ha  sido  de  1.8000011  grados.
+39  −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+41  [MJ]  Consultar  temperatura  media.
+40  [RT]  Registrar  temperaturas  semanales.
+44  Opción:  FI
+
+Programación  (DAM)
+Programación  básica  (ASX)
+Programación  (DAW)
+Programación  modular
+•  Mostrar  menú.  Para  ello,  básicamente  basta  con  imprimir  un  conjunto  de  texto  en
+pantalla  y  ya  está.  Es  una  tarea  muy  simple  que  puede  llevarse  a  cabo  mediante
+sucesivas  invocaciones  en  System.out.println.  Por  tanto,  no  hace  falta  descomponerla
+más.
+Estas  iteraciones  se  irán  repitiendo  hasta  cumplir  la  condición  que  desea  finalizar  el  programa.
+De  entrada,  se  puede  decidir  que  esto  se  llevará  a  cabo  con  una  variable  de  control  de  tipo
+semáforo.
+•  Mostrar  menú.
+•  Tratar  orden.
+Para  ver  si  es  necesario  un  segundo  nivel  es  necesario  evaluar  si  los  subproblemas
+propuestos  en  el  primer  nivel  son  demasiado  complejos  todavía.  Evidentemente,  dependiendo
+de  la  destreza  del  programador,  lo  que  se  considera  complejo  puede  ser  muy  relativo.  En
+cualquier  caso,  y  esto  es  independiente  de  la  habilidad  del  programador,  lo  que  hay  que
+identificar  son  tareas  claramente  diferenciadas  que  es  necesario  resolver  para  solucionar  cada  subproblema.
+1.  Mostrar  menú.
+(a)  Entrar  registro  de  temperaturas  semanales.
+A  partir  de  este  análisis,  la  descomposición  hasta  el  segundo  nivel  quedaría  como:
+(c)  Mostrar  diferencia  máxima.
+Hasta  cierto  punto,  para  un  diseñador  novel,  sería  comprensible  proponer  ya  en  el  primer
+nivel  resolver  subproblemas  tales  como  el  cálculo  de  las  temperaturas  mínimas  y  máximas,
+puesto  que  son  aspectos  que  resaltan  claramente  en  el  enunciado.
+Pero  si  reflexiona,  se  dará  cuenta  de  que  para  poder  llevar  a  cabo  estas  tareas  hay  condiciones
+previas  que  antes  hay  que  cumplir:  que  el  usuario  haya  seleccionado  una  opción.  Por  tanto,  esto
+significa  que  gestionar  el  menú  y  ejecutar  las  opciones  tiene  relación  de  jerarquía  dentro  del  diseño:
+primero  lea  la  opción  y  luego  la  ejecute.  Por  tanto,  no  se  encuentran  en  el  mismo  nivel.
+3.  Segundo  nivel  de  descomposición
+2.  Tratar  orden.
+(d)  Finalizar  ejecución.
+(b)  Mostrar  temperatura  media.
+•  Tratar  orden.  Hay  que  leer  el  orden  por  el  teclado  y  analizar  si  lo  que  se  lee  se
+corresponde  a  alguna  de  las  cuatro  órdenes  posibles.  Esto  puede  hacerse  con  una
+estructura  de  selección.  Entonces,  según  lo  leído,  hay  que  realizar  tareas  totalmente
+diferentes.  Claramente,  se  trata  de  una  tarea  compleja  que  es  necesario  descomponer.
+La  forma  más  lógica  de  hacerlo,  inicialmente,  podría  ser  por  cada  tarea  a  realizar.
+
+•  Mostrar  temperatura  media.  Este  problema  puede  descomponerse  en  dos.  Por  un
+lado,  se  pide  mostrar  la  fecha  de  forma  que  el  mes  se  muestre  en  formato  texto,
+partiendo  de  un  número.  Por  otro  lado,  es  necesario  mostrar  el  cálculo  que  se  pide
+(sumar  todos  los  valores  al  array  de  temperaturas  y  dividirlos  por  su  número).
+ii.  Calcular  diferencia  máxima.
+4.  Tercer  nivel  de  descomposición
+•  Entrar  registro  de  temperaturas  semanales.  Para  ello  es  necesario  resolver  dos
+tareas.  Por  un  lado,  leer  las  temperaturas  y  ponerlas  en  el  array  de  temperaturas.
+Además,  también  es  necesario  ir  actualizando  la  fecha  actual  cada  vez  que  se  leen
+datos  (avanzarla  7  días).  Esto  no  es  simple,  ya  que  es  necesario  controlar  el  caso
+de  qué  día  termina  cada  mes  (28,  30  o  31  días).
+•  Mostrar  diferencia  máxima.  Este  caso  es  exactamente  igual  que  el  anterior,  sólo  que
+el  cálculo  es  diferente  (buscar  con  un  único  recorrido  los  valores  máximo  y  mínimo
+y  calcular  su  diferencia).
+(d)  Finalizar  ejecución.
+Según  este  análisis,  la  descomposición  hasta  el  tercer  nivel  quedaría  así:
+2.  Tratar  orden.
+(c)  Mostrar  diferencia  máxima.
+ii.  Calcular  temperatura  media.
+i.  Mostrar  fecha  actual.
+1.  Mostrar  menú.
+De  nuevo,  se  realiza  una  iteración  sobre  los  subproblemas  de  segundo  nivel  para  ver  si
+presentan  tareas  complejas  o  no.  En  función  de  esto,  habrá  que  decidir  si  es  necesario
+seguir  descomponiéndolos.
+5.  Cuarto  nivel  de  descomposición
+•  Finalizar  ejecución.  Básicamente,  sería  cambiar  el  valor  de  la  variable  de  control  de
+tipo  semáforo  que  controla  la  estructura  de  repetición  donde  se  englobarán  “Mostrar
+menú”  y  “Tratar  orden”.  Es  muy  simple.
+(a)  Entrar  registro  de  temperaturas  semanales.
+i.  Leer  temperaturas  del  teclado.
+ii.  Actualizar  fecha  actual.
+(b)  Mostrar  temperatura  media.
+i.  Mostrar  fecha  actual.
+De  nuevo,  corresponde  estudiar  si  es  necesario  realizar  un  nuevo  nivel  de  descomposición
+según  el  grado  de  complejidad  de  los  subproblemas  de  tercer  nivel.  Un  punto  interesante
+que  ahora  se  encuentra  es  el  hecho  de  que  se  pueden  localizar  subproblemas  repetidos.
+Mostrar  la  fecha  actual  es  una  tarea  a  realizar  en  diferentes  lugares.  Por  tanto,  sólo  habrá
+que  resolver  este  subproblema  una  única  vez.
+Programación  (DAM)
+Programación  básica  (ASX)
+Programación  (DAW)
+Programación  modular
+
+//Métodos  asociados  al  problema  general
+private  static  final  int  MAX_SETMANES  =  52;
+//Constantes
+//Métodos  asociados  al  primer  nivel  de  descomposición
+private  int  dia  =  1;
+public  void  inicio()  {
+public  void  mostrarMenu()  {
+}
+private  float[]  temperaturas  =  new  float[MAX_SETMANES  *  7];
+//Variables  globales
+private  int  mes  =  1;
+private  int  numTemperaturas  =  0;
+RegistroTemperaturas  programa  =  new  RegistroTemperaturas();
+}
+}
+programa.inicio();
+public  static  void  main  (String[]  args)  {
+Programación  (DAM)
+Programación  modular
+Programación  básica  (ASX)
+Programación  (DAW)
+1  public  class  RegistroTemperaturas  {
+haciendo  un  recorrido  sobre  el  array.  Es  simple.
+declaración  de  variables  globales  y  métodos  necesarios.  Cada  subproblema  equivale
+1.3.2  Esqueleto  de  la  clase
+compone  de  pasos  muy  complejos.
+•  Actualizar  fecha  actual.  Se  trata  de  incrementar  el  día  y,  dependiendo  del  mes,
+muy  concreta  y  autocontenida,  no  es  necesario  un  cuarto  nivel  de  descomposición.  Hais
+de  selección.  Por  tanto,  tampoco  se  compone  de  pasos  muy  complejos.
+Una  vez  identificados  los  datos  que  se  quieren  tratar  y  finalizado  el  proceso  de
+terminado.
+texto  según  el  valor  numérico  del  más.  Esto  podría  hacerse  con  una  estructura
+descomposición  inicial,  es  posible  crear  un  esqueleto  de  la  clase,  sólo  con  la
+con  una  estructura  de  selección,  ver  si  se  ha  adelantado  a  un  nuevo  mes.  No  se
+una  tarea  especialmente  compleja  que  valga  la  pena  descomponer  más.
+•  Leer  temperaturas  del  teclado.  Aunque  no  se  hace  en  pocas  líneas  de  código,
+sabe  leer  7  valores  de  tipo  real  y  asignarlos  a  un  array.  Por  tanto,  no  es
+•  Mostrar  fecha  actual.  Se  trata  de  mostrar  el  día  directamente  y  mostrar  cierto
+a  un  método  a  declarar.  Si  el  esqueleto  está  correctamente  declarado,  debería
+oro.
+Dado  que  todos  los  subproblemas  del  tercer  nivel  ya  son  simples  y  resuelven  una  tarea
+nada  todavía.  Se  trata  sólo  de  una  organización  general  del  código  fuente.
+•  Calcular  temperatura  media.  Es  un  cálculo  sobre  los  valores  registrados,
+•  Calcular  diferencia  máxima.  Exactamente  un  caso  muy  parecido  al  anterior
+ser  posible  compilar  el  código  fuente,  aunque  al  ejecutarse  no  haría  absolutamente
+En  este  ejemplo  el  esqueleto  quedaría  así:
+
+Reto  2:  Complete  el  código  fuente  del  esqueleto  del  ejemplo  con  la
+métodos  asociados  a  los  subproblemas  del  nivel  más  bajo  de  descomposición  y  se  irá
+en  el  método  principal.  Por  tanto,  hay  que  codificar  los  métodos:
+del  mes.
+nada  del  registro.
+todavía  no  hará  nada  si  se  ejecuta.  Añádelos  y  compruebe  que  es  así.
+•  mostrarData:  muestra  la  fecha  actual,  en  formato:  Número  del  día  de  Nombre
+•  leerTemperaturasTeclado:  registra  7  temperaturas,  o  sea,  lee  7
+•  calculaDiferencia:  muestra  por  pantalla  la  diferencia  de  temperaturas
+•  calculaMedia:  muestra  por  pantalla  la  media  aritmética  de  temperatura­
+subiendo  poco  a  poco  hasta  llegar  a  la  resolución  del  problema  general,  que  corresponde
+1.3.3  Implementación  del  tercer  nivel  de  descomposición
+entre  los  valores  máximo  y  mínimo  del  registro.
+Sus
+autocontenidos  de  código,  una  vez  incorporados  al  código  fuente  del  programa,  es  posible
+compilarlo  perfectamente  sin  problemas,  aunque,  evidentemente,  el  programa
+Para  codificar  la  descomposición  de  este  problema,  también  se  empezará  desde  los
+valores  reales  y  los  guarda  en  el  array  de  temperaturas.
+Una  propuesta  de  cómo  hacer  su  código  sería  la  siguiente:  dado  que  los  métodos  son  blogs
+•  incrementarData:  dada  una  fecha,  suma  7  a  su  valor.
+Programación  (DAW)
+Programación  básica  (ASX)
+38 }
+Programación  (DAM)
+Programación  modular
+1 //Métodos  asociados  al  tercer  nivel  de  descomposición
+public  void  finalizarEjecución()  {
+Scanner  lector  =  new  Scanner(System.in);
+}
+//Métodos  asociados  al  segundo  nivel  de  descomposición
+}
+while  (numLeídas  <  7)  {
+//etc.
+public  void  registroTemperaturasSemanales()  {
+public  void  tratarOpcio()  {
+System.out.println("Escribe  las  temperaturas  de  esta  semana:");
+public  void  mostrarMedia()  {
+}
+}
+}
+//Métodos  asociados  al  tercer  nivel  de  descomposición
+int  numLeídas  =  0;
+public  void  leerTemperaturasTeclado()  {
+if  (lector.hasNextFloat())  {
+public  void  mostrarDiferencia()  {
+declaración  de  los  métodos  en  el  tercer  nivel  de  descomposición.
+nombres  serán:  leerTemperaturasTeclado,  incrementarData,  mostrarData,
+calculaMedia  y  calculaDiferencia.
+
+for(int  i  =  0;  y  <  numTemperaturas;  i++)  {
+}
+mas  =  1;
+System.out.print(día  +  "  de  ");
+System.out.print("Julio");  break;
+mas++;
+case  6:
+//¿Hemos  pasado  de  año?
+case  12:
+case  1:
+//Ver  Reto  3,  más  adelante
+díasEsteMes  =  31;
+case  9:
+System.out.print("Septiembre");  break;
+if  (mes  ==  2)  {
+case  2:
+}
+}
+if  (mes  >  12)  {
+public  void  calculaMedia()  {
+}
+case  11:
+díasEsteMes  =  30;
+System.out.print("Abril");  break;
+case  5:
+}  else  {
+System.out.print("Agosto");  break;
+//¿Hemos  pasado  de  mes?
+día  =  día  −  díasEsteMes;
+//¿Cuántos  días  tiene  este  mes?
+}
+}  else  if  ((mes  ==  4)||(mes  ==  6)||(mes  ==  9 )||(mes  ==  11))  {
+case  4:
+System.out.print("Mayo");  break;
+numLeídas++;
+System.out.print("Diciembre");
+lector.next();
+}
+case  8:
+System.out.print((acumulador /  numTemperaturas));
+float  acumulador  =  0;
+lector.nextLine();
+switch(mes)  {
+}
+numTemperaturas++;
+case  10:
+}  else  {
+case  7:
+public  void  incrementarData()  {
+System.out.print("Enero");  break;
+System.out.print("Noviembre");  break;
+díasEsteMes  =  28;
+//...
+}
+if  (día  >  díasEsteMes)  {
+}
+case  3:
+}
+System.out.print("Marzo");  break;
+System.out.print("Junio");  break;
+}
+}
+public  void  mostrarData()  {
+int  díasEsteMes  =  0;
+System.out.print("Febrero");  break;
+temperaturas[numTemperaturas]  =  lector.nextFloat();
+System.out.print("Octubre");  break;
+día  =  día  +  7;
+public  void  calculaDiferencia()  {
+acumulador  =  acumulador  +  temperaturas[i];
+Programación  (DAW)
+Programación  (DAM)
+Programación  básica  (ASX)
+Programación  modular
+
+<iocstl  textB>La  codificación  estrictamente  de  niveles  inferiores  a  superiores  de  forma  totalmente
+compartimentalizada  no  siempre  es  posible. :::  A  medida  que  va  subiendo  de  niveles  puede
+encontrar  algunos  casos  especiales,  los  cuales  no  son  infrecuentes  durante  un  proceso  de  diseño
+descendente,  y  sobre  él  tendrá  que  reflexionar.
+•  mostrarMedia:  muestra  por  pantalla  el  mensaje  de  la  media  de  las  temperaturas:  fecha  actual
+y  valor.
+Una  vez  terminada  la  codificación  de  los  métodos  de  nivel  más  bajo  de  descomposición,  se  resolverá
+el  nivel  inmediatamente  superior,  paso  a  paso,  sin  saltarse  ningún  nivel.  Un  aspecto  interesante  al
+ir  resolviendo  niveles  superiores  es  que  si  la  descomposición  ha  sido  apropiada,  la  dificultad  de
+codificar  todos  los  subproblemas,  independientemente  del  nivel,  debería  ser  similar.  En  el  caso  de
+los  niveles  más  bajos,  esto  se  debe  a  que  se  trata  de  los  problemas  que  ha  considerado  más
+baja  ya  que  se  dispone  de  una  parte  del  problema  resuelta.  Por  tanto,  la  codificación  de  este
+segundo  nivel  no  debería  resultar  tener  que  hacer  métodos  mucho  más  complicados  o
+necesariamente  con  más  código  que  el  paso  anterior.  De  hecho,  pueden  incluso  ser  más  sencillos.
+Reto  3:  Codifique  el  método  calculaDiferencia.  Explicado  con  mayor  detalle,  este  método  busca  los
+valores  más  alto  y  más  bajo  de  entre  los  registrados  y  calcula  la  diferencia  entre  ellos.  Una  vez
+calculado,  muestra  el  valor  resultante  por  pantalla,  tal  y  como  hace  calcula  Media.
+1.3.4  Implementación  del  segundo  nivel  de  descomposición
+•  registroTemperaturasSemanales:  gestiona  el  proceso  de  registrar  temperaturas  semanales:
+leer  datos,  almacenarlos  e  incrementar  la  fecha  actual.
+•  mostrarDiferencia:  muestra  por  pantalla  el  mensaje  de  la  diferencia  máxima  de  las
+temperaturas:  fecha  actual  y  valor.
+Los  métodos  incluidos  en  este  nivel  son  los  asociados  a  las  cuatro  opciones  posibles  dentro  del
+programa:
+Por  un  lado,  puede  darse  el  caso  en  el  que  habrá  que  aprovechar  un  mismo  método  de  niveles
+inferiores  para  codificar  más  de  un  método  del  nivel  presente.  Éste  es  el  caso  de  mostrarMedia  y
+mostrarDiferencia,  ya  que  ambos  deben  mostrar  la  fecha  actual,  y  por  tanto  harán  uso  de
+mostrarData.
+Por  otra  parte,  la  codificación  de  un  método  puede  no  ser  clara  a  priori,  y  no  será  hasta  solucionar
+niveles  de  descomposición  superiores.  Éste  es  el  caso  de  la  codificación  del  método
+finalizarEjecución,  ya  que  controla  la  finalización  de  la  ejecución  del  programa  principal,  un  método
+de  nivel  superior  que  todavía  no
+•  finalizarEjecución:  gestiona  la  finalización  del  programa.
+Programación  (DAM)
+Programación  básica  (ASX)
+Programación  (DAW)
+Programación  modular
+
+System.out.print("\nHasta  la  fecha  ");
+calculaMedia();
+//Hay  que  controlar  si  habrá  espacio  para  estos  7  registros
+public  void  registroTemperaturasSemanales()  {
+}
+}
+}  else  {
+System.out.println("No  queda  espacio  para  más  temperaturas.");
+}
+mostrarData();
+public  void  mostrarMedia()  {
+//Ver  Reto  4,  a  continuación.
+System.out.print("  la  media  ha  sido  de  ");
+//Ya  se  va  a  pensar  en  resolver  el  nivel  superior...
+}
+public  void  mostrarDiferencia()  {
+public  void  finalizarEjecución()  {
+incrementarData();
+if  ((numTemperaturas  +  7)  >=  temperaturas.length)  {
+leerTemperaturasTeclado();
+}  else  {
+}
+}
+if  (numTemperaturas  >  0)  {
+//...
+System.out.println("\nNo  hay  temperaturas  registradas.");
+System.out.println("  grados.");
+Programación  (DAM)
+Programación  (DAW)
+Programación  básica  (ASX)
+Programación  modular
+1 //Métodos  asociados  al  segundo  nivel  de  descomposición
+1.3.5  Implementación  del  primer  nivel  de  descomposición
+toca  implementar.  Éste  es  un  caso  en  el  que  la  resolución  ordenada  de  nivel  inferior
+problema.  Cuando  esto  ocurre,  hay  que  dejar  el  código  vacío  hasta  que  la  solución  quede  más
+El  código  de  los  cuatro  métodos,  que  prevé  las  circunstancias  apenas  descritas,  sería
+El  código  que  realiza  estas  tareas  es  el  siguiente.  Fíjese  que  todavía
+ninguna  instrucción).
+•  tratarOpcio:  lee  el  orden  y  ejecuta  el  método  de  segundo  nivel  corres­
+poniente.
+Reto  4:  Codifique  el  método  mostrarDiferencia.
+a  superior  individualmente  no  es  perfecta,  ya  que  es  necesaria  una  visión  más  general  del
+no  ha  resuelto  el  método  finalizarEjecución,  pero  dado  que  se  ha  declarado
+lo  siguiente.  Añádalo  al  programa  y  compruebe  que  compila  correctamente.
+clara  más  adelante.
+implementar  dos  métodos:
+•  mostrarMenu:  muestra  el  menú  principal  por  pantalla  (sólo  imprime
+cosas  por  pantalla).
+Simplemente,  hoy  por  hoy  su  invocación  es  equivalente  a  no  hacer  nada  (no  se  ejecuta
+En  este  problema,  el  primer  nivel  de  descomposición  se  corresponde  con  los  subproblemas  más
+generales,  que  engloban  todas  las  funciones  del  programa.  Sólo  hace  falta
+el  esqueleto,  puede  invocarse  correctamente  sin  que  haya  ningún  error  de  compilación.
+
+System.out.println("−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−− );
+1 //Métodos  asociados  al  primer  nivel  de  descomposición
+Programación  (DAW)
+Programación  (DAM)
+Programación  modular
+1  public  void  inicio()  {
+Programación  básica  (ASX)
+}  else  {
+}
+System.out.println("[DF]  Consultar  diferencia  máxima.");
+String  compara  dos  cadenas
+registroTemperaturasSemanales();
+while  (!fi)  {
+}  else  if  (opcio.equalsIgnoreCase("MJ"))  {
+}  else  if  (opcio.equalsIgnoreCase("FI"))  {
+Este  método  de  la  clase
+mostrarMenu();
+ecualesIgnoreCase
+finalizarEjecución();
+Scanner  lector  =  new  Scanner(System.in);
+}
+tratarOpcio();
+}
+System.out.println("[MJ]  Consultar  temperatura  media.");
+System.out.println("\nBienvenido  al  registro  de  temperaturas");
+public  void  mostrarMenu()  {
+System.out.println("[RT]  Registrar  temperaturas  semanales.");
+mostrarMedia();
+public  void  tratarOpcio()  {
+de  texto  ignorando  diferencias  entre
+String  opcio  =  lector.nextLine();
+if  (opcio.equalsIgnoreCase("RT"))  {
+}
+mayúsculas  y  minúsculas.
+mostrarDiferencia();
+}  else  if  (opcio.equalsIgnoreCase("DF"))  {
+System.out.println("[FI]  Salir.");
+System.out.print("Opción:  ");
+System.out.println("Opción  incorrecta!\n");
+}
+estructura  de  repetición  controlada  por  una  variable  de  control  con  funciones  de
+orden  de  forma  indefinida,  hasta  pedir  que  finalice  el  programa,  o  sea  una
+variable  de  control,  ya  se  puede  saber  que  es  necesario  cambiar  su  valor  de  forma  adecuada.
+Su  código  sería  el  siguiente,  donde  fin  sería  la  variable  de  control.  Como  puede  ver,
+éste  es  el  método  más  sencillo  de  todos!
+problema  general.  Ahora  que  ya  sabéis  que  la  finalización  del  programa  depende  de  una
+semáforo,  que  cambiará  de  estado  cuando  sea  necesario  finalizar  las  iteraciones.
+inicio.  Dado  que  todos  los  subproblemas  inferiores  ya  han  sido  resueltos,  normalmente
+1.3.6  Implementación  del  problema  general
+Por  último,  ha  llegado  el  momento  de  implementar  el  problema  general,  el  método
+en  este  programa,  lo  que  debe  hacer  básicamente  es  mostrar  el  menú  y  leer  una
+esta  tarea  será  relativamente  simple.  Por  el  funcionamiento  que  se  ha  definido  por
+Una  vez  llegados  a  este  punto,  toca  dar  marcha  atrás  y  recordar  que  había  una
+tarea  pendiente:  codificar  finalizarEjecución.  Sus  instrucciones  no  se
+podían  deducir  en  su  momento,  ya  que  dependían  de  cómo  se  resolvería  el  código  del
+
+Eliminación  de  métodos
+Una  vez  codificados  todos  los  métodos,  puede  que  haya  alguno  que  tiene  muy  pocas  líneas
+­estamos  hablando  de  una  o  dos.  Nunca  se  reaprovecha,  y  sólo  se  usa  en  un  único  sitio.
+Antes  de  proceder  a  mejorar  el  código,  sin  embargo,  debe  tener  siempre  presente  la  máxima
+siguiente:  primero  es  necesario  que  el  programa  funcione.  Luego  ya  pensará  cómo  simplificar
+el  código.
+1.3.7  Mejoras  sobre  la  solución  final
+Por  tanto,  su  código  será:
+Una  vez  codificado,  sólo  queda  algo,  y  es  declarar  esta  variable.  Dado  que  se  trata  de  un  valor  a
+acceder  desde  dos  métodos  diferentes,  habrá  que  hacerlo  como  una  variable  global.
+es  muy  fácil  identificar  la  utilidad  de  cada  blog  de  código.
+Aunque  el  programa  funcione,  una  vez  ya  dispone  de  todo  el  código  del  programa  (ya  se  han
+deducido  todos  los  métodos,  su  código,  y  las  variables  globales  a  usar),  vale  la  pena  echar  un
+vistazo  general  para  refinar  el  resultado.  Este  proceso  de  refinamiento  se  basa  en  dos  principios:
+eliminar  métodos  demasiado  cortos  o  simplificar  los  que  son  demasiado  largos  o  complejos.
+Finalizado  el  programa,  es  el  momento  de  ver  si  funciona.  Evidentemente,  puede  que  el  código  de
+algún  método  no  haya  sido  codificado  correctamente  y  sea  necesario  corregirlo.  Para  el  caso  de  los
+programas  complejos,  el  depurador  es  una  herramienta  de  gran  ayuda  en  esta  tarea,  complementada
+con  que,  usando  métodos,
+Normalmente,  cuando  esto  ocurre  se  debe  a  que  se  ha  hilado  demasiado  delgado  en  el  proceso  de
+descomposición  y  se  ha  considerado  como  subproblema  una  tarea  que  es  muy  sencilla  y  no  tiene
+suficiente  entidad  en  sí  misma.  Que  esto  suceda  no  significa  que  el  proceso  haya  sido  totalmente
+incorrecto,  puesto  que  muchas  veces,  a  priori,  es  imposible  saber  que  esto  va  a  suceder.  Muchas
+veces,  sólo  una  vez  codificados  todos  los  métodos  puede  darse  cuenta  de  este  hecho  y  obrar  en
+consecuencia.
+Programación  (DAM)
+Programación  modular
+Programación  (DAW)
+Programación  básica  (ASX)
+1  public  void  finalizarEjecución()  { fi  =  true;
+1 //Variables  globales  private  boolean  fi  =
+false;  private  int  numTemperaturas  =  0;  private  float[]
+temperaturas  =  new  float[MAX_SETMANES  *  7];  private  int  dia  =  1;
+private  int  mes  =  1;
+}
+
+Mejora  de  métodos
+esto  no  siempre  es  posible,  pero  vale  la  pena  hacer  un  pensamiento  ahora  que  ya  tiene  un
+Si  al  final  del  proceso  aparece  algún  método  muy  largo  o  complejo,  esto  puede  significar
+Un  caso  claro  de  esta  circunstancia  puede  ser  el  método  finalizarEjecución,  que
+programa  que  funciona.
+"FI").
+del  diseño  descendente  es  facilitar  la  legibilidad  de  su  código.  En  el  mundo  de  la
+vale  la  pena  refinar  el  proceso  de  descomposición  (al  fin  y  al  cabo,  su  propósito  era
+método  en  otros.  Aunque  puede  parecer  que,  una  vez  el  programa  ya  funciona,  no
+simplificar  el  proceso  de  creación,  que  ya  ha  finalizado),  piense  que  otra  ventaja
+éstos,  igualmente,  es  interesante  repasar  si  el  código  puede  mejorarse  simplificándolo,  buscando
+algún  conjunto  de  código  alternativo  que  lo  haga  más  corto.  Evidentemente,
+no  tiene  sentido  crear  métodos  tan  cortos.  Por  tanto,  no  sería  incorrecto  eliminarlo  y
+Ahora  bien,  a  veces  el  proceso  ha  sido  correcto  y  simplemente  la  cantidad  de  líneas  de
+sólo  tiene  una  línea  y  sólo  se  invoca  en  un  único  sitio  dentro  del  programa.  Normalmente,
+lo  contrario  del  caso  anterior:  que  no  se  ha  descompuesto  suficientemente  el  problema.  Puede  valer
+incorporar  su  código  directamente  allá  donde  se  invoca  (en  el  tratamiento  del  orden
+código  necesarias  para  llevar  a  cabo  la  tarea  establecida  es  realmente  grande.  En  casos  como
+programación  tampoco  debe  darle  pereza  de  ser  pulidos  y  ordenados  (con  el  suyo
+código).
+la  pena  volver  a  aplicar  el  proceso  de  descomposición  a  posteriori,  dividiendo  éste
+Programación  básica  (ASX)
+Programación  (DAW)
+1  public  void  tratarOpcio()  {
+Programación  (DAM)
+Programación  modular
+mostrarDiferencia();
+mostrarMedia();
+String  opcio  =  lector.nextLine();
+}
+se  explica  una  técnica  por
+}  else  if  (opcio.equalsIgnoreCase("MJ"))  {
+dispone  de  un  anexo  donde
+registroTemperaturasSemanales();
+}  else  if  (opcio.equalsIgnoreCase("FI"))  {
+métodos  con  estructuras
+directamente.
+}
+de  selección  largas.
+En  la  sección  “Recursos  del
+Scanner  lector  =  new  Scanner(System.in);
+if  (opcio.equalsIgnoreCase("RT"))  {
+simplificar  el  código  de  algunos
+}  else  if  (opcio.equalsIgnoreCase("DF"))  {
+//Se  ha  borrado  el  método  finalizarEjecución  y  se  ha  puesto  su  código
+}  else  {
+contenido”  de  la  web
+System.out.println("Opción  Incorrecta!\n");
+fin  =  true;
+
+listaEnters[j]  =  cambio;
+public  void  contarMeitatMaxim()  {
+}
+//Método  con  las  instrucciones  para  mostrar  la  lista  por  pantalla.
+}
+System.out.println("Escribe  10  valores  enteros  y  pulsa  retorno.");
+Scanner  lector  =  new  Scanner(System.in);
+//Método  con  las  instrucciones  para  ordenar  la  lista.
+//Para  intercambiar  valores  es  necesaria  una  variable  auxiliar
+}
+}
+}
+}
+public  static  void  main  (String[]  args)  {
+leerLista();
+int  índice  =  0;
+listaEnters[index]  =  lector.nextInt();
+int  y  =  0;
+}
+contarMeitatMaxim();
+for  (int  i  =  0;  y  <  listaEnters.length  −  1;  i++)  {
+public  void  leerLista()  {
++  i);
+mostrarLista();
+lector.next();
+System.out.print(listaEnters[i]  +
+programa.inicio();
+while  ((listaEnters[i]  <  valorMaxim)&&(y  <  listaEnters.length))  {
+listaEnters[i]  =  listaEnters[j];
+System.out.print("El  array  ordenado  es:  [ ");
+for  (int  i  =  0;  y  <  listaEnters.length;i++)  {
+if  (lector.hasNextInt())  {
+}  else  {
+//Nuevo  método  para  resolver  el  nuevo  subproblema
+int  cambio  =  listaEnters[i];
+System.out.println("El  número  de  valores  inferiores  a  la  mitad  del  máximo  es
+//Método  con  las  instrucciones  para  leer  la  lista.
+int  valorMaximo  =  listaEnters[listaEnters.length  −  1] /  2;
+ordenarLista();
+public  void  mostrarLista()  {
+}
+index++;
+public  void  inicio()  {
+}
+//La  posición  tratada  tiene  un  valor  más  alto  que  el  de  la  búsqueda...  Los
+}
+public  void  ordenarLista()  {
+int[]  listaEnters  =  new  int[10];
+if  (listaEnters[i]  >  listaEnters[j])  {
+i++;
+"
+}
+}
+OrdenarDescendente  programa  =  new  OrdenarDescendente();
+while  (index  <  listaEnters.length)  {
+intercambiamos.
+for(int  j  =  i  +  1;  j  <  listaEnters.length;  j++)  {
+}
+"  ");
+lector.nextLine();
+System.out.println("]");
+1  importe  java.util.Scanner;
+Programación  básica  (ASX)
+Programación  (DAW)
+Programación  modular
+60 }
+Programación  (DAM)
+2  public  class  OrdenarDescendente  {
+1.4  Solución  de  los  retos  propuestos
+Reto  1
+
+}
+public  void  leerTemperaturasTeclado()  {
+mostrarData();
+}
+public  void  incrementarData()  {
+}
+}
+float  minima  =  temperaturas[0];
+public  void  calculaMedia()  {
+}
+if  (temperaturas[i]  <  minima)  {
+}
+System.out.print("  la  diferencia  máxima  ha  sido  de  ");
+calculaDiferencia();
+public  void  calculaDiferencia()  {
+float  maxima  =  temperaturas[0];
+for(int  i  =  1;  y  <  numTemperaturas;  i++)  {
+}
+System.out.println("  grados.");
+}
+if  (numTemperaturas  >  0)  {
+}
+public  void  mostrarData()  {
+System.out.print("\nHasta  la  fecha  ");
+if  (temperaturas[i]  >  maxima)  {
+System.out.print((maxima  −  minima));
+}
+}
+//Métodos  asociados  al  tercer  nivel  de  descomposición
+}  else  {
+minima  =  temperaturas[i];
+System.out.println("\nNo  hay  temperaturas  registradas.");
+maxima  =  temperaturas[i];
+Programación  (DAW)
+Programación  (DAM)
+1  public  void  mostrarDiferencia()  {
+Programación  básica  (ASX)
+1 ...
+Programación  modular
+1  public  void  calculaDiferencia()  {
+Reto  3
+Reto  2
+Reto  4
+
+La  aparición  de  blogs  de
+código  repetido  o  casi  igual
+indica  un  mal  estilo  de  programación.
+Programación  (DAW)
+Programación  básica  (ASX)
+Programación  (DAM)
+Programación  modular
+Un  parámetro  de  entrada  es  un  valor  que  se  establece  inmediatamente  antes
+de  seguir  un  proceso,  por  lo  que  indica  los  datos  que  debe  tratar  o  que  modifica
+su  comportamiento.
+En  realidad,  a  la  hora  de  plantear  qué  subproblemas  existen,  y  su  declaración
+asociada  en  forma  de  método  al  código,  aparte  de  su  nombre  y  qué  hacen,  también
+es  posible  definir  ciertos  aspectos  vinculados  a  los  datos  que  deben  tratar:  sus
+parámetros  de  entrada  y  salida.
+Si  bien  la  identificación  de  subproblemas  de  acuerdo  a  distintos  niveles  de  complejidad
+es  suficiente  para  poder  descomponer  el  programa  en  pedazos  de  código  con
+objetivos  parciales  diferenciados,  y  hacerlo  más  fácil  de  seguir,  no  es  suficiente  para
+ofrecer  un  alto  grado  de  reusabilidad.  En  la  mayoría  de  casos,  el  programa  resultante
+dividido  con  métodos  es  directamente  equivalente  a  trocear  un  programa  donde  sólo
+existe  el  método  principal.  Esto  se  debe  a  que  tal  y  como  ha  usado  los  métodos  hasta
+ahora,  éstos  servían  para  manipular  un  conjunto  de  variables,  a  menudo  globales,
+muy  específico.
+2.  Parametrización  de  métodos
+El  objetivo  principal  del  diseño  descendente  es  ofrecer  una  metodología  que  le  permita
+plantear  la  creación  de  un  programa  de  una  manera  muy  parecida  a  cómo  lo  haría
+con  cualquier  otro  problema  de  la  vida  real:  dividiendo  problemas  complejos  en  otros
+más  simples  y  fáciles  de  seguir.  Una  vez  realizada  esta  descomposición,  los  lenguajes
+ofrecen  un  mecanismo  para  asociar  a  cada  subproblema  un  bloque  de  código
+concreto.  Java,  se  trata  métodos.  El  beneficio  de  usar  métodos,  en  la  medida  correcta,
+es  la  generación  de  código  más  fácil  de  entender  y  donde  puede  ser  posible  reutilizar
+algunos  blogs  en  diferentes  partes,  sin  tener  que  repetir  el  código  escrito.
+Un  parámetro  es  un  identificador  usado  en  la  descripción  de  un  proceso,  cuyo
+valor  en  realidad  puede  variar  por  diferentes  aplicaciones  de  este  proceso.
+2.1  Parámetros  de  entrada
+Los  parámetros  de  entrada  son  una  herramienta  muy  útil  y  extensamente  usada  a  la
+hora  de  definir  con  mayor  detalle  las  características  de  los  subproblemas  resultantes
+de  una  descomposición  usando  diseño  descendente.  Para  empezar,  y  como  resumen
+breve  de  este  concepto,  puede  quedarse  con  la  siguiente  definición.
+
+Programación  modular
+Programación  (DAM)
+Programación  básica  (ASX)
+Programación  (DAW)
+(b)  Freír  zanahorias
+(a)  Preparar  agua
+1.  Recopilar  ingredientes
+2.1.1  Motivación:  definición  de  problemas  similares
+Si  se  descompone  hasta  dos  niveles  el  problema  de  cocinar  unos  fideos  japoneses  vegetales,
+podrían  encontrarse  los  siguientes  subproblemas:
+(b)  Disponerlos  sobre  el  mármol
+(a)  Cortar  cebollas
+(b)  Saltar  ingredientes
+(d)  Cocinar  removiendo  ingredientes
+Partiendo  de  este  planteamiento,  la  figura  2.1  muestra  la  división  ya  más  detallada,  hasta  un  tercer
+nivel,  de  los  procesos  de  freír  cebollas  y  zanahorias,  usados  en  lugares  bien  distintos  (3  y  4).  En
+esta  figura  están  remarcadas  mediante  cuadros  las  diferencias  entre  ambos.
+(d)  Dejarlas  preparadas
+(a)  Cortar  zanahorias
+(c)  Dejar  zanahorias  preparadas
+3.  Cocinar  zanahorias
+(a)  Mezclar  ingredientes  con  salsa  yakitori
+(c)  Preparar  sartén  para  saltar
+(e)  Dejar  listo  para  servir
+4.  Cocinar  cebollas
+2.  Cocinar  tallarines
+(a)  Comprar  en  el  supermercado
+(b)  Freír  cebollas
+(c)  Escurrir  tallarines
+(c)  Dejar  cebollas  preparadas
+5.  Preparación  final
+(b)  Hervir  tallarines
+
+F  igura  2.  1.  Diferencias  entre  dos  problemas  similares.
+Programación  (DAM)
+Programación  básica  (ASX)
+Programación  (DAW)
+Programación  modular
+La  consecuencia  de  esta  observación  es  que  sería  mucho  más  cómodo  definir  una  serie
+de  pasos  de  forma  genérica.  Por  ejemplo,  nombrar  el  proceso  freír  alimento,  donde  sólo
+se  usa  el  término  alimento  dentro  de  la  descripción  de  sus  pasos  para  referirse  a  lo  que  se
+quiere  freír.  Entonces,  siempre  que  se  quiere  freír  un  alimento  concreto,  en  las  explicaciones
+se  reemplaza  donde  pone  alimento  por  lo  que  realmente  se  quiere  freír  (cebollas,
+zanahorias,  patatas,  etc.)  y  se  aplica  el  proceso  tal  y  como  está  escrito,  sin  tener  que
+cambiar  nada.  Una  única  descripción  sirve  para  freír  cualquier  cosa,  no  es  necesario
+describir  un  caso  diferente  por  cada  alimento.
+Dicho  en  palabras  informáticas:  dados  estos  dos  métodos,  sólo  varía  el  valor  de  los  datos
+a  transformar,  que  siempre  serán  de  idéntico  tipo.  Pero  el  algoritmo  a  usar  es  el  mismo.
+Ya  a  simple  vista  puede  verse  que,  a  pesar  de  poder  descomponerse  hasta  en  seis  nuevos
+subproblemas,  se  trata  de  dos  procedimientos  muy  parecidos.  De  hecho,  si  analiza  con
+detalle  ambos  casos,  se  dará  cuenta  de  que  sólo  cambia  el  alimento  que  hay  que  freír,
+pero  los  subproblemas  a  ir  resolviendo  son  exactamente  los  mismos  en  todos  los  casos.
+De  hecho,  si  tuviera  una  cierta  visión  de  futuro,  podría  llegar  a  darse  cuenta  de  que  este
+escenario  se  aplicaría  incluso  en  descomposiciones  de  otros  procedimientos  similares  que
+no  necesita  usar  aquí,  como,  por  ejemplo,  hacer  patatas  fritas.  La  única  condición  es  que,
+cuando  hable  de  freír,  siempre  debe  estar  refiriéndose  a  alimentos,
+por  supuesto.
+Pues  bien,  si  hiciera  esto,  el  término  alimento  encajaría  con  la  definición  de  parámetro  de
+entrada.  Su  valor  se  establece  antes  de  empezar  el  proceso,  y  según  éste,  condiciona  lo
+que  hay  que  tratar  (en  este  caso,  freír).
+Un  hecho  importante  en  un  caso  como  éste  es  que  el  número  de  parámetros  de  entrada
+permitidos  no  tiene  por  qué  estar  limitado  a  uno.  Podría  definir  tantos  como  le  hagan  falta
+por  cada  diferencia  existente,  o  por  cada  dato  adicional  que  pueda  variar  según  la  situación
+y  que  hay  que  tener  en  cuenta  para  realizarlo.  Por  ejemplo,  suponga  que  desea  prever  la
+posibilidad  de  freír  con  diferentes  cantidades  de  aceite.  O  sea,  solucionar  el  problema  "freír
+alimento  con  cierta  cantidad  de  aceite".  En  ese  caso,  se  podrían
+
+Declaración
+correctamente  el  nombre  de
+los  subproblemas,  para
+que  sean  descriptivos.
+Es  muy  importante  elegir
+//Código
+Programación  (DAM)
+Programación  básica  (ASX)
+Programación  (DAW)
+Programación  modular
+1  public  void  nombreMétodo  (tipoParam1  numParam1,  tipoParam2  nombreParam2,  etc.)  {
+4 }
+2.1.2  Declaración  y  uso  de  métodos  con  parámetros  de  entrada
+•  Etc.
+•  Freír  patatas  con  400  cl  de  aceite:  (alimento  =  patatas,  cantidad  =  400  cl).
+usar  dos  parámetros  de  entrada:  el  alimento  y  la  cantidad  de  aceite.  Los  pasos  a  seguir
+seguirían  siendo  casi  iguales,  salvo  que  la  descripción  sería  genérica  tanto  a  la  hora  de  referirse
+al  alimento  que  hay  que  freír,  como  en  cuanto  a  aceite  se  debe  poner  en  la  sartén.  Así  pues,  la
+descripción  del  proceso  sería  independiente  tanto  en  cuanto  a  qué  freír  como  en  cuanto  a  la
+cantidad  de  aceite  a  usar.  Los  valores  concretos  a  aplicar  dependerían  de  cada  situación  dada
+a  la  hora  de  freír:
+•  Freír  cebollas  con  200  cl  de  aceite:  (alimento  =  cebollas,  cantidad  =  200  cl).
+A  medida  que  tenga  experiencia,  no  necesitará  ni  siquiera  esperar  al  final  y  seguro  que  irá
+detectando  estas  semejanzas  sobre  la  marcha.
+Por  tanto,  una  vez  tiene  dividido  un  problema  general  en  subproblemas,  habrá  que  estudiar
+cuáles  de  ellos  son  suficientemente  parecidos  para,  en  realidad,  poder  considerar  que  se  trata
+del  mismo  mediante  la  aplicación  de  parámetros  de  entrada.  Normalmente,  si  el  nombre  que  se
+ha  puesto  en  los  subproblemas  es  adecuado,  esto  es  fácil  de  detectar,  ya  que  tendrán  muy
+similares,  o  incluso  idénticos.  Puede  suceder  que  las  divisiones  en  subproblemas  no  sean
+exactamente  idénticas  como  en  este  ejemplo,  pero  entonces  valdrá  la  pena  que  revise  la
+descomposición  y  reflexione  sobre  si,  en  realidad,  debería  ser  igual.
+•  Freír  escalopes  con  400  cl  de  aceite:  (alimento  =  escalopes,  cantidad  =  400  cl).
+La  lista  de  parámetros  de  un  método  se  escribe  entre  los  paréntesis  en  su  declaración.  Esta
+lista  toma  una  estructura  parecida  a  realizar  una  serie  de  declaraciones  de  variables  separadas
+por  comas.  La  sintaxis  exacta  sería  la  siguiente:
+De  la  misma  forma  que  esto  ahorra  mucho  espacio  en  un  libro  de  cocina,  aplicar  este  sistema
+al  aplicar  diseño  descendente  para  descomponer  un  programa  también  es  muy  útil.  Esto
+significa  que  este  hecho  también  debe  poder  preverse  en  la  declaración  y  codificación  de  un
+método.  Por  suerte,  todos  los  lenguajes  de  programación  que  permiten  declarar  funciones  o
+métodos  contemplan  esta  posibilidad.
+La  declaración  de  parámetros  de  entrada  no  será  obligatoria.  Si  no  necesita  parámetros  de
+entrada  por  un  método,  no  es  necesario  poner  nada  entre  los  paréntesis,  tal  y  como  ha  hecho  hasta
+
+Invocación
+Compruebe  lo  que  hace  en  su  entorno  de  trabajo.
+Sintácticamente,  esto  se  hace  poniendo  los  valores  entre  los  paréntesis  de  la  invocación,
+separados  por  comas:
+Únicamente  en  cuanto  a  variables  disponibles  dentro  del  bloque  de  código  del  método,  se
+puede  considerar  que  este  código  sería  equivalente  a  realizar:
+ahora.  Tampoco  existe  límite  en  el  número  de  parámetros,  pero  normalmente  es  mejor  no
+excederse.  De  hecho,  un  alto  número  de  parámetros  en  el  método  asociado  a  un  subproblema
+puede  significar  que  no  se  ha  descompuesto  suficientemente.
+Una  vez  que  un  método  tiene  definidos  una  serie  de  parámetros  de  entrada,  estos  se
+consideran  variables  declaradas,  con  ámbito  dentro  de  todo  su  código.  Estas  variables
+pueden  ser  usadas  como  cualquier  otra  en  su  código.  Ahora  bien,  tienen  una  peculiaridad,  y
+es  que  de  entrada  no  se  les  asigna  ningún  valor  inicial,  ya  que  vendrá  dado  según  se  invoque
+el  método,  como  verá  a  continuación.
+Cuando  se  invoca  un  método  con  un  conjunto  de  parámetros  de  entrada  declarados,  lo
+primero  que  hace  el  programa  es  mirar  la  lista  de  parámetros  y  declarar,  implícitamente  en
+el  código  del  método,  tantas  variables  como  parámetros  de  entrada,  con  los  mismos
+nombres.  Entonces  toma  cada  valor  especificado  en  la  invocación  y  copia,  uno  por  uno  y  en
+el  mismo  orden,  estos  valores  dentro  de  las  variables  creadas  a  partir  de  la  lista  de
+parámetros.
+La  mejor  manera  de  tener  una  primera  idea  de  cómo  funciona  todo  es  con  un  ejemplo
+sencillo.  El  siguiente  código  sirve  para  ilustrar  el  comportamiento  de  un  método  con
+parámetros  de  entrada.  No  se  trata  de  un  programa  complejo  resultado  de  aplicar
+estrictamente  diseño  descendente,  sólo  sirve  para  probar  cómo  funciona.
+Cuando  un  método  se  ha  declarado  con  parámetros  de  entrada,  deben  tenerse  en  cuenta
+durante  su  invocación.  No  basta  con  poner  sólo  el  nombre  del  método  como  hasta  ahora.
+Por  cada  parámetro  es  necesario  asignar  un  valor,  exactamente  en  el  mismo  orden  en  que
+se  han  declarado  en  la  lista.  Este  valor  puede  ser  el  resultado  de  cualquier  expresión:  un
+literal,  una  variable  o  una  expresión  más  compleja.  En  cualquier  caso,  el  tipo  resultante  debe
+coincidir  con  el  del  parámetro  que  ocupa  el  mismo  orden.
+Programación  (DAW)
+Programación  básica  (ASX)
+1 //El  método  mostrarMaxim  tiene  dos  parámetros  de  entrada,  de  tipo  enter  public  void  mostrarMaxim(int  a,  int  b)  {
+1  public  void  mostrarMaxim()  {
+Programación  modular
+1  nombreMetodo(valor1,  valor2,  etc.);
+Programación  (DAM)
+}
+}
+El  método  principal  (main)  se
+declara  con  un
+parámetro  de  entrada:  un
+array  de  String.
+pronto
+int  a;  int
+b;
+//Se  inicializan  con  un  valor  inicial  de  una  manera  especial  que  ya  verá
+
+mostrarMaximo(5,  5);
+System.out.println(b);
+System.out.println("¡son  iguales!");
+public  static  void  main  (String[]  args)  {
+programa.inicio();
+}  else  {
++  b  +
+"  es...");
+}
+//Tiene  dos  parámetros  de  entrada,  de  tipo  entero
+//Su  valor  inicial  depende  de  los  valores  asignados  a  cada  invocación
+}  else  if  (a  <  b)  {
++  a  +
+System.out.println(a);
+}
+MaximParametroEntrada  programa  =  new  MaximParametroEntrada();
+}
+"  y  "
+public  void  inicio()  {
+mostrarMaximo(4,  10);
+mostrarMaximo(0,  −3);
+}
+public  void  mostrarMaximo(int  a,  int  b)  {
+System.out.print("El  máximo  entre  if  (a  >  b)  {
+"
+F  igura  2.  2.  Flujo  de  control  al  llamar  un  método  y  asignación  de  valores  a  sus  parámetros
+Programación  (DAW)
+Programación  básica  (ASX)
+23 }
+Programación  (DAM)
+1  public  class  MaximParametroEntrada  {
+Programación  modular
+o  expresiones,  tal  y  como  muestra  el  código  listado  a  continuación.  En  este  caso,  las
+las  ejecuciones  por  cada  invocación.  En  el  código  fuente  original  sólo  es  necesario  definirlo
+del  método  mostrarMaxim  se  lista  dos  veces,  sólo  es  por  claridad,  para  diferenciar
+La  figura  2.2,  a  continuación,  muestra  un  esquema  de  su  flujo  de  control  y  qué  está
+pasando  a  medida  que  se  ejecuten  las  instrucciones  del  programa.  Aunque  el  código
+una  vez.  Precisamente,  se  trata  de  un  caso  de  reaprovechamiento  de  código.  Fíjese  que
+la  forma  en  que  se  definen  los  parámetros  en  la  invocación  del  método  sirve  para
+dar  valor  a  las  variables  a  yb  en  el  método.
+expresiones  se  evalúan  antes  de  proceder  a  ejecutar  las  instrucciones  del  método,
+de  modo  que  sea  posible  asignar  correctamente  el  valor  resultante  a  cada
+expresado  mediante  literales,  pero  también  podrían  usarse  sin  problemas  variables
+parámetro  de  entrada.  Pruebe  que  hace  exactamente  lo  mismo  que  el  ejemplo  anterior.
+En  este  ejemplo  los  valores  usados  al  invocar  el  método  mostrarMaxim
+
+del  código,  no  se  ve  alterada  en  ningún  momento.  Dentro  del  parámetro  de  entrada  a  sólo
+sus  parámetros  de  entrada  pueden  ser  usadas  como  cualquier  variable  declarada  en  la
+parámetro  de  tipo  entero.  Este  método  escribe  por  pantalla  tantos  símbolos  “*”  el  valor
+del  parámetro.
+Reto  1.  Haga  un  programa  que  llame  varias  veces  un  método  con  un  único
+cómo
+Una  vez  que  se  empieza  a  ejecutar  el  código  del  método,  las  variables  representadas  por  los
+primera  línea  del  programa:  sus  valores  pueden  ser  leídos  directamente,  pueden
+2.1.3  Manipulación  de  los  parámetros  de  entrada
+método,  etc.  Incluso  pueden  verse  modificado  su  valor  inicial.  Ahora  bien,  debe
+tener  claro  que  los  valores  que  contienen  son  copias  del  original.  Por  tanto,  el
+valor  usado  en  la  invocación  nunca  se  verá  alterado.
+Por  ejemplo,  pruebe  el  siguiente  código  y  vea  como  la  variable  i,  usada  en  la  invocación
+hay  una  copia  del  valor  de  i.  No  se  trata  de  una  asociación  directa.
+usarse  dentro  de  expresiones  más  o  menos  complejas,  tienen  un  ámbito  igual
+Programación  (DAM)
+Programación  (DAW)
+1  public  class  MaximParametroEntrada  {
+17 }
+Programación  básica  (ASX)
+20 }
+1 //Modifique  el  valor  de  un  parámetro.  ¿Afecta  a  la  variable  original?
+Programación  modular
+2  public  class  ModificaParámetro  {
+//Tiene  un  único  parámetro  de  entrada,  de  tipo  entero
+public  void  inicio()  {
+System.out.println("Antes  de  llamar  al  método  \"y\"  vale  "  modificarParametro(i);
++  i);
+}
+"
+//Usamos  variables
+System.out.println("Después  de  llamar  al  método  \"y\"  vale  "
+a  =  0;
+public  static  void  main  (String[]  args)  {
+}
+}
+mostrarMaximo(2  +  3,  y  +  8);
+ModificaParámetro  programa  =  new  ModificaParámetro();
+programa.inicio();
++  i);
+public  static  void  main  (String[]  args)  {
+public  void  inicio()  {
+mostrarMaximo(4,  10);
+}
+int  j  =  −3;
+}
++  a);
+int  y  =  0;
+int  y  =  10;
+//Ahora  hay  una  variable  "a"  declarada.
+MaximParametroEntrada  programa  =  new  MaximParametroEntrada();
+programa.inicio();
+//Usamos  literales
+//Su  valor  depende  de  cómo  se  ha  invocado  el  método.
+public  void  modificarParametro(int  a)  {
+System.out.println("Ha  modificado  el  valor  en
+//Usamos  expresiones,  con  literales  o  variables
+mostrarMaximo(y,  j);
+//El  resto  del  código  es  igual...
+
+cuando  se  copian  variables  de  tipo  array.  En  ese  caso,  no  se  disponía  realmente
+se  trata  de  tipos  primitivos.  Cuando  el  parámetro  es  un  array,  sí  que  se  modifica
+de  dos  réplicas  idénticas,  sino  de  dos  variables  distintas  a  partir  de  las  cuales
+Lo  que  ha  sucedido  ahora  sería  equivalente  a  haber  hecho:
+String  no  tiene  ningún  efecto  sobre  el  valor  original.
+Reto  2.  Haga  un  programa  llamado  ModificarParametreString  que  compruebe  que,  efectivamente,
+modificar  el  valor  de  un  parámetro  de  entrada  de  la  clase
+Compruebe  este  hecho  mediante  la  ejecución  del  siguiente  ejemplo:
+Sin  embargo,  en  el  lenguaje  Java  esta  norma  sólo  se  cumple  estrictamente  cuando
+Lo  que  ha  sucedido  sería  equivalente  a  haber  hecho:
+acceder  exactamente  a  los  mismos  datos.
+el  valor.  Si  hace  memoria,  esto  es  una  consecuencia  lógica  de  sus  propiedades
+Java.  La  única  excepción  son  las  cadenas  de  texto  (variables  de  la  clase  String).
+De  hecho,  esta  circunstancia  se  da  con  cualquier  tipo  de  dato  compuesto  del
+Su  comportamiento  es  igual  al  de  los  tipos  primitivos,  ya  que,  recuerde,  tienen  la
+propiedad  de  ser  inmutables.  No  es  posible  modificar  su  contenido.
+6  a[3]  =  0;
+Programación  básica  (ASX)
+Programación  modular
+7 //¿Cuánto  vale  y?  y  todavía  vale  10
+6  a  =  0;
+2  public  class  ModificaParametroCompuesto  {
+5 //Se  modifica  la  copia
+1 //Se  dispone  de  una  variable
+2  int  i  =  10;
+20 }
+7 //¿Cuánto  vale  y[3]?  y[3]  vale  0!
+3 //Se  crea  una  copia  de  la  variable
+Programación  (DAM)
+4  int  a[]  =  i;
+Programación  (DAW)
+2  int  i[]  =  {1,  2,  3,  4,  5};
+3 //Se  crea  una  copia  de  la  variable  array
+4  int  a  =  i;
+5 //Se  modifica  la  copia
+1 //Se  dispone  de  una  variable  de  tipo  array
+1 //Modifique  el  valor  de  un  parámetro.  ¿Afecta  a  la  variable  original?
+ModificaParametroCompost  programa  =  new  ModificaParametroCompost();
+public  static  void  main  (String[]  args)  {
+programa.inicio();
+}
+public  void  modificarParametro(int[]  a)  {
+//Ahora  hay  una  variable  "a"  declarada.
+//Tiene  un  único  parámetro  de  entrada,  de  tipo  entero
+//Su  valor  depende  de  cómo  se  ha  invocado  el  método.
+a[3]  =  0;
+System.out.println("Después  de  llamar  al  método  \"y[3]\"  vale  "
++  y[3]);
+"
+public  void  inicio()  {
++  a[3]);
+int[]  y  =  {1,  2,  3,  4,  5};
+System.out.println("Antes  de  llamar  al  método  \"y[3]\"  vale  "  modificarParametro(i);
+}
+System.out.println("Hemos  modificado  el  valor  en
+}
++  y[3]);
+
+Los  diferentes  alimentos  a  procesar
+De  los  alimentos,  procesa  los
+tallarines
+Plato  final
+De  los  alimentos,  procesa  las
+zanahorias
+1.  Recopilar  ingredientes
+3.  Cocinar  zanahorias
+5.  Preparación  final
+A  partir  de  tallarines,  zanahorias  y
+cebollas,  hace  el  plato  final
+De  los  alimentos,  procesa  las  cebollas  Cebollas  preparadas
+¿Qué  hace
+Subproblema
+resultado  obtenido
+Obtiene  los  ingredientes  base
+(tallarinas,  cebollas,  etc.)
+Tallarinas  preparadas
+Zanahorias  preparadas
+4.  Cocinar  cebollas
+2.  Cocinar  tallarines
+Si  se  fija  un  poco,  se  dará  cuenta  de  una  característica  común  a  muchos  de  los  casos  en  los
+que  un  problema,  en  cualquier  nivel,  se  divide  en  subproblemas  más  simples.
+Un  parámetro  de  salida  indica  un  resultado  final  obtenido  después  de  realizar  un  proceso
+determinado.
+2.2  Parámetros  de  salida
+Como  en  el  caso  de  los  parámetros  de  entrada,  se  partirá  de  una  definición  ya  partir  de  ahí
+verá  cuál  es  la  utilidad  y  modo  de  uso  de  este  tipo  de  parámetros.
+Revisando  la  descomposición  de  la  receta  de  cocina,  simplemente  en  una  observación  a  primer
+nivel,  podrá  detectar  subproblemas  donde  su  conclusión  repercute  en  la  obtención  de  un
+resultado  parcial  tangible,  que  es  manipulado  por  subproblemas  posteriores:  diferentes
+alimentos  cocinados  preparados  por  separado.  Partiendo  de  estos  resultados  parciales,  se
+obtiene  el  plato  final  al  combinarlos  todos  en  las  tareas  asociadas  al  último  subproblema.  Esta
+circunstancia  queda  resumida  en  la  tabla  2.1.
+A  menudo,  conceptualmente,  la  forma  en  que  se  resuelve  es  realizando  una  serie  de  tareas
+donde  se  obtienen  resultados  parciales,  que  al  final  son  combinados  o  aprovechados  dentro
+del  proceso  general  para  obtener  el  resultado  final  (la  resolución  del  problema).
+2.2.1  Motivación:  Definición  de  problemas  que  generan  un  resultado  concreto
+•  Para  escribir  un  libro,  es  necesario  recopilar  sus  capítulos.
+•  Para  enviar  un  mensaje  electrónico,  es  necesario  obtener  la  dirección  de  destino  o
+generar  el  texto  a  enviar.
+Más  allá  de  una  receta  de  cocina,  seguro  que  puede  pensar  en  muchos  casos  parecidos  donde
+los  subproblemas  a  resolver  en  realidad  son  un  mecanismo  para  recopilar  un  conjunto  de
+resultados  parciales,  necesarios  antes  de  poder  llevar  a  cabo  la  resolución  del  problema  general.
+Programación  (DAW)
+Programación  básica  (ASX)
+Programación  (DAM)
+Programación  modular
+Tabla  2.  1.  Subproblemas  y  resultados  obtenidos  al  resolverlos
+
+//Código
+Declaración
+1  public  tipoParamSalida  nombreMétodo  (listaParamEntrada)  {
+Programación  (DAM)
+Programación  básica  (ASX)
+Programación  (DAW)
+Programación  modular
+Cada  método  debe  ser  una  herramienta
+especializada  para  realizar  una  única
+tarea  concreta.  Fuente:  Joan  Arnedo
+4 }
+2.2.2  Declaración  y  uso  de  métodos  con  un  parámetro  de  salida
+precio  o  crear  un  ticket.
+•  Para  vender  un  producto,  es  necesario  buscar  el  producto  propiamente,  consultar  el  producto
+•  Para  montar  una  máquina  cualquiera,  es  necesario  obtener  sus  componentes.
+Éstos,  a  su  vez,  también  se  generan  a  partir  del  montaje  de  piezas  aún  más  simples.
+•  Etc.
+Teóricamente,  se  podría  prever  una  tarea  que,  al  terminar,  produzca  más  de  un  resultado,  ya  que
+ha  resuelto  varios  problemas  a  la  vez.  Para  simplificar,  sólo  se  tratará  el  caso  de  subproblemas  que
+producen  un  único  resultado,  y  por  tanto,  a  mucho  estirar  con  un  único  parámetro  de  salida.  Por
+tanto,  a  partir  de  ahora,  siempre  que  se  haga  la  descomposición  de  un  problema,  será  necesario
+que  la  plantee  de  manera  que  esto  se  cumpla.  Partirá  del  principio  de  que  si  un  subproblema
+produce  más  de  un  resultado  tangible,  es  que  no  se  ha  descompuesto  lo  suficiente  todavía.
+Por  tanto,  en  la  definición  de  un  subproblema  también  puede  cobrar  sentido  indicar  que  cuando
+éste  se  resuelve,  se  produce  un  resultado  concreto  que  podrá  ser  usado  a  posteriori  por  otros
+subproblemas.  De  acuerdo  a  la  definición  inicial,  ese  resultado  sería  precisamente  su  parámetro  de
+salida.
+Hablando  ya  en  términos  de  métodos  dentro  de  sus  programas,  un  método  con  un  parámetro  de
+salida  explicita  que  servirá  para  generar  un  resultado,  con  un  valor
+concreto.
+De  nuevo,  dentro  de  la  declaración  de  un  método  también  es  posible  realizar  una  traslación  directa
+de  esta  propiedad  para  codificar  la  resolución  de  un  subproblema.
+Dado  que  un  programa  genera  y  trata  datos,  lo  primero  que  se  debe  decidir  es  a  qué  tipo  de  datos
+pertenecerá  el  valor  de  este  resultado.  Una  vez  decidido,  la  sintaxis  para  declarar  un  método  con
+un  parámetro  de  salida  es  la  siguiente:
+El  tipo  de  parámetro  de  salida  puede  ser  cualquiera,  identificado  por  la  palabra  clave  correspondiente,
+como  en  el  caso  de  una  variable.  Si  se  quiere  indicar  que  no  hay  ninguna
+Evidentemente,  también  puede  darse  el  caso  de  que  las  tareas  asociadas  a  un  subproblema  no
+den  ningún  resultado  tangible  que  deba  ser  manipulado  a  posteriori.  En  este  caso,  no  habrá
+parámetro  de  salida.
+
+return  de  ésta  (return  nombreVariable;).
+evalúe  el  tipo  declarado  por  el  parámetro  de  salida:  un  literal,  una  variable,  o
+le  llama  también  valor  de  retorno  de  un  método.  A  partir  de  ahora  se  usará  también
+todos  los  métodos  antes  de  introducir  ese  concepto.
+parámetro  de  salida,  se  usa  la  palabra  reservada  void,  tal  y  como  ha  usado  hasta  ahora  en
+El  código  del  método  será  el  que  corresponda  para  obtener  el  resultado  esperado,
+lo  ha  establecido,  la  sentencia  que  indica  que  ya  ha  terminado  la  tarea  a  realizar  y  dispone
+programado  métodos  hasta  ahora.  Ahora  bien,  dentro  de  este  código  habrá  que  decidir,  entre
+un  parámetro  de  salida,  habrá  un  error  de  compilación.
+correctamente  un  único  valor  entero  desde  el  teclado,  de  modo  que  lo  haga  definiendo
+Dado  el  nombre  de  la  sentencia  usada,  a  menudo  en  el  parámetro  de  salida  se
+un  ejemplo  sencillo.  Suponga  que  desea  definir  un  método  que  sirve  para  leer
+normalmente  lo  más  recomendable  es  que  guarde  el  resultado  en  una  variable  y  haga
+Escribir  la  sentencia  return  es  indispensable,  ya  que  si  no  se  pone  habiendo  declarado
+un  parámetro  de  salida.  Su  código  podría  ser  el  siguiente  (Lea  atentamente  los
+codificarlo  correctamente.):
+esta  nomenclatura  indistintamente.
+todos  los  datos  que  trata  internamente,  cuál  se  corresponde  al  resultado  final.  Una  vez
+Evidentemente,  la  mejor  manera  de  ver  el  funcionamiento  de  todo  ello  es  con
+comentarios  del  código,  ya  que  indican  el  conjunto  de  decisiones  que  hay  que  ir  haciendo  por
+de  acuerdo  a  su  propósito.  En  este  aspecto,  nada  cambia  respecto  a  cómo  habéis
+Ésta  normalmente  se  escribiría  la  última  de  todas,  al  final  del  bloque  de  código
+asociado  al  método.  Donde  pone  resultado  se  puede  usar  cualquier  expresión  que
+una  combinación  cualquiera  de  operandos  y  operadores.  Si  se  quiere  ir  despacio,
+del  resultado  es  la  siguiente:
+Programación  básica  (ASX)
+Programación  (DAW)
+Programación  modular
+2  public  int  leerEnterTeclado()  {
+Programación  (DAM)
+21 }
+1  return  resultado;
+1 //1.  ¿Qué  tipo  de  valor  genera?  Un  entero  (int)
+leído  =  lector.hasNextInt();
+//3.  Una  vez  hecho,  ¿qué  variable  tiene  el  resultado?  "enteroLeído"
+De  hecho,  en  cuanto  se  invoca
+se  ejecuta  ninguna  instrucción
+int  enteroLeído  =  0;
+boolean  leído  =  false;
+while  (!leído)  {
+lector.nextLine();
+Scanner  lector  =  new  Scanner(System.in);
+//4.  Hay  que  hacer  "returno"  sobre  él
+//No  cambia  absolutamente  nada...
+return  enteroLeído;
+}  else  {
+más.
+la  ejecución  del  método  termina
+lector.next();
+la  sentencia  resultado,
+enterLeído  =  lector.nextInt();
+//2.  Se  hace  el  código  que  lee  un  único  entero  del  teclado,  como  siempre  se  ha  hecho
+inmediatamente  y  ya  no
+}
+System.out.println("Esto  no  es  un  entero.");
+}
+if  (leído)  {
+
+puesto  que  pasa  a  considerarse  una  expresión.  Éste  evaluará  el  valor  resultante  para
+su  código  es  la  invocación,  ya  que  existe  una  variación  sustancial  respecto  al  modelo
+método  definido  anteriormente.  Compílelo  y  ejecútelo,  para  ver  qué  sucede.
+primera  invocación  y  qué  está  sucediendo  en  cada  momento.  Por  claridad  en  la  figura,
+el  código  del  método  leerEnterTeclat  está  repetido  por  las  diferentes  invocaciones,
+Para  ver  este  proceso,  fíjese  en  el  siguiente  código,  en  el  que  se  invoca  el
+El  aspecto  más  importante  cuando  existen  métodos  con  un  valor  de  retorno  definido  dentro  del
+visto  hasta  el  momento.  La  sintaxis  para  invocar  el  método  es  exactamente  la  misma,
+dentro  de  su  blog  de  código.  Ahora  bien,  lo  que  cambia  es  el  comportamiento  del  método,
+a  esa  invocación.
+poniendo  el  nombre  y  la  lista  de  valores  para  los  parámetros  de  entrada  (si  los  hubiere).  Al
+llevarse  a  cabo  la  invocación,  el  flujo  de  ejecución  salta  también  a  las  instrucciones  definidas
+invocaciones.
+La  figura  2.3  muestra  un  esquema  de  cuál  es  el  flujo  de  control  asociado  a  la
+pero,  de  nuevo,  tenga  en  cuenta  que  en  el  código  fuente  sólo  aparece  una  única
+vez.  Simplemente  sirve  para  mostrar  que  su  resultado  puede  variar  por  diferentes
+Invocación
+2  public  class  LeerEnteros  {
+Programación  (DAW)
+Programación  básica  (ASX)
+Programación  (DAM)
+Programación  modular
+1  importe  java.util.Scanner;
+System.out.println("El  otro  entero  ha  sido
+consultarlo  a  posteriori,
+desea  obtener  el  resultado
+una  variable.
+F  igura  2.  3.  Flujo  de  control  al  llamar  un  método  y  evaluación  del  método  usando  el  valor  de  retorno.
+"
+public  void  inicio()  {
++  a  +  ".");
+public  static  void  main  (String[]  args)  {
+"
+calculado  por  el  método  por
+Como  en  toda  expresión,  si
+será  necesario  que  lo  guarde  en
+a  =  leerEnterTeclado();
+LeerEnters  programa  =  new  LeerEnters();
+}
+System.out.println("El  entero  ha  sido  +  a  +  ".");
+System.out.println("Lea  un  entero  por  el  teclado:");
+programa.inicio();
+int  a  =  leerEnterTeclado();
+System.out.println("Lea  otro  entero  por  el  teclado:");
+
+}
+}  public  int  leerEnterTeclado()  {
+//El  código  no  varía  respecto  al  ejemplo  anterior //...
+Programación  (DAW)
+Programación  básica  (ASX)
+Programación  (DAM)
+Programación  modular
+19 }
+Una  parte  de  la  utilidad  de  los  métodos  es  mejorar  la  comprensión  del  código  de  los
+programas,  por  lo  que  no  es  necesario  ir  siguiendo  y  entendiendo  las  instrucciones  en
+un  blog  demasiado  largo,  y  de  una  sola  vez.  Si  los  identificadores  de  los  métodos  se
+han  escogido  con  criterio,  el  código  es  más  fácil  de  seguir.  Este  seguimiento  es  aún
+más  sencillo  si  se  usan  parámetros,  ya  que  no  dejan  ninguna  duda  sobre  los  datos  que
+está  tratando  un  método  dado.
+Como  se  ha  ido  mostrando,  el  uso  de  parámetros,  tanto  de  entrada  como  de  salida,
+resulta  especialmente  útil  para  convertir  problemas  muy  parecidos  en  uno  mismo  y
+hacer  que  el  proceso  de  descomposición  de  un  programa  sea  conceptualmente  similar
+al  de  un  problema  de  ámbito  general.  Ahora  bien,  en  realidad,  su  uso  no  debería
+limitarse  sólo  a  este  escenario,  sino  que  debería  ser  generalizado  a  cualquier  método.
+De  hecho,  el  uso  de  parámetros  de  entrada  y  salida  no  se  trata  de  un  caso  especial
+diferenciado  en  la  declaración  de  parámetros,  sino  lo  habitual  cuando  se  usan  dentro
+del  código  de  un  programa.
+2.3  Cuando  declarar  parámetros  de  entrada  o  salida
+Si  hace  memoria,  este  modelo  de  invocación  es  exactamente  igual  a  la  invocación  de
+métodos  sobre  una  variable  de  tipo  String.  Esto  se  debe  a  que  los  métodos  definidos
+por  String  están  declarados  con  valores  de  retorno.
+Reto  3.  Modifique  el  ejemplo  de  modo  que  en  lugar  de  usar  enteros,  funcione  con  reales  (double).
+Asegúrese  de  su  correcto  funcionamiento  introduciendo  números  con  decimales.
+Pero  en  realidad  también  es  lo  más  normal  usar  parámetros  como  mecanismo  para
+esta  tarea,  reemplazando  mayoritariamente  el  uso  de  variables  globales.  A  partir  de
+ahora,  se  considerará  que  es  mejor  evitar  su  uso,  excepto  en  casos  muy  concretos.
+Por  tanto,  ante  la  pregunta  “¿cuándo  declarar  parámetros  de  entrada  y  salida  en  un
+método?”,  la  respuesta  es  “siempre  que  se  pueda  y  tenga  sentido”,  independientemente
+de  que  un  método  en  realidad  se  invoque  una  sola  vez  o  muchas  dentro  de  su
+Por  otra  parte,  hasta  ahora,  las  variables  globales  se  han  presentado  como  mecanismo
+para  compartir  o  traspasar  datos  entre  métodos  de  distintos  niveles  de  descomposición.
+2.3.1  Mejorando  la  legibilidad  de  código  con  parámetros
+programa.
+
+5 ...
+Programación  modular
+Programación  (DAM)
+Programación  básica  (ASX)
+Programación  (DAW)
+1 //Son  variables  globales  2  y  =  4;  j  =  8;  4  k  =  12;
+6  unMetodo();
+1 //No  son  variables  globales  2  int  i  =  4;  3  int  j  =  8;  4  int  k
+=  12;
+6  k  =  unMetodo(i,  j);
+5 ...
+2.3.2  El  principio  de  ocultación /  encapsulación
+•  Si  quisiera  mostrarlo  por  pantalla,  ¿en  qué  variable  se  encuentra?
+•  ¿Cuál  es  el  resultado  para  este  caso?
+Por  ejemplo,  fíjese  en  el  código  que  se  muestra  a  continuación  y  plantéese  sinceramente
+las  siguientes  preguntas:
+•  En  esta  invocación,  ¿qué  valores  se  están  tratando  en  un  método?
+De  hecho,  es  imposible  contestar  a  las  preguntas  sin  saber  exactamente  cómo  funciona  este
+método.  Debería  ir  inmediatamente  a  su  código  fuente  e  inspeccionarlo  detalladamente.
+En  cambio,  compare  con  este  otro  código:
+Sin  siquiera  saber  qué  hace  el  método,  no  es  necesario  saber  cuál  es  su  código  para
+responder.  Sin  lugar  a  dudas,  los  valores  que  se  están  tratando  son  4  y  8,  y  el  resultado
+estará  almacenado  en  la  variable  k.  Por  tanto,  elegir  usar  parámetros  en  lugar  de
+variables  globales  es  especialmente  positivo  para  la  legibilidad  del  código.
+Un  motivo  para  usar  de  forma  generalizada  parámetros  de  entrada  y  salida  en  sus
+métodos  y  limitar  el  uso  de  las  variables  globales  es  garantizar  uno  de  los  principios
+más  importantes  dentro  de  la  programación.
+El  principio  de  encapsulación/ocultación  se  define  formalmente  como  la
+segregación  de  los  elementos  en  los  que  se  descompone  un  problema  general,
+por  lo  que  se  separa  su  interfaz  contractual  de  su  implementación.
+Si  para  poder  invocar  satisfactoriamente  un  método  se  requiere  saber  parte  del  suyo
+Dicho  en  otras  palabras,  un  método  debe  realizar  una  única  tarea  muy  concreta,  de
+forma  autocontenida,  y  para  poder  ser  invocado  no  es  necesario  saber  realmente  cómo
+funciona,  sólo  qué  hace.  Alguien  que  no  haya  programado  el  método  debe  ser  capaz
+de  usarlo  sin  tener  que  saber  cuál  es  su  código  o  qué  variables  se  están  usando  en  su  interior.
+
+Calcular  el  mínimo  entre  dos  enteros
+1 //Parám.  entrada:  los  valores  a  tratar  son  dos  enteros //Parám.  salida:  el  mínimo  entre  los  dos,  un  entero  público  int
+minim  (int  a,  int  b)  { //"a"  y  "b"  contienen  los  valores  a  tratar
+Programación  (DAW)
+Programación  básica  (ASX)
+Programación  (DAM)
+Programación  modular
+En  última  instancia,  los  métodos  suelen
+encapsular  una  transformación  de  los  datos
+de  entrada  en  datos  de  salida
+Con  el  fin  de  seguir  fielmente  el  principio  de  encapsulación/ocultación,  puede  ser  útil  establecer
+unas  pautas  generales  de  comportamiento  de  los  métodos  cuando  se  quieren  considerar  en
+forma  parametrizada.  El  aspecto  principal  para  alcanzar  este  objetivo  es  darse  cuenta  de  que,
+aunque  a  la  hora  de  declarar  un  método  los  parámetros  de  entrada  y  el  de  salida  son  aspectos
+totalmente  independientes  sintácticamente,  en  la  mayoría  de  casos  están  muy  relacionados  en
+su  código  (figura  2.4).
+•  El  máximo  (o  el  mínimo)  entre  un  conjunto  de  valores  (por  ejemplo,  un  array).
+•  Dado  un  valor  de  nota,  transformarla  en  cadena  de  texto  (por  ejemplo,  5  =
+•  Saber  los  días  que  tiene  un  mes  dado.
+•  Buscar  la  posición  de  un  valor  concreto  dentro  de  un  array  (si  lo  hubiere).
+2.3.3  Ejemplos  de  métodos  parametrizados
+A  modo  de  ejemplo,  a  continuación  se  muestra  la  traducción  de  algunos  de  los  blogs  de  código
+asociados  a  problemas  con  los  que  ha  trabajado  en  métodos  con  parámetros
+de  entrada  y  un  valor  de  retorno.  Dentro  del  código  encontrará  en  formato  comentario  las
+Aprobado).
+Ejemplos  de  problemas  típicos  que  ha  visto  y  que  cumplen  la  condición  de  que,  dados  unos
+valores  de  entrada,  es  necesario  calcular  un  resultado  concreto,  pueden  ser:
+código,  no  se  está  siguiendo  este  principio.  De  hecho,  hasta  cierto  punto,  este  principio  está
+ligado  a  los  motivos  anteriormente  expuestos  para  evitar  el  uso  de  variables  globales.
+Normalmente,  los  métodos  son  utilizados  como  mecanismo  para  encapsular  bloques  de  código
+autocontenidos  que  realizan  cálculos  o  transformaciones  sobre  los  valores  de  los  parámetros
+de  entrada,  a  partir  de  los  cuales  generar  un  resultado  final  concreto.  No  es  casualidad  que  en
+muchos  lenguajes  a  los  métodos  se  les  llame  “funciones”,  ya  que  se  comportan  exactamente
+como  funciones  matemáticas:  partiendo  de  unos  valores  de  entrada  dados,  se  aplica  una
+fórmula  (en  este  caso,  un  proceso)  mediante  la  cual  se  calcula  el  resultado.
+•  La  media  aritmética  de  los  valores  en  un  array.
+En  estos  ejemplos  sólo  se  muestra  el  código  asociado  al  método  que  realiza  cada  tarea,  no  el
+programa  completo,  con  los  métodos  principal  (main)  e  inicio.
+explicaciones  sobre  qué  tipo  de  datos  tratan,  y  por  tanto,  cuáles  son  sus  parámetros  de  entrada
+y  salida.
+
+Reto  4.  Usando  este  método,  realice  un  programa  que  calcule  cuál  es  el  valor  mínimo
+Para  invocarlo  para  calcular  el  mínimo  entre  4  y  10,  y  guardar  el  resultado  en  una  variable
+llamada  nada,  se  haría:
+Para  invocarlo  para  calcular  el  máximo  en  el  array  llamado  valores  y  guardar  el  resultado
+en  una  variable  llamada  nada,  se  haría:
+entre  los  valores  3,  6,  10  y  15,  y  lo  muestre  por  pantalla.
+4 //En  este  caso,  "nada"  valdrá  12.0
+3  double  res  =  maxim(valores);
+Programación  (DAW)
+Programación  (DAM)
+Programación  modular
+2 ...
+1  int  res  =  minim(4,  10);
+2 //En  este  caso,  "nada"  valdrá  4
+1 //Parám.  entrada:  el  valor  a  procesar  es  un  array
+1 //Parám.  entrada:  el  valor  a  procesar  es  un  array
+Programación  básica  (ASX)
+for  (int  i  =  0;  y  <  array.length;  i++)  {
+int  min  =  b;
+return  max;
+}
+//Parám.  salida:  el  resultado  de  realizar  el  cálculo,  un  real  (tiene  decimales)
+public  double  media(int[]  array)  {
+public  double  maxim(double[]  array)  {
+//Parám.  salida:  el  máximo  entre  todos,  un  real
+}
+}
+if  (array[i]  >  max)  {
+//El  resultado  es  (acumulador)/(número  elementos)
+}
+min  =  a;
+if  (a  <  b)  {
+//"min"  contiene  el  resultado
+}
+//"array"  contiene  el  valor  a  tratar
+1  double[]  valores  =  {1.3,  −2.1,  0,  12.0,  4.7};
+//"max"  contiene  el  resultado
+for  (int  i  =  1;  y  <  array.length;  i++)  {
+//"array"  contiene  el  valor  a  tratar
+acumulador  =  acumulador  +  array[i];
+return  min;
+}
+//Se  puede  devolver  el  resultado  de  una  expresión
+double  max  =  array[0];
+}
+max  =  array[i];
+double  acumulador  =  0;
+return  acumulador/array.length;
+Calcular  lo  máximo  dentro  de  un  array  de  reales
+Calcular  la  media  aritmética  de  los  valores  de  un  array
+
+Calcular  los  días  de  un  mes
+Transformar  una  nota  a  texto
+Programación  (DAM)
+Programación  (DAW)
+2 ...
+4 //En  este  caso,  "nada"  valdrá  3
+3  System.out.println(textNota);
+3  double  res  =  media(valores);
+Programación  básica  (ASX)
+1 //Parám.  entrada:  el  valor  a  procesar  es  un  real  (una  nota)
+Programación  modular
+2 //En  este  caso,  "textNota"  valdrá  "Notable"
+1  int[]  valores  =  {1,  2,  3,  4,  5};
+1  String  textNota  =  notaAText(7.8);
+1  public  static  final  int[]  numDies  =  {31,  28  30,  31};
+variable  textNota  y  mostrarlo  por  pantalla,  se  haría:
+Para  invocarlo  para  saber  el  texto  que  corresponde  a  la  nota  7.8,  guardar  el  valor  en  la
+Para  invocarlo  para  calcular  la  media  del  array  valores  y  guardar  el  valor  en  la  variable
+nada,  se  haría:
+Reto  5:  haga  un  programa  que,  dado  un  conjunto  de  cinco  notas  parciales  almacenadas  en
+un  array  de  reales,  muestre  el  texto  de  la  nota  final  (la  media  de  todas
+cinco).  Pista/Nota:  tenga  en  cuenta  que  el  parámetro  de  entrada  del  ejemplo
+media  es  un  array  de  enteros.  (No  puede  usar  su  código  directamente,  lo  deberá
+de  modificar.)
+}  else  if  ((nota  >=  6.5)&&(nota  <  9))  {
+//"nota"  contiene  el  valor  a  tratar
+//Parám.  entrada:  el  valor  a  procesar  es  un  entero  (un  nº  de  mes)
+public  String  notaAText(double  nota)  {
+}
+días  =  numDies[mes  −  1];
+}
+,  31,  30,  31,  30,  31,  31,  30,  31,
+}
+texto  =  "Excelente";
+}  else  if  ((nota  >=  5)&&(nota  <  6.5))  {
+return  texto;
+public  int  díasDelMes(int  mes)  {
+int  días  =  0;
+return  días;
+texto  =  "Aprobado";
+//Parám.  salida:  un  entero  (un  núm.  de  días)
+String  text  =  null;
+if  ((mes  >=  1)&&(mes  <=  12))  {
+}
+texto  =  "Suspendido";
+}  else  {
+texto  =  "Nota  no  válida";
+//"días"  contiene  el  resultado
+//Parám.  salida:  una  cadena  de  texto
+if  ((nota  >=  9)&&(nota  <=  10))  {
+//"texto"  contiene  el  resultado
+}  else  if  ((nota  >=  0)&&(nota  <  5))  {
+//"mes"  contiene  el  valor  a  tratar
+texto  =  "Notable";
+
+encontrado  =  true;
+if  (array[posición]  ==  valor)  {
+public  int  buscarValor(int[]  array,  int  valor)  {
+El  sistema  de  juego
+int  posición  =  0;
+}
+posición  =  posición  +  1;
+de  adivinar  un  número
+//¿Se  ha  encontrado?
+if  (!encontrado)  {
+posición  =  −1;
+4 //En  este  caso,  "nada"  valdrá  −1
+secreto  es  similar  al  del
+}
+return  posición;
+//Parám.  salida:  un  entero  (una  posición  del  array)
+//"array"  contiene  el  valor  a  tratar
+while  ((posición  <  array.length)&&(!encontrado))  {
+boolean  encontrado  =  false;
+}
+//Si  no  se  ha  encontrado  se  hace  valer  −1
+}
+//"posición"  contiene  el  resultado.
+Buscar  la  posición  donde  existe  un  valor  concreto  en  un  array  de  enteros
+2 ...
+Mastermind.
+3  int  res  =  buscarValor(valores,  7);
+Programación  (DAM)
+Programación  (DAW)
+2 //En  este  caso,  "nada"  valdrá  28
+1  int  res  =  díasDelMes(2);
+1  int[]  valores  =  {1,  2,  3,  4,  5};
+Programación  modular
+1 //Parám.  entrada:  los  valores  a  procesar  son  el  array  y  qué  buscar  (un  entero)
+Programación  básica  (ASX)
+el  valor  7  y  guardar  el  índice  de  esta  posición  en  la  variable  nada,  se  haría:
+introducido.  Use  métodos  tanto  para  preguntar  el  número  como  para  buscar  su  número
+de  la  descomposición.  Este  ejemplo  sirve  principalmente  como  hilo  argumental
+de  descomposición  de  un  problema  relativamente  complejo  mediante  diseño  descendente.
+Sin  embargo,  esta  vez  los  subproblemas  se  analizarán  también  desde  el  punto  de  vista
+de  qué  datos  son  necesarios  para  su  resolución  (entrada)  y  qué  resultado
+para  resaltar  algunos  aspectos  importantes  del  uso  de  métodos  dentro  de  un  programa  más
+concreto  producen  (salida).  Sin  embargo,  esta  vez  no  se  detallarán  todos  los  aspectos
+Reto  6.  Haga  un  programa  que  pregunte  un  número  entero  por  el  teclado.  Entonces,  dado
+Para  invocarlo  para  saber  los  días  de  febrero  y  guardarlos  en  la  variable  nada,  se  haría:
+Para  invocarlo  para  encontrar  si  en  alguna  posición  de  un  array  llamado  valores  hay
+un  conjunto  de  valores  dentro  de  un  array,  debe  calcular  cuántas  veces  aparece  el  número
+complejo,  como  la  propagación  de  los  valores  entre  invocaciones  de  los  métodos.
+apariciones.  Declare  el  array  dónde  hacer  la  búsqueda  como  una  variable  dentro  del  método
+2.4  Un  ejemplo  de  diseño  descendente  con  métodos  parametrizados
+habitual  cuando  haga  programas),  a  continuación  verá  un  nuevo  ejemplo  de  proceso  completo
+Para  saber  cómo  usar  métodos  basados  en  parámetros  de  entrada  y  salida  (el  más
+inicio,  inicializada  con  valores  concretos  de  su  elección.
+
+7  Escribe  5  letras  minúsculas:  mtdzp  8  La  respuesta  es
+[OO−OX].  ¡Sigue  intentándolo!
+5  Escribe  5  letras  minúsculas:  mtzoc  6  La  respuesta  es
+[OOX−−].  ¡Sigue  intentándolo!
+1  Escribe  5  letras  minúsculas:  atzbq  2  La  respuesta  es
+[−OX−−].  ¡Sigue  intentándolo!
+3  Escribe  5  letras  minúsculas:  btymz  4  La  respuesta  es
+[−O−XX].  ¡Sigue  intentándolo!
+9  Escribe  5  letras  minúsculas:  mtpze  10  La  respuesta  es
+[OOOO−].  ¡Sigue  intentándolo!
+Programación  (DAM)
+Programación  básica  (ASX)
+Programación  (DAW)
+Programación  modular
+11  Escribe  5  letras  minúsculas:  mtpzx  12  La  respuesta  es  [OOOOO].
+¡Has  acertado!
+2.4.1  Descomposición  de  problema
+de  felicitación.
+En  este  caso,  el  programa  que  se  desea  realizar  es  una  versión  algo  más  avanzada
+del  juego  de  adivinar  un  número  secreto.  En  este  caso,  se  trata  de  adivinar  una
+combinación  de  5  letras  al  azar.  Siempre  que  se  realiza  un  intento,  el  programa  da  una
+pista.  Por  cada  letra,  se  indica  si  es  totalmente  incorrecta  (.),  si  se  ha  acertado  (O),  o  si
+esa  letra  existe,  pero  no  en  esa  posición  (X).  El  programa  se  ejecuta  hasta  que  el
+usuario  acierta,  momento  en  el  que  se  da  un  mensaje
+Para  aclarar  este  funcionamiento,  a  continuación  se  da  un  ejemplo  de  ejecución:
+De  nuevo,  el  primer  paso  a  dar,  antes  de  ponerse  a  generar  código,  es  sentarse  un
+rato  a  pensar  y  hacer  una  propuesta  sobre  qué  datos  habrá  que  tratar  y  cómo  se  podría
+descomponer  el  problema.
+En  un  vistazo  preliminar,  para  este  problema,  los  datos  más  importantes  a  tratar  en
+general  son  básicamente  dos:  la  palabra  secreta  y  la  palabra  que  responde  el  usuario.
+También,  en  algún  momento,  habrá  que  generar  la  respuesta  del  programa  con  la  pista
+diciendo  qué  letras  ha  acertado  y  controlar  cuándo  hay  que  terminar  la  ejecución,  una
+vez  acertado.
+Antes  de  poder  hacer  nada,  habrá  que  generar  la  palabra  secreta  de  forma  aleatoria.
+Una  vez  realizado,  el  programa  se  dedica  a  preguntar  la  respuesta  del  usuario  ya
+continuación  analizarla  para  generar  una  respuesta  con  la  pista,  o  la  felicitación  si  ha  acertado.
+1.  Generar  palabra  secreta.
+2.  Preguntar  respuesta.
+3.  Resolver  respuesta.
+Por  tanto,  en  un  primer  nivel  se  podría  descomponer  como:
+Primer  nivel  de  descomposición
+Identificación  de  los  datos  a  tratar
+
+Segundo  nivel  de  descomposición
+Tercer  nivel  de  descomposición
+Programación  (DAM)
+Programación  básica  (ASX)
+Programación  (DAW)
+Programación  modular
+•  Generar  letra  aleatoria.  Este  subproblema  requiere  un  poco  de  imaginación  para  plantearlo
+(y  un  poco  de  conocimiento  de  qué  instrucciones  tiene  Java  que  le  puedan  ayudar).  Por
+tanto,  según  se  plantee,  será  fácil  o  difícil.  En  este  ejemplo  se  hará  de  la  siguiente  forma.
+Java  permite  acceder  a  la  hora  actual  con  precisión  de  nanosegundos  usando  una
+instrucción  especial.
+(a)  Generar  letra  aleatoria.
+•  Generar  palabra  secreta.  Generar  una  palabra  secreta  puede  considerarse  como  la
+generación  repetidas  veces  de  una  única  letra  aleatoria.
+Para  ver  si  es  necesario  un  segundo  nivel  de  descomposición,  es  necesario  analizar  si  los
+subproblemas  definidos  en  el  primer  nivel  se  consideran  complejos,  o  al  menos,  si
+conceptualmente  son  más  fáciles  de  entender  si  se  vuelven  a  descomponer.
+Esta  tarea  puede  resolverse  directamente  con  el  operador  +  de  las  cadenas  de  texto.
+•  Resolver  respuesta.  Resolver  la  respuesta  significa  que,  ante  todo,  hay  que  generar  la
+pista  y  después  ver  si  se  corresponde  con  una  combinación  ganadora  (OOOOOO)  o  no.
+Por  tanto,  se  podría  dividir  en  estos  dos  subproblemas.
+(a)  Generar  pista.
+•  Montar  palabra.  Se  trataría  de  concatenar  5  letras  para  crear  un  String.
+3.  Resolver  respuesta.
+(b)  Dar  respuesta.
+•  Preguntar  respuesta.  De  entrada,  leer  una  cadena  de  texto  desde  el  teclado  es  un  problema
+ampliamente  tratado  y  que  ya  debería  saber  resolver.  Por  tanto,  no  es  nada  complejo.
+1.  Generar  palabra  secreta.
+(b)  Montar  palabra.
+Nuevamente,  se  analizan  los  nuevos  subproblemas  para  ver  si  es  necesario  continuar  descom­
+Esto  es  un  tiempo  tan  reducido  que  siempre  se  obtendrán  valores  distintos  por  cada
+ejecución.  Por  tanto,  es  como  generar  valores  al  azar.  Dado  que  ya  sabe  cómo,  partiendo
+de  un  entero,  obtener  texto  (por  ejemplo,  al  convertir  un  número  de  mes  en  su  nombre),
+ya  se  ha  llegado  a  un  problema  bastante  simple.
+ponente  o  no.
+2.  Preguntar  respuesta.
+”System.nanoTime”()
+Ésta  es  la  instrucción  que
+accede  al  tiempo  con  precisión  de
+nanosegundos  (una
+milmillonésima  de  segundo,  un
+segundo  =  1.000.000.000
+nanosegundos).
+
+•  generarLetraAleatoria.  Genera  una  letra  al  azar.  Por  tanto,  el  valor  de  retorno  será  un
+carácter.  No  necesita  ninguna  entrada  para  realizar  este  cálculo,  ya  que  todo  lo  necesario
+se  obtiene  directamente  de  una  instrucción  de  Java  para  saber  los  nanosegundos
+presentes.
+Debido  a  esto,  en  un  caso  como  éste  puede  ser  mejor  ir  despacio  y  sólo  detenerse  a  pensar  la
+declaración  exacta  de  cada  método  con  sus  parámetros  cuando  corresponda,  siguiendo  paso  a
+paso  cada  nivel  de  descomposición.  Aparte  de  eso,  sí  es  posible  escribir  ya  los  métodos  main  y
+el  esqueleto  del  método  inicio,  ya  que  siempre  siguen  la  misma  estructura.
+•  Dar  respuesta.  Se  trata  de  realizar  una  comparación  y  mostrar  un  mensaje  por  pantalla.  Es
+claramente  una  estructura  de  selección,  lo  que  es  sencillo.
+•  Generar  pista.  Habrá  que  comparar  la  palabra  secreta  y  la  respuesta  letra  a  letra.  Esto
+puede  hacerse  con  una  estructura  de  repetición,  que  no  es  demasiado  compleja,  y  las
+letras  (los  caracteres)  pueden  compararse  fácilmente.
+Por  tanto,  ya  ha  terminado  la  descomposición.
+Una  vez  establecida  la  descomposición  a  partir  de  la  cual  trabajar,  ya  podría  establecerse  una
+primera  versión  del  esqueleto  de  la  clase.  Para  ello,  ahora  sería  necesaria  una  etapa  de  reflexión
+adicional,  ya  que  para  establecer  las  cabeceras  de  los  métodos  hay  que  tener  claros  cuáles  serán
+sus  parámetros  de  entrada  y  salida.  Desgraciadamente,  esto  obliga  hasta  cierto  punto  a  tener  una
+visión  general  de  cómo  debe  funcionar  todo  el  programa  y  las  interacciones  entre  métodos.
+Dada  la  descomposición  del  problema,  es  necesario  declarar  dos  métodos,  que  se  pueden  decir:
+2.4.2  Implementación  del  segundo  nivel  de  descomposición
+•  generarPista.  Genera  la  pista  que  se  debe  mostrar  por  pantalla  (por  ejemplo,  OXX.O).  Esto
+es  un  texto,  por  lo  que  el  valor  de  retorno  será  un  String.
+las  cadenas  de  texto.
+Dado  esto,  ahora  mismo,  el  código  del  programa  podría  ser  así.  Fíjese  atentamente  que  la
+traducción  de  un  entero  aleatorio  a  un  carácter  aleatorio  se  hace  con  la  ayuda  de  una  tabla  de
+traducción  en  forma  de  texto  con  todo  el  alfabeto  (constante  abc):
+Para  poder  realizar  esta  tarea,  es  necesario  comparar  la  respuesta  del  usuario  (un  texto)
+y  el  valor  secreto  (otro  texto).  Por  tanto,  se  necesitan  dos  parámetros  de  entrada,  también
+de  tipo  String.  En  el  código  de  este  método  seguro  que  habrá  que  manipular
+Programación  (DAM)
+Programación  básica  (ASX)
+Programación  (DAW)
+Programación  modular
+1  importe  java.util.Scanner;  2 //Un  programa  para  jugar  en
+el  Mastermind.  3  public  class  MasterMind  {
+//Constantes
+public  final  static  char  TOT_CORRECTE  =  'O';  public  final  static
+char  MALA_POSICION  =  'X';
+Normalmente,  los  métodos
+que  realizan
+cálculos  exclusivamente
+a  partir  de  entrada/salida
+(teclado,  reloj  interno,
+etc.)  no  tienen  parámetros  de  entrada.
+
+cuáles  deberían  ser  sus  parámetros.  En  este  caso,  sin  embargo,  para  algunos  de  los
+del  problema  general,  se  puede  proceder  a  establecer  los  nombres  de  los  nuevos  métodos  y
+2.4.3  Implementación  del  primer  nivel  de  descomposición
+Una  vez  finalizado  un  nivel,  puede  subirse  al  siguiente.  De  acuerdo  a  la  descomposición
+métodos  vale  la  pena  estudiar  su  implementación  de  forma  mucho  más  detallada,
+ya  que  este  ejemplo  ha  sido  buscado  con  la  intención  de  que  aparezcan  algunos  aspectos
+interesantes  cuando  interactúan  métodos  con  parámetros  de  entrada  y/o  salida.
+letras.  Por  tanto,  el  resultado  es  un  texto  (un  valor  de  tipo  String).  Cómo
+que  parte  de  cero  para  hacerlo,  no  necesita  parámetros  de  entrada.
+•  generarPalabraSecreta.  Genera  la  palabra  secreta,  compuesta  por  5
+De  entrada,  aquí  tiene  una  descripción  general:
+Programación  modular
+Programación  básica  (ASX)
+51 }
+Programación  (DAM)
+Programación  (DAW)
+for  (int  i  =  0;  y  <  s.length();  i++)  {
+//El  método  main  no  cambia  respecto  a  la  plantilla  general
+nada  =  nada  +  INCORRECTO;
+}
+//Parám.  salida:  una  letra  (un  carácter)
+//Se  puede  declarar,  pero  todavía  no  corresponde  deducir  el  código
+}
+long  nano  =  System.nanoTime();
+}  else  {
+}
+//Métodos  asociados  al  primer  nivel  de  descomposición
+//Parám.  entrada:  ninguna
+}
+public  final  static  char  INCORRECTO  =  '−';
+//Métodos  asociados  al  segundo  nivel  de  descomposición
+int  index  =  (int)(nano  %  abc.length());
+nada  =  nada  +  TODO_CORRECTO;
+MasterMind  programa  =  new  MasterMind();
+public  String  generarPista(String  s,  String  r)  {
+//...
+//El  código  se  hará  al  terminar  el  primer  nivel  de  descomposición
+//...
+}
+return  abc.charAt(index);
+String  nada  =  "";
+return  nada;
+nada  =  nada  +  MALA_POSICION;
+public  final  static  String  abc  =  "abcdefghijklmnopqrstuvwxyz";
+public  static  void  main  (String[]  args)  {
+programa.inicio();
+//Obtener  ambos  caracteres  a  comparar
+public  void  inicio()  {
+}
+char  charSecret  =  s.charAt(i);
+public  char  generarLetraAleatoria()  {
+char  charRespuesta  =  r.charAt(i);
+//Ya  pensarán  en  terminar  el  segundo  nivel  de  descomposición
+//Métodos  asociados  al  problema  general
+//indexOf  busca  si  un  carácter  concreto  existe  en  un  String
+//Hay  que  comparar  cada  carácter  de  la  solución  y  la  respuesta
+//Parám.  entrada:  la  respuesta  y  el  secreto  a  comparar  (texto)
+}  else  if  (s.indexOf(charRespuesta) !=  −1)  {
+if  (charSecret  ==  charRespuesta)  {
+//Parám.  salida:  la  pista  a  mostrar  (un  texto)
+
+generarLetraAleatoria  ya  partir  de  cada  resultado  crea  su  propio  resultado.  En
+Este  método  se  basa  en  el  uso  repetido  de  la  generación  de  un  carácter  individual  para  realizar  una
+palabra  de  5  letras.  Por  tanto,  invoca  internamente  a
+el  formato  de  una  lectura  de  datos  escritos  por  el  usuario,  es  especialmente  útil  planteárselo  como
+un  nuevo  subproblema.  Separar  todo  el  código  asociado  a  la  comprobación  en
+que  lee  un  texto  desde  el  teclado  y  lo  devuelve.  Por  tanto,  tampoco  le  hacen  falta
+más  detalle  ya  verá  cuáles  deberían  ser  sus  parámetros.
+•  resolverRespuesta.  Resolver  una  respuesta  significa  generar  la  pista,  establecer
+parte  de  ello,  el  hecho  de  que  un  método  pueda  invocar,  a  su  vez,  otro  método,
+no  tiene  otra  peculiaridad.
+Escribir  texto  pidiendo  al  usuario  que  introduzca  una  palabra  por  el  teclado  y  leerla
+En  casos  como  éste,  cuando  se  quiere  realizar  una  comprobación  de  cierta  complejidad  sobre
+un  método  aparte  simplifica  el  código  y  mejora  su  comprensión.  En  este  caso,  el
+nuevo  método  podría  llamarse  comprobarRespuesta.
+parámetros  de  entrada  y  devolverá  el  texto  leído.
+•  preguntarRespuesta.  Como  en  ejemplos  anteriores,  deberá  ser  un  método
+si  ha  acertado,  y  mostrar  un  mensaje  en  consecuencia.  Cuando  se  trate  con
+Ahora  bien,  comprobar  estas  dos  cosas  no  se  realiza  en  una  o  dos  líneas  de  código.
+en  forma  de  cadena  de  texto  no  es  excesivamente  complicado,  sobre  todo,  dado  que  no  es  necesario
+hacer  comprobaciones  de  tipos,  como  ocurre  con  números  (hasNextInt,  etc.).  Ahora  bien,
+si  se  quiere  ser  estricto,  debería  comprobarse  al  menos  que  la  respuesta  sigue  el  formato
+esperado:  tiene  cinco  letras  y  está  formada  por  caracteres  del  alfabeto  en  minúscula  (a...z).
+Programación  (DAW)
+Programación  básica  (ASX)
+Programación  (DAM)
+Programación  modular
+1 //Parám.  entrada:  ninguna,  todo  se  obtiene  de  generarLetraAleatoria
+1 //Parám.  entrada:  ninguna,  todo  se  obtiene  del  teclado
+generarPalabraSecreta
+preguntarRespuesta
+if  (!lecturaOk)  {
+"  letras  minúsculas:  ");
+String  nada  =  "";
+//Parám.  salida:  una  palabra  de  5  letras  (un  String)
+System.out.println("¡Esta  respuesta  no  es  válida!");
+for  (int  i  =  0;  y  <  5;  i++)  {
+//Parám.  salida:  la  palabra  de  respuesta  (un  String)
+System.out.print("Escribir"  nada  =
+lector.next();
+String  nada  =  null;
+do  {
+}
+}
+}
+lecturaOk  =  comprobarRespuesta(nada);
+public  String  generarPalabraSecreta()  {
+nada  =  nada  +  generarLetraAleatoria();
+return  nada;
+lector.nextLine();
+public  String  preguntarRespuesta()  {
+boolean  lecturaOk  =  false;
++  LONG_SECRET  +
+Scanner  lector  =  new  Scanner(System.in);
+
+return  nada;
+}
+//Este  método  corresponde  al  segundo  nivel  de  descomposición
+//Ya  sabemos  que  no  es  correcto.
+//Podemos  terminar  la  ejecución  del  método  inmediatamente.
+return  false;
+}
+}
+if  (respuesta.length() !=  5)  {
+return  false;
+if  ( −1  ==  abc.indexOf(c))  {
+//Parám.  entrada:  texto  a  comprobar
+//Podemos  terminar  la  ejecución  del  método  inmediatamente.
+}  while  (!lecturaOk);
+//Si  todo  se  cumple,  seguro  que  es  correcto
+//Parám.  salida:  si  es  correcto  o  no  (un  booleano.  true  =  correcto)
+public  boolean  comprobarRespuesta(String  respuesta)  {
+F  igura  2.  4.  Flujo  de  control  del  método  ”comprobarRespuesta”  ante  diferentes  situaciones
+}
+//Ya  sabemos  que  no  es  correcto.
+return  true;
+for  (int  i  =  0;  y  <  respuesta.length();  i++)  {
+char  c  =  respuesta.charAt(i);
+}
+Programación  modular
+Programación  (DAM)
+Programación  básica  (ASX)
+Programación  (DAW)
+comprobar  y  la  salida,  un  booleano.  Hay  que  hacer  que  ésta  sea  true  si  los  valores  se
+Este  tipo  de  métodos  que  sirven  para  establecer  si  un  valor  se  considera
+correcto  prácticamente  siempre  tienen  el  mismo  formato:  la  entrada  son  los  valores  en
+Entonces,  con  una  estructura  de  selección  que  compare  el  valor  de  retorno  es  fácil
+actuar  en  consecuencia.
+consideran  correctos  y  false  de  lo  contrario  (“¿Es  el  valor  correcto?  Cierto/Falso”).
+
+De  entrada  sólo  muestra  cosas  por  pantalla,  no  calcula  nada,  por  lo  que  no  es  necesario
+ningún  valor  de  retorno.  Ahora  bien,  para  poder  invocar  correctamente  generar  pista,
+necesita  disponer  de  los  valores  del  texto  secreto  y  la  respuesta  del  usuario.  Estos  dos
+valores  no  los  genera  él,  sino  que  son  generados  por  otros  métodos.  Por  tanto,  para  poder
+disponer,  le  harán  falta  como  parámetros  de  entrada.
+Este  método  lo  primero  que  hace  es  invocar  generar  pista  y  mostrar  el  valor  devuelto.
+Ahora  bien,  según  este  valor  indica  que  si  se  ha  acertado  (OOOOO)  o  no,  actúa  en
+consecuencia.  Lo  que  hace  que  valga  la  pena  estudiarlo  con  detalle  es  ver  qué  parámetros
+tiene.
+Por  tanto,  apenas  se  acaba  de  presentar  una  situación  donde,  aunque  de  entrada  se  ha
+considerado  que  no  era  necesario  descomponer  más,  a  posteriori  se  ha  establecido  que
+es  mejor  hacerlo.  Este  hecho  no  es  muy  raro  en  el  proceso  de  generación  de  un  programa.
+Si  se  fija,  el  código  de  comprobar  Respuesta  tiene  una  peculiaridad.  Hay  más  de  una
+sentencia  return.  Esto  es  posible,  pero  para  entender  qué  está  haciendo,  es  necesario
+tener  presente  un  aspecto  esencial  de  esta  sentencia:  cuando  se  ejecuta,  el  método
+termina  inmediatamente  y  el  valor  de  retorno  es  igual  al  indicado  dentro  de  la  sentencia
+return.  La  figura  2.4  esquematiza  el  funcionamiento  del  método  de  acuerdo  a  este
+comportamiento,  según  distintas  situaciones.
+La  figura  2.5  esquematiza  este  proceso.  También  es  muy  importante  ver  cómo  los  valores
+se  van  copiando  sucesivamente  a  las  variables  definidas  por  los  parámetros,
+independientemente  de  que  su  nombre  vaya  variando  en  cada  caso.
+En  este  método  es  interesante  observar  que,  internamente,  los  dos  parámetros  nunca  son
+usados  directamente.  Sólo  sirven  para  poder  invocar  correctamente  el  método  generar
+pista.  Esta  situación  es  la  que  se  denomina  propagación  de  parámetros  entre  métodos
+ubicados  en  distintos  niveles  de  descomposición.  Los  valores  dispuestos  en  el  método  de
+mayor  nivel  se  pasan  (propagan)  a  métodos  de  nivel  inferior.  Dado  que  un  parámetro  de
+entrada  se  considera  como  una  variable  cualquiera  dentro  del  código  de  un  método,  no
+hay  ningún  problema  en  hacerlo.
+Programación  (DAM)
+Programación  modular
+Programación  (DAW)
+Programación  básica  (ASX)
+1 //Parám.  entrada:  la  respuesta  y  el  valor  secreto  (dos  String)
+//Parám.  salida:  ninguna  (sólo  muestra  cosas  por  pantalla)  public  void
+resolverRespuesta(String  secret,  String  respuesta)  { String  nada  =  generarPista(secreto,
+respuesta);  System.out.print("La  respuesta  se  ["  +  nada  +  "].");
+if  (res.equals("OOOOOO"))  { System.out.println("¡Has  acertado!"); }  else
+{ System.out.println("¡Sigue
+intentándolo!");
+La  técnica
+comprobar  Respuesta  también
+es  habitual  y  puede  resultarle
+muy  útil  para  simplificar  el
+código  de  sus  programas.
+}
+}
+resolverRespuesta
+
+F  igura  2.  5.  Propagación  de  los  valores  de  los  parámetros  entre  dos  métodos
+Programación  básica  (ASX)
+Programación  (DAW)
+1 //Problema  general:  Versión  1
+Programación  (DAM)
+Programación  modular
+Sin  embargo,  en  este  caso,  el  problema  general  también  presenta  una  situación  interesante.
+programa  es  generar  el  valor  secreto,  y  después  ir  repitiendo  la  pregunta  al  usuario  en
+Una  vez  implementados  todos  los  subproblemas,  ha  llegado  el  momento  de  implementar
+por  un  semáforo,  que  inicialmente  está  en  false  y  cambia  a  true  cuando  el  usuario  debe
+fuerza  en  el  parámetro  de  entrada  o  salida  de  algún  método.  En  un  caso  como  éste,
+donde  un  método  necesita  un  valor  para  poder  llevar  a  cabo  su  tarea,  la  respuesta
+exacta  está  al  añadir  un  parámetro  de  salida  a  algún  método.
+o  no)  es  resolverRespuesta,  ya  que  es  quien  compara  la  pista  con  el  valor  asociado
+el  código  del  problema  general:  el  método  inicio.  Ante  todo  lo  que  hará  el
+2.4.4  Implementación  del  problema  general
+Lo  que  se  puede  hacer  es  añadir  un  valor  de  retorno  que  le  diga  si  es  necesario  acabar  la  partida  o
+mostrar  la  respuesta.  Esto  puede  hacerse  usando  una  estructura  de  repetición  controlada
+acertado.  En  una  primera  aproximación,  el  código  sería:
+¿true?  Dado  que  es  mejor  no  usar  variables  globales,  la  respuesta  debe  estar  por
+no  (un  booleano).  De  este  modo,  el  código  sería:
+a  acertar  la  palabra  secreta.  De  entrada,  este  método  no  tiene  ningún  valor  de  retorno.
+Sin  variables  globales,  cómo  establecer  el  valor  de  la  variable  acertado  en
+Si  observa  el  código,  el  método  que  establece  si  la  partida  ha  terminado  (ha  acertado
+boolean  acertado  =  false;
+String  secret  =  generarPalabraSecreta();
+public  void  inicio()  {
+//"acertado"  dice  si  se  ha  acertado  y  ya  se  acaba  el  programa
+while  (!acertado)  {
+String  respuesta  =  preguntarRespuesta();
+resolverRespuesta(secreto,  respuesta);
+}
+}
+
+public  final  static  char  TOT_CORRECTO  =  'O';
+}
+public  final  static  String  ACERTADO  =  "OOOOOO";
+//Parám.  entrada:  la  respuesta  y  el  valor  secreto  (dos  String)
+String  nada  =  generarPista(secreto,  respuesta);
+boolean  fin  =  false;
+fin  =  true;
+//Constantes
+boolean  acertado  =  false;
+//Versión  2
+returno  fino;
+public  final  int  LONG_SECRET  =  5;
+public  final  static  char  INCORRECTO  =  '−';
+//Este  método  corresponde  al  primer  nivel  de  descomposición
+}
+public  void  inicio()  {
+String  secret  =  generarPalabraSecreta();
+System.out.print("La  respuesta  es  ["  +  nada  +  "].");
+}  else  {
+MasterMind  programa  =  new  MasterMind();
+//Parám.  salida:  si  se  ha  acertado  (un  booleano)
+System.out.println("¡Sigue  intentándolo!");
+public  final  static  char  MALA_POSICION  =  'X';
+public  boolean  resolverRespuesta(String  secret,  String  respuesta)  {
+public  void  inicio()  {
+programa.inicio();
+String  secret  =  generarPalabraSecreta();
+}
+public  final  static  String  abc  =  "abcdefghijklmnopqrstuvwxyz";
+while  (!acertado)  {
+if  (res.equals(ACIERTAD))  {
+}
+String  respuesta  =  preguntarRespuesta();
+acertado  =  resolverRespuesta(secreto,  respuesta);
+}
+System.out.println("¡Has  acertado!");
+public  static  void  main  (String[]  args)  {
+Programación  básica  (ASX)
+2 //Un  programa  para  jugar  en  el  Mastermind.
+3  public  class  MasterMind  {
+Programación  modular
+Programación  (DAW)
+Programación  (DAM)
+1 //Problema  general:  Versión  2
+11 //Métodos  asociados  al  problema  general
+1  importe  java.util.Scanner;
+El  proceso  de  descomposición  en  nivel  descendente  no  siempre  es  posible
+necesidad  imprevista  de  un  método  de  nivel  superior.  Tampoco  se  trata  de  una
+Éste  es  un  caso  donde  hay  que  establecer  parámetros  de  un  método  a  posteriori,  frente  a  una
+situación  infrecuente.
+realizarlo  linealmente.  A  menudo  es  necesario  retroceder  y  reconsiderar  decisiones  tomadas
+anteriormente.
+2.4.5  Implementación  final
+legible,  algunos  valores  concretos  se  han  reemplazado  por  constantes  (la  longitud  del
+texto  a  descubrir  y  el  texto  que  indica  que  todo  es  correcto).
+Por  claridad,  a  continuación  se  lista  el  resultado  final.  Para  hacer  el  código  más  pulido  y
+
+String  nada  =  generarPista(secreto,  respuesta);
+"  letras  minúsculas:  ");
+}
+for  (int  i  =  0;  y  <  LONG_SECRET;  i++)  {
+//Ya  sabemos  que  no  es  correcto.
+Scanner  lector  =  new  Scanner(System.in);
+if  ( −1  ==  abc.indexOf(c))  {
+boolean  acertado  =  false;
+System.out.println("¡Esta  respuesta  no  es  válida!");
+System.out.println("¡Sigue  intentándolo!");
+public  String  preguntarRespuesta()  {
+return  abc.charAt(index);
+}
+//Parám.  salida:  la  palabra  de  respuesta  (un  String)
+public  boolean  resolverRespuesta(String  secret,  String  respuesta)  {
+//Podemos  terminar  la  ejecución  del  método  inmediatamente.
+lector.nextLine();
+char  c  =  respuesta.charAt(i);
+}
+returno  fino;
+}
+public  String  generarPalabraSecreta()  {
+String  nada  =  null;
+//Parám.  entrada:  ninguna
+//Parám.  entrada:  ninguna,  todo  se  obtiene  de  generarLetraAleatoria
+acertado  =  resolverRespuesta(secreto,  respuesta);
+String  respuesta  =  preguntarRespuesta();
+//Parám.  entrada:  texto  a  comprobar
+fin  =  true;
+//Parám.  salida:  una  palabra  de  5  letras  (un  String)
+//Parám.  entrada:  ninguna,  todo  se  obtiene  del  teclado
+}  while  (!lecturaOk);
+do  {
+}
+System.out.print("Escribir"  nada  =
+lector.next();
+if  (!lecturaOk)  {
+while  (!acertado)  {
+}
+boolean  lecturaOk  =  false;
+//Métodos  asociados  al  primer  nivel  de  descomposición
+//Parám.  salida:  una  letra  (un  carácter)
+System.out.print("La  respuesta  es  ["  +  nada  +  "].");
+String  nada  =  "";
+if  (res.equals(ACIERTAD))  {
+return  false;
+}
+}
+return  false;
+}
+}
+//Parám.  salida:  si  es  correcto  o  no  (un  booleano.  true  =  correcto)
+System.out.println("¡Has  acertado!");
+//Podemos  terminar  la  ejecución  del  método  inmediatamente.
+}
+public  boolean  comprobarRespuesta(String  respuesta)  {
+//Parám.  entrada:  la  respuesta  y  el  valor  secreto  (dos  String)
+//Métodos  asociados  al  segundo  nivel  de  descomposición
+long  nano  =  System.nanoTime();
+return  nada;
+return  nada;
+if  (respuesta.length() !=  LONG_SECRET)  {
+boolean  fin  =  false;
++  LONG_SECRET  +
+nada  =  nada  +  generarLetraAleatoria();
+public  char  generarLetraAleatoria()  {
+int  index  =  (int)(nano  %  abc.length());
+//Parám.  salida:  si  se  ha  acertado  (un  booleano)
+lecturaOk  =  comprobarRespuesta(nada);
+//Ya  sabemos  que  no  es  correcto.
+for  (int  i  =  0;  y  <  respuesta.length();  i++)  {
+}  else  {
+Programación  modular
+Programación  (DAW)
+Programación  básica  (ASX)
+Programación  (DAM)
+
+Reto  1
+2.5  Soluciones  a  los  retos  propuestos
+Reto  2
+Programación  modular
+18 }
+Programación  (DAM)
+109 }
+1  public  class  EscribirEstrellas  {
+Programación  básica  (ASX)
+2  public  class  ModificarParametroString  {
+Programación  (DAW)
+1 //Modificamos  el  valor  de  un  parámetro.  ¿Afecta  a  la  variable  original?
+}
+}
+Escribir  Estrellas  programa  =  new  Escribir  Estrellas();
+estrellar(4);
+return  true;
+System.out.print("*");
+System.out.println();
+for(int  i  =  0;  y  <  a;  i++)  {
+}
+}
+//Tiene  un  único  parámetro  de  entrada,  de  tipo  entero
+System.out.println("Antes  de  llamar  al  método  \"y\"  vale  "  modificarParametro(i);
+nada  =  nada  +  INCORRECTO;
+}  else  if  (s.indexOf(charRespuesta) !=  −1)  {
++  i);
+}
+public  void  modificarParametro(String  a)  {
+}  else  {
+programa.inicio();
+estrellar(10);
+public  void  estrellar(int  a)  {
+nada  =  nada  +  MALA_POSICION;
+public  static  void  main  (String[]  args)  {
+if  (charSecret  ==  charRespuesta)  {
+char  charRespuesta  =  r.charAt(i);
++  i);
+return  nada;
+estrellar(20);
+public  String  generarPista(String  s,  String  r)  {
+ModificarParametroString  programa  =  new  ModificarParametroString();
+}
+System.out.println("Después  de  llamar  al  método  \"y\"  vale  "
+//Parám.  entrada:  la  respuesta  y  el  secreto  a  comparar  (texto)
+}
+for  (int  i  =  0;  y  <  s.length();  i++)  {
+}
+programa.inicio();
+String  nada  =  "";
+public  void  inicio()  {
+//Si  todo  se  cumple,  seguro  que  es  correcto
+}
+}
+public  void  inicio()  {
+//Parám.  salida:  la  pista  a  mostrar  (un  texto)
+public  static  void  main  (String[]  args)  {
+String  e  =  "Hola";
+char  charSecret  =  s.charAt(i);
+nada  =  nada  +  TODO_CORRECTO;
+}
+//Tiene  un  parámetro  de  entrada,  de  tipo  entero
+
+public  static  void  main  (String[]  args)  {
+int  segundoMínimo  =  mínimo(10,  15);
+a  =  "Adiós";
+realLeído  =  lector.nextDouble();
+//Su  valor  depende  de  cómo  se  ha  invocado  el  método.
+public  static  void  main  (String[]  args)  {
+programa.inicio();
+System.out.println("Leemos  un  real  para  el  teclado:");
+double  realLeído  =  0;
+System.out.println("Lo  real  ha  sido
+System.out.println("Leemos  otro  real  para  el  teclado:");
+}
+int  min  =  b;
+int  primeroMinimo  =  minimo(3,  6);
+}
+double  a  =  leerRealTeclado();
+System.out.println("Esto  no  es  un  entero.");
+}
+MultipleMaxim  programa  =  new  MultipleMaxim();
++  a);
+}
+min  =  a;
+public  double  leerRealTeclado()  {
+//"min"  contiene  el  resultado
+a  =  leerRealTeclado();
+leído  =  lector.hasNextDouble();
+return  min;
+while  (!leído)  {
+public  int  minim  (int  a,  int  b)  {
+if  (a  <  b)  {
+boolean  leído  =  false;
+}
+//Parám.  entrada:  los  valores  a  tratar  son  dos  enteros
++  a  +  ".");
+System.out.println("El  otro  real  ha  sido
++  a  +  ".");
+if  (leído)  {
+lector.next();
+lector.nextLine();
+"
+"
+}
+}
+returno  realLeído;
+public  void  inicio()  {
+//"a"  y  "b"  contienen  los  valores  a  tratar
+//Ahora  hay  una  variable  "a"  declarada.
+Scanner  lector  =  new  Scanner(System.in);
+}  else  {
+System.out.println("Lo  mínimo  es  "  +  resMinim);
+public  void  inicio()  {
+}
+int  resMinim  =  minim(primerMinim,  segundoMinim);
+//Parám.  salida:  el  mínimo  entre  los  dos,  un  entero
+"
+}
+System.out.println("Hemos  modificado  el  valor  en
+programa.inicio();
+}
+LeerReals  programa  =  new  LeerReals();
+Programación  básica  (ASX)
+2  public  class  LeerReales  {
+20 }
+Programación  (DAW)
+23 }
+Programación  modular
+1  public  class  MultipleMaxim  {
+1  importe  java.util.Scanner;
+Programación  (DAM)
+31 }
+Reto  3
+Reto  4
+
+Reto  5
+Reto  6
+Programación  (DAM)
+2  public  class  CuentaValores  {
+43 }
+1  public  class  NotaFinal  {
+Programación  (DAW)
+Programación  modular
+Programación  básica  (ASX)
+1  importe  java.util.Scanner;
+programa.inicio();
+texto  =  "Nota  no  válida";
+if  (leído)  {
+}
+programa.inicio();
+int[]  valores  =  {1,  3,  7,  8,  5,  1,  3,  1,  5,  4};
+int  enteroLeído  =  0;
+return  acumulador/array.length;
+"  golpes.");
+//"nota"  contiene  el  valor  a  tratar
+//Parám.  entrada:  el  valor  a  procesar  es  un  real  (una  nota)
+String  text  =  null;
+for  (int  i  =  0;  y  <  array.length;  i++)  {
+public  int  leerEnterTeclado()  {
+Scanner  lector  =  new  Scanner(System.in);
+public  void  inicio()  {
+if  ((nota  >=  9)&&(nota  <=  10))  {
+}  else  if  ((nota  >=  5)&&(nota  <  6.5))  {
+int  valor  =  leerEnterTeclado();
+while  (!leído)  {
+double  res  =  media(notas);
+double  acumulador  =  0;
+//Parám.  entrada:  el  valor  a  procesar  es  un  array  de  reales
+//"array"  contiene  el  valor  a  tratar
+}
+public  String  notaAText(double  nota)  {
+System.out.println("El  valor"  +  valor  +
+}
+System.out.println("La  nota  final  es  "
+//"texto"  contiene  el  resultado
+}  else  if  ((nota  >=  6.5)&&(nota  <  9))  {
+return  texto;
+public  double  media(double[]  array)  {
+String  notaFinal  =  notaAText(nada);
+public  static  final  double[]  notas  =  {5.0,  7.5,  4.5,  3.75,  8.25};
+NotaFinal  programa  =  new  NotaFinal();
++  nada  +
+//El  resultado  es  (acumulador)/(número  elementos)
+}
+}
+}
+leído  =  lector.hasNextInt();
+texto  =  "Notable";
+public  static  void  main  (String[]  args)  {
+public  void  inicio()  {
+public  static  void  main  (String[]  args)  {
++  notaFinal);
+//Parám.  salida:  una  cadena  de  texto
+//Parám.  salida:  el  resultado  de  realizar  el  cálculo,  un  real  (tiene  decimales)
+"  aparece  "
+}  else  if  ((nota  >=  0)&&(nota  <  5))  {
+int  res  =  cuentaValores(valores,  valor);
+}
+texto  =  "Suspendido";
+}  else  {
+enterLeído  =  lector.nextInt();
+System.out.println("Introduce  un  número  entero:");
+//Se  puede  devolver  el  resultado  de  una  expresión
+boolean  leído  =  false;
+texto  =  "Excelente";
+ComptaValors  programa  =  new  ComptaValors();
+texto  =  "Aprobado";
+}
+acumulador  =  acumulador  +  array[i];
+
+39 }
+Programación  (DAM)
+Programación  modular
+Programación  (DAW)
+Programación  básica  (ASX)
+if  (array[i]  ==  valor)  {
+return  enteroLeído;
+}
+lector.nextLine();
+}
+public  int  cuentaValores(int[]  array,  int  valor)  {
+}
+System.out.println("Esto  no  es  un  entero.");
+}  else  {
+lector.next();
+}
+}
+}
+for  (int  i  =  0;  y  <  array.length;  i++)  {
+acumulador++;
+returno  acumulador;
+int  acumulador  =  0;
+

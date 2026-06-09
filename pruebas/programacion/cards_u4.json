@@ -1,0 +1,309 @@
+{
+  "id": "programacion-uf4",
+  "name": "Programación - UF4",
+  "description": "Programación modular: métodos y funciones",
+  "subject": "Programación",
+  "cards": [
+    {
+      "id": "prog-u4-001",
+      "front": "¿Qué es un método en Java?",
+      "back": "Un método es un bloque de código identificado por un nombre, que realiza una tarea concreta y autocontenida. Se declara dentro de una clase y puede recibir parámetros de entrada y/o devolver un valor de salida. Los métodos permiten aplicar diseño descendente, reutilizar código y mejorar la legibilidad.",
+      "tags": ["programacion", "unidad-4", "metodos"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u4-002",
+      "front": "¿Cuál es la sintaxis general para declarar un método en Java?",
+      "back": "public tipoRetorno nombreMetodo(tipoParam1 nombreParam1, tipoParam2 nombreParam2, ...) {\n    // código del método\n    return valor; // si tiene tipo de retorno distinto de void\n}",
+      "tags": ["programacion", "unidad-4", "declaracion"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u4-003",
+      "front": "¿Qué significa 'public' en la declaración de un método Java?",
+      "back": "'public' es un modificador de acceso que indica que el método es accesible desde cualquier otra clase. Es el nivel de acceso más permisivo. Otros modificadores son 'private' (solo accesible desde la misma clase) y 'protected' (accesible desde el mismo paquete y subclases).",
+      "tags": ["programacion", "unidad-4", "declaracion", "modificadores"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u4-004",
+      "front": "¿Qué son los parámetros formales en un método Java?",
+      "back": "Los parámetros formales son las variables declaradas en la lista de parámetros de la definición del método. Actúan como variables locales dentro del método y reciben los valores que se pasan en la invocación. Se escriben como 'tipo nombreVariable' separados por comas.",
+      "tags": ["programacion", "unidad-4", "parametros"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u4-005",
+      "front": "¿Qué son los parámetros reales (o argumentos) en la invocación de un método?",
+      "back": "Los parámetros reales son los valores concretos que se pasan al método cuando se invoca. Se escriben entre los paréntesis de la llamada, separados por comas. Deben coincidir en número, tipo y orden con los parámetros formales declarados.",
+      "tags": ["programacion", "unidad-4", "parametros"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u4-006",
+      "front": "¿Qué es el valor de retorno de un método y cómo se indica?",
+      "back": "El valor de retorno es el resultado que el método produce y devuelve al punto desde donde fue invocado. Se indica con la palabra reservada 'return' seguida del valor a devolver. El tipo del valor debe coincidir con el tipo de retorno declarado en la cabecera del método.",
+      "tags": ["programacion", "unidad-4", "return"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u4-007",
+      "front": "¿Qué hace la sentencia 'return' dentro de un método?",
+      "back": "La sentencia 'return' finaliza inmediatamente la ejecución del método y devuelve el control al punto desde donde fue invocado. Si el método tiene un tipo de retorno distinto de void, debe incluir un valor a devolver (return expresion). Puede haber múltiples return en un método, pero solo se ejecuta el primero que se encuentre.",
+      "tags": ["programacion", "unidad-4", "return"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u4-008",
+      "front": "¿Qué significa que un método sea de tipo 'void'?",
+      "back": "Un método declarado como 'void' indica que no devuelve ningún valor. Se usa cuando el método realiza una acción (como mostrar algo por pantalla) pero no produce un resultado tangible que deba ser manipulado posteriormente. En estos métodos no es obligatorio usar 'return', aunque se puede usar 'return;' sin valor para salir antes.",
+      "tags": ["programacion", "unidad-4", "void"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u4-009",
+      "front": "¿En qué consiste el paso por valor en Java?",
+      "back": "En Java, todos los parámetros se pasan por valor. Esto significa que cuando se invoca un método, se crea una copia del valor del argumento y se asigna al parámetro formal. Cualquier modificación del parámetro dentro del método NO afecta a la variable original.",
+      "tags": ["programacion", "unidad-4", "paso-por-valor"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u4-010",
+      "front": "¿Cómo afecta el paso por valor a los parámetros de tipo primitivo?",
+      "back": "Cuando se pasa una variable de tipo primitivo (int, double, char, boolean, etc.) como argumento, se copia su valor. Modificar el parámetro dentro del método no tiene ningún efecto sobre la variable original. Por ejemplo, si se pasa 'int i = 10' y se asigna 'a = 0' dentro del método, la variable 'i' sigue valiendo 10 fuera del método.",
+      "tags": ["programacion", "unidad-4", "paso-por-valor", "tipos-primitivos"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u4-011",
+      "front": "¿Cómo afecta el paso por valor a los parámetros de tipo array (tipo compuesto)?",
+      "back": "Cuando se pasa un array, se copia la referencia (dirección de memoria), no los datos. Por tanto, el parámetro y la variable original apuntan al MISMO array. Si se modifica el contenido del array a través del parámetro (ej: a[3] = 0), el cambio se refleja en el array original. Sin embargo, si se asigna una nueva referencia al parámetro, la variable original no se ve afectada.",
+      "tags": ["programacion", "unidad-4", "paso-por-valor", "arrays"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u4-012",
+      "front": "¿Cómo se comportan los objetos String cuando se pasan como parámetros?",
+      "back": "Los objetos String se comportan como tipos primitivos cuando se pasan como parámetros. Aunque son objetos, son inmutables (no se puede modificar su contenido). Al pasarlos por valor, se copia la referencia, pero como String es inmutable, cualquier 'modificación' crea un nuevo objeto y no afecta a la variable original.",
+      "tags": ["programacion", "unidad-4", "paso-por-valor", "String"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u4-013",
+      "front": "¿Qué es la sobrecarga (overloading) de métodos en Java?",
+      "back": "La sobrecarga de métodos consiste en declarar varios métodos con el mismo nombre pero distinta lista de parámetros (diferente número, tipo u orden de parámetros). Java distingue cuál invocar según los argumentos proporcionados en la llamada. El tipo de retorno NO puede usarse para diferenciar métodos sobrecargados.",
+      "tags": ["programacion", "unidad-4", "sobrecarga"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u4-014",
+      "front": "¿Qué es el ámbito (scope) de una variable local?",
+      "back": "Una variable local es aquella declarada dentro de un método o bloque de código. Su ámbito (alcance) se limita al bloque donde fue declarada. Solo existe mientras se ejecuta ese bloque y no es accesible desde fuera del mismo. Las variables locales deben inicializarse antes de usarse.",
+      "tags": ["programacion", "unidad-4", "ambito", "variables-locales"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u4-015",
+      "front": "¿Qué es una variable global en Java y cómo se declara?",
+      "back": "Una variable global (o de instancia) se declara dentro de la clase pero fuera de cualquier método. Es accesible desde todos los métodos de la clase. Se declara con modificadores como 'private' o 'public' y puede tener un valor inicial. Las variables globales pueden ser inicializadas solo con literales o expresiones que usen otras variables globales, no con valores que dependan de entradas de teclado o argumentos de métodos.",
+      "tags": ["programacion", "unidad-4", "ambito", "variables-globales"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u4-016",
+      "front": "¿Qué es la inicialización diferida de variables?",
+      "back": "La inicialización diferida consiste en declarar una variable sin asignarle un valor inicial útil y asignárselo más adelante. Para tipos primitivos se suele usar 0 como valor temporal. Para tipos complejos (arrays, String) se usa 'null'. Luego, cuando se conoce el valor real (por ejemplo, tras leer del teclado), se sobrescribe.",
+      "tags": ["programacion", "unidad-4", "inicializacion"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u4-017",
+      "front": "¿Qué indica el valor 'null' en Java?",
+      "back": "'null' es una palabra reservada de Java que indica que una variable de tipo objeto o array está declarada pero no apunta a ningún objeto en memoria. Es el valor inicial especial para variables de tipos complejos (arrays, String) cuando se usa inicialización diferida. Operar con una variable null siempre resulta en un programa erróneo (NullPointerException).",
+      "tags": ["programacion", "unidad-4", "null"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u4-018",
+      "front": "¿Cómo se pasan arrays como parámetros a un método?",
+      "back": "Los arrays se pasan como parámetros indicando el tipo seguido de corchetes (int[] array). Se invoca pasando el nombre del array. Al pasarse por valor la referencia, el método puede modificar el contenido del array original (pero no reasignar la referencia). Ejemplo: public double media(int[] array) {} y se invoca con media(valores).",
+      "tags": ["programacion", "unidad-4", "arrays", "parametros"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u4-019",
+      "front": "¿Cómo se declara un método que devuelve un array?",
+      "back": "Se declara indicando el tipo del array como tipo de retorno. Ejemplo: public int[] generarArray() { int[] resultado = new int[10]; return resultado; }. El método debe crear y devolver el array mediante 'return'. Quien invoca el método recibe la referencia al array devuelto.",
+      "tags": ["programacion", "unidad-4", "arrays", "return"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u4-020",
+      "front": "¿Qué es el diseño descendente (top-down design)?",
+      "back": "Es una metodología de programación que consiste en dividir un problema complejo en subproblemas más simples y fáciles de resolver. Cada subproblema se asocia a un método. Se va descomponiendo nivel por nivel hasta llegar a problemas lo suficientemente simples que puedan codificarse directamente.",
+      "tags": ["programacion", "unidad-4", "diseno-descendente"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u4-021",
+      "front": "¿Cuál es la diferencia entre parámetros de entrada y de salida en un método?",
+      "back": "Los parámetros de entrada son los valores que el método necesita para realizar su tarea (datos de entrada). El parámetro de salida es el resultado que el método produce y devuelve (valor de retorno). Los parámetros de entrada se escriben entre paréntesis en la declaración y el de salida se indica mediante el tipo de retorno antes del nombre del método.",
+      "tags": ["programacion", "unidad-4", "parametros", "entrada-salida"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u4-022",
+      "front": "¿Qué establece el principio de encapsulación/ocultación en programación modular?",
+      "back": "El principio de encapsulación (u ocultación) establece que un método debe separar su interfaz (qué hace y qué parámetros necesita) de su implementación (cómo lo hace internamente). Para invocar un método correctamente, solo es necesario saber qué hace y qué datos espera, no cómo funciona internamente. Esto se consigue usando parámetros de entrada y salida, evitando variables globales.",
+      "tags": ["programacion", "unidad-4", "encapsulacion"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u4-023",
+      "front": "¿Qué es la propagación de parámetros entre métodos?",
+      "back": "La propagación de parámetros ocurre cuando un método recibe valores como parámetros de entrada y los pasa a otros métodos que invoca internamente. Los valores se copian sucesivamente a las variables definidas por los parámetros de cada método, incluso si los nombres de las variables van variando en cada nivel de descomposición.",
+      "tags": ["programacion", "unidad-4", "parametros", "propagacion"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u4-024",
+      "front": "¿Por qué se recomienda usar parámetros en lugar de variables globales?",
+      "back": "Por tres razones principales:\n1. Legibilidad: con parámetros se ve claramente qué datos entran y qué resultado produce un método.\n2. Encapsulación: el método es autocontenido y no depende de variables externas.\n3. Reutilización: el método puede usarse con diferentes valores sin depender del contexto. Las variables globales solo deberían usarse cuando un dato debe ser accedido desde múltiples métodos y no tiene sentido pasarlo como parámetro.",
+      "tags": ["programacion", "unidad-4", "parametros", "variables-globales"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u4-025",
+      "front": "¿Qué parámetros de entrada y salida tiene el método 'main' en Java?",
+      "back": "El método main se declara como: public static void main(String[] args).\n- Parámetro de entrada: 'String[] args', un array de cadenas de texto que recibe los argumentos pasados desde la línea de comandos.\n- Parámetro de salida: ninguno (tipo void).",
+      "tags": ["programacion", "unidad-4", "main", "parametros"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u4-026",
+      "front": "¿Qué sucede si se declara un método con tipo de retorno distinto de void pero no se incluye 'return'?",
+      "back": "Se produce un error de compilación. Si un método declara un tipo de retorno distinto de void, todas las rutas de ejecución del método deben terminar con una sentencia 'return' que devuelva un valor del tipo declarado (o de un tipo compatible). El compilador verifica que esto se cumpla.",
+      "tags": ["programacion", "unidad-4", "return", "compilacion"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u4-027",
+      "front": "¿Cómo se invoca un método que tiene parámetros de entrada?",
+      "back": "Se invoca escribiendo el nombre del método seguido de los valores entre paréntesis, separados por comas. Los valores deben coincidir en orden y tipo con los parámetros formales. Ejemplo: si el método se declara como 'public void mostrarMaximo(int a, int b)', se invoca como 'mostrarMaximo(4, 10)' o 'mostrarMaximo(x, y+3)'.",
+      "tags": ["programacion", "unidad-4", "invocacion"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u4-028",
+      "front": "¿Qué significa que un método tenga 'public static void' en su declaración?",
+      "back": "- 'public': el método es accesible desde otras clases.\n- 'static': el método pertenece a la clase y no necesita una instancia para ser invocado (aunque en los ejemplos vistos se invoca a través de un objeto).\n- 'void': el método no devuelve ningún valor.\nEsta combinación es típica del método 'main' y de los métodos que no necesitan instancia.",
+      "tags": ["programacion", "unidad-4", "declaracion", "static"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u4-029",
+      "front": "¿Qué es un método parametrizado?",
+      "back": "Un método parametrizado es aquel que utiliza parámetros de entrada y/o salida para que su comportamiento dependa de los valores que recibe. La parametrización permite que un mismo método pueda resolver problemas similares variando los datos de entrada, aumentando así la reutilización del código.",
+      "tags": ["programacion", "unidad-4", "parametrizacion"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u4-030",
+      "front": "¿Cuándo se dice que un método debe tener un único parámetro de salida?",
+      "back": "Se recomienda que cada método produzca un único resultado tangible. Si un subproblema genera más de un resultado, probablemente no se ha descompuesto suficientemente y debería dividirse en subproblemas más pequeños. Así se mantiene el principio de que cada método realiza una única tarea concreta.",
+      "tags": ["programacion", "unidad-4", "diseño", "cohesion"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u4-031",
+      "front": "¿Cuál es la diferencia entre parámetros formales y reales?",
+      "back": "Parámetros formales: son los que aparecen en la declaración del método (definen el tipo y nombre de las variables que recibirá el método).\nParámetros reales (o argumentos): son los valores concretos que se pasan al método cuando se invoca.\nEjemplo: en 'public void sumar(int a, int b)', 'a' y 'b' son formales; en 'sumar(5, 3)', 5 y 3 son reales.",
+      "tags": ["programacion", "unidad-4", "parametros"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u4-032",
+      "front": "¿Cómo se pueden usar constantes en lugar de valores literales en un método?",
+      "back": "Se pueden declarar constantes usando 'public final static tipo NOMBRE = valor;' fuera de los métodos (a nivel de clase). Por ejemplo: 'public final static int MAX_SETMANES = 52;'. Las constantes mejoran la legibilidad del código y facilitan el mantenimiento al centralizar valores que no cambian.",
+      "tags": ["programacion", "unidad-4", "constantes"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u4-033",
+      "front": "¿Qué es un 'esqueleto' de una clase cuando se aplica diseño descendente?",
+      "back": "El esqueleto es una primera versión de la clase que contiene la declaración de las variables globales y de todos los métodos identificados durante la descomposición, pero con los cuerpos de los métodos vacíos o con código mínimo. Sirve para tener una organización general del código fuente y poder compilarlo, aunque al ejecutarse no haga nada todavía.",
+      "tags": ["programacion", "unidad-4", "diseno-descendente", "esqueleto"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u4-034",
+      "front": "¿Cómo se implementa el diseño descendente nivel por nivel?",
+      "back": "Se empieza por los niveles más bajos de descomposición (los subproblemas más simples) y se va subiendo hasta llegar al problema general. Una vez codificados todos los métodos de un nivel, se puede compilar y probar. Luego se pasa al nivel superior, aprovechando los métodos ya implementados. Si al final algún método es demasiado corto (1-2 líneas) o demasiado largo, se refina.",
+      "tags": ["programacion", "unidad-4", "diseno-descendente", "implementacion"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u4-035",
+      "front": "¿Qué tres preguntas clave ayudan a identificar parámetros de entrada y salida de un método?",
+      "back": "1. ¿Qué valores (datos) necesita el método para realizar su tarea? -> Parámetros de entrada.\n2. ¿Qué tipo de valor genera el método como resultado? -> Tipo de retorno.\n3. Una vez realizado el cálculo, ¿qué variable contiene el resultado y cómo se devuelve? -> Sentencia return.",
+      "tags": ["programacion", "unidad-4", "parametros", "analisis"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u4-036",
+      "front": "¿Cómo se puede refinar (mejorar) un programa tras codificarlo con diseño descendente?",
+      "back": "Dos principios de refinamiento:\n1. Eliminar métodos demasiado cortos: si un método tiene 1-2 líneas, solo se usa en un sitio y no se reaprovecha, puede eliminarse y poner su código directamente donde se invoca.\n2. Mejorar métodos demasiado largos: si un método es muy largo o complejo, probablemente no se ha descompuesto suficientemente y hay que dividirlo en subproblemas más pequeños.",
+      "tags": ["programacion", "unidad-4", "refinamiento", "mejora"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u4-037",
+      "front": "¿Qué sucede cuando dentro de un método se modifican los valores de sus parámetros de entrada?",
+      "back": "Para tipos primitivos: la modificación solo afecta dentro del método; la variable original no se modifica (paso por valor).\nPara arrays: modificar el contenido del array (ej: a[0] = 5) sí afecta al array original porque ambas referencias apuntan al mismo objeto. Pero reasignar el parámetro (ej: a = new int[5]) no afecta a la referencia original.",
+      "tags": ["programacion", "unidad-4", "parametros", "modificacion"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u4-038",
+      "front": "¿Qué condición debe cumplirse para que el uso de variables globales sea aceptable?",
+      "back": "El uso de variables globales se considera aceptable cuando un dato debe ser accedido (compartido) por varios métodos de distintos niveles de descomposición y no tiene sentido pasarlo como parámetro en cada invocación. Sin embargo, en general se recomienda evitarlas y usar parámetros de entrada y salida para favorecer la encapsulación y la legibilidad del código.",
+      "tags": ["programacion", "unidad-4", "variables-globales", "buenas-practicas"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u4-039",
+      "front": "¿Cómo se crea un método que lea un entero del teclado y lo devuelva?",
+      "back": "public int leerEnteroTeclado() {\n    Scanner lector = new Scanner(System.in);\n    boolean leido = false;\n    int enteroLeido = 0;\n    while (!leido) {\n        if (lector.hasNextInt()) {\n            enteroLeido = lector.nextInt();\n            leido = true;\n        } else {\n            System.out.println(\"Esto no es un entero.\");\n            lector.next();\n        }\n        lector.nextLine();\n    }\n    return enteroLeido;\n}",
+      "tags": ["programacion", "unidad-4", "ejemplo", "return"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u4-040",
+      "front": "¿Cómo se declara un método que calcule la media de los valores de un array de enteros?",
+      "back": "public double media(int[] array) {\n    // Parám. entrada: el array de enteros\n    // Parám. salida: la media (double)\n    double acumulador = 0;\n    for (int i = 0; i < array.length; i++) {\n        acumulador = acumulador + array[i];\n    }\n    return acumulador / array.length;\n}",
+      "tags": ["programacion", "unidad-4", "ejemplo", "arrays"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u4-041",
+      "front": "¿Qué es un método de validación (como 'comprobarRespuesta')?",
+      "back": "Es un método que verifica si un valor cumple ciertas condiciones y devuelve un booleano (true si es correcto, false si no). Sigue el formato: entrada son los valores a comprobar, salida es un booleano. Ejemplo: 'public boolean comprobarRespuesta(String respuesta)' que verifica si la respuesta tiene 5 letras y solo contiene caracteres del alfabeto.",
+      "tags": ["programacion", "unidad-4", "validacion", "boolean"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u4-042",
+      "front": "¿Cuándo no es necesario declarar parámetros de entrada en un método?",
+      "back": "No es necesario cuando el método obtiene toda la información que necesita de fuentes externas que no son argumentos de llamada. Por ejemplo:\n- Métodos que generan valores aleatorios (como 'generarLetraAleatoria()' que usa System.nanoTime()).\n- Métodos que leen del teclado (como 'preguntarRespuesta()').\n- Métodos que solo muestran información por pantalla sin necesidad de datos externos.",
+      "tags": ["programacion", "unidad-4", "parametros", "cuando-usar"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u4-043",
+      "front": "¿Cuál es la estructura típica de un programa con diseño descendente?",
+      "back": "1. Clase principal con variables globales (si son necesarias).\n2. Método main: crea una instancia de la clase e invoca al método inicio.\n3. Método inicio: método principal que organiza el flujo del programa.\n4. Métodos de primer nivel de descomposición (mostrarMenu, tratarOpcion, etc.).\n5. Métodos de niveles inferiores según sea necesario.\n6. Cada método resuelve un subproblema concreto y autocontenido.",
+      "tags": ["programacion", "unidad-4", "estructura", "diseno-descendente"],
+      "difficulty": "medium"
+    }
+  ]
+}

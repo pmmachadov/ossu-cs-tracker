@@ -1,0 +1,358 @@
+{
+  "id": "programacion-uf5",
+  "name": "Programacion - UF5",
+  "description": "Bibliotecas, pruebas y recursividad",
+  "subject": "Programacion",
+  "cards": [
+    {
+      "id": "prog-u5-001",
+      "front": "Que son los packages en Java?",
+      "back": "Los packages son una forma de organizar las clases en Java en grupos tematicos. Proporcionan una estructura jerarquica de directorios que permite evitar colisiones de nombres y ordenar el codigo de forma modular.",
+      "tags": ["programacion", "unidad-5", "packages"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u5-002",
+      "front": "Como se declara un package en Java?",
+      "back": "Se declara al inicio del archivo fuente con la palabra clave 'package' seguida del nombre del package. Por ejemplo: package utilidades.arrays;",
+      "tags": ["programacion", "unidad-5", "packages"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u5-003",
+      "front": "Que es la sentencia import en Java y para que sirve?",
+      "back": "La sentencia import permite usar clases de otros packages sin tener que escribir su nombre completo (nombre calificado). Se coloca al inicio del codigo fuente, despues de la declaracion de package. Por ejemplo: import java.util.Random;",
+      "tags": ["programacion", "unidad-5", "import"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u5-004",
+      "front": "Que package de Java es la unica excepcion que no requiere ser importada?",
+      "back": "El package java.lang es la unica excepcion. Las clases de java.lang (como String, Math, System) pueden usarse sin necesidad de importarlas explicitamente porque Java las importa automaticamente.",
+      "tags": ["programacion", "unidad-5", "packages", "import"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u5-005",
+      "front": "Que relacion debe haber entre la estructura de directorios y los packages en Java?",
+      "back": "La estructura de directorios debe coincidir con la jerarquia de nombres de los packages. Por ejemplo, si una clase pertenece al package utilidades.arrays, su archivo .java debe estar en la carpeta utilidades/arrays/. Si se copian clases entre proyectos, hay que mantener esta estructura de carpetas.",
+      "tags": ["programacion", "unidad-5", "packages"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u5-006",
+      "front": "Que ventaja ofrece tener dos clases con el mismo nombre en diferentes packages?",
+      "back": "Permite que dentro de dos packages diferentes pueda haber clases con el mismo nombre sin que implique ninguna colision en el sistema de archivos (los archivos .java no se sobreescriben) y sin conflictos de nombres al usarlas.",
+      "tags": ["programacion", "unidad-5", "packages"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u5-007",
+      "front": "A que package pertenece la clase Math en Java?",
+      "back": "La clase Math pertenece al package java.lang, por lo que puede usarse sin necesidad de importarla.",
+      "tags": ["programacion", "unidad-5", "math"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u5-008",
+      "front": "Que son los metodos estaticos y como se invocan?",
+      "back": "Los metodos estaticos pueden ser invocados sin tener que inicializar (instanciar) su clase. Se identifican porque en la documentacion aparecen marcados con la palabra clave 'static'. Se invocan usando el nombre de la clase como prefijo: NombreClase.nombreMetodo(parametros);",
+      "tags": ["programacion", "unidad-5", "metodos-estaticos"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u5-009",
+      "front": "Que hace el metodo Math.abs()?",
+      "back": "Math.abs() devuelve el valor absoluto de un numero. Por ejemplo: Math.abs(-5) devuelve 5.",
+      "tags": ["programacion", "unidad-5", "math"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u5-010",
+      "front": "Que hace el metodo Math.pow() y que tipo de parametros acepta?",
+      "back": "Math.pow(base, exponente) calcula la potencia (base elevada a exponente). Acepta dos parametros de tipo double y devuelve un resultado de tipo double. Por ejemplo: Math.pow(2, 3) devuelve 8.0.",
+      "tags": ["programacion", "unidad-5", "math"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u5-011",
+      "front": "Que hace el metodo Math.sqrt() y que precaucion hay que tener?",
+      "back": "Math.sqrt(valor) calcula la raiz cuadrada de un numero. Acepta un parametro de tipo double y devuelve un double. Hay que tener cuidado de no invocarlo con un parametro de entrada negativo, ya que el resultado sera siempre incorrecto (NaN).",
+      "tags": ["programacion", "unidad-5", "math"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u5-012",
+      "front": "Que hace Math.random() en Java?",
+      "back": "Math.random() devuelve un numero real (double) aleatorio entre 0.0 (incluido) y 1.0 (excluido). Para obtener un numero en un rango diferente, se multiplica el resultado por el valor maximo deseado.",
+      "tags": ["programacion", "unidad-5", "math"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u5-013",
+      "front": "Que hacen los metodos Math.max() y Math.min()?",
+      "back": "Math.max(a, b) devuelve el valor maximo entre dos numeros. Math.min(a, b) devuelve el valor minimo. Aceptan parametros de cualquier tipo primitivo numerico (int, long, float, double) y ambos parametros deben ser del mismo tipo. El tipo del resultado es el mismo que el de los parametros.",
+      "tags": ["programacion", "unidad-5", "math"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u5-014",
+      "front": "Que hace Math.round() y que devuelve?",
+      "back": "Math.round(valor) redondea un numero real (float o double) al entero mas cercano. Si la parte decimal es 0.5 o superior, redondea hacia arriba; si es menor, redondea hacia abajo. Devuelve un valor de tipo int (si se pasa float) o long (si se pasa double).",
+      "tags": ["programacion", "unidad-5", "math"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u5-015",
+      "front": "Que hacen Math.floor() y Math.ceil()?",
+      "back": "Math.floor(x) redondea un numero real hacia abajo (al entero menor o igual). Math.ceil(x) redondea hacia arriba (al entero mayor o igual). Ambos devuelven un valor de tipo double.",
+      "tags": ["programacion", "unidad-5", "math"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u5-016",
+      "front": "Cuales son las constantes PI y E en la clase Math?",
+      "back": "Math.PI es la constante pi (aproximadamente 3.141592653589793). Math.E es la constante de Euler, base de los logaritmos naturales (aproximadamente 2.718281828459045). Son constantes estaticas de tipo double.",
+      "tags": ["programacion", "unidad-5", "math"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u5-017",
+      "front": "Que es Javadoc y para que sirve?",
+      "back": "Javadoc es una herramienta auxiliar proporcionada por el JDK de Java que permite generar automaticamente documentacion en formato HTML a partir de comentarios especiales insertados en el codigo fuente. Busca palabras clave distintivas en los comentarios y genera la documentacion de clases, metodos y paquetes.",
+      "tags": ["programacion", "unidad-5", "javadoc"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u5-018",
+      "front": "Cual es la sintaxis de los comentarios de Javadoc?",
+      "back": "Los comentarios de Javadoc comienzan con /** y terminan con */. Pueden tener varias lineas, cada una comenzando con *. Solo se pueden usar estos comentarios de bloque; no se pueden usar comentarios de una linea (//). Ejemplo:\\n/**\\n * Descripcion de la clase o metodo.\\n */",
+      "tags": ["programacion", "unidad-5", "javadoc"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u5-019",
+      "front": "Donde se deben colocar los comentarios Javadoc en el codigo?",
+      "back": "Los comentarios Javadoc se colocan en las lineas inmediatamente anteriores tanto a la declaracion de la clase (public class ...) como a la declaracion de los metodos. El texto escrito en el comentario sera la explicacion detallada de esa clase o metodo en la documentacion final.",
+      "tags": ["programacion", "unidad-5", "javadoc"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u5-020",
+      "front": "Que significa la palabra clave @author en Javadoc?",
+      "back": "@author se usa despues del texto asociado a la descripcion de la clase. Indica quien ha sido el autor de la clase. Solo se usa a nivel de clase, no de metodo. Ejemplo: @author Pablo",
+      "tags": ["programacion", "unidad-5", "javadoc"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u5-021",
+      "front": "Que significan las palabras clave @param y @return en Javadoc?",
+      "back": "@param se usa en la descripcion de un metodo para describir uno de sus parametros. Se indica el nombre del parametro seguido de su descripcion. @return describe que evalua el metodo (el valor devuelto). Si el metodo no devuelve nada (void), no es necesario incluir @return.",
+      "tags": ["programacion", "unidad-5", "javadoc"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u5-022",
+      "front": "Que significa la palabra clave @see en Javadoc?",
+      "back": "@see se puede utilizar tanto en la descripcion de un metodo como de una clase. Sirve para referirse a la pagina de documentacion de otras clases dentro del mismo programa, indicando: 'ver tambien la documentacion de...'. Se debe poner el nombre calificado de la clase a la que se refiere.",
+      "tags": ["programacion", "unidad-5", "javadoc"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u5-023",
+      "front": "Que son las pruebas unitarias y cual es su proposito?",
+      "back": "Las pruebas unitarias son un metodo de testing que verifica el correcto funcionamiento de las unidades de codigo mas pequenas (metodos o clases) de forma aislada. Su proposito es detectar errores tempranamente, asegurar que el codigo funciona como se espera y facilitar la refactorizacion y el mantenimiento.",
+      "tags": ["programacion", "unidad-5", "testing"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u5-024",
+      "front": "Que es JUnit?",
+      "back": "JUnit es un framework de pruebas unitarias para Java. Proporciona anotaciones como @Test para marcar metodos de prueba, y metodos de asercion como assertEquals(), assertTrue(), assertFalse() para verificar resultados esperados. Es ampliamente utilizado en desarrollo de software para pruebas automatizadas.",
+      "tags": ["programacion", "unidad-5", "junit"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u5-025",
+      "front": "Cual es la estructura basica de una prueba en JUnit?",
+      "back": "Una prueba en JUnit es un metodo anotado con @Test. Sigue el patron Arrange-Act-Assert (AAA):\\n1. Arrange: preparar los datos y objetos necesarios\\n2. Act: ejecutar el metodo a probar\\n3. Assert: verificar que el resultado es el esperado usando aserciones.",
+      "tags": ["programacion", "unidad-5", "junit"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u5-026",
+      "front": "Que son los asserts en programacion y para que sirven?",
+      "back": "Los asserts (aserciones) son comprobaciones que verifican si una condicion es verdadera. En Java, se usan con la palabra clave 'assert'. Si la condicion es falsa, se lanza una AssertionError. Sirven para validar invariantes, precondiciones y postcondiciones durante el desarrollo. Se pueden desactivar en produccion.",
+      "tags": ["programacion", "unidad-5", "asserts"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u5-027",
+      "front": "Como se usa assert en Java?",
+      "back": "En Java se usa la palabra clave 'assert' seguida de una expresion booleana. Si la expresion es true, el programa continua. Si es false, se lanza un AssertionError. Tambien se puede anadir un mensaje: assert condicion : \"Mensaje de error\"; Los asserts deben activarse con -ea al ejecutar.",
+      "tags": ["programacion", "unidad-5", "asserts"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u5-028",
+      "front": "Que es la recursividad en programacion?",
+      "back": "La recursividad es una forma de describir un proceso para resolver un problema de modo que, a lo largo de la descripcion, se usa el mismo proceso que se esta describiendo, pero aplicado a un caso mas simple. En Java, un metodo recursivo es aquel que, dentro de su bloque de instrucciones, tiene alguna invocacion a si mismo.",
+      "tags": ["programacion", "unidad-5", "recursividad"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u5-029",
+      "front": "Que es el caso base en un metodo recursivo?",
+      "back": "El caso base contiene un bloque de instrucciones dentro de las cuales no hay ninguna llamada al metodo mismo. Se ejecuta cuando se considera que, a partir de los parametros de entrada, el problema ya es lo suficientemente simple como para ser resuelto directamente. Sin caso base, la recursion nunca terminaria.",
+      "tags": ["programacion", "unidad-5", "recursividad"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u5-030",
+      "front": "Que es el caso recursivo en un metodo recursivo?",
+      "back": "El caso recursivo contiene un bloque de instrucciones dentro de las cuales hay un llamamiento al propio metodo, dado que se considera que todavia no se puede resolver el problema facilmente. Los valores usados como parametros de esta nueva llamada deben acercarse al caso base, garantizando que la recursion terminara.",
+      "tags": ["programacion", "unidad-5", "recursividad"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u5-031",
+      "front": "Que estructura de control se usa siempre en un metodo recursivo?",
+      "back": "El bloque de codigo de un metodo recursivo siempre se basa en una estructura de seleccion (if-else o switch), donde cada rama corresponde a un caso base o a un caso recursivo. Normalmente hay al menos un caso base y un caso recursivo.",
+      "tags": ["programacion", "unidad-5", "recursividad"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u5-032",
+      "front": "Que ocurre si un metodo recursivo no se aproxima al caso base?",
+      "back": "Si los casos recursivos no garantizan que sucesivos llamamientos van aproximando los valores de los parametros de entrada a algun caso base, el programa nunca termina. Se produce un error de StackOverflowError (desbordamiento de pila), similar a un bucle infinito.",
+      "tags": ["programacion", "unidad-5", "recursividad"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u5-033",
+      "front": "Como se define recursivamente el factorial de un numero n?",
+      "back": "La definicion recursiva del factorial es:\\n- Caso base: 0! = 1\\n- Caso recursivo: n! = n * (n-1)!\\nEn Java: if (n == 0) return 1; else return n * factorial(n-1);",
+      "tags": ["programacion", "unidad-5", "recursividad", "factorial"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u5-034",
+      "front": "Como se define recursivamente la sucesion de Fibonacci?",
+      "back": "La definicion recursiva de Fibonacci es:\\n- Casos base: fib(0) = 0, fib(1) = 1\\n- Caso recursivo: fib(n) = fib(n-1) + fib(n-2) para n > 1\\nEs un ejemplo clasico de recursion multiple (dos llamadas recursivas por cada invocacion).",
+      "tags": ["programacion", "unidad-5", "recursividad", "fibonacci"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u5-035",
+      "front": "Que es la busqueda binaria o dicotomica?",
+      "back": "La busqueda binaria (o dicotomica) es un algoritmo eficiente para encontrar un valor en un array ordenado. Funciona dividiendo repetidamente el intervalo de busqueda a la mitad: si el valor buscado es menor que el del medio, se busca en la mitad inferior; si es mayor, en la mitad superior. Su complejidad es O(log n).",
+      "tags": ["programacion", "unidad-5", "busqueda-binaria"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u5-036",
+      "front": "Cuales son los casos base en la busqueda binaria recursiva?",
+      "back": "En la busqueda binaria recursiva hay dos casos base:\\n1. Si inicio > fin, el valor no existe en el array: se devuelve -1.\\n2. Si array[posicionCentral] == valor, se ha encontrado: se devuelve la posicion.\\nEl caso recursivo sigue buscando en la mitad izquierda o derecha segun corresponda.",
+      "tags": ["programacion", "unidad-5", "busqueda-binaria", "recursividad"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u5-037",
+      "front": "En que consiste el problema de las Torres de Hanoi?",
+      "back": "Las Torres de Hanoi es un problema clasico de recursion. Consiste en tres varillas y n discos de diferentes tamanos apilados en la primera varilla. El objetivo es mover todos los discos a la tercera varilla, siguiendo estas reglas: solo se puede mover un disco a la vez, y un disco grande nunca puede estar sobre uno mas pequeno.",
+      "tags": ["programacion", "unidad-5", "torres-hanoi"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u5-038",
+      "front": "Cual es la solucion recursiva de las Torres de Hanoi?",
+      "back": "Para mover n discos de origen a destino usando auxiliar:\\n- Caso base: si n == 1, mover el disco directamente de origen a destino.\\n- Caso recursivo:\\n  1. Mover n-1 discos de origen a auxiliar (usando destino como auxiliar)\\n  2. Mover el disco n de origen a destino\\n  3. Mover n-1 discos de auxiliar a destino (usando origen como auxiliar)",
+      "tags": ["programacion", "unidad-5", "torres-hanoi"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u5-039",
+      "front": "Que diferencias hay entre recursion e iteracion?",
+      "back": "La iteracion usa estructuras de repeticion (for, while, do-while) y suele ser mas eficiente en memoria porque no acumula llamadas en la pila. La recursion usa metodos que se llaman a si mismos, ofreciendo un codigo mas legible y cercano a la definicion matematica del problema, pero puede consumir mas memoria (riesgo de StackOverflow) y ser mas lenta.",
+      "tags": ["programacion", "unidad-5", "recursion-vs-iteracion"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u5-040",
+      "front": "Cuando es preferible usar recursion en lugar de iteracion?",
+      "back": "La recursion es preferible cuando: el problema se define naturalmente de forma recursiva (como factorial, Fibonacci, arboles), cuando la solucion iterativa es demasiado compleja o dificil de entender, o cuando se trabaja con estructuras de datos recursivas (arboles, grafos). Para problemas simples con iteraciones claras, la iteracion suele ser mejor opcion.",
+      "tags": ["programacion", "unidad-5", "recursion-vs-iteracion"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u5-041",
+      "front": "Que es la API de Java?",
+      "back": "La API de Java (Application Programming Interface) es un cuantioso repositorio de clases, organizadas por distintos packages de acuerdo a su tematica, que vienen incorporadas en el JDK. Proporciona funcionalidades listas para usar que extienden el lenguaje de programacion mas alla de su sintaxis basica.",
+      "tags": ["programacion", "unidad-5", "api"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u5-042",
+      "front": "Cuales son los packages principales de la API de Java?",
+      "back": "Los packages principales de la API de Java incluyen:\\n- java.lang: clases esenciales (String, Math, System)\\n- java.io: clases de entrada/salida (tratamiento de archivos)\\n- java.util: clases de proposito general (Random, Scanner, Arrays)\\n- javax.swing: clases para interfaces graficas de usuario",
+      "tags": ["programacion", "unidad-5", "api", "packages"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u5-043",
+      "front": "Como funciona el metodo hashCode() y equals() en Java?",
+      "back": "equals() compara si dos objetos son logicamente iguales (por su contenido). hashCode() devuelve un entero que representa al objeto. Por contrato, si dos objetos son iguales segun equals(), deben tener el mismo hashCode(). Estos metodos se sobrescriben para definir la igualdad personalizada de objetos.",
+      "tags": ["programacion", "unidad-5", "equals-hashcode"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u5-044",
+      "front": "Que metodos estaticos principales ofrece la clase Arrays?",
+      "back": "La clase Arrays (java.util) ofrece metodos estaticos para manipular arrays:\\n- Arrays.sort(array): ordena los elementos\\n- Arrays.binarySearch(array, clave): busqueda binaria\\n- Arrays.copyOfRange(array, inicio, fin): copia un rango\\n- Arrays.equals(array1, array2): compara si son iguales\\n- Arrays.toString(array): convierte a cadena de texto",
+      "tags": ["programacion", "unidad-5", "arrays"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u5-045",
+      "front": "Que hace el metodo Arrays.binarySearch() y que requisito debe cumplir el array?",
+      "back": "Arrays.binarySearch(array, clave) busca un valor en un array ordenado. Devuelve la posicion donde se encuentra el valor, o un valor negativo si no se encuentra (la posicion de insercion es -(valorNegativo) - 1). El array debe estar previamente ordenado, de lo contrario no se garantiza la correccion de la busqueda.",
+      "tags": ["programacion", "unidad-5", "arrays"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u5-046",
+      "front": "Que es el constructor de una clase y como se identifica en la documentacion?",
+      "back": "El constructor es un metodo especial que se invoca al inicializar una clase con 'new'. En la documentacion de la API de Java, el apartado 'Constructor Summary' indica los parametros que necesita cada constructor. Se puede elegir entre diferentes constructores, y segun cual se elija, la clase puede comportarse de manera diferente.",
+      "tags": ["programacion", "unidad-5", "constructores"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u5-047",
+      "front": "Como se genera un numero aleatorio entre 0 y 100 usando la clase Random?",
+      "back": "Para generar un numero aleatorio entre 0 y 100 con la clase Random:\\n1. Importar java.util.Random\\n2. Crear una instancia: Random rnd = new Random();\\n3. Generar el valor: double valor = rnd.nextDouble() * 100;\\nnextDouble() genera un valor entre 0.0 y 1.0, y al multiplicarlo por 100 se obtiene el rango deseado.",
+      "tags": ["programacion", "unidad-5", "random"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u5-048",
+      "front": "Que son las anotaciones @Before, @After, @BeforeClass y @AfterClass en JUnit?",
+      "back": "Son anotaciones de JUnit para configurar y limpiar pruebas:\\n- @Before: se ejecuta antes de cada metodo @Test\\n- @After: se ejecuta despues de cada metodo @Test\\n- @BeforeClass: se ejecuta una vez antes de todos los tests (metodo static)\\n- @AfterClass: se ejecuta una vez despues de todos los tests (metodo static)",
+      "tags": ["programacion", "unidad-5", "junit"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u5-049",
+      "front": "Cuales son los metodos de asercion mas comunes en JUnit?",
+      "back": "Los metodos de asercion mas comunes en JUnit son:\\n- assertEquals(esperado, real): verifica igualdad\\n- assertTrue(condicion): verifica que es true\\n- assertFalse(condicion): verifica que es false\\n- assertNull(objeto): verifica que es null\\n- assertNotNull(objeto): verifica que no es null\\n- assertThrows(excepcion, ejecutable): verifica que se lanza una excepcion",
+      "tags": ["programacion", "unidad-5", "junit"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u5-050",
+      "front": "Que papel juega el metodo compareTo() de String en la busqueda dicotomica?",
+      "back": "El metodo compareTo() de String compara dos cadenas lexicograficamente. Devuelve 0 si son iguales, un valor negativo si la cadena es anterior alfabeticamente, y un valor positivo si es posterior. En la busqueda dicotomica, se usa compareTo() para decidir si buscar en la mitad izquierda (resultado > 0) o derecha (resultado < 0) del array de nombres.",
+      "tags": ["programacion", "unidad-5", "recursividad", "busqueda-binaria"],
+      "difficulty": "hard"
+    }
+  ]
+}

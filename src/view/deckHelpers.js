@@ -4,6 +4,7 @@ export const MAIN_SUBJECTS = [
   "Sistemas Informaticos",
   "Entornos de Desarrollo",
   "Desarrollo Web en Entorno Cliente",
+  "Programacion",
 ];
 
 export const EXAM_SUBJECTS = [

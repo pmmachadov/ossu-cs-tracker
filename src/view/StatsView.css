@@ -411,6 +411,20 @@
   text-align: right;
 }
 
+/* Empty state for progress chart */
+.empty-progress {
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.empty-progress p {
+  color: var(--text-muted);
+  font-size: 0.9375rem;
+  text-align: center;
+  max-width: 280px;
+}
+
 /* Retention Cards */
 .retention-cards {
   display: grid;

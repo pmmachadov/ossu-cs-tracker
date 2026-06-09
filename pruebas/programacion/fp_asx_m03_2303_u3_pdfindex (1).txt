@@ -1,0 +1,5299 @@
+Juan  Arnedo  Moreno
+Tipo  de  datos  compuestos
+Programación  (DAW)
+Programación  básica  (ASX)
+Programación  (DAM)
+Machine Translated by Google
+
+--- PAGE BREAK ---
+Machine Translated by Google
+
+--- PAGE BREAK ---
+Tipo  de  datos  compuestos
+Programación  (DAM)
+Programación  básica  (ASX)
+Programación  (DAW)
+.
+. .  63
+.
+.
+. .  48
+. . .
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+. .  30
+.
+.
+. . .
+. . .
+. . .
+.
+.
+.
+. . .
+. . .
+47
+.
+.
+.
+. . .
+.
+. . .
+2.3.3  Creación  de  subcadenas
+.
+.
+. . .
+.
+. . .
+. . .
+. . .
+.
+.
+.
+.
+.
+. . .
+.
+. . . .
+. . .
+.
+. . . .
+. . .
+.
+.
+. . .
+. .
+.
+. . .
+1  Tipo  de  datos  compuestos:  "arrays"
+. . .
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+. . . .
+.
+.
+. . . .
+. . . .
+.
+. . .
+.
+.
+22
+.
+. . .
+.
+.
+1.1.1  Inicialización  a  un  valor  concreto
+.
+. . .
+.
+.
+.
+.
+. . .
+.
+. . .
+. . . .
+. . .
+.
+. . .
+.
+.
+.
+.
+.
+.
+.
+. . . .
+. .  32
+. . .
+. . . .
+. .
+.
+.
+.
+.
+. . .
+.
+. . .
+. . . .
+. . .
+. . .
+.
+. . .
+.
+.
+.
+. . .
+.
+.
+.
+.
+. . .
+.
+.
+. . .
+.
+.
+. . .
+.
+.
+. . .
+.
+.
+. . .
+.
+. .  36
+1.4.3  Búsqueda . . .
+. . . .
+. . .
+.
+. .
+.
+.
+. . . .
+.
+. . . .
+.
+Introducción
+.
+. . .
+.
+.
+.
+. . .
+. . .
+.
+.
+.
+. . .
+.
+.
+.
+.
+.
+2.1.2  Manipulación  de  objetos .
+.
+. . .
+.
+.
+. . .
+. . .
+.
+. . .
+. . .
+.
+.
+. . .
+.
+.
+12
+.
+.
+. . .
+. . .
+.
+.
+2.1.5  "Arrays"  de  cadenas  de  texto
+. . .
+.
+. . . .
+.
+.
+.
+.
+. . .
+.
+. . .
+.
+.
+. . .
+.
+.
+.
+.
+.
+. . .
+.
+.
+. . .
+.
+.
+. . .
+.
+.
+.
+.
+. . . .
+.
+.
+.
+. . .
+. .  59
+. . .
+.
+.
+. . .
+. . .
+1.4.4  Uso  de  "arrays"  
+auxiliares  1.4.5  Copia . . .
+. . . .
+. . .
+. . .
+.
+.
+.
+. . .
+.
+.
+.
+.
+.
+.
+. . .
+. . . .
+.
+. . .
+2.1.1  Inicialización  de  objetos  "String" .
+.
+22
+.
+. .  67
+.
+.
+. . .
+.
+. . .
+.
+.
+.
+.
+.
+. . .
+.
+. . .
+.
+.
+.
+.
+.
+1.1.2  Inicialización  a  un  valor  por  defecto
+. . .
+. . .
+2.2.1  Lectura  desde  teclado
+.
+.
+. . . .
+. . .
+.
+1.2  Manipulación  de  datos  dentro  de  "arrays" .
+. . .
+. .  25
+. . .
+.
+1.3.1  Entrada  de  secuencias  de  valores  por  teclado  
+1.3.2  "Arrays"  completamente  ocupados .
+. .  34
+. .
+.
+.
+.
+.
+.
+.
+.
+. .
+.
+. . . .
+.
+9
+. . .
+.
+.
+. .  13
+.
+.
+1.4  Esquemas  fundamentales  en  la  utilización  de  arrays .
+. . .
+.
+. . .
+.
+. . .
+. . .
+.
+. . .
+.
+.
+.
+.
+. . . .
+2.2.2  Argumento  del  método  principal .
+.
+. . .
+.
+.
+.
+.
+. .  61
+. .  50
+.
+2.3.4  Transformaciones  entre  cadenas  de  texto  y  tipos  primitivos . . .
+.
+. . . .
+.
+.
+.
+.
+.
+.
+.
+. . .
+.
+.
+. .  52
+.
+.
+.
+.
+. .  70
+.
+.
+.
+. . .
+.
+2.3.2  Comparación .
+. . .
+.
+.
+.
+.
+1.4.6  Cambio  de  tamaño
+.
+. . .
+.
+.
+.
+. . .
+2.1  La  clase  "String" .
+.
+.
+.
+.
+.
+.
+.
+.
+.
+. .  43
+. . .
+. . .
+. .  10
+.
+. . .
+.
+. . .
+.
+.
+.
+2.4  Soluciones  de  los  retos  propuestos .
+. .  29
+.
+. . .
+. . .
+. .  20
+.
+.
+. . .
+2.1.3  Acceso  a  los  caracteres  de  una  cadena  de  texto
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+. . .
+. . . .
+.
+.
+. . .
+.
+.
+.
+2.1.4  Concatenación  de  cadenas  de  texto
+.
+. . .
+.
+. .
+.
+. . . .
+.
+. . . .
+. . .
+. . . .
+.
+. . .
+. . .
+.
+.
+.
+.
+.
+.
+.
+.
+.
+. . .
+. .  52
+.
+.
+. . .
+1.4.2  Recorrido .
+. . .
+. . .
+.
+2.3  Manipulación  de  cadenas  de  texto
+.
+.
+.
+2.2  Entrada  de  cadenas  de  texto
+.
+. . .
+.
+2  Tratamiento  de  cadenas  de  texto
+. . .
+. . .
+. .  18
+. . .
+.
+.
+. . .
+. . . .
+.
+.
+. .  60
+.
+.
+. .  15
+.
+. . . .
+. . .
+.
+. . .
+.
+.
+.
+.
+.
+5
+.
+. .
+7
+.
+. . .
+.
+.
+. .  40
+. . .
+.
+.
+. . .
+.
+.
+. .  54
+. . .
+1.3  Almacenamiento  de  la  entrada  de  datos  en  un  "array" . . .
+.
+.
+. . .
+.
+.
+.
+.
+1.3.3  "Arrays"  parcialmente  ocupados .
+.
+.
+.
+. . .
+. . .
+.
+.
+.
+.
+.
+. . .
+.
+. . .
+.
+24
+. . .
+. . .
+.
+.
+.
+.
+. .  64
+.
+.
+1.4.7  Ordenación .
+.
+.
+. . . .
+.
+.
+.
+.
+. . . .
+. .
+. . .
+.
+.
+.
+.
+.
+. . .
+. . .
+.
+. . .
+.
+.
+.
+.
+11
+. . . .
+1.5  Arrays  multidimensionales  
+1.5.1  Declaración  de  arrays  bidimensionales  
+1.5.2  Esquemas  de  uso  de  arrays  bidimensionales  
+1.5.3  Arrays  de  más  de  dos  dimensiones  
+1.6  Soluciones  de  los  retos  propuestos .
+. . .
+.
+.
+.
+.
+.
+. . .
+.
+.
+. . . .
+.
+1.1  Declaración  e  inicialización  de  arrays .
+.
+. .
+.
+.
+. .  48
+.
+. . .
+. . .
+.
+. . . .
+. . .
+. . .
+.
+.
+.
+. . .
+.
+.
+. . .
+. . .
+. . .
+.
+.
+.
+.
+.
+.
+.
+.
+. . .
+.
+.
+.
+.
+. . .
+. . .
+.
+.
+.
+2.3.1  Búsqueda . . .
+. . .
+. . .
+.
+.
+.
+Índice
+.
+.
+. . .
+.
+1.4.1  Inicialización  procedural . . .
+.
+.
+.
+.
+.
+47
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+. . .
+. . .
+.
+.
+. . .
+.
+.
+. . .
+. . .
+.
+. . .
+. .  35
+. . .
+. . .
+27
+. . .
+. . . .
+. .  15
+.
+.
+.
+.
+. . .
+.
+Resultados  de  aprendizaje
+. . .
+. . . .
+.
+.
+.
+.
+. . .
+. . .
+.
+.
+.
+.
+.
+.
+.
+.
+. . .
+.
+. .  53
+.
+. . .
+.
+.
+.
+.
+. . .
+.
+.
+. . . .
+.
+.
+. . .
+.
+.
+Machine Translated by Google
+
+--- PAGE BREAK ---
+Machine Translated by Google
+
+--- PAGE BREAK ---
+En  el  siguiente  apartado,  “Tratamiento  de  cadenas  de  texto”,  se  presenta  con  más  detalle  este  tipo  
+compuesto  de  datos  muy  útil,  llamado  String  en  el  lenguaje  Java.
+Cualquier  dato  manipulado  dentro  de  un  programa  pertenece  a  alguno  de  los  tipos  primitivos,  
+puesto  que  son  los  únicos  que  sabe  procesar  el  hardware  del  ordenador.
+Éste  permite  almacenar  en  una  única  variable  un  conjunto  de  valores  en  forma  de  secuencia,  con  
+la  única  restricción  de  que  todos  pertenezcan  al  mismo  tipo  de  datos.
+Si  bien  ya  se  había  presentado  de  forma  superficial  en  apartados  anteriores,  verá  cómo  usarlo  para  
+realizar  tareas  más  complejas  que  mostrar  texto  por  pantalla,  cómo  procesar  los  caracteres  que  
+contiene  o  convertir  el  texto  a  otros  tipos  primitivos.
+Para  solucionar  esta  cuestión,  los  lenguajes  de  programación  ofrecen  unos  tipos  de  datos  
+especiales,  llamados  tipos  compuestos,  que  permiten  aglutinar  en  una  única  variable  una  cantidad  
+arbitraria  de  datos  individuales  pertenecientes  a  algún  tipo  concreto.  Éstas  quedan  empaquetadas  
+de  una  manera  fácil  de  gestionar  en
+Ahora  bien,  precisamente,  uno  de  los  aspectos  en  los  que  se  hace  especialmente  recomendable  la  
+resolución  de  un  problema  usando  un  programa  de  ordenador  es  cuando  el  volumen  de  datos  a  
+procesar  es  muy  grande.  Suponga  que  en  lugar  de  trabajar  con  varios  valores  independientes,  que  
+necesita  guardar  y  procesar,  debe  trabajar  con  muchos:  50,  100,  2.000  o  muchos  más.  En  este  
+caso,  la  aproximación  de  guardar  cada  valor  en  una  variable  dentro  del  programa  haría  la  tarea  del  
+programador  muy  farragosa.  ¡El  código  fuente  tendría  más  instrucciones  de  declaración  de  variables  
+que  quizás  para  resolver  el  problema!
+En  el  apartado  "Tipo  de  datos  compuestos:  arrays"  se  presenta  el  tipo  compuesto  de  datos  más  
+básico,  el  array,  disponible  en  la  mayoría  de  lenguajes  de  alto  nivel.
+Introducción
+Normalmente,  estos  datos  son  almacenados  dentro  de  variables,  uno  de  los  elementos  básicos  de  
+un  programa  de  cara  a  manipular  datos.  Esta  aproximación  es  útil  siempre  que  el  número  de  datos  
+a  tratar  sea  relativamente  limitado.
+De  esta  forma,  en  una  única  variable  podemos  disponer  de  cualquier  número  de  enteros,  reales,  
+etc.  En  el  apartado  verá  la  sintaxis  en  Java  y  los  mecanismos  más  habituales  de  tratamiento  de  
+datos  almacenados  en  su  interior.
+la  hora  de  consultar  y  modificar  cada  valor  individual.
+Aparte  de  los  arrays,  existen  otros  tipos  compuestos  de  datos  de  diferentes  grados  de  complejidad  y  con  el  objetivo  
+de  solucionar  problemáticas  similares,  pero  con  ciertos  matices.  Un  ejemplo  es  la  manipulación  de  texto.  El  tipo  
+primitivo  carácter,  por  sí  mismo,  no  tiene  excesiva  utilidad,  ya  que  normalmente  las  personas  usamos  palabras  o,  al  
+menos,  texto  de  longitud  arbitraria  para  comunicarnos.  Por  tanto,  gestionar  este  tipo  de  información  carácter  por  
+carácter  también  es  poco  viable.  Sería  interesante  disponer  de  algún  mecanismo  para  gestionar  de  forma  sencilla  
+una  combinación  cualquiera  de  varios  caracteres.  Ésta  es  precisamente  la  tarea  destinada  al  tipo  de  datos  llamado  
+cadena  de  texto.
+Tipo  de  datos  compuestos
+Programación  (DAW)
+Programación  básica  (ASX)
+Programación  (DAM)
+5
+Machine Translated by Google
+
+--- PAGE BREAK ---
+Machine Translated by Google
+
+--- PAGE BREAK ---
+7
+Programación  (DAW)
+Programación  básica  (ASX)
+Programación  (DAM)
+Tipo  de  datos  compuestos
+programación  modular.
+1.  Escribe  y  prueba  programas  sencillos  reconociendo  y  aplicando  los  fundamentos  de  la
+Resultados  de  aprendizaje
+Al  finalizar  esta  unidad,  el  alumno/a:
+Machine Translated by Google
+
+--- PAGE BREAK ---
+Machine Translated by Google
+
+--- PAGE BREAK ---
+9
+Programación  (DAM)
+Tipo  de  datos  compuestos
+Programación  (DAW)
+Programación  básica  (ASX)
+Un  "array"  es  como  una  cómoda.
+Imagen  de  Liverpool  Design  Festival
+Ya  a  simple  vista  se  puede  apreciar  que  todo  esto  es  inviable.  Es  necesario  un  sistema  flexible  para  
+almacenar  un  número  arbitrario  de  valores  de  forma  que  éstos  sean  fáciles  de  manipular.  Es  más,  
+debe  ser  posible  que  el  número  de  valores  almacenados  pueda  ser  diferente  para  cada  ejecución  
+del  programa.  Para  resolver  esta  problemática,  los  lenguajes  de  programación  de  alto  nivel  ofrecen  
+el  tipo  de  dato  compuesto  array,  o  tabla.
+Suponga  que  desea  realizar  un  programa  para  analizar  las  notas  finales  de  un  conjunto  de  
+estudiantes.  Las  operaciones  a  realizar  pueden  ser  diversas:  calcular  la  nota  media,  ver  cuántos  
+estudiantes  han  aprobado,  suspendido  o  han  superado  cierto  umbral  de  nota,  realizar  gráficas  de  
+rendimiento,  etc.  Además,  no  se  descarta  que  en  el  futuro  el  programa  se  modifique  para  añadir  
+nuevas  funcionalidades.  El  quid  de  la  cuestión  es  que,  para  poder  prever  todas  estas  posibilidades  
+y  otras  futuras  todavía  desconocidas,  necesita  disponer  dentro  del  programa  del  valor  de  cada  nota  
+individual.  En  un  caso  como  éste,  tal  y  como  se  ha  planteado  hasta  ahora  la  aproximación  para  
+manipular  datos  dentro  de  un  programa,  esto  implica  que  cada  nota  debe  almacenarse  dentro  de  
+una  variable  diferente.  Si  hay  50  estudiantes,  esto  significa  que  habría  que  declarar  50  variables.
+1.  Tipo  de  datos  compuestos:  "arrays"
+Desgraciadamente,  esta  aproximación  no  funciona  en  un  caso  como  éste,  en  el  que  el  número  de  
+datos  a  procesar  es  relativamente  alto.  Por  un  lado,  imagínense  el  aspecto  que  tendrá  un  código  
+fuente  en  el  que  hay  que  declarar  y  manipular  50  variables  para  realizar  todo  tipo  de  cálculos.  Las  
+expresiones  para  realizar  cálculos  entre  ellas,  como  simplemente  hacer  la  media  (sumarlas  todas  y  
+dividir  por  el  número  de  valores),  serían  enormes.  Por  otra  parte,  ¿qué  ocurre  si  es  necesario  
+procesar  las  notas  de  doscientos  o  mil  estudiantes?  ¿Es  factible  declarar  mil  variables?  Peor  aún:  
+qué  pasa  si  el
+Un  tipo  de  dato  compuesto  es  aquél  que  permite  almacenar  más  de  un  valor  dentro  de  una  
+única  variable.  En  el  caso  del  array,  éste  permite  almacenar,  en  forma  de  secuencia,  una  
+cantidad  predeterminada  de  valores  pertenecientes  al  mismo  tipo  de  datos.
+¿número  de  estudiantes  de  cada  curso  es  totalmente  diferente?  En  cada  curso  el  número  de
+variables  usadas  no  encajará  con  el  de  estudiantes  y  será  necesario  modificar  el  código
+fuente  teniendo  en  cuenta  el  número  exacto  de  valores  para  tratar  y  volver  a  compilarse.
+Para  diferenciar  los  diferentes  valores  almacenados,  el  array  gestiona  su  contenido  de  acuerdo  con  
+posiciones  que  siguen  un  orden  numérico:  el  valor  almacenado  en  la  primera  posición,  en  la  
+segunda,  en  la  tercera,  etc.  A  efectos  prácticos,  puede  considerarse  que  cada  posición  individual  
+se  comporta  exactamente  igual  que  una  variable  del  tipo  de  dato  elegido.  Tanto  se  puede  consultar  
+el  valor  como  almacenar  datos.  Este  comportamiento  se  esquematiza  en  la  figura  1.1.
+Machine Translated by Google
+
+--- PAGE BREAK ---
+F  igura  1.  1.  Organización  de  los  datos  almacenados  dentro  de  un  array
+10
+Programación  (DAM)
+Programación  básica  (ASX)
+Programación  (DAW)
+Tipo  de  datos  compuestos
+1.1  Declaración  e  inicialización  de  "arrays"
+Una  vez  inicializado  con  un  número  de  posiciones  concretas,  ésta  ya  no  puede  
+cambiar.
+Como  ocurre  con  datos  de  cualquier  otro  tipo,  antes  de  poder  hacer  uso  de  una  
+variable  de  tipo  array,  es  necesario  declararla  y  otorgarle  un  valor  inicial  correctamente.  
+La  sintaxis  para  declarar  un  array  es  bastante  similar  a  la  de  otros  tipos,  pero  la  
+inicialización  tiene  unas  particularidades  especiales  debido  a  sus  propias  características:
+•  Por  otro  lado,  decidir  el  valor  inicial  para  cada  posición  individual  del  array.  En  
+este  aspecto,  cada  posición  tiene  el  mismo  papel  que  una  variable  individual  
+dentro  del  programa,  y  por  tanto,  debe  estar  inicializada  con  algún
+valor.
+Antes  de  poder  utilizar  un  array  es  obligatorio  inicializarlo.  Java  dará  un  error  de  
+compilación  de  lo  contrario.
+Antes  de  ver  con  más  detalle  cómo  funcionan,  debe  tener  presente  que  la  sintaxis  
+para  usar  arrays  en  los  distintos  lenguajes  de  programación  puede  ser  relativamente  
+diferente.  Este  apartado  se  centrará  en  la  sintaxis  concreta  de  Java,  que  tiene  ciertas  
+particularidades  únicas.  Sin  embargo,  el  concepto  general  de  acceso  a  valores  
+ordenados  como  una  secuencia  en  forma  de  array  es  aplicable  a  cualquier  lenguaje.
+En  el  momento  de  la  inicialización  de  un  array,  su  tamaño  debe  ser  conocido.
+•  Por  un  lado,  es  necesario  decidir  de  cuántas  posiciones  dispondrá  el  array:  su  
+tamaño.  Nunca  podrá  haber  almacenados  más  valores  que  su  capacidad.
+Machine Translated by Google
+
+--- PAGE BREAK ---
+F  igura  1.  2.  Esquema  de  inicialización  de  un  array  en  Java  con  valores  concretos.
+No  puede  haber  datos  de  tipos  
+mezclados  dentro  de  un  array.
+1  palabraClauTipus[]  identificadorVariable  =  {valor1,  valor2, ... ,  valorN};
+Programación  básica  (ASX)
+Programación  (DAW)
+11
+Programación  (DAM)
+1  int[]  arrayEnters  =  {10,  20,  30,  40,  50};
+Tipo  de  datos  compuestos
+Para  especificar  los  valores  almacenados  inicialmente  en  cada  posición  es  suficiente  que  
+estos  se  enumeren  entre  claves  {...},  separados  por  comas  (,).  Estos  valores  serán  del  
+mismo  tipo  de  dato  que  el  declarado  en  la  parte  izquierda  y  se  almacenarán  en  el  mismo  
+orden  en  que  se  hayan  enumerado:  el  primer  valor  en  la  primera  posición  del  array,  el  
+segundo  en  la  segunda  posición,  etc.  En  este  caso,  el  tamaño  del  array  será  
+automáticamente  al  igual  que  el  número  de  valores  enumerados.
+La  parte  izquierda  es  prácticamente  igual  que  para  la  declaración  de  cualquier  variable.  Lo  
+que  indica  que  en  realidad  se  está  declarando  un  array  son  los  dos  corchetes  []  
+inmediatamente  después  de  la  declaración  del  tipo.  Cada  una  de  las  posiciones  del  array  
+sólo  podrá  almacenar  valores  del  tipo  aquí  declarado.
+1.1.1  Inicialización  a  un  valor  concreto
+Como  ocurre  con  las  variables  individuales,  existe  la  posibilidad  de  que  en  el  momento  de  
+generar  el  código  fuente  ya  tenga  unos  valores  concretos  en  la  cabeza  con  los  que  desea  
+inicializar  cada  una  de  las  posiciones  del  array.  En  este  caso,  la  sintaxis  de  la  inicialización  
+es  la  siguiente:
+Por  ejemplo,  para  declarar  un  array  de  5  posiciones  en  el  que  se  pueden  almacenar  valores  
+de  tipo  entero,  cada  una  con  los  valores  iniciales  10,  20,  30,  40  y  50,  respectivamente,  se  
+haría  de  la  siguiente  forma.  El  tamaño  de  este  array  sería  5.
+El  resultado  se  muestra  en  la  figura  1.2.
+Machine Translated by Google
+
+--- PAGE BREAK ---
+F  igura  1.  3.  Esquema  de  inicialización  de  un  array  en  Java  con  valores  por  defecto
+Programación  (DAM)
+1  palabraClauTipus[]  identificadorVariable  =  new  palabraClauTipus[tamaño];
+1  double[]  arrayReals  =  new  double[10];
+1  double[]  arrayReals  =  {0,  0,  0,  0,  0,  0,  0,  0,  0,  0};
+12
+Programación  básica  (ASX)
+Programación  (DAW)
+Tipo  de  datos  compuestos
+Esto  se  hace  de  la  siguiente  forma:
+Este  código  es  equivalente  a:
+Muchas  veces  los  datos  que  se  quieren  almacenar  dependen  de  la  lectura  de  una  entrada  
+(por  ejemplo,  por  teclado),  o  son  resultado  de  cálculos  que  son  más  cómodos  de  llevar  a  
+cabo  de  forma  automatizada  dentro  del  código  de  programa  (por  ejemplo,  una  lista  de  
+1.000  números  primos).  En  este  caso,  no  existe  un  valor  inicial  concreto  que  sea  
+necesario  asignar  a  las  posiciones  del  array,  ya  que  los  valores  se  almacenarán  a  
+posteriori.
+No  es  necesario  hacer  nada  más  para  asignar  valores  a  las  posiciones  del  array,  Java  ya  
+asigna  automáticamente  el  valor  por  defecto.  Ahora  bien,  alerta,  ésta  es  una  propiedad  
+específica  de  Java  y  no  debe  ser  así  necesariamente  en  otros  lenguajes,  en  los  que  el  
+valor  inicial  de  cada  posición  puede  ser  indeterminado.
+El  resultado  de  realizar  cualquiera  de  las  dos  instrucciones  se  visualiza  en  la  figura  1.3.
+En  este  caso,  otra  forma,  más  simple  y  habitual,  de  declarar  e  inicializarlo,  es  asumiendo  
+que  todas  las  posiciones  toman  automáticamente  un  valor  por  defecto,  que  es  0  para  los  
+datos  de  tipo  numérico  y  los  caracteres,  y  false  para  booleanos.
+1.1.2  Inicialización  a  un  valor  por  defecto
+Por  ejemplo,  para  declarar  un  array  de  10  posiciones  en  el  que  se  pueden  almacenar  
+valores  de  tipo  real,  todos  inicialmente  con  el  valor  0,  se  haría  de  la  siguiente  forma:
+Sólo  varía  la  parte  derecha  relativa  a  la  asignación  de  los  valores  iniciales.  En  este  caso  
+la  sintaxis  es  muy  estricta  y  es  necesario  utilizar  el  formato  indicado.  Se  usa  la  palabra  
+clave  new,  seguida  nuevamente  del  tipo  de  los  datos  dentro  del  array  y,  entre  corchetes,  
+el  tamaño  que  queramos.  Los  tipos  de  datos  especificados  en  la  parte  izquierda  y  derecha  
+deben  ser  idénticos,  o  habrá  un  error  de  compilación.
+Más  adelante  ya  asignará  a  cada  posición  el  valor  que  desee.
+Machine Translated by Google
+
+--- PAGE BREAK ---
+Para  distinguir  entre  las  diferentes  posiciones  de  un  array,  cada  una  tiene  asignado  un  
+índice,  un  valor  entero  que  indica  su  orden  dentro  de  la  estructura.  Siempre  que  se  
+quiera  referir  a  una  de  las  posiciones,  basta  con  usar  el  identificador  del  array  junto  con  
+el  índice  de  la  posición  buscada  entre  corchetes  [].  La  sintaxis  exacta
+El  rango  de  los  índices  puede  variar  en  función  del  lenguaje  de  programación.  En  el  
+caso  de  Java,  éstos  van  de  0,  para  la  primera  posición,  a  (tamaño  ­  1),  para  la  última.
+La  figura  1.4  esquematiza  el  acceso  a  los  datos  dentro  de  ese  código.
+Por  ejemplo,  no  es  posible  hacer  lo  siguiente:
+es:
+A  pesar  de  conformar  un  tipo  de  dato  (como  enteros,  reales,  etc.),  los  arrays  son  algo  
+especiales  a  la  hora  de  ser  manipulados,  ya  que  no  disponen  de  ninguna  operación.  No  
+es  posible  usar  el  identificador  del  array  directamente  para  invocar  operaciones  y  así  
+manipular  los  datos  contenidos,  tal  y  como  se  puede  realizar  con  variables  de  otro  tipo.
+1.2  Manipulación  de  datos  dentro  de  "arrays"
+Por  ejemplo,  para  acceder  a  las  posiciones  de  un  array  de  cinco  posiciones  usaría  los  
+índices  0,  1,  2,  3  y  4.  A  continuación  se  muestra  un  ejemplo  de  cómo  se  accede  a  los  
+datos  de  un  array  mediante  los  índices  de  sus  posiciones:
+Siempre  que  se  quiera  realizar  alguna  operación  con  los  datos  almacenados  dentro  de  
+arrays  es  necesario  manipularlos  de  manera  individual,  posición  por  posición.  En  este  
+aspecto,  cada  posición  de  un  array  tiene  exactamente  el  mismo  comportamiento  que  
+una  variable  tal  y  como  las  ha  estudiado  hasta  ahora.  Puede  aprovecharlas  tanto  para  
+almacenar  datos  como  para  leer  su  contenido.
+2  int[]  arrayA  =  {10,  20,  30,  40,  50};  3  int[]  arrayB  =  {50,  60,  70,  80,  100};  4  int[]  
+arrayC  =  new  int[5];  5 //La  variable  de  tipo  entero  "r"  valdrá  140,  40  +  100.  6  int  
+r  =  arrayA[3]  +  arrayB[4];  7 //La  segunda  posición  (índice  
+1)  de  "arrayC"  valdrá  150,  140  +  10.  8  arrayC[1]  =  r  +  arrayA[0];
+Programación  (DAW)
+Programación  básica  (ASX)
+2  int[]  a  =  {10,  20,  30,  40,  50};  3  int[]  b  =  {50,  60,  70,  80,  100};  4  int[]  
+c  =  a  +  b;
+5 ...
+1 ...
+1  identificadorArray[índice]
+9 ...
+13
+Programación  (DAM)
+Tipo  de  datos  compuestos
+1 ...
+En  Java,  realizar  operaciones  
+entre  arrays  comporta  un  
+error  de  compilación.
+Machine Translated by Google
+
+--- PAGE BREAK ---
++  índice  +
+System.out.println("La  posición  "  8 }  else  
+{ System.out.println("Este  array  no  tiene  tantas  posiciones!");
+3 //Los  índices  válidos  van  de  0  a  (tamaño  −  1),  que  es  4.  4  int[]  arrayA  =  {10,  
+20,  30,  40,  50};  5 //Se  asigna  un  valor  a  una  posición  
+incorrecta  (índice  5).  6  arrayA[5]  =  60;  7 //El  índice  6  es  inválido,  no  se  puede  
+consultar  el  valor.  8  int  r  
+=  arrayA[2]  +  arrayA[4]  +  arrayA[6];
+5 //Recuerde  que  el  índice  máximo  es  (tamaño  −  1).  6  if  (index  <  
+arrayA.length)  {
+"  vale  "
++  a[index]);
+El  resultado  de  esta  instrucción  es  equivalente  a  evaluar  una  expresión  que  como  
+resultado  obtiene  el  tamaño  del  array  llamado  identificador  Array.  Ahora  bien,  recuerde  
+que  length  le  da  el  tamaño,  pero  el  rango  de  índices  válido  es  0 ...  (tamaño  ­  1).  Por  
+ejemplo:
+Por  tanto,  el  siguiente  código  sería  incorrecto:
+Es  muy  importante  que  al  acceder  a  un  array  se  utilice  un  índice  correcto,  en  función  del  
+rango  admisible.  Si  se  utiliza  un  valor  no  admisible,  como  por  ejemplo  un  valor  negativo  
+o  un  valor  igual  o  superior  a  su  tamaño,  habrá  un  error  de  ejecución.
+Concretamente,  se  producirá  una  IndexOutOfBoundsException.  Si  esto  sucede,  puede  
+tener  la  certeza  de  que  el  programa  tiene  un  error  y  deberá  repasarlo  y  corregirlo.
+Con  el  fin  de  ayudarle  en  la  tarea  de  controlar  si  un  índice  concreto  está  dentro  del  rango  
+admisible  para  una  variable  de  tipo  array  concreta,  Java  dispone  de  una  herramienta  
+auxiliar,  el  atributo  length  (largo).  Su  sintaxis  es  la  siguiente:
+Programación  (DAW)
+Programación  básica  (ASX)
+10 }
+14
+1 ...
+2 //"arrayA"  tiene  tamaño  5.  Los  índices  válidos  van  de  0  a  4.  3  int[]  arrayA  =  {10,  20,  30,  40,  50};  4 //"length"  le  
+dice  el  tamaño.
+11 ...
+Programación  (DAM)
+9
+2 //"arrayA"  tiene  tamaño  5.
+1  identificadorArray.length
+1 ...
+Tipo  de  datos  compuestos
+9 ...
+7
+F  igura  1.  4.  Ejemplo  de  manipulación  de  datos  dentro  de  “arrays”
+Machine Translated by Google
+
+--- PAGE BREAK ---
+Si  bien  los  ejemplos  se  centrarán  en  el  uso  del  teclado,  ya  que  es  el  sistema  de  entrada  
+que  por  ahora  sabe  utilizar,  debe  tener  en  cuenta  que  estos  esquemas  serán  aplicables  
+a  cualquier  otro  mecanismo  de  entrada  (por  ejemplo,  un  archivo).  La  única  condición  es  
+que  los  datos  estén  en  forma  de  secuencia,  de  modo  que  se  puedan  ir  leyendo  una  por  
+una,  ordenadamente.
+1.3  Almacenamiento  de  la  entrada  de  datos  en  un  "array"
+Como  se  ha  mencionado,  los  arrays  son  especialmente  útiles  para  poder  almacenar  de  
+forma  eficiente  un  número  arbitrario  de  datos  provenientes  del  sistema  de  una  entrada  
+(por  ejemplo,  desde  el  teclado).  Normalmente,  los  datos  se  irán  leyendo  una  por  una,  ya  
+medida  que  se  haga,  habrá  que  ir  asignando  a  cada  una  de  las  posiciones  del  array  a  
+partir  de  su  índice.  A  continuación  verá  diferentes  esquemas  para  realizar  esta  tarea.
+En  realidad,  cuando  se  usa  una  instrucción  lector.next...  y  el  programa  se  detiene  
+esperando  a  que  el  usuario  introduzca  datos  por  el  teclado,  nada  impide  que,  en  lugar  de  
+un  único  dato,  éste  escriba  más  de  uno  antes  de  pulsar  la  tecla  de  retorno.
+1.3.1  Entrada  de  secuencias  de  valores  por  teclado
+O  sea,  una  secuencia  de  valores.  La  única  condición  es  que  cada  valor  individual  esté  
+separado  del  resto  por  al  menos  un  espacio,  de  modo  que  sean  fácilmente  identificables.  
+Cuando  esto  sucede,  todos  los  valores  de  la  secuencia  quedan  latentes,  pendientes  de  
+lectura.  Sucesivas  invocaciones  a  nuevas  instrucciones  de  lectura  automáticamente  irán  
+consumiendo  estos  valores  pendientes,  en  lugar  de  causar  una  nueva  espera  de  una  
+entrada  del  usuario.  Mientras  queden  valores  en  la  secuencia  pendientes  de  leer,  las  
+instrucciones  de  lectura  nunca  causarán  una  espera  de  entrada  de  datos.  Una  vez  que  la  
+secuencia  ha  sido  consumida  totalmente,  entonces  sí  que  la  próxima  instrucción  de  
+lectura  causará  que  el  programa  vuelva  a  detenerse  esperando  una  nueva  entrada  del  
+usuario.  Y  así  el  ciclo  de  lectura  vuelve  a  empezar.
+Dentro  de  este  proceso  existe  una  llamada  con  un  comportamiento  especial:  
+lector.nextLine();.  Cuando  esta  llamada  se  invoca,  automáticamente  se  descarga
+Los  arrays  tienen  sentido  cuando  el  programa  debe  procesar  muchos  datos,  especialmente  
+provenientes  de  la  entrada  del  programa  (como  el  teclado).  Antes  de  continuar,  vale  la  
+pena  ver  cómo  se  pueden  leer  secuencias  de  datos  entrados  desde  el  teclado  en  una  
+sola  línea  de  texto,  de  modo  que  sea  sencillo  almacenarlos  dentro  de  un  array.  Si  bien  ya  
+sabe  cómo  leer  datos  individualmente  desde  el  teclado,  hacerlo  así  puede  ser  un  poco  
+aburrido  y  molesto  de  cara  a  la  ejecución  de  los  programas  en  los  que  se  introducen  
+muchos  datos,  preguntando  cada  valor  uno  por  uno  y  debiendo  pulsar  la  tecla  de  retorno  
+cada  vez.
+Una  vez  expuestos  estos  esquemas,  en  el  resto  de  ejemplos  del  apartado  se  obviará  el  
+código  relativo  a  la  entrada  de  datos  por  el  teclado.
+15
+Programación  (DAW)
+Programación  básica  (ASX)
+Programación  (DAM)
+Tipo  de  datos  compuestos
+Almacenar  en  "arrays"  datos  leídos  
+secuencialmente  es  como  una  cadena  de  
+embotellamiento
+Machine Translated by Google
+
+--- PAGE BREAK ---
+Leer  valor
+{ 2,  4,  8,  16,  32 }
+Acción  del  programa
+Datos  pendientes  de  lectura
+pendientes
+Leer  valor
+Resultado  obtenido
+el  usuario
+{ 4,  8,  16,  32 }
+El  programa  espera  entrada  de
+La  lectura  evalúa  4
+La  lectura  evalúa  2
+El  programa  espera  entrada  de
+El  usuario  entra  los  valores  “1  2  4  8  16  32”  y  pulsa  la  tecla  de  retorno
+el  usuario
+{ }
+Se  vuelve  a  empezar  el  ciclo  de  lectura  de  una  nueva  secuencia  de  valores...
+Leer  valor
+(Inicio  del  programa)
+El  programa  se  inicia
+{ }  (no  hay  ninguna)
+{ }  (no  hay  ninguna)
+{ 8,  16,  32 }
+La  lectura  evalúa  1
+Leer  valor
+Se  vacía  la  secuencia  de  datos
+{ }
+Leer  valor
+Para  leer  múltiples  valores  lo  más  sencillo  es  hacerlo  mediante  una  estructura  de
+entrada  del  usuario.
+tienen  todos  los  valores  pendientes  de  leer  de  la  secuencia  actual.  La  próxima  llamada  a  una
+descartan.  Tenga  en  cuenta  que  no  es  necesario  escribir  todos  los  valores  en  una  sola  línea
+suficientes  valores,  el  programa  se  detiene  esperando  el  resto.  Además,  este  código
+Normalmente  hay  dos  aproximaciones  dependiendo  de  si  se  conoce  la  cantidad  de
+y  las  iteraciones  finalizarán  al  alcanzar  el  número  de  lecturas  que  queramos.
+instrucción  de  lectura  siempre  causará  que  el  programa  se  detenga  de  nuevo  y  espere  una
+Al  usar  este  mecanismo  es  necesario  tener  presente  un  hecho  muy  importante.  Hay  que  saber
+Un  hecho  importante  cuando  se  leen  secuencias  de  varios  valores  escritas  desde  el
+datos  exactos  que  deben  leerse  o  no.
+exactamente  cuando  ha  obtenido  ya  todos  los  datos  necesarios  y  es  necesario  dejar  leer.
+basada  en  un  contador.  Este  contador  controlará  el  número  de  valores  leídos
+lectura  de  la  secuencia  de  valores  basta  con  usar  una  estructura  de  repetición
+de  una  serie  de  valores  enteros.  Si  se  escriben  más  de  los  esperados,  el  resto  se
+mezclados.  Esto  tanto  puede  ser  por  error  del  usuario  al  entrar  los  datos,  como  para  que
+repetición  que  vaya  invocando  sucesivamente  las  instrucciones  de  lectura  de  datos.
+de  texto.  Si  la  línea  introducida,  antes  de  pulsar  la  tecla  de  retorno,  no  dispone  de
+si  el  tipo  es  el  que  corresponde  usando  las  instrucciones  lector.hasNext....
+La  tabla  1.1  muestra  un  ejemplo  de  este  mecanismo  de  lectura,  en  el  que  se  leen
+programa  realmente  espera  una  secuencia  con  valores  de  distintos  tipos  intercalados.
+teclado  es  que  nada  impide  que  pueda  haber  valores  de  diferentes  tipos  de  datos
+Si  el  número  de  valores  que  se  desea  leer  es  conocido  de  antemano,  para  tratar  la
+valores  de  tipo  entero.
+Compile  y  ejecute  el  siguiente  ejemplo,  en  el  que  se  muestra  cómo  hacer  la  lectura
+En  cualquier  caso,  es  importante  que  antes  de  realizar  ninguna  lectura  de  un  dato  se  compruebe
+16
+Programación  (DAW)
+Programación  básica  (ASX)
+Programación  (DAM)
+Tipo  de  datos  compuestos
+Tabla  1.  1.  Ejemplo  de  lectura  de  una  secuencia  de  valores  enteros
+Cantidad  de  datos  conocida
+Machine Translated by Google
+
+--- PAGE BREAK ---
+//No  se  adelanta  tampoco  el  contador.
+int  numValorsLeídos  =  0;
++  NUM_VALORS  +
+int  valor  =  lector.nextInt();
++  valor);
+if  (lector.hasNextInt())  {
+}
+//Los  valores  que  se  sobren  en  la  última  línea  escrita  se  descartan.
+//Se  leen  exactamente  NUM_VALORS  valores.
+"  valores.");
+enteros.  Se  puede  hacer  en
+public  static  final  int  NUM_VALORS  =  10;
+System.out.println("Ya  se  han  leído  "
+public  static  void  main  (String[]  args)  {
+//Antes  de  leer,  comprobamos  si  realmente  existe  un  entero.
+lector.nextLine();
+}
+System.out.println("Escribe  "  diferentes  
+líneas.");
+System.out.println("Valor"  +  numValorsLeídos  +  numValorsLeídos+
++;
+//Se  leerán  10  valores.
+lector.next();
+while  (numValorsLeídos  <  NUM_VALORS)  {
+"  leído:  "
+"
+}  else  {
+}
++  NUM_VALORS  +
+//Si  el  valor  no  es  entero,  se  lee  pero  se  ignora.
+Scanner  lector  =  new  Scanner(System.in);
+9
+23
+4
+17
+25
+7
+Programación  básica  (ASX)
+16
+6
+26
+3  public  class  LectorValorsConocidos  {
+11
+17
+27 }
+13
+10
+14
+Programación  (DAM)
+5
+2 //Un  programa  que  lee  un  número  conocido  de  valores  enteros.
+18
+15
+24
+Programación  (DAW)
+21
+Tipo  de  datos  compuestos
+1  importe  java.util.Scanner;
+19
+8
+20
+12
+22
+Si  esto  no  es  posible,  o  se  considera  que  no  debe  hacerse,  otra  opción  es  establecer
+será  realmente  un  entero  o  no.
+sino  que  se  considerará  como  marca  de  fin  de  secuencia.  En  cuanto  se
+Un  caso  más  complejo  es  cuando  el  número  de  valores  no  es  conocido  a  priori,  ya
+solución  simple  sería  preguntar  simplemente,  antes  de  leer  ningún  valor,  ¿cuántas
+cualquier  valor  negativo  o  mayor  que  10  serviría.  El  resto  de  valores  no  se  pueden
+En  este  caso,  la  estrategia  a  utilizar  es  usar  una  estructura  de  repetición  basada
+usar  esta  estrategia  es  que  la  marca  no  sea  un  valor  que  pueda  aparecer  nunca
+reales  arbitrarios  para  realizar  cálculos  matemáticos  podría  usar  un  carácter  como  marca  de
+controla  mediante  una  estructura  de  selección  si  el  valor  que  está  a  punto  de  ser  leído
+entre  los  valores  introducidos.  Debe  ser  único.  Por  ejemplo,  en  una  lista  de  notas,
+un  valor  de  un  tipo  de  dato  distinto.  Por  ejemplo,  un  programa  que  procesa  valores
+que  puede  variar  en  distintas  ejecuciones  del  programa.  Cuando  esto  sucede,  una
+fin.
+en  semáforo.  Éste  le  indica  si  ya  se  ha  leído  la  marca  de  fin  y  hay  que  dejar  de  iterar  o
+no.
+lea  este  valor,  la  lectura  debe  darse  por  finalizada.  La  condición  para  poder
+la  longitud.
+usar,  ya  que  pueden  corresponder  a  una  nota  real  a  tratar.
+un  valor  especial  que  no  forma  parte  de  los  datos  a  tratar  dentro  del  programa,
+Si  todos  los  valores  posibles  son  aceptables  dentro  de  la  secuencia,  una  opción  es  usar
+datos  se  introducirán,  o  bien  hacer  que  el  primer  valor  dentro  de  la  secuencia  indique
+Cantidad  de  datos  desconocida
+Machine Translated by Google
+
+--- PAGE BREAK ---
+//No.  Es  un  valor  que  debe  ser  tratado.
+Scanner  lector  =  new  Scanner(System.in);
+boolean  marcaEncuentro  =  false;
+//Sí  que  lo  es.
+System.out.println("Después  del  último  valor  escribe  un //Se  leen  exactamente  
+NUM_VALORS  valores.
+}
+}  else  {
+if  (valor  ==  MARCA_FI)  {
+public  static  final  int  MARCA_FI  =  −1;
+//Los  valores  que  se  sobren  en  la  última  línea  escrita  se  descartan.
+}  else  {
+System.out.print("Escribe  diferentes  valores  enteros.");
+System.out.println("Valor  leído:  "  +  valor);
+marcaEncuentro  =  true;
+int  valor  =  lector.nextInt();
+if  (lector.hasNextInt())  {
+//¿Es  la  marca  de  fin?
+lector.nextLine();
+while  (!marcaEncuentro)  {
+}
+//Antes  de  leer,  comprobamos  si  realmente  existe  un  entero.
+}
+System.out.println("Ya  se  han  leído  todos  los  valores.");
+}
+//Si  el  valor  no  es  entero,  se  lee  pero  se  ignora.
+public  static  void  main  (String[]  args)  {
+" +  MARCA_FI);
+lector.next();
+18
+10
+Tipo  de  datos  compuestos
+26
+4
+Programación  básica  (ASX)
+17
+3
+9
+11
+14
+2  public  class  LectorValoresDeconocidos  {
+28
+6
+27
+5
+12
+13
+22
+29
+Programación  (DAM)
+30
+8
+1  importe  java.util.Scanner;
+25
+15
+19
+Programación  (DAW)
+16
+7
+23
+18
+20
+21
+24
+31 }
+En  este  caso,  basta  con  inicializar  el  array  con  sus  posiciones  con
+en  cualquier  caso,  nunca  se  pueden  leer  más  datos  que  la  capacidad  real  del  array,
+Un  hecho  que  debe  tener  cuidado  es  que  puede  que  se  indique  que  el  número  de
+arbitraria.  La  lectura  finaliza  en  cuanto  se  lee  el  valor  ­1.  Compare
+datos  para  entrar  es  un  valor,  pero  después,  por  error,  se  proporcionen  más.  En
+máximo  de  su  capacidad,  se  debe  terminar  el  proceso  de  lectura  o  se  exponga  a  un
+previamente  se  debe  establecer  su  tamaño.  Éste  es  un  requisito  indispensable,  ya  que
+totalmente  un  array.
+este  código  con  el  ejemplo  del  caso  anterior.
+El  siguiente  código  de  ejemplo  lee  una  secuencia  de  valores  enteros  de  longitud
+en  caso  contrario  cualquier  intento  de  guardar  datos  resultará  en  un  error  de  ejecución.
+por  lo  que  todos  estos  datos  sobrantes  se  ignorarán.  Una  vez  el  array  está  en  el
+valores  de  estos  datos  en  cada  una  de  las  posiciones  del  array,  consecutivamente.
+El  esquema  más  simple  de  almacenamiento  de  datos  desde  una  entrada  a  las
+previamente.  Esto  se  debe  a  la  importante  restricción  que,  para  inicializar  un  array,
+valor  por  defecto  y  un  tamaño  igual  al  número  de  datos  que  se  leerán.  Una  vez
+posiciones  de  un  array  es  el  caso  en  que  la  cantidad  de  datos  que  se  leerá  se  conoce
+La  figura  1.5  muestra  un  esquema  de  la  lectura  de  una  secuencia  de  valores  a  ocupar
+hecho,  basta  con  leer  de  la  entrada  un  número  de  datos  esperado  e  ir  asignando  los
+error  de  ejecución  al  sobrepasar  el  tamaño  del  array.
+1.3.2  "Arrays"  completamente  ocupados
+Machine Translated by Google
+
+--- PAGE BREAK ---
+posibles  en  la  entrada  de  los  datos  antes  de  almacenar  el  valor  final  en  el  array:
+de  longitud  conocida,  compuesta  de  números  reales.  Con  los  valores  leídos  se  llena
+Como  ejemplo,  suponga  un  programa  para  tratar  las  notas  de  evaluación  de  un
+conjunto  de  estudiantes.  Para  obtener  las  diferentes  notas,  éste  lee  una  secuencia,
+si  los  valores  introducidos  son  realmente  de  tipo  real  y  si  están  dentro  del  rango  válido  por
+completamente  un  array.  Compile  y  ejecute  el  siguiente  código  para  llevar  a  cabo
+esta  operación.  Fíjese  que,  en  este  caso,  se  comprueban  una  serie  de  errores
+a  una  nota  (entre  0  y  10).
+4
+7
+18
+8
+20
+19
+3  public  class  LectorSecuencia  {
+24
+Programación  (DAM)
+25
+Programación  (DAW)
+34
+29
+21
+38
+16
+19
+39
+Tipo  de  datos  compuestos
+13
+26
+2 //Programa  que  lee  una  secuencia  de  valores  reales,  de  longitud  conocida.
+10
+17
+33
+9
+36
+Programación  básica  (ASX)
+1  importe  java.util.Scanner;
+32
+5
+15
+35
+27
+31
+23
+28
+12
+30
+6
+37
+14
+11
+22
+F  igura  1.  5.  Esquema  de  entrada  de  datos  para  crear  un  “array”  totalmente  ocupado
+//Si  no  era  un  real,  simplemente  leemos  el  valor  como  una  cadena  de  texto
+System.out.println("Puedes  escribir  varios  en  una  sola  línea,  separados
++  númeroValores  +
+//Si  se  han  entrado  más  valores,  se  ignoran.  Sólo  se  necesita  uno.
+lector.next();
+while  (index  <  arrayNotes.length)  {
+if  ((nota  >=  0)&&(nota  <=  10))  {
+//Si  no  es  válida,  la  ignoramos.  No  se  asigna  a  ninguna  parte.
+númeroValores  =  lector.nextInt();
+}
+int  índice  =  0;
+}
+//Estructura  de  repetición  con  contador.
+por  espacios.");
+//Se  ha  leído  una  nota,  pero  ¿es  válida  (entre  0  y  10)?
+while  (númeroValores  <=  0)  {
+float  nota  =  lector.nextFloat();
+//Los  guardaremos  en  un  array.  Ya  conocemos  su  tamaño.
+if  (lector.hasNextInt())  {
+//Hay  que  leer  tantos  reales  como  el  tamaño  del  array.
+System.out.print("¿Cuántas  notas  quieres  introducir?  ");
+lector.nextLine();
+}  else  {
+index++;
+public  static  void  main  (String[]  args)  {
+System.out.println("Se  leerán  "
+arrayNotes[index]  =  nota;
+//Si  no  es  entero,  se  lee  y  se  ignora.
+if  (lector.hasNextFloat())  {
+}  else  {
+"  valores  reales.");
+Scanner  lector  =  new  Scanner(System.in);
+lector.next();
+float[]  arrayNotes  =  new  float[númeroValores];
+}
+int  númeroValores  =  0;
+//Lee  la  longitud  de  la  secuencia.  Comprueba  todos  los  errores.
+}
+//pero  no  hacemos  nada.  Se  pierde.
+Machine Translated by Google
+
+--- PAGE BREAK ---
+Desgraciadamente,  hay  circunstancias  bajo  las  cuales  no  es  posible  inicializar  un  
+array  de  forma  que  su  tamaño  se  ajuste  exactamente  a  la  longitud  de  la  secuencia  de  
+valores  de  entrada.  Hay  dos  motivos  que  pueden  llevar  a  esa  situación.  Por  un  lado,  
+si  simplemente  no  se  conoce  a  priori  el  número  de  datos  que  se  van  a  entrar,  ya  que  
+en  lugar  del  programa  se  pregunta  previamente,  y  por  tanto  la  entrada  de  datos  es  de  
+una  longitud  desconocida.  Por  otra  parte,  esto  también  sucede  en  lenguajes  de  
+programación  en  los  que  a  la  hora  de  declarar  un  array  e  inicializarlo  no  es  posible  
+utilizar  una  variable  para  especificar  su  tamaño,  y  sólo  se  puede  usar  un  literal.
+1.3.3  "Arrays"  parcialmente  ocupados
+En  un  caso  como  éste,  deberá  conformarse  con  elegir  un  valor  concreto  prefijado  
+para  el  tamaño  del  array  y  dar  por  sentado  que  el  número  de  datos  de  entrada  que  el  
+programa  puede  tratar  es  limitado.  Si  por  algún  motivo,  al  leer  los  datos  de  entrada,  
+se  supera  este  límite,  al  no  ser  posible  almacenar  los  valores  excedentes,  deberá  
+ignorarlos.  Por  tanto,  habrá  que  elegir  este  tamaño  llegando  a  un  compromiso  entre  
+un  valor  que  sea  lo  suficientemente  grande  para  no  encontraros  muy  a  menudo  con  
+esta  situación,  pero  tampoco  demasiado  exagerado,  para  no  derrochar  memoria.  Por  
+ejemplo,  si  ya  sabe  que  el  número  de  estudiantes  en  una  clase  puede  oscilar,  pero  
+nunca  se  permitirá  que  haya  más  de  80  (en  este  caso,  se  abriría  una  nueva  aula),  se  
+puede  elegir  este  valor  como  tamaño  del  array.  Es  necesario  estudiar  cada  caso  concreto.
+En  un  caso  como  éste,  en  el  que  se  dispone  de  un  array  con  un  tamaño  que  nunca  
+será  exactamente  igual  al  número  de  datos  leídos  desde  la  entrada  (de  hecho,  
+normalmente,  será  inferior),  sólo  existe  un  rango  de  posiciones  en  el  que  hay  datos  leídos  de
+41
+44
+Programación  básica  (ASX)
+Programación  (DAW)
+40
+45
+42
+48 }
+Tipo  de  datos  compuestos
+Programación  (DAM)
+47
+43
+46
+20
+}
+//Ignoramos  los  valores  sobrantes  de  la  última  línea.  lector.nextLine();  
+System.out.println("La  
+secuencia  leída  es:");  for  (int  i  =  0;  y  <  arrayNotes.length;i++)  
+{ System.out.println(arrayNotes[i]);
+}
+}
+Cada  posición  de  un  
+array  ocupa  tanta  memoria  
+como  el  tipo  primitivo  
+que  puede  almacenar.
+Coloquialmente,  una  posición  en  
+la  que  no  existe  ningún  valor  
+válido  asignado  se  dice  que  
+está  “vacía”.
+F  igura  1.  6.  Esquema  de  entrada  de  datos  que  genera  un  “array”  parcialmente  ocupado
+Machine Translated by Google
+
+--- PAGE BREAK ---
+public  static  final  int  MARCA_FI  =  −1;
+break;
++  MAX_VALORS  +
+}
+//Ignoramos  los  valores  sobrantes  de  la  última  línea.
+//Si  se  entran  más  valores,  los  ignoramos,  ya  que  no  queda  lugar  donde  almacenar
+por  espacios.");
+lector.nextLine();
+System.out.println("La  secuencia  leída  es:");
+//¿Hay  un  real?
+//Es  necesario  un  contador  de  posiciones  actuales  en  las  que  hay  valores.
+//Todo  correcto.  Ahora  hay  un  elemento  más  en  el  array.
+−los.
+public  static  final  int  MAX_VALORS  =  80;
+//Si  no  es  ni  lo  uno  ni  lo  otro,  lo  ignoramos.
+if  (lector.hasNextFloat())  {
+//Marca  de  final,  salimos  del  bucle.
+arrayNotes[elementos]  =  nota;
+float  nota  =  lector.nextFloat();
+System.out.print("Escribir  hasta  
+System.out.println("Puedes  escribir  varios  en  una  sola  línea,  separados)
+}  else  if  (nota  ==  MARCA_FI)  {
+if  ((nota  >=  0)&&(nota  <=  10))  {
+System.out.println("(Para  terminar,  escribe  un"  +  MARCA_FI  +  ")");
+"  valores.");
+float[]  arrayNotes  =  new  float[MAX_VALORS];
+lector.next();
+}
+"
+//No  se  sabe  cuántas  entrarán.  Hay  que  acotar  un  valor  máximo.  Ponemos  80.
+//Será  necesario  alguna  manera  de  saber  que  se  ha  terminado  de  escribir.
+array.
+//Estructura  de  repetición  con  semáforo.
+elementos++;
+}
+//Hay  que  ver  si  es  un  valor  válido  o  final  de  secuencia.
+Scanner  lector  =  new  Scanner(System.in);
+public  static  void  main  (String[]  args)  {
+}  else  {
+//Ir  leyendo  hasta  encontrar  la  marca  de  fin.  Pero  el  máximo  es  el  tamaño  del
+while  (elementos  <  arrayNotes.length)  {
+int  elementos  =  0;
+//Si  no  era  un  real,  lo  ignoramos.
+figura  1.6  esquematiza  este  hecho  partiendo  de  la  secuencia  de  entrada  2.0,  5.5,
+la  entrada.  El  resto  de  posiciones  tienen  valores  por  defecto  que  nada  tienen  que  ver
+será  necesario  disponer  de  una  variable  auxiliar  adicional,  de  tipo  entero,  en  la  que
+es  necesario  indicar  de  alguna  manera  cuando  se  ha  terminado  de  entrar  datos,  con  una
+Otro  aspecto  importante  es  que  el  atributo  length  ahora  no  es  suficiente  para  saber
+El  siguiente  código  es  el  equivalente  de  entrada  de  notas  pero  para  el  caso  de  una  entrada
+el  rango  de  los  datos  válidos.  Sólo  indica  la  capacidad  del  array.  Por  tanto,
+y  este  valor  auxiliar  ­  1.
+de  datos  de  longitud  desconocida.  Como  no  se  sabe  cuántos  datos  hay  que  leer,
+marca  de  final.  En  ese  caso,  se  trata  del  valor  ­1.  El  límite  de  datos  que  es
+capaz  de  almacenar  se  ha  establecido  en  80,  definido  como  la  constante  MAX_VALORS.
+se  almacene  el  número  de  datos  que  realmente  hay  dentro  del  array.  Cualquiera
+con  la  entrada,  y  por  tanto,  no  deben  ser  previstas  a  la  hora  de  realizar  ninguna  tarea.  La
+Pruébelo  en  su  entorno  de  trabajo  y  estudie  su  funcionamiento.
+acceso  al  array  sólo  obtendrá  datos  correctos  si  el  índice  empleado  se  encuentra  entre  0
+25
+36
+Programación  (DAM)
+21
+5
+15
+7
+11
+4
+24
+37
+40
+8
+16
+22
+Programación  (DAW)
+3  public  class  LectorSequenciaDimDeconocida  {
+26
+2 //Lee  un  conjunto  de  datos  sin  saber  cuántos  son.
+32
+21
+19
+12
+33
+38
+14
+1  importe  java.util.Scanner;
+13
+Tipo  de  datos  compuestos
+10
+17
+23
+20
+39
+Programación  básica  (ASX)
+6
+9
+31
+30
+28
+34
+27
+29
+35
+18
+9.0,  10.
+Machine Translated by Google
+
+--- PAGE BREAK ---
+El  potencial  de  los  arrays  va  mucho  más  allá  de  la  mera  capacidad  de  gestionar  conjuntos  
+de  datos  de  tamaño  arbitrario  tan  sólo  declarando  una  única  variable.
+1.4.1  Inicialización  procedural
+Puestos  a  tener  que  calcular  previamente  por  su  parte  los  valores  con  los  que  se  debe  
+inicializar  el  array,  sale  más  a  cuenta  que  sea  el  propio  programa  quien  realice  este  cálculo  
+e  inicialice  las  posiciones  a  medida  que  encuentre  los  resultados.
+Éstos  también  son  una  herramienta  extremadamente  versátil  para  procesar  todos  los  datos  
+que  contienen  con  pocas  líneas  de  código  de  forma  comprensible  y  eficiente.  El  principal  
+motivo  es  que  sus  posiciones  son  accesibles  a  partir  de  índices  numéricos.
+De  hecho,  esta  circunstancia  ha  quedado  ya  patente  en  el  ejemplo  de  lectura  de  una  
+secuencia  de  datos  desde  el  teclado  y  el  almacenamiento  en  un  array.  Reflexione  sobre  
+cómo  sería  el  código  sin  usar  una  estructura  de  repetición  o  arrays.
+A  continuación  verá  una  serie  de  estrategias  basadas  en  esta  circunstancia  que  vale  la  
+pena  que  tenga  presentes  a  la  hora  de  trabajar  con  los  datos  contenidos  dentro  de  un  
+array.  Casi  todos  los  programas  basados  en  arrays  usan  alguna.  Para  simplificar  el  código  
+de  los  ejemplos  utilizados,  en  lugar  de  partir  de  una  entrada  por  teclado  se  trabajará  sobre  
+un  array  inicializado  con  valores  concretos.  Los  algoritmos  no  varían  en  absoluto  respecto  
+a  los  arrays  producto  de  una  entrada  por  teclado.
+A  un  array  parcialmente  ocupado  se  le  pueden  añadir  nuevos  datos  posteriormente,  
+siempre  que  no  se  supere  su  tamaño.  Para  ello,  éstas  deberían  asignarse  a  partir  de  la  
+posición  en  la  que  se  encuentra  el  último  elemento  válido.
+1.4  Esquemas  fundamentales  en  la  utilización  de  "arrays"
+Hay  situaciones  en  las  que  los  valores  iniciales  dentro  de  alguna  o  todas  las  posiciones  
+del  array  no  necesariamente  deben  depender  de  una  entrada,  pero  usar  el  sistema  de  
+inicialización  con  valores  concretos  puede  ser  algo  incómodo.  Por  ejemplo,  suponga  que  
+necesita  disponer  de  los  valores  de  las  20  primeras  potencias  de  2.  Al  tratarse  de  bastantes  
+valores,  usar  un  array  es  ideal.  Ahora  bien,  aunque  estos  valores  se  pueden  expresar  
+directamente  como  literales,  primero  debería  calcularlos  por  su  cuenta  y,  a  continuación,  
+inicializar  el  array.  Además,  el  resultado  final  es  una  línea  bastante  larga  dentro  del  código,  
+afectando  a  su  legibilidad.
+Esto  hace  ideal  el  tratamiento  usando  estructuras  de  repetición,  que  mediante  un  contador  
+accedan  una  por  una  a  todas  las  posiciones.
+42
+43
+Programación  básica  (ASX)
+Programación  (DAW)
+45 }
+44
+Tipo  de  datos  compuestos
+Programación  (DAM)
+41
+22
+}
+for  (int  i  =  0;  y  <  elementos;i++)  
+{ System.out.println(arrayNotes[i]);
+}
+Machine Translated by Google
+
+--- PAGE BREAK ---
+Para  estudiar  el  funcionamiento  del  programa  de  forma  más  detallada,  resulta  útil
+preestablecidos.  Es  un  término  especialmente  usado  en  el  diseño  de  videojuegos.
+Se  llama  generación  procedural  al  hecho  de  generar  contenido
+de  modo  que  el  valor  en  cada  posición  sea  el  doble  de  la  anterior,  partiendo  de  una
+primeros  números  pares  (Nota:  el  0  es  par).
+Compile  y  ejecute  el  siguiente  código,  que  inicializa  proceduralmente  un  array
+usar  una  tabla  que  indique  la  evolución  de  las  variables  en  cada  iteración,  tal  y  como  hace  la
+Reto  1:  haga  un  programa  que  inicialice  proceduralmente  un  array  con  los  100
+Debido  a  que  cuando  se  realiza  una  inicialización  de  este  tipo  el  número  de  valores  es
+algorísmicamente,  en  lugar  de  hacerlo  manualmente  partiendo  de  valores
+conocido,  se  puede  asignar  un  tamaño  al  array  de  forma  que  esté  totalmente  ocupado.
+primera  posición  con  valor  1.
+tabla  1.2.
+14
+5
+7
+9
+11
+15
+Programación  básica  (ASX)
+Programación  (DAW)
+2  public  class  InicializaciónProcedural  {
+12
+10
+16
+4
+Programación  (DAM)
+6
+8
+Tipo  de  datos  compuestos
+13
+18 }
+17
+1 //Un  programa  que  inicializa  proceduralmente  un  array  con  valores  relacionados
+3
+23
+}
+//Habrá  que  almacenar  20  enteros.
+for(int  i  =  1;  y  <  arrayValorsDobles.length;  i++)  {
+arrayValorsDobles[0]  =  1;
+for  (int  i  =  0;  y  <  arrayValorsDobles.length;  i++)  {
+}
+System.out.print("Se  ha  generado  el  array:  [ ");
+"  ");
+//El  resto  se  va  llenando  secuencialmente,  a  base  de  cálculos.
+arrayValorsDobles[i]  =  2  *  arrayValorsDobles[i  −  1];
+System.out.print(arrayValorsDobles[i]  +
+//La  primera  posición  la  ponemos  directamente.
+entre  sí.
+public  static  void  main  (String[]  args)  {
+Tabla  1.  2.  Evolución  del  bucle  para  inicializar  un  array  con  potencias  de  2
+int[]  arrayValorsDobles  =  new  int[20];
+}
+System.out.print("]");
+Valor  asignado
+4
+arrayValorsDobles[4]
+18
+arrayValorsDobles[19]
+19
+*
+Inicio  del  bucle
+Posición  modificada
+(1  <  20),  true
+*
+(3  <  20),  true
+2*arrayValorsDobles[1],  2  2  =  4
+arrayValorsDobles[2]
+4
+(19  <  20),  true
+(20  <  20),  false
+arrayValorsDobles[1]
+(4  <  20),  true
+*
+arrayValorsDobles[3]
+20
+1
+*
+2*arrayValorsDobles[0],  2  1  =  2
+Condición  vale
+2*262144  =  524288
+3
+...
+2
+Iteración
+1
+2*arrayValorsDobles[18],
+2*arrayValorsDobles[3],  2  8  =  16
+2
+3
+19
+'y'  vale
+Fin  del  bucle
+2*arrayValorsDobles[2],  2  4  =  8
+(2  <  20),  true
+Ya  hemos  salido  del  bucle
+Machine Translated by Google
+
+--- PAGE BREAK ---
+2
+0
+2
+13
+(4  <  12),  true
+'y'  vale
+1
+11
+arrayNotes[2],  9.0
+arrayNotes[1],  5.5
+12
+(11  <  12),  true
+Ya  hemos  salido  del  bucle
+3
+arrayNotes[11],  7.0  75.5  +  7.0  =  82.5
+arrayNotes[0],  2.0  0  +  2.0  =  2.0
+(3  <  12),  true
+'acumulado'  vale
+...
+(12  <  12),  false
+Fin  del  bucle
+2.0  +  5.5  =  7.5
+7.5  +  9.0  =  16.5
+Inicio  del  bucle
+(0  <  12),  true
+Condición  vale
+1
+Posición  accedida
+Iteración
+12
+el  array  en  toda  su  extensión  hasta  llegar  al  final  de  la  extensión,  dada  por  la
+En  la  tabla  1.3,  mediante  el  estudio  de  la  evolución  del  bucle,  se  puede  ver  cómo  se  van
+aritmética  de  una  serie  de  notas,  que  requiere  sumar  los  valores  de  todas  y  cada  una
+no  necesariamente  debe  ser  hasta  la  última  posición,  sino  hasta  la  última  posición
+recorriendo  una  por  una  todas  las  posiciones  del  array.
+resultado  final.  Un  ejemplo  de  una  situación  como  ésta  puede  ser  calcular  la  media
+1.4.2  Recorrido
+y  dividir  el  resultado  entre  su  número.
+En  el  caso  de  un  array  parcialmente  ocupado  hay  que  tener  cuidado,  ya  que  el  recorrido
+ocupada.  El  algoritmo  de  recorrido  a  escala  general  será  el  mismo,  pero  la
+condición  de  salida  del  bucle  va  a  cambiar.  Por  ejemplo,  si  el  número  de  valores  en
+Cuando  trabaje  con  arrays,  a  menudo  tendrá  que  hacer  cálculos  en  los  que  están  implicados
+Como  ejemplo,  ejecute  el  siguiente  código,  que  calcula  la  media  aritmética  de  un
+seguido  de  notas,  expresadas  como  valores  reales,  contenidas  dentro  de  un  array.
+el  array  se  encuentra  en  la  variable  últimaPosicio,  el  código  sería:
+todos  los  valores  almacenados  o,  al  menos,  buena  parte.  En  este  caso,  es  necesario  realizar  
+un  recorrido  secuencial  de  las  posiciones  e  ir  procesando  para  obtener  un
+El  caso  de  un  array  totalmente  ocupado  es  el  más  sencillo,  ya  que  es  suficiente  con  recorrer
+tamaño.
+11
+3
+7
+14
+5
+Programación  (DAM)
+12
+4
+13
+6
+9
+Programación  básica  (ASX)
+Programación  (DAW)
+2  public  class  RecorridoTotalmenteOcupado  {
+24
+10
+8
+Tipo  de  datos  compuestos
+1 //Un  programa  que  realiza  un  recorrido  de  un  array:  cálculo  de  la  media  aritmética.
+15 }
+7f};
+Hablamos  de  recorrido  cuando  es  necesario
+//Se  parte  de  un  array  que  contiene  todos  los  valores.
+float[]  arrayNotes  =  {2f,  5.5f,  9f,  10f,  4.9f,  8f,  8.5f,  7f,  6.6f,  5f,  9f,
+Tabla  1.  3.  Evolución  del  bucle  para  recorrer  el  array  y  calcular  la  suma  de  todos  los  valores
+for(int  i  =  0;  y  <  arrayNotes.length;  i++)  {
+Recorrido
+float  resultado  =  acumulado /  arrayNotes.length;
+//Hay  que  recorrer  todo  el  array  de  extremo  a  extremo.
+}
+public  static  void  main(String[]  args)  {
+tratar  todos  los  valores  del  array.
+//Acumulador  de  la  suma  de  valores.
+acumulado  =  acumulado  +  arrayNotes[i];
+System.out.println("El  resultado  es"  +  resultado);
+float  acumulado  =  0;
+}
+Machine Translated by Google
+
+--- PAGE BREAK ---
+Ejecute  el  siguiente  código,  que  realiza  la  búsqueda  de  algún  valor  igual  a  10  entre  una  serie
+Reto  2:  modifique  el  código  del  recorrido  para  que,  en  lugar  de  la  media,  calcule
+Otra  tarea  que  a  menudo  se  realiza  al  trabajar  con  arrays  es  buscar  valores  concretos
+1.4.3  Búsqueda
+hecho,  llegar  al  final  del  array  es  lo  que  indica  que  no  se  ha  encontrado  el  valor  buscado.
+ver  si  entre  una  serie  de  notas  alguien  ha  sido  capaz  de  sacar  un  10.
+se  encuentra  en  la  cuarta  iteración.  Puede  ver  qué  pasa  si  no  se  encuentra  ninguna  si  antes
+de  notas.  Fíjese  que  en  este  código  se  sale  del  bucle  en  cuanto  se  encuentra  el
+en  su  interior.  Por  eso,  es  necesario  ir  mirando  todas  las  posiciones  hasta  encontrarlo.  Por  ejemplo,
+Hasta  cierto  punto,  se  puede  considerar  que  una  búsqueda  no  es  más  que  un  tipo  especial
+del  array.
+recorrer  todos  los  elementos  del  array,  sólo  hasta  encontrar  el  valor  que  buscamos.  De
+valor  que  buscamos.  Ya  no  hace  falta  seguir  iterando.  Tal  y  como  se  presenta  este  código,  el  10
+de  compilar  modifique  manualmente  este  valor  por  otro  en  la  inicialización
+en  cuanto  se  encuentra  el  valor  buscado,  las  iteraciones  terminan  de  inmediato.  Cómo
+cuál  es  la  nota  máxima.
+Una  vez  más,  una  tabla  para  ver  la  evolución  del  bucle  puede  ayudarle  a  ver  cómo,
+de  recorrido.  En  este  caso,  el  énfasis  se  hace  en  la  circunstancia  de  que  no  siempre  es  necesario
+4
+21
+4 ...
+24 }
+2  public  class  Búsqueda  {
+22
+1 ...
+6
+1 //Un  programa  para  ver  si  alguien  ha  sacado  un  10.
+3
+17
+Programación  básica  (ASX)
+20
+7
+12
+16
+13
+9
+Tipo  de  datos  compuestos
+14
+10
+2 //Solo  se  tratan  los  valores  realmente  válidos.
+25
+3  for(int  i  =  0;  y  <  últimaPosicio;  i++)  {
+Programación  (DAW)
+19
+8
+11
+15
+5
+18
+Programación  (DAM)
+23
+float[]  arrayNotes  =  {2f,  5.5f,  9f,  10f,  4.9f,  8f,  8.5f,  7f,  6.6f,  5f,  9f,
+//¿Se  ha  encontrado?
+boolean  encontrado  =  false;
+}  else  {
+while  ((y  <  arrayNotes.length)&&(!encontrado))  {
+if  (encontrado)  {
+encontrar  el  objetivo.
+}
+//Se  va  mirando  cada  posición,  mientras  no  se  llega  al  final  y  no  se  encuentre  un
+//Contador  de  posiciones.
+Búsqueda
+Hablamos  de  búsqueda  cuando  sólo  es  necesario
+public  static  void  main(String  args[])  {
+//Semáforo.  ¿Se  ha  encontrado?
+int  y  =  0;
+if  (arrayNotes[i]  ==  10)  {
+encontrado  =  true;
+tratar  los  valores  del  array  hasta
+}
+}
+10.
+7f};
+System.out.println("Alguien  ha  sacado  un  10.");
+System.out.println("Nadie  ha  sacado  un  10");
+//Se  parte  de  un  array  que  contiene  todos  sus  valores.
+e  =  i  +  1;
+}
+Machine Translated by Google
+
+--- PAGE BREAK ---
+while  ((y  <  arrayNotes.length)&&(!encontrado))  {
+//Se  parte  de  un  array  que  contiene  una  serie  de  caracteres.
+encontrado  =  true;
+char[]  arrayNotes  =  {'a',  'z',  'g',  'd',  'w',  'o',  'h',  'e',  'x',  's'};
+}
+System.out.println("La  letra  'w'  no  está  en  la  lista.");
+//Se  va  mirando  cada  posición,  mientras  no  se  llega  al  final  y  no  se  encuentre  una
+e  =  i  +  1;
+}
+}
+public  static  void  main  (String[]  args)  {
+int  y  =  0;
+"w".
+//Contador  de  posiciones.
+}
+if  (encontrado)  {
+//Semáforo.  ¿Se  ha  encontrado?
+if  (arrayNotes[i]  ==  'w')  {
+}  else  {
+boolean  encontrado  =  false;
+//¿Se  ha  encontrado?
+System.out.println("La  letra  'w'  está  en  la  lista.");
+Tabla  1.  4.  Evolución  del  bucle  para  recorrer  el  array  y  calcular  la  suma  de  todos  los  valores
+14
+20
+3
+13
+15
+Programación  básica  (ASX)
+8
+7
+18
+12
+21
+17
+4
+22
+1 //Buscar  si  existe  la  letra  'w'  entre  una  serie  de  caracteres.
+9
+24 }
+5
+2  public  class  BúsquedaCaracter  {
+16
+Programación  (DAM)
+10
+Programación  (DAW)
+23
+19
+26
+11
+6
+Tipo  de  datos  compuestos
+en  la  búsqueda  de  un  carácter  concreto.  Observe  cómo  el  código  relativo  a  la  búsqueda,  a  grandes
+subraya  la  parte  de  la  expresión  que  causa  que  evalúe  a  false.
+relativos  al  tipo  de  dato  que  contiene  el  array.
+también  son  de  aplicación  a  otros  tipos  primitivos  como  los  caracteres.  Saber  aplicarlos
+rasgos,  es  idéntico  al  relativo  a  valores  numéricos.  Sólo  varía  en  los  pequeños  detalles
+suspendido  la  asignatura  o  no.  Hágalo  usando  la  sentencia  break.
+sobre  conjuntos  de  caracteres  es  especialmente  interesante  para  entender  las  estrategias
+se  puede  ver  en  la  tabla  1.4,  no  es  necesario  recorrer  todo  el  array.  En  la  última  iteración  se
+Reto  3:  modifique  el  código  del  ejemplo  para  poder  ver  si  hay  alguien  que  debe
+Si  bien  hasta  el  momento  los  esquemas  de  uso  de  arrays  se  han  centrado  en  valores  numéricos,
+para  tratar  texto.  A  título  ilustrativo,  a  continuación  se  muestra  un  ejemplo  de  array  basado
+1
+true
+Fin  del  bucle
+false
+'encontrado'  vale
+4
+(4  <  12)&&(!true),
+false
+2
+true
+arrayNotes[1],  5.5
+4
+'y'  vale
+true
+1
+false
+false
+arrayNotes[3],  10.0
+arrayNotes[0],  2.0
+3
+0
+Iteración
+Ya  hemos  salido  del  bucle
+false
+3
+2
+false
+false
+Condición  vale
+true
+false
+true
+true
+(2  <  12)&&(!false),
+(3  <  12)&&(!false),
+'encontrado'  vale
+Posición  accedida
+Inicio  del  bucle
+arrayNotes[2],  9.0
+(1  <  12)&&(!false),
+5
+(0  <  12)&&(!false),
+Machine Translated by Google
+
+--- PAGE BREAK ---
+for  (int  i  =  0;  y  <  arrayNotes.length;  i++)  {
+float[]  arrayNotes  =  {2f,  5f,  9f,  6.5f,  10f,  4.5f,  8.5f,  7f,  6f,  7.5f,  9f,
+//Cálculo  de  los  contadores.  Se  realiza  un  recorrido  de  las  notas.
+barras[3]++;
+//Aprovechamos  el  índice  para  saber  qué  título  es  necesario  escribir  en  la  barra  actual.
+//Vamos  recorriendo  los  contadores  e  imprimimos  el  valor  en  estrellas.
+");
+System.out.print("Aprobado:  break;
+for  (int  i  =  0;  y  <  barras.length;  i++)  {
+case  2:
+");
+//¿A  qué  rango  pertenece?
+int[]  barras  =  new  int[4];
+}
+}  else  if  (arrayNotes[i]  <  6.5)  {
+System.out.print("Notable:  break;
+//Se  imprime  el  gráfico.
+barras[1]++;
+}  else  if  (arrayNotes[i]  <=  10)  {
+}
+");
+case  0:
+switch(i)  {
+barras[2]++;
+//Si  no  pertenece  a  ningún  rango,  nota  incorrecta.  La  ignoramos.
+public  static  void  main  (String[]  args)  {
+case  3:
+barras[0]++;
+case  1:
+System.out.println("Gráfico  de  barras  de  las  notas");
+}  else  if  (arrayNotes[i]  <  9)  {
+if  ((arrayNotes[i]  >=0 )&&(arrayNotes[i]  <  5))  {
+7f};
+System.out.print("Suspendido:  
+break;
+//Inicialización  de  los  10  contadores,  para  cada  barra  del  gráfico.
+28
+Programación  (DAW)
+8
+24
+34
+7
+30
+11
+32
+10
+23
+16
+35
+18
+27
+3
+19
+6
+31
+5
+2
+Programación  básica  (ASX)
+1  public  class  Histograma  {
+22
+12
+27
+29
+33
+36
+Tipo  de  datos  compuestos
+9
+13
+17
+14
+20
+25
+4
+Programación  (DAM)
+15
+21
+26
+llevar  a  cabo  esta  tarea,  necesitará  disponer  de  una  serie  de  contadores,  uno  para
+A  continuación  tiene  el  código  del  programa  que  hace  esta  tarea  usando  un  array,  en  lugar
+un  único  identificador,  en  lugar  de  tener  que  declarar  varias  variables.  Ésta
+vínculo  entre  ellas.  Otra  utilidad  de  los  arrays  puede  extraerse  de  su  capacidad
+número  de  estudiantes  que  han  sacado  suspendido,  aprobado,  notable  o  excelente.  Para  poder
+en  cada  categoría  de  nota,  y  realizar  un  recorrido  de  todas  las  notas.  Según  el  rango  en
+vía  es  especialmente  útil  para  casos  en  los  que  es  necesario  gestionar  datos  que  tienen  un  cierto
+que  pertenezca  cada  nota,  se  incrementará  un  contador  u  otro.
+La  utilización  de  un  array  dentro  del  código  de  un  programa  puede  ir  más  allá  de  almacenar  
+secuencias  de  datos  de  longitud  arbitraria  obtenidas  desde  una  entrada.
+el  array  de  notas  ya  está  dado  directamente,  pero  podría  adaptar  el  código  de  forma
+de  acceder  a  sus  posiciones  usando  un  índice  para  simplificar  el  código.
+estudiantes  de  un  aula,  genere  un  gráfico  de  barras  (o  histograma)  en  el  que  se  indique  el
+que  leyera  los  valores  por  el  teclado.
+1.4.4  Uso  de  "arrays"  auxiliares
+También  son  útiles  como  forma  sencilla  de  gestionar  muchos  valores  diferentes  con
+de  cuatro  variables  distintas.  Compile  y  pruebe  que  funciona.  En  este  caso,
+Por  ejemplo,  suponga  que  desea  hacer  un  programa  que,  a  partir  de  las  notas  de  los
+System.out.println("−−−−−−−−−−−−−−−−−−−−−−−−−−−−−− );
+Machine Translated by Google
+
+--- PAGE BREAK ---
+System.out.println("−−−−−−−−−−−−−−−−−−−−−−−−−−−−−− );
+//Ahora  los  aprobados.
+break;
+}
+}
+//Imprimimos  tantas  estrellas  como  el  valor  del  contador.
+System.out.print("Aprobado:  ");
+}
+//Primero  los  suspendidos.
+System.out.print("*");
+for  (int  j  =  0;  j  <  barras[i];  j++)  {
+System.out.print("Excelente:  ");
+}
+for  (int  j  =  0;  j  <  contadorAprobados;  j++)  {
+}
+for  (int  j  =  0;  j  <  contadorExcellent;  j++)  {
+System.out.print("*");
+System.out.println();
+//Ahora  los  excelentes.
+}
+for  (int  j  =  0;  j  <  contadorNotable;  j++)  {
+System.out.print("*");
+System.out.print("Notable:  ");
+System.out.print("Excelente:  ");
+System.out.println();
+System.out.println();
+System.out.println();
+//Se  imprime  el  gráfico.
+for  (int  j  =  0;  j  <  contadorSuspes;  j++)  {
+System.out.print("*");
+System.out.print("Suspendido:  ");
+System.out.print("*");
+System.out.println("Gráfico  de  barras  de  las  notas");
+}
+}
+//Ahora  los  notables.
+...
+System.out.println();
+41
+18
+13
+Tipo  de  datos  compuestos
+9
+12
+17
+37
+28
+47 }
+25
+28
+10
+20
+8
+6
+42
+5
+Programación  (DAW)
+38
+45
+2
+19
+22
+Programación  (DAM)
+1 ...
+16
+26
+24
+23
+4
+15
+39
+43
+46
+44
+7
+3
+40
+27
+Programación  básica  (ASX)
+11
+14
+21
+29
+cuatro  variables  distintas  sin  problemas.  Ahora  bien,  existe  una  parte  del  programa
+tanto,  qué  título  es  necesario  escribir  para  cada  iteración.  Ahora  imagináis  que  se  quiere  modificar  el
+simplificar  el  código:  al  escribir  el  gráfico  por  pantalla.  Si  se  usaran  cuatro  variables,
+cada  contador  individual.  Si  se  usan  cuatro  variables  separadas,  debería  repetirse
+estructura  de  repetición  y  realizar  un  recorrido.  Además,  el  valor  del  índice  al
+utilidad  para  no  tener  que  repetir  el  código.
+el  mismo  código  para  cada  variable.  Usando  un  array,  basta  con  usar  una
+que  se  está  accediendo  también  sirve  para  saber  qué  contador  se  está  tratando  y,  por
+Por  tanto,  este  es  un  ejemplo  de  caso  en  el  que  usar  arrays  auxiliares  puede  ser  de  grande
+el  código  para  imprimir  el  gráfico  sería:
+(0­1,  1­2, ...,  9­10).
+Para  escribir  el  resultado  final  en  forma  de  gráfico  es  necesario  escribir  tantas  estrellas  como  vale
+programa  para  contar  la  gente  que  ha  sacado  notas  dentro  de  rangos  con  mayor  granularidad
+En  este  caso,  la  granularidad  del  gráfico  es  baja,  por  lo  que  se  podría  hacer  con
+en  el  que  disponer  de  un  acceso  a  los  cuatro  valores  por  índice  resulta  de  gran  utilidad  para
+Machine Translated by Google
+
+--- PAGE BREAK ---
+se  acceda  a  los  mismos  datos  en  memoria  que  el  identificador  origen.
+no  tiene  ninguna  operación  disponible.  Sólo  puede  operarse  en  las  posiciones  individuales.
+1.4.5  Copia
+forma  de  acceder.  En  el  caso  de  Java,  esto  no  es  ningún  inconveniente,  ya  que  cuando
+Teniendo  en  cuenta  el  comportamiento  de  la  asignación,  para  generar  una  copia  
+independiente  de  un  array  es  necesario  tratar  las  posiciones  como  elementos  individuales,  como  ocurría
+de  las  variables  de  tipo  array.  Ahora  bien,  un  hecho  ciertamente  curioso  es  que  la  asignación
+Una  pregunta  que  puede  surgir  ahora  es:  ¿qué  ha  pasado  con  los  datos  que  había
+no  crea  una  copia  de  los  datos  del  array  original,  sino  que  lo  que  hace  es  configurar  el  
+identificador  de  destino  para  que,  a  partir  de  entonces,  por  medio  de  éste
+Lo  que  sí  está  permitido  es  realizar  asignaciones  usando  directamente  las  identificadores
+con  el  resto  de  operaciones.
+La  mejor  forma  de  ver  la  diferencia  de  comportamiento  entre  una  asignación
+entre  tipos  de  datos  primitivos  y  los  arrays  es  con  un  ejemplo  de  código.
+pueden  ser  distintos,  o  incluso  se  considera  un  error  grave  de  programación.
+a  estar  disponible  para  otras  aplicaciones.  En  otros  lenguajes,  las  implicaciones
+Como  se  ha  dicho,  el  tipo  de  dato  array,  al  contrario  que  los  tipos  de  datos  primitivos,
+inicialmente  en  la  variable  “arrayB”?  La  respuesta  es  que  se  han  perdido.  Ya  no  hay
+unos  datos  dejan  de  estar  accesibles,  se  borran  de  la  memoria  y  su  espacio  pasa
+13
+4
+3
+Programación  (DAM)
+11
+7
+2
+10
+8
+10
+3
+8
+9
+1 ...
+4
+2  public  class  Copia  {
+5
+Programación  básica  (ASX)
+3
+6
+15
+7
+12
+Tipo  de  datos  compuestos
+9
+11
+29
+1 //Un  programa  que  crea  una  copia  idéntica,  e  independiente,  de  otro  array.
+2
+6
+14
+1 ...
+Programación  (DAW)
+16
+5
+//Asignación  con  tipos  primitivos:
+arrayA[4]  =  70;
+//Se  modifica  el  valor  del  índice  4  sólo  de  "arrayA".
+asignación,  sino  dos  vías
+//De  hecho,  "a"  y  "b"  acceden  exactamente  a  los  mismos  datos.
+//Se  modifica  el  valor  de  "j".
+//Asignación  con  arrays:
+System.out.println(i);
+tipos  de  datos  compuestos.
+de  acceso  a  un  mismo  dato,
+public  static  void  main  (String[]  args)  {
+...
+e  =  j;
+el  origen  y  destino  ni  tan  siquiera
+real  al  llevar  a  cabo  una
+variables  de  tipo  array,
+arrayA  =  arrayB;
+es  un  rasgo  común  a  todos  los
+//"arrayA"  también  ha  visto  modificado  su  valor  en  el  índice  2!
+//A  la  variable  "i"  se  le  asigna  el  valor  de  "j".
+...
+System.out.println(arrayA[2]);
+System.out.println(arrayB[4]);
+//"i"  conserva  el  valor  copiado  desde  "j",  5.
+sólo  deben  tener  la  misma
+tamaño.
+j  =  10;
+int  y  =  0;
+int[]  arrayA  =  {10,  20,  30,  40,  50};
+int  j  =  5;
+//Se  modifica  el  valor  del  índice  2  sólo  de  "arrayB".
+Al  realizar  asignaciones  entre
+La  no  creación  de  una  copia
+//A  la  variable  "arrayA"  se  le  asigna  el  valor  de  "arrayB".
+//"arrayB"  también  ha  visto  modificado  su  valor  en  el  índice  4!
+arrayB[2]  =  60;
+int[]  arrayB  =  {60,  70,  80,  90,  100};
+Machine Translated by Google
+
+--- PAGE BREAK ---
+2.  Copiar  los  datos  del  array  original  en  el  mismo  orden.  Al  hacerlo,  el  nuevo
+3.  Aprovechando  las  propiedades  de  la  asignación  entre  arrays,  se  asigna  el  nuevo  array
+Una  vez  que  se  ha  decidido  por  un  valor  concreto  para  el  tamaño  de  un  array,  ya  no  hay
+el  original.
+se  añaden  MAX_VALORS,  nuevas  posiciones.
+array  quedará  con  posiciones  "vacías".
+es  irresoluble.  Sólo  hay  que  seguir  los  siguientes  pasos:
+1.  Generar  un  nuevo  array  en  una  variable  diferente,  con  un  tamaño  superior  a
+continuación.  En  éste,  el  tamaño  del  array  original  se  incrementa  de  forma  que
+Un  ejemplo  de  trozo  de  código  que  hace  estas  acciones  sería  el  que  se  muestra  en
+Llegados  a  este  punto,  es  como  si  a  efectos  prácticos  se  hubiera  hecho  mayor  el  array
+en  el  array  original.
+que,  en  determinadas  condiciones,  se  quede  sin  espacio  para  poder  almacenar
+4.  Por  último,  añadir  al  nuevo  array  los  valores  extra  que  ya  no  cabían  en  el  original.
+datos.  Pero  si  bien  no  es  posible  cambiar  el  tamaño  de  un  array,  este  problema  no
+vuelta  atrás.  No  puede  cambiarse.  Esto  tiene  ciertos  inconvenientes,  ya  que  puede  ocurrir
+1.4.6  Cambio  de  tamaño
+original.  El  siguiente  código  muestra  un  ejemplo  de  este  esquema.
+7  for  (int  i  =  0;  y  <  arrayNotes.length;  i++)  {
+15
+Programación  (DAM)
+11
+4 //PAS  1
+14
+8  arrayNou[i]  =  arrayNotes[i];
+9
+13 ...
+Programación  (DAW)
+10
+30
+4
+3 ...
+Tipo  de  datos  compuestos
+8
+2  float[]  arrayNotes  =  new  float[...];
+9 }
+1 ...
+5
+17
+13
+5  float[]  arrayNou  =  new  float[arrayNotes.length  +  MAX_VALORS];
+6 //PAS  2
+18 }
+12
+10 //PAS  3
+Programación  básica  (ASX)
+11  arrayNotes  =  arrayNuevo;
+7
+16
+12 //Ahora  ya  se  pueden  guardar  MAX_VALORS  nuevos  valores  extra  dentro  de  ''arrayNotes''
+6
+}
+float[]  listaNotas  =  {2f,  5.5f,  9f,  10f,  4.9f,  8f,  8.5f,  7f,  6.6f,  5f,  9f,
+7f};
+float[]  copiaListaNotes  =  new  float[listaNotes.length];
+System.out.print(copiaListaNotes[i]  +  "  ");
+}
+System.out.print("El  array  copiado  es:  [ ");
+//Vamos  copiando  posición  por  posición.
+//La  copia  debe  tener  el  mismo  tamaño  que  el  original.
+System.out.println("]");
+//Mostramos  la  copia  por  pantalla.
+for  (int  i  =  0;  y  <  listaNotes.length;i++)  {
+copiaListaNotes[i]  =  listaNotes[i];
+for  (int  i  =  0;  y  <  listaNotes.length;  i++)  {
+}
+Machine Translated by Google
+
+--- PAGE BREAK ---
+los  valores,  su  tamaño  se  incrementa  para  poder  albergar  otros  nuevos.  Compílelo
+El  código  siguiente  adapta  la  lectura  por  teclado  de  una  secuencia  de  longitud  
+desconocida  de  forma  que,  si  se  supera  la  capacidad  del  array  en  el  que  se  almacenan
+y  ejecútelo  para  ver  cómo  funciona.
+55
+11
+26
+49
+31
+42
+40
+Tipo  de  datos  compuestos
+16
+28
+47
+30
+48
+53
+13
+3
+44
+35
+52
+Programación  (DAW)
+21
+17
+56 }
+33
+51
+6
+46
+39
+15
+2  public  class  CambiMida  {
+Programación  básica  (ASX)
+19
+31
+12
+43
+54
+27
+8
+34
+9
+1  importe  java.util.Scanner;
+20
+Programación  (DAM)
+29
+14
+45
+4
+7
+24
+37
+38
+41
+23
+32
+10
+25
+50
+36
+18
+22
+5
+public  static  void  main  (String[]  args)  {
+Scanner  lector  =  new  Scanner(System.in);
+//Todo  correcto.  ¿Pero  hay  sitio  en  el  array?
+arrayNou[i]  =  arrayNotes[i];
+boolean  marcaFi  =  false;
+arrayNotes[elementos]  =  nota;
+:  ");
+float[]  arrayNou  =  new  float[arrayNotes.length  +  MAX_VALORS];
+public  static  final  int  MAX_VALORS  =  5;
+lector.next();
+}
+System.out.println("Puedes  escribir  varios  en  una  sola  línea,  separados
+for  (int  i  =  0;  y  <  arrayNotes.length;  i++)  {
+//Hay  que  cambiar  el  tamaño  del  array.  Se  realiza  5  posiciones  más  largo.
+}
+}
+//Si  se  entran  más  valores,  cambiamos  el  tamaño  del  array  y  seguimos  leyendo.
+}  else  {
+System.out.println("En  el  array  hay  almacenados
+//Si  no  era  un  real,  lo  ignoramos.
+//¿Hay  un  real?
+lector.nextLine();
+System.out.println(arrayNotes[i]);
+System.out.println("Capacidad  superada.  Añadimos  "  posiciones...");
+//Será  necesario  alguna  manera  de  saber  que  se  ha  terminado  de  escribir.
+//Ir  leyendo  hasta  encontrar  la  marca  de  fin.  Pero  el  máximo  es  el  tamaño  del
+//Si  no  es  ni  lo  uno  ni  lo  otro,  lo  ignoramos.
+"  elementos
+//De  entrada,  el  tamaño  será  5.
+System.out.println("(Para  terminar,  escribe  un  −1)");
+}
+break;
+//Ignoramos  los  valores  sobrantes  de  la  última  línea.
+//Estructura  de  repetición  con  semáforo.
+if  (lector.hasNextFloat())  {
+}  else  if  (nota  ==  −1)  {
++  MAX_VALORS  +
+if  (elementos  ==  arrayNotes.length)  {
+//Añadimos  el  nuevo  valor.  Seguro  que  hay  sitio.
+//Es  necesario  un  contador  de  posiciones  en  el  que  hay  valores  válidos.
+float[]  arrayNotes  =  new  float[MAX_VALORS];
+"
+}
+//Marca  de  final,  salimos  del  bucle.
+System.out.print("Ve  escribiendo  notas  (valores  reales  entre  0  y  10).");
+//Hay  que  ver  si  es  un  valor  válido  o  final  de  secuencia.
+float  nota  =  lector.nextFloat();
+arrayNotes  =  arrayNou;
+}
+por  espacios.");
+//Para  ver  cuándo  sucede,  avisamos  por  pantalla.
+//Se  elige  un  valor  muy  bajo  para  que  enseguida  se  fuerce  el  cambio  de  tamaño.
+while  (!marcaFi)  {
+elementos++;
+for  (int  i  =  0;  y  <  elementos;i++)  {
+"
+if  ((nota  >=  0)&&(nota  <=  10))  {
+int  elementos  =  0;
+array.
++  elementos  +
+}
+Machine Translated by Google
+
+--- PAGE BREAK ---
+El  algoritmo  de  la  burbuja  (BubbleSort)  sirve  para  ordenar  elementos  mediante  
+recorridos  sucesivos  a  lo  largo  de  la  secuencia,  en  los  que  se  van  comparando  parejas  
+de  valores.  Cada  vez  que  se  encuentran  dos  parejas  en  orden  incorrecto,  se  intercambia  
+su  posición.
+En  ocasiones  resulta  muy  útil  reorganizar  los  valores  que  hay  dentro  del  array  de  forma  que  
+estén  ordenados  de  manera  ascendente  o  descendente.  En  muchos  casos,  mostrar  los  datos  
+de  forma  ordenada  es  simplemente  un  requisito  de  la  aplicación,  de  modo  que  el  usuario  
+pueda  visualizarlos  y  extraer  conclusiones  de  forma  más  cómoda.  Pero  existen  casos  en  los  
+que  disponer  de  los  datos  ordenados  facilita  la  codificación  del  programa  y  la  eficiencia.
+Hay  que  decir  que  realizar  este  tipo  de  tarea  es  especialmente  ineficiente  y  tiene  un  impacto  
+sobre  el  rendimiento  del  programa.  Es  mejor  sólo  utilizar  este  esquema  si  realmente  no  hay  
+más  remedio.  Si  se  hace,  normalmente,  a  la  hora  de  elegir  el  tamaño  del  nuevo  array  es  
+mejor  no  ajustar  demasiado  y  dejar  espacio  de  sobra  para  llenar  nuevas  posiciones  si  es  
+necesario  sin  tener  que  verte  forzados  a  repetir  este  proceso  constantemente.
+De  repente  el  código  se  hace  más  rápido  y  corto,  ya  que  no  es  necesaria  la  estructura  de  
+repetición.  En  general,  los  datos  ordenados  resultan  de  utilidad  a  la  hora  de  realizar  búsquedas  
+o  recorridos  en  los  que  los  datos  a  tratar  tienen  un  rango  o  un  valor  concreto,  ya  que  permiten  
+establecer  estrategias  que  minimicen  el  número  de  iteraciones  de  los  bucles.
+Por  ejemplo,  en  este  mismo  apartado  habéis  visto  cómo  buscar,  a  partir  de  una  serie  de  
+notas,  si  algún  estudiante  ha  sacado  un  10.  Para  realizar  esta  tarea,  era  necesaria  una  
+estructura  de  repetición  e  ir  mirando  uno  por  uno  todos  los  valores  dentro  del  array.  Pero  si  
+los  datos  están  ordenados  en  orden  ascendente,  entonces  podemos  utilizar  una  estrategia  más  eficaz.
+Para  ordenar  una  secuencia  de  valores  existen  varios  algoritmos.  Los  más  eficientes  son  
+bastante  complejos  y  se  encuentran  más  allá  de  los  objetivos  de  este  módulo.  Basta  con  ver  
+uno  más  sencillo.
+1.4.7  Ordenación
+Si  alguien  tiene  un  10,  esta  nota  estará  a  la  fuerza  en  la  última  posición.  Por  tanto,  toda  la  
+búsqueda  queda  reducida  directamente  al  código:
+Básicamente,  lo  que  se  hace  es  buscar  el  valor  más  bajo,  recorriendo  todo  el  array,  y  ponerlo  
+en  la  primera  posición.  Con  esto  ya  tenemos  la  garantía  de  haber  resuelto  qué  valor  debe  
+acabar  en  la  primera  posición.  Entonces  se  busca  el  segundo  valor  más  bajo,  recorriendo  la  
+secuencia  desde  la  segunda  posición  hasta  el  final,  y  se  pone  en  la  segunda  posición.  Y
+32
+7 ...
+3
+Programación  (DAM)
+Tipo  de  datos  compuestos
+Programación  (DAW)
+Programación  básica  (ASX)
+5
+6 }
+1 ...
+2  if  (arrayNotes[arrayNotes.length  −  1]  ==  10)  { System.out.println("Alguien  ha  
+sacado  un  10.");  4 }  else  { System.out.println("Nadie  ha  sacado  un  
+10");
+El  algoritmo  de  ordenación  más  
+rápido  y  eficiente  que  existe  es  
+el  QuickSort.
+Machine Translated by Google
+
+--- PAGE BREAK ---
+posiciones  que  se  han  intercambiado,  en  su  caso.
+celdas  en  las  que  se  indica  el  estado  del  array  después  de  cada  iteración,  se  subrayan  las
+funciona  correctamente:
+pena  echar  un  vistazo  más  detallada  a  su  funcionamiento.  La  tabla  1.5  muestra  un
+Fíjese  cómo  el  valor  de  la  variable  contador  j  siempre  es  superior  a  i.  En  las
+tratando.
+cada  vez  que  encontramos  un  valor  más  bajo  que  el  que  hay  en  la  posición  que  se  está
+la  operación  se  repite  hasta  llegar  a  la  última  posición.  Para  realizar  esta  tarea
+se  opera  directamente  sobre  los  valores  almacenados  en  el  array,  intercambiándolos
+El  código  sería  el  siguiente.  Analícelo  para  entender  qué  está  haciendo  y  pruebe  que
+Dado  que  este  algoritmo  de  ordenación  se  basa  en  dos  bucles  imbricados,  vale  la
+seguido  de  iteraciones  hasta  tener  en  sus  dos  primeras  posiciones  los  valores  más  bajos.
+15
+11
+13
+28 }
+22
+26
+6
+Programación  básica  (ASX)
+10
+12
+14
+17
+18
+7
+3
+20
+2  public  class  Ordenar  {
+24
+21
+4
+23
+Tipo  de  datos  compuestos
+1 //Un  programa  para  ordenar  valores  usando  el  algoritmo  de  la  burbuja.
+27
+33
+19
+8
+16
+Programación  (DAW)
+5
+Programación  (DAM)
+25
+9
+//Se  irá  poniendo  en  cada  posición  tratada,  empezando  por  la  0,
+}
+//Bucle  interno.
+System.out.print("El  array  ordenado  es:  [");
+for(int  j  =  i  +  1;  j  <  listaNotes.length;  j++)  {
+}
+Tabla  1.  5.  Evolución  del  algoritmo  de  la  burbuja
+float  cambio  =  listaNotes[i];
+listaNotes[j]  =  cambio;
+public  static  void  main  (String[]  args)  {
+//Se  busca  entre  el  resto  de  posiciones  cuál  es  el  valor  más  bajo.
+for  (int  i  =  0;  y  <  listaNotes.length  −  1;  i++)  {
+listaNotes[i]  =  listaNotes[j];
+//La  posición  tratada  tiene  un  valor  mayor  que  el  de  la  búsqueda.  Los
+//Para  intercambiar  valores  es  necesaria  una  variable  auxiliar.
+}
+if  (listaNotes[i]  >  listaNotes[j])  {
+//Lo  mostramos  por  pantalla.
+float[]  listaNotas  =  {5.5f,  9f,  2f,  10f,  4.9f};
+intercambiamos.
+//el  valor  más  bajo  que  se  encuentre.
+}
+for  (int  i  =  0;  y  <  listaNotes.length;i++)  {
+//Bucle  externo.
+"  ");
+System.out.println("]");
+System.out.print(listaNotes[i]  +
+}
+0
+4
+{5.5,  9,  2,  10,  4.9}
+'listaNotes'  vale
+5.5  >  9,  false  {5.5,  9,  2,  10,  4.9}
+{2,  9,  5.5,  10,  4.9}
+{2,  9,  5.5,  10,  4.9}
+{2,  5.5,  9,  10,  4.9}
+listaNotas[j]
+{5.5,  9,  2,  10,  4.9}
+2  >  4.9,  false  {2,  9,  5.5,  10,  4.9}
+Fin  del  bucle
+9  >  5.5,  true
+listaNotas[i]  >
+0
+Fin  primera  iteración  bucle  externo.  En  listaNotes[0]  se  encuentra  el  valor  más  pequeño.
+{2,  9,  5.5,  10,  4.9}
+Inicio  primera  iteración  bucle  externo.  Se  busca  el  valor  más  pequeño  para  ponerlo  en  la  posición  0.
+Inicio  del  bucle
+1
+3
+0
+1
+2
+5.5  >  2,  true
+'y'  vale
+0
+'j'  vale
+{2,  9,  5.5,  10,  4.9}
+2  >  10,  false
+'listaNotes'  vale
+Inicio  segunda  iteración  bucle  externo.  Se  busca  el  segundo  valor  más  pequeño  para  ponerlo  en  la  posición  1.
+2
+{2,  9,  5.5,  10,  4.9}
+Machine Translated by Google
+
+--- PAGE BREAK ---
+número  de  índices  a  utilizar  para  establecer  la  posición  a  tratar.  Todos  los
+Cuando  se  declara  un  array,  existe  una  propiedad  especial,  aparte  de  su  identificador
+índices  para  establecer  una  posición,  se  puede  considerar  que  su  comportamiento  es  como
+Entre  los  arrays  multidimensionales,  el  caso  más  usado  es  el  de  los  arrays  bidimensionales,  
+de  dos  dimensiones.  Éste  es  uno  de  los  más  fáciles  de  visualizar  y  es,  por  tanto,
+concreta,  en  lugar  de  usar  un  solo  valor  como  índice,  se  usa  una  secuencia  de
+haya,  y  no  como  todo  el  tamaño  del  array.  Reflexione  atentamente  sobre  cómo  el
+el  segundo  indicaría  la  columna  donde  se  encuentra  la  posición  a  acceder.
+de  tipos  y  tamaño,  que  hasta  el  momento  se  ha  obviado.  Se  trata  de  su  dimensión,  el
+1.5  "Arrays"  multidimensionales
+el  hecho  de  que  el  array  esté  ordenado  es  determinante  para  alcanzar  esta  última  condición.
+Un  array  multidimensional  es  aquél  en  el  que  para  acceder  a  una  posición
+varios  valores.  Cada  índice  sirve  como  coordenada  para  una  dimensión
+un  buen  punto  de  partida.  Al  tratarse  de  un  tipo  de  array  en  el  que  se  necesitan  dos
+el  de  una  matriz,  mesa  u  hoja  de  cálculo.  El  primer  índice  indicaría  la  fila,  mientras  que
+diferente.
+el  array,  se  calcule  la  media  aritmética  sólo  de  los  estudiantes  que  han  suspendido.  El
+arrays  con  los  que  ha  trabajado  hasta  ahora  eran  unidimensionales.  Bastaba
+con  un  solo  valor  de  índice  para  indicar  la  posición  a  acceder.  Ahora  bien,  nada
+no  impide  que  el  número  de  índices  sea  mayor  que  1.
+bucle  del  recorrido  debe  realizar  exactamente  tantas  iteraciones  como  estudiantes  suspendidos
+Reto  4:  modifique  el  ejemplo  de  ordenación  de  forma  que,  una  vez  ordenado
+1
+4
+3
+10  >  9,  true  {2,  4.9,  5.5,  9,  10}
+Fino  tercero  iteración  bucle  externo.  En  listaNotes[3]  se  encuentra  el  cuarto  valor  más  pequeño.
+9  >  10,  false  {2,  4.9,  9 ,  10,  5.5}
+4
+5.5  >  4.9,  true  {2,  4.9,  9,  10,  5.5}
+{2,  4.9,  5.5,  10,  9}
+{2,  4.9,  9,  10,  5.5}
+Inicio  tercera  iteración  bucle  externo.  Se  busca  el  tercer  valor  más  pequeño  para  ponerlo  en  la  posición  2.
+4
+Por  la  fuerza,  en  la  posición  4  está  el  valor  más  alto.
+4
+3
+1
+{2,  4.9,  9,  10,  5.5}
+{2,  5.5,  9,  10,  4.9}
+Hemos  salido  del  bucle  externo  (4  >  listaNotes.length  ­  1)
+4
+5.5  >  10,  false  {2,  5.5,  9,  10,  4.9}
+Fino  tercero  iteración  bucle  externo.  En  listaNotes[2]  se  encuentra  el  tercer  valor  más  pequeño.
+9  >  5.5,  true  {2,  4.9,  5.5,  10,  9}
+2
+Fin  del  bucle
+3
+{2,  5.5,  9,  10,  4.9}
+Inicio  del  bucle
+Inicio  cuarta  iteración  bucle  externo.  Se  busca  el  cuarto  valor  menor  para  ponerlo  en  la  posición  3.
+Fino  segunda  iteración  bucle  externo.  En  listaNotes[1]  se  encuentra  el  segundo  valor  más  pequeño.
+2
+Programación  (DAM)
+Programación  básica  (ASX)
+Programación  (DAW)
+Tipo  de  datos  compuestos
+Un  "array"  de  dimensión  2:  una  tabla
+34
+Tabla  1.  5  (continuación)
+importante.
+El  orden  de  los  índices  es
+Machine Translated by Google
+
+--- PAGE BREAK ---
+{FilaNvalor1,  FilaNvalor2, ... ,  FilaNvalorN} };
+...,
+2
+Programación  (DAM)
+3
+4
+Tipo  de  datos  compuestos
+6
+5
+Programación  básica  (ASX)
+Programación  (DAW)
+1  palabraClauTipus[][]  identificadorVariable  =  { {Fila0valor1,  Fila0valor2, ... ,  Fila0valorN},  
+{Fila1valor1,  Fila1valor2, ... ,  Fila1valorN},
+1  palabraClauTipus[]  identificadorVariable  =  new  palabraClauTipus[númeroFiles][ númeroColumnes];
+35
+1.5.1  Declaración  de  arrays  bidimensionales
+La  inicialización  mediante  valores  concretos  implica  indicar  tantos  valores  como  el  número  de  filas  
+por  columnas.  Para  ello,  primero  se  enumeran  los  valores  individuales  que  hay  en  cada  fila  de  la  
+misma  manera  que  se  inicializa  un  array  unidimensio­nal:  una  secuencia  de  valores  separados  
+por  comas  y  rodeados  por  corchetes,  {...}.
+Para  declarar  uno  inicializado  con  todas  las  posiciones  de  sus  valores  por  defecto,  debería  usarse  
+la  sintaxis:
+Esto  se  hace  usando  un  par  de  claves  extra,  [],  siempre  que  sea  necesario  especificar  un  nuevo  
+índice.
+Por  ejemplo,  suponga  que  el  programa  para  tratar  notas  de  estudiantes  ahora  debe  gestionar  las  
+notas  individuales  de  cada  estudiante  para  una  serie  de  ejercicios,  de  modo  que  se  pueden  realizar  
+cálculos  adicionales:  calcular  la  nota  final  según  los  resultados  individuales,  ver  la  evolución  de  
+cada  estudiante  a  lo  largo  del  curso,  etc.  En  este  caso,  toda  esta  información  se  puede  resumir  de  
+forma  eficiente  en  una  tabla  u  hoja  de  cálculo,  en  la  que  los  estudiantes  se  pueden  organizar  por  
+filas,  donde  cada  columna  corresponde  al  valor  de  una  prueba,  y  en  la  que  la  última  columna  
+puede  ser  la  nota  final.
+La  sintaxis  para  declarar  e  inicializar  un  array  de  dos  dimensiones  es  similar  a  la  de  los  
+unidimensionales,  si  bien  ahora  debe  especificarse  que  existe  un  índice  adicional.
+Una  vez  enumeradas  las  filas  de  este  modo,  éstas  se  enumeran  a  su  vez  separadas  por  comas  y  
+rodeadas  por  corchetes.  Conceptualmente,  es  como  declarar  un  array  de  filas,  en  el  que  cada  
+posición  tiene  otro  array  de  valores.  Esto  se  ve  más  claro  con  la  sintaxis,  que  es  la  siguiente:
+Como  ocurría  con  los  arrays  unidireccionales,  el  valor  de  los  índices,  filas  y  columnas,  no  debe  ser  
+necesariamente  un  literal.  Puede  definirse  de  acuerdo  con  el  contenido  de  una  variable,  diferente  
+para  cada  ejecución  del  programa.  El  valor  del  número  de  filas  y  columnas  tampoco  debe  ser  
+necesariamente  el  mismo.
+Fíjese  cómo  al  inicio  y  al  final  están  los  corchetes  extra  que  cierran  la  secuencia  de  filas  y  después  
+de  cada  fila  hay  una  coma,  para  separarlas  entre  sí.  Para  hacer  más  clara  la  lectura,  se  han  usado  
+diferentes  líneas  de  texto  para  indicar  los  valores  almacenados  en  cada  fila,  pero  nada  impide  
+escribirlo  todo  en  una  sola  línea  muy  larga.  De  todas  formas,  es  recomendable  usar  este  formato  
+e  intentar  dejar  espacios  en  los  que  corresponda  de  forma  que  los  valores  queden  alineados  
+verticalmente,  ya  que  esto  facilita  la  comprensión  del  código  fuente.
+Machine Translated by Google
+
+--- PAGE BREAK ---
+arrays  bidimensionales  se  basan  en  dos  estructuras  de  repetición  imbricadas,  una
+cada  índice  nunca  puede  ser  igual  o  superior  al  número  de  filas  o  columnas,  según
+segunda  {6  ,7  ,8  ,9  ,10}  y  la  tercera  {11,12,13,14,15},  tal  y  como  muestra  la  tabla  1.6.
+de  tres  filas  por  cinco  columnas  de  valores  de  tipo  entero  se  haría:
+Por  ejemplo,  para  declarar  e  inicializar  con  valores  concretos  un  array  bidimensional
+El  acceso  a  las  posiciones  de  un  array  bidimensional  es  prácticamente  idéntico  a
+corresponda.  De  lo  contrario,  se  produce  un  error.
+para  tratar  cada  fila  y  la  otra  para  tratar  cada  valor  individual  dentro  de  la  fila.
+Puesto  que  ahora  hay  dos  índices,  todos  los  esquemas  fundamentales  para  trabajar  con
+el  unidireccional,  pero  teniendo  en  cuenta  que  ahora  hay  dos  índices  por  prever
+La  tabla  1.7  hace  un  resumen  de  cómo  se  accedería  a  las  diferentes  posiciones  de  un  array  de
+comas),  ya  que  es  necesario  garantizar  que  todas  las  filas  tienen  el  mismo  número  de  columnas.
+Desde  el  punto  de  vista  de  una  tabla  o  matriz,  La  primera  fila  sería  {1,  2,  3,  4,  5},  la
+Al  usar  este  tipo  de  inicialización  es  necesario  asegurarse  de  que  los  tamaños  de  todas  las  filas
+referentes  a  las  dos  coordenadas.
+4  *  5  posiciones.  En  cualquier  caso,  al  acceder,  siempre  es  necesario  mantener  presente  que
+En  el  caso  de  arrays  bidimensionales,  el  atributo  length  tiene  un  comportamiento  una
+algo  especial,  ya  que  ahora  hay  dos  índices.  Para  entenderlo,  hay  que  recordar  que  por
+inicializar  el  array  lo  que  se  hace  es  enumerar  una  lista  de  filas,  dentro  de  las  cuales
+existen  los  valores  realmente  almacenados.  Por  tanto,  lo  que  le  dice  el  atributo  es  el
+1.5.2  Esquemas  de  uso  de  arrays  bidimensionales
+número  de  filas  existentes.
+sean  exactamente  igual  (que  tengan  el  mismo  número  de  valores  separados  entre
+1  identificadorVariable[índiceFila][índiceColumna]
+Programación  (DAM)
+2
+4
+36
+5
+Programación  básica  (ASX)
+Programación  (DAW)
+1  int[][]  arrayBidi  =  {
+3
+Tipo  de  datos  compuestos
+Asegúrese  de  usar
+{6  ,7  ,8  ,9  ,10},
+variables  diferentes  por
+{11,12,13,14,15}
+Tabla  1.  6.  Resultado  de  inicio­
+alizar  con  valores  concretos  uno
+array  bidimensional  de  tres  filas  
+por  cinco  columnas
+indicar  cada  índice.
+};
+*
+{1  ,2  ,3  ,4  ,5 },
+5  posiciones
+Tabla  1.  7.  Esta  mesa  misma  es  un  array  bidimensional  de  4
+a[2][4]
+a[2][1]
+a[2][3]
+a[1][2]
+a[1][1]
+a[3][1]
+3  4  5
+a[1][3]
+2
+a[0][2]
+a[3][4]
+6  7
+a[1][4]
+1
+a[1][0]
+11  12  13  14  15
+a[0][1]
+a[2][0]
+a[3][2]
+a[2][2]
+a[3][3]
+a[0][0]
+a[0][3]
+a[3][0]
+8  9  10
+a[0][4]
+Machine Translated by Google
+
+--- PAGE BREAK ---
+Inicialización  procedural
+De  nuevo,  se  puede  dar  el  caso  en  que  desee  asignar  a  cada  posición  valores  que
+Por  ejemplo,  si  la  tabla  1.7  corresponde  a  una  variable  llamada  arrayBidi,
+arrayBidi[1].length,  etc.  todos  evalúan  a  5  (hay  5  columnas).
+hay  que  calcular  previamente  y  que,  por  tanto,  haya  que  ir  asignando  uno  por  uno  a  todas  las
+A  modo  de  ejemplo,  compile  y  ejecute  el  código  fuente  siguiente,  que  almacena
+Para  saber  el  número  de  valores  de  una  fila  debe  hacer:
+arbitrarias  y  después  visualiza  el  resultado  por  pantalla,  ordenado  por  filas.
+posiciones  del  array  bidimensional.
+en  cada  posición  la  suma  de  los  índices  de  un  array  bidimensional  de  dimensiones
+8
+34
+Programación  básica  (ASX)
+10
+4
+15
+37
+1  importe  java.util.Scanner;
+13
+5
+31
+2 //Un  programa  que  inicializa  un  array  bidimensional.
+32
+22
+16
+29
+35
+3  public  class  InicializacionBidi  {
+11
+25
+39
+12
+41
+20
+30
+24
+38
+23
+Programación  (DAW)
+17
+21
+33
+27
+6
+Programación  (DAM)
+44
+7
+9
+14
+43
+45
+18
+37
+Tipo  de  datos  compuestos
+19
+1  identificadorVariable[índiceFila].length
+28
+36
+40
+42
+26
+arrayBidi.length  evalúa  a  4  (hay  cuatro  filas)  y  arrayBidi[0].length,
+System.out.print("Este  valor  no  es  correcto.  ");
+System.out.println("Hay"  +  arrayBidi.length  +  System.out.println("Hay"  
++  arrayBidi[0].length  +  "columnas.");
+//Inicialización  con  valores  por  defecto.
+arrayBidi[i][j]  =  i  +  j;
+//Lee  las  columnas.
+int[][]  arrayBidi  =  new  int[númeroFiles][númeroColumnas];
+//"e"  indica  el  número  de  fila.
+while  (númeroFiles  <=  0)  {
+}
+int  númeroColumnas  =  0;
+númeroColumnas  =  lector.nextInt();
+for(int  i  =  0;  y  <  nombreFiles;  i++)  {
+//Valor  asignado  a  la  posición:  suma  de  los  índices  de  fila  y  columna.
+}
+}
+int  nombreFiles  =  0;
+}
+//Observe  el  uso  del  atributo  "length".
+//Lee  las  filas.
+if  (lector.hasNextInt())  {
+}
+}
+System.out.print("Este  valor  no  es  correcto.  ");
+while  (númeroColumnas  <=  0)  {
+System.out.print("¿Cuántas  filas  tendrá  la  mesa?  ");
+//Se  visualiza  el  resultado,  también  se  necesitan  dos  bucles.
+Scanner  lector  =  new  Scanner(System.in);
+lector.nextLine();
+//Bucle  para  recorrer  cada  posición  dentro  de  la  fila  (columnas  de  la  fila).
+}  else  {
+nombreFiles  =  lector.nextInt();
+lector.nextLine();
+"  filas.");
+lector.next();
+for  (int  j  =  0;  j  <  númeroColumnas;  j++)  {
+lector.next();
+//Bucle  para  recorrer  cada  fila.
+//"j"  indica  el  número  de  fila.
+public  static  void  main  (String[]  args)  {
+if  (lector.hasNextInt())  {
+System.out.print("¿Cuántas  filas  tendrá  la  mesa?  ");
+}  else  {
+Machine Translated by Google
+
+--- PAGE BREAK ---
+Recorrido
+38
+3
+17
+1 //Un  programa  que  calcula  notas  medias  en  un  array  bidimensional.
+52
+56 }
+Programación  básica  (ASX)
+50
+53
+46
+8
+16
+18
+28
+25
+21
+54
+55
+9
+12
+27
+26
+14
+49
+Programación  (DAW)
+7
+11
+13
+10
+23
+30
+2  public  class  RecorridoBidi  {
+31
+Programación  (DAM)
+20
+4
+Tipo  de  datos  compuestos
+51
+6
+48
+5
+15
+19
+22
+24
+47
+29
++  y  +
+}
+for  (int  j  =  0;  j  <  númeroColumnas;  j++)  {
++  notaFinal  +  "."
+,
+if(j !=  (arrayBidiNotes[i].length  −  1))  {
+//Hay  tantas  notas  como  el  tamaño  de  una  fila  −  1.
+public  static  void  main  (String[]  args)  {
+{ 6f ,  8.5f,  6f  4f  0f },
+float[][]  arrayBidiNotes  =  {
+//Inicio  de  fila,  abrimos  corchetes.
+);
+System.out.println("}");
+//Al  final  de  cada  fila  se  cierran  corchetes  y  se  da  un  salto  de  línea.
+{ 10f  8f ,  7.5f,  9.5f,  0f },
+}
+System.out.print("Fila  "  +  y  +  "  { ");
+8f
+}  else  {
+.
+"  ha  sacado
+//Tratamos  cada  fila  (cada  estudiante).  Cada  nota  la  indexa  "j".
+,
+//"arrayBidiNotes.length"  evalúa  el  número  de  filas.
+//Aquí  se  acumulan  las  notas  del  estudiante  tratado.
+for(int  i  =  0;  y  <  arrayBidiNotes.length;  i++)  {
+,
+for(int  i  =  0;  y  <  nombreFiles;  i++)  {
+//Se  hace  tratando  fila  por  fila,  indicada  por  "i".  Cada  fila  es  un  estudiante
+5f
+,
+//Si  no  es  la  última  posición,  vamos  acumulando  valores.
+arrayBidiNotes[i][j]  =  notaFinal;
+//Media  aritmética  del  curso  para  todos  los  estudiantes.
+System.out.println("El  estudiante"
+{ 3f ,  2.5f,  4.5f,  6f  0f },
+,
+//Si  lo  es,  es  necesario  escribir  la  media.
+"
+//"arrayBidiNotes[i].length"  evalúa  al  número  de  posiciones  de  la  fila.
+{ 4.5f,  6f  8f  0f },
+sumaNotes  =  sumaNotes  +  arrayBidiNotes[i][j];
+,
+,
+float  sumaFinales  =  0f;
+};
+//Datos  de  las  notas.
+,
+float  notaFinal  =  sumaNotes/(arrayBidiNotes[i].length  −  1);
+{ 9f ,  7.5f,  7f  0f }
+"  ");
+System.out.print(arrayBidi[i][j]  +
+}
+float  sumaNotas  =  0f;
+for(int  j  =  0;  j  <  arrayBidiNotes[i].length;  j++)  {
+,
+//¿Estamos  en  la  última  posición  de  la  fila?
+concretos.  En  el  caso  de  la  nota  final  de  cada  estudiante,  inicialmente  se  deja  a  0  y
+haciendo  un  recorrido  por  todos  los  valores  contenidos.  De  nuevo,  hay  que  ir  fila  por  fila,
+Ahora  sí:  observe  atentamente  el  uso  del  atributo  length  para  controlar  los  índices  en
+mirando  todas  las  posiciones  de  cada  una.
+almacenarla  en  la  última  columna,  y  también  saber  la  media  de  todas  las  notas
+caso,  para  facilitar  su  ejecución,  los  valores  de  las  notas  están  inicializados  para  valores
+será  el  programa  quien  la  calcule.
+Por  ejemplo,  suponga  un  programa  en  el  que  se  guarda  en  cada  fila  el  valor  de  las  notas
+recorrer  el  array  y  saber  cuál  es  el  número  de  valores  en  una  fila  o  el  número  de  filas.
+En  el  caso  de  arrays  bidimensionales,  también  puede  ocurrir  que  sea  necesario  realizar  cálculos
+finales.  El  código  se  muestra  a  continuación;  analícelo  y  pruebe  que  funciona.  En  este
+de  los  estudiantes  de  un  curso.  Se  pide  calcular  la  nota  final  de  cada  estudiante  y
+Machine Translated by Google
+
+--- PAGE BREAK ---
+sucesivas  iteraciones  del  bucle  que  recorre  las  filas  y  el  programa  no  actuará
+trabajo.
+Por  tanto,  no  se  puede  usar  simplemente  una  sentencia  break,  ya  que  sólo  sirve  para
+cada  columna),  ya  que  al  usar  una  sentencia  while  en  lugar  de  for  no  se  hace
+ir  avanzando  por  filas  y  columnas.  Ahora  bien,  este  caso  es  especialmente  interesante,
+que  dice  si  el  valor  ya  se  ha  encontrado,  sería  el  siguiente.  Pruébelo  en  su  entorno  de
+En  un  caso  como  éste,  hay  que  ir  con  mucho  cuidado  a  inicializar  e  incrementar
+automáticamente.  Si  se  despista  y  no  lo  hace,  el  valor  será  incorrecto  para
+Por  ejemplo,  suponga  que  el  programa  de  gestión  de  notas  quiere  buscar  si  alguno
+ya  que  al  alcanzar  el  objetivo  es  necesario  salir  de  las  dos  estructuras  de  repetición  imbricadas.
+correctamente  el  índice  para  recorrer  la  posición  de  cada  fila  (es  decir,  que  mira
+correctamente.
+En  arrays  bidimensionales  la  búsqueda  también  implica  tener  que  gestionar  dos  índices  por
+estudiante  ha  sacado  un  0  en  alguno  de  los  ejercicios  a  lo  largo  del  curso.  Habrá  que  ir
+salir  de  un  único  bucle.  Es  necesario  tener  un  semáforo  que  se  evalúe  en  ambos  bucles.
+mirando  fila  por  fila  todas  las  notas  de  cada  estudiante,  y  cuando  se  encuentre  un  0,  terminar
+inmediatamente  la  búsqueda.  El  código  para  ello,  basándose  exclusivamente  en  un  semáforo
+Búsqueda
+34
+13
+2  public  class  BúsquedaBidi  {
+19
+5
+42
+39
+14
+Programación  básica  (ASX)
+36
+10
+41
+37
+6
+1 //Un  programa  que  busca  un  0  entre  los  valores  de  un  array  bidimensional.
+18
+22
+7
+11
+39
+17
+35
+12
+4
+9
+Programación  (DAW)
+33
+21
+38
+40
+43 }
+3
+8
+Programación  (DAM)
+20
+16
+32
+Tipo  de  datos  compuestos
+15
+{ 4.5f,  6f  5f  8f },
+int  y  =0;
+sumaFinales  =  sumaFinales  +  notaFinal;
+}
+//Datos  de  las  notas.
+{ 3f ,  2.5f,  0f  6f },
+while  ((estudiante  ==  −1)&&(y  <  arrayBidiNotes.length)){
+//Miraremos  qué  estudiante  ha  sacado  el  0.
+}
+,
+,
++  mediaFinal);
+{ 6f ,  8.5f,  6f  4f },
+//Se  calcula  la  media:  suma  de  notas  finales  dividido  entre  número  de
+,
+//Este  valor  hace  de  semáforo.  Si  toma  un  valor  diferente,  es  necesario  terminar  la
+,
+//Inicializamos  a  un  valor  inválido  (de  momento,  ningún  estudiante  tiene  un  0)
+,
+búsqueda.
+//Fin  del  tratamiento  de  todas  las  filas.
+int  estudiante  =  −1;
+//Se  va  fila  por  fila.
+int  j  =0;
+//"j  indica  la  "columna".
+{ 9f ,  7.5f,  7f  8f }
+//Se  termina  si  se  ha  encontrado  un  0  o  si  ya  se  ha  buscado  en  todas  las  filas.
+{ 10f  8f ,  7.5f,  9.5f},
+}
+System.out.println("La  nota  media  del  curso  es  "
+};
+,
+//"e  indica  la  fila.
+float  mediaFinal  =  sumaFinales /  arrayBidiNotes.length;
+}
+public  static  void  main  (String[]  args)  {
+//Se  actualiza  la  suma  de  medias  de  todos  los  estudiantes.
+estudiantes.
+float[][]  arrayBidiNotes  =  {
+//Fin  del  tratamiento  de  una  fila.
+Machine Translated by Google
+
+--- PAGE BREAK ---
+//¿Esta  nota  es  un  0?
+//El  índice  que  dice  el  estudiante  es  el  de  la  fila.
+i++;
+j++;
+System.out.println("Ningún  estudiante  tiene  un  0.");
+System.out.println("El  estudiante"
+//Fin  del  tratamiento  de  una  fila.
+"  tiene  un  0.");
+if  (arrayBidiNotes[i][j]  ==  0f)  {
+}
+}  else  {
+}
+//Se  adelanta  a  la  siguiente  fila.
+estudiante  =  i;
+//Se  busca  en  una  fila.
+while  ((estudiante  ==  −1)&&(j  <  arrayBidiNotes[i].length)){
+}
++  estudiante  +
+//Se  avanza  a  la  siguiente  posición  dentro  de  la  fila.
+if  (estudiante  ==  −1)  {
+//Se  termina  si  se  ha  encontrado  un  0  o  si  ya  se  ha  buscado  en  todas  las  posiciones.
+}
+//Fin  del  tratamiento  de  todas  las  filas.
+F  igura  1.  7.  Un  “array”  multidimensional:  “arrays”  dentro  de  “arrays”  dentro  de  “arrays”...
+}
+41
+Programación  básica  (ASX)
+40
+38
+28
+26
+29
+30
+25
+Un  "array"  con  tres  dimensiones:  el
+33
+36
+37
+31
+34
+24
+Programación  (DAW)
+40
+39
+27
+44
+Programación  (DAM)
+42
+32
+43
+Tipo  de  datos  compuestos
+35
+23
+Commons
+45 }
+cubo  de  Rubik.  Imagen  de  Wikimedia
+más  detalle.
+pero  sólo  en  el  segundo  ejercicio  (posición  1  de  cada  fila).  Reflexione  atentamente
+Conceptualmente,  se  puede  considerar  que  definen  una  estructura  de  arrays  imbricados  a  
+diferentes  niveles  como  el  que  se  muestra  en  la  figura  1.7.  Cada  nivel  corresponde
+sobre  si  ahora  realmente  es  necesario  usar  dos  estructuras  de  repetición  o  no.
+El  caso  de  los  arrays  bidimensionales  es  el  más  común,  pero  nada  impide  que
+1.5.3  "Arrays"  de  más  de  dos  dimensiones
+dos,  de  un  valor  arbitrario.  Un  array  de  tres  dimensiones  todavía  se  puede  visualizar
+requieren  más  grado  de  abstracción,  y  por  eso  sólo  se  presentarán,  sin  entrar
+Reto  5:  modifique  el  programa  de  forma  que  se  busque  si  alguien  ha  sacado  un  0,
+a  una  dimensión  distinta.
+el  número  de  índices  necesarios  para  situar  una  posición  sea  también  mayor  de
+como  una  estructura  tridimensional  en  forma  de  cubo,  pero  dimensiones  superiores  ya
+Machine Translated by Google
+
+--- PAGE BREAK ---
+]...[tamañoDimN];
+instrucción:
+En  lenguaje  Java,  para  añadir  nuevas  dimensiones  por  encima  de  la  segunda,  es  necesario  
+ir  añadiendo  claves  []  adicionales  a  la  declaración,  una  para  cada  dimensión.
+•  En  una  misma  dimensión,  todos  los  arrays  tendrán  exactamente  la  misma
+Aunque  esta  estructura  parece  bastante  compleja,  no  es  muy  diferente  de  una  estructura  
+de  carpetas  y  archivos,  donde  las  carpetas  toman  el  papel  de  los  arrays  y  los  archivos  el  
+de  los  datos  que  se  desean  guardar.  Puede  tener  una  única  carpeta  para  almacenar  todas  
+las  fotos,  que  sería  el  caso  de  un  único  nivel  de  array  (o  sea,  los  arrays  tal  y  como  se  han  
+visto  hasta  ahora).  Pero  también  podría  organizarlas  con  una  carpeta  que  a  su  vez  contiene  
+otras  carpetas,  dentro  de  las  cuales  se  guardan  diferentes  fotos.  Esto  sería  equivalente  a  
+disponer  de  dos  niveles  de  arrays.  Y  así  podría  ir  creando  una  estructura  de  carpetas  con  
+tantos  niveles  como  quisiera.  Para  elegir  un  archivo  basta  con  saber  en  qué  orden  es  
+necesario  ir  abriendo  las  carpetas  hasta  llegar  a  la  carpeta  final,  donde  ya  sólo  necesita  el  
+orden  del  archivo.
+Cada  índice  individual  identifica  una  casilla  del  array  elegido  de  una  dimensión  determinada,  
+de  modo  que  el  conjunto  de  índices  sirve  como  coordenada  para  establecer  el  valor  final  
+(que  ya  no  será  otro  array)  al  que  se  desea  acceder.  La  figura  1.8  muestra  un  ejemplo  de  
+cuatro  dimensiones.
+Extendiendo  las  restricciones  que  cumplen  los  arrays  bidireccionales  al  caso  de  los  arrays  
+multidimensionales:
+tamaño.
+•  El  tipo  de  dato  que  se  guarda  en  las  posiciones  de  la  última  dimensión  será  el  mismo  
+para  todos.  Por  ejemplo,  no  pueden  tenerse  reales  y  enteros  mezclados.
+Por  ejemplo,  para  declarar  con  valores  por  defecto  un  array  de  cuatro  dimensiones,  la  
+primera  de  tamaño  5,  la  segunda  de  10,  la  tercera  de  4  y  la  cuarta  de  20,  sería  necesaria  la
+41
+Programación  (DAM)
+Programación  básica  (ASX)
+Programación  (DAW)
+1  palabraClauTipus[]...[]  identificadorVariable  =  new  palabraClauTipus[tamañoDim1
+Tipo  de  datos  compuestos
+F  igura  1.  8.  Acceso  a  un  “array”  de  cuatro  dimensiones  (hacen  falta  4  índices)
+Machine Translated by Google
+
+--- PAGE BREAK ---
+Tipo  de  datos  compuestos
+Programación  (DAW)
+2  int[][][][]  arrayQuatreDimensions  =  new  int[5][10][4][20];
+Programación  (DAM)
+1 ...
+2  int  valor  =  arrayQuatreDimensions[2][0][1][20];
+42
+3 ...
+3 ...
+Programación  básica  (ASX)
+1 ...
+El  acceso  sería  análogo  a  los  arrays  bidimensionales,  pero  usando  cuatro  índices  
+rodeados  por  pares  de  llaves.
+En  cualquier  caso,  se  trata  de  estructuras  complejas  que  no  suelen  usarse  salvo  en  casos  
+muy  específicos.
+Machine Translated by Google
+
+--- PAGE BREAK ---
+}
+int[]  arrayPareles  =  new  int[100];
+}
+suspendido.
+//Valor  máximo  hasta  el  momento.
+public  static  void  main  (String[]  args)  {
+if  (y  ==  arrayNotes.length)  {
+//Habrá  que  almacenar  100  enteros.
+float[]  arrayNotes  =  {2f,  5.5f,  9f,  10f,  4.9f,  8f,  8.5f,  7f,  6.6f,  5f,  9f,
+//Hay  que  recorrer  todo  el  array  de  extremo  a  extremo  y  guardar  el  mayor  valor.
+7f};
+arrayPares[i]  =  2*i;
+}
+}
+break;
+//Si  se  ha  salido  antes  de  terminar  el  array,  es  que  había  un  suspenso.
+float  notaMaxima  =  0;
+notaMaxima  =  arrayNotes[i];
+7f};
+if  (notaMaxima  <  arrayNotes[i])  {
+}
+if  (arrayNotes[i]  <  5)  {
+//Se  puede  usar  tanto  "break"  como  "for".
+i++;
+public  static  void  main(String[]  args)  {
+//Si  se  ha  superado  el  tamaño  del  array,  es  que  no  se  ha  encontrado  ningún  suspendido.
+//Se  parte  de  un  array  que  contiene  todos  sus  valores.
+//Al  encontrar  un  suspendido,  directamente  salimos  del  bucle.
+System.out.println("Alguien  ha  suspendido.");
+}
+//Se  parte  de  un  array  que  contiene  todos  sus  valores.
+float[]  arrayNotes  =  {2f,  5.5f,  9f,  10f,  4.9f,  8f,  8.5f,  7f,  6.6f,  5f,  9f,
+}
++  notaMaxima);
+public  static  void  main(String[]  args)  {
+int  y  =  0;
+while  (y  <  arrayNotes.length)  {
+System.out.println("La  nota  máxima  es"
+//Vamos  llenando  cada  posición.
+}
+for(int  i  =  0;  y  <  arrayParells.length;  i++)  {
+for(int  i  =  0;  y  <  arrayNotes.length;  i++)  {
+//Se  va  mirando  cada  posición,  mientras  no  se  llega  al  final  y  no  se  encuentre  un
+System.out.println("Nadie  ha  suspendido.");
+}
+}  else  {
+43
+15
+Programación  básica  (ASX)
+1  public  class  InicializaPares  {
+16
+20
+10 }
+11
+8
+14
+Tipo  de  datos  compuestos
+12
+15 }
+13
+6
+18
+21
+9
+4
+5
+7
+13
+4
+Programación  (DAM)
+6
+7
+17
+8
+3
+Programación  (DAW)
+11
+22
+10
+4
+10
+3
+19
+7
+2
+2
+12
+23 }
+2
+3
+9
+1  public  class  BúsquedaSuspas  {
+6
+1  public  class  RecorridoMaxima  {
+5
+9
+14
+5
+8
+Reto  2:
+1.6  Soluciones  de  los  retos  propuestos
+Reto  1:
+Reto  3:
+Machine Translated by Google
+
+--- PAGE BREAK ---
+Reto  4:
+25
+14
+43
+Programación  (DAM)
+31
+37
+17
+41
+21
+29
+15
+50 }
+24
+28
+32
+6
+3
+35
+40
+12
+36
+49
+11
+46
+Programación  básica  (ASX)
+4
+33
+27
+13
+20
+Tipo  de  datos  compuestos
+7
+16
+23
+19
+39
+8
+5
+1  public  class  MediaSuspensosOrdenados  {
+44
+9
+30
+38
+22
+34
+26
+42
+45
+2
+Programación  (DAW)
+44
+48
+18
+47
+10
+int  numSuspes  =  0;
+numSuspes++;
+//Es  un  suspenso,  vamos  calculando.
+System.out.print(listaNotes[i]  +
+for  (int  i  =  0;  y  <  listaNotes.length  −  1;  i++)  {
+//Se  ha  encontrado  el  primer  aprobado,  ¡salimos  del  bucle!
+acumulado  =  acumulado  +  listaNotes[i];
+listaNotes[j]  =  cambio;
+}
+if  (listaNotes[i]  >  listaNotes[j])  {
+"  ");
+//Valor  acumulado  para  promediar.
+//Inicio  de  la  nueva  parte.
+}
+float  resultado  =  acumulado/numSuspes;
+intercambiamos.
+break;
+for  (int  i  =  0;  y  <  listaNotes.length;i++)  {
+public  static  void  main  (String[]  args)  {
+//¿Es  la  nota  de  un  aprobado?
+System.out.println("La  nota  media  de  los  suspendidos  es  "
++  resultado);
+//Se  incrementa  el  número  de  suspendidos.
+//Inicio  de  las  modificaciones.
+if  (listaNotes[i]  >=  5)  {
+}
+System.out.println("]");
+//Se  busca  entre  el  resto  de  posiciones  cuál  es  el  valor  más  bajo.
+float[]  listaNotas  =  {5.5f,  9f,  2f,  10f,  4.9f};
+}
+float  acumulado  =  0;
+//Como  el  array  está  ordenado,  basta  con  hacer  un  recorrido  hasta  encontrar  uno
+//La  posición  tratada  tiene  un  valor  mayor  que  el  de  la  búsqueda;  los
+//Se  irá  poniendo  en  cada  posición  tratada,  empezando  por  la  0,
+System.out.print("El  array  ordenado  es:  [");
+//el  valor  más  bajo  que  se  encuentre.
+}  else  {
+//Bucle  interno.
+}
+//Para  intercambiar  valores  es  necesaria  una  variable  auxiliar.
+//Número  de  suspendidos.
+//Lo  mostramos  por  pantalla.
+aprobado,
+//Bucle  externo.
+//no  es  necesario  llegar  al  final.  Una  vez  se  encuentra  el  primer  aprobado,  el  resto  de
+//posiciones  seguro  que  también  son  aprobados,  puesto  que  el  array  está  ordenado.
+listaNotes[i]  =  listaNotes[j];
+for  (int  i  =  0;  y  <  listaNotes.length;  i++)  {
+}
+}
+float  cambio  =  listaNotes[i];
+for(int  j  =  i  +  1;  j  <  listaNotes.length;  j++)  {
+Machine Translated by Google
+
+--- PAGE BREAK ---
+Reto  5:
+18
+26
+9
+22
+32 }
+6
+25
+14
+7
+8
+27
+10
+4
+19
+3
+Programación  básica  (ASX)
+24
+23
+15
+1  public  class  BúsquedaBidiZero  {
+45
+12
+16
+13
+20
+Tipo  de  datos  compuestos
+Programación  (DAM)
+29
+30
+21
+17
+2
+11
+28
+31
+Programación  (DAW)
+5
+//Este  estudiante  tiene  un  0.
+}
+}
+,
+//Miraremos  qué  estudiante  ha  sacado  el  0.
+5f
+,  8.5f,  6f  4f },
+break;
+System.out.println("El  estudiante  "  ejercicio.");
+tiene  un  0  en  el  segundo
+}  else  {
+//Se  necesitan  dos  estructuras  de  repetición  si  los  dos  índices  deben  ir
+estudiante  =  numFila;
+System.out.println("Ningún  estudiante  tiene  un  0.");
+,
+public  static  void  main  (String[]  args)  {
+//Ya  podemos  salir  del  bucle.
+{ 4.5f,  6f  { 10f  8f  
+{ 3f  { 6f  { 9f };
+}
+//Lo  podemos  hacer,  ya  que  sólo  existe  una  única  estructura  de  repetición.
+//Datos  de  las  notas.
+,
+int  estudiante  =  −1;
+8f },
+,  7.5f,  7f  8f }
+,
+for  (int  numFila  =  0;  numFila  <  arrayBidiNotes.length;  numFila++)  {
+if  (estudiante  ==  −1)  {
+//siempre  lo  mismo  (posición  1  de  cada  fila);  sólo  varía  el  número  de  fila.
++  estudiante  +
+//Por  tanto,  una  única  estructura  es  suficiente.
+float[][]  arrayBidiNotes  =  {
+,  2.5f,  0f  6f },
+,
+,  7.5f,  9.5f},
+}
+if  (arrayBidiNotes[numFila][1]  ==  0)  {
+,
+//variante  para  recorrer  todas  las  posiciones.  En  este  caso,  un  valor  es
+Machine Translated by Google
+
+--- PAGE BREAK ---
+Machine Translated by Google
+
+--- PAGE BREAK ---
+Por  convención  de  código,  los  
+nombres  de  las  clases  en  Java  se  
+escriben  siempre  usando  
+UpperCamelCase.
+String  
+En  Java,  el  tipo  de  dato  
+compuesto  cadena  de  
+texto  se  identifica  con  la  palabra  
+clave  String.
+El  uso  de  los  términos  clase  y  
+objeto  está  estrechamente  
+ligado  a  la  característica  de  
+lenguaje  Java  de  ser  
+orientado  a  objetos.
+Programación  (DAW)
+Programación  básica  (ASX)
+Programación  (DAM)
+Tipo  de  datos  compuestos
+47
+Hasta  ahora,  el  tipo  de  dato  carácter  no  ha  sido  muy  relevante  a  la  hora  de  exponer  ejemplos  
+significativos  de  código  fuente  de  programas.  Es  bastante  habitual  que  en  su  día  a  día  trate  con  
+conjuntos  de  datos  numéricos  individuales,  cada  uno  independiente  de  los  demás:  fechas,  distancias,  
+intervalos  de  tiempo,  cantidades,  etc.  Por  tanto,  son  datos  que  tiene  sentido  almacenar  y  procesar  
+mediante  un  programa  para  automatizar  su  cálculo.  En  cambio,  seguramente  no  es  muy  habitual  que  
+use  constantemente  conjuntos  de  caracteres  individuales  e  independientes:  letras  'a',  'b',  'c',  etc.  La  
+verdadera  utilidad  de  los  caracteres  es  poder  utilizarlos  agrupados  en  forma  de  palabras  o  frases:  un  
+nombre,  una  pregunta,  un  mensaje,  etc.  Por  tanto,  si  un  lenguaje  de  programación  debe  ser  útil,  debe  
+tenerse  en  cuenta  esta  circunstancia.
+2.  Tratamiento  de  cadenas  de  texto
+En  Java,  exceptuando  el  caso  del  array,  se  usa  el  término  clase  para  referirse  a  
+un  tipo  de  dato  compuesto.
+2.1  La  clase  "String"
+A  las  variables  de  tipos  de  datos  compuestos  también  podemos  asignarles  directamente  
+valores,  como  a  las  de  tipos  primitivos.  Ahora  bien,  con  algunas  particularidades  en  la
+nomenclatura.
+El  tipo  de  dato  compuesto  cadena  de  texto  o  String  sirve  para  representar  y  
+gestionar  de  forma  sencilla  una  secuencia  de  caracteres.
+En  lenguaje  Java,  la  manipulación  de  cualquier  dato  de  tipo  compuesto,  incluyendo  las  
+cadenas  de  texto,  tiene  una  serie  de  particularidades  y  una  terminología  bastante  
+diferente  a  la  de  los  tipos  primitivos  o  los  arrays.  Si  bien  no  es  necesario  conocer  todos  
+sus  detalles,  antes  de  ver  cómo  manipular  cadenas  de  texto  u  otros  tipos  de  datos  
+compuestos  es  importante  aprender  una  serie  de  términos  específicos,  ya  que  aparecen  
+con  frecuencia  en  la  documentación  de  Java.
+Se  utiliza  el  término  objeto  para  referirse  al  valor  asignado  a  una  variable  de  un  
+tipo  de  datos  compuesto.
+En  lenguaje  Java,  la  clase  que  representa  una  cadena  de  texto  se  llama  explícitamente  
+String.  Así  pues,  a  partir  de  ahora,  en  lugar  de  hablar  del  “tipo  de  dato  compuesto  
+String”,  diremos  siempre  “la  clase  String”,  y  en  lugar  de  decir  que
+Machine Translated by Google
+
+--- PAGE BREAK ---
+1  String  cadenaVacía  =  "";
+Programación  básica  (ASX)
+Programación  (DAW)
+1  String  holaMon  =  "¡Hola,  mundo!";
+48
+Programación  (DAM)
+Tipo  de  datos  compuestos
+Vale  la  pena  comentar  que  existe  el  concepto  de  cadena  de  texto  “vacía”,  es  decir,  que  no  
+contiene  absolutamente  ningún  carácter.  Se  representa  simplemente  no  poniendo  nada  
+entre  las  comillas  dobles.  Expresado  con  código  sería:
+En  realidad,  los  conceptos  de  clase  y  objeto  van  mucho  más  allá  de  lo  expuesto  aquí,  pero  
+esto  ya  nos  vale  para  poder  explicar  cómo  manipular  cadenas  de  texto  de  forma  que  se  siga  
+estrictamente  la  terminología  Java  tal  y  como  se  usa  en  sus
+A  diferencia  de  los  tipos  primitivos,  cualquier  objeto  almacenado  en  una  variable  perteneciente  
+a  una  clase  (es  decir,  cualquier  valor  almacenado  en  una  variable  de  un  tipo  de  dato  
+compuesto),  no  puede  manipularse  directamente  mediante  operadores  de  ningún  tipo.  No  
+existen  operadores  que  manipulen  o  comparen  directamente  objetos.
+Trabajar  con  clases  no  modifica  en  absoluto  la  sintaxis  para  declarar  una  variable,  pero  sí  
+puede  tener  algunas  implicaciones  a  la  hora  de  inicializarla,  ya  que  es  necesario  asignar  un  
+objeto.  Cómo  se  representa  un  objeto  puede  variar  dependiendo  de  la  clase  empleada.  
+Afortunadamente,  en  el  caso  de  la  clase  String,  la  sintaxis  para  declarar  e  inicializar  una  
+variable  es  idéntica  a  cómo  se  haría  con  un  tipo  primitivo  cualquiera,  puesto  que  es  posible  
+representar  un  objeto  mediante  un  literal  directamente.  Los  literales  asignables  a  una  variable  
+de  la  clase  String  toman  la  forma  de  cualquier  combinación  de  texto  rodeada  entre  comillas  
+dobles, ”...”.  Un  ejemplo  de  declaración  e  inicialización  de  una  variable  que  contiene  una  
+cadena  de  texto  sería:
+2.1.2  Manipulación  de  objetos
+una  variable  "es  del  tipo  de  dato  compuesto  String"  se  dirá  que  "es  de  la  clase  o  que  
+pertenece  a  la  clase  String".  Por  lo  general,  también  se  hablará  del  “objeto  asignado  a  la  
+variable  holaMon”  en  lugar  de  “el  valor  asignado  a  la  variable  holaMon”,  o  de  “un  objeto  de  
+la  clase  String”  en  lugar  de  “un  valor  de  tipo  String”.
+fuentes  de  referencia.
+En  algunos  casos,  la  restricción  en  el  uso  de  operaciones  ya  puede  resultar  evidente  de  
+forma  intuitiva.  Éste  es  el  caso  de  los  operadores  aritméticos  o  lógicos.  Por  ejemplo,  ¿con  
+qué  resultado  evaluaría  una  división  de  cadenas  de  texto  (objetos  de  la  clase  String)  o  su  
+negación  lógica?  Ahora  bien,  en  el  caso  de  los  operadores  relacionales,  aunque
+Esta  instrucción  declara  una  variable  llamada  holaMon,  perteneciente  a  la  clase  String,  y  le  
+asigna  el  objeto  que  representa  la  cadena  de  texto  “¡Hola,  mundo!”.
+2.1.1  Inicialización  de  objetos  "String"
+Machine Translated by Google
+
+--- PAGE BREAK ---
+Por  convención  de  código,  los  
+nombres  de  los  métodos  de  las  
+clases  de  Java  están  
+escritos  siempre  usando  
+lowerCamelCase.
+Puede  encontrar  la  lista  de  
+métodos  de  la  clase  String  en  la  
+web
+49
+Programación  (DAM)
+Programación  básica  (ASX)
+Programación  (DAW)
+Tipo  de  datos  compuestos
+1  identificadorVariable.nombreMétodo(parámetro1,  parámetro2,...,  parámetroN);
+•  unString  *  unOtroString
+La  invocación  de  un  método  tiene  la  máxima  precedencia  al  evaluar  una  expresión.
+•  unString  ==  unOtroString
+•  etc.
+http://download.  
+oracle.com/javase/  6/
+docs/api/java/  lang/
+String.html.
+Para  generar  una  instrucción  en  la  que  se  llama  un  método,  se  usa  el  identificador  de  la  variable,  
+seguida  de  un  punto,  y  entonces  el  nombre  del  método  que  queremos,  escogido  entre  la  lista  que  
+ofrece  la  clase  a  la  que  pertenece  la  variable.  Dependiendo  del  método  utilizado,  puede  ser  
+necesario  indicar  una  serie  de  información  adicional,  en  forma  de  lista  de  valores  entre  paréntesis,  
+separados  por  comas  (..., ..., ...).  Esta  lista  es  lo  que  se  llaman  sus  parámetros.  Si  el  método  no  
+requiere  ningún  parámetro,  basta  con  abrir  y  cerrar  paréntesis,  ().  La  sintaxis  sería:
+La  lista  de  métodos  que  pueden  ser  invocados  sobre  una  variable  en  la  que  se  almacena  un  objeto  
+depende  exclusivamente  de  su  clase.  Clases  distintas  permiten  la  invocación  de  diferentes  métodos.  
+Por  ejemplo,  la  clase  String  especifica  el  conjunto  de  métodos  que  es  posible  invocar  sobre  una  
+variable  a  la  que  hay  asignada  una  cadena  de  texto.
+•  unString  <  unOtroString
+En  Java,  la  manipulación  de  objetos  se  realiza  mediante  la  invocación  de  métodos  sobre  las  
+variables  en  las  que  se  encuentran  almacenados.
+Escribir  una  invocación  de  un  método  sobre  una  variable  es  equivalente  a  escribir  una  expresión  
+que  evalúa  un  cierto  resultado.  Cada  método  diferente  realiza  una  operación  o  transformación  
+diferente  sobre  el  objeto  almacenado  en  aquella  variable.  Para  saber  qué  hace  cada  uno  ya  que  
+tipo  de  dato  pertenece  su  resultado,  no  queda  más  remedio  que  mirar  la  documentación  de  Java.
+La  máxima  precedencia  de  una  invocación  de  un  método  tiene  especialmente  sentido  en  este  caso,  
+puesto  que  hasta  que  su  resultado  concreto  no  se  ha  evaluado,  no  se  dispone  de  ningún  valor  a  
+partir  del  cual  se  pueda  continuar  evaluando  una  expresión  más  compleja.
+Por  ejemplo,  en  el  siguiente  código,  en  el  que  se  usa  el  método  length(),  que  evalúa  el  tamaño  de  
+un  objeto  de  la  clase  String,  el  resultado  es  43,  por  el  orden  de  precedencia
+sí  puede  tener  sentido  intentar  comparar  dos  cadenas  de  texto,  usarlos  también  es  incorrecto.  Por  
+tanto,  las  siguientes  expresiones  no  son  válidas.
+•  unString  &&  unOtroString
+En  el  caso  de  la  igualdad  hay  que  tener  especial  cuidado,  ya  que  el  compilador  de  Java  no  lo  
+considera  un  error  de  sintaxis.
+Machine Translated by Google
+
+--- PAGE BREAK ---
+//orden:  1)  método,  2)  multiplicación,  3)  resto.
+public  static  void  main  (String[]  args)  {
+String  text  =  "Había  una  vez...";
+}
+//El  texto  tiene  un  tamaño  de  22  caracteres.
+int  dobleMidaMenysUn  =  2  *  text.length()  −  1;
+System.out.println(dobleMidaMenysUn);
++  c);
+50
+4 //En  la  variable  "c"  existe  el  carácter  'a'
+Programación  básica  (ASX)
+Programación  (DAW)
+4
+2  String  holaMon  =  "¡Hola,  mundo!";
+1 ...
+Programación  (DAM)
+2
+3  char  c  =  holaMon.charAt(3);
+3
+1  public  class  Precedencia  {
+5  System.out.println("En  la  posición  3  está  el  carácter  "
+5
+6 ...
+6
+8
+7
+Tipo  de  datos  compuestos
+9 }
+posición  concreta.  Por  tanto,  muchos  de  los  aspectos  generales  aplicables  a  los  arrays  en
+longitud  ­  1.
+Ahora  bien,  dado  que  las  cadenas  de  texto  se  almacenan  en  Java  en  variables  de  la
+realizar  mediante  la  invocación  de  alguno  de  los  métodos  definidos  en  la  clase  String.
+Para  el  caso  del  acceso  a  caracteres  individuales,  el  método  a  utilizar  es  el  llamado
+el  índice  de  la  posición  que  ocupa  cada  carácter,  comenzando  desde  0  y  hasta  su
+en  el  que  se  indica  qué  posición  se  debe  consultar,  y  evalúa  igual  el  carácter  en  aquella
+posición.
+Por  ejemplo,  ver  qué  carácter  está  en  la  tercera  posición  de  una  cadena  de  texto
+evidencia  que  su  precedencia  debe  ser  la  máxima.
+de  los  operadores.  Hasta  que  no  se  ha  evaluado  length()  y  se  ha  averiguado  que  el  tamaño  del
+charAt(numPosición).  Este  método  requiere  un  único  parámetro  de  tipo  entero
+puede  ser  asignado  inmediatamente  a  una  variable,  o  usado  en  otra  expresión.
+La  figura  2.1  muestra  el  comportamiento  de  la  invocación  en  el  método  charAt.  Fíjese  que,  en  
+el  fondo,  éste  es  equivalente  a  evaluar  una  expresión.  Su  resultado
+texto  es  22,  ni  siquiera  sería  posible  iniciar  el  cálculo  de  la  multiplicación.  Esto
+Java  también  se  pueden  aplicar  a  las  cadenas  de  texto.  Nuevamente,  el  acceso  se  hace  por
+haría  de  la  siguiente  forma.  Fíjese  que  la  invocación  de  un  método  es  equivalente
+clase  String  en  forma  de  objetos,  el  acceso  o  manipulación  de  sus  datos  se  debe
+de  tipos  primitivos,  en  este  caso  caracteres  (char),  en  los  que  cada  letra  ocupa  una
+Por  la  forma  en  que  organizan  los  conjuntos  de  caracteres  que  contienen,  las  cadenas
+a  evaluar  una  expresión:
+de  texto  son  muy  parecidos  a  los  arrays.  En  el  fondo,  no  dejan  de  ser  una  secuencia
+2.1.3  Acceso  a  los  caracteres  de  una  cadena  de  texto
+Machine Translated by Google
+
+--- PAGE BREAK ---
+F  igura  2.  1.  Evaluación  de  la  invocación  del  método  charAt
+9
+10 }
+1 //  Muestra  los  caracteres  individuales  en  una  cadena  de  texto.  2  public  class  MostraCaracters  { public  static  void  main  
+(String[]  args)  { String  holaMon  =  "¡Hola,  mundo!"; //Se  recorren  
+las  posiciones  de  la  cadena  de  texto  una  por  una.  for  (int  i  =  0;  y  <  holaMon.length();  
+i++)  { System.out.println(holaMon.charAt(i));
+4
+Programación  (DAM)
+3
+8
+5
+Programación  básica  (ASX)
+Programación  (DAW)
+4 //Sería  más  bien  intentar  hacer  "(3  +  4)  =  a;".
+1 ...
+51
+7
+Tipo  de  datos  compuestos
+5 ...
+6
+2  holaMon.charAt(3)  =  'b'  3 //Erróneo.  No  es  
+realmente  igual  que  hacer  "array[3]  = ...;".
+De  hecho,  la  clase  String  Java  no  ofrece  ningún  método  para  cambiar  el  valor  del  carácter  
+en  una  posición  determinada.  Reto  1:  haga  un  programa  que  muestre  por  pantalla  una  
+cadena  de  texto,  pero  escrita  del  revés.  Por  ejemplo,  si  se  parte  de  la  cadena  “¡Hola,  
+mundo!”,  por  pantalla  debe  mostrar ”!nombre ,aloH”.
+Por  último,  debe  tener  en  cuenta  que  un  punto  muy  importante  del  uso  de  los  métodos  
+es  el  hecho  de  que  éstos  se  comportan  exactamente  igual  que  expresiones.  Por  tanto,  
+no  es  posible  realizar  asignaciones  sobre  los  mismos.  En  el  caso  de  las  variables  de  la  
+clase  String  puede  ser  fácil  confundirse,  puesto  que  su  comportamiento  es  muy  parecido  
+a  los  arrays,  pero  no  del  todo.  Aunque  si  partís  del  funcionamiento  de  un  array  podría  
+parecer  lógico  hacer  lo  siguiente,  en  realidad  es  un  error.  Sería  como  si,  operando  con  
+valores  enteros,  intentara  asignar  un  valor  al  resultado  de  una  expresión  suma:
+Como  con  los  arrays,  la  posición  debe  ser  también  un  valor  válido  o  se  producirá  un  
+error.  Para  evitar  esto,  en  Java  las  cadenas  de  texto  también  incorporan  un  mecanismo  
+para  establecer  cuál  es  su  longitud,  similar  al  atributo  length  de  los  arrays.  Se  trata  del  
+método  length().  Alerta,  fíjese  que,  al  tratarse  de  un  método  sin  parámetros,  
+inmediatamente  al  final  lleva  dos  paréntesis,  ().  En  el  caso  de  los  arrays,  estos  paréntesis  
+no  se  utilizan.
+Por  ejemplo,  el  siguiente  código  escribe  en  líneas  diferentes  los  caracteres  individuales  
+de  la  cadena  de  texto  “¡Hola,  mundo!”.  Pruebe  que  es  así.
+}
+}
+Machine Translated by Google
+
+--- PAGE BREAK ---
+2.1.5  "Arrays"  de  cadenas  de  texto
+Por  tanto,  recuerde  que  se  puede  hacer:
+Si  bien  se  ha  dicho  que  los  objetos  no  pueden  manipularse  mediante  operadores,  únicamente  
+mediante  la  invocación  de  métodos,  esto  no  es  del  todo  cierto.  Existe  un  único  caso  en  el  que  sí  es  
+posible  aplicar  la  operación  de  suma  entre  objetos.  Se  trata  de  la  concatenación  de  cadenas  de  texto  
+(objetos  de  la  clase  String).  De  hecho,  éste  es  un  caso  realmente  muy  excepcional,  ya  que,  si  se  fija,  
+también  se  permite  realizar  esta  operación  entre  cadenas  de  texto  y  datos  de  diferentes  tipos  
+primitivos,  lo  que  en  teoría  tampoco  está  permitido.  Ningún  otro  tipo  de  objetos  permite  en  Java  este  
+tipo  de  comportamiento.
+2.1.4  Concatenación  de  cadenas  de  texto
+El  resultado  de  la  concatenación  con  cadenas  de  texto  siempre  da  como  resultado  una  nueva  cadena  
+de  texto,  que  se  puede  utilizar  tanto  para  generar  mensajes  mostrados  directamente  por  pantalla  
+como  para  realizar  asignaciones  a  variables  de  la  clase  String.
+Debe  tener  presente  que  se  encuentra  ante  una  excepción,  incorporada  por  los  creadores  de  Java  
+para  facilitar  su  tarea  como  programadores  a  la  hora  de  crear  mensajes  de  texto.
+De  la  misma  forma  que  se  pueden  declarar  y  usar  arrays  de  tipo  primitivos,  también  se  pueden  
+declarar  y  usar  arrays  de  objetos,  como  las  cadenas  de  texto.  La  sintaxis  en  este  aspecto  no  varía  
+en  absoluto,  si  bien  debe  tener  en  cuenta  que  la  parte  de  la  instrucción  vinculada  a  la  definición  del  
+tipo  indica  ahora  el  nombre  de  la  clase.  Por  ejemplo,  para  declarar  un  array  con  capacidad  para  5  
+cadenas  de  texto  se  haría  de  la  siguiente  forma,  según  se  usa  el  mecanismo  con  valores  concretos  
+o  por  defecto:
+Programación  básica  (ASX)
+Programación  (DAW)
+2 //Un  literal  de  una  cadena  de  texto  se  representa  con  texto  entre  comillas  dobles.
+6
+Programación  (DAM)
+4
+11 }
+1 //Muestra  el  resultado  de  una  división  simple  entre  reales.  2  public  class  Dividir{ public  static  void  main(String[]  
+args)  {
+3
+1 //Inicialización  a  valor  concreto.
+5  String[]  arrayCadenaDefecto  =  new  String[5];
+5
+7
+3  String[]  arrayCadenaConcret=  {"Valor1",  "Valor2",  "Valor3",  "Valor4",  "Valor5"
+9
+Tipo  de  datos  compuestos
+8
+10
+52
+string.
+double  dividendo  =  18954.74;  double  
+divisor  =  549.12;  double  
+resultadoDivision  =  dividendo/divisor; //Se  asigna  el  
+resultado  de  la  concatenación  a  una  variable  de  la  clase
++  resultadoDivision  +  ".";
+System.out.println(mensaje);
+};  
+4 //Inicialización  a  valor  por  defecto.
+String  mensaje  =  "El  resultado  obtenido  es  "
+}
+Machine Translated by Google
+
+--- PAGE BREAK ---
+finalidad  más  natural  para  la  que  se  emplea  el  teclado,  ya  que  se  trata  de  un  periférico
+se  comporta  como  una  variable  cualquiera.  Esto  puede  verse  en  el  ejemplo  siguiente,
+2.2  Entrada  de  cadenas  de  texto
+Por  otra  parte,  existe  una  posibilidad  nueva:  la  entrada  mediante  argumentos  en
+el  método  principal.  Siempre  que  se  ejecuta  un  programa  en  su  ordenador  es
+•  Si  se  muestra  por  pantalla,  aparece  el  texto:  “null”.
+una  cadena  vacía  o  sin  texto  (representada  con  el  literal ””).  Mientras  una  posición
+especialmente  en  el  segundo  bucle,  en  el  que  se  invoca  el  método  length()  directamente
+De  la  misma  manera  que  puede  ser  necesario  introducir  datos  de  tipos  primitivos  en  el
+especialmente  diseñado  para  escribir  texto.  Para  ello  es  necesario  utilizar  las  instrucciones
+tanto  palabras  individuales  como  frases  de  texto  completas.
+particularidad  de  permitir  la  invocación  de  métodos.  En  este  aspecto,  una  posición
+Si  bien  en  los  sistemas  operativos  modernos,  basados  en  entornos  gráficos  de  ventanas,
+esa  circunstancia  queda  oculta,  esta  opción  está  presente.  Java  permite
+sobre  la  cadena  de  texto  que  hay  en  cada  posición  del  array.  Compílelo  y  ejecútelo  para  
+averiguar  qué  hace:
+de  lectura  que  ya  ha  aprendido  anteriormente,  pero  de  modo  que  sea  posible  leer
+está  “vacía”,  se  cumple  que:
+Por  un  lado,  se  puede  usar  el  teclado  tal  y  como  ha  hecho  hasta  ahora.  De  hecho,  ésta  es  la
+posible  incluir  directamente  una  serie  de  argumentos  adicionales  en  forma  de  texto.
+las  posiciones  toman  un  valor  especial  que  indica  que  la  posición  está  “vacía”,
+•  Cualquier  invocación  de  un  método  sobre  él  da  un  error.
+tipos  primitivos,  usando  un  índice  entre  claves  ([i]).  Sin  embargo,  los  objetos  tienen  la
+llamado  null.  Alerta,  ya  que  este  valor  es  un  caso  especial  y  no  es  equivalente  a
+El  caso  de  la  inicialización  a  valores  por  defecto  tiene  una  particularidad,  y  es  que
+programa,  de  modo  que  se  pueda  trabajar,  también  puede  ser  necesaria  la  entrada
+Para  acceder  a  una  posición  de  un  array  de  objetos,  la  sintaxis  es  igual  que  para  los
+de  cadenas  de  texto.  Para  el  caso  de  la  entrada  de  cadenas  de  texto,  sin  embargo,  tiene  dos
+posibilidades.
+9
+12
+3
+Programación  (DAW)
+5
+6
+11
+4
+Programación  básica  (ASX)
+2
+7
+1  public  class  ArrayString  {
+13 }
+Programación  (DAM)
+Tipo  de  datos  compuestos
+10
+8
+53
+}
+System.out.println("Posición  "  +  y  +  ":  "
+public  static  void  main(String[]  args)  {
+System.out.println("El  texto  del  array  es:");
+System.out.println("Posición  "  +  y  +  ":  "
+for  (int  i  =  0;  y  <  text.length;  i++)  {
+for  (int  i  =  0;  y  <  text.length;  i++)  {
++  texto[i]);
+String[]  texto  =  {"Hay",  "había",  "una",  "veces..."};
+}
+System.out.println("Sus  tamaños  son:");
++  texto[i].length());
+}
+Machine Translated by Google
+
+--- PAGE BREAK ---
+int  valor  =  0;
+public  static  void  main  (String[]  args)  {
+Scanner  lector  =  new  Scanner(System.in);
+"
+lector.next();
+valor  =  lector.nextInt();
+System.out.print("El  valor  no  era  entero.");
+System.out.print("Escribe  un  valor  entero:  ");
++  valor  +  ".");
+}
+}
+if  (lector.hasNextInt())  {
+System.out.println("El  valor  era }  else  {
+lector.nextLine();
+Revisión  de  la  lectura  por  teclado
+14
+Programación  (DAW)
+Programación  básica  (ASX)
+9
+2 //Lee  un  entero,  comprobando  que  sea  correcto.
+54
+17 }
+Tipo  de  datos  compuestos
+4
+10
+16
+3  public  class  LecturaEnter  {
+8
+15
+12
+1  importe  java.util.Scanner;
+5
+13
+7
+Programación  (DAM)
+11
+6
+nueva  perspectiva.
+Vuelva  a  echar  un  vistazo  a  un  ejemplo  simple  de  lectura  de  datos  por  teclado.
+comprobando  antes  de  que  el  tipo  del  valor  escrito  sea  el  correcto.
+Este  código  tiene  las  siguientes  particularidades:
+revisión  de  los  elementos  que  intervienen  en  el  proceso  de  lectura  de  datos  por  teclado
+•  Scanner  es  una  clase.  Ésta  ofrece  métodos  para  leer  datos  desde  el
+•  lector  es  una  variable  en  la  que  se  almacena  un  objeto  perteneciente  a
+esta  clase.
+•  hasNextInt(),  nextInt()  y  next()  son  métodos,  ofrecidos  por  la  clase
+en  la  lectura  de  datos  por  el  teclado  son  métodos  de  esta  clase.  Al  invocarlos,
+Según  el  tipo  de  dato  que  se  desea  leer,  es  necesario  usar  un  método  u  otro.
+aprovechando  que  se  han  introducido  los  conceptos  de  clase,  objeto  y  método,  bajo  una
+Antes  de  ver  cuáles  son  estas  instrucciones,  sin  embargo,  vale  la  pena  hacer  una  pequeña
+es  el  caso,  cuáles  son.
+averiguar  si  al  ejecutar  su  programa  se  han  incluido  estos  argumentos  y,  si
+2.2.1  Lectura  desde  teclado
+provocan  que  se  haga  una  lectura  desde  el  teclado  y  evalúan  el  dato  leído.
+teclado.
+de  tipos  primitivos.  Basta  con  saber  cuáles  son  las  instrucciones  adecuadas  para  obtener
+Por  ejemplo,  un  programa  que  lee  un  valor  entero  y  lo  muestra  por  pantalla,
+Scanner.  De  hecho,  todas  las  instrucciones  next...  y  hasNext...  vinculadas
+cadenas  de  texto  desde  teclado,  en  este  caso  en  forma  de  objetos  de  la  clase  String.
+El  proceso  de  lectura  de  cadenas  de  texto  desde  teclado  es  muy  parecido  a  la  lectura
+Machine Translated by Google
+
+--- PAGE BREAK ---
+Lectura  de  palabras  individuales
+Programación  (DAM)
+Programación  básica  (ASX)
+Programación  (DAW)
+Tipo  de  datos  compuestos
+55
+El  método  de  la  clase  Scanner  vinculado  a  la  lectura  de  una  cadena  de  texto
+correcta.
+compuesta  de  una  única  palabra  es  next().
+Su  comportamiento  es  exactamente  lo  que  ha  visto  hasta  el  momento  para  leer  tipos  
+primitivos,  con  la  única  diferencia  de  que  la  invocación  de  este  método  sobre  un  objeto  de  
+la  clase  Scanner  evalúa  una  cadena  de  texto.  Recuerde  que  si  en  una  misma  línea  escriba  
+más  de  una  palabra,  sucesivas  invocaciones  a  este  método  no  bloquearán  el  programa,  
+sino  que  irán  evaluando  los  sucesivos  datos  pendientes  de  leer.  Este  comportamiento  
+queda  esquematizado  en  la  figura  2.2.
+Al  igual  que  hasta  ahora  se  han  leído  tipos  primitivos  individuales  entrados  por  teclado,  
+también  es  posible  leer  palabras.
+El  único  punto  que  todavía  es  una  incógnita  ahora  mismo  es  cómo  funciona  la  inicialización  
+de  una  variable  de  la  clase  Scanner,  de  modo  que  contenga  un  objeto.  No  es  necesario  
+que  lo  entienda,  simplemente  basta  con  saber  que  para  esta  clase  se  hace  así.  Ahora  bien,  
+es  importante  tener  en  cuenta  que  sin  una  correcta  inicialización  de  la  variable  lector  con  
+objeto  la  lectura  de  datos  no  será
+Debe  tenerse  en  cuenta  que,  en  este  contexto,  cuando  se  habla  de  palabra,  en  realidad  se  
+está  refiriendo  a  cualquier  combinación  de  letras  o  números  que  no  contiene  ningún  
+espacio  en  medio.  Por  tanto,  este  método  puede  leer  los  textos  individuales  “Hola,”,  
+“mundo!”,  “1024”,  “3.1426”,  “base10”,  etc.  Ahora  bien,  el  resultado  de  una  lectura  usando  
+este  método  siempre  evalúa  una  cadena  de  texto,  nunca  un  tipo  numérico.  Incluso  cuando  
+el  valor  leído  es  un  número.
+F  igura  2.  2.  Lectura  de  secuencias  de  palabras
+Machine Translated by Google
+
+--- PAGE BREAK ---
+de  datos.  Por  ejemplo,  como  sistema  abreviado  para  elegir  opciones  de  un  menú,  o  en
+lo  que  hay  que  hacer  es  leer  la  entrada  como  una  cadena  de  texto,  comprobar  que  ésta
+En  el  siguiente  programa  de  ejemplo  hay  que  escoger  la  respuesta  correcta  entre  cuatro
+es  necesario  realizar  ninguna  comprobación  de  tipo  previa  a  la  lectura  (métodos  hasNext...) ,  ya
+La  mejor  forma  de  ver  su  comportamiento  es  con  un  ejemplo.  Compile  y
+En  este  caso,  la  posición  a  consultar  es  la  0.
+pantalla.  Intente  escribir  más  de  una  palabra  en  cada  línea  (una  frase  entera)  y
+de  datos.  Fíjese  que  las  palabras  quedan  discriminadas  en  la  lectura,  al  estar
+solo  intento.  Ejecutarlo  y  observa  atentamente  cada  uno  de  los  pasos  apenas
+que  todo  dato  escrito  mediante  el  teclado  siempre  se  puede  interpretar  como  una  cadena
+Un  hecho  remarcable  en  el  caso  de  la  entrada  de  cadenas  de  texto  desde  teclado  es  que  no
+observa  cómo  las  lee  todas  una  por  una  antes  de  esperar  nuevamente  una  entrada
+descritas  para  ver  si  realmente  se  ha  leído  una  única  letra  y  extraerla.
+opciones  etiquetadas  con  una  letra.  Para  simplificar  el  código,  sólo  se  permite  un
+dado  que  la  clase  Scanner  no  ofrece  ningún  método  para  leer  caracteres  individuales,
+(cómo  podría  ser  resolver  una  pregunta  tipo  test).  En  un  caso  como  éste,  y
+ejecute  el  programa  siguiente,  que  lee  hasta  10  palabras  y  las  va  mostrando  por
+Hay  casos  en  los  que  sólo  se  quiere  leer  un  carácter,  para  simplificar  la  entrada
+un  programa  en  el  que  se  den  diferentes  opciones  etiquetadas  con  letras  individuales
+de  texto.  Nunca  puede  producirse  un  error  en  este  sentido.
+sólo  se  compone  de  un  único  carácter  y  extraerlo.
+•  Para  establecer  la  longitud  de  una  cadena  de  texto  se  dispone  del  método
+separadas  con  espacios.
+•  Para  leer  una  cadena  de  texto  existe  el  método  next(),  como  apenas  se  ha  visto.
+length().  En  este  caso,  ver  si  es  1.
+•  Para  extraer  un  carácter  individual,  tenemos  el  método  charAt(numPosición).
+15
+Programación  básica  (ASX)
+Programación  (DAW)
+9
+17
+4
+56
+10
+12
+Tipo  de  datos  compuestos
+11
+16
+18 }
+14
+2 //Lee  un  cierto  número  de  palabras  (en  este  caso,  10).
+7
+1  importe  java.util.Scanner;
+Programación  (DAM)
+5
+3  public  class  LecturaPalabras  {
+13
+8
+6
+System.out.println("Las  puedes  escribir  en  líneas  de  texto  diferente,  si  quieres."
+//Se  van  leyendo  palabras  una  por  una.
+for  (int  i  =  0;  y  <  NUM_PALABRAS;  i++)  {
+}
+System.out.println("Palabra  "  +  y  +  ":  Has  escrito  \""  +  palabra  +  "\".");
+);
+System.out.println("Escribe"
+public  static  void  main  (String[]  args)  {
++  NUM_PALABRAS  +  
+espacios.");
+Scanner  lector  =  new  Scanner(System.in);
+lector.nextLine();
+palabras  separadas  por
+//Recordar  el  comportamiento  lectura  de  secuencias  de  datos  por  el  teclado.
+public  static  final  int  NUM_PALABRAS  =  10;
+}
+String  palabra  =  lector.next();
+//Se  lee  el  resto  de  la  línea  y  se  ignora  el  contenido.
+Lectura  de  caracteres  individuales
+Machine Translated by Google
+
+--- PAGE BREAK ---
+}  else  {
+public  static  void  main  (String[]  args)  {
+System.out.println("Adivina  la  pregunta.");
+System.out.println("¿Cuál  de  los  siguientes  no  es  un  tipo  primitivo?");
+char  caracter  =  palabra.charAt(0);
+if  (palabra.length()  ==  1)  {
+}
+}
+'"
+if  (caracter  ==  RESPUESTA_CORRECTA)  {
+'"
+System.out.println("d)  Booleano");
+public  static  final  char  RESPUESTA_CORRECTA  =  'b';
+lector.nextLine();
+}
+System.out.println("Efectivamente,  la  respuesta  era  
+RESPUESTA_CORRECTA  +  "'.");
++
+//¿Es  una  palabra  de  un  único  carácter?
+//Se  extrae  el  carácter  de  la  cadena  de  texto.
+System.out.println("a)  Enter");
++  caracter  +
+System.out.println("'"  +  caracter  +
+System.out.println("\""  +  palabra  +  "\"  no  es  un  carácter  individual.");
+//¿Es  un  carácter  válido?  (a,  b,  cod)
+//No  lo  era.
+}
+String  palabra  =  lector.next();
+if  ((caracter  >=  'a')&&(caracter  <=  'd'))  {
+"'  es  una  opción  incorrecta.");
+System.out.println("La  respuesta
+System.out.println("c)  Carácter");
+}  else  {
+System.out.println("b)  Scanner");
+"'  es  incorrecta.");
+//Se  lee  la  cadena  de  texto.
+Scanner  lector  =  new  Scanner(System.in);
+}  else  {
+System.out.print("Tu  respuesta  es  la  opción:  ");
+//¿La  respuesta  final  es  correcta?
+14
+Programación  (DAM)
+6
+31
+13
+17
+12
+21
+37 }
+28
+1  importe  java.util.Scanner;
+26
+7
+11
+15
+Programación  básica  (ASX)
+24
+16
+33
+35
+30
+20
+8
+Tipo  de  datos  compuestos
+23
+25
+57
+4
+19
+29
+3  public  class  LecturaCaracter{
+5
+36
+2 //  Muestra  una  pregunta  tipo  test  y  mira  si  se  adivina.
+22
+32
+9
+18
+34
+Programación  (DAW)
+27
+10
+única  línea).  En  realidad,  este  método  lo  que  hace  es  leer  todos  los  elementos  pendientes
+respuesta  en  lugar  de  uno.
+útil  leer  frases  enteras,  compuestas  por  un  conjunto  de  palabras  separadas  por
+en  forma  de  frase  en  la  que  hay  varias  palabras  separadas  por  espacios  es
+y  separados  por  espacios,  dentro  de  una  secuencia  entrada  por  teclado.  Ahora  bien,  a  menudo  es
+quisiéramos  guardar  toda  la  cadena  de  texto  dentro  de  una  única  variable.
+espacios.  Por  ejemplo,  entrar  un  nombre  y  apellidos,  o  una  dirección  postal.  En  este  caso,
+Hasta  el  momento,  sólo  ha  sido  posible  leer  elementos  individuales,  uno  por  uno
+Reto  2:  modifique  el  programa  anterior  para  permitir  hasta  tres  intentos  de
+Hasta  el  momento  este  método  ha  sido  usado  para  descartar  toda  la  lista  de  elementos
+que  leer  en  la  línea  actual  y  evaluar  la  cadena  de  texto  que  los  contiene  todos.  Por  tanto,
+pendientes  de  leer  del  teclado  (en  caso  de  que  se  haya  escrito  más  de  un  elemento  en  una
+El  método  de  la  clase  Scanner  vinculado  a  la  lectura  de  una  cadena  de  texto
+nextLine().
+Lectura  de  frases  enteras
+Machine Translated by Google
+
+--- PAGE BREAK ---
+siempre  se  detendrá  a  esperar  a  que  escriba  un  texto  y  pulse  la  tecla  de  retorno.  Pruebe
+blanco  que  les  separan.
+duales  (next(),  nextInt(),  etc.)  es  posible  usarlo  para  leer  frases  enteras
+combina  el  uso  de  nextLine()  con  otros  métodos  de  lectura  de  elementos  indivi­
+El  siguiente  programa  de  ejemplo  muestra  cómo  se  lee  una  línea  de  texto  completa
+Contraste  con  el  mostrado  en  la  figura  2.2.
+directamente.  Cada  vez  que  se  invoca,  el  programa  se  bloquea  y  espera  a  que  el  usuario
+misma  línea  de  texto,  ya  que  lee  toda  la  línea  al  completo  desde  la  última  lectura
+el  programa  para  comprobar  que  es  así.
+hasta  encontrar  un  salto  de  línea.  Este  comportamiento  se  esquematiza  en  la  figura  2.3.
+(todas  las  palabras  con  espacios  incluidos).  En  este  caso,  y  al  contrario  que  con  la
+comportamiento.  Concretamente,  nunca  se  dará  el  caso  de  que  una  lectura  por  el  teclado  no
+escrita  por  el  teclado,  de  forma  muy  parecida  al  ejemplo  anterior  de  leer  palabras
+entre  una  frase  entera  y  pulse  la  tecla  de  regreso.  Entonces,  evalúa  toda  la  frase  escrita
+sirve  para  leer  conjuntos  de  elementos  de  golpe,  independientemente  de  los  espacios  en
+A  efectos  prácticos  con  vistas  a  la  lectura  de  cadenas  de  texto,  si  alguna  vez  se
+resto  de  métodos  de  lectura,  no  es  posible  escribir  más  de  un  elemento  dentro  de  una
+individuales.  Sin  embargo,  fíjese  que  hay  algunas  diferencias  en  el  código  y  en  el
+ocasione  el  bloqueo  del  programa  a  la  espera  de  que  escriba  algo.  Absolutamente
+3  public  class  LecturaFrase  {
+11
+Programación  básica  (ASX)
+Programación  (DAW)
+58
+17 }
+5
+12
+Tipo  de  datos  compuestos
+4
+13
+15
+2 //Lee  frases  escritas  por  el  teclado.
+7
+10
+14
+Programación  (DAM)
+16
+6
+9
+8
+1  importe  java.util.Scanner;
+F  igura  2.  3.  Lectura  de  frases
+String  frase  =  lector.nextLine();
+public  static  void  main  (String[]  args)  {
+System.out.println("Para  terminar  una  frase,  pulsa  la  tecla  de  retorno.");
+//Ahora  no  hace  falta  leer  el  resto  de  ninguna  línea,  ya  que  siempre  se  leen
+System.out.println("Frase  "
+//Se  van  leyendo  frases  una  por  una.
++  y  +  ":  Has  escrito  \""  +  frase  +  "\".");
+}
+//líneas  enteras...
+System.out.println("Escribe"
+Scanner  lector  =  new  Scanner(System.in);
+}
+for  (int  i  =  0;  y  <  NUM_FRASES;  i++)  {
++  NUM_FRASES  +  "frases.");
+public  static  final  int  NUM_FRASES  =  4;
+Machine Translated by Google
+
+--- PAGE BREAK ---
+Dispone  de  un  anexo  en  el  
+que  le  explicamos  cómo  incluir  
+argumentos  al  ejecutar  un  
+programa  mediante  el  IDE  
+que  usará  a  lo  largo  del  
+curso.
+Ejemplos  de  herramientas  
+que  permiten  la  ejecución  diferida  
+de  programas  son  las  
+tareas  programadas  en  Windows  
+o  la  instrucción  cron  de  Unix.
+F  igura  2.  4.  Asignación  de  argumentos  de  entrada  en  la  ejecución  del  programa  “java”  a  la  variable  “argos”
+Tipo  de  datos  compuestos
+Programación  (DAM)
+Programación  básica  (ASX)
+Programación  (DAW)
+59
+La  lista  de  palabras  que  conforman  los  argumentos  de  un  programa  en  Java  puede  
+obtenerse  directamente  a  partir  de  la  variable  especial  que  se  define  en  la  declaración  
+del  método  principal:  String[]  args.  Concretamente,  toma  la  forma  de  un  array  de  
+cadenas  de  texto,  en  el  que  éstas  ocupan  las  posiciones  en  el  mismo  orden  en  que  se  
+han  escrito  los  argumentos  al  ejecutar  el  programa,  tal  y  como  muestra  la  figura  2.4.
+Una  pregunta  que  se  puede  plantear  es  cuál  es  la  utilidad  de  este  sistema  cuando  ya  
+está  la  entrada  por  el  teclado.  Un  ejemplo  de  situación  en  que  esto  es  muy  útil  es  en  
+programas  que  se  comportarán  de  forma  diferente  según  una  entrada  de  datos,  pero  
+en  los  que  no  se  quiere,  o  no  se  puede,  esperar  a  que  el  usuario  esté  pendiente.  Por  
+ejemplo,  suponga  un  programa  que  desea  que  se  ejecute  cada  noche  para  realizar  
+copias  de  seguridad  de  una  serie  de  archivos.  Por  un  lado,  no  tiene  sentido  que  el  
+programa  esté  siempre  en  marcha  comprobando  si  ha  llegado  la  hora  de  realizar  la  
+copia.  Es  más  lógico  programar  su  ejecución  periódica  con  alguna  herramienta  ofrecida  
+por  el  sistema  operativo.  Ahora  bien,  es  evidente  que  no  es  factible  que  alguien  esté  
+pendiente  del  teclado  cada  vez  que  se  ejecuta,  pero  para  que  funcione  correctamente  
+debe  disponer  de  cierta  información  que  tampoco  puede  estar  escrita  en  el  código  
+fuente,  ya  que  el  valor  dependerá  de  cada  usuario  que  lo  utilice:  la  lista  de  directorios  
+que  se  desea  copiar,  donde  se  guarda  la  copia,  etc.  Por  tanto,  es  útil  disponer  de  una  
+manera  simple  de  entrar  datos  en  un  programa  sin  que  tenga  que  ser  siempre  por  el  teclado.
+2.2.2  Argumento  del  método  principal
+Esta  opción  permite  establecer  una  entrada  de  datos  en  el  programa  sin  tener  que  
+interrumpir  su  ejecución  para  preguntar  algo  al  usuario  y  esperar  una  entrada  por  
+teclado.
+Normalmente,  la  lista  de  argumentos  de  un  programa  se  introduce  como  un  
+conjunto  de  palabras  a  continuación  del  nombre  del  archivo  ejecutable,  separadas  
+por  espacios.
+Machine Translated by Google
+
+--- PAGE BREAK ---
+Aunque  una  cadena  de  texto  organiza  los  caracteres  que  almacena  de  una
+texto  se  basan  simplemente  en  la  invocación  del  método  adecuado.
+Para  saber  con  cuántos  argumentos  se  ha  ejecutado  el  programa  es  necesario  usar  el  atributo
+que  se  pueden  manipular,  por  lo  que  en  la  inmensa  mayoría  de  casos  no  será  necesario
+en  la  que  cada  elemento  ocupa  una  posición  identificada  por  un  índice,  hay  dos
+manipularlas.
+length  asociado  a  los  arrays.  Si  no  se  ha  pasado  ningún  argumento,  su  valor  será
+diferencias  destacadas  en  su  comportamiento  y  que  tienen  gran  incidencia  a  la  hora
+posición  del  array  será  siempre  incorrecto.
+Por  un  lado,  la  clase  String  ofrece  un  abanico  muy  amplio  de  métodos  con  los
+de  repetición).  Normalmente,  todos  los  esquemas  de  uso  y  manipulación  de  cadenas  de
+modo  muy  parecido  a  cómo  lo  haría  un  array,  en  forma  de  secuencia  ordenada
+0.  Tenga  cuidado  con  esta  situación,  ya  que  entonces  cualquier  acceso  a  una
+realizar  un  tratamiento  individual  de  cada  posición  (por  ejemplo,  mediante  estructuras
+los  cuales  se  ha  ejecutado.  A  efectos  prácticos,  se  trata  de  un  recorrido  sobre  un  array,
+sitio  de  valor  numéricos.
+si  bien  los  elementos  almacenados  en  sus  posiciones  ahora  son  cadenas  de  texto  en
+2.3  Manipulación  de  cadenas  de  texto
+A  modo  de  ejemplo,  pruebe  el  siguiente  programa,  que  enumera  los  argumentos  con
+12
+4
+Tipo  de  datos  compuestos
+5
+8
+9
+10
+13
+1 //Programa  que  escribe  por  pantalla  los  argumentos  de  un  programa.
+60
+7
+Programación  (DAW)
+3
+15
+11
+6
+Programación  básica  (ASX)
+Programación  (DAM)
+2  public  class  LecturaArgumentos  {
+16 }
+14
+java  (en  sistemas  Unix)  o  java.exe  (en  sistemas  Windows).  Si  abre  una  ventana  de  línea
+Normalmente,  los  ejemplos  básicos  de  programas  ejecutados  con  argumentos  son  los  vinculados
+de  comandos  y  escriba  java  ­help,  aparece  una  lista  de  los  argumentos  posibles  para  ejecutarlo  
+sin  la  necesidad  de  un  IDE:  los  archivos  con  bytecode  Java  que  debe  ejecutar,  si  es  necesario
+Su  IDE  automatiza  la  ejecución  y  el  paso  de  argumentos  a  este  programa  sin  la
+en  la  línea  de  órdenes.  Entre  ellos,  se  puede  encontrar  el  intérprete  del  propio  Java,  el  ejecutable
+Ejecutar  un  programa  con  argumentos
+help”  es  un  argumento  en  sí  mismo.
+necesidad  de  tener  que  preguntar  nada.  Partiendo  de  los  archivos  que  ha  generado,  él  solo  genera
+mostrar  su  versión,  si  debe  mostrar  información  de  depuración  adicional,  etc.  De  hecho,  ”­
+la  lista  de  argumentos  a  utilizar.
++  args[i]);
+//Primero  hay  que  mirar  si  hay  alguno.
+//Los  argumentos  están  en  la  variable  "argos".
+}
+System.out.println("No  hay  ningún  argumento.");
+System.out.println("Argumento  "
+}
+//No  hay  ninguna.
+for  (int  i  =  0;  y  <  args.length;  i++)  {
+}
+if  (args.length  >  0)  {
+public  static  void  main(String[]  args)  {
++  y  +  ":  "
+}  else  {
+//Los  hay.  Se  muestran  por  pantalla  ordenadamente.
+Machine Translated by Google
+
+--- PAGE BREAK ---
+modificadas
+F  igura  2.  5.  Los  métodos  invocados  sobre  cadenas  de  texto  no  modifican  su  valor,  crean  nuevas
+61
+Programación  (DAM)
+Programación  básica  (ASX)
+Programación  (DAW)
+Tipo  de  datos  compuestos
+Por  otra  parte,  otra  particularidad  que  las  diferencia  de  los  arrays  es  que  son  inmutables.  La  
+invocación  de  un  método  puede  consultar  los  datos  dentro  de  una  cadena  de  texto,  o  puede  
+generar  una  nueva  cadena  de  texto  con  ciertas  modificaciones  respecto  al  original.  Sin  embargo,  
+nunca  se  verá  modificado  el  valor  inicial  de  la  cadena  de  texto  original.  Si  queremos,  esta  nueva  
+cadena  puede  ser  asignada  a  la  variable  original,  por  lo  que  se  reemplaza  el  valor  inicial  por  el  
+nuevo.
+En  ambos  casos,  carácterA  Buscar  siempre  debe  ser  una  cadena  de  texto  (ya  sea  mediante  un  
+literal  o  una  variable)  y  si  el  texto  buscado  no  existe,  evalúan  a  ­1.  Por  tanto,  no  sólo  es  posible  
+saber  si  existe  el  valor  buscado,  sino  también  establecer  directamente  posiciones  donde  se  
+puede  encontrar.
+•  indexOf(textABuscar)  evalúa  la  primera  posición  dentro  de  la  cadena  de  texto  donde  se  
+encuentra  el  texto  a  buscar.
+La  figura  2.6  muestra  el  comportamiento  de  ambos  métodos  si  se  busca  el  carácter  'a'  en  la  frase  
+“Érase  una  vez...”.
+Normalmente,  el  proceso  de  búsqueda  de  un  valor  concreto  dentro  de  un  array  debería  realizarse  
+con  una  estructura  de  repetición  que  fuese  comprobando  si  ese  valor  existe  en  alguna  de  las  
+posiciones,  hasta  encontrarlo  o  llegar  al  final  del  array.  Esto  podría  replicarse  con  las  cadenas  
+de  texto  usando  el  método  charAt.  Por  suerte,  la  clase  String  ofrece  dos  métodos  que  ahorran  
+esta  tarea,  ya  que  evalúan  directamente  la  posición  en  la  que  se  encuentra  un  carácter  o  una  
+subcadena  de  texto  concreta.
+2.3.1  Búsqueda
+La  figura  2.5  muestra  este  comportamiento  por  la  invocación  del  método  replace(caracterNou,  
+caracterVell),  que  reemplaza  todas  las  apariciones  de  un  carácter  (caràcterVell)  por  otro  diferente  
+(carácterNou).
+•  lastIndexOf(textABuscar)  evalúa  la  última  posición  dentro  de  la  cadena  de  texto  donde  se  
+encuentra  el  texto  a  buscar.
+Machine Translated by Google
+
+--- PAGE BREAK ---
++  charCerca  +
+System.out.println("Primera  vez  −  
+System.out.println("Último  golpe  − }  else  {
+"
+Scanner  lector  =  new  Scanner(System.in);
+}
+int  posFi  =  text.lastIndexOf(charCerca);
+String  text  =  lector.nextLine();
+"
++  posFi);
+System.out.println("Este  carácter  no  se  encuentra  en  el  texto.");
+if  (posInit  >  −1){
++  PosInit);
+int  posInit  =  text.indexOf(charCerca);
+System.out.println("Escribe  una  línea  de  texto  cualquiera  y  pulsa  retorno:");
+lector.nextLine();
+System.out.println("¿Qué  carácter  quieres  buscar?  ");
+}
+System.out.println("Las  apariciones  del  carácter  '"
+);
+public  static  void  main(String[]  args)  {
+char  charBuscar  =  charText.charAt(0);
+String  charText  =  lector.next();
+"'  son:"
+(compuesto  por  varias  palabras).  Compílelo,  pruébelo  y  estudie  su  com­
+El  siguiente  código  muestra  un  ejemplo  de  búsqueda  de  un  carácter  dentro  de  un  texto  cualquiera
+mente.
+argumentos  en  el  método  principal,  cuente  cuántas  contienen  el  carácter  'a'.
+Reto  3:  haga  un  programa  que,  en  una  serie  de  cadenas  de  texto  pasadas  como
+28
+11
+1  importe  java.util.Scanner;
+3 //Buscar  un  carácter  concreto  dentro  de  una  cadena  de  texto  cualquiera.
+62
+25
+4  public  class  BúsquedaCaracter  {
+Tipo  de  datos  compuestos
+26
+Programación  (DAM)
+12
+17
+23
+29
+7
+Programación  (DAW)
+30
+10
+31 }
+5
+9
+19
+15
+20
+16
+6
+18
+2
+22
+24
+13
+27
+Programación  básica  (ASX)
+8
+14
+21
+F  igura  2.  6.  Comportamiento  de  los  métodos  “indexOf”  y  “lastIndexOf”
+Machine Translated by Google
+
+--- PAGE BREAK ---
+­version,  ­help  y  ­server.  Para  cada  caso,  se  hace  una  opción  distinta.  Si  hay
+for  (int  i  =  0;  y  <  args.length;  i++)  {
+misma  función,  pero  ignorante
+}  else  if  (args[i].equals("−help"))  {
+}
+if  (args.length  >  0)  {
+Este  otro  método  hace  la
+System.out.println("El  argumento  \""  +  args[i]  +  "\"  no  es  válido!");
+//Nunca  olvide  comprobar  si  el  array  contiene  argumentos!
+System.out.println("Se  utilizó  el  argumento  \"−help\"");
+mayúsculas  y  minúsculas.
+}
+public  static  void  main  (String  args[])  {
+}  else  {
+System.out.println("Se  ha  usado  el  argumento  \"−version\"");
+System.out.println("No  había  ningún  argumento.");
+}
+//Se  va  recorriendo  el  array  y  se  mira  qué  valor  hay.
+}  else  if  (args[i].equals("−server"))  {
+}  else  {
+}
+ecualesIgnoreCase(texto)
+if  (args[i].equals("−version"))  {
+System.out.println("Se  utilizó  el  argumento  \"−server\"");
+5
+6
+Programación  básica  (ASX)
+13
+15
+18
+17
+3
+63
+20
+21
+7
+Tipo  de  datos  compuestos
+9
+4
+10
+2  public  class  CompruebaArgumentos  {
+22 }
+8
+12
+14
+16
+Programación  (DAM)
+19
+Programación  (DAW)
+11
+1 //Comprueba  si  los  argumentos  se  corresponden  con  un  conjunto  preestablecido.
+otra  cadena  de  texto.
+a  parámetro  son  idénticos  o  no.  El  texto  usado  como  parámetro  puede  ser  tanto  uno
+su  clase  no  ofrece  ningún  método  que  le  ayude  a  comparar,  entonces  es  imposible
+corresponden  a  alguna  de  las  opciones  posibles.  En  el  siguiente  programa,
+hay  un  error  en  los  argumentos.  Pruebe  que  es  así.
+el  orden  alfabético,  es  decir,  de  cuál  sería  su  posición  relativa  en  un  diccionario.
+compararlos.
+especialmente  frecuente  en  el  caso  de  entrada  de  datos  vía  argumentos  del  método
+También  es  necesario  usar  algún  método  disponible  en  la  clase  a  la  que  pertenecen.  Si  la
+es  posible  detectar  si  los  argumentos  corresponden  a  alguno  de  los  aceptados:
+literal, ”...”,  como  otra  variable  en  la  que  haya  almacenada  una
+la  ejecución.
+principal,  ya  que  en  muchos  programas  estos  argumentos  indican  opciones  para
+Como  ejemplo,  se  puede  comprobar  si  los  argumentos  pasados  en  un  programa
+Una  tarea  que  se  realiza  muy  a  menudo  con  cadenas  de  texto  es  ver  si  un  texto  entrado
+La  clase  String  ofrece  distintos  métodos  para  comparar  cadenas  de  texto.
+si  la  cadena  de  texto  contenida  en  la  variable  en  la  que  se  invoca  y  el  texto  usado  como
+Desgraciadamente,  los  objetos  no  aceptan  ningún  tipo  de  operación  entre  ellos,  y  eso
+En  ocasiones  puede  ser  útil  comparar  dos  cadenas  de  texto  desde  el  punto  de  vista  de
+•  ecuales(textPerComparar)  evalúa  un  valor  booleano  (true/false)  según
+comparar  directamente  tampoco,  tal  y  como  se  haría  entre  valores  de  tipos  primitivos.
+2.3.2  Comparación
+por  el  usuario  corresponde  a  una  opción  concreta  entre  las  disponibles.  Esto  es
+hay  algún  argumento  que  no  es  ninguno  de  estos  tres,  el  programa  informa  que
+incluye  aquellas  vinculadas  a  los  operadores  relacionales.  Por  tanto,  no  se  pueden
+Machine Translated by Google
+
+--- PAGE BREAK ---
+El  método  charAt  permite  la  extracción  de  datos  de  una  cadena  de  texto,  pero  sólo
+(>)  y  “menor  que”  (<).
+valor  negativo  dependiendo  de  si  la  cadena  almacenada  en  la  variable  en  la  que
+exactamente  lo  mismo  con  valores  de  tipo  entero  (en  este  caso,  por  orden
+Reto  4:  usando  el  método  compareTo,  ordene  un  array  de  cadenas  de  texto.  Por
+ecual,  pero  en  este  caso  evalúa  a  0,  cualquier  valor  positivo  o  cualquier
+numérico).
+se  invoca  el  método  es  alfabéticamente  igual,  mayor  o  menor  (respectivamente)
+programa  le  dice  como  pista  cuál  es  la  posición  relativa  de  la  palabra
+facilitar  la  entrada  de  los  datos,  este  array  puede  estar  determinado  directamente  a
+secreta  según  su  orden  alfabético.  Reflexione  sobre  qué  diferencias
+hay  entre  este  código,  que  trata  cadenas  de  texto,  y  un  programa  que  hiciera
+La  mejor  forma  de  verlo  es  con  un  ejemplo.  En  el  siguiente  programa
+de  caracteres  individuales.  Sin  embargo,  la  aplicabilidad  de  este  mecanismo  es  limitada.
+•  compareTo(textPerComparar)  se  comporta  de  forma  similar  a
+Este  tipo  de  comparación  sería  equivalente  a  los  operadores  relacionales  “mayor  que”
+que  la  usada  como  parámetro.
+es  necesario  adivinar  un  texto  secreto  partiendo  del  hecho  de  que,  para  cada  respuesta,  el
+partir  de  argumentos  en  la  ejecución  del  programa  (la  variable  args).
+2.3.3  Creación  de  subcadenas
+23
+11
+27
+4
+Programación  básica  (ASX)
+5
+17
+20
+26
+6
+22
+1  importe  java.util.Scanner;
+10
+7
+9
+12
+29 }
+2 //Juego  de  adivinar  una  palabra,  dando  pistas  de  su  orden  alfabético.
+21
+16
+19
+25
+15
+Programación  (DAW)
+28
+Programación  (DAM)
+24
+8
+Tipo  de  datos  compuestos
+3  public  class  AdivinaPalabra  {
+14
+18
+13
+64
+System.out.println("¡Has  fallado!  La  palabra  va  antes...");
+//La  palabra  del  usuario  es  anterior  a  la  secreta.
+}  else  {
+//Si  vale  0,  es  que  se  ha  acertado.
+compareToIgnoreCase(texto)
+System.out.println("¡Has  fallado!  La  palabra  va  después...");
+}  else  if  (posición  >  0)  {
+Este  método  es  el  equivalente
+}
+}
+}
+public  static  final  String  PALABRA_SECRETA  =  "java";
+haEncertado  =  true;
+System.out.println("Adivina  el  valor  de  la  palabra  del  diccionario.");
+if  (posición  <  0)  {
+//La  palabra  para  adivinar  es  "objeto".
+while  (!hacertado)  {
+System.out.println("Enhorabuena.  ¡Has  acertado!");
+lector.nextLine();
+Scanner  lector  =  new  Scanner(System.in);
+//La  palabra  del  usuario  es  posterior  a  la  secreta
+String  palabraUsuario  =  lector.next();
+public  static  void  main  (String[]  args)  {
+boolean  haEncertado  =  false;
+int  posicio  =  palabraUsuario.compareTo(PALABRA_SECRETA);
+System.out.println("Empezamos  el  juego.");
+ignorando  mayúsculas  y  minúsculas.
+System.out.print("¿Qué  palabra  crees  que  es?  ");
+Machine Translated by Google
+
+--- PAGE BREAK ---
+System.out.println("Escribe  una  frase  de  texto  y  pulsa  retorno:");
+System.out.println("El  texto  sin  la  primera  y  la  última  palabra  es:");
+int  inicioSubcadena  =  text.indexOf('  ');
+Scanner  lector  =  new  Scanner(System.in);
+if  (inicioSubcadena  ==  fiSubcadena)  {
+//Buscar  el  primer  y  último  espacio  en  blanco.
+//O  bien  no  hay  espacios  (ambos  método  evalúan  a  −1).
+public  static  void  main  (String[]  args)  {
+última  palabra.
+int  fiSubcadena  =  text.lastIndexOf('  ');
+String  text  =  lector.nextLine();
+F  igura  2.  7.  Comportamiento  del  método  “substring”
+8
+5
+13
+4
+6
+Tipo  de  datos  compuestos
+1  importe  java.util.Scanner;
+65
+12
+Programación  básica  (ASX)
+10
+9
+7
+Programación  (DAW)
+2 //Un  programa  que  extrae  todo  el  texto  de  una  frase,  excepto  la  primera  y  la
+Programación  (DAM)
+11
+3  public  class  ExtraerPalabras  {
+de  texto  compuesta  por  los  caracteres  que  van  desde  posiciónInicial  hasta
+entre  el  primer  y  último  espacio  en  blanco.  Si  hay  menos  de  tres  palabras,  entonces
+los  caracteres  dentro  de  la  cadena  de  texto,  se  producirá  un  error.
+La  figura  2.7  muestra  un  esquema  del  comportamiento  del  método  substring
+si  se  extrae  una  subcadena  de  la  frase  “Érase  una  vez...”.
+permiten  hacer  esto.
+Como  ejemplo  del  funcionamiento  de  la  invocación  de  este  método,  a  continuación
+•  substring(posiciónInicial,  posiciónFinal)  evalúa  una  nueva  cadena
+dentro  del  rango  permitido.  Si  alguno  supera  el  valor  de  las  posiciones  que  ocupan
+no  muestra  nada.
+posiciónFinal  ­  1.
+frase  y  las  muestra  por  pantalla.  Esto  es  equivalente  a  mostrar  una  subcadena  de  texto
+de  una  frase  o  palabras  individuales.  La  clase  String  ofrece  dos  métodos  que
+Muy  a  menudo  se  encontrará  que,  en  realidad,  le  resultaría  más  cómodo  poder  extraer
+cadenas  de  texto  completas  contenidas  dentro  de  otra  cadena.  Por  ejemplo,  partes
+Debe  tener  cuidado  al  usar  este  método,  ya  que  los  valores  deben  estar
+encontrará  el  código  de  un  programa  que  extrae  la  primera  y  la  última  palabra  de  una
+Machine Translated by Google
+
+--- PAGE BREAK ---
+original  y  se  separa  en  trozos  usando  como  divisor  textoSeparación.  Cada
+combinaciones  de  letras,  etc.).
+La  figura  2.8  muestra  un  esquema  del  comportamiento  de  este  método  si  se
+textSeparación  debe  ser  una  cadena  de  texto.
+divide  la  frase  “Había  una  vez–”  usando  como  texto  de  separación
+de  cadenas  de  texto  en  las  que  en  cada  posición  hay  cada  una  de  las  palabras.
+termina  cada  palabra.
+Por  ejemplo,  si  como  texto  de  separación  de  este  método  se  usa  un  espacio  en
+trozo,  una  nueva  cadena  de  texto,  se  ubica  en  una  posición  del  array.  El  valor  de
+individuales  de  una  frase  en  líneas  distintas.  Para  ello,  antes  tendrá  que  ir
+blanco, ” ”,  una  frase  se  dividiría  en  palabras.  El  resultado  sería  un  array
+el  espacio  en  blanco,  por  lo  que  queda  dividida  en  palabras.
+Ahora  bien,  el  separador  puede  ser  cualquier  texto  que  desee  (comas,  puntos,
+averiguando  las  posiciones  donde  hay  espacios  en  blanco  para  poder  delimitar  dónde  comienza  y
+el  texto  entre  éstos.  Existe  otro  método  que  facilita  mucho  más  el  trabajo.
+Reto  5:  haga  un  programa  que  muestre  por  pantalla  cada  una  de  las  palabras
+Para  obtener  las  palabras  de  una  frase,  no  es  necesario  buscar  dónde  hay  espacios  e  ir  extrayendo
+•  split(textSeparación)  evalúa  un  array  de  cadenas  de  texto,  en  el  que
+cada  posición  está  el  resultado  de  hacer  lo  siguiente.  Se  toma  la  cadena  de  texto
+19
+20
+Programación  básica  (ASX)
+14
+15
+66
+24
+Tipo  de  datos  compuestos
+23
+Programación  (DAM)
+17
+21
+16
+Programación  (DAW)
+18
+25 }
+22
+System.out.println("(No  hay  nada  que  escribir...)");
+se  modifica.
+System.out.println(textFinal);
+String  textFinal  =  text.substring(inicioSubcadena  +  1,  fiSubcadena);
+posición).
+//O  bien  sólo  hay  dos  palabras  (ambos  métodos  evalúan  la  misma
+de  la  cadena  original  nunca
+//La  última  palabra  comienza  una  posición  después  del  último  espacio  en
+//Se  muestra  la  cadena  intermedia.
+//La  segunda  palabra  comienza  una  posición  después  del  primer  espacio  en  blanco
+Recuerde  que  el  contenido
+blanco.
+}
+}  else  {
+.
+}
+F  igura  2.  8.  Comportamiento  del  método  “split”
+//No  se  muestra  nada.
+Machine Translated by Google
+
+--- PAGE BREAK ---
+Conversión  de  tipo  primitivo  a  cadena  de  texto
+también  transforma  directamente  cualquier  tipo  primitivo  que  se  le  proporcione  en
+cadenas  de  texto  y  viceversa.
+frase  o  una  cadena  de  texto  más  larga  (por  ejemplo:  “El  resultado  es ”,  y  el  valor),
+En  muchos  casos,  una  parte  importante  de  los  programas  se  basa  en  las  operaciones  realizadas
+sea  tanto  para  mostrarlas  como  para  leerlas,  es  necesario  operar  con  cadenas  de
+tan  sólo  es  necesario  usar  la  operación  suma,  como  se  ha  explicado  en  el  apartado  1.1.5.  Java
+Si  sólo  queremos  convertir  un  valor  directamente,  sin  que  éste  tenga  que  estar
+sobre  datos  de  tipos  primitivos.  Ahora  bien,  de  cara  a  la  interacción  con  el  usuario,  ya
+el  orden  de  las  palabras  de  una  frase.  Pruebe  en  su  entorno  de  trabajo  que  es  así.
+se  puede  usar  cualquier  dato  correspondiente  a  cualquier  tipo  primitivo,  ya  sea  una
+texto.  Por  tanto,  un  mecanismo  útil  es  el  de  la  transformación  de  tipos  primitivos  en
+incluido  dentro  de  una  frase  o  con  el  único  objetivo  de  mostrarlo  por  pantalla  posterior­mente,  
+entonces  se  puede  usar  la  instrucción  String.valueOf(valor).  Donde  pone  valor
+Como  ejemplo,  estudie  el  código  fuente  siguiente,  que  pertenece  a  un  programa  para  invertir
+2.3.4  Transformaciones  entre  cadenas  de  texto  y  tipos  primitivos
+frase  determinada,  debe  mostrar  por  pantalla  el  texto  compuesto  por  las  iniciales  de
+se  encarga  de  realizar  la  conversión  de  tipos  automáticamente  si  en  alguno  de  los  operandos
+El  caso  más  sencillo  es  la  transformación  de  un  dato  de  tipo  primitivo  a  un  objeto
+mostrar  directamente  un  valor  por  pantalla,  la  instrucción  System.out.println
+una  cadena  de  texto  que  será  mostrada  por  pantalla.
+Reto  6:  realice  un  programa  que  genere  automáticamente  acrónimos.  Partiendo  de  una
+cada  palabra  individual  que  forma  la  frase.
+dentro  de  una  concatenación  existe  algún  dato  de  tipo  primitivo.  Para  el  caso  de
+de  la  clase  String.  Si  los  valores  que  se  quieren  representar  forman  parte  de  una
+Tipo  de  datos  compuestos
+Programación  (DAW)
+6
+2 //Programa  que  invierte  el  orden  de  las  palabras  de  una  frase.
+5
+15
+3  public  class  InvierteOrdenPalabras  {
+4
+17
+13
+16
+1  importe  java.util.Scanner;
+14
+9
+Programación  (DAM)
+11
+18
+7
+67
+10
+Programación  básica  (ASX)
+8
+12
+19 }
+}
+Scanner  lector  =  new  Scanner(System.in);
+}
+)
+//Dividimos  la  frase  en  palabras,  separadas  por  espacios.
+String[]  palabras  =  text.split("  ");
+//Imprimimos  las  palabras  en  orden  inverso.
+String  text  =  lector.nextLine();
+public  static  void  main(String[]  args)  {
+System.out.println("El  texto  invertido  es:");
+System.out.print("  ");
+System.out.print(palabras[i]);
+for  (int  i  =  palabras.length  −  1;  i  >=  0 ;  i−−)  {
+System.out.println("Escribe  una  línea  de  texto  cualquiera  y  pulsa  retorno:");
+//El  método  split  elimina  el  texto  de  separación  (en  este  caso,  los  espacios
+System.out.println();
+Machine Translated by Google
+
+--- PAGE BREAK ---
+Conversión  de  cadena  de  texto  a  tipo  primitivo
+Pruebe  en  su  entorno  el  código  fuente,  mostrado  a  continuación:
+Suponga  un  programa  que  muestra  los  dígitos  en  orden  inverso  de  un  número  real  de  cierta  
+longitud,  con  cualquier  número  de  decimales.  Piense  un  poco  y  verá  que,  tratándolo  como  valor  
+numérico  y  usando  operaciones  entre  reales,  no  es  un  problema  cuya  resolución  resulte  evidente.  
+Éste  es  un  caso  en  el  que  el  algoritmo  para  resolver  el  problema  es  algo  más  sencillo  si  el  valor  a  
+procesar  se  trata  como  una  secuencia  de  caracteres  que  si  se  trata  como  un  número.  Sólo  habría  
+que  realizar  un  recorrido  por  cada  uno  de  los  caracteres  individuales  (las  cifras)  usando  una  
+estructura  de  repetición.  Por  tanto,  es  útil  transformarlo  en  una  cadena  de  texto  y  procesarlo  como  
+tal.
+variable,  un  literal  o  expresión.  Esta  instrucción  evalúa  su  equivalente  a  cadena  de  texto.
+Aunque  ya  sabe  cómo  leer  datos  de  los  tipos  primitivos  directamente  desde  el  teclado,  a  veces,  
+partiendo  de  una  cadena  de  texto,  le  interesaría  transformarla  a  un  tipo  primitivo  (normalmente,  
+un  valor  numérico).  Por  ejemplo,  éste  puede  ser  el  caso  de  un  programa  no  interactivo  que  
+obtiene  los  datos  de  entrada  para  el  paso  de  argumentos  al  método  principal.  En  este  caso,  
+siempre  se  parte  de  valores  en  formato  cadena  de  texto  y,  por  tanto,  hay  que  realizar  una  
+conversión  si  alguno  de  los  argumentos  es  un  valor  numérico  con  el  que  operar.
+Para  este  caso,  Java  dispone  de  una  serie  de  instrucciones,  una  para  cada  tipo  primitivo,  que  
+sirve  para  realizar  esta  conversión.  Ahora  bien,  como  ocurre  con  las  instrucciones  de  lectura  de  
+tipos  primitivos  por  teclado,  es  necesario  garantizar  que  la  cadena  de  texto  para  convertir  es  
+correcta,  ya  que  de  lo  contrario  el  programa  dará  un  error.
+Dadas  las  capacidades  innatas  de  la  concatenación  y  la  impresión  por  pantalla  para  transformar  
+datos  de  tipos  primitivos  en  cadenas  de  texto  automáticamente,  los  casos  en  los  que  resulta  
+aplicable  el  uso  de  la  instrucción  String.valueOf(valor)  es  limitado.  En  la  inmensa  mayoría  de  los  
+casos,  si  desea  convertir  un  tipo  primitivo  en  cadena  de  texto  será  para  mostrarlo  por  pantalla,  ya  
+sea  solo  o  dentro  de  una  frase.  Sin  embargo,  puede  haber  casos  en  los  que  tratar  un  dato  como  
+cadena  de  texto  en  lugar  de  como  valor  numérico  puede  facilitar  la  tarea  del  programador.  Por  
+ejemplo,  cuando  se  desea  tratar  este  valor  como  una  secuencia  de  dígitos  individuales.
+Por  ejemplo,  no  es  posible  convertir  a  un  valor  de  tipo  entero  las  cadenas  de  texto
+11
+8
+Programación  (DAM)
+Tipo  de  datos  compuestos
+4
+9
+3
+5
+13 }
+68
+10
+1 //Muestra  las  cifras  de  un  número  real  en  orden  inverso.  2  public  class  InvertirOrden  { public  static  void  main  
+(String[]  args)  { float  numero  =  3.1415926535f; //Lo  convertimos  
+en  una  cadena  de  texto.
+12
+Programación  (DAW)
+Programación  básica  (ASX)
+6
+7
+//Imprimimos  cada  dígito  individual  (incluido  el  punto  decimal).
+String  numeroText  =  String.valueOf(numero); //Recorremos  
+sus  dígitos  uno  por  uno,  empezando  por  el  final.  for  (int  i  =  numeroText.length()  
+−  1;  i  >=  0;  i−−)  {
+System.out.print(numeroText.charAt(i));
+}
+}
+Machine Translated by Google
+
+--- PAGE BREAK ---
+Short.parseShort(texto)
+Instrucción
+Tipo  de  dato  convertido
+Byte.parseByte(texto)
+byte
+int
+Double.parseDouble(texto)
+Float.parseFloat(texto)
+Long.parseLong(texto)
+double
+long
+short
+float
+Integer.parseInt(texto)
+Tabla  2.  1.  Instrucciones  para  convertir  cadenas  de  texto  en  tipos  primitivos
+69
+10
+Programación  básica  (ASX)
+2  public  class  MuestraNVueltas  {
+5
+14
+7
+8
+Programación  (DAW)
+9
+Programación  (DAM)
+1 //Muestra  una  cadena  de  texto  N  veces,  partiendo  de  argumentos  de  entrada.
+6
+13
+15
+16 }
+3
+12
+4
+Tipo  de  datos  compuestos
+11
+un  literal  o  una  concatenación  de  cadenas.
+"2,67334",  "1a88",  "true",  etc.  Estas  instrucciones  se  enumeran  en  la  tabla  2.1.
+qué  ocurre  si  el  segundo  argumento  no  es  un  valor  de  tipo  entero.
+Reto  7:  haga  un  programa  que  calcule  la  división  entre  dos  valores  reales,  haciendo  que
+es  la  cadena  de  texto  para  escribir,  y  el  segundo  el  número  de  veces  (un  valor  entero).
+Por  ejemplo,  suponga  un  programa  que  escribe  una  cadena  de  texto  un  cierto  número
+Donde  dice  texto  es  necesario  poner  un  objeto  de  tipo  String,  ya  sea  mediante  una  variable,
+a  veces.  Para  ello,  se  basa  en  dos  argumentos  en  el  método  principal.  El  primero
+Observe  su  código,  pruébelo  y  ejecútelo  en  su  entorno.  Observa  también
+estos  valores  sean  entrados  como  argumentos  en  el  método  principal.
+int  numVegas  =  Integer.parseInt(args[1]);
+}
+public  static  void  main  (String[]  args)  {
+veces.
+System.out.println(args[0]);
+//Hay  2  argumentos,  el  segundo  es  el  número  de  veces.
+System.out.println("¡El  número  de  argumentos  no  es  correcto!");
+//Hacemos  una  estructura  de  repetición.  Es  necesario  mostrar  el  primer  argumento  N
+for  (int  i  =  0 ;  y  <  numVegas;  i++)  {
+if  (args.length !=  2)  {
+}
+//Se  mira  si  existen  los  2  argumentos  que  corresponden.
+}  else  {
+}
+Machine Translated by Google
+
+--- PAGE BREAK ---
+Reto  2:
+2.4  Soluciones  de  los  retos  propuestos
+Reto  1:
+24
+44
+23
+35
+9
+2  public  class  LecturaCaracterTresIntents  {
+18
+14
+Programación  (DAW)
+7
+45
+41
+12
+43
+Tipo  de  datos  compuestos
+13
+5
+22
+4
+Programación  básica  (ASX)
+11
+16
+31
+29
+7
+3
+33
+27
+10 }
+36
+Programación  (DAM)
+39
+42
+17
+3
+21
+38
+10
+26
+34
+70
+37
+9
+4
+8
+1  public  class  InvierteCadena  {
+2
+5
+8
+1  importe  java.util.Scanner;
+19
+15
+40
+30
+6
+28
+32
+20
+25
+6
+}  else  {
+;
+}
+//¿Es  una  palabra  de  un  único  carácter?
+System.out.println("c)  Carácter");
+intentos++;
+public  static  void  main  (String[]  args)  {
+"'  es  incorrecta.")
+//El  número  de  intentos  se  declara  como  una  constante.
+if  ((caracter  >=  'a')&&(caracter  <=  'd'))  {
+'"
+boolean  acertado  =  false;
+}
+System.out.println("\""  +  palabra  +  "\"  no  es  un  carácter  individual.")
+System.out.println("Efectivamente,  la  respuesta  era  
+RESPUESTA_CORRECTA  +  "'.");
+System.out.print("Tu  respuesta  es  la  opción:  ");
+System.out.println("a)  Enter");
+}  else  {
+//Es  necesario  un  contador  de  intentos.
+//Se  lee  la  cadena  de  texto.
++  caracter  +
+System.out.println("d)  Booleano");
+System.out.println();
+char  caracter  =  palabra.charAt(0);
+//Se  recorren  las  posiciones  de  la  cadena  de  texto  una  por  una.
+if  (caracter  ==  RESPUESTA_CORRECTA)  {
+int  intentos  =  0;
+//Se  pregunta  mientras  no  se  acierte  ni  se  agoten  los  intentos.
+}
+System.out.println("Adivina  la  pregunta.");
+String  palabra  =  lector.next();
+for  (int  i  =  holaMon.length()  −  1;  i  >=  0;  i−−)  {
+//Se  extrae  el  carácter  de  la  cadena  de  texto.
+;
+System.out.println("La  respuesta
+System.out.println("'"  +  caracter  + //Si  existe  este  
+error,  no  se  agotará  ningún  intento...
+}
+System.out.print(holaMon.charAt(i));
+if  (palabra.length()  ==  1)  {
+"'  es  una  opción  incorrecta.");
+//Hay  que  saber  si  se  ha  acertado  (semáforo).
+'"
+Scanner  lector  =  new  Scanner(System.in);
+//¿La  respuesta  final  es  correcta?
+System.out.println("b)  Scanner");
+//¿Es  un  carácter  válido?  (a,  b,  cod).
+//No  lo  era.
+public  static  void  main  (String[]  args)  {
+public  static  final  char  RESPUESTA_CORRECTA  =  'b';
+//Si  hay  ese  error,  no  se  agotará  ningún  intento...
+}  else  {
+acertado  =  true;
+}
+while  ((intentos  <  INTENTOS)&&(!acertado))  {
+System.out.println("¿Cuál  de  los  siguientes  no  es  un  tipo  primitivo?");
+String  holaMon  =  "¡Hola,  mundo!";
++
+public  static  final  int  INTENTES  =  3;
+Machine Translated by Google
+
+--- PAGE BREAK ---
+Reto  3:
+Reto  4:
+5
+50
+11
+1  public  class  OrdenaArgumentos  {
+1  public  class  CuentaArgumentosA  {
+17
+9
+12
+9
+10
+13
+8
+18 }
+2
+Programación  básica  (ASX)
+7
+51
+6
+47
+49
+4
+3
+7
+48
+52 }
+8
+2
+13
+12
+10
+Tipo  de  datos  compuestos
+16
+46
+11
+71
+14 }
+Programación  (DAW)
+4
+6
+3
+15
+Programación  (DAM)
+14
+5
+}
+lector.nextLine();
+}
+}
++  numAs)
+args[i]  =  args[j];
+}
+numAs++;
+System.out.println("Las  cadenas  ordenadas  son:");
+for  (int  i  =  0;  y  <  args.length;  i++)  {
+for  (int  i  =  0;  y  <  args.length  −  1;  i++)  {
+System.out.println("El  número  de  argumentos  con  el  carácter  'a'  es  "
+//Un  contador  de  palabras  con  'a'.
+if  (intentos  >=  INTENTOS)  {
+if  (args[i].compareTo(args[j])  >  0)  {
+//Lo  mostramos  por  pantalla.
+String  cambio  =  args[i];
+}
+public  static  void  main  (String[]  args)  {
+//Hay  que  recorrer  el  array  de  argumentos.
+for  (int  i  =  0;  y  <  args.length;i++)  {
+System.out.println("Has  agotado  todos  tus  intentos.");
+;
+}
+int  numAs  =  0;
+}
+}
+}
+}
+for(int  j  =  i  +  1;  j  <  args.length;  j++)  {
+System.out.println(args[i]);
+args[j]  =  cambio;
+//Se  mira  si  hay  alguna  letra  'a'  en  la  cadena  de  texto.
+if  (−1 !=  args[i].indexOf("a"))  {
+}
+public  static  void  main(String[]  args)  {
+Machine Translated by Google
+
+--- PAGE BREAK ---
+Reto  7:
+Reto  5:
+Reto  6:
+14
+17
+22
+8
+8
+12
+11
+8
+5
+9
+12
+Programación  (DAW)
+13
+10
+23
+6
+2  public  class  GeneradorAcronimos  {
+Tipo  de  datos  compuestos
+1  importe  java.util.Scanner;
+10
+20
+7
+10
+3
+Programación  básica  (ASX)
+5
+12
+14 }
+7
+4
+6
+4
+3
+25 }
+Programación  (DAM)
+18
+21
+6
+9
+72
+2  public  class  ObtenerPalabras  {
+15 }
+13
+4
+2
+1  importe  java.util.Scanner;
+24
+7
+3
+13
+16
+19
+9
+14
+1  public  class  DividirArgumentosReales  {
+15
+11
+11
+5
+String  text  =  lector.nextLine();
+do  {
+//No  hay  espacios.  No  hay  ninguna  palabra  más  que  escribir.
+//Se  elimina  la  palabra  del  texto,  por  lo  que  se  acorta.
+//Está  bien  comprobar  si  el  número  de  argumentos  es  correcto.
+}  else  {
+//Dividimos  la  frase  en  palabras,  separadas  por  espacios.
+Scanner  lector  =  new  Scanner(System.in);
+System.out.println(palabra);
+//Mediante  un  bucle,  se  irá  acortando  el  texto  palabra  por  palabra.
+int  primeroEspacio  =  text.indexOf("  ");
+public  static  void  main(String[]  args)  {
+System.out.println("El  número  de  argumentos  es  incorrecto.");
+Scanner  lector  =  new  Scanner(System.in);
+System.out.println(texto);
+//Recorremos  las  palabras  y  escribimos  cada  inicial.
+}
+}
+double  resultado  =  dividendo/divisor;
+String[]  palabras  =  text.split("  ");
+//Conversión  de  tipos.
+}
+}
+System.out.println("El  resultado  es"
+boolean  fin  =  false;
+for(int  i  =  0;  y  <  palabras.length;  i++)  {
++  resultado);
+if  (primerEspacio  ==  −1)  {
+String  palabra  =  text.substring(0,  primerEspacio);
+System.out.println();
+System.out.println("Escribe  una  línea  de  texto  cualquiera  y  pulsa  retorno:");
+//La  primera  palabra  va  del  inicio  al  primer  espacio.
+}
+public  static  void  main(String[]  args)  {
+texto  =  text.substring(primerEspacio  +  1,  text.length());
+public  static  void  main(String[]  args)  {
+if  (args.length !=  2)  {
+double  dividendo  =  Double.parseDouble(args[0]);
+//Hay  un  espacio.  Extraer  palabra  y  mostrarla.
+String  text  =  lector.nextLine();
+System.out.print(palabras[i].charAt(0));
+}  else  {
+System.out.println("Escribe  una  frase  de  texto  y  pulsa  retorno:");
+fin  =  true;
+}
+double  divisor  =  Double.parseDouble(args[1]);
+}  while  (!fi);
+Machine Translated by Google
+
+--- PAGE BREAK ---

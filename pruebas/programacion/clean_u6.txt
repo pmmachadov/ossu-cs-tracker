@@ -1,0 +1,3068 @@
+System.out.println("Error:  "  +  e);
+F  igura  2.  1.  Esquema  de  flujo  de  control  frente  a  un  bloque  try­catch.
+No  deberían  llevarse  a  cabo
+operaciones  de  entrada /
+System.out.println("Finalización  del  programa...");
+salida  en  un  blog  catch
+//Blog  "try":  operaciones  de  entrada /  salida
+//Las  instrucciones  fuera  de  la  sentencia  "try/catch"  siempre  se  ejecutan
+}
+//Igual  que  las  que  hay  después  de  una  sentencia  "if/lese"
+}
+//Se  intenta  abrir  un  archivo  para  lectura
+}
+ObrirFichero  programa  =  new  ObrirFichero();
+public  static  void  main  (String[]  args)  {
+programa.inicio();
+public  void  inicio()  {
+//Se  ha  producido  una  excepción  en  algún  sitio  del  blog  "try"!
+try  {
+File  f  =  new  File("Document.txt");
+//El  archivo  existe.  Todo  correcto
+System.out.println("¡Enhorabuena!");
+}  catch  (Exception  e)  {
+Scanner  lector  =  new  Scanner(f);
+System.out.println("Archivo  abierto  correctamente.");
+//Blog  "catch":  Tratamiento  de  errores
+1  package  unidad6.apartado2.ejemplos;
+Programación  (DAW)
+Programación  (DAM)
+4  public  class  AbrirArchivo  {
+27 }
+3  importe  java.util.Scanner;
+2  importe  java.io.File;
+Programación  básica  (ASX)
+en  el  package  java.lang  (y  por  tanto,  no  hace  falta  importar).
+Si  se  fija  en  el  ejemplo,  éste  también  muestra  una  particularidad  de  la  sintaxis
+programa  en  cada  caso.
+haya  un  archivo  con  ese  nombre,  y  en  caso  contrario.  Verá  como  el  resultado  del
+programa  será  distinto.  La  figura  2.1  muestra  un  esquema  del  flujo  de  control  del
+de  esta  sentencia.  Al  inicio  del  blog  catch  hay  una  variable  declarada,  con
+el  identificador  e,  de  forma  muy  parecida  a  cómo  se  haría  con  el  parámetro  de  un
+método:  (Exception  e).  Esta  variable  pertenece  a  la  clase  Exception,  que  está
+
+Tabla  2.  1.  Métodos  de  lectura  de  datos  de  la  clase  ”Scanner”
+Programación  (DAW)
+Programación  básica  (ASX)
+Programación  (DAM)
+2.1.3  Lectura  de  datos
+Por  tanto,  sólo  tiene  que  preocuparse  de  que  ya  dispone  de  esta  variable  para  poder  describir  qué
+error  se  ha  producido  exactamente.  Esta  descripción  es  siempre  una  cadena  de  texto,  que  puede
+ser  impresa  de  la  misma  forma  que  se  haría  con  una  variable  de  tipo  String.  Cuando  se  produce
+una  excepción,  si  el  código  afectado  está  dentro  del  método  inicio(),  normalmente  es  suficiente  con
+mostrar  el  mensaje  de  error  por  pantalla.
+Las  variables  de  la  clase  Exception  contienen  información  sobre  la  excepción  que  ha
+desencadenado  el  blog  catch  al  que  pertenecen.  Java  se  encarga  de  inicializarlas
+correctamente  siempre  que  se  produzca  alguna  excepción.
+Ahora  bien,  si  el  código  está  dentro  de  otro  método  auxiliar,  y  éste  en  su  declaración  indica  que
+tiene  un  parámetro  de  salida,  debe  tenerse  en  cuenta  que  dentro  del  código  es  siempre  obligatorio
+invocar  la  sentencia  return,  tanto  si  ha  sucedido  una  excepción  como  si  no.  De  lo  contrario,  Java  da
+un  error  de  compilación.  Dado  este  hecho,  será  necesario  que  dentro  del  blog  catch  se  invoque
+return  con  algún  valor  que  se  considere  no  válido,  y  que  sea  a  posteriori  cuando  se  compruebe  si
+el  valor  devuelto  al  invocar  este  método  es  válido  o  no.
+Desde  el  punto  de  vista  de  instrucciones  a  ejecutar,  la  lectura  secuencial  de  datos  desde  un  archivo
+orientado  a  carácter  es  prácticamente  igual  a  leer  datos  desde  el  teclado.  Los  valores  se  van
+leyendo  de  forma  ordenada,  desde  el  inicio  de  la  secuencia  que  representan  hasta  el  final.  De
+hecho,  ahora  que  ya  conoce  qué  es  una  clase,  y  que  éstas  se  pueden  comportar  como  tipos
+compuestos,  cómo  inicializarlas  sobre  una  variable  y  cómo  invocar  métodos  correctamente  a  partir
+de  esta  variable,  es  un  buen  momento  para  recapitular  sobre  el  funcionamiento  de  la  clase  Scanner,
+con  vistas  a  mostrar  cómo  llevar  a  cabo  la  lectura  de  datos  desde  un  archivo.
+Las  operaciones  de  lectura  usando  Scanner  se  llevan  a  cabo  mediante  la  invocación  de  los  métodos
+que  ofrece,  resumidos  en  la  tabla  2.1,  los  cuales  evalúan  el  valor  recién  leído.
+A  medida  que  va  viendo  nuevos  aspectos  del  tratamiento  de  ficheros  a  lo  largo  del  apartado,  se
+verá  más  claro  el  funcionamiento  de  la  sentencia  try/catch  y  el  tratamiento  de  excepciones,
+especialmente  en  lo  que  se  refiere  a  la  detección  de  errores  a  métodos  auxiliares.
+long
+byte
+Tipo  de  dato  leído
+Método
+nextByte()
+short
+nextInt()
+nextShort()
+nextLong()
+nextFloat()
+float
+int
+
+String  (una  frase)
+nextBoolean()
+Tipo  de  dato  leído
+Método
+nextDouble()
+boolean
+next()
+double
+nextLine()
+String  (una  palabra)
+Programación  (DAM)
+Programación  básica  (ASX)
+Programación  (DAW)
+Tabla  2.  1  (continuación)
+F  igura  2.  2.  Lectura  secuencial  de  valores  en  un  archivo  orientado  a  carácter
+Cada  vez  que  se  realiza  una  lectura,  el  apuntador  avanza  automáticamente  hasta  el
+siguiente  valor  dentro  del  archivo,  y  no  hay  ninguna  manera  de  hacerlo  retroceder.
+Cuando  se  inicia  una  variable  de  tipo  Scanner ,  este  apuntador  se  encuentra  en  el  primer
+valor  dentro  del  archivo.  Este  proceso  se  repite  hasta  que  se  han  leído  tantos  valores
+como  se  desea.  La  figura  2.2  muestra  un  pequeño  esquema  de  este  proceso,  recalcando
+cómo  avanza  el  apuntador  a  la  hora  de  realizar  operaciones  de  lectura  sobre  un  archivo
+que  contiene  valores  de  tipo  entero.
+En  el  caso  de  un  archivo,  la  variable  de  tipo  Scanner  gestiona  internamente  un  apuntador
+que  siempre  indica  sobre  qué  valor  actuarán  las  operaciones  de  lectura.
+Una  vez  se  ha  mostrado  cómo  funciona  el  apuntador  interno  al  leer  valores  desde  un
+archivo,  vale  la  pena  volver  a  repasar  la  diferencia  entre  el  método  next()  y  nextLine(),  ya
+que  ambos  evalúan  una  cadena  de  texto.  El  primero  sólo  lee  una  palabra  individual,
+considerando  “palabra”  un  conjunto  de  caracteres  que  no  están  separados  por  espacios
+o  saltos  de  línea.  Este  conjunto  de  caracteres  pueden  ser  tanto  palabras,  tal  y  como  se
+encontrarían  en  un  diccionario  (“casa”,  “hola”,  etc.),  como  valores  numéricos  expresados
+en  formato  texto  (“2”,  “3,14”,  “1024”,  etc.).  Sin  embargo,  nextLine()  lee  una  frase  completa.
+Concretamente,  lo  que  lee  es  todo  el  texto
+Los  distintos  valores  se
+distinguen  al  separarse  por
+espacios  o  saltos  de  línea.
+Una  vez  leído  un  valor,  éste  no
+puede  ser  “releído”.
+
+el  método  close).
+se  considera  en  uso,  su  acceso  puede  verse  limitado.  Si  no  invoca  close(),  el
+Una  vez  finalizada  la  lectura  de  los  datos  del  archivo,  ya  sean  todos  o  sólo
+se  pone  entonces  al  inicio  de  la  línea  siguiente.
+llamado  close().  Éste  indica  al  sistema  operativo  que  el  archivo  ya  no  está
+siendo  utilizado  por  el  programa.  Esto  es  muy  importante,  ya  que  mientras  un  archivo
+que  hay  en  el  archivo  y  nada  más.  Esto  tiene  dos  efectos  sobre  el  proceso  de  lectura.
+ha  finalizado  todas  las  operaciones  de  entrada /  salida.
+archivo  llamado  “Enters.txt”,  ubicado  en  su  carpeta  de  trabajo.  Este  archivo  de
+texto  deberá  crearlo,  garantizando  que  contiene  exactamente  10  valores  enteros,
+separados  entre  sí  por  espacios  en  blanco  o  saltos  de  línea.  Fíjese  como  todas  las
+teclado  es  que  las  operaciones  de  lectura  no  son  producto  de  una  interacción  directa
+El  siguiente  programa  muestra  un  ejemplo  de  cómo  leer  diez  valores  enteros  desde  uno
+Una  diferencia  importante  a  la  hora  de  tratar  con  archivos  respecto  a  leer  datos  del
+sistema  operativo  puede  tardar  un  tiempo  en  darse  cuenta  de  que  el  archivo  ya  no  se  encuentra  en  uso
+con  el  usuario,  que  es  quien  escribe  los  datos.  Sólo  se  puede  trabajar  con  los  datos
+Por  un  lado,  recuerde  que  cuando  se  lleva  a  cabo  el  proceso  de  lectura  de  una
+que  existe  entre  la  posición  actual  del  apuntador  y  el  próximo  salto  de  línea.  El  apuntador
+secuencia  de  valores,  siempre  hay  que  tener  cuidado  de  usar  el  método  adecuado  al  tipo
+dentro  de  una  sentencia  try/catch.  También,  fíjese  que  al  terminar  la  lectura,  se  invoca
+es  algo  que  usted  ha  decidido  vosotros  a  la  hora  de  hacer  el  programa,  pero  nada  garantiza
+una  parte,  y  ya  no  hace  falta  leer  más,  es  imprescindible  ejecutar  un  método  especial
+de  valor  que  se  espera  que  venga  a  continuación.  Saber  qué  tipo  de  valor  se  espera
+que,  al  escribir  el  archivo  de  texto,  no  se  haya  equivocado  sin  querer,  como  puede  ocurrir
+aunque  su  programa  ya  haya  finalizado.  Siempre  hay  que  cerrar  el  archivo  una  vez
+instrucciones  relativas  a  la  lectura  del  archivo,  las  operaciones  de  entrada /  salida,  son
+2  importe  java.io.File;
+Programación  (DAM)
+Programación  (DAW)
+1  package  unidad6.apartado2.ejemplos;
+27 }
+3  importe  java.util.Scanner;
+Programación  básica  (ASX)
+4  public  class  LeerEnteros  {
+operaciones  de  entrada /
+El  sistema  operativo  dice  que
+Si  no,  se  dice  estar  cerrado.
+//Si  se  ejecuta  esta  instrucción,  se  ha  abierto  el  archivo
+error,  ya  que  los  valores  en  un
+}
+File  f  =  new  File("Enters.txt");
+//Se  intenta  abrir  el  archivo
+archivo  orientado  a  carácter
+for  (int  i  =  0;  y  <  NUM_VALORS;  y  ++)  {
+int  valor  =  lector.nextInt();
++  valor);
+un  archivo  donde  se  están  haciendo
+public  static  void  main  (String[]  args)  {
+}
+System.out.println("El  valor  leído  es:  "
+try  {
+//Excepción!
+}
+}
+programa.inicio();
+lector.close();
+}  catch  (Exception  e)  {
+siempre  se  pueden  considerar
++  e);
+Scanner  lector  =  new  Scanner(f);
+cadenas  de  texto.
+LeerEnters  programa  =  new  LeerEnters();
+nextLine()  nunca  pueden  dar
+salida  está  en  uso  o  abierto.
+//Hay  que  cerrar  el  archivo
+public  static  final  int  NUM_VALORS  =  10;
+public  void  inicio()  {
+System.out.println("Error:  "
+Los  métodos  next()  o
+
+Recuerde  que  PrintStream  sólo
+opera  con  archivos  nuevos.
+Si  se  escribe  en  un  archivo
+existente,  se  sobreescribe
+totalmente.
+La  escritura  secuencial  de  valores  también
+es  cómo  usar  una  máquina  de  escribir.
+Fuente:  LjL
+Programación  (DAW)
+Programación  básica  (ASX)
+Programación  (DAM)
+En  este  caso,  las  operaciones  de  escritura  se  realizan  mediante  los  métodos  proporcionados
+por  la  clase  PrintStream.  Estos  son  básicamente  dos,  ahora  ya  viejos  conocidos  vuestros,
+que  aceptan  como  único  parámetro  cualquier  tipo  primitivo  de  datos,  o  una  cadena  de  texto:
+print(...)  y  println(...).  La  diferencia  es  que  el  primero  sólo  escribe  el  valor  usado  como
+parámetro  en  formato  cadena  de  texto,  mientras  que  el  segundo  también  incluye
+automáticamente  un  salto  de  línea,  ya  que  “println”  significa  “ print  line”  (“imprimir  línea”,  en
+inglés).
+Para  verlo,  intente  ejecutar  el  ejemplo  anterior  con  archivo  donde,  o  alguno  de  los  valores  contenidos
+no  es  de  tipo  entero,  o  el  número  de  valores  almacenados  es  inferior  a  diez.
+Si  el  tipo  leído  no  se  corresponde  con  el  método  invocado  (por  ejemplo,  se  ha
+invocado  el  método  nextInt()  cuando  el  apuntador  es  sobre  un  real)  o  se  intenta  hacer
+una  lectura  cuando  el  apuntador  ya  ha  superado  todos  los  valores  del  archivo,  se
+producirá  una  excepción.
+cuando  escriba  datos  mediante  el  teclado.  Ahora  bien,  en  este  caso,  al  operar  con  archivos,
+y  no  por  el  teclado,  no  existe  la  opción  de  pedir  simplemente  al  usuario  que  lo  vuelva  a
+escribir.  Por  tanto,  el  programa  debería  decir  que  se  ha  producido  un  error  ya  que  el  archivo
+no  tiene  el  formato  correcto  y  finalizar  el  proceso  de  lectura.
+Por  otro  lado,  también  debe  controlar  que  nunca  lea  más  valores  de  los  disponibles  para  leer.  En
+un  caso  como  éste,  a  la  hora  de  hacer  entrada  de  datos  por  el  teclado,  el  programa  simplemente
+se  bloqueaba,  esperando  a  que  el  usuario  escribiera  nuevos  valores.  Cuando  opera  con  archivos
+esto  no  sucede.  Intentar  leer  un  nuevo  valor  cuando  el  apuntador  ya  ha  superado  el  último  disponible
+se  considera  erróneo.  Una  vez  que  se  llega  al  final  del  archivo,  ya  no  queda  más  remedio  que
+invocar  close()  y  finalizar  la  lectura.
+Reto  1.  Realice  un  programa  que  lea  sucesivamente  15  valores  de  tipo  real  desde  un
+archivo  llamado  “Reals.txt”.  Este  archivo  lo  puede  hacer  usted  mismo.  El  programa  debe
+mostrar  cuál  de  los  valores  dentro  del  archivo  es  el  mayor.
+2.1.4  Escritura  de  datos
+En  este  caso,  la  escritura  secuencial  de  datos  en  un  archivo  orientado  a  carácter  es  muy
+parecida  a  mostrar  texto  por  pantalla.  Los  datos  se  van  escribiendo  una  tras  otra,  con  la
+opción  de  hacerlo  consecutivamente  o  separados  por  líneas.  Una  vez  escrito  un  dato,  ya  no
+hay  marcha  atrás.  No  es  posible  escribir  información  antes  o  en  medio  de  valores  ya  escritos.
+
+public  static  final  int  NUM_VALORS  =  20;
+F  igura  2.  3.  Escritura  secuencial  de  valores  en  un  archivo  orientado  a  carácter
+1  package  unidad6.apartado2.ejemplos;  2  importe  java.io.File;  3  importe
+java.io.PrintStream;  4  public  class
+EscribirEntersDobles  {
+Programación  (DAW)
+Programación  básica  (ASX)
+Programación  (DAM)
+El  siguiente  código  sirve  como  ejemplo  de  un  programa  que  escribe  un  archivo  dentro  de  su  carpeta
+de  trabajo  llamado  “Enters.txt”.  Éste  contiene  20  valores  enteros,  de  modo  que,  empezando  por  el
+1,  cada  uno  sea  el  doble  del  anterior.  Compílelo  y  pruébelo.  Tenga  en  cuenta  que  si  ya  existía  un
+archivo  con  ese  nombre,  quedará  totalmente  sobreescrito.  Después,  puede  intentar  leerlo  con  el
+programa  de  ejemplo  anterior  para  leer  10  valores  enteros  y  mostrarlos  por  pantalla.
+Como  en  el  caso  de  la  lectura,  la  clase  PrintStream  también  gestiona  un  apuntador  que  le  permite
+saber  a  partir  de  qué  posición  del  texto  debe  ir  escribiendo.  Cada  vez  que  se  invoca  uno  de  sus
+métodos  de  escritura,  el  apuntador  avanza  automáticamente,  y  no  es  posible  recularlo.  A  efectos
+prácticos,  este  apuntador  siempre  está  al  final  del  archivo,  por  lo  que,  a  medida  que  se  van
+escribiendo  datos,  el  archivo  va  incrementando  su  tamaño.  La  figura  2.3  muestra  un  esquema  del
+funcionamiento  de  las  escrituras.
+Un  aspecto  que  merece  la  pena  remarcar,  y  que  prevé  la  figura,  es  que  el  proceso  de  escritura  no
+genera  automáticamente  el  delimitador  entre  valores.  Por  tanto,  es  responsabilidad  de  su  programa
+escribir  los  espacios  en  blanco  o  salto  de  línea  correspondientes.  En  caso  contrario,  los  valores
+quedarán  enganchados,  y  en  posterior  lectura  se  interpretarán  como  un  único  valor.  Por  ejemplo,
+si  se  escribe  el  valor  entero  2  y  después  el  4,  sin  prever  ningún  delimitador,  en  el  archivo  se  habrá
+escrito  al  final  el  texto  del  valor  24.
+
+Reto  2.  Modifique  el  ejemplo  de  modo  que  los  valores  enteros,  en  lugar  de  estar
+Al  terminar  la  escritura  de  un  archivo  también  es  imprescindible  invocar  el  método
+que  pueden  complicar  el  proceso.  El  objetivo  de  este  apartado  es  indicar  algunos
+una  instrucción  de  escritura  no  significa  que  de  inmediato  estos  datos  ya  están
+o  la  escritura  de  un  archivo  de  este  tipo.
+todos  escritos  en  una  sola  línea  en  el  archivo  de  texto,  estén  divididos  en  4  líneas.  En  cada
+pendientes  de  escribir  se  actualicen  definitivamente  en  el  archivo.
+esquemas  o  estrategias  que  puede  prever  para  llevar  a  cabo  correctamente  la  lectura
+a  carácter,  y  ya  sabe  exactamente  cómo  se  materializa  en  sentencias  de  Java,
+más  importante.  Esto  se  debe  a  que  los  sistemas  operativos  a  menudo  llevan  a
+En  el  caso  de  las  operaciones  de  escritura,  el  cierre  del  archivo  es  todavía  muy
+close()  sobre  la  variable  tipo  PrintStream.
+término  de  forma  diferida  la  actualización  de  los  datos.  O  sea,  el  hecho  de  ejecutar
+escritas  en  el  archivo.  Puede  pasar  un  intervalo  de  tiempo  variable  entre  ambas  acciones.
+vale  la  pena  exponer  algunas  situaciones  o  problemáticas  que  se  pueden  encontrar  y
+línea  debe  haber  escritos  5  valores.
+Una  vez  se  ha  presentado  cómo  llevar  a  cabo  el  acceso  secuencial  a  un  archivo  orientado
+2.2  Aspectos  importantes  del  acceso  secuencial
+Sólo  a  la  hora  de  ejecutar  el  método  close()  se  fuerza  a  que  todos  los  datos
+Programación  (DAW)
+34 }
+Programación  básica  (ASX)
+Programación  (DAM)
+valor  =  valor*2;
+escritor.print(valor);
+//Se  van  generando  el  resto  de  valores  y  escribiendo
+//Se  calcula  y  escribe  el  nuevo  valor
+}
+//Hay  que  cerrar  el  archivo
+escritor.print("  ");
+public  static  void  main  (String[]  args)  {
+try  {
++  e);
+int  valor  =  1;
+//Se  escribe  antes  como  delimitador  un  espacio  en  blanco
+//Se  escribe  el  primer  valor,  que  no  necesita  un  espacio  antes
+File  f  =  new  File("Enters.txt");
+escritor.close();
+EscribirEntersDobles  programa  =  new  EscribirEntersDobles();
+}
+programa.inicio();
+El  proceso  de  actualización  de
+//Se  intenta  abrir  el  archivo
+}
+}  catch  (Exception  e)  {
+for  (int  i  =  1;  y  <  20;  y  ++)  {
+escritor.print(valor);
+los  datos  se  conoce  como
+public  void  inicio()  {
+flush  (“tirar  de  la  cadena”,
+//Excepción!
+System.out.println("Archivo  escrito  satisfactoriamente.");
+PrintStream  escritor  =  new  PrintStream(f);
+en  inglés).
+System.out.println("Error:  "
+}
+
+}  public  void  inicio()  { try  { //Se
+intenta
+abrir  el  archivo  File  f  =  new
+File("EntersMarca.txt");  Scanner  lector  =  new  Scanner(f);
+1  package  unidad6.apartado2.ejemplos;  2  importe
+java.io.File;  3  importe
+java.util.Scanner;  4  public  class
+LeerMarcaFi  { public  static  final  int  MARCA_FI
+=  −100;  public  static  void  main  (String[]  args)  {
+1  2  10  8  6  23  −15  0  −2  5  −100
+LeerMarcaFi  programa  =  new  LeerMarcaFi();  programa.inicio();
+Programación  (DAM)
+Programación  básica  (ASX)
+Programación  (DAW)
+El  siguiente  programa  sería  la  adaptación  del  ejemplo  de  lectura  de  datos  desde  un  archivo  llamado
+“EntersMarca.txt”  partiendo  de  esta  estrategia.  Pruébelo  usando  archivos  con  diferentes  valores
+escritos.  En  este  caso,  la  siguiente  marca  es  el  valor  entero  ­100.
+El  número  de  valores  dentro  del  archivo  ya  es  conocido  dentro  del  programa.  Por  ejemplo,
+si  se  espera  que  el  archivo  tenga  9  valores,  el  programa  sólo  debería  hacer  9  lecturas  y
+ninguna.  Si  se  hacen  menos,  no  pasará  nada,  aparte  de  que  dejaremos  valores  sin  leer,
+pero  si  se  hacen  más,  se  producirá  una  excepción.  Éste  es  el  caso  del  ejemplo  de  lectura
+que  se  ha  mostrado.
+Aunque  el  proceso  de  lectura  secuencial  de  archivos  es  bastante  parecido  a  la  lectura  de
+datos  desde  el  teclado,  una  de  las  diferencias  sustanciales  que  hay  que  tener  muy  en
+cuenta  es  que  el  número  de  valores  que  se  pueden  leer  está  fijado  por  el  propio  contenido
+de  archivo.  Nunca  se  dará  el  caso  de  que  el  programa  se  quede  esperando  a  que  el
+usuario  escriba  texto.  Si  se  intenta  leer  valores  de  un  archivo  cuando  ya  se  ha  llegado  al
+final  de  la  secuencia  y  se  han  agotado  los  valores  contenidos,  se  producirá  una  excepción.
+Aunque  mediante  el  control  de  excepciones  se  puede  detectar  y  tratar  este  caso,  en
+general,  es  mejor  generar  código  dentro  de  sus  programas  que  evite  llegar  a  esta  situación.
+2.2.1  Detección  de  final  de  secuencia
+Por  eso,  dispone  básicamente  de  tres  estrategias:
+El  último  valor  no  representa  realmente  un  dato  a  tratar,  sino  que  es  un  valor  especial  que
+identifica  el  final  de  la  secuencia.  Este  valor  no  se  considera  como  parte  de  los  valores  a
+tratar  dentro  del  archivo,  sólo  es  una  marca  de  finalización.  Ahora  bien,  la  estrategia  sólo
+vale  si  hay  valores  que  nunca  se  darán  dentro  de  la  secuencia,  ya  que  de  lo  contrario  es
+imposible  distinguir  entre  un  valor  que  indica  la  marca  de  finalización,  o  uno  que  realmente
+es  válido  y  es  necesario  tratar.  Por  ejemplo,  si  se  sabe  que  todos  los  valores  serán  siempre
+entre  ­50  y  50,  se  podría  usar  un  valor  ­100  como  marca  de  finalización,  tal  y  como  muestra
+el  siguiente  ejemplo  de  archivo.  Si  el  archivo  pudiera  prever  cualquier  valor,  entonces  esta
+estrategia  no  le  sirve.
+2.  Usar  una  marca  de  finalización
+1.  Número  de  valores  conocidos  a  priori
+
+El  siguiente  programa  sería  la  adaptación  del  ejemplo  de  lectura  de  datos  desde  un
+El  primer  valor  de  toda  la  secuencia  puede  ser  un  entero  que  identifica  cuántos  valores
+3.  Número  de  valores  indicado  en  el  propio  archivo
+hay  escritos  a  continuación,  por  lo  que  el  programa  nunca  hará  más  lecturas  de
+seguido  hay  9  enteros.  Por  tanto,  un  programa  no  debería  intentar  leer  más  de  los
+indicados,  o  está  garantizado  que  se  va  a  producir  una  excepción.
+las  establecidas.  Por  ejemplo,  en  el  siguiente  archivo,  el  primer  valor  indica  que  todo
+archivos  con  diferentes  valores  escritos.
+archivo  llamado  “EntersMida.txt”  partiendo  de  esta  estrategia.  Pruébelo  usando
+Programación  (DAW)
+4  public  class  LeerMida  {
+Programación  básica  (ASX)
+1  package  unidad6.apartado2.ejemplos;
+35 }
+Programación  (DAM)
+2  importe  java.io.File;
+29 }
+3  importe  java.util.Scanner;
+System.out.println("El  valor  leído  es:  "
+lector.close();
+//Si  se  ejecuta  esta  instrucción,  se  ha  abierto  el  archivo
+boolean  leer  =  true;
+int  valor  =  lector.nextInt();
+//Marca  de  fin.  Ya  ha  terminado  la  lectura
+lector.close();
+//Aún  no  ha  terminado.  Tratar  dato
+System.out.println("El  valor  leído  es:  "
+}  catch  (Exception  e)  {
+//Si  se  ejecuta  esta  instrucción,  se  ha  abierto  el  archivo
+}
++  valor);
+if  (valor  ==  MARCA_FI)  {
+public  void  inicio()  {
+//Excepción!
+programa.inicio();
+Scanner  lector  =  new  Scanner(f);
+//Hay  que  cerrar  el  archivo
+}
+}  else  {
+System.out.println("Error:  "
+int  valor  =  lector.nextInt();
+}
+public  static  void  main  (String[]  args)  {
+LeerMida  programa  =  new  LeerMida();
+//Se  lee  el  tamaño
+for  (int  i  =  0;  y  <  tamaño;  y  ++)  {
++  e);
+//Esta  estrategia  se  basa  en  un  semáforo
+System.out.println("Hay  "  +  tamaño  +  "  valores.");
+}
+try  {
++  e);
+}
+}
+//Se  intenta  abrir  el  archivo
+//Hay  que  cerrar  el  archivo
+int  tamaño  =  lector.nextInt();
++  valor);
+//Excepción!
+}
+1  9  2  10  8  6  23  −15  0  −2  5
+while  (leer)  {
+}  catch  (Exception  e)  {
+}
+System.out.println("Error:  "
+File  f  =  new  File("EntersMida.txt");
+leer  =  false;
+
+//Se  intenta  abrir  el  archivo
+programa.inicio();
+public  static  final  String  MARCA_FI  =  "fin";
+//la  palabra  "fi"  sirve  como  marca  de  final  de  archivo
+public  static  void  main  (String[]  args)  {
+}
+public  void  inicio()  {
+MediaVocales  programa  =  new  MediaVocals();
+Scanner  lector  =  new  Scanner(f);
+File  f  =  new  File("Document.txt");
+//Datos  a  recopilar
+try  {
+Programación  (DAW)
+Programación  básica  (ASX)
+Programación  (DAM)
+1  package  unidad6.apartado2.ejemplos;
+2  importe  java.io.File;
+4  public  class  MediaVocales  {
+3  importe  java.util.Scanner;
+cada  vez  que  se  realiza  una  operación,  pero  no  puede  retroceder.  Esto  significa  que  se  debería
+dos  planteamientos  posibles.
+cuando  termina  el  archivo,  se  usa  la  palabra  “fin”  como  marca  (que  no  debe  ser  tratada).
+corrompido  y  se  haya  perdido  la  marca  de  finalización,  o  que  el  número  de  valores  escrito
+Como  puede  verse,  incluso  en  casos  donde  es  necesario  acumular  resultados  y  hacer  código  un  poco
+1.  Tratamiento  a  medida  que  se  lee
+Una  de  las  particularidades  del  tratamiento  secuencial  de  datos  desde  un  archivo  es  que,
+en  lugar  de  avanzar  posición  a  posición  dentro  de  un  array,  se  avanza  valor  a  valor  dentro  de  un  array
+Evidentemente,  estos  mecanismos  no  son  inmunes  a  los  errores  de  programación,  ya
+pasada,  si  se  plantean  correctamente.
+por  palabra  que  existe  en  total  (número  de  vocales /  número  de  palabras).  Para  saber
+una  tras  otra,  pero  no  es  posible  retroceder.  El  apuntador  del  archivo  sólo  avanza
+de  plantear  el  procesamiento  de  los  datos  de  forma  que  con  un  único  recorrido
+archivo.  Ejemplos  de  este  caso  puede  ser  encontrar  el  máximo,  el  mínimo,  calcular  una
+una  vez  inicializada  la  variable  a  usar  para  acceder  a  ella,  los  datos  sólo  se  pueden  leer
+al  principio  no  sea  correcto.  Por  eso  es  importante  tratar  las  excepciones  y  mostrar
+En  algunos  casos,  las  tareas  que  debe  llevar  a  cabo  el  programa  se  basan  en  un
+el  error  por  pantalla,  ya  que  al  operar  con  archivos,  nunca  se  puede  estar  del  todo  seguro  que
+se  parte  de  un  array  donde  están  dispuestos  ya  los  datos,  y  vosotros  para  tratarlos
+el  programa  ya  sea  posible  realizar  la  tarea  en  cuestión.  Esto  normalmente  lleva  a
+único  recorrido.  Se  puede  establecer  un  cierto  paralelismo  entre  una  situación  en  la  que
+2.2.2  Procesamiento  de  los  datos  leídos
+media,  mostrar  los  valores  que  cumplen  ciertas  condiciones  por  pantalla,  etc.
+que  puede  suceder  que  se  despiste  y  que  las  cosas  no  encajen.  Quizás  se  ha  olvidado
+de  escribir  todos  los  valores  que  toca  en  el  archivo,  que  por  algún  motivo  se  haya  truncado  o
+los  datos  que  se  quieran  leer  tendrán  un  formato  correcto.
+basta  con  hacer  un  recorrido  desde  el  primer  al  último  elemento.  En  este  caso,
+Por  ejemplo,  el  siguiente  programa,  que,  dado  un  fichero  llamado  “Docu­ment.txt”  con  diferentes
+palabras,  cuenta  la  media,  sin  decimales,  de  vocales
+complejo  usando  diseño  descendente  se  pueden  llevar  a  cabo  las  tareas  de  una  sola
+
+*/
+System.out.println("La  media  es  "  +  media);
+case  'a':
+//Se  pasa  a  minúscula  todo  para  hacerlo  más  fácil
+leer  =  false;
+case  'i':
+}
+return  nada;
+case  'u':  return  true;
+System.out.println("Hay"
+if  (MARCA_FI.equals(palabra))  {
+"  palabras.");
+}
+}
+*
+public  boolean  esVocal(char  c)  {
+while  (leer)  {
+public  int  contarVocales(String  palabra)  {
+}
+*
+/**  Dice  si,  dado  un  carácter  en  minúscula,  éste  es  o  no  una  vocal.
+default:  return  false;
+*  @return  Si  es  (true)  o  no  (false)  una  vocal
+*  @return  Número  de  vocales
+}
+//Excepción!
++  e);
+for(int  i  =  0;y  <  palabra.length();  i++)  {
+}
+int  numPalabras  =  0;
+case  'e':
+switch(c)  {
+System.out.println("Hay"  double  media
+=  numVocals/numPalabras;
+lector.close();
+//Marca  de  final
+int  res  =  0;
+nada++;
+}  catch  (Exception  e)  {
+System.out.println("Error:  "
+}
+if  (esVocal(palabra.charAt(i)))  {
+}
++  numVocales  +
+//Marca  de  fin  de  lectura
+String  palabra  =  lector.next();
+case  'o':
+}
+//Tratar  dato
+numPalabras++;
+*  @param  palabra  Cadena  de  texto  donde  es  necesario  contar  las  vocales
+}  else  {
+//Hay  que  cerrar  el  archivo
+/**  Cuenta  las  vocales  en  una  palabra.
+boolean  leer  =  true;
+int  numVocales  =  0;
+*  @param  c  Carácter  a  comprobar
+palabra  =  palabra.toLowerCase();
++  numPalabras  +
+*/
+numVocales  =  numVocales  +  contarVocales(palabra);
+"  vocales.");
+Programación  (DAW)
+Programación  básica  (ASX)
+Programación  (DAM)
+74 }
+su  trabajo.  Además,  ocupan  más  memoria,  ya  que  hay  que  declarar  el  array  on
+un  array  a  medida  que  se  leen,  y  posteriormente  operar  sobre  ese  array.
+2.  Primer  lectura  y  tratamiento  posterior
+Otra  opción  disponible  es  primero  ir  almacenando  los  datos  leídos  dentro
+eficientes,  ya  que  primero  hacen  la  lectura  de  datos  y  después  realmente  se  dedican  a  hacer
+guardar  todos  los  datos  del  archivo.
+Esta  estrategia  tiene  la  desventaja  de  que  sus  programas  son  algo  menos
+
+También  fíjese  que  este  es  un  caso  en  el  que  se  hace  tratamiento  de  excepciones  en  un
+de  todas  ellas,  habrá  que  hacerlo  de  esta  forma.  Muchos  programas  de  ordenador
+Hasta  que  no  haga  “guardar”,  no  se  actualizan  los  datos  de  memoria  a  disco.
+u  hojas  de  cálculo  hacen  precisamente  esto.  Primero  cargan  el  archivo  a  memoria  y
+salida  siempre  debe  devolver  algún  valor,  tanto  si  sucede  una  excepción  como  si  no.
+en  un  nuevo  archivo  llamado  “EntersOrdenat.txt”.  Para  ordenar  un  conjunto  de  valores,
+es  necesario  disponer  de  todos  ellos  a  la  vez.  No  hay  otra  forma.  El  programa  se  basa
+al  indicar  en  su  primer  valor  el  número  de  elementos  del  archivo  para  saber  cuántos
+es  necesario  leer.  Fíjese  también  cómo,  mediante  diseño  descendente,  se  distribuye  el
+código  para  tratar  cada  archivo  en  métodos  diferenciados.
+posteriormente  lo  muestran  por  pantalla  de  forma  que  le  permiten  modificarlo.
+precisamente  por  eso  usan  esta  estrategia.  Por  ejemplo,  los  editores  de  texto
+Desgraciadamente,  hay  situaciones  en  las  que  es  inevitable  hacerlo  de  esta  manera.  Cualquier
+situación  donde  antes  de  tratar  los  datos  es  necesario  realizar  alguna  modificación  que  depende
+valor  inválido,  y  es  inicio  quien  comprueba  si  este  método  ha  terminado  correctamente  o
+método  auxiliar,  a  leerDatos.  En  un  caso  como  éste,  normalmente  no  se  muestra
+El  siguiente  ejemplo  es  otro  caso,  mucho  más  sencillo  que  un  procesador  de  texto,
+incorrectamente.  Esto  se  debe  a  que  todo  método  declarado  con  un  parámetro  de
+Lee  los  datos  de  un  archivo  llamado  “Enters.txt”,  los  ordena,  y  entonces  los  escribe
+directamente  el  error  por  pantalla,  sino  que  se  invoca  la  sentencia  return  con  un
+en  el  que  no  se  puede  realizar  el  trabajo  requerido  sin  cargar  antes  los  datos  a  un  array.
+3  importe  java.io.PrintStream;
+Programación  (DAW)
+Programación  (DAM)
+6  public  class  OrdenarArchivo  {
+1  package  unidad6.apartado2.ejemplos;
+5  importe  java.util.Scanner;
+Programación  básica  (ASX)
+2  importe  java.io.File;
+4  importe  java.util.Arrays;
+OrdenarArchivo  programa  =  new  OrdenarFichero();
+int[]  valores  =  leerDatos("Enters.txt");
+int  tamaño  =  lector.nextInt();
+}
+array
+}  else  {
+if  (valores !=  null)  {
+int[]  datos  =  new  int[tamaño];
+programa.inicio();
+*/
+//Se  han  podido  leer  los  datos  correctamente
+public  int[]  leerDatos(String  nombre)  {
+File  f  =  new  File(nombre);
+Scanner  lector  =  new  Scanner(f);
+/**  Dado  el  nombre  de  un  archivo,  lee  sus  valores  y  lo  carga  en  un
+public  static  void  main  (String[]  args)  {
+//Se  leen  los  valores
+for  (int  i  =  0;  y  <  tamaño;  i++)  {
+}
+escribirArray("EntersOrdenats.txt",  valores);
+*  de  enteros.
+Arrays.sort(valores);
+public  void  inicio()  {
+//Ha  sucedido  un  error  leyendo  los  datos
+System.out.println("Ha  habido  un  error  leyendo  los  datos.");
+*  @param  nombre  Nombre  del  archivo
+}
+//Se  escriben  en  un  nuevo  archivo
+//Se  ordenan
+*  @return  Array  con  los  datos  cargados  desde  el  archivo
+try  {
+
+for  (int  i  =  0;  y  <  datos.length;  i++)  {
+}  catch  (Exception  e)  {
+}
+return  null;
+}  catch  (Exception  e)  {
+*  @param  nombre  Nombre  de  la  ruta  del  archivo  destino
+try  {
+public  static  final  String  NOMBRE_FICHERO  =  "Enters.txt";
+//Se  intenta  crear  el  archivo
+escritor.close();
+}
++  e);
+File  f  =  new  File(nombre);
+//Se  han  podido  leer  los  datos  correctamente
+//No  se  han  podido  leer  los  datos...
+escritor.print(datos.length);
+//Se  escriben  los  valores  del  array,  separados  por  espacios
+PrintStream  escritor  =  new  PrintStream(f);
+*  @param  datos  Array  con  los  datos  a  escribir
+//Excepción!
+public  void  escribirArray(String  nombre,  int[]  datos)  {
+public  static  void  main  (String[]  args)  {
+System.out.println("Error  escribiendo  datos:  "
+/**  Dado  un  nombre  de  archivo  y  un  array  de  enteros,  lo  escribe  en  este  archivo.
+ModificarValorsParells  programa  =  new  ModificarValorsParells();
+}
+programa.inicio();
+public  void  inicio()  {
+datos[i]  =  lector.nextInt();
+//Se  modifican
+//Hay  que  cerrar  el  archivo
+for  (int  i  =  0;  y  <  valores.length;  i  =  i  +  2)  {
+}
+if  (valores !=  null)  {
+*/
+escritor.print("  "  +  datos[i]);
+*
+}
+}
+return  datos;
+//Primero  se  escribe  el  número  de  valores
+int[]  valores  =  leerDatos(NOMBRE_FICHERO);
+}
+System.out.println("Archivo  generado  satisfactoriamente.");
+//Se  leen  los  valores
+Programación  (DAM)
+4  importe  java.util.Scanner;
+69 }
+Programación  (DAW)
+3  importe  java.io.PrintStream;
+2  importe  java.io.File;
+5  public  class  ModificarValoresPares  {
+Programación  básica  (ASX)
+1  package  unidad6.apartado2.ejemplos;
+10  valores  de  tipo  entero  y  suma  5  a  los  valores  que  existen  en  las  posiciones  par.
+PrintStream  elimina  los  datos  de  un  archivo  en  cuanto  se  inicializa,  en  realidad  no
+alguno  de  los  datos  que  hay  en  un  archivo  orientado  a  carácter.  Por  ejemplo,  suponga
+Otro  caso  donde  es  necesario  usar  esta  estrategia  para  tratar  datos  es  cuando  es  necesario  modificar
+que  desea  cambiar  sólo  uno  de  sus  valores,  dejando  el  resto  igual.  Dado  que
+es  posible  modificar  un  valor  concreto.  Es  necesario  reescribir  su  contenido  totalmente,
+Por  ejemplo,  el  siguiente  programa  modifica  un  archivo  orientado  a  carácter  que  contiene
+previendo  los  valores  que  se  quieren  modificar  al  hacerlo.
+modificaciones  oportunas,  y  luego  sobreescribir  el  archivo  original  al  completo.  Por
+saber  cuántos  valores  existen,  se  usa  la  estrategia  de  indicarlo  al  inicio  del  archivo.
+Para  ello,  será  necesario  leer  todos  los  valores,  almacenarlos  en  un  array,  hacer  las
+
+debe  encontrar  el  máximo,  el  mínimo,  y  la  media  aritmética  de  los  valores  en  un  archivo.  En
+sobre  los  datos  de  un  fichero,  por  lo  que  cada  una  de  ellas,  individualmente,  se
+Se  pueden  encontrar  casos  en  los  que  un  programa  debe  realizar  muchas  operaciones  sencillas
+podría  hacer  a  medida  que  lo  lee  el  archivo.  Por  ejemplo,  suponga  un  programa  que
+un  caso  como  éste,  intentar  hacer  muchas  cosas  a  la  vez  en  un  único  pase  sobre
+los  datos  de  un  archivo  puede  llegar  a  complicar  el  código,  o  incluso  romper  su
+Múltiples  accesos  al  archivo
+Programación  (DAM)
+Programación  (DAW)
+71 }
+Programación  básica  (ASX)
+try  {
+for  (int  i  =  0;  y  <  datos.length;  i++)  {
+//Hay  que  cerrar  el  archivo
+valores[i]  =  valores[i]  +  5;
+datos[i]  =  lector.nextInt();
+}  catch  (Exception  e)  {
+*  @param  nombre  Nombre  de  la  ruta  del  archivo  destino.
+*/
+System.out.println("Archivo  generado  satisfactoriamente.");
+*  @param  nombre  Nombre  del  archivo
+for  (int  i  =  0;  y  <  tamaño;  i++)  {
+public  void  escribirArray(String  nombre,  int[]  datos)  {
+/**  Dado  el  nombre  de  un  archivo,  lee  sus  valores  y  lo  carga  en  un
+}
+*
+return  null;
+System.out.println("Ha  habido  un  error  leyendo  los  datos.");
++  e);
+File  f  =  new  File(nombre);
+//Se  vuelven  a  escribir  todos  en  el  archivo  original
+}
+}  catch  (Exception  e)  {
+//No  se  han  podido  leer  los  datos...
+*  @return  Array  con  los  datos  cargados  desde  el  archivo
+}
+escritor.close();
+System.out.println("Error  escribiendo  datos:  "
+File  f  =  new  File(nombre);
+}
+int[]  datos  =  new  int[tamaño];
+}
+escritor.print(datos.length);
+escritor.print("  "  +  datos[i]);
+//Ha  sucedido  un  error  leyendo  los  datos
+escribirArray(NOMBRE_FICHERO,  valores);
+array
+*/
+}
+//Se  escriben  los  valores  del  array,  separados  por  espacios
+}
+*  @param  datos  Array  con  los  datos  a  escribir
+return  datos;
+}
+public  int[]  leerDatos(String  nombre)  {
+//Excepción!
+}  else  {
+Scanner  lector  =  new  Scanner(f);
+int  tamaño  =  lector.nextInt();
+try  {
+*  de  enteros.
+}
+//Se  intenta  crear  el  archivo
+PrintStream  escritor  =  new  PrintStream(f);
+/**  Dado  un  nombre  de  archivo  y  un  array  de  enteros,  lo  escribe  a  ese  archivo.
+//Primero  se  escribe  el  número  de  valores
+
+al  mismo  tiempo  a  medida  que  se  leen  los  datos,  de  modo  que  en  lugar  de
+tres  métodos  calculMaxim,  calculMinim  y  calculMitjana,  puede  terminar  con
+uno  solo  llamado  calculMinimMaximMitjana!.
+1  Nombre(String)  Apellido(String)  Número  de  notas(entero)  Nota1(real) ...  NotaN(real)
+Programación  (DAW)
+Programación  básica  (ASX)
+Programación  (DAM)
+1  Maria  Almerich  3  4  3,5  6
+3  Carme  González  4  6,5  8,75  10  9,5  4  fin
+2  Juan  Sebastián  5  4,5  8,5  5  6,5  7
+El  código  que  lo  resuelve  podría  ser  el  siguiente.  Estudie  con  atención,  ya  que  puede  resultar  un
+poco  más  complicado,  a  la  hora  de  leer  datos  de  diferentes  tipos
+Por  ejemplo,  suponga  un  programa  que  muestra  la  nota  media  de  un  conjunto  de  estudiantes.  Por
+cada  estudiante,  los  valores  se  guardan  en  líneas  diferentes,  para  facilitar  su  comprensión,  de
+acuerdo  al  siguiente  formato.  En  la  última  línea  se  encuentra  la  palabra  “fin”  como  marca  de  final.
+Sólo  sería  aconsejable  realizar  múltiples  recorridos  en  el  caso  de  querer  limitar  el  gasto  de  memoria
+de  su  programa.  Por  ejemplo,  si  realmente  los  archivos  son  enormes,  o  el  programa  debe  funcionar
+en  un  ordenador  con  una  cantidad  modesta  de  memoria.  A  escala  de  estos  materiales,  nunca  se
+dará  el  caso.  Al  fin  y  al  cabo,  recuerde  que,  actualmente,  un  simple  procesador  de  texto  no  tiene
+problemas  para  cargar  archivos  con  varios  megabytes  de  información.
+diseño  descendente,  ya  que  tendrá  bloques  de  código  que  hacen  muchas  cosas  en  paralelo  en
+lugar  de  realizar  una  tarea  muy  concreta  y  fácil  de  identificar.  Se  va  calculando  todo
+Una  posible  opción  en  este  caso  sería  hacer  múltiples  accesos  al  mismo  archivo,  por  lo  que  se  hace
+un  recorrido  secuencial  nuevo  por  cada  tarea  individual.  El  archivo  se  abre,  se  tratan  los  valores  y
+se  cierra  varias  veces.  Ahora  bien,  esto  no  es  demasiado  eficiente  dadas  las  capacidades  de  los
+ordenadores  modernos,  en  los  que  la  memoria  es  abundante,  ya  que  precisamente  el  acceso  a
+archivos  es  uno  de  los  puntos  más  lentos  del  sistema.  En  casos  como  éste,  lo  mejor  es  usar  la
+estrategia  de  primero  leer  los  valores  y  guardarlos  en  un  array,  y  después  tratarlo  para  llevar  a  cabo
+cada  tarea  individual.
+Por  ejemplo:
+Un  aspecto  que  también  merece  la  pena  tener  en  cuenta  es  que,  aunque  en  los  ejemplos  mostrados
+siempre  se  ha  trabajado  con  archivos  que  contienen  valores  del  mismo  tipo,  nada  impide  mezclarlos.
+Simplemente  tendrá  que  tener  siempre  presente  cuál  es  el  formato  del  archivo  que  lee,  y  seguirlo
+fielmente  cuando  escriba  uno  nuevo.  En  casos  como  éste,  es  muy  recomendable  realizarse  un
+esquema  de  este  formato,  para  tenerlo  siempre  presente.  Entonces,  basta  con  llamar  al  método
+adecuado  según  el  tipo  de  dato  esperado.
+2.2.3  Archivos  con  valores  de  diferentes  tipos
+
+en  lugar  de  mostrar  los  datos  por  pantalla,  los  debe  escribir  en  un  archivo  llamado
+ser  usada  como  parámetro  de  entrada  de  un  método.  En  este  aspecto,  al  tratarse
+mezclados.  El  punto  más  interesante  es  que  una  variable  de  tipo  Scanner  puede
+de  un  tipo  compuesto,  no  es  diferente  de  un  String  o  un  array.
+"NotaMedia.txt".  Por  otra  parte,  se  cambia  el  formato  del  archivo  “Notes.txt”.  Por
+controlar  el  número  de  notas  de  cada  estudiante,  en  lugar  de  indicarlo  directamente  al
+Reto  3.  Modifique  el  ejemplo  de  forma  que  ahora  haga  lo  siguiente.  Por  un  lado,
+3  importe  java.util.Scanner;
+4  public  class  LeerNotes  {
+Programación  (DAW)
+58 }
+Programación  básica  (ASX)
+2  importe  java.io.File;
+Programación  (DAM)
+1  package  unidad6.apartado2.ejemplos;
+String  apellido  =  lector.next();
+Scanner  lector  =  new  Scanner(f);
+}
+//Excepción!
+}
+//Note  cómo  un  scanner  se  puede  pasar  como  parámetro
+lector.close();
+LeerNotes  programa  =  new  LeerNotes();
+System.out.println("Error  leyendo  estudiantes:  "
+/**  Dado  un  Scanner  en  un  archivo  cuando  el  apuntador  se  encuentra  sobre  el  inicio
+*  @return  Media  de  notas
+//Excepción!
+*  de  las  notas,  se  extraen  y  se  calcula  la  media.
+}  catch(Exception  e)  {
+//Se  hacen  lecturas.  ¡Hay  que  controlar  excepciones  también!
+}  catch  (Exception  e)  {
+while  (leer)  {
+//Se  acumula  el  valor  de  las  notas
+try  {
+}
+"  "
+nada  =  nada  +  lector.nextDouble();
+nada  =  nada/numNotes;
+}
+System.out.println("−  Media:  "  +  media);
+*
+double  nada  =  0;
+for  (int  i  =  0;  y  <  numNotes;  i++)  {
+//Se  calcula  nota  media
+"
+String  nombre  =  lector.next();
+public  double  leerNotes(Scanner  lector)  {
+//la  palabra  fino  sirve  como  marca  de  final  de  archivo
+*/
+}
+public  void  inicio()  {
+File  f  =  new  File("Notes.txt");
++  e);
+System.out.print("Estudiante:  "  +  apellido);
+*  @param  lector  Scanner  a  procesar
+public  static  void  main  (String[]  args)  {
+int  numNotes  =  lector.nextInt();
+leer  =  false;
++  e);
+if  (MARCA_FI.equals(nombre))  {
+double  media  =  leerNotes(lector);
+}
+programa.inicio();
+}
+public  static  final  String  MARCA_FI  =  "fin";
+System.out.println("Error  leyendo  notas:
+}
+boolean  leer  =  true;
+}  else  {
++  nombre  +
+//Hay  que  cerrar  el  archivo
+try  {
+return  nada;
+
+Dado  este  hecho,  suponga  que  desea  almacenar  dentro  de  un  archivo  de  éstas
+siguiente  para  Java:
+•  2:  000000000000000000000000000000010
+carácter  también  puede  aplicarse  a  este  otro  tipo.  Todas  las  estrategias  para  saber
+cuántas  lecturas  es  posible  llevar  a  cabo  también  aplican.  La  diferencia  fundamental
+de  un  número  determinado  de  bytes.  Además,  los  archivos  orientados  a  byte  no  usan
+ningún  delimitador  para  separar  los  valores.
+La  tabla  2.2  muestra  una  recopilación  del  tamaño  de  las  representaciones  en  binario  de  los
+a  byte  que  contiene  estos  tres  valores.  Primero  se  muestra  su  equivalente  en  archivo
+es  que  no  se  utiliza  su  representación  en  forma  de  cadena  de  texto,  sino  que  se  usa
+La  figura  2.4  muestra  un  esquema  de  cuál  sería  la  estructura  de  un  archivo  orientado
+diferentes  tipos  primitivos  de  Java.
+En  el  caso  de  los  archivos  orientados  a  byte,  los  datos  también  se  almacenan  como  una
+2.3  Acceso  secuencial  a  archivos  orientados  a  byte
+tercer  valor  de  cada  línea,  ahora  se  pone  al  final  de  cada  línea  el  valor  ­1.  Por  ejemplo,
+ahora  debe  poder  leer  el  archivo  siguiente:
+secuencia  de  valores,  y  por  tanto,  el  esquema  general  que  aplica  en  ficheros  orientados  a
+características  los  valores  enteros  2,  ­14  y  25.  Esto  significa  que  dentro  del  archivo  se
+•  ­14:  1111111111111111111111111111110010
+su  formato  binario,  directamente  tal  y  como  se  usa  dentro  de  la  memoria  del  ordenador.
+Según  el  tipo  de  datos  del  valor  almacenado,  éste  se  almacenará  dentro
+guardan  de  acuerdo  a  su  representación  binaria  en  4  bytes  (32  bits),  que  sería  la
+•  25:  000000000000000000000000000011001
+Programación  (DAM)
+Programación  básica  (ASX)
+Programación  (DAW)
+4  fin
+Para  inspeccionar  un  archivo
+Tabla  2.  2.  Espacio  necesario  para  almacenar  los  distintos  tipos  primitivos
+3  Carme  González  6,5  8,75  10  9,5  −1
+1  Maria  Almerich  4  3,5  6  −1
+2  Juan  Sebastián  4,5  8,5  5  6,5  7  −1
+La  representación  binaria
+de  los  enteros  en  Java  es  el
+complemento  a  dos.
+hexadecimal,  como  el  HexEdit
+orientado  a  byte  es  necesario  un  editor
+(Windows)  o  GHex  (Unix).
+long
+byte
+double
+int
+normalmente  2
+carácter
+entero  corto
+short
+float
+byte
+Palabra  clave  Java
+Tipo
+Tamaño  (bytes)
+real  de  doble  precisión
+char
+real  de  simple  precisión
+entero  simple
+entero  largo
+
+F  igura  2.  4.  Estructura  de  un  archivo  orientado  a  byte
+Todo  esto  significa  que  no  es  posible  generar  archivos  orientados  a  byte  sólo  con  un
+editor  de  texto,  ni  tampoco  son  fáciles  de  inspeccionar  a  simple  vista.  La  principal
+ventaja  de  un  archivo  de  este  tipo  es  que,  a  costa  de  una  cierta  complicación  a  la  hora
+de  controlar  su  contenido,  todos  los  valores  de  un  mismo  tipo  siempre  ocuparán
+exactamente  el  mismo  espacio  dentro  del  archivo.  En  muchos  casos,  esto  significa
+que  el  archivo  ocupa  menos  espacio.  Por  ejemplo,  si  se  desea  almacenar  los  valores  de
+Si  se  fija  en  la  figura,  cuando  los  valores  se  resumen  separando  sus  bytes  en
+hexadecimal,  un  archivo  orientado  a  byte  tiene  una  estructura  similar  a  la  de  un  array,
+donde  cada  posición  sería  representada  por  cada  uno  de  sus  bytes,  y  cada  valor
+concreto  en  realidad  ocupa  un  cierto  número  de  posiciones.  Esta  característica  debe
+tenerla  presente,  ya  que  será  muy  relevante  más  adelante.
+orientado  a  carácter  y  cuál  sería  el  contenido  directamente  en  formato  binario  (los  tres
+conjuntos  de  0  y  1  recién  presentados,  uno  tras  otro).  Aunque,  por  motivos  de  espacio
+en  la  figura,  cada  valor  está  en  una  fila  diferente,  dentro  de  un  archivo  estarían  escritos
+como  una  secuencia  completa.  No  hay  saltos  de  línea.  Finalmente,  en  la  figura  se
+muestra  en  un  formato  en  el  que  se  diferencia  el  valor  de  cada  byte,  por  lo  que  es  más
+fácil  seguir  su  contenido,  contando  que  cada  entero  se  representa  con  4  bytes.
+Tenga  en  cuenta  que  cuando  se  dice  que  los  datos  se  representan  en  binario,  se
+quiere  decir  exactamente  esto.  No  se  trata  de  que  en  el  archivo  se  escribe  texto  con
+los  caracteres  '1'  y  '0'.  Si  intenta  abrir  un  archivo  orientado  a  byte  con  un  editor  de
+texto,  no  visualizará  nada.  A  modo  de  ejemplo,  la  mayoría  de  archivos  de  los
+procesadores  de  texto  o  de  hojas  de  cálculo  están  orientadas  a  byte.  Por  tanto,  si  los
+abra  con  un  editor  de  texto  simple,  lo  que  se  visualizará  será  totalmente  incomprensible
+(además,  sufra  el  riesgo  de  dañar  los  datos  contenidos).
+Programación  (DAM)
+Programación  básica  (ASX)
+Programación  (DAW)
+Trabajar  con  notación  binaria  es  algo  farragoso,  ya  que  los  valores  se  codifican  en  secuencias  de  0  y  1
+que  pueden  ser  largas  (32­64  bits),  por  lo  que  ocupan  bastante  espacio  y  resultan  difíciles  de  leer.
+Normalmente,  para  facilitar  la  comprensión,  los  valores  se  representan  en  sistema  hexadecimal,  por  lo
+que  quedan  mejor  resumidos  y  son  fáciles  de  dividir  en  bytes.  En  el  sistema  hexadecimal,  los  dígitos  van
+del  0  al  15,  contando  que  los  valores  del  10  al  15  se  representan  con  las  letras  A  a  la  F.  Cada  dígito
+representa  4  bits,  de  modo  que  0  =  0000,  1  =  0001 ...  E  =  1110,  F  =  1111.
+La  notación  hexadecimal
+Cuando  un  valor  quiere  representarse  en  hexadecimal,  se  usa  el  prefijo  “0x”.  Éste  no  es  parte  del  valor,
+sólo  es  un  símbolo  para  indicar  esto.
+
+Programación  (DAW)
+Programación  básica  (ASX)
+Programación  (DAM)
+1  importe  java.io.File;  2  importe
+java.io.RandomAccessFile;
+3 ...
+4  RandomAccessFile  raf  =  new  RandomAccessFile(File  ruta,  String  mode);
+•  r:  modo  lectura.  Indica  que  sólo  se  desea  leer  datos  desde  el  archivo  representado
+por  la  ruta  especificada.  Esto  implica  que  la  ruta  debe  referirse  a  un  archivo
+existente  en  el  sistema  de  archivos.  De  lo  contrario,  se  producirá  un  error.  También
+producirá  un  error  cualquier  intento  de  invocar  métodos  asociados  a  la  escritura  de
+datos  sobre  la  variable  RandomAccessFile  recién  inicializada.
+En  este  caso,  para  inicializar  una  variable  de  este  tipo  correctamente  se  necesitan  dos
+parámetros.  Por  un  lado,  y  al  igual  que  ocurría  con  Scanner,  es  necesario  especificar  la
+ruta  del  archivo  con  el  que  se  quiere  trabajar.  Adicionalmente,  es  necesario  indicar
+mediante  una  cadena  de  texto  el  modo  de  trabajo  a  la  hora  de  procesar  los  datos  del
+archivo.  Hay  varios  modos  de  trabajo,  pero  sólo  verá  los  dos  más  sencillos,  usados  en  la
+inmensa  mayoría  de  casos.  La  utilidad  de  los  demás  modos  es  más  marginal.
+En  este  caso,  para  los  archivos  orientados  a  byte  se  puede  usar  la  misma  clase  tanto  si  se
+quieren  leer  datos  como  si  se  desea  escribir.
+tipo  entero  15  y  10371,  en  un  archivo  orientado  a  carácter  el  primero  ocupa  2  caracteres  y
+el  segundo  cinco.  Teniendo  en  cuenta  que  se  deben  separar  de  un  espacio,  esto  equivale
+a  8  o  16  bytes,  ya  que,  dependiendo  de  la  configuración  de  su  entorno  de  trabajo,  cada
+carácter  en  Java  se  guarda  en  1  o  2  bytes.  En  el  caso  de  un  archivo  orientado  byte,  escribir
+ambos  siempre  ocupará  8  bytes.
+2.3.1  Inicialización
+Estos  dos  modos  son:
+De  nuevo,  ésta  actúa  como  un  tipo  compuesto.  Por  tanto,  al  igual  que  ocurre  con  las
+clases  File,  Scanner  o  PrintStream,  es  necesario  inicializarla  con  una  variable  diferente
+para  cada  archivo  sobre  el  que  se  quiere  trabajar  (en  el  caso  de  trabajar  con  más  de  un
+archivo  a  la  vez).  La  forma  de  hacerlo  es  con  la  siguiente  instrucción:
+Para  tratar  de  forma  sencilla  archivos  orientados  a  byte,  Java  ofrece  la  clase
+RandomAccessFile,  perteneciente  al  package  java.io.  Ésta  se  usa  tanto  para  leer
+como  para  escribir  datos.
+•  rw:  modo  escritura­lectura.  Este  modo  permite  tanto  leer  datos  desde  un  archivo,  al
+igual  que  el  anterior,  como  escribirlos.  Si  la  ruta  usada  se  refiere  a  un  archivo  que
+no  existe,  se  creará  uno  nuevo,  que  esté  vacío.
+Por  tanto,  si  sólo  se  quieren  leer  datos  de  un  archivo  ubicado  en  la  ruta  “C:\Programes\Unidad
+6\Apartado  2\Ejemplos\Document.txt”,  habría  que  hacer:
+
+Cada  vez  que  se  realiza  una  operación  de  lectura  o  escritura,  el  apuntador  se  desplaza
+automáticamente  el  mismo  número  de  bytes  con  los  que  se  ha  operado.
+Puede  que  le  parezca  un  poco  extraño  o  redundando  el  modo  “r”,  existiendo  el  modo  “rw”,  que
+permite  hacer  exactamente  lo  mismo  y  más  cosas.  En  realidad,  usar  el  modo  “r”  siempre  que  sólo
+se  quieren  leer  datos  es  bastante  útil,  ya  que  garantiza  que  si,  por  un  error  al  programar,  su
+programa  intenta  escribir  en  el  archivo  con  el  que  trabaja,  la  operación  de  escritura  se  abortará
+inmediatamente.  Esta  posibilidad  es  especialmente  interesante  cuando  se  está  trabajando  con
+datos  de  ficheros,  ya  que  no  hace  ninguna  gracia  sobreescribir  (y,  por  tanto,  perder)  la  información
+que  había  en
+habrá  que  hacer:
+Si,  por  el  contrario,  se  quieren  escribir  datos  a  un  archivo  en  esta  misma  ubicación,
+Al  contrario  que  con  la  clase  PrintStream,  si  la  ruta  usada  al  inicializar  una  variable  de  esta  clase
+en  modo  “rw”  se  corresponde  a  un  archivo  que  ya  existe,  no  se  borran  sus  datos,  ni  quedan
+afectados  en  ninguna  medida.
+un  archivo  debido  a  un  error  involuntario  en  el  código.
+Por  tanto,  a  partir  de  ahora,  si  sólo  se  quieren  leer  datos  de  un  archivo,  siempre  se  usará  el  modo
+“r”  exclusivamente.
+2.3.2  Escritura  de  datos
+El  número  de  bytes  desplazados  dependerá  del  tamaño  asociado  al  tipo  primitivo  de  Java  escrito.
+Hay  que  tener  siempre  en  cuenta  que,  como  RandomAccesFile  trabaja  con  archivos  orientados  a
+byte,  esta  clase  transforma  el  valor  del  tipo  primitivo  a  una  secuencia  de  bytes,  según  el  método
+invocado.  Para  saber  exactamente  en  cuánto  ha  variado  el  apuntador  del  archivo,  es  necesario
+saber  cuántos  bytes  ocupa  cada  tipo  primitivo  de  Java.
+En  este  caso,  se  empezará  por  explicar  la  escritura  de  datos,  en  lugar  de  la  lectura.  El  motivo
+principal  es  que,  dado  que  RandomAccesFile  trabaja  con  archivos  orientados  a  byte,  no  hay
+ninguna  manera  sencilla  de  generar  archivos  de  datos  por  su  cuenta,  al  contrario  que  para  el  caso
+de  los  archivos  orientados  a  carácter,  donde  basta  con  usar  un  editor  de  texto.  La  única  forma  de
+generar  archivos  orientados  a  byte  que  puedan  ser  leídos  correctamente  es  mediante  código  de
+un  programa.
+4  File  f  =  new  File("C:\Programas\Unidad  6\Apartado  2\Ejemplos\Document.txt");  5  RandomAccessFile  raf  =  new
+RandomAccessFile(f,  "r");
+3 ...
+Programación  (DAW)
+Programación  básica  (ASX)
+Programación  (DAM)
+1  importe  java.io.File;  2  importe
+java.io.RandomAccessFile;
+4  File  f  =  new  File("C:\Programas\Unidad  6\Apartado  2\Ejemplos\Document.txt");  5  RandomAccessFile  raf  =  new
+RandomAccessFile(f,  "rw");
+3 ...
+1  importe  java.io.File;  2  importe
+java.io.RandomAccessFile;
+
+Método
+writeChar(char  c)
+writeByte(byte  v)
+writeDouble(double  d)
+writeFloat(float  f)
+writeBoolean(boolean  b)
+writeShort(short  s)
+Bytes  escritos
+writeLong(long  l)
+writeInt(int  i)
+el  ejemplo  anterior  que  escribe  una  secuencia  de  20  valores  enteros,  por  lo  que,
+general  de  escritura  de  datos  es  similar  a  la  de  los  archivos  orientados  a  carácter:  un
+y  que  no  es  necesario  encargarse  de  escribir  ningún  delimitador  entre  los  valores,  el  proceso
+En  la  tabla  2.3  se  muestran  los  métodos  disponibles  para  escribir  datos.
+Además  de  la  diferencia  en  el  formato  de  representación  de  los  datos  del  archivo
+valor  tras  otro.  La  figura  2.5  muestra  un  esquema  del  funcionamiento  del  proceso
+de  escritura.
+Como  ejemplo,  estudie  y  pruebe  el  siguiente  programa.  Ésta  es  la  versión  de
+es  necesario  escribir  ningún  delimitador.  Los  valores  se  van  escribiendo  consecutivamente,  uno  tras
+el  otro.
+empezando  por  el  1,  cada  valor  es  el  doble  del  anterior.  Fíjese  como  no
+Programación  (DAM)
+Programación  básica  (ASX)
+Programación  (DAW)
+2  importe  java.io.File;
+1  package  unidad6.apartado2.ejemplos;
+4  public  class  EscribirEntersDoblesBinario  {
+3  importe  java.io.RandomAccessFile;
+F  igura  2.  5.  Escritura  secuencial  de  valores  en  un  archivo  orientado  a  byte
+Tabla  2.  3.  Métodos  de  escritura  de  datos  de  la  clase  ”RandomAccessFile”
+}
+programa.inicio();
+public  static  void  main  (String[]  args)  {
+EscribirEntersDoblesBinario  programa  =  new  EscribirEntersDoblesBinario();
+public  void  inicio()  {
+
+Para  ello,  se  dispone  de  los  métodos:
+comienza  a  escribir  desde  cero,  sino  que  los  nuevos  datos  se  van  escribiendo
+que  debe  tener  el  archivo.
+datos  sobre  un  archivo  que  ya  existe,  en  lugar  de  hacerlo  sobre  uno  completamente
+el  cual  es  necesario  tener  mucho  cuidado,  ya  que  si  el  número  de  bytes  escritos  es  inferior  a  la
+casos,  es  eliminar  todos  los  bytes  sobrantes  una  vez  terminada  la  escritura  de  datos.
+directamente  sobre  las  antiguas,  reemplazándolas  byte  a  byte.  Éste  es  un  hecho  con
+valor  especificado  como  parámetro  es  menor  que  el  tamaño  actual,  se  eliminan
+que  no  son  sobreescritas  se  mantienen  en  el  archivo,  sobre  todo  cuando  se  desea  reemplazar  todo
+todos  los  datos  por  encima  del  tamaño  especificado.  Si  es  mayor,  se  llena
+•  setLength(long  tamaño).  Modifica  el  tamaño  del  archivo,  por  lo  que  si  el
+no  se  han  llegado  a  sobreescribir).
+el  apuntador,  medido  en  el  número  de  bytes  desde  el  inicio  del  archivo.  Por
+nuevo.  Al  contrario  que  PrintStream,  este  archivo  existente  no  se  borra  y  se
+La  clase  RandomAccessFile  tiene  un  comportamiento  algo  especial  cuando  escribe
+la  diferencia  con  bytes  todo  a  0.
+al  caso  de  que  está  tratando,  si  se  invoca  cuando  ha  terminado  todas  las  operaciones
+tamaño  del  archivo  existente,  quedará  “basura”  al  final  (los  datos  del  archivo  existente  que
+de  escritura,  le  dirá  el  tamaño  de  los  datos  escritos,  y  por  tanto,  el  nuevo  tamaño
+con  6  valores  enteros  escritos  y  queremos  reemplazar  su  contenido  a  sólo  dos  valores,
+Según  este  comportamiento,  es  necesario  tener  mucho  cuidado  con  el  hecho  de  que  los  datos
+•  long  getFilePointer().  Evalúa  la  posición  donde  está  en  estos  momentos
+el  contenido  de  un  archivo  por  datos  nuevos.  Normalmente,  lo  que  se  suele  hacer  en  estos
+15  y  ­100.
+La  figura  2.6  le  muestra  un  esquema  de  este  hecho,  en  un  caso  en  que  existe  un  fichero
+Sobreescritura  de  archivos
+30 }
+Programación  (DAW)
+Programación  básica  (ASX)
+Programación  (DAM)
+System.out.println("Error  escribiendo  datos:  "
+//Ahora  no  hay  delimitadores.  Se  escriben  los  valores  consecutivos.
+//Excepción!
+int  valor  =  1;
+}  catch  (Exception  e)  {
+//No  olvidarse  de  cerrar  el  archivo
+raf.writeInt(valor);
++  e);
+RandomAccessFile  raf  =  new  RandomAccessFile(f,"rw");
+try  {
+File  f  =  new  File("Enters.bin");
+//Se  van  generando  los  valores  y  escribiendo
+}
+for  (int  i  =  0;  y  <  20;  y  ++)  {
+valor  =  valor*2;
+System.out.println("Archivo  escrito  satisfactoriamente.");
+//El  tamaño  del  archivo  debería  ser  20*4  =  80  bytes
+raf.close();
+}
+}
+//El  tamaño  de  un  entero  son  4  bytes.
+
+raf.setLength(apuntador).
+el  anterior),  llamado  “enters.bin”,  por  cinco  valores  enteros  ­1.  El  resultado  final
+El  programa  siguiente  usa  este  mecanismo  para  reemplazar  completamente  el
+archivo  resultante  del  ejemplo  anterior  (20  valores  enteros,  cada  uno  el  doble  de
+si  antes  de  ejecutarlo  sobre  este  archivo  de  80  bytes  se  elimina  la  sentencia
+es  un  archivo  de  sólo  20  bytes,  en  lugar  de  80.  Pruebe  también  qué  sucede
+2  importe  java.io.RandomAccessFile;
+31 }
+Programación  (DAW)
+Programación  (DAM)
+1  importe  java.io.File;
+3  public  class  SobreescribirEntersBinario  {
+Programación  básica  (ASX)
+F  igura  2.  6.  Sobreescritura  de  archivos  al  usar  RandomAccessFile
+System.out.println("Archivo  modificado  correctamente.");
+File  f  =  new  File("Enters.bin");
++  apuntador);
+//Se  fija  el  tamaño  del  archivo  a  los  valores  escritos
+for  (int  i  =  0;  y  <  5;  i++)  {
+raf.writeInt(−1);
+//Excepción!
+//Sobreescribimos  los  primeros  cinco  valores
+System.out.println("Error  escribiendo  datos:  "
+//El  apuntador  está  en  el  primer  byte
+}
+}
+RandomAccessFile  raf  =  new  RandomAccessFile(f,  "rw");
+raf.close();
+programa.inicio();
+public  static  void  main  (String[]  args)  {
+SobreescribirEntersBinario  programa  =  new  SobreescribirEntersBinario();
+apuntador  =  raf.getFilePointer();
+}
+System.out.println("Fin:  Apuntador  a  posición"  +  apuntador);
+raf.setLength(apuntador);
+}  catch  (Exception  e)  {
+public  void  inicio()  {
+//Si  el  archivo  ya  tenía  más  de  cinco  enteros,  al  final  hay  basura
++  e);
+try  {
+long  apuntador  =  raf.getFilePointer();
+System.out.println("Inicio:  Apuntador  a  posición"
+}
+
+readLong()
+short
+double
+readInt()
+byte
+readDouble()
+readChar()
+int
+long
+float
+char
+Método
+Tipo  de  dato  leído
+readByte()
+readShort()
+boolean
+readBoolean()
+readFloat()
+Tabla  2.  4.  Métodos  de  lectura  de  datos  de  la  clase  ”RandomAccessFile”
+F  igura  2.  7.  Lectura  secuencial  de  valores  en  un  archivo  orientado  a  byte
+Programación  (DAW)
+Programación  básica  (ASX)
+Programación  (DAM)
+archivo  orientado  a  byte.
+Exactamente  al  igual  que  ocurría  con  la  clase  Scanner,  hay  un  método  específico
+Una  vez  conocido  el  proceso  de  lectura  de  datos  de  forma  secuencial  y  el  formato
+2.3.3  Lectura  de  datos
+como  se  escriben  los  datos  en  un  archivo  orientado  a  byte,  no  hay  muchas  sorpresas
+para  cada  tipo  de  datos  esperado  dentro  de  la  secuencia  de  valores,  enumerados  en  la  tabla
+que  va  avanzando  a  medida  que  se  invocan  métodos  para  realizar  operaciones  de  lectura.
+en  el  proceso  de  lectura.  De  nuevo,  se  parte  de  un  apuntador  en  la  posición  inicial
+En  el  caso  de  los  archivos  binarios  también  es  necesario  controlar  no  leer  más  valores  de  los  que
+La  figura  2.7  muestra  un  ejemplo  del  funcionamiento  del  proceso  de  lectura  en  un
+realmente  hay  escritos  en  el  archivo,  o  de  lo  contrario  se  producirá  una  excepción.  Ahora  bien,
+2.4.
+
+Lectura  incorrecta  de  datos
+RandomAccessFile  raf  =  new  RandomAccessFile(f,  "r");
+public  void  inicio()  {
+System.out.println("Error  en  la  lectura:  "
+Lectura  incorrecta  de
++  valor);
+}  catch  (Exception  e)  {
+//Excepción!
+raf.close();
+un  procesador  de  texto,  por
+programa.inicio();
+LeerEntersBinario  programa  =  new  LeerEntersBinario();
+try  {
+datos
+"  enteros.");
+}
+System.out.println("Hay"  +  numEnters  +  for  (int  i  =  0;  y  <  numEnters;  i+
++)  {
+File  f  =  new  File("Enters.bin");
+}
+//Cálculo  del  número  de  enteros
+long  numEnters  =  f.length() /  4;
+Es  parecido  a  lo  que  ocurre  si,  con
+que  no  le  corresponde,  hecho  con  un
+ejemplo,  intente  abrir  un  archivo
++  e);
+public  static  void  main  (String[]  args)  {
+otro  programa.
+}
+}
+int  valor  =  raf.readInt();
+System.out.println("Se  ha  leído  el  valor  "
+3  importe  java.io.RandomAccessFile;
+Programación  básica  (ASX)
+Programación  (DAM)
+2  importe  java.io.File;
+Programación  (DAW)
+26 }
+1  package  unidad6.apartado2.ejemplos;
+4  public  class  LeerEntersBinario  {
+utilizar  el  resultado  de  los  ejemplos  de  escritura  de  datos.  Fíjese  especialmente  en
+La  figura  2.8  muestra  un  ejemplo  de  este  comportamiento,  leyendo  un  valor  de  tipos
+finalización  o  indicar  el  número  de  elementos  previamente.  Dado  que  cada  valor  del
+A  la  hora  de  leer  datos  en  un  archivo  orientado  a  byte,  es  necesario  procurar  siempre  usar  el
+El  siguiente  código  de  ejemplo  lee  un  archivo  orientado  a  byte  llamado  “Enters.bin”,
+cuando  ejecuta  cualquiera  de  sus  método  de  lectura,  siempre  lee  el  número
+corresponde  dentro  de  este  tipo.  Esto  lo  hace  independientemente  de  que,  en  realidad,
+archivo  y  conocido  el  tamaño  de  la  representación  en  binario  de  un  entero  en  Java  (4  bytes).
+real  sobre  un  archivo  donde  hay  almacenados  valores  enteros.
+generar  este  archivo  usted  mismo  de  alguna  manera.
+de  bytes  asociados  al  tipo  de  dato  que  se  quiere  leer,  interpretándolos  al  valor  que
+etc.),  si  conoce  el  tamaño  del  archivo  en  bytes,  se  puede  calcular  cuántos  valores  de  un
+mismo  tipo  siempre  ocupa  el  mismo  espacio  (los  int  4  bytes,  los  double  8  bytes,
+en  este  tipo  de  archivo  tiene  una  ventaja,  y  es  que  no  siempre  es  necesaria  una  marca  de
+método  acertado  en  cada  momento,  de  acuerdo  al  tipo  que  se  espera  leer.  Ahora  bien,  la
+tipo  contiene  haciendo  una  simple  división:  tamaño  archivo/tamaño  tipo.
+el  cual  contiene  cierto  número  de  valores  enteros,  y  los  va  mostrando  por  pantalla.  Puede
+la  forma  en  que  se  calcula  el  número  de  valores  a  leer,  dado  el  tamaño  del
+cuando  realiza  una  lectura  incorrecta  no  se  produce  ninguna  excepción.  Esta  clase,
+Reto  4.  Haga  un  programa  que  lea  un  archivo  orientado  a  byte  que  contenga  una
+secuencia  de  valores  reales  cualquiera.  Hay  que  mostrarlos  por  pantalla  ordenados  de  más
+grande  a  menor.  Tenga  en  cuenta  que,  para  poder  probarlo,  antes  deberá
+clase  RandomAccessFile  actúa  de  una  forma  bastante  diferente  a  Scanner,  ya  que
+esto  sea  correcto  o  no.
+
+será  totalmente  incorrecto,  ya  que  dentro  del  archivo  no  hay  ningún  valor  de  tipo  real.
+para  leer  los  valores  contenidos.  Ahora  bien,  el  método  readDouble()  simplemente
+ha  escrito  valores  enteros  sería  incorrecto,  ya  que  no  se  está  usando  el  método  adecuado
+Para  verlo  más  claro,  a  continuación  se  muestra  una  versión  del  ejemplo  anterior  que  lee
+y  presenta  valores  reales.  En  este  caso,  ejecutarlo  sobre  un  archivo  donde  sólo  hay
+lee  8  bytes  consecutivos  (o  sea,  en  este  caso,  la  representación  en  el  fichero
+de  dos  enteros  seguidos,  4  +  4  bytes),  e  intenta  interpretar  estos  8  bytes  como  si
+fueran  un  valor  de  tipo  real.  Evidentemente,  el  valor  resultante  de  realizar  este  proceso
+Ejecute  para  ver  el  resultado.
+Programación  (DAM)
+2  importe  java.io.File;
+26 }
+Programación  básica  (ASX)
+4  public  class  LeerDoubleBinario  {
+3  importe  java.io.RandomAccessFile;
+1  package  unidad6.apartado2.ejemplos;
+Programación  (DAW)
+F  igura  2.  8.  Lectura  incorrecta  de  datos  en  un  archivo  orientado  a  byte
+public  void  inicio()  {
+programa.inicio();
+public  static  void  main  (String[]  args)  {
+LeerDoubleBinario  programa  =  new  LeerDoubleBinario();
+raf.close();
+File  f  =  new  File("Enters.bin");
++  valor);
+System.out.println("Creo  que  hay  "  +  numEnters  +  for  (int  i  =  0;  y  <  numEnters;  i++)  {
++  e);
+double  valor  =  raf.readDouble();
+System.out.println("Se  ha  leído  el  valor  real"
+"  reales.");
+}
+System.out.println("Error  en  la  lectura:  "
+}
+RandomAccessFile  raf  =  new  RandomAccessFile(f,  "rw");
+}
+try  {
+}
+}  catch  (Exception  e)  {
+//Cálculo  del  número  de  enteros
+//Excepción!
+long  numEnters  =  f.length() /  8;
+
+Una  buena  forma  de  entender  esta  definición  es  contrastando  el  acceso  relativo  al  secuencial,  al
+ser  precisamente  términos  contrapuestos.  Dado  un  archivo  con  una  secuencia  de  10  elementos,
+para  poder  tratar  sólo  el  décimo,  si  se  accede  secuencialmente,  primero  hay  que  leer  (e  ir
+descartando  sucesivamente)  los  nueve  elementos  anteriores.  El  acceso  relativo,  en  cambio,
+proporciona  operaciones  que  hacen  posible  leer  ese  décimo  elemento  directamente,  sin  tener  que
+procesar  antes  todos  los  anteriores  usando  métodos  de  lectura.
+anteriores.
+2.4  Acceso  relativo  a  los  datos
+Por  tanto,  es  necesario  ser  muy  cuidadoso  a  la  hora  de  hacer  lecturas  sobre  archivos  orientados  a
+byte,  y  tener  bien  claro  su  formato  y  qué  tipo  de  datos  hay  que  leer  en  cada  momento,  ya  que  el
+programa  no  nos  avisará  con  ninguna  excepción.  Simplemente,  éste  comportará  de  forma  extraña
+al  ejecutarlo.
+El  acceso  secuencial  a  los  datos  de  un  archivo  permite  procesar  su  contenido  de  forma  relativamente
+sencilla,  al  basarse  en  un  mecanismo  prácticamente  idéntico  a  la  lectura  de  datos  desde  el  teclado,
+o  su  escritura  en  la  pantalla.  Los  bloques  de  instrucciones  para  llevar  a  cabo  operaciones  de  lectura
+y  escritura  son  básicamente  los  mismos,  sólo  varía  el  origen  y  el  destino  de  los  datos  en  las
+operaciones  de  entrada/salida,  así  como  los  aspectos  vinculados  a  si  el  archivo  es  orientado  a
+carácter  oa  byte.
+Si  considera  que  un  archivo  orientado  a  byte,  y  sólo  este  tipo,  es  como  un  array  de  cierta
+envergadura  donde  cada  byte  representa  una  posición,  debe  ser  posible  acceder  a  los  datos  que
+contiene  de  la  misma  forma  que  se  hace  con  los  arrays.  Por  un  lado,  de  forma  secuencial,  haciendo
+recorridos  sobre  cada  una  de  sus  posiciones,  como  ha  visto  hasta  ahora.  Pero  también  debe  ser
+posible  acceder  directamente  a  una  posición  concreta  sólo  indicando  una  ubicación  para  su
+apuntador  de  lectura  o  escritura.  O  sea,  dado  un  archivo  orientado  a  byte,  se  puede  decir  que
+dispone  de  acceso  relativo.
+Se  llama  acceso  relativo  a  la  capacidad  de  acceder  a  cualquier  elemento  dentro  de  una
+secuencia  de  datos  sin  tener  que  tratar  previamente  los  elementos
+Ahora  bien,  en  realidad,  un  archivo  no  es  exactamente  como  el  teclado  o  la  pantalla,  ya  que  los
+datos  ni  dejan  de  estar  disponibles  una  vez  leídos,  ni  tiene  sentido  que  resulte  imposible
+sobreescribirlos  parcialmente.  El  acceso  secuencial  es  una  manera  cómoda  de  tratar  archivos,  pero
+a  cambio  de  perder  un  cierto  grado  de  versatilidad.
+La  clase  RandomAccessFile  permite  el  acceso  relativo  a  los  archivos  orientados  a  byte.
+Al  fin  y  al  cabo,  su  nombre,  en  inglés,  significa  "fichero  de  acceso  aleatorio".
+Programación  (DAW)
+Programación  básica  (ASX)
+Programación  (DAM)
+El  acceso  relativo  a  un
+archivo  a  menudo  también
+se  llama  acceso  aleatorio
+o  acceso  directo.  Dentro
+de  ese  contexto,  son
+términos  sinónimos.
+
+1  package  unidad6.apartado2.ejemplos;  2  importe  java.io.File;  3
+importe  java.io.RandomAccessFile;  4
+public  class  MoverApuntadorSeek  {
+Programación  (DAW)
+Programación  básica  (ASX)
+Programación  (DAM)
+1  array[índice]
+La  figura  2.9  muestra  un  esquema  del  funcionamiento  de  este  método  dado  un  archivo
+orientado  a  bytes  que  contiene  un  conjunto  de  enteros.  Recuerde  que  cada  entero  ocupa
+4  bytes.
+Para  llevar  a  cabo  la  tarea  de  indicar  el  índice  para  realizar  una  operación  de  lectura  o
+escritura,  las  variables  de  tipo  RandomAccessFile  tienen  una  diferencia  importante  en  el
+acceso  a  los  datos  respecto  a  un  array.  Si  lo  recuerda,  sus  métodos  de  lectura  y  escritura
+no  disponen  de  ningún  parámetro  donde  se  especifique  un  índice.  Esto  se  debe  a  que  las
+clases  que  tratan  los  datos  de  un  archivo  disponen  de  un  apuntador  interno  que  indica  en
+todo  momento  cuál  es  el  dato  siguiente  a  procesar.  Cada  vez  que  se  realiza  una
+operación,  este  apuntador  se  va  desplazando  automáticamente  hasta  llegar  al  final  de  la
+secuencia  de  valores.  Lo  que  RandomAccessFile  proporciona  son  una  serie  de  métodos
+que  permiten  modificar  el  valor  de  este  apuntador,  indicando  de  forma  explícita  su
+posición.  Por  tanto,  para  acceder  a  una  posición  cualquiera  del  fichero,  primero  es
+necesario  un  paso  previo  donde  se  indica  la  posición  en  la  que  se  quiere  operar,
+invocando  alguno  de  estos  métodos  de  posicionamiento  del  apuntador  y,  posteriormente,
+se  puede  llevar  a  cabo  la  lectura  o  la  escritura.
+El  primer  paso  para  poder  acceder  relativo  a  un  archivo  es  especificar  el  índice  de  la
+posición  que  se  desea  acceder,  ya  sea  tanto  para  leer  el  dato  que  hay  almacenado  como
+para  escribir  un  nuevo  valor.  Una  vez  conocido  este  índice,  mediante  la  sintaxis  adecuada,
+es  posible  esa  posición.  En  el  caso  de  los  arrays,  esta  sintaxis  es  del  tipo:
+2.4.1  Posicionamiento
+Dado  que  RandomAccessFile  es  una  clase,  la  sintaxis  para  acceder  a  las  posiciones  del
+archivo  es  mediante  la  invocación  de  métodos.  Cada  byte  individual  dentro  del  archivo  es
+como  una  posición  de  un  array,  y  el  primer  byte  del  archivo  se  consideraría  su  posición  0.
+Para  gestionar  el  posicionamiento  del  apuntador,  la  clase  define  los  siguientes  métodos:
+1.  void  seek(long  pos).  Ubica  el  apuntador  exactamente  en  la  posición  especificada  por
+el  parámetro  pos,  medido  en  bytes,  de  modo  que  cualquier  acceso  a  los  datos  será  justo
+sobre  el  siguiente  byte.  No  hay  ninguna  restricción  en  el  valor  de  este  parámetro,  siendo
+posible  ubicar  el  apuntador  mucho  más  allá  del  final  real  del  archivo.
+Esto  puede  parecer  un  poco  raro,  pero  pronto  verá  el  motivo.
+El  siguiente  código  de  ejemplo  usa  el  método  seek  para  mover  el  apuntador  del  archivo  a
+diferentes  posiciones  de  manera  arbitraria,  tal  y  como  se  podría  hacer  con  el  índice  de  un
+array.
+
+}
+//Excepción!
+public  static  void  main  (String[]  args)  {
+MoverApuntadorSeek  programa  =  new  MoverApuntadorSeek();
+try  {
+long  pos  =  raf.getFilePointer();
+System.out.println("Error:  "
+System.out.println("El  apuntador  está  en  la  posición  "  raf.seek(0);
+F  igura  2.  9.  Acceso  aleatorio  mediante  posicionamiento  de  apuntador  usando  el  método  **seek**
+RandomAccessFile  raf  =  new  RandomAccessFile(f,  "r");
+}
+raf.seek(20);
+}
+programa.inicio();
++  e);
++  pos);
++  pos);
+File  f  =  new  File("Enters.bin");
+public  void  inicio()  {
++  pos);
+pos  =  raf.getFilePointer();
+System.out.println("El  apuntador  está  en  la  posición  "  raf.seek(100);
+pos  =  raf.getFilePointer();
+}  catch  (Exception  e)  {
+System.out.println("El  apuntador  está  en  la  posición  "  raf.close();
+Programación  (DAW)
+Programación  básica  (ASX)
+Programación  (DAM)
+28 }
+caso  cuando  el  valor  resultante  no  sea  igual  a  n.  Por  ejemplo,  si  el  apuntador  llega  al
+modo  que  éste  pasa  a  valer  valor  actual  +  n.  Su  invocación  evalúa  el
+2.  int  skipBytes(int  n).  Avanza  la  posición  del  apuntador  en  n  bytes,  de
+número  de  bytes  que  realmente  se  ha  adelantado.  Hay  que  tener  en  cuenta  que  se  puede  dar  el
+final  del  archivo,  el  desplazamiento  del  apuntador  se  detiene.  Por  tanto,  Independientemente
+del  valor  del  parámetro  n,  siempre  debe  controlar  la  posición  del  apuntador  del
+archivo  a  partir  del  valor  devuelto.
+
+F  igura  2.  1  0.  Acceso  aleatorio  mediante  posicionamiento  de  apuntador  usando  el  método  **skipBytes**
+3  importe  java.io.RandomAccessFile;
+Programación  (DAM)
+Programación  (DAW)
+2  importe  java.io.File;
+4  public  class  MoverApuntadorSkipBytes  {
+1  package  unidad6.apartado2.ejemplos;
+Programación  básica  (ASX)
+nuevos  bytes,  todos  a  0.
+seguido  de  llamadas  al  método  skipBytes.  Fíjese  que  si  a  la  hora  de  ejecutarla
+La  figura  2.10  muestra  un  ejemplo  de  cómo  se  modifica  el  apuntador  a  partir  de  un
+el  apuntador  sobrepasa  el  tamaño  del  archivo,  éste  incrementa  su  tamaño  con
+El  siguiente  código  de  ejemplo  utiliza  el  método  skipBytes  para  mover  el  apuntador  a
+diferentes  posiciones  dentro  del  archivo.  Fíjese  cómo,  en  el  último  posicionamiento,
+se  intenta  ir  mucho  más  allá  del  tamaño  del  archivo.  Si  se  sobrepasa  ese  límite,
+el  apuntador  nunca  avanza  más  allá  del  tamaño  del  archivo.
+"  posiciones.  ");
+MoverApuntadorSkipBytes  programa  =  new  MoverApuntadorSkipBytes();
+"
+programa.inicio();
+long  skip  =  raf.skipBytes(20);
+"
+pos  =  raf.getFilePointer();
+"  posiciones.  ");
+skip  =  raf.skipBytes(8);
+System.out.print("El  apuntador  ha  avanzado  +  skip  +
+System.out.println("Está  en  la  posición  "  +  pos);
+RandomAccessFile  raf  =  new  RandomAccessFile(f,  "r");
+public  void  inicio()  {
+//Se  intenta  avanzar  mucho  más  allá  del  tamaño  del  archivo
+public  static  void  main  (String[]  args)  {
+pos  =  raf.getFilePointer();
+File  f  =  new  File("Enters.bin");
+try  {
+}
+System.out.print("El  apuntador  ha  avanzado  +  skip  +
+System.out.println("Está  en  la  posición  "  +  pos);
+long  pos  =  raf.getFilePointer();
+System.out.print("El  apuntador  ha  avanzado  +  skip  +
+System.out.println("Está  en  la  posición  "  +  pos);
+skip  =  raf.skipBytes(400);
+raf.close();
+"
+"  posiciones.  ");
+
+etc.).
+totalmente  secuencial.  Cada  vez  que  se  lee  un  valor,  el  apuntador  avanza  tantos
+Mediante  los  métodos  seek  y  skipBytes  es  posible  indicar  desde  que  posición
+2.4.2  Lectura  de  datos  relativa
+dos  métodos  de  posicionamiento  del  apuntador,  el  tratamiento  del  archivo  pasa  a  ser
+término  con  las  mismas  instrucciones  que  el  tratamiento  secuencial  (los  métodos
+los  valores  11,  13,  15,  etc.  A  lo  largo  de  su  ejecución,  mediante  el  método
+getFilePointer,  se  va  controlando  la  evolución  del  apuntador  de  lectura  antes
+de  acceder  a  cada  valor.
+del  archivo,  medida  en  bytes,  se  quiere  llevar  a  cabo  la  lectura,  la  cual  se  lleva  a
+bytes  como  el  tamaño  del  tipo  del  valor  (4  bytes  si  es  un  entero,  8  si  es  un  double,
+El  siguiente  programa  de  ejemplo  utiliza  los  métodos  seek  y  skipBytes  para  leer
+los  datos  de  un  archivo  que  sólo  contiene  valores  enteros.  Se  ignora  la  primera  mitad
+de  los  valores  y  se  van  mostrando  los  valores  de  la  segunda  mitad  de  forma  intermitente.
+O  sea,  si  hay  20  valores,  se  saltan  los  10  primeros  valores  y  se  muestran  por  pantalla
+Programación  (DAW)
+4  public  class  LeerEnterosRelativo  {
+2  importe  java.io.File;
+32 }
+1  package  unidad6.apartado2.ejemplos;
+3  importe  java.io.RandomAccessFile;
+Programación  básica  (ASX)
+Programación  (DAM)
+33 }
+System.out.println("Error:  "
+}
+programa.inicio();
+RandomAccessFile  raf  =  new  RandomAccessFile(f,  "r");
+LeerEntersRelativo  programa  =  new  LeerEntersRelativo();
+pos  =  raf.getFilePointer();
+int  valor  =  raf.readInt();
++  valor);
+//Excepción!
+}  catch  (Exception  e)  {
++  e);
+}
+System.out.println("Error  leyendo  datos:  "
+}  while  (pos  <  f.length());
+long  pos  =  raf.getFilePointer();
+//Se  lee  un  entero
+}
+File  f  =  new  File("Enters.bin");
+raf.skipBytes(4);
+do  {
+}
+public  static  void  main  (String[]  args)  {
+long  mitad  =  numEnters/2;
+try  {
+//Se  lee  hasta  llegar  al  final  del  archivo
+long  numEnters  =  f.length()/4;
++  e);
+//Excepción!
+}  catch  (Exception  e)  {
+raf.seek(mitad*4);
+System.out.print("(apuntador  en  la  posición  "
++  pos  +  ")  −>");
+//Se  salta  el  siguiente  entero  (4  bytes)
+public  void  inicio()  {
+//Apuntador  al  inicio  del  entero  en  mitad  del  archivo
+}
+System.out.println("  Se  ha  leído  el  valor  "
+readInt(),  readDouble,etc.),  y  de  hecho,  mientras  no  se  vuelva  a  invocar  ninguno  de  los
+
+La  clase  RandomAccessFile  tiene  la  particularidad  de  que,  siempre  que  realiza  una
+escritura  sobre  un  archivo  que  ya  existe,  sólo  modifica  el  valor  donde  se  ubica  el  apuntador
+y  ningún  otro.  Por  tanto,  con  la  ayuda  del  método  de  posicionamiento  es  posible  modificar
+los  valores  dentro  de  un  archivo  orientado  a  byte  directamente,  tal  y  como  si  fueran  los
+valores  dentro  de  un  array.  De  hecho,  normalmente,  la  escritura  de  datos  relativa  sólo  tiene
+sentido  cuando  se  trabaja  sobre  un  archivo  ya  existente.
+2.4.3  Escritura  de  datos  relativa
+Como  sucedía  en  el  tratamiento  secuencial,  a  la  hora  de  realizar  lecturas  mediante  acceso  relativo
+hay  que  tener  cuidado  y  usar  siempre  el  método  que  corresponde  al  tipo  del  valor  al  que  se  quiere
+acceder,  así  como  procurar  no  acceder  a  posiciones  más  allá  del  tamaño  real  del  fichero.
+Para  el  caso  del  acceso  relativo,  además,  también  debe  ser  muy  cuidadoso  para  indicar
+cuál  debe  ser  la  posición  del  apuntador.  Éste  siempre  debe  estar  en  la  primera  posición
+del  grupo  de  bytes  que  conforman  cada  valor.  En  caso  contrario,  el  programa  se  comportará
+de  forma  errática,  ya  que  se  leerán  bytes  de  diferentes  valores  mezclados.  Por  ejemplo,  si
+un  archivo  sólo  contiene  valores  enteros,  las  únicas  posiciones  válidas  para  realizar
+lecturas  son  la  0,  4,  8,  12,  etc.
+El  acceso  relativo  a  un  archivo  evita  tener  que  cargar  todos  los  datos  a  memoria,  por
+ejemplo  a  un  array,  y  luego  volver  a  escribirlos  si  se  quieren  realizar  modificaciones
+a  valores  individuales.  Estas  enmiendas  se  pueden  realizar  directamente  sobre  las
+posiciones  del  archivo.
+Una  vez  que  el  apuntador  se  encuentra  en  la  posición  que  se  quiere  modificar,  el  proceso
+de  escritura  mediante  acceso  relativo  es  similar  al  de  lectura,  simplemente  cambiando  la
+invocación  de  métodos  de  lectura  por  los  de  escritura  (writeInt(...),  writeDouble(...),  etc.).
+El  siguiente  programa  muestra  un  ejemplo  de  escritura  mediante  acceso  relativo,  usando
+los  métodos  de  posicionamiento  del  apuntador.  En  este  caso,  el  programa  accede  a  un
+archivo  orientado  a  byte  que  contiene  un  conjunto  de  valores  enteros  y  modifica  los  valores
+que  ocupan  una  posición  múltiple  de  cinco  con  su  propia  posición.  O  sea,  reemplaza  el
+quinto  valor  por  un  5,  el  décimo  elemento  por  un  10,  el  decimoquinto  elemento  por  un  15,
+etc.  hasta  llegar  al  final  del  archivo.  Al  finalizar  la  escritura,  se  muestran  los  nuevos  valores
+del  archivo  por  pantalla.
+Programación  (DAW)
+Programación  básica  (ASX)
+Programación  (DAM)
+1  package  unidad6.apartado2.ejemplos;  2  importe  java.io.File;  3  importe
+java.io.RandomAccessFile;  4  public  class
+EscribirEnterosRelativo  {
+EscribirEntersRelativo  programa  =  new  EscribirEntersRelativo();  programa.inicio();
+Es  necesario  calcular  muy  bien
+cuál  es  la  posición  en  número
+de  bytes  donde  debe
+ir  el  apuntador.
+public  static  void  main  (String[]  args)  {
+}  public  void  inicio()  { try  {
+
+Programación  (DAW)
+Programación  básica  (ASX)
+77 }
+Programación  (DAM)
+//Se  avanza  hasta  el  inicio  del  quinto  entero
+//Se  muestra  el  contenido  original  (si  existe)
+*  la  propia  posición.
+//Se  hacen  las  modificaciones
+*/
+}
+try  {
+RandomAccessFile  raf  =  new  RandomAccessFile(f,  "r");
+*  contiene  enteros.
+int  y  =  1;
+int  valor  =  raf.readInt();
+System.out.println("Nuevos  valores  del  archivo.");
+//valor  1  =  posición  0,  valor  2  =  posición  4,  valor  3  =  posición  8
+System.out.println("Valores  iniciales  del  archivo.");
+}  catch  (Exception  e)  {
+//valor  4  =  posición  12,  valor  5  =  posición  16
++  e);
+//Se  escribe  un  valor  en  el  apuntador  actual
+pos  =  raf.getFilePointer();
+mostrarArchivoBinario(f);
+/**  Modifica  el  contenido  de  un  archivo  orientado  a  byte  que  contiene  enteros,  de
+try  {
+*  modo  que  cada  5  posiciones  se  sobrescribe  el  valor  por  el  número  de
+*
+}
+long  pos  =  raf.getFilePointer();
+raf.close();
+//Excepción!
+//En  total,  el  apuntador  ha  avanzado  5  valores  (escrito  +  salteados)
+raf.seek(16);
++  e);
+File  f  =  new  File("Enters.bin");
+}
+editarArchivoBinario(f);
+}
+System.out.println("Error  escribiendo  datos:  "
+}  catch  (Exception  e)  {
+/**  Muestra  por  pantalla  todos  los  valores  de  un  archivo  orientado  a  byte  que
+*  @param  f  Ruta  del  archivo  a  mostrar
+long  pos  =  raf.getFilePointer();
+//Escritura  finalizada
+while  (pos  <  f.length())  {
+//Y  ahora  se  muestra  el  nuevo  contenido
+raf.skipBytes(4*4);
+public  void  editarFicheroBinario(File  f)  {
+raf.close();
+System.out.println();
++  e);
+}
+}
+System.out.println("Error  leyendo  datos:  "
+*/
+System.out.print("  "  +  valor);
+//Se  saltan  4  valores  enteros.  Estos  no  se  tocan
+while  (pos  <  f.length())  {
+i++;
+}  catch  (Exception  e)  {
+System.out.println("Error  escribiendo  datos:  "
+pos  =  raf.getFilePointer();
+mostrarArchivoBinario(f);
+*  @param  f  Ruta  del  archivo  a  modificar
+RandomAccessFile  raf  =  new  RandomAccessFile(f,  "rw");
+}
+//Excepción!
+public  void  mostrarArchivoBinario(File  f)  {
+}
+raf.writeInt(i*5);
+//Excepción!
+*
+
+Seek  más  allá  del  tamaño  del  archivo
+F  igura  2.  1  1.  Escritura  incorrecta  en  un  acceso  relativo.
+Programación  (DAW)
+Programación  básica  (ASX)
+Programación  (DAM)
+Por  ejemplo,  si  dado  un  archivo  de  80  bytes  se  usa  el  método  seek  para  ubicar  el
+apuntador  hasta  la  posición  100  y  entonces  se  hace  la  escritura  de  un  entero,  el  archivo
+crecerá  hasta  los  100  bytes,  y  sus  últimos  20  bytes  estarán  todos  a  0.  Entonces  se
+llevará  a  cabo  el  final  e  bytes.  El  siguiente  programa  muestra  este  caso.
+En  el  proceso  de  escritura  mediante  acceso  relativo  también  existe  un  caso  especial.  Se
+trata  de  cuando  se  ha  llamado  el  método  seek  de  modo  que  el  apuntador  se  ubica  más
+allá  del  final  del  archivo  (por  ejemplo,  el  archivo  tiene  80  bytes  y  se  ubica  en  la  posición
+100),  y  entonces  se  lleva  a  cabo  una  escritura.  En  este  caso,  el  tamaño  del  archivo  se
+incrementa  automáticamente  hasta  la  posición  del  apuntador,  llenando  todos  los  nuevos
+bytes  con  0.  Una  vez  hecho,  entonces  se  materializa  la  escritura.
+Como  ocurría  con  la  lectura,  hay  que  tener  mucho  cuidado  a  la  hora  de  posicionar  al
+apuntador,  de  modo  que  éste  esté  siempre  en  el  primer  byte  del  valor  que  se  quiere
+sobreescribir.  En  este  caso,  sin  embargo,  hacer  bien  los  cálculos  es  especialmente
+crítico,  ya  que  de  lo  contrario  echará  a  perder  datos  dentro  del  archivo.
+La  figura  2.11  muestra  un  ejemplo  de  escritura  sobre  una  posición  inválida  al  realizar  un
+acceso  relativo  incorrecto  sobre  un  archivo  orientado  a  byte  con  6  valores  enteros.
+Fíjese  que  el  apuntador  se  sitúa  justo  en  mitad  del  tercer  valor,  de  modo  que,  al  escribir
+los  4  bytes  de  un  nuevo  valor  entero,  se  sobreescribe  la  segunda  mitad  del  tercer  valor
+(2  bytes)  y  la  primera  mitad  del  cuarto  (2  bytes  más).  El  resultado  es  que  se  cambia  parte
+de  los  bytes  correspondientes  a  estos  valores,  por  lo  que  ahora  pasan  a  representar
+valores  completamente  distintos.  Ya  a  simple  vista,  estos  nuevos  valores  sólo  dejan
+entrever  que  algo  se  ha  hecho  mal.
+Mediante  el  sistema  de
+acceso  relativo,  también  es
+posible  escribir  datos
+directamente  desde  el  final  de
+un  archivo  existente,  de
+forma  que  se  anexen.
+
+pantalla  los  valores  contenidos  antes  y  después  de  la  ordenación.
+final  de  un  archivo  existente,  de  modo  que  se  anexen.
+Mediante  este  sistema,  también  es  posible  escribir  datos  directamente  desde  el
+Reto  5.  Haga  un  programa  que,  dado  un  archivo  orientado  a  byte  que  contiene  cualquiera
+directamente  sobre  el  archivo,  y  no  cargando  los  datos  a  un  array,  ordenando  y
+después  escribiéndolas  de  nuevo  en  el  archivo.  Para  ver  que  funciona,  hacer  que  muestre  por
+número  de  valores  reales,  los  ordene  de  menor  a  mayor.  Esta  tarea  debe  llevarla
+3  importe  java.io.RandomAccessFile;
+2  importe  java.io.File;
+Programación  básica  (ASX)
+1  package  unidad6.apartado2.ejemplos;
+4  public  class  SeekCreixFicheroBinario  {
+51 }
+Programación  (DAW)
+Programación  (DAM)
+crearArchivo(f);
+System.out.println("Error  escribiendo  datos:  "
+}  catch  (Exception  e)  {
+*/
+SeekCreixFicheroBinario  programa  =  new  SeekCreixFicheroBinario();
+}
+raf.seek(f.length()  +  20);
+raf.close();
+/**  Crea  un  archivo  cualquiera  de  80  bytes.
+}
+public  void  crearArchivo(File  f)  {
+//Se  escribe  un  valor  cualquiera
+}
+}
+}
+public  static  void  main  (String[]  args)  {
+public  static  final  String  NOMBRE_FICHERO  =  "Seek.bin";
+RandomAccessFile  raf  =  new  RandomAccessFile(f,  "rw");
+public  void  inicio()  {
+//Excepción!
+//Se  va  20  bytes  más  allá  del  tamaño  del  archivo
++  f.length
+*  @param  f  Ruta  del  archivo  a  crear
+public  void  ejecutaSeek(File  f)  {
+try  {
++  e);
+raf.writeInt(100);
+File  f  =  new  File(NOMBRE_FICHERO);
+*  @param  f  Ruta  del  archivo  a  crear
+/**  Crea  un  archivo  cualquiera  de  80  bytes.
++  f.length());
+*/
+());
+*
+System.out.println("Error  escribiendo  datos:  "
+raf.writeInt(i);
+}
+RandomAccessFile  raf  =  new  RandomAccessFile(f,  "rw");
++  e);
+}
+for  (int  i  =  0;  y  <  20;  i++)  {
+raf.setLength(20*4);
+programa.inicio();
+System.out.println("El  tamaño  a  la  hora  de  hacer  seek  y  escribir  es"
+raf.close();
+*
+}  catch  (Exception  e)  {
+System.out.println("El  tamaño  inicial  es  "  ejecutaSeek(f);
+//Excepción!
+try  {
+
+}
+lector.close();
+//Excepción!
+}
+if  (maximo  <  valor)  {
+try  {
+}
+double  valor  =  lector.nextDouble();
+System.out.println("Error:  "
+//Con  o  sin  error,  hay  que  cerrar  el  archivo
+lector  =  new  Scanner(f);
+maximo  =  valor;
+for  (int  i  =  1;  y  <  NUM  _VALORS;  y  ++)  {
+Scanner  lector  =  null;
+}
+LeerEnters  programa  =  new  LeerEnters();  programa.inicio();
+public  void  inicio()  {
+}
+//Se  intenta  abrir  el  archivo
+File  f  =  new  File("Reals.txt");
+//De  momento,  el  máximo  es  el  primer  valor
+double  maxim  =  lector.nextDouble();
+System.out.println("El  mayor  valor  es:  " }  catch  (Exception  e)
+{
+//¿El  nuevo  valor  es  mayor?
++  máximo);
+//Recorremos  el  resto  de  valores
++  e);
+34 }
+Programación  (DAM)
+Programación  (DAW)
+1  package  unidad6.apartado2.ejemplos;  2  importe  java.io.File;  3  importe
+java.util.Scanner;  4  public  class  LeerEnteros
+{ public  static  final  int  NUM_VALORS  =  15;  public  static
+void  main  (String[]  args)  {
+Programación  básica  (ASX)
+2.5  Soluciones  a  los  retos  propuestos
+Reto  1
+
+//Excepción!
+}
+public  static  final  int  NUM_VALORS  =  20;
+EscribirEntersDobles  programa  =  new  EscribirEntersDobles();
+}
+//Si  no,  se  escribe  como  delimitador  un  espacio  en  blanco
+}  else  {
+//Se  calcula  y  escribe  el  nuevo  valor
+//Se  intenta  abrir  el  archivo
+try  {
+}
+File  f  =  new  File("Enters.txt");
+public  static  void  main  (String[]  args)  {
+escritor.print(valor);
+}  catch  (Exception  e)  {
+escritor.print("\n");
+escritor.print(valor);
+valor  =  valor*2;
+System.out.println("Error:  "
+//Se  van  generando  el  resto  de  valores  y  escribiendo
++  e);
+System.out.println("Archivo  escrito  satisfactoriamente.");
+escritor.close();
+}
+escritor  =  new  PrintStream(f);
+escritor.print("  ");
+}
+//Con  o  sin  error,  hay  que  cerrar  el  archivo
+public  void  inicio()  {
+if  (i%5  ==  0)  {
+for  (int  i  =  1;  y  <  20;  y  ++)  {
+PrintStream  escritor  =  null;
+programa.inicio();
+//Se  escribe  el  primer  valor,  que  no  necesita  un  espacio  antes
+int  valor  =  1;
+//Cada  5  elementos,  se  escribe  como  delimitador  un  salto  de  línea
+3  importe  java.io.PrintStream;
+40 }
+Programación  (DAM)
+Programación  (DAW)
+1  package  unidad6.apartado2.ejemplos;
+2  importe  java.io.File;
+4  public  class  EscribirEntersDobles  {
+Programación  básica  (ASX)
+Reto  2
+
+Reto  3
+67 }
+3  importe  java.util.Scanner;
+Programación  (DAM)
+2  importe  java.io.File;
+1  package  unidad6.apartado2.retos;
+5  public  class  GenerarFicheroNotas  {
+Programación  (DAW)
+4  importe  java.io.PrintStream;
+Programación  básica  (ASX)
+//la  palabra  fino  sirve  como  marca  de  final  de  archivo
+}
+while  (leer)  {
+File  in  =  new  File("NotesMarca.txt");
+//Hay  que  cerrar  los  archivos
+leer  =  false;
++  nombre  +
+/**  Dado  un  Scanner  en  un  archivo  cuando  el  apuntador  es  sobre  el  inicio
+lector.close();
+escritor.close();
+//Solo  es  necesario  cambiar  las  escrituras  a  pantalla  para  el  archivo  de  salida
+//Se  acumula  el  valor  de  las  notas
+double  media  =  leerNotes(lector);
+}
+GenerarFitxerNotes  programa  =  new  GenerarFitxerNotes();
+//O  sea,  donde  pone  "System.out"  poner  "escritor"
+"
+boolean  leer  =  true;
+}
++  e);
+*/
+//Se  genera  el  archivo  de
++  e);
+}
+if  (MARCA_FI.equals(nombre))  {
+File  out  =  new  File  ("NotaMitja.txt");  salida
+//Excepción!
+try  {
+String  apellido  =  lector.next();
+public  void  inicio()  {
+escritor.print("Estudiante:  "  +  apellido);
+//Ahora  se  lee  hasta  una  marca  de  fin  (−1)
+boolean  leer  =  true;
+while  (leer)  {
+if  (valor  ==  MARCA_FI_NOTES)  { //Final
+leer  =  false;
+//Note  cómo  un  Scanner  se  puede  pasar  como  parámetro
+*  @param  lector  −  Scanner  a  procesar
+double  nada  =  0;
+double  valor  =  lector.nextDouble();
+}
+public  static  final  String  MARCA_FI  =  "fin";
+numNotes++;
+}
+try  {
+}  else  {
+}
+public  double  leerNotes(Scanner  lector)  {
+*  de  las  notas,  se  extraen  y  se  calcula  la  media.
+public  static  void  main  (String[]  args)  {
+System.out.println("Archivo  escrito  satisfactoriamente.");
+PrintStream  escritor  =  new  PrintStream(out);
+}  catch(Exception  e)
+{ System.out.println("Error  leyendo  estudiantes:  "
+public  static  final  double  MARCA_FI_NOTES  =  −1;
+"  "
+programa.inicio();
+//Excepción!
+Scanner  lector  =  new  Scanner(in);
+}
+return  nada;
+nada  =  nada/numNotes; //Se  calcula  nota  media
+String  nombre  =  lector.next();
+*  @return  Media  de  notas
+}  catch  (Exception  e)
+{ System.out.println("Error  leyendo  notas:
+escritor.println("  −  Media:  "  +  media);
+}
+int  numNotes  =  0;
+}  else  { nada
+=  nada  +  valor;
+
+}  catch  (Exception  e)  {
+crearReales(f);
+File  f  =  new  File("Reals.bin");
+if  (valores !=  null)  {
+*  y  los  pone  en  un  array.
+for  (int  i  =  0;  y  <  numReals;  i++)  {
+*/
+programa.inicio();
+CalculsRealsBinario  programa  =  new  CalculsRealsBinario();
+raf.close();
+//Excepción!
+}
+raf.writeDouble(100r.nextDouble());
+System.out.println(valores[i]);
+for  (int  i  =  0;  y  <  20;  i++)  {
+*/
+public  double[]  leerReals(File  f)  {
+}
+Arrays.sort(valores);
+//Ha  habido  un  error  en  la  lectura
+}
+array[i]  =  raf.readDouble();
+int  n  =  (int)numReals;
+*
+}
+raf.close();
+*  @return  Array  de  reales
+*  @param  f  Ruta  del  archivo  a  leer
+long  numReals  =  f.length() /  8;
+System.out.println("Error  generando  archivo:  "
+}
+}  else  {
+}
+}  catch  (Exception  e)  {
+Random  r  =  new  Random();
+//Todo  correcto
++  e);
+//Cálculo  del  número  de  reales
+}
+try  {
+*  @param  f  Ruta  del  archivo  a  generar
+return  array;
+RandomAccessFile  raf  =  new  RandomAccessFile(f,  "r");
+System.out.println("Error  leyendo  datos.");
+/**  Dado  un  archivo  orientado  a  byte  con  reales,  los  lee  todos
+double[]  array  =  new  double[n];
+try  {
+RandomAccessFile  raf  =  new  RandomAccessFile(f,  "rw");
+double[]  valores  =  leerReals(f);
+}
+for  (int  i  =  valores.length  −  1;  i  >=  0;  i−−)  {
+/**  Genera  un  archivo  orientado  a  byte  con  20  valores  reales,  entre  0  y  100,
+public  static  void  main  (String[]  args)  {
+//para  inicializar  un  array  es  necesario  un  "int",  no  un  "long"
+}
+public  void  inicio()  {
+*  al  azar.
+public  void  crearReals(File  f)  {
+}
+return  null;
+3  importe  java.io.RandomAccessFile;
+4  importe  java.util.Arrays;
+Programación  básica  (ASX)
+6  public  class  CalculsRealsBinario  {
+66 }
+Programación  (DAW)
+5  importe  java.util.Random;
+2  importe  java.io.File;
+1  package  unidad6.apartado2.retos;
+Programación  (DAM)
+Reto  4
+
+Reto  5
+3  importe  java.io.RandomAccessFile;
+Programación  (DAM)
+2  importe  java.io.File;
+1  package  unidad6.apartado2.retos;
+67 }
+4  public  class  OrdenarRealesBinario  {
+Programación  básica  (ASX)
+Programación  (DAW)
+}
+*
+for(long  j  =  i  +  8;  j  <  f.length();  j  =  j  +  8)  {
+raf.seek(i);
+//Cada  real  ocupa  8  byes,  por  tanto,  hay  que  avanzar  de  8  en  8
+}  catch  (Exception  e)  {
+*  por  pantalla.
+//Se  lee  el  valor  en  la  posición  "j"
+/**  Dado  un  archivo  orientado  a  byte  que  contiene  reales,  muestra  los  valores
+RandomAccessFile  raf  =  new  RandomAccessFile(f,  "r");
+try  {
+mostrarArchivo(f);
+raf.seek(i);
++  e);
+*/
+}
+*  @param  f  Ruta  del  archivo  a  mostrar
+public  void  inicio()  {
+for  (int  i  =  0;  y  <  numReals;  i++)  {
+}
+}
+}
+for(long  i  =  0;  y  <  f.length();  i  =  i  +  8)  {
+*
+programa.inicio();
+System.out.println("Contenido  original  del  archivo:");
++  e);
+try  {
+System.out.println("Contenido  ordenado  del  archivo:");
+double  valorI  =  raf.readDouble();
+/**  Dado  un  archivo  orientado  a  byte  que  contiene  reales,  ordena  directamente  sobre
+//Si  "i"  mayor  que  "j",  se  intercambian  el  sitio
+OrdenarRealsBinario  programa  =  new  OrdenarRealsBinario();
+System.out.println("Error  ordenando  archivo:  "
+public  void  mostrarArchivo(File  f)  {
+public  void  ordenarArchivo(File  f)  {
+RandomAccessFile  raf  =  new  RandomAccessFile(f,  "rw");
+ordenarArchivo(f);
+*/
+}  catch  (Exception  e)  {
+mostrarArchivo(f);
+raf.close();
+long  numReals  =  f.length()/8;
+}
+raf.close();
+System.out.println("Error  mostrando  archivo:  "
+*  @param  f  Ruta  al  archivo  con  los  datos  a  ordenar
+}
+}
+//Se  lee  el  valor  en  la  posición  "i"
+raf.writeDouble(valorJ);
+raf.seek(j);
+public  static  void  main  (String[]  args)  {
+if  (valorI  >  valorJ)  {
+}
+File  f  =  new  File  ("Reals.bin");
+System.out.println(raf.readDouble());
+double  valorJ  =  raf.readDouble();
+}
+*  el  archivo  todos  sus  valores,  de  menor  a  mayor.
+//Se  comparan
+raf.writeDouble(valorI);
+raf.seek(j);
+System.out.println("−−−−−−−−−−−−−−−−−−−−−−−−−−−−−− );
+
+
+Estudie  atentamente.
+En  la  sección  “Anexos”  de  la
+web  dispone  del  código  fuente
+completo  de  la  aplicación
+sobre  la  que  se  trabaja  en
+este  apartado.
+Programación  (DAM)
+Programación  básica  (ASX)
+Programación  (DAW)
+Si  bien  el  proceso  de  resolver  las  rondas  de  combate  según  los  atributos  de  los  luchadores
+tiene  sus  particularidades,  para  plantear  cuál  es  el  funcionamiento  de  la  aplicación,  se  dejará
+en  esta  descripción  general,  sin  entrar  en  mayor  detalle.  De  todas  formas,  si  desea  hacer  la
+idea  más  esclarecedora,  a  continuación  se  expone  la  descomposición  del  problema  mediante
+diseño  descendente:
+funcionalidades.
+Los  principios  de  la  modularidad  también  son  aplicables  para  resolver  problemas  en  los  que
+se  realizan  operaciones  con  archivos.  De  hecho,  normalmente  dentro  de  las  aplicaciones
+suelen  generarse  módulos  claramente  diferenciados  vinculados  a  la  gestión  de  todos  los
+datos  persistentes.
+3.  Tratamiento  modular  de  datos.  El  juego  de  combates  en  la  arena
+En  este  apartado  se  plantea  un  ejemplo  de  aplicación  modular  en  el  que  se  lleva  a  cabo  el
+tratamiento  de  datos  almacenados  en  ficheros.  Concretamente,  se  estudia  cómo  ampliar  una
+aplicación  ya  existente,  generada  usando  los  principios  de  modularidad,  de  modo  que  estos
+principios  se  sigan  manteniendo  en  la  nueva  versión  con  nuevas
+3.1  Descripción  del  problema
+El  programa  que  sirve  como  punto  de  partida  es  un  juego  en  el  que  el  usuario,  el  jugador,  se
+va  enfrentando  con  sucesivos  adversarios  en  una  arena  de  combate.  Tanto  el  jugador  como
+sus  adversarios  son  definidos  por  una  serie  de  valores,  que  nombrarán  sus  atributos,
+mediante  los  cuales  se  indica  su  pericia  luchando:  resistencia,  nivel  de  poder,  capacidad  de
+atacar  o  defender,  etc.
+Cada  combate  se  divide  en  rondas,  al  inicio  de  las  cuales  el  jugador  y  su  adversario  eligen
+secretamente  una  estrategia  a  seguir.  En  cada  ronda  se  puede  seguir  una  estrategia  distinta.
+Según  las  estrategias  elegidas  por  cada  uno,  el  combate  se  irá  resolviendo  más
+favorablemente  hacia  uno  u  otro,  hasta  que  finalmente  se  considere  que  uno  de  los  dos  ha
+sido  derrotado.  Si  se  derrota  al  adversario,  se  otorga  una  puntuación  al  jugador.  Si  el  jugador
+es  derrotado,  termina  la  partida.  El  objetivo  final  del  jugador  es  sobrevivir  diez  combates,
+logrando  la  máxima  puntuación  posible  en  el  proceso.
+2.  Anunciar  inicio  del  combate.
+(a)  Mostrar  estado  del  jugador.
+1.  Generar  los  atributos  del  nuevo  jugador.
+3.1.1  División  del  problema
+
+4.  Combatir.
+(a)  Mostrar  estado  de  los  luchadores.
+ii.  Mostrar  estado  del  adversario.
+(c)  Elegir  estrategia  del  adversario.
+resolver  una  ronda.
+•  EntradaTeclado:  se  encarga  de  las  tareas  importantes  que  son  dadas  por  lo  que
+escribe  el  usuario  usando  el  teclado.
+ii.  Penalizar  a  luchador.
+(e)  Restaurar  luchador.
+iii.  Dañar  luchador.
+5.  Resolver  resultado  del  combate.
+•  SalidaPantalla:  como  la  anterior,  pero  para  mostrar  información  en  pantalla.
+•  Luchador:  para  las  tareas  vinculadas  a  la  manipulación  de  los  datos  de  un
+(b)  Elegir  estrategia  del  jugador.
+jugador.
+dic.
+(a)  Otorgar  puntuación.
+i.  Lanzar  monedas.
+•  Combate:  para  las  tareas  vinculadas  a  la  resolución  de  estrategias  enfrenta­
+(b)  Subir  de  nivel.
+3.  Elegir  al  adversario.
+luchador  (dañar,  curar,  etc.).
+iv.  Curar  luchador.
+•  Monedas:  para  las  tareas  vinculadas  al  lanzamiento  de  monedas  por
+•  Bestiario:  para  las  tareas  vinculadas  a  la  generación  de  adversarios  y  el
+Por  otra  parte,  en  el  package  joc.arena.interficie  se  decide  dividir  las  clases  que  tratan  la
+pantalla  y  el  teclado,  por  lo  que  habrá:
+(c)  Finalización  del  juego.
+i.  Mostrar  estado  del  jugador.
+3.1.2  Módulos  del  programa
+Partiendo  de  la  división  en  subproblemas  del  juego  de  combates  de  la  arena,  se  ha  realizado  la
+división  en  módulos  siguiente.  Por  un  lado,  en  el  package  joc.arena.reglas  estarán  las  clases:
+(d)  Resolver  resultados  de  estrategias.
+Programación  (DAM)
+Programación  básica  (ASX)
+Programación  (DAW)
+
+No  es  fácil  ver  lo  que  contienen.
+Son  fáciles  de  crear  y  editar  con  herramientas  externas
+Desventajas
+Tipo  de  archivo
+Ligado  al  punto  anterior,  es  fácil  calcular  cuántos  valores
+contienen.
+El  tamaño  que  ocupa  cada  valor  puede  ser  muy
+variable.
+Orientado  a  carácter
+Al  leerlos,  es  fácil  comprobar  mediante  código  de  tipos  de
+un  dato  datos  antes  de  leerlo  (métodos  hasNex...).
+Sólo  permiten  tratamiento  secuencial.
+Es  necesario  reescribir  todo  el  archivo  al  completo.
+Orientado  a  byte
+Es  necesario  controlar  el  número  de  valor  en  el  archivo,
+o  alguna  marca  de  finalización
+El  tamaño  que  ocupa  cada  valor  es  siempre  el  mismo.
+No  se  pueden  sobrescribir  fragmentos  concretos.
+Permiten  sobreescrituras  parciales  de  los  datos.
+Ventajas
+(un  editor  de  texto  simple).
+No  permiten  comprobar  los  tipos  de  valores  antes  de
+leerlos.  En  caso  de  error,  es  difícil  detectarlo.
+El  código  es  más  complicado.
+Permiten  el  acceso  relativo.
+Son  fáciles  de  depurar  (ver  si  su  contenido  es  correcto).
+Tabla  3.  1.  Ventajas  y  desventajas  según  el  tipo  de  archivos
+Programación  (DAW)
+Programación  básica  (ASX)
+Programación  (DAM)
+Una  de  las  primeras  decisiones  que  deben  tomarse  cuando  hay  que  tratar  archivos  es
+establecer  cómo  se  almacenarán  los  datos  (en  formato  carácter  o  byte)  y  el  acceso  que  se
+llevará  a  cabo  (secuencial  o  relativo).  En  muchos  casos,  cualquiera  que  sea  el  sistema
+elegido,  el  problema  se  podrá  resolver  igualmente.  La  única  diferencia  será  la  complejidad
+del  algoritmo  a  implementar  y  el  número  de  veces  que  debe  leerse  el  archivo.
+Al  finalizar  el  juego,  si  un  jugador  ha  obtenido  una  puntuación  que  merece  estar
+entre  las  diez  primeras,  puede  indicar  cuáles  son  sus  iniciales  (tres  letras),  para  que
+consten  asociadas  a  la  puntuación.
+Partiendo  de  esta  descripción,  se  quieren  añadir  dos  nuevas  funcionalidades:
+La  clase  principal,  JocArena  está  en  el  package  que  engloba  los  anteriores,  joc.arena,
+dada  la  jerarquía  de  nombres.
+•  Mantener  un  ranking  con  las  diez  mejores  puntuaciones  obtenidas.  Éstas  se  guardan
+en  un  archivo,  por  lo  que  se  mantienen  entre  partidas  diferentes.
+•  Ahora  mismo,  los  atributos  de  los  adversarios  están  escritos  en  el  código  fuente  del
+programa  (en  la  clase  Bestiario).  Esto  impide  añadir  nuevos  adversarios  fácilmente.
+Habría  que  modificar  su  código  fuente  y  compilar  de  nuevo  el  programa.
+Estaría  bien  que  los  datos  de  los  adversarios  se  obtengan  de  un  archivo,  de  modo
+que,  sólo  modificando  este  archivo,  el  programa  ya  incorpora  siempre
+automáticamente  a  los  adversarios  contenidos.
+3.2  Criterios  de  elección  de  tipos  de  archivo
+En  cualquier  caso,  usar  acceso  relativo  siempre  implicará  que  el  archivo  será  orientado  a
+byte.
+En  la  tabla  3.1  se  resumen  algunos  pros  y  contras  de  cada  tipo,  para  que  los  tenga  en
+cuenta.
+
+Elección  de  tipos  de  archivo  y  acceso
+Programación  (DAW)
+Programación  básica  (ASX)
+Programación  (DAM)
+Una  lista  de  máximas  puntuaciones.
+En  cuanto  al  nombre,  esto  ya  está  a  gusto  del  programador.  En  este  caso,  se  puede  llamar
+“ranking”.  Ahora  bien,  para  elegir  su  ubicación,  lo  más  sensato  normalmente  es  que  la  ruta  a
+un  archivo  sea  relativa,  para  no  imponer  ninguna  restricción  sobre  qué  carpetas  deben  existir
+en  cada  ordenador  donde  se  copie  el  programa.  En  ese  caso  se  puede  usar  la  propia  carpeta
+de  trabajo  de  la  aplicación.
+Esta  clase  será  la  encargada  de  gestionar  el  archivo  con  las  máximas  puntuaciones.  Debe
+poder  tanto  leerlas  para  mostrarlas  por  pantalla  como  modificarlo  para  escribir  nuevas.
+Normalmente,  el  tratamiento  de  datos  dentro  de  archivos  se  suele  realizar  en  un  package
+diferenciado.  Esta  decisión  es  coherente  con  la  de  disponer,  por  ejemplo,  de  otro  vinculado
+a  la  entrada/salida  de  datos  con  el  teclado  y  la  pantalla.  A  la  hora  de  elegir  el  nombre  del
+package,  es  recomendable  mantener  también  en  su  nombre  la  relación  jerárquica  entre
+módulos  en  la  aplicación.  Por  tanto,  este  package  se  puede  llamar  joc.arena.ficheros.
+3.3  La  biblioteca  "juego.arena.ficheros"
+Una  aproximación  sensata  para  enfocar  la  estructura  de  esta  biblioteca  es  hacerlo  de  forma
+que  cada  archivo  sea  tratado  por  una  clase  diferente.  En  este  caso,  pues,  serán  necesarias
+dos  clases  nuevas,  una  para  tratar  el  fichero  con  la  lista  de  puntuaciones  y  otra  para  el
+tratamiento  de  los  adversarios.
+Antes  de  empezar  es  necesario  escoger  el  nombre  del  archivo  donde  mantener  los  datos
+persistentes,  su  ubicación  en  el  sistema  de  archivos,  y  su  tipo  y  cómo  tratarlo.
+De  cara  a  tener  una  idea  clara  de  cómo  debe  funcionar,  es  necesario  decidir  cuál  será  el
+funcionamiento  exacto  de  la  lista  de  puntuaciones  máximas.  Esta  lista  tendrá  siempre  10
+entradas,  e  inicialmente,  cuando  todavía  no  se  ha  jugado  ninguna  partida,  habrá  una  serie
+de  puntuaciones  por  defecto.
+3.3.1  La  clase  Ranking
+Sólo  queda  decidir  el  tipo  de  archivo.  De  entrada,  siempre  vale  la  pena  prever  la  opción  de
+un  archivo  de  texto  secuencial,  ya  que  es  el  más  sencillo  de  procesar  y  depurar.
+En  este  sentido,  un  listado  de  10  puntuaciones  es  una  información  que  se  puede  tratar
+secuencialmente  de  manera  simple,  tanto  para  mostrarla  por  pantalla  como  para  buscar
+dónde  es  necesario  añadir  nuevos  elementos.  La  única  parte  en  la  que  no  todo  encaja
+perfectamente  es  para  insertar  puntuaciones.  Habrá  que  reescribir  el  archivo  desde  cero.
+Pero  como  es  un  archivo  muy  pequeño,  10  líneas,  no  es  un  gran  problema  y  se  considera  asumible.
+
+Por  el  momento,  en  el  código  de  la  clase  Ranking  sólo  se  puede  ver  la  propagación  de
+errores  en  cuanto  a  la  parte  de  tratamiento  de  excepciones  y  retorno  del  valor  ­1.
+no.
+La  propagación  de  errores  es  el  mecanismo  mediante  el  cual  un  método  avisa  al
+código  que  le  ha  invocado  si  ha  podido  realizar  su  tarea  correctamente  o
+Cuando  se  realizan  operaciones  sobre  archivo,  pueden  suceder  una  serie  de  situaciones
+erróneas.  Por  ejemplo,  intentar  leer  datos  de  un  archivo  inexistente,  leer  datos  cuando  ya
+se  ha  llegado  al  final  del  archivo  o  de  un  tipo  inesperado,  al  tener  el  archivo  un  formato
+incorrecto.  En  Java,  estos  errores  se  llaman  excepciones,  y  es  necesario  controlarlos
+usando  una  sentencia  try/catch.
+En  el  caso  de  un  programa  modular  con  archivos,  es  muy  importante  que,  cada  vez  que  se
+invoca  un  método  donde  dentro  de  su  código  se  tratan  archivos,  el  código  que  ha  llevado  a
+cabo  la  invocación  pueda  establecer  si  todo  ha  ido  bien  o  no.  Por  tanto,  los  métodos  que
+tratan  datos  en  ficheros  deben  poder  avisar  si  han  realizado  todas  las  tareas  correctamente  o  no.
+En  el  caso  de  métodos  que  no  disponen  de  ningún  parámetro  de  salida  (tipo  void),  se  fuerza
+a  que  tengan  un  parámetro  de  salida  de  tipo  entero,  que  servirá  exclusivamente  para
+establecer  si  todo  ha  ido  bien  o  no.  Normalmente  se  hace  que  se  evalúen  a  0  si  todo  ha  ido
+bien  y  ­1  si  ha  habido  alguna  excepción.
+Por  ejemplo,  mostrando  un  mensaje  de  error  por  pantalla.
+Existen  distintos  mecanismos  para  llevar  a  cabo  la  propagación  de  errores.  Para  esta  clase
+se  ha  usado  lo  más  simple,  que  es  reservar  uno  de  los  valores  del  parámetro  de  salida  para
+indicar  que  ha  sucedido  un  error  (a  menudo  se  utiliza  el  valor  ­1).  Una  vez  evaluado  el
+método  invocado,  comprobar  si  el  resultado  es  el  valor  reservado  o  no.  Si  es  así,  es  que  ha
+habido  una  excepción  dentro  del  método,  y  por  tanto  éste  no  ha  podido  llevar  a  cabo  su
+tarea  correctamente.  Entonces,  es  necesario  actuar  en  consecuencia.
+Dadas  las  necesidades  expuestas,  el  código  fuente  de  la  clase  puede  ser  el  que  se  muestra  a
+continuación.  Entre  sus  particularidades,  aparte  de  los  aspectos  anteriores,  se  encuentran  los
+llamamientos  internos  al  método  generar  ArchivoInicial,  que  comprueba  si  el  archivo  de  puntuaciones
+existe,  y  en  su  defecto,  lo  crea  desde  cero.  Esto  es  más  eficiente  que  decir  que  existe  un  error  y  no
+poder  hacer  nada.  Sobre  todo  en  caso  de  que  se  acaba  de  jugar  una  partida  donde  se  ha  obtenido
+una  máxima  puntuación,  ¡ya  que  esta  se  perdería!  Siempre  es  mejor  corregir  un  error  si  cabe,  en
+lugar  de  simplemente  anunciarlo  y  no  hacer  nada  más.
+También,  dadas  las  particularidades  de  los  archivos  secuenciales,  observe  en  el  método
+Más  adelante,  cuando  se  vea  cómo  se  invocan  estos  métodos  desde  otras  clases,  le  quedará
+más  claro  cómo  se  controla  la  propagación  para  establecer  si  el  método  ha  funcionado
+correctamente  o  no  y  actuar  en  consecuencia.
+Programación  (DAM)
+Programación  básica  (ASX)
+Programación  (DAW)
+Código  fuente  de  la  clase
+Propagación  de  errores
+
+ps.close();
+int  err  =  generarArchivoInicial();
+public  static  final  String  RANQUING  =  "Ranking";
+*/
+pos++;
+return  −1;
+if  (puntos  >  ranqPts)  {
+public  int  entrarPuntuacio(String  iniciales,  int  puntos,  int  pos)  {
++  (10  −  i)*10);
+while  (pos  <  10)  {
+int  ranqPts  =  lector.nextInt();
+File  ranking  =  new  File(RANQUING);
+PrintStream  ps  =  new  PrintStream(ranking);
+*  @return  0  si  todo  correcto,  −1  si  error
+*/
+*  @return  0  si  todo  correcto,  −1  si  error.
+try  {
+Scanner  lector  =  new  Scanner(ranking);
+}
+}
+}
+}
+if  (err  ==  −1)  {
+*  @param  iniciales  Iniciales  del  jugador
+/**  Crea  el  archivo  de  puntuaciones  inicial
+return  0;
+}
+/**  Inserta  una  puntuación  en  el  ranking
+*  @param  puntos  Puntos  a  comprobar
+if  (lector.hasNextInt())  {
+*  @param  puntos  Puntuación  alcanzada
+try  {
+public  int  generarArchivoInicial()  {
+/**  Dada  una  puntuación,  establece  su  posición  en  el  archivo
+//Nombre  archivo  como  constante
+return  −1;
+lector.next();
+//Propagación  de  error
+*  @return  Posición  para  la  puntuación.  −1  si  error.
+}
+int  pos  =  0;
+return  pos;
+}
+try  {
+if  (ranking.isFile()  ==  false)  {
+*  @param  pos  Posición  en  el  ranking
+public  int  buscarRanking(int  puntos)  {
+}  catch  (Exception  e)  {
+//Error  en  el  formato  del  archivo
+return  pos;
+return  −1;
+}
+return  −1;
+}  catch  (Exception  e)  {
+}
+File  ranking  =  new  File(RANQUING);
+}  else  {
+lector.close();
+ps.println("IOC  "
+for  (int  i  =  0;  y  <  10;  i++)  {
+*/
+}
+int  err  =  generarArchivoInicial();
+Programación  básica  (ASX)
+1  package  joc.arena.ficheros;
+2  importe  java.io.File;
+4  importe  java.util.Scanner;
+Programación  (DAW)
+5  public  class  Ranking  {
+3  importe  java.io.PrintStream;
+Programación  (DAM)
+entrarPuntuación  como  debe  generarse  un  archivo  temporal,  ya  que  no  se  puede
+sobrescribir  directamente  el  original.
+
+//Se  borra  archivo  antiguo  y  se  pone  el  nuevo
+Scanner  lector  =  new  Scanner(ranking);
+*  @return  Cadena  de  texto  resultante.  null  si  hay  error
+if  (err  ==  −1)  {
+try  {
+}
+return  null;
+File  ranking  =  new  File(RANQUING);
+ps.println(txt);
+String  txtRanking  =  "Ranking  de  puntuaciones\n−−−−−−−−−−−−−−−−−−−−−−\n";
+ps.println(iniciales  +  +  puntos);
+//Reescribir  anteriores  a  posición
+PrintStream  ps  =  new  PrintStream(tmp);
+//Reescribir  posteriores  a  posición
+lector.close();
+Scanner  lector  =  new  Scanner(ranking);
+}
+for(int  i  =  pos  +  1;  y  <  10;  i++)  {
+//Leer  puntos
+*/
+String  txt  =  lector.nextLine();
+if  (err  ==  −1)  {
+File  tmp  =  new  File  (RANQUING  +  ".tmp");
+int  err  =  generarArchivoInicial();
+}
+for(int  i  =  0;  y  <  pos;  i++)  {
+}
+}  else  {
+}
+}
+}  catch  (Exception  e)  {
+return  null;
+File  ranking  =  new  File(RANQUING);
+lector.close();
+//Leer  iniciales
+}  catch  (Exception  e)  {
+return  −1;
+}
+ps.println(txt);
+return  0;
+txtRanquing  =  txtRanquing  +  lector.next();
+}
+}
+ranking.delete();
+ps.close();
+/**  Lee  las  puntuaciones  y  las  formatea  como  una  cadena  de  texto
+}
+tmp.renameTo(ranking);
+return  txtRanking;
+String  txt  =  lector.nextLine();
+//Escribir  nueva  puntuación
+public  String  leerRanquing()  {
+//Error  en  el  formato  del  archivo
+return  −1;
+"  "
+for  (int  i  =  0;  y  <  10;  i++)  {
+if  (lector.hasNextInt())  {
+return  null;
+txtRanquing  =  txtRanquing  +  "\t"  +  lector.nextInt()  +  "\n";
+Programación  (DAW)
+Programación  (DAM)
+Programación  básica  (ASX)
+126 }
+La  clase  Bestiario  es  la  encargada  de  generar  los  luchadores,  tanto  el  jugador
+3.3.2  La  clase  Bestiario
+al  inicio  del  juego  como  los  sucesivos  adversarios.  En  la  versión  original  todo  está
+
+Nivel  (entero)
+Bytes  38­41
+Bytes  34­37
+Bytes  0­29
+Bytes  30­33
+Bytes  42­45
+Nombre  (caracteres)
+Bytes  46­49
+Defensa  (entero)
+Vida  Máx  (entero)
+Puntos  (entero)
+Ataque  (entero)
+Elección  de  tipos  de  archivo  y  acceso
+Programación  (DAM)
+Programación  básica  (ASX)
+Programación  (DAW)
+caso  de  nombres  con  menos  de  15  caracteres,  el  resto  de  bytes  se  llenan  todos  a  0  hasta
+nuevos,  sin  tener  que  modificar  el  código  fuente  del  programa.  Sólo  hace  falta  cambiar  este
+llegar  a  los  15  caracteres  (30  bytes).
+de  15  caracteres  de  2  bytes)  +  5*4  (los  5  atributos,  que  son  enteros  de  4  bytes).  La
+archivo  mediante  un  editor  hexadecimal.  Los  datos  relativos  al  primer  adversario  (de
+tabla  3.2  muestra  un  resumen  de  la  estructura.
+implica  que  es  necesario  usar  un  archivo  orientado  a  byte.
+Antes  de  poder  escribir  el  código  fuente  hay  que  tener  bien  claro  cuál  será  el  formato  del  archivo
+Es  necesario  definir  detalladamente  la  estructura  del  archivo  y  cómo  se  agrupan  los  conjuntos  de
+•  Vida  =  0x00000008
+almacenado  en  el  código  fuente  del  programa.  Ahora  se  quiere  hacer  una  nueva  versión,
+archivo.
+caso,  cada  adversario).  Esto  significa  que  hay  que  acotar  el  tamaño  del  nombre.  No  puede  ser  de
+y  su  estructura.  En  este  caso,  se  encuentra  que  debe  adaptar  una  clase  en  la
+trabajar,  para  poder  acceder  a  sus  posiciones  de  manera  directa,  es  un  archivo
+de  acceso  relativo.  Por  tanto,  se  usará  este  sistema  de  tratamiento  de  datos,  cosa  que
+que  todo  se  estructura  dentro  de  un  array  originalmente,  y  lo  que  se  quiere  es  trabajar  sobre
+en  el  nombre.  Los  6  primeros  son  los  caracteres  del  nombre  propiamente  y  el  resto  están  a  0.  A
+cualquier  longitud.  Para  este  programa,  el  tamaño  se  acotará  a  15  caracteres.  En  el
+•  Puntos  =  0x00000019  (25  en  decimal)
+atributos,  por  lo  que:
+De  esta  forma,  cada  adversario  ocupa  siempre  50  bytes:  15*2  (nombre,  compuesto
+valores  almacenados  (los  atributos  de  los  adversarios).  Lo  sensato  es  proponer
+Adversarios,  y  también  se  usará  una  ruta  relativa.
+Dada  esta  estructura,  la  figura  3.1  mostraría  un  ejemplo  de  visualización  del
+una  adaptación  más  o  menos  directa  del  array  usado  en  la  versión  original.  Ahora  bien,
+partir  del  byte  número  30,  hay  cinco  enteros,  cada  uno  de  4  bytes,  asociados  a  sus
+para  poder  trabajar  con  un  archivo  orientado  a  byte  de  manera  relativa,  como  si  fuera
+De  esta  forma,  es  posible  usar  diferentes  listas  de  adversarios,  o  añadir  de
+nombre  “Nan”)  están  sombreadas.  Fíjese  cómo  los  primeros  34  bytes  corresponden
+perteneciente  a  un  package  diferente,  que  obtenga  toda  la  información  desde  un  archivo.
+•  Nivel  =  0x00000001
+En  este  caso,  el  nombre  del  archivo  donde  tener  guardados  los  datos  de  los  adversarios  será
+un  archivo.  El  tipo  de  archivo  que  se  parece  más  a  un  array  en  su  modo  de
+un  array,  es  importante  que  cada  conjunto  de  datos  tenga  un  tamaño  fijo  (en  este
+en  byte,  incluso  es  posible
+Con  un  archivo  relativo  orientado
+plantear  búsquedas
+sobre  éste.
+Tabla  3.  2.  Estructura  de  los  datos  asociados  a  un  adversario
+dicotómicas  directamente
+
+Código  fuente  de  la  clase
+Por  tanto,  fíjese  cómo,  en  la  nueva  clase,  los  métodos  existentes  son  exactamente  los  mismos  que
+había  inicialmente,  manteniendo  su  formato  (nombre  y  parámetros).
+Éste  es,  precisamente,  el  sentido  de  la  modularidad.  Poder  cambiar  un  módulo  (en  este  caso,  una
+clase),  por  otro  sin  tener  que  tocar  nada  más.  Tal  y  como  se  haría  cuando  se  cambia  una  cajonera
+modular  o  un  módulo  de  memoria  del  ordenador.
+•  Defensa  =  0x00000003
+•  Ataque  =  0x00000003
+Este  caso  es  algo  distinto  del  ranking  de  puntuaciones,  ya  que  no  se  trata  de  añadir  un  módulo
+nuevo.  Se  trata  de  reemplazar  un  módulo  con  unas  funciones  concretas  (gestionar  adversarios  a
+partir  de  unas  variables  globales)  por  uno  con  otras  (que  esta  gestión  se  haga  usando  un  archivo).
+Esto  es  una  situación  muy  interesante,  ya  que  si  se  aplican  los  principios  de  modularidad
+correctamente,  las  modificaciones  en  el  resto  del  programa  deberían  ser  mínimas.
+Saque  el  antiguo,  ponga  el  nuevo,  y  todo  sigue  funcionando  sin  tener  que  tocar  nada  más.
+La  estrategia  para  alcanzar  este  objetivo  siempre  es  la  misma.  Intentar  mantener  los  mismos
+métodos,  con  los  mismos  parámetros,  que  existían  en  la  clase  original,  y  sólo  modificar  el  bloque
+de  código  que  contienen.  De  este  modo,  no  es  necesario  enmendar  el  código  donde  existen
+invocaciones  en  cualquiera  de  los  métodos  originales,  ya  que  su  definición  será  la  misma  en  la
+clase  nueva  que  en  la  antigua.  Si  es  necesario,  se  pueden  añadir  nuevos  métodos,  pero  es
+imprescindible  mantener  el  formato  de  los  que  ya  existían  antes  del  cambio.
+Si  se  logra  esto,  todo  se  ha  hecho  perfectamente.
+Sin  embargo,  se  han  creado  algunos  métodos  nuevos  para  reutilizar  código  (por  ejemplo,  crear
+Adversario  o  leerNombre).
+Programación  (DAW)
+Programación  básica  (ASX)
+Programación  (DAM)
+Cambiar  un  módulo  de  un  programa
+debería  ser  cómo  cambiar  un  mueble
+modular.  Fuente:  Bercik
+1  package  joc.arena.ficheros;  2  importe  java.io.File;  3  importe
+java.io.RandomAccessFile;  4  importe
+java.util.Random;  5  importe  juego.arena.reglas.Luchador;  6  public  class
+Bestiario  {
+F  igura  3.  1.  Contenido  del  archivo  de  adversarios  visualizado  con  un  editor  hexadecimal
+//Todos  los  métodos  mantienen  su  declaración  (nombre  y  parámetros)
+//Constante  con  el  nombre  del  archivo  de  adversarios  private  static
+final  File  ADVERSARIOS  =  new  File("Adversarios");
+//Jugador:  ID  =  0  private
+int[]  jugador  =  {0,  1,  0,  10,  10,  3,  3,  3,  3};  private  Luchador  luchador  =  new  Luchador();
+
+Programación  (DAM)
+Programación  (DAW)
+Programación  básica  (ASX)
+/**  Genera  un  nuevo  jugador
+adversario[1]  =  raf.readInt();
+*  @param  raf  Archivo  relativo  de  dónde  leerlo
+String  nombre  =  "";
+*  @param  nombreAdv  Nombre  del  adversario  a  obtener
+long  numAdv  =  ADVERSARIOS.length()/50;
+*
+char  c  =  raf.readChar();
+RandomAccessFile  raf  =  new  RandomAccessFile(ADVERSARIOS,  "r");
+raf.close();
+*  @return  Un  array  con  los  datos  de  un  jugador  inicial
+*  @return  Luchador  leído
+adversario[6]  =  adversario[5];
+*  @return  Nombre  leído,  o  null  si  hay  error
+for  (int  i  =  0;  y  <  numAdv;  i++)  {
+*  @param  raf  Archivo  a  tratar
+while  (c !=  0x0000)  {
+public  int[]  buscarAdversario(String  nombreAdv)  {
+if  (nombre.equalsIgnoreCase(nombreAdv))  {
+raf.seek(pos*50  +  30);
+/**  Dado  un  nombre,  genera  el  adversario  correspondiente.  Si  ese  nombre  no  existe,
+adversario[3]  =  raf.readInt();
+int[]  adversario  =  null;
+adversario[8]  =  adversario[7];
+}
+try  {
+}  catch  (Exception  e)  {
+adversario[5]  =  raf.readInt();
+*  se  genera  al  azar.
+*  @return  El  Luchador  con  este  nombre,  o  null  si  no  existe
+String  nombre  =  leerNombre(raf);
+}
+adversario[4]  =  adversario[3];
+}  catch  (Exception  e)  {
+public  String  leerNombre(RandomAccessFile  raf)  {
+public  int[]  generarJugador()  {
+try  {
+*
+int[]  adversario  =  new  int[9];
+}
+adversario[2]  =  raf.readInt();
+return  null;
+luchador.renovar(jugador);
+adversario  =  crearAdversario(raf,i);
+/**  Obtiene  el  adversario  que  hay  en  un  orden  concreto  del  archivo,
+*  @param  pos  Posición  del  adversario  dentro  del  archivo
+returno  adversario;
+public  int[]  crearAdversario(RandomAccessFile  raf,  int  pos)  {
+*/
+c  =  raf.readChar();
+try  {
+*
+return  jugador;
+}
+*
+*/
+}
+adversario[7]  =  raf.readInt();
+adversario[0]  =  pos  +  1;
+}
+/**  Dado  un  archivo  relativo  orientado  a  byte,  correctamente  posicionado,
+raf.seek(50*i);
+*/
+returno  adversario;
+*  lee  el  nombre  del  adversario.
+*  en  fomat  array.
+}
+*/
+nombre  =  nombre  +  c;
+return  null;
+
+id−−;
+Programación  (DAW)
+Programación  básica  (ASX)
+Programación  (DAM)
+148 }
+89 /**Dado  un  nivel,  genera  el  adversario  correspondiente  al  azar.  Se  trata
+*/
+}
+public  int[]  elegirAdversarioAzar(int  nivel)  {
+int[]  adversario  =  null;
+if  (id  ==  0)  {
+}
+*  de  un  adversario  que  sea  al  menos  de  este  nivel
+int  pos  =  50*id;
+*/
+}
+}
+try  {
+RandomAccessFile  raf  =  new  RandomAccessFile(ADVERSARIOS,"r");
+while  (buscar)  {
+}
+returno  adversario;
+}  catch  (Exception  e)  {
+}
+/**  Transforma  un  identificador  de  Luchador  a  su  nombre.
+Random  rnd  =  new  Random();
+}
+if  ((dif  >=  −1)&&(dif  <=  1))  {
+return  null;
+return  ADVERSARIOS.isFile();
+}
+try  {
+/**  Dice  si  existe  el  archivo  de  adversarios
+buscar  =  false;
+*
+return  nombre;
+*/
+int  numAdv  =  (int)raf.length()/50;
+int  dif  =  nivel  −  nivelAdv;
+return  null;
+public  boolean  existeArchivo()  {
+}  catch  (Exception  e)  {
+return  "Aventurero";
+return  nombre;
+adversario  =  crearAdversario(raf,  i);;
+*  @return  Si  existe  (true)  o  no  (false)
+}  catch  (Exception  e)  {
+nombre  =  leerNombre(raf);
+boolean  buscar  =  true;
+int  nivelAdv  =  luchador.leerNivel(adversario);
+public  String  traducirIDANom(int  id)  {
+*
+*  @param  id  Identificador
+RandomAccessFile  raf  =  new  RandomAccessFile(ADVERSARIOS,  "r");
+}
+*  @return  Un  adversario
+raf.close();
+if  (pos  <  raf.length())  {
+raf.seek(pos);
+}
+int  y  =  rnd.nextInt(numAdv);
+}
+raf.close();
+return  "DESCONOCIDO";
+*  @param  nivel  Nivel  cercano  al  del  adversario  a  obtener
+*  @return  La  cadena  de  texto  con  el  nombre.
+String  nombre  =  "DESCONOCIDO";
+}
+*
+
+Código  fuente  de  la  clase
+en  una  sola  clase,  pero  aplicando  diseño  descendente.  El  archivo  de  adversarios  se  puede
+para  este  caso,  puede  resultar  útil  disponer  de  un  programa  auxiliar  que  sirva
+desarrollo  de  juegos.
+3.3.3  La  clase  auxiliar  EditorBestiari
+El  problema  de  los  archivos  orientados  a  byte  es  que  no  resultan  fáciles  de  editar.  Por  eso,
+de  editor  de  la  lista  de  adversarios,  de  modo  que  sea  fácil  manipularla.  Éste
+puede  visualizar,  añadir  y  borrar  entradas  en  el  archivo  binario.
+A  continuación  se  muestra  el  código  fuente  de  este  programa  auxiliar,  creado  monolíticamente
+editar  partiendo  desde  cero,  o  bien  desde  uno  ya  existente.  Para  simplificar  su  código,
+todas  las  operaciones  de  añadir  o  eliminar  trabajan  sobre  el  final  del  archivo  del  archivo.
+Programación  (DAW)
+4  importe  java.util.Scanner;
+5  public  class  EditorBestiari  {
+Programación  (DAM)
+1  package  joc.arena.ficheros;
+Programación  básica  (ASX)
+2  importe  java.io.File;
+3  importe  java.io.RandomAccessFile;
+generar  los  archivos  de  datos  de
+String  nombre  =  lector.nextLine();
+preguntar  =  false;
+de  juegos
+System.out.println("[A]añadir\t[E]liminar  último\t[S]salir");
+*/
+programadores  de  videojuegos
+System.out.print("Accio:  ");
+File  archivo  =  new  File(nombre);
+*  @return  Ruta  al  archivo  a  editar.
+/**  Pregunta  al  usuario  el  nombre  del  archivo  a  editar.
+boolean  preguntar  =  true;
+añadirAdversario(fichero);
+Es  muy  habitual  que  los
+Herramientas  de  desarrollo
+Archivo  archivo  =  preguntarArchivo();
+return  archivo;
+juegos  que  están  creando.  Éstas
+*  @param  archivo  Archivo  a  tratar
+boolean  ejecutar  =  true;
+}
+*/
+*  @return  Si  es  necesario  seguir  ejecutando  del  programa  (true)  o  aún  no  (false)
+String  respuesta  =  lector.nextLine();
+if  ("A".equalsIgnoreCase(respuesta))  {
+}
+eliminarAdversario(fichero);
+public  File  preguntarArchivo()  {
+preguntar  =  false;
+Scanner  lector  =  new  Scanner(System.in);
+public  static  void  main  (String[]  args)  {
+EditorBestiario  programa  =  new  EditorBestiari();
+programa.inicio();
+}
+System.out.print("Nombre  del  archivo  a  editar:  ");
+public  static  final  int  MEDIDA_BYTES_ADV  =  50;
+se  llaman  herramientas  de
+while  (preguntar)  {
+}
+Scanner  lector  =  new  Scanner(System.in);
+}  else  if  ("E".equalsIgnoreCase(respuesta))  {
+tengan  herramientas  auxiliares  por
+/**  Realiza  el  tratamiento  del  menú  del  usuario.
+ejecutar  =  tratarMenu(fichero);
+public  boolean  tratarMenu(File  archivo)  {
+public  void  inicio()  {
+public  static  final  int  MAX_CHAR_NOM  =  15;
+while  (ejecutar)  {
+mostrarArchivo(archivo);
+System.out.println("−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−− );
+
+}
+raf.seek(y*MIDA_BYTES_ADV  +  MAX_CHAR_NOMBRE*2);
+*  @param  raf  Archivo  a  tratar
+System.out.print("Acción  incorrecta...");
+c  =  raf.readChar();
+*/
+//Se  pone  al  final  de  todo
+for  (int  z  =  0;  z  <  (MAX_CHAR_NOM  −  nombre.length());  z++)  {
+}
+return  false;
+return  nombre;
+*  @return  Nombre  leído,  o  null  si  hay  error
+*  @param  archivo  Ruta  al  archivo  a  mostrar
+*/
+}  else  {
+System.out.println("El  archivo  está  vacío.");
+System.out.print("  (puntos:  "  +  raf.readInt()  +  ")");
+raf.close();
+}  else  {
+try  {
+String  nombre  =  leerNombre(raf);
+}
+System.out.print("\tATAC:  "  +  raf.readInt());
+}
+*  lee  el  nombre  del  adversario.
+System.out.println("Escribe  el  nombre  del  adversario  (máx.  12  letras):  ");
+return  true;
+/**  Escribe  un  nuevo  adversario  al  final  del  archivo,  preguntando  todo  lo  necesario
+System.out.print("\tVIDA:  "  +  raf.readInt());
+*/
+}  else  {
+while  (c !=  0x0000)  {
+}
+System.out.println("Aún  no  se  ha  creado  el  archivo.");
+try  {
+long  numAdversaris  =  archivo.length()/MIDA_BYTES_ADV;
+}  else  if  ("S".equalsIgnoreCase(respuesta))  {
+System.out.println("\tDEFENSA:  "
+String  nombre  =  "";
+return  null;
+*  al  usuario.
+for  (int  i  =  0;  y  <numAdversaris;  i++)  {
+RandomAccessFile  raf  =  new  RandomAccessFile(archivo,  "rw");
+System.out.print(nombre);
+public  void  mostrarArchivo(File  archivo)  {
+System.out.print("  ");
+nombre  =  nombre  +  c;
+}
+System.out.print(":  \tNivel:  "  +  raf.readInt());
+}
++  raf.readInt());
+}
+char  c  =  raf.readChar();
+/**  Dado  un  archivo  relativo  orientado  a  byte,  correctamente  posicionado,
+}
+*  @param  archivo  Ruta  al  archivo  al  que  hay  que  añadir  el  adversario.
+RandomAccessFile  raf  =  new  RandomAccessFile(archivo,  "r");
+System.out.println("Error  accediendo  al  archivo!");
+public  String  leerNombre(RandomAccessFile  raf)  {
+}
+//Cada  adversario  coupa  50  bytes.  El  pedazo  del  nombre  ocupa  15*2
+}  catch  (Exception  e)  {
+}
+public  void  añadirAdversario(File  archivo)  {
+if  (numAdversarios  ==  0)  {
+/**  Muestra  el  contenido  del  archivo  por  pantalla
+raf.seek(archivo.length());
+}
+}  catch  (Exception  e)  {
+try  {
+if  (archivo.isFile()  ==  false)  {
+Programación  (DAM)
+Programación  básica  (ASX)
+Programación  (DAW)
+
+Programación  (DAM)
+Programación  básica  (ASX)
+Programación  (DAW)
+numChars  =  MAX_CHAR_NOM;
+lector.next();
+int  err  =  escribirNombre(nombre,  raf);
+while(preguntar)  {
+}
+*  @param  raf  Archivo  relativo  correctamente  posicionado  para  la  escritura
+try  {
+/**  Lee  cinco  valores  de  tipo  entero  desde  el  teclado.
+//Escribir  el  nombre  (máx.  15  caracteres)
+}
+if  (numChars  >  MAX_CHAR_NOM)  {
+*  @return  Los  cinco  valores  leídos,  ordenadamente
+int[]  valores  =  new  int[5];
+System.out.print("Escribe  sus  atributos,  separados  por  espacios.  ");
+for  (int  i  =  0;  y  <  (MAX_CHAR_NOM  −  numChars);  i++)  {
+*  @param  lector  Scanner  que  lee  del  teclado
+String  nombre  =  lector.nextLine();
+numLeídos++;
+}
+System.out.println("Error  escribiendo  datos  en  el  archivo  " }  else  {
+*  byte.  Como  máximo,  el  nombre  puede  tener  15  caracteres.  El  resto,  se  llena  a  0.
+}  catch  (Exception  e)  {
++  archivo);
+}
+return  0;
+Scanner  lector  =  new  Scanner(System.in);
+lector.nextLine();
+}  catch  (Exception  e)  {
+System.out.println("Error  escribiendo  datos  en  el  archivo  "
+}
+}
+}
+*/
+}
+}
+boolean  preguntar  =  true;
+*  @param  nombre  Nombre  a  escribir
+*/
+for  (int  i  =  0;  y  <  numChars;  i++)  {
+return  −1;
+valores[i]  =  lector.nextInt();
+if  (numLeídos  ==  5)  {
+raf.writeInt(valores[i]);
+public  int  escribirNombre(String  nombre,  RandomAccessFile  raf)  {
++  archivo);
+raf.writeChar(blank);
+//Escribir  valores  −  Nivel:XP:PV:Max  PV:Ataque:Max  Ataque:max  Defensa
+public  int[]  leerValores(Scanner  lector)  {
+if  (lector.hasNextInt())  {
+/**  Dado  un  nombre  en  forma  de  cadena  de  texto,  lo  escribe  a  un  archivo  orientado  a
+raf.writeChar(nombre.charAt(i));
+for  (int  i  =  0;  y  <  valores.length;  i++)  {
+int  numChars  =  nombre.length();
+}
+*  @return  Si  ha  funcionado  (0)  o  no  (−1)
+int  numLeídos  =  0;
+}
+raf.close();
+int[]  valores  =  leerValores(lector);
+for  (int  i  =  0;  y  <  valores.length;  i++)  {
+}  else  {
+}
+preguntar  =  false;
+}  else  {
+if  (err  ==  −1)  {
+}
+char  blank  =  0x0000;
+System.out.println  ("(5  enteros  =  Nivel  Puntos  PV  Ataque  Defensa):");
+}
+System.out.println("Los  5  valores  no  han  sido  correctos.");
+return  valores;
+
+los  espacios  a  derecha  y
+puntuación  en  el  ranking  implica
+System.out.print("Entrada  incorrecta.  ");
+*  @param  archivo  Ruta  del  archivo  a  modificar
+}
+RandomAccessFile  raf  =  new  RandomAccessFile(archivo,  "rw");
+long  novaMida  =  archivo.length()  −  MIDA_BYTES_ADV;
+raf.setLength(archivo.length()  −  MEDIDA_BYTES_ADV);
+estrictamente  el  planteamiento
+}
+/**  Pregunta  las  iniciales  del  jugador  si  alcanza  una  máxima  puntuación.
+while  (leer)  {
+try  {
+//Este  método  elimina  espacios  laterales
+iniciales  =  iniciales.trim();
+System.out.println("Error  borrando  datos  en  el  archivo  "
+String  iniciales  =  "";
+if  (iniciales.length()  ==  3)  {
+*  @return  Iniciales  (cadena  de  texto  con  3  caracteres)
+izquierda  de  un  texto.
+leer  =  false;
+*/
+importe  juego.arena.ficheros.Bestiario;
+decir  que  es  necesario  un  nuevo  método  en  la
+iniciales  =  lector.nextLine();
++  archivo);
+//Eliminar  el  último  adversario  es  borrar  los  últimos  50  bytes...
+}  catch  (Exception  e)  {
+considera  que  tres  letras).
+necesarias,  que  introduzca  las
+public  String  preguntarInicials()  {
+El  método  ”trim”  elimina
+cumplen  las  condiciones
+System.out.print("Escribe  tus  iniciales:  ");
+clase  EntradaTeclado.  Éste
+}
+poder  pedir  al  usuario,  si  se
+if  (nuevaMida  >=  0)  {
+raf.close();
+sus  iniciales.  Si  se  quiere  seguir
+}
+debe  comprobar  que,
+/**  Elimina  el  último  adversario  en  un  archivo.
+Scanner  lector  =  new  Scanner(System.in);
+efectivamente,  se  trata  de  unas
+boolean  leer  =  true;
+iniciales  (en  este  caso,  se
+}
+modular  de  la  aplicación,  esto  quiere
+return  inicials.toUpperCase();
+//Siempre  se  pondrán  en  mayúscula
+}  else  {
+La  introducción  de  una  máxima
+//Nuevo  método
+public  void  eliminarAdversario(File  archivo)  {
+*/
+System.out.println("¡has  alcanzado  una  máxima  puntuación!!");
+}
+Programación  (DAW)
+204 }
+Programación  básica  (ASX)
+Programación  (DAM)
+1 //Ahora  hay  que  importar  la  nueva  versión
+3.4.1  En  la  clase  EntradaTeclado
+es  necesario  modificar  el  código  original  para  que  se  usen  los  nuevos  módulos.  Una  correcta
+Una  vez  se  han  generado  los  nuevos  módulos  que  amplían  el  programa  original  de  forma
+3.4  Enmiendas  a  los  módulos  originales
+que  algunas  de  sus  tareas  dependan  de  la  lectura  o  escritura  de  archivos,
+aplicación  de  la  modularidad  debería  minimizar  el  número  de  cambios  en  el  código  y  hacer
+que  éstos  estén  muy  bien  localizados.  De  hecho,  el  caso  ideal  sería  que  sólo  es  necesario
+añadir  nuevo  código,  pero  no  modificar,  o  incluso  eliminarlo,  código  ya  existente.
+Nótese  que  el  cambio  de  la  clase  Bestiario  no  afecta  en  absoluto  a  esta  clase,  todo
+y  que  la  utiliza.  Esto  significa  que  se  ha  aplicado  correctamente  la  modularidad.
+
+afecta  en  nada  más.
+con  el  hecho  de  que  los  métodos  que  muestran  varias  líneas  de  texto  por  pantalla,  como
+que  se  compruebe  si  procede  añadir  una  nueva  máxima  puntuación  al  archivo  y  realizar  las
+actual).
+Aunque  se  ha  intentado  minimizar  el  número  de  cambios  necesarios  debido  a  la
+el  estado  del  luchador,  están  en  esta  clase,  se  será  estricto  en  la  aplicación  de  la
+operaciones  correspondientes  al  teclado  y  la  pantalla  (entrar  iniciales  y  mostrar  ranking
+nueva  clase  Bestiario,  es  necesaria  alguna  modificación,  ya  que  al  menos  hay  que  controlar  si  el
+clase,  aunque  la  utiliza.  También  observa  ahora  cómo  se  comprueba  la  propagación
+Como  antes,  note  que  el  cambio  de  la  clase  Bestiario  no  afecta  en  absoluto  a  esta
+Otro  nuevo  aspecto  del  programa  es  que  es  necesario  mostrar  el  ranking  de  puntuaciones  en
+3.4.2  En  la  clase  SalidaPantalla
+terminar  el  juego.  Dado  el  planteamiento  de  la  clase  Ranking,  esta  tarea  es  muy
+modularidad  tal  y  como  se  ha  planteado  en  la  aplicación  originalmente.
+archivo  de  adversarios  existe  antes  de  hacer  nada.  Por  lo  demás,  el  cambio  de  clase  no
+3.4.3  En  la  clase  JuegoArena
+En  esta  clase,  sólo  es  necesario  modificar  el  método  inicio  para  que,  el  programa
+prevea  las  nuevas  funcionalidades.  Por  un  lado,  ahora  hay  que  garantizar  que  se  inicializan  los
+valores  de  los  adversarios  a  partir  de  un  archivo.  Por  otra  parte,  al  finalizar  la  partida,  es  necesario
+de  errores  desde  el  método  leerRanking,  mirando  si  se  ha  evaluado  null  o  no.
+1 //Ahora  hay  que  importar  la  nueva  versión
+Programación  básica  (ASX)
+1 //Ahora  hay  que  importar  la  nueva  versión
+Programación  (DAW)
+Programación  (DAM)
+if  (s  ==  null)  {
+materiales  dispone  del
+//Nuevo  método
+importe  juego.arena.ficheros.Bestiario;
+/**  Muestra  por  pantalla  la  lista  de  puntuaciones
+importe  juego.arena.ficheros.Bestiario;
+Ranking  rnk  =  new  Ranking();
+String  s  =  rnk.leerRanquing();
+}  else  {
+//Mirar  si  hay  archivo  de  adversarios
+}
+System.out.println("¡No  hay  archivo  de  adversarios!");
+}
+En  el  apartado  de  anexos  de  los
+if  (bestiario.existeArchivo()  ==  false)  {
+}  else  {
+//Código  original
+*/
+salida.mostarBienvenida();
+solución  final  de  este
+public  void  mostrarRanking()  {
+public  void  inicio()  {
+int[]  jugador  =  bestiario.generarJugador();
+System.out.println(s);
+System.out.println("¡Hay  un  error  en  los  archivos  de  puntuaciones!");
+ejemplo.
+código  fuente  completo  con  la
+
+Programación  (DAM)
+Programación  básica  (ASX)
+Programación  (DAW)
+System.out.println("***  COMBAT"  +  numCombat);
+int  pos  =  rnk.cercarRanking(puntos);
+boolean  jugar  =  true;
+salida.mostrarLuchador(jugador);
+}  else  {
+luchador.restaurar(jugador);
+//Fi
+}
+salida.mostrarLuchador(jugador);
+System.out.println("**************************");
+if  (pos !=  −1)  {
+int[]  adversario  =  entrada.elegirAdversario(luchador.leerNivel(jugador)
+combatir(jugador,  adversario);
+);
+}
+if  (numCombat  ==  MAX_COMBAT)  {
+int  numCombat  =  0;
+//Antes  de  cada  combate  se  restaura  el  jugador
+System.out.println("Error  accediendo  al  archivo  de  puntuaciones.");
+if  (pos  <  10)  {
+System.out.print("Estado  actual  del  jugador:  ");
+jugar  =  fiCombat(jugador,  adversario);
+));
+}
+numCombat++;
+}
+//Combate
+err  =  rnk.entrarPuntuacion(iniciales,  puntos,  pos);
+}
+System.out.println("Has  sobrevivido  a  todos  los  combates.  ¡¡¡Enhorabuena!!"
+//Se  obtiene  el  adversario
+salida.mostrarRanking();
+}
+}
+System.out.print("Estado  final  del  jugador:  ");
+int  puntos  =  luchador.leerPuntos(jugador);
+if  (err  ==  −1)  {
+while  (jugar)  {
+System.out.println("Error  accediendo  al  archivo  de  puntuaciones.");
+//Inicio  de  un  combate
+Ranking  rnk  =  new  Ranking();
+String  iniciales  =  entrada.preguntarIniciales();
+//Nuevo:  comprobar  si  entra  en  el  ranking  (10  posiciones)
+

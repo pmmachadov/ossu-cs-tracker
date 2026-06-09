@@ -1,0 +1,358 @@
+{
+  "id": "programacion-uf1",
+  "name": "Programación - UF1",
+  "description": "Estructura de un programa informático. Tipos de datos simples",
+  "subject": "Programación",
+  "cards": [
+    {
+      "id": "prog-u1-001",
+      "front": "¿Qué comando se usa para compilar un archivo de código fuente Java?",
+      "back": "javac NombreArchivo.java\\nPor ejemplo: javac HolaMon.java\\nEn Windows el ejecutable es javac.exe",
+      "tags": ["programacion", "unidad-1", "compilacion"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u1-002",
+      "front": "¿Qué comando se usa para ejecutar un programa Java compilado?",
+      "back": "java NombreClase\\nPor ejemplo: java HolaMon\\nNo se escribe la extensión .class, Java la deduce automáticamente.",
+      "tags": ["programacion", "unidad-1", "compilacion"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u1-003",
+      "front": "¿Qué es el bytecode en Java?",
+      "back": "Es el código resultante de la compilación de un archivo .java.\\nSe genera un archivo .class con el mismo nombre.\\nEl bytecode es independiente de la plataforma y lo ejecuta la JVM.",
+      "tags": ["programacion", "unidad-1", "compilacion"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u1-004",
+      "front": "¿Qué extensión tiene el archivo de bytecode generado por el compilador de Java?",
+      "back": "La extensión .class\\nPor ejemplo: HolaMon.java se compila a HolaMon.class",
+      "tags": ["programacion", "unidad-1", "compilacion"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u1-005",
+      "front": "¿Qué significan las siglas JVM, JRE y JDK?",
+      "back": "JVM: Java Virtual Machine (intérprete de bytecode)\\nJRE: Java Runtime Environment (entorno de ejecución, incluye la JVM)\\nJDK: Java Development Kit (kit de desarrollo, incluye el JRE y herramientas como javac)",
+      "tags": ["programacion", "unidad-1", "compilacion"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u1-006",
+      "front": "Si solo quieres ejecutar un programa Java ya compilado, ¿qué necesitas instalar como mínimo?",
+      "back": "El JRE (Java Runtime Environment).\\nNo es necesario el JDK completo si solo vas a ejecutar programas que ya están compilados.",
+      "tags": ["programacion", "unidad-1", "compilacion"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u1-007",
+      "front": "¿Qué es la máquina virtual de Java (JVM)?",
+      "back": "Es el intérprete de Java que ejecuta el bytecode.\\nEstá incluida dentro del JRE.\\nPermite que el mismo bytecode se ejecute en cualquier sistema operativo.",
+      "tags": ["programacion", "unidad-1", "compilacion"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u1-008",
+      "front": "¿Cuál es la estructura básica de un programa \"Hola Mundo\" en Java?",
+      "back": "public class NombreClase {\\n  public static void main(String[] args) {\\n    System.out.println(\"Texto\");\\n  }\\n}",
+      "tags": ["programacion", "unidad-1", "hola-mundo"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u1-009",
+      "front": "¿Cómo se llama el método que contiene la primera instrucción que se ejecuta en un programa Java?",
+      "back": "El método principal (main method).\\nSu firma exacta es: public static void main(String[] args)",
+      "tags": ["programacion", "unidad-1", "hola-mundo"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u1-010",
+      "front": "¿Qué carácter se usa en Java para delimitar bloques de código?",
+      "back": "Las llaves (claves) { }\\nIndican el inicio y el fin de un bloque de instrucciones.",
+      "tags": ["programacion", "unidad-1", "estructura"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u1-011",
+      "front": "¿Qué carácter termina cada instrucción en Java?",
+      "back": "El punto y coma (;)\\nToda sentencia en Java debe terminar con punto y coma.",
+      "tags": ["programacion", "unidad-1", "estructura"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u1-012",
+      "front": "¿Cómo se escriben los comentarios de una sola línea en Java?",
+      "back": "Con dos barras inclinadas: //\\nEjemplo: // Esto es un comentario\\nEl compilador ignora todo el texto después de // hasta el final de la línea.",
+      "tags": ["programacion", "unidad-1", "comentarios"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u1-013",
+      "front": "¿Cómo se escriben los comentarios de varias líneas en Java?",
+      "back": "Se escriben entre /* y */\\nEjemplo:\\n/* Este es un\\n   comentario de\\n   varias líneas */",
+      "tags": ["programacion", "unidad-1", "comentarios"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u1-014",
+      "front": "¿Qué es una variable en programación?",
+      "back": "Es un dato almacenado en la memoria que puede ver modificado su valor en cualquier momento durante la ejecución del programa.",
+      "tags": ["programacion", "unidad-1", "variables"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u1-015",
+      "front": "¿Cuál es la sintaxis para declarar una variable en Java?",
+      "back": "tipo identificador = valorInicial;\\nEjemplo: int miEntero = 2;\\nLos tres elementos necesarios son: tipo, identificador y valor inicial.",
+      "tags": ["programacion", "unidad-1", "variables"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u1-016",
+      "front": "¿Por qué es importante inicializar las variables en Java?",
+      "back": "Si no se inicializa una variable, puede contener cualquier valor residual de la memoria (basura), lo que hace que el resultado de las operaciones sea impredecible.",
+      "tags": ["programacion", "unidad-1", "variables"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u1-017",
+      "front": "¿Qué es una constante en Java?",
+      "back": "Es un tipo especial de variable cuyo valor solo puede ser leído pero nunca modificado durante la ejecución del programa.",
+      "tags": ["programacion", "unidad-1", "constantes"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u1-018",
+      "front": "¿Cuál es la sintaxis para declarar una constante en Java?",
+      "back": "private static final tipo IDENTIFICADOR = valor;\\nEjemplo: private static final double IVA = 0.18;\\nSe usa la palabra clave 'final' para indicar que no puede modificarse.",
+      "tags": ["programacion", "unidad-1", "constantes"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u1-019",
+      "front": "¿Qué ventajas tiene usar constantes en lugar de literales?",
+      "back": "1. El código es más legible y fácil de entender.\\n2. Si hay que cambiar el valor, solo se modifica en un sitio.\\n3. El compilador detecta si se intenta modificar por error.",
+      "tags": ["programacion", "unidad-1", "constantes"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u1-020",
+      "front": "¿Cuáles son los cuatro tipos de datos primitivos principales en Java?",
+      "back": "int (entero), double (real), boolean (booleano), char (carácter)",
+      "tags": ["programacion", "unidad-1", "tipos-primitivos"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u1-021",
+      "front": "¿Qué tipo de datos es 'int' en Java y qué representa?",
+      "back": "int es el tipo de dato entero simple.\\nRepresenta valores numéricos, positivos o negativos, sin decimales.\\nEjemplos: 3, 0, -345, 138764",
+      "tags": ["programacion", "unidad-1", "tipos-primitivos"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u1-022",
+      "front": "¿Qué tipo de datos es 'double' en Java y qué representa?",
+      "back": "double es el tipo de dato real de doble precisión.\\nRepresenta valores numéricos con decimales.\\nEjemplos: 2.25, 4.0, -9653.3333",
+      "tags": ["programacion", "unidad-1", "tipos-primitivos"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u1-023",
+      "front": "¿Qué valores puede tomar un dato de tipo 'boolean' en Java?",
+      "back": "Solo dos valores: true (verdadero) y false (falso).\\nSe usa para representar estados lógicos (certeza o falsedad).",
+      "tags": ["programacion", "unidad-1", "tipos-primitivos"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u1-024",
+      "front": "¿Cómo se escribe un literal de tipo 'char' en Java?",
+      "back": "Se escribe entre comillas simples: 'a', 'A', '4', '>', '?'\\nSolo puede contener un único carácter entre las comillas simples.",
+      "tags": ["programacion", "unidad-1", "tipos-primitivos"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u1-025",
+      "front": "¿Cuál es la diferencia entre '4' (con comillas) y 4 (sin comillas) en Java?",
+      "back": "'4' es un literal de tipo carácter (char).\\n4 es un literal de tipo entero (int).\\nSon tipos diferentes y no se pueden operar directamente entre ellos.",
+      "tags": ["programacion", "unidad-1", "tipos-primitivos"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u1-026",
+      "front": "¿Por qué es más eficiente usar int que double para datos que no necesitan decimales?",
+      "back": "Representar y realizar operaciones con enteros es más sencillo y rápido internamente en binario.\\nAdemás, un entero requiere menos espacio en memoria.",
+      "tags": ["programacion", "unidad-1", "tipos-primitivos"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u1-027",
+      "front": "¿Cuáles son los operadores aritméticos básicos en Java?",
+      "back": "Cambio de signo: - (unario)\\nSuma: +\\nResta: - (binario)\\nMultiplicación: *\\nDivisión: /\\nMódulo (resto de división): %",
+      "tags": ["programacion", "unidad-1", "operadores"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u1-028",
+      "front": "¿Qué resultado da la operación 10 / 3 entre enteros en Java?",
+      "back": "Da como resultado 3 (entero).\\nEn la división de enteros se trunca la parte decimal, se pierden todos los decimales.",
+      "tags": ["programacion", "unidad-1", "operadores"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u1-029",
+      "front": "¿Qué operador devuelve el resto de una división entre enteros y cómo funciona?",
+      "back": "El operador módulo (%).\\nEjemplo: 10 % 3 = 1 (resto de dividir 10 entre 3).\\nDivide A entre B y devuelve lo que sobra.",
+      "tags": ["programacion", "unidad-1", "operadores"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u1-030",
+      "front": "¿Cuáles son los operadores lógicos en Java para booleanos?",
+      "back": "Negación: ! (unario)\\nConjunción (Y): &&\\nDisyunción (O): ||\\nIgualdad: ==\\nDiferente: !=",
+      "tags": ["programacion", "unidad-1", "operadores"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u1-031",
+      "front": "¿Cuándo es cierta la conjunción (&&) entre dos booleanos?",
+      "back": "La conjunción es cierta solo si ambos operandos son true.\\nSi alguno es false, el resultado es false.",
+      "tags": ["programacion", "unidad-1", "operadores"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u1-032",
+      "front": "¿Cuándo es cierta la disyunción (||) entre dos booleanos?",
+      "back": "La disyunción es cierta si al menos uno de los operandos es true.\\nSolo es false cuando ambos operandos son false.",
+      "tags": ["programacion", "unidad-1", "operadores"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u1-033",
+      "front": "¿Cuáles son los operadores relacionales en Java?",
+      "back": "== (igual), != (diferente)\\n> (mayor que), < (menor que)\\n>= (mayor o igual), <= (menor o igual)\\nEl resultado de una operación relacional siempre es un boolean.",
+      "tags": ["programacion", "unidad-1", "operadores"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u1-034",
+      "front": "¿Qué es una expresión en programación?",
+      "back": "Es una combinación cualquiera de operadores y operandos.\\nUna expresión siempre se evalúa para producir un resultado de un tipo de dato concreto.",
+      "tags": ["programacion", "unidad-1", "expresiones"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u1-035",
+      "front": "¿Cuáles son las dos condiciones semánticas que debe cumplir una expresión válida?",
+      "back": "1. Cualquier operación debe ser entre datos del mismo tipo.\\n2. La operación usada debe existir para ese tipo de dato.",
+      "tags": ["programacion", "unidad-1", "expresiones"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u1-036",
+      "front": "¿Qué orden de precedencia siguen los operadores en Java? (de mayor a menor prioridad)",
+      "back": "1. Cambio de signo - (unario)\\n2. *, /, % (producto, división, módulo)\\n3. +, - (suma, resta)\\n4. >, <, >=, <= (relacionales de comparación)\\n5. ==, != (relacionales de igualdad)\\n6. && (conjunción)\\n7. || (disyunción)\\n8. ! (negación)",
+      "tags": ["programacion", "unidad-1", "expresiones"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u1-037",
+      "front": "¿Qué es el ámbito (scope) de una variable?",
+      "back": "Es el contexto bajo el que se considera declarada una variable.\\nUna variable solo es válida desde la línea donde se declara hasta el final del bloque ({...}) en el que se declaró.",
+      "tags": ["programacion", "unidad-1", "ambito-variables"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u1-038",
+      "front": "¿Qué convención de nomenclatura se usa para las clases en Java?",
+      "back": "UpperCamelCase (notación de camello con mayúsculas).\\nCada palabra comienza con mayúscula, sin espacios ni guiones bajos.\\nEjemplos: HolaMon, MiPrograma, Prueba",
+      "tags": ["programacion", "unidad-1", "convenciones"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u1-039",
+      "front": "¿Qué convención de nomenclatura se usa para las variables en Java?",
+      "back": "lowerCamelCase (notación de camello con minúscula).\\nLa primera palabra va en minúscula y las siguientes en mayúscula.\\nEjemplos: divisor, resultadoDivision, miEntero",
+      "tags": ["programacion", "unidad-1", "convenciones"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u1-040",
+      "front": "¿Qué convención de nomenclatura se usa para las constantes en Java?",
+      "back": "Todas las letras en mayúsculas, separando palabras con guión bajo (_).\\nEjemplos: CONSTANTE, MI_CONSTANTE, CONVERSION_EURO_A_DOLAR",
+      "tags": ["programacion", "unidad-1", "convenciones"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u1-041",
+      "front": "¿Qué reglas debe cumplir un identificador de variable en Java?",
+      "back": "1. No puede contener espacios.\\n2. No puede empezar con un número.\\n3. No puede ser una palabra clave/reservada del lenguaje.\\n4. Se recomienda no usar acentos.\\n5. Java es sensible a mayúsculas/minúsculas (case-sensitive).",
+      "tags": ["programacion", "unidad-1", "convenciones"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u1-042",
+      "front": "¿Qué instrucción se usa en Java para mostrar datos por pantalla con salto de línea al final?",
+      "back": "System.out.println(valor);\\nMuestra el valor y añade un salto de línea al final.",
+      "tags": ["programacion", "unidad-1", "entrada-salida"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u1-043",
+      "front": "¿Qué instrucción se usa en Java para mostrar datos por pantalla sin salto de línea al final?",
+      "back": "System.out.print(valor);\\nMuestra el valor y deja el cursor en la misma línea.",
+      "tags": ["programacion", "unidad-1", "entrada-salida"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u1-044",
+      "front": "¿Cómo se lee un número entero desde el teclado en Java usando Scanner?",
+      "back": "import java.util.Scanner;\\nScanner lector = new Scanner(System.in);\\nint numero = lector.nextInt();\\nEs necesario importar la biblioteca java.util.Scanner.",
+      "tags": ["programacion", "unidad-1", "entrada-salida"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u1-045",
+      "front": "¿Qué métodos de Scanner se usan para leer diferentes tipos de datos por teclado?",
+      "back": "lector.nextInt() -> int\\nlector.nextDouble() -> double\\nlector.nextBoolean() -> boolean\\nlector.next() -> String\\nlector.nextLine() -> String (línea completa)",
+      "tags": ["programacion", "unidad-1", "entrada-salida"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u1-046",
+      "front": "¿Qué es el operador de asignación y cómo funciona en Java?",
+      "back": "El operador de asignación es '='.\\nPrimero se evalúa la expresión de la derecha y luego se almacena el resultado en la variable de la izquierda.\\nEjemplo: resultado = dividendo / divisor;",
+      "tags": ["programacion", "unidad-1", "variables"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u1-047",
+      "front": "¿Qué son las secuencias de escape en Java y da ejemplos?",
+      "back": "Son combinaciones de contrabarra (\\) y un carácter para representar símbolos especiales.\\n\\n -> salto de línea\\n\\t -> tabulación\\n\\\" -> comillas dobles\\n\\\\ -> contrabarra\\n\\' -> comilla simple",
+      "tags": ["programacion", "unidad-1", "entrada-salida"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u1-048",
+      "front": "¿Qué es el tipo String en Java?",
+      "back": "String es un tipo de dato (no primitivo) que permite representar cualquier secuencia de caracteres de longitud arbitraria.\\nSe escribe entre comillas dobles (\"\").\\nEjemplo: \"Hola, mundo!\"",
+      "tags": ["programacion", "unidad-1", "tipos-primitivos"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u1-049",
+      "front": "¿Qué operación permite el operador + con cadenas de texto (String) en Java?",
+      "back": "La concatenación.\\nUne dos cadenas de texto en una nueva cadena.\\nTambién permite concatenar cualquier tipo primitivo con un String, convirtiéndolo automáticamente a su representación textual.",
+      "tags": ["programacion", "unidad-1", "operadores"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u1-050",
+      "front": "¿Qué es el desbordamiento (overflow) en Java?",
+      "back": "Ocurre cuando el resultado de una operación supera el rango máximo de valores que puede representar un tipo numérico.\\nEl resultado será incorrecto.\\nCada tipo numérico tiene un rango limitado de valores.",
+      "tags": ["programacion", "unidad-1", "expresiones"],
+      "difficulty": "hard"
+    }
+  ]
+}

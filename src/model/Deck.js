@@ -96,6 +96,9 @@ export class Deck {
     this.cards = [];
     this.created = Date.now();
     this.lastStudied = null;
+    // Registro permanente de visualizaciones: { timestamp, cardId, status }
+    // Nunca se borra, ni al resetear progreso
+    this.viewLog = [];
     this.studyStats = {
       totalReviews: 0,
       again: 0,
@@ -213,6 +216,30 @@ export class Deck {
       bestStreak: this.studyStats.bestStreak,
       studyHistory: [],
     };
+    // viewLog se conserva intencionadamente — registro permanente
+  }
+
+  /** Registrar que una tarjeta fue vista en sesión de estudio */
+  logCardView(cardId) {
+    const card = this.cards.find(c => c.id === cardId);
+    this.viewLog.push({
+      timestamp: Date.now(),
+      cardId: cardId,
+      status: card ? card.status : "unknown",
+      isReview: false,
+    });
+  }
+
+  /** Registrar que una tarjeta fue evaluada (review) */
+  logCardReview(cardId, difficulty) {
+    const card = this.cards.find(c => c.id === cardId);
+    this.viewLog.push({
+      timestamp: Date.now(),
+      cardId: cardId,
+      status: card ? card.status : "unknown",
+      isReview: true,
+      difficulty: difficulty,
+    });
   }
 
   toJSON() {
@@ -236,6 +263,7 @@ export class Deck {
       })),
       created: this.created,
       lastStudied: this.lastStudied,
+      viewLog: this.viewLog,
       studyStats: this.studyStats,
     };
   }
@@ -256,6 +284,7 @@ export class Deck {
       bestStreak: 0,
       studyHistory: [],
     };
+    deck.viewLog = data.viewLog || [];
     deck.cards = data.cards.map((c) => {
       const card = new Card(c.id, c.front, c.back, c.tags, c.imageUrl || '');
       Object.assign(card, c);
