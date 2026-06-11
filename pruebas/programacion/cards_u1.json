@@ -353,6 +353,13 @@
       "back": "Ocurre cuando el resultado de una operación supera el rango máximo de valores que puede representar un tipo numérico.\\nEl resultado será incorrecto.\\nCada tipo numérico tiene un rango limitado de valores.",
       "tags": ["programacion", "unidad-1", "expresiones"],
       "difficulty": "hard"
+    },
+    {
+      "id": "prog-u1-051",
+      "front": "¿Qué es un algoritmo en programación?",
+      "back": "Es una secuencia ordenada de pasos o instrucciones bien definidas, finitas y no ambiguas que resuelven un problema o realizan una tarea específica.\\n\\nCaracterísticas principales:\\n- Debe ser preciso (instrucciones claras)\\n- Debe ser finito (termina en algún momento)\\n- Debe estar definido (mismo resultado siempre con mismos datos de entrada)\\n- Debe tener cero o más entradas y una o más salidas",
+      "tags": ["programacion", "unidad-1", "conceptos-basicos"],
+      "difficulty": "easy"
     }
   ]
 }
