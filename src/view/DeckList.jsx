@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+﻿import { useState, useEffect } from "react";
 import "./DeckList.css";
 import { Icons } from "./Icons";
 import {
@@ -49,7 +49,7 @@ export function DeckList({
   const [showMaterias, setShowMaterias] = useState(false);
   const [showPracticas, setShowPracticas] = useState(false);
   const [showExamenes, setShowExamenes] = useState(false);
-  const [showPreguntasDirectas, setShowPreguntasDirectas] = useState(true);
+  const [showPreguntasDirectas, setShowPreguntasDirectas] = useState(false);
   const [showLibros, setShowLibros] = useState(false);
   const [showMateriasSalvadas, setShowMateriasSalvadas] = useState(false);
   const [showMas, setShowMas] = useState(false);

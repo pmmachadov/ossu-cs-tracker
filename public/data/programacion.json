@@ -3227,6 +3227,259 @@
         "randomaccessfile"
       ],
       "difficulty": "easy"
+    },
+    {
+      "id": "prog-u1-069",
+      "front": "¿Qué es un algoritmo?",
+      "back": "Un algoritmo es un mecanismo para resolver una tarea concreta, descrito como una secuencia finita de pasos. Debe ser preciso, definido y finito.",
+      "tags": [
+        "programacion",
+        "unidad-1",
+        "algoritmos"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u1-070",
+      "front": "¿Cuáles son las etapas del ciclo de vida de una aplicación?",
+      "back": "El ciclo de vida de una aplicación incluye:\n1. Definición del problema\n2. Diseño del algoritmo\n3. Implementación del programa (codificación)\n4. Verificación y pruebas\n5. Mantenimiento",
+      "tags": [
+        "programacion",
+        "unidad-1",
+        "algoritmos"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u1-071",
+      "front": "¿Cuáles son las formas de representación de un algoritmo?",
+      "back": "Un algoritmo se puede representar mediante:\n1. Lenguaje natural (lenguaje hablado)\n2. Pseudocódigo (lenguaje intermedio entre natural y código)\n3. Diagramas de flujo de control (representación gráfica)\n4. Código fuente (lenguaje de programación)",
+      "tags": [
+        "programacion",
+        "unidad-1",
+        "algoritmos"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u1-072",
+      "front": "¿Qué es el pseudocódigo en programación?",
+      "back": "El pseudocódigo es una forma de representar algoritmos usando un lenguaje intermedio entre el lenguaje natural y el código de programación. Es independiente del lenguaje y se usa para diseñar la lógica antes de implementar.",
+      "tags": [
+        "programacion",
+        "unidad-1",
+        "algoritmos"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u2-041",
+      "front": "¿Qué es la estructura lineal o secuencial en programación?",
+      "back": "Es la estructura de control más básica, donde las instrucciones se ejecutan de forma consecutiva, una tras otra, en el orden en que han sido escritas. No hay bifurcaciones ni repeticiones.",
+      "tags": [
+        "programacion",
+        "unidad-2",
+        "control"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u2-042",
+      "front": "¿Por qué es importante la sintaxis correcta y la legibilidad del código?",
+      "back": "Es fundamental usar correctamente las claves { } para delimitar bloques y aplicar el sangrado (indentación) para que el código sea inteligible. Un código bien formateado es más fácil de leer, depurar y mantener.",
+      "tags": [
+        "programacion",
+        "unidad-2",
+        "calidad"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u2-043",
+      "front": "¿Qué es la depuración (debugging) en programación?",
+      "back": "Es el proceso para detectar y corregir errores en el código. Se realiza mediante el seguimiento de variables, el uso de herramientas depuradoras (como las de un IDE) que permiten ejecutar paso a paso, inspeccionar valores y encontrar fallos.",
+      "tags": [
+        "programacion",
+        "unidad-2",
+        "calidad"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u2-044",
+      "front": "¿Qué es el control de errores en programación?",
+      "back": "Es el uso de estructuras de selección (como if) para verificar que los datos introducidos por el usuario son correctos antes de procesarlos. Ejemplo: comprobar que un número está dentro de un rango válido antes de usarlo en un cálculo.",
+      "tags": [
+        "programacion",
+        "unidad-2",
+        "calidad"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u2-045",
+      "front": "¿Qué es el ámbito (scope) de una variable y cómo afecta a los bloques de código?",
+      "back": "Una variable solo es válida dentro del bloque de instrucciones donde ha sido declarada. Si se declara dentro de un bloque {} (como en un if o un bucle), no existe fuera de él. Esto se conoce como ámbito local.",
+      "tags": [
+        "programacion",
+        "unidad-2",
+        "calidad"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u2-046",
+      "front": "¿Cuál es la diferencia entre un contador, un acumulador y un semáforo (flag) en bucles?",
+      "back": "- Contador: variable entera que aumenta/disminuye en una cantidad fija para contar iteraciones.\n- Acumulador: variable que acumula valores (sumas, productos) durante las iteraciones.\n- Semáforo (flag): variable booleana que actúa como interruptor; cuando cambia de valor, la condición del bucle termina.",
+      "tags": [
+        "programacion",
+        "unidad-2",
+        "bucles"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u3-045",
+      "front": "¿Se pueden realizar operaciones aritméticas directas entre arrays en Java (ej. a + b)?",
+      "back": "No. No se pueden realizar operaciones directas entre identificadores de arrays (ej. a + b, a * b). Se debe operar posición por posición, recorriendo los arrays con un bucle y operando cada par de elementos individualmente.\n\nEjemplo correcto:\nfor (int i = 0; i < a.length; i++) {\n    resultado[i] = a[i] + b[i];\n}",
+      "tags": [
+        "programacion",
+        "unidad-3",
+        "arrays"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u3-046",
+      "front": "¿Qué es la inicialización procedural de un array?",
+      "back": "Es cuando el programa calcula algorítmicamente los valores iniciales del array mediante una estructura repetitiva, en lugar de escribir los valores manualmente. Es útil cuando los valores siguen una secuencia lógica o se generan mediante una fórmula.\n\nEjemplo:\nint[] cuadrados = new int[10];\nfor (int i = 0; i < cuadrados.length; i++) {\n    cuadrados[i] = (i + 1) * (i + 1);\n}",
+      "tags": [
+        "programacion",
+        "unidad-3",
+        "arrays"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u3-047",
+      "front": "¿Existen arrays de más de 2 dimensiones en Java?",
+      "back": "Sí. Se pueden crear arrays de 3 dimensiones (cubo) o más niveles de abstracción. La sintaxis añade un par de corchetes por cada dimensión adicional.\n\nEjemplo array 3D:\nint[][][] cubo = new int[3][4][5]; // 3 capas, 4 filas, 5 columnas\n\nPara recorrerlo se necesitan 3 bucles anidados. Más allá de 3 dimensiones, la gestión se vuelve compleja y poco frecuente.",
+      "tags": [
+        "programacion",
+        "unidad-3",
+        "arrays"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u4-044",
+      "front": "¿Cuáles son los objetivos del diseño descendente (top-down)?",
+      "back": "Los tres objetivos principales son:\n1. Facilitar la comprensión: al dividir un problema grande en subproblemas pequeños, cada parte es más fácil de entender.\n2. Limitar las interdependencias: cada subproblema es autocontenido, reduciendo las conexiones entre pasos.\n3. Establecer una relación sencilla entre las tareas: la estructura jerárquica muestra claramente cómo se relacionan los subproblemas.",
+      "tags": [
+        "programacion",
+        "unidad-4",
+        "modular"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u4-045",
+      "front": "¿Qué criterios se usan para evaluar una correcta descomposición en subproblemas?",
+      "back": "Dos criterios clave:\n1. Nombres autoexplicativos: el nombre de cada método debe describir claramente qué hace, sin necesidad de leer su código interno.\n2. Número de pasos manejable: cada subproblema debe tener una cantidad razonable de pasos. Si un método es demasiado largo o complejo, probablemente necesita más descomposición.",
+      "tags": [
+        "programacion",
+        "unidad-4",
+        "modular"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u4-046",
+      "front": "¿Cómo se aprovecha la reutilización en el diseño descendente?",
+      "back": "Durante la descomposición, se pueden identificar subproblemas idénticos que aparecen en varios lugares. En lugar de resolverlos por separado cada vez, se crea un único método que resuelve ese subproblema y se invoca desde donde sea necesario. Esto evita duplicar código, facilita el mantenimiento y hace el programa más eficiente.",
+      "tags": [
+        "programacion",
+        "unidad-4",
+        "modular"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u5-051",
+      "front": "¿Cuáles son las tres perspectivas desde las que se puede entender una clase en Java?",
+      "back": "Una clase en Java se puede entender desde tres perspectivas:\n1. Como un programa: contiene el método main y representa el punto de entrada de la aplicación.\n2. Como un repositorio de métodos (biblioteca): agrupa funcionalidades relacionadas que pueden ser reutilizadas.\n3. Como un tipo compuesto: define un nuevo tipo de dato (ej. String, Scanner) del que se crean objetos.",
+      "tags": [
+        "programacion",
+        "unidad-5",
+        "clases"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u5-052",
+      "front": "¿Cuál es la estructura típica de un programa Java con múltiples clases?",
+      "back": "Un programa Java suele organizarse en:\n1. Clase Principal: contiene el método main (y opcionalmente un método inicio). Es el punto de entrada del programa.\n2. Clases Adicionales: funcionan como almacenes de funcionalidades genéricas. Agrupan métodos relacionados que la clase principal u otras clases pueden invocar.",
+      "tags": [
+        "programacion",
+        "unidad-5",
+        "clases"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u5-053",
+      "front": "¿Qué ventaja de mantenimiento ofrece la programación modular?",
+      "back": "La programación modular facilita el mantenimiento porque cada clase se guarda en un archivo independiente. Si hay un error, se puede localizar y corregir en el archivo específico de esa clase, sin necesidad de modificar el resto del programa. Esto hace que las correcciones sean más rápidas y seguras.",
+      "tags": [
+        "programacion",
+        "unidad-5",
+        "modular"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u5-054",
+      "front": "¿Cómo beneficia la programación modular al trabajo en equipo?",
+      "back": "La programación modular permite que varios programadores trabajen en paralelo sobre clases distintas. Cada miembro del equipo puede desarrollar y probar su clase de forma independiente, sin interferir con el trabajo de los demás. Al final, todas las clases se integran para formar el programa completo.",
+      "tags": [
+        "programacion",
+        "unidad-5",
+        "modular"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u6-043",
+      "front": "¿Qué diferencia hay entre una ruta absoluta y una ruta relativa en Java?",
+      "back": "Ruta absoluta: parte de la carpeta raíz del sistema (ej. C:\\carpeta\\archivo.txt en Windows o /home/usuario/archivo.txt en Unix).\nRuta relativa: parte del directorio de trabajo de la aplicación (ej. datos/archivo.txt).\nLas rutas relativas facilitan la portabilidad, ya que el programa funciona sin cambios al moverse entre carpetas o sistemas.",
+      "tags": [
+        "programacion",
+        "unidad-6",
+        "archivos"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "prog-u6-044",
+      "front": "¿Qué otros métodos importantes ofrece la clase File además de isFile() y length()?",
+      "back": "La clase File proporciona:\n- exists(): comprueba si el archivo o carpeta existe.\n- isDirectory(): comprueba si es una carpeta.\n- lastModified(): devuelve la fecha de la última modificación.\n- mkdir(): crea una carpeta.\n- listFiles(): devuelve un array con los archivos y carpetas dentro de un directorio.",
+      "tags": [
+        "programacion",
+        "unidad-6",
+        "archivos"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u6-045",
+      "front": "¿Cómo funciona el apuntador de lectura/escritura en el acceso secuencial a archivos?",
+      "back": "En el acceso secuencial, el apuntador de lectura/escritura avanza automáticamente después de cada operación de lectura o escritura. No puede retroceder: una vez que se lee un dato, el apuntador se sitúa en la siguiente posición. Para leer datos anteriores hay que volver a abrir el archivo o usar RandomAccessFile con seek().",
+      "tags": [
+        "programacion",
+        "unidad-6",
+        "archivos"
+      ],
+      "difficulty": "medium"
     }
   ]
 }

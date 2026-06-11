@@ -49,12 +49,12 @@ describe('Card', () => {
     });
   });
 
-  describe('review — AGAIN', () => {
+  describe('review — PROCESANDO (otra vez)', () => {
     beforeEach(() => {
       card.repetitions = 3;
       card.easinessFactor = 2.5;
       card.interval = 10;
-      card.review(DIFFICULTY.AGAIN);
+      card.review(DIFFICULTY.PROCESANDO);
     });
 
     it('resets repetitions to 0', () => {
@@ -67,16 +67,16 @@ describe('Card', () => {
 
     it('clamps easiness factor to minimum of 1.3', () => {
       card.easinessFactor = 1.3;
-      card.review(DIFFICULTY.AGAIN);
+      card.review(DIFFICULTY.PROCESANDO);
       expect(card.easinessFactor).toBe(1.3);
     });
 
-    it('sets interval to 1 day (AGAIN factor)', () => {
+    it('sets interval to 1 day', () => {
       expect(card.interval).toBe(1);
     });
 
-    it('sets status to relearning', () => {
-      expect(card.status).toBe('relearning');
+    it('sets status to procesando', () => {
+      expect(card.status).toBe('procesando');
     });
 
     it('sets nextReview to now + 1 day', () => {
@@ -89,97 +89,75 @@ describe('Card', () => {
     });
   });
 
-  describe('review — GOOD (first repetition)', () => {
+  describe('review — APRENDIDO (first repetition)', () => {
     beforeEach(() => {
-      card.review(DIFFICULTY.GOOD);
+      card.review(DIFFICULTY.APRENDIDO);
     });
 
     it('increments repetitions to 1', () => {
       expect(card.repetitions).toBe(1);
     });
 
-    it('keeps easiness factor unchanged', () => {
-      expect(card.easinessFactor).toBe(2.5);
+    it('increases easiness factor by 0.1', () => {
+      expect(card.easinessFactor).toBe(2.6);
     });
 
-    it('sets interval to 3 days (GOOD factor)', () => {
-      expect(card.interval).toBe(3);
+    it('sets interval to 4 days', () => {
+      expect(card.interval).toBe(4);
     });
 
-    it('sets status to learning', () => {
-      expect(card.status).toBe('learning');
+    it('sets status to aprendido', () => {
+      expect(card.status).toBe('aprendido');
     });
   });
 
-  describe('review — GOOD (second repetition)', () => {
+  describe('review — APRENDIDO (second repetition)', () => {
     beforeEach(() => {
       card.repetitions = 1;
-      card.review(DIFFICULTY.GOOD);
+      card.review(DIFFICULTY.APRENDIDO);
     });
 
     it('increments repetitions to 2', () => {
       expect(card.repetitions).toBe(2);
     });
 
-    it('sets interval to 6 days (GOOD factor * 2)', () => {
-      expect(card.interval).toBe(6);
+    it('sets interval to 8 days (4 * 2)', () => {
+      expect(card.interval).toBe(8);
     });
 
-    it('sets status to review', () => {
-      expect(card.status).toBe('review');
+    it('sets status to aprendido', () => {
+      expect(card.status).toBe('aprendido');
     });
   });
 
-  describe('review — GOOD (third+ repetition)', () => {
+  describe('review — APRENDIDO (third+ repetition)', () => {
     beforeEach(() => {
       card.repetitions = 2;
-      card.interval = 6;
+      card.interval = 8;
       card.easinessFactor = 2.5;
-      card.review(DIFFICULTY.GOOD);
+      card.review(DIFFICULTY.APRENDIDO);
     });
 
     it('increments repetitions to 3', () => {
       expect(card.repetitions).toBe(3);
     });
 
-    it('multiplies interval by easiness factor (6 * 2.5 = 15)', () => {
-      expect(card.interval).toBe(15);
+    it('multiplies interval by easiness factor (8 * 2.6 = 20.8 → 21)', () => {
+      expect(card.interval).toBe(21);
     });
 
-    it('sets status to review', () => {
-      expect(card.status).toBe('review');
-    });
-  });
-
-  describe('review — HARD', () => {
-    it('decreases easiness factor by 0.15', () => {
-      card.easinessFactor = 2.5;
-      card.review(DIFFICULTY.HARD);
-      expect(card.easinessFactor).toBe(2.35);
-    });
-
-    it('does not set EF below 1.3', () => {
-      card.easinessFactor = 1.3;
-      card.review(DIFFICULTY.HARD);
-      expect(card.easinessFactor).toBe(1.3);
-    });
-  });
-
-  describe('review — EASY', () => {
-    it('increases easiness factor by 0.15', () => {
-      card.easinessFactor = 2.5;
-      card.review(DIFFICULTY.EASY);
-      expect(card.easinessFactor).toBe(2.65);
+    it('sets status to aprendido', () => {
+      expect(card.status).toBe('aprendido');
     });
   });
 
   describe('review — returns correct result object', () => {
     it('returns interval, nextReview, and status', () => {
-      const result = card.review(DIFFICULTY.GOOD);
+      const result = card.review(DIFFICULTY.APRENDIDO);
       expect(result).toHaveProperty('interval');
       expect(result).toHaveProperty('nextReview');
       expect(result).toHaveProperty('status');
-      expect(result.status).toBe('learning');
+      expect(result.status).toBe('aprendido');
     });
   });
 
@@ -249,10 +227,8 @@ describe('Deck', () => {
     it('initializes studyStats with zeros', () => {
       expect(deck.studyStats).toEqual({
         totalReviews: 0,
-        again: 0,
-        hard: 0,
-        good: 0,
-        easy: 0,
+        procesando: 0,
+        aprendido: 0,
         streak: 0,
         bestStreak: 0,
         studyHistory: [],
@@ -323,7 +299,7 @@ describe('Deck', () => {
     it('returns cards with status "new"', () => {
       const c1 = deck.addCard('F1', 'B1');
       const c2 = deck.addCard('F2', 'B2');
-      c2.status = 'learning';
+      c2.status = 'procesando';
       const newCards = deck.getNewCards();
       expect(newCards).toHaveLength(1);
       expect(newCards[0].id).toBe(c1.id);
@@ -331,13 +307,14 @@ describe('Deck', () => {
   });
 
   describe('getLearningCards', () => {
-    it('returns cards with status "learning" or "relearning"', () => {
+    it('returns cards with status "procesando"', () => {
       const c1 = deck.addCard('F1', 'B1');
       const c2 = deck.addCard('F2', 'B2');
-      c1.status = 'learning';
-      c2.status = 'relearning';
+      c1.status = 'procesando';
+      c2.status = 'aprendido';
       const learning = deck.getLearningCards();
-      expect(learning).toHaveLength(2);
+      expect(learning).toHaveLength(1);
+      expect(learning[0].id).toBe(c1.id);
     });
   });
 
@@ -347,24 +324,24 @@ describe('Deck', () => {
       const c2 = deck.addCard('F2', 'B2');
       const c3 = deck.addCard('F3', 'B3');
       c1.status = 'new';
-      c1.nextReview = Date.now() + 86400000; // not due
-      c2.status = 'learning';
-      c2.nextReview = Date.now() + 86400000; // not due
-      c3.status = 'review';
-      c3.nextReview = Date.now() - 1000; // due
+      c1.nextReview = Date.now() + 86400000;
+      c2.status = 'procesando';
+      c2.nextReview = Date.now() + 86400000;
+      c3.status = 'aprendido';
+      c3.nextReview = Date.now() - 1000;
 
       const stats = deck.getStats();
       expect(stats.total).toBe(3);
       expect(stats.new).toBe(1);
-      expect(stats.learning).toBe(1);
+      expect(stats.procesando).toBe(1);
       expect(stats.due).toBe(1);
-      expect(stats.reviewed).toBe(1);
+      expect(stats.aprendido).toBe(1);
     });
 
-    it('calculates mastery as percentage of reviewed cards', () => {
+    it('calculates mastery as percentage of aprendido cards', () => {
       deck.addCard('F1', 'B1');
       const c2 = deck.addCard('F2', 'B2');
-      c2.status = 'review';
+      c2.status = 'aprendido';
       expect(deck.getStats().mastery).toBe(50);
     });
 
@@ -375,93 +352,80 @@ describe('Deck', () => {
 
   describe('recordReview', () => {
     it('increments totalReviews', () => {
-      deck.recordReview(DIFFICULTY.GOOD);
+      deck.recordReview(DIFFICULTY.APRENDIDO);
       expect(deck.studyStats.totalReviews).toBe(1);
     });
 
     it('increments the specific difficulty counter', () => {
-      deck.recordReview(DIFFICULTY.AGAIN);
-      deck.recordReview(DIFFICULTY.GOOD);
-      deck.recordReview(DIFFICULTY.EASY);
-      expect(deck.studyStats.again).toBe(1);
-      expect(deck.studyStats.good).toBe(1);
-      expect(deck.studyStats.easy).toBe(1);
-      expect(deck.studyStats.hard).toBe(0);
+      deck.recordReview(DIFFICULTY.PROCESANDO);
+      deck.recordReview(DIFFICULTY.APRENDIDO);
+      expect(deck.studyStats.procesando).toBe(1);
+      expect(deck.studyStats.aprendido).toBe(1);
     });
 
     it('adds entry to studyHistory', () => {
-      deck.recordReview(DIFFICULTY.GOOD);
+      deck.recordReview(DIFFICULTY.APRENDIDO);
       expect(deck.studyStats.studyHistory).toHaveLength(1);
-      expect(deck.studyStats.studyHistory[0].difficulty).toBe('good');
+      expect(deck.studyStats.studyHistory[0].difficulty).toBe('aprendido');
       expect(deck.studyStats.studyHistory[0].date).toBe(Date.now());
     });
 
     it('sets lastStudied', () => {
-      deck.recordReview(DIFFICULTY.GOOD);
+      deck.recordReview(DIFFICULTY.APRENDIDO);
       expect(deck.lastStudied).toBe(Date.now());
     });
 
     describe('streak tracking', () => {
       it('starts streak at 1 on first review', () => {
-        deck.recordReview(DIFFICULTY.GOOD);
+        deck.recordReview(DIFFICULTY.APRENDIDO);
         expect(deck.studyStats.streak).toBe(1);
       });
 
       it('increments streak when reviewing on consecutive days', () => {
-        // Day 1
-        deck.recordReview(DIFFICULTY.GOOD);
+        deck.recordReview(DIFFICULTY.APRENDIDO);
         expect(deck.studyStats.streak).toBe(1);
 
-        // Day 2 — advance 1 day
         vi.setSystemTime(new Date('2026-05-18T12:00:00Z'));
-        deck.recordReview(DIFFICULTY.GOOD);
+        deck.recordReview(DIFFICULTY.APRENDIDO);
         expect(deck.studyStats.streak).toBe(2);
       });
 
       it('resets streak to 1 when a day is skipped', () => {
-        deck.recordReview(DIFFICULTY.GOOD);
-        // Skip 2 days
+        deck.recordReview(DIFFICULTY.APRENDIDO);
         vi.setSystemTime(new Date('2026-05-20T12:00:00Z'));
-        deck.recordReview(DIFFICULTY.GOOD);
+        deck.recordReview(DIFFICULTY.APRENDIDO);
         expect(deck.studyStats.streak).toBe(1);
       });
 
       it('updates bestStreak', () => {
-        // Streak of 3
-        deck.recordReview(DIFFICULTY.GOOD);
+        deck.recordReview(DIFFICULTY.APRENDIDO);
         vi.setSystemTime(new Date('2026-05-18T12:00:00Z'));
-        deck.recordReview(DIFFICULTY.GOOD);
+        deck.recordReview(DIFFICULTY.APRENDIDO);
         vi.setSystemTime(new Date('2026-05-19T12:00:00Z'));
-        deck.recordReview(DIFFICULTY.GOOD);
+        deck.recordReview(DIFFICULTY.APRENDIDO);
         expect(deck.studyStats.streak).toBe(3);
         expect(deck.studyStats.bestStreak).toBe(3);
 
-        // Reset and get a smaller streak
         vi.setSystemTime(new Date('2026-06-01T12:00:00Z'));
-        deck.recordReview(DIFFICULTY.GOOD);
+        deck.recordReview(DIFFICULTY.APRENDIDO);
         expect(deck.studyStats.streak).toBe(1);
         expect(deck.studyStats.bestStreak).toBe(3);
       });
     });
 
     it('does not increment streak when reviewing twice on the same day', () => {
-      deck.recordReview(DIFFICULTY.GOOD);
-      deck.recordReview(DIFFICULTY.GOOD);
-      // Still same fake time
+      deck.recordReview(DIFFICULTY.APRENDIDO);
+      deck.recordReview(DIFFICULTY.APRENDIDO);
       expect(deck.studyStats.streak).toBe(1);
     });
 
     it('trims studyHistory to last 90 days', () => {
-      // Add entries spanning more than 90 days
       for (let i = 0; i < 100; i++) {
-        vi.setSystemTime(new Date(2026, 0, 1 + i)); // Jan 1 → Apr 11
-        deck.recordReview(DIFFICULTY.GOOD);
+        vi.setSystemTime(new Date(2026, 0, 1 + i));
+        deck.recordReview(DIFFICULTY.APRENDIDO);
       }
-      // Advance time past 90 days from the first entry
-      vi.setSystemTime(new Date(2026, 3, 15)); // April 15 — 104 days after Jan 1
-      // Trigger the trim by recording one more review (the filter runs on push)
-      deck.recordReview(DIFFICULTY.GOOD);
-      // Entries older than 90 days should be trimmed
+      vi.setSystemTime(new Date(2026, 3, 15));
+      deck.recordReview(DIFFICULTY.APRENDIDO);
       expect(deck.studyStats.studyHistory.length).toBeLessThanOrEqual(90);
     });
   });
@@ -469,8 +433,8 @@ describe('Deck', () => {
   describe('reset', () => {
     it('resets all cards to new state', () => {
       const c1 = deck.addCard('F1', 'B1');
-      c1.review(DIFFICULTY.GOOD);
-      deck.recordReview(DIFFICULTY.GOOD);
+      c1.review(DIFFICULTY.APRENDIDO);
+      deck.recordReview(DIFFICULTY.APRENDIDO);
       deck.reset();
 
       expect(c1.status).toBe('new');
@@ -496,8 +460,8 @@ describe('Deck', () => {
       deck.description = 'A test deck';
       deck.subject = 'Testing';
       const c1 = deck.addCard('F1', 'B1', ['tag'], '/img.png');
-      c1.review(DIFFICULTY.GOOD);
-      deck.recordReview(DIFFICULTY.GOOD);
+      c1.review(DIFFICULTY.APRENDIDO);
+      deck.recordReview(DIFFICULTY.APRENDIDO);
 
       const json = deck.toJSON();
       const restored = Deck.fromJSON(json);
@@ -508,8 +472,8 @@ describe('Deck', () => {
       expect(restored.subject).toBe('Testing');
       expect(restored.cards).toHaveLength(1);
       expect(restored.cards[0].front).toBe('F1');
-      expect(restored.cards[0].status).toBe('learning');
-      expect(restored.cards[0].easinessFactor).toBe(2.5);
+      expect(restored.cards[0].status).toBe('aprendido');
+      expect(restored.cards[0].easinessFactor).toBe(2.6);
       expect(restored.studyStats.totalReviews).toBe(1);
       expect(restored.studyStats.studyHistory).toHaveLength(1);
     });

@@ -199,16 +199,10 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
       } else if (isFlipped) {
         switch (e.key) {
           case "1":
-            handleRate(DIFFICULTY.AGAIN);
+            handleRate(DIFFICULTY.PROCESANDO);
             break;
           case "2":
-            handleRate(DIFFICULTY.HARD);
-            break;
-          case "3":
-            handleRate(DIFFICULTY.GOOD);
-            break;
-          case "4":
-            handleRate(DIFFICULTY.EASY);
+            handleRate(DIFFICULTY.APRENDIDO);
             break;
         }
       }
@@ -343,14 +337,14 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
       {isFlipped ? (
         <div className="rating-buttons">
           <button
-            className="rating-btn good"
-            onClick={() => handleRate(DIFFICULTY.GOOD)}
+            className="rating-btn hard"
+            onClick={() => handleRate(DIFFICULTY.PROCESANDO)}
           >
-            Procesando
+            Otra vez
           </button>
           <button
-            className="rating-btn easy"
-            onClick={() => handleRate(DIFFICULTY.EASY)}
+            className="rating-btn good"
+            onClick={() => handleRate(DIFFICULTY.APRENDIDO)}
           >
             Aprendido
           </button>

@@ -6,10 +6,9 @@ import {
 import './StatsView.css'
 
 const COLORS = {
-  new: '#8b5cf6',      // Violeta
-  learning: '#f59e0b', // Ámbar
-  review: '#22c55e',   // Verde
-  relearning: '#ef4444' // Rojo
+  new: '#8b5cf6',        // Violeta
+  procesando: '#f59e0b', // Ámbar
+  aprendido: '#22c55e',  // Verde
 }
 
 // Iconos SVG
@@ -111,12 +110,11 @@ export function StatsView({ deck, onBack, onResetProgress }) {
     const total = cards.length
     
     const newCards = cards.filter(c => c.status === 'new').length
-    const learning = cards.filter(c => c.status === 'learning').length
-    const review = cards.filter(c => c.status === 'review').length
-    const relearning = cards.filter(c => c.status === 'relearning').length
+    const procesando = cards.filter(c => c.status === 'procesando').length
+    const aprendido = cards.filter(c => c.status === 'aprendido').length
     
     const studied = cards.filter(c => c.status !== 'new').length
-    const mastery = total > 0 ? Math.round((review / total) * 100) : 0
+    const mastery = total > 0 ? Math.round((aprendido / total) * 100) : 0
     
     let streak = 0
     const today = new Date().toDateString()
@@ -132,9 +130,8 @@ export function StatsView({ deck, onBack, onResetProgress }) {
     return {
       total,
       new: newCards,
-      learning,
-      review,
-      relearning,
+      procesando,
+      aprendido,
       studied,
       mastery,
       streak,
@@ -144,9 +141,8 @@ export function StatsView({ deck, onBack, onResetProgress }) {
 
   const pieData = [
     { name: 'Nuevas', value: stats.new, color: COLORS.new, icon: '✨' },
-    { name: 'Aprendiendo', value: stats.learning, color: COLORS.learning, icon: '📖' },
-    { name: 'Repaso', value: stats.review, color: COLORS.review, icon: '✅' },
-    { name: 'Reaprendiendo', value: stats.relearning, color: COLORS.relearning, icon: '🔄' }
+    { name: 'Procesando', value: stats.procesando, color: COLORS.procesando, icon: '📖' },
+    { name: 'Aprendido', value: stats.aprendido, color: COLORS.aprendido, icon: '✅' },
   ].filter(d => d.value > 0)
 
   const activityData = useMemo(() => {
@@ -169,7 +165,7 @@ export function StatsView({ deck, onBack, onResetProgress }) {
     })
   }, [deck, timeRange])
 
-  // Progreso de aprendiendo → aprendida a lo largo del tiempo (basado en viewLog)
+  // Progreso de procesando → aprendido a lo largo del tiempo (basado en viewLog)
   const progressOverTime = useMemo(() => {
     const days = progressRange === 'week' ? 7 : progressRange === 'month' ? 30 : 90
     const viewLog = deck.viewLog || []
@@ -191,14 +187,14 @@ export function StatsView({ deck, onBack, onResetProgress }) {
         }
       })
       
-      let aprendiendo = 0 // learning + relearning
-      let aprendida = 0   // review
+      let procesando = 0
+      let aprendido = 0
       
       Object.values(cardStatusMap).forEach(status => {
-        if (status === 'review') {
-          aprendida++
-        } else if (status === 'learning' || status === 'relearning') {
-          aprendiendo++
+        if (status === 'aprendido') {
+          aprendido++
+        } else if (status === 'procesando' || status === 'learning' || status === 'relearning') {
+          procesando++
         }
       })
       
@@ -209,17 +205,15 @@ export function StatsView({ deck, onBack, onResetProgress }) {
           month: days > 7 ? 'short' : undefined,
           year: days > 60 ? '2-digit' : undefined,
         }),
-        aprendiendo,
-        aprendida,
+        procesando,
+        aprendido,
       }
     })
   }, [deck, progressRange])
 
   const difficultyData = [
-    { name: 'Otra vez', count: deck.studyStats?.again || 0, color: COLORS.relearning, icon: '😰' },
-    { name: 'Difícil', count: deck.studyStats?.hard || 0, color: COLORS.learning, icon: '😓' },
-    { name: 'Bien', count: deck.studyStats?.good || 0, color: COLORS.review, icon: '😊' },
-    { name: 'Fácil', count: deck.studyStats?.easy || 0, color: COLORS.new, icon: '😎' }
+    { name: 'Otra vez', count: deck.studyStats?.procesando || 0, color: COLORS.procesando, icon: '😰' },
+    { name: 'Aprendido', count: deck.studyStats?.aprendido || 0, color: COLORS.aprendido, icon: '😎' },
   ]
 
   const handleReset = () => {
@@ -268,7 +262,7 @@ export function StatsView({ deck, onBack, onResetProgress }) {
           </div>
           <div className="stat-info">
             <span className="stat-label">Dominio</span>
-            <span className="stat-sublabel">{stats.review} de {stats.total} tarjetas</span>
+            <span className="stat-sublabel">{stats.aprendido} de {stats.total} tarjetas</span>
           </div>
         </div>
         
@@ -418,7 +412,7 @@ export function StatsView({ deck, onBack, onResetProgress }) {
           <div className="chart-header">
             <div className="chart-title">
               <div className="chart-icon">{Icons.brain}</div>
-              <h3>Progreso: Aprendiendo → Aprendida</h3>
+              <h3>Progreso: Procesando → Aprendido</h3>
             </div>
             <div className="time-range">
               {['week', 'month', 'all'].map(range => (
@@ -468,26 +462,26 @@ export function StatsView({ deck, onBack, onResetProgress }) {
                   <Tooltip content={<CustomTooltip />} />
                   <Area
                     type="monotone"
-                    dataKey="aprendiendo"
+                    dataKey="procesando"
                     stackId="1"
                     stroke="#4285F4"
                     strokeWidth={2}
                     fillOpacity={1}
                     fill="url(#colorAprendiendo)"
-                    name="Aprendiendo/Entendiendo"
+                    name="Procesando"
                     isAnimationActive={true}
                     animationDuration={1000}
                     animationEasing="ease-out"
                   />
                   <Area
                     type="monotone"
-                    dataKey="aprendida"
+                    dataKey="aprendido"
                     stackId="1"
                     stroke="#EA4335"
                     strokeWidth={2}
                     fillOpacity={1}
                     fill="url(#colorAprendida)"
-                    name="Aprendida"
+                    name="Aprendido"
                     isAnimationActive={true}
                     animationDuration={1000}
                     animationEasing="ease-out"
@@ -499,13 +493,13 @@ export function StatsView({ deck, onBack, onResetProgress }) {
           <div className="chart-legend">
             <div className="legend-item">
               <span className="legend-dot" style={{ background: '#4285F4' }} />
-              <span className="legend-name">📖 Aprendiendo / Entendiendo</span>
-              <span className="legend-value">{progressOverTime.length > 0 ? progressOverTime[progressOverTime.length-1]?.aprendiendo || 0 : 0}</span>
+              <span className="legend-name">📖 Procesando</span>
+              <span className="legend-value">{progressOverTime.length > 0 ? progressOverTime[progressOverTime.length-1]?.procesando || 0 : 0}</span>
             </div>
             <div className="legend-item">
               <span className="legend-dot" style={{ background: '#EA4335' }} />
-              <span className="legend-name">✅ Aprendida</span>
-              <span className="legend-value">{progressOverTime.length > 0 ? progressOverTime[progressOverTime.length-1]?.aprendida || 0 : 0}</span>
+              <span className="legend-name">✅ Aprendido</span>
+              <span className="legend-value">{progressOverTime.length > 0 ? progressOverTime[progressOverTime.length-1]?.aprendido || 0 : 0}</span>
             </div>
           </div>
         </div>
@@ -578,12 +572,12 @@ export function StatsView({ deck, onBack, onResetProgress }) {
                 <span className="retention-title">Dominadas</span>
               </div>
               <div className="retention-value-large">
-                {stats.total > 0 ? Math.round((stats.review / stats.total) * 100) : 0}%
+                {stats.total > 0 ? Math.round((stats.aprendido / stats.total) * 100) : 0}%
               </div>
               <div className="retention-bar-modern">
                 <div 
                   className="retention-fill-modern"
-                  style={{ width: `${stats.total > 0 ? (stats.review / stats.total) * 100 : 0}%` }}
+                  style={{ width: `${stats.total > 0 ? (stats.aprendido / stats.total) * 100 : 0}%` }}
                 />
               </div>
             </div>
@@ -592,24 +586,17 @@ export function StatsView({ deck, onBack, onResetProgress }) {
           <div className="stats-detail">
             <div className="detail-row">
               <span className="detail-label">
-                <span className="detail-icon" style={{ background: COLORS.review }}>✓</span>
-                En repaso
+                <span className="detail-icon" style={{ background: COLORS.aprendido }}>✓</span>
+                Aprendido
               </span>
-              <strong>{stats.review}</strong>
+              <strong>{stats.aprendido}</strong>
             </div>
             <div className="detail-row">
               <span className="detail-label">
-                <span className="detail-icon" style={{ background: COLORS.learning }}>★</span>
-                Aprendiendo
+                <span className="detail-icon" style={{ background: COLORS.procesando }}>★</span>
+                Procesando
               </span>
-              <strong>{stats.learning}</strong>
-            </div>
-            <div className="detail-row">
-              <span className="detail-label">
-                <span className="detail-icon" style={{ background: COLORS.relearning }}>↻</span>
-                Reaprendiendo
-              </span>
-              <strong>{stats.relearning}</strong>
+              <strong>{stats.procesando}</strong>
             </div>
             <div className="detail-row">
               <span className="detail-label">

@@ -1,21 +1,18 @@
 // Modelo: Deck - Gestiona las tarjetas y el algoritmo de repetición espaciada
 import { NEW_CARDS_PER_SESSION } from "../config";
 
+// Solo dos niveles: Procesando (0) y Aprendido (1)
 export const DIFFICULTY = {
-  AGAIN: 0,
-  HARD: 1,
-  GOOD: 2,
-  EASY: 3,
+  PROCESANDO: 0,
+  APRENDIDO: 1,
 };
 
 export { NEW_CARDS_PER_SESSION };
 
 // Factores de intervalo base (en días)
 const INTERVAL_FACTORS = {
-  [DIFFICULTY.AGAIN]: 1,
-  [DIFFICULTY.HARD]: 2,
-  [DIFFICULTY.GOOD]: 3,
-  [DIFFICULTY.EASY]: 4,
+  [DIFFICULTY.PROCESANDO]: 1,
+  [DIFFICULTY.APRENDIDO]: 4,
 };
 
 export class Card {
@@ -32,36 +29,32 @@ export class Card {
     this.easinessFactor = 2.5;
     this.nextReview = Date.now();
     this.lastReviewed = null;
-    this.status = "new";
+    this.status = "new"; // new | procesando | aprendido
   }
 
   review(difficulty) {
     this.lastReviewed = Date.now();
 
-    if (difficulty === DIFFICULTY.AGAIN) {
+    if (difficulty === DIFFICULTY.PROCESANDO) {
+      // No recordó bien → vuelve a "procesando"
       this.repetitions = 0;
       this.easinessFactor = Math.max(1.3, this.easinessFactor - 0.2);
-      this.interval = INTERVAL_FACTORS[DIFFICULTY.AGAIN];
-      this.status = "relearning";
+      this.interval = INTERVAL_FACTORS[DIFFICULTY.PROCESANDO];
+      this.status = "procesando";
     } else {
+      // Aprendido
       this.repetitions++;
-
-      if (difficulty === DIFFICULTY.HARD) {
-        this.easinessFactor -= 0.15;
-      } else if (difficulty === DIFFICULTY.EASY) {
-        this.easinessFactor += 0.15;
-      }
-      this.easinessFactor = Math.max(1.3, this.easinessFactor);
+      this.easinessFactor = Math.max(1.3, this.easinessFactor + 0.1);
 
       if (this.repetitions === 1) {
-        this.interval = INTERVAL_FACTORS[difficulty];
+        this.interval = INTERVAL_FACTORS[DIFFICULTY.APRENDIDO];
       } else if (this.repetitions === 2) {
-        this.interval = INTERVAL_FACTORS[difficulty] * 2;
+        this.interval = INTERVAL_FACTORS[DIFFICULTY.APRENDIDO] * 2;
       } else {
         this.interval = Math.round(this.interval * this.easinessFactor);
       }
 
-      this.status = this.repetitions >= 2 ? "review" : "learning";
+      this.status = "aprendido";
     }
 
     this.nextReview = Date.now() + this.interval * 24 * 60 * 60 * 1000;
@@ -101,10 +94,8 @@ export class Deck {
     this.viewLog = [];
     this.studyStats = {
       totalReviews: 0,
-      again: 0,
-      hard: 0,
-      good: 0,
-      easy: 0,
+      procesando: 0,
+      aprendido: 0,
       streak: 0,
       bestStreak: 0,
       studyHistory: [],
@@ -132,25 +123,25 @@ export class Deck {
 
   getLearningCards() {
     return this.cards.filter(
-      (card) => card.status === "learning" || card.status === "relearning",
+      (card) => card.status === "procesando",
     );
   }
 
   getStats() {
     const newCards = this.getNewCards().length;
-    const learning = this.getLearningCards().length;
+    const procesando = this.cards.filter((c) => c.status === "procesando").length;
     const due = this.getDueCards().length;
-    const reviewed = this.cards.filter((c) => c.status === "review").length;
+    const aprendido = this.cards.filter((c) => c.status === "aprendido").length;
 
     return {
       total: this.cards.length,
       new: newCards,
-      learning: learning,
+      procesando: procesando,
       due: due,
-      reviewed: reviewed,
+      aprendido: aprendido,
       mastery:
         this.cards.length > 0
-          ? Math.round((reviewed / this.cards.length) * 100)
+          ? Math.round((aprendido / this.cards.length) * 100)
           : 0,
     };
   }
@@ -208,10 +199,8 @@ export class Deck {
     });
     this.studyStats = {
       totalReviews: 0,
-      again: 0,
-      hard: 0,
-      good: 0,
-      easy: 0,
+      procesando: 0,
+      aprendido: 0,
       streak: 0,
       bestStreak: this.studyStats.bestStreak,
       studyHistory: [],
@@ -276,10 +265,8 @@ export class Deck {
     deck.lastStudied = data.lastStudied;
     deck.studyStats = data.studyStats || {
       totalReviews: 0,
-      again: 0,
-      hard: 0,
-      good: 0,
-      easy: 0,
+      procesando: 0,
+      aprendido: 0,
       streak: 0,
       bestStreak: 0,
       studyHistory: [],
