@@ -1,45 +1,4 @@
-/**
- * Video 5 - Introduccion a la programacion: operadores relacionales DAM - DAW
- * URL:          https://www.youtube.com/watch?v=98m39gc3YpM&list=PLG1qdjD__qH6ULjW5iN8E45m5nkaCNbUu&index=5
- * Canal:        Aula en la nube
- *               https://www.youtube.com/@aulaenlanube
- * Video:        Video 5 - Operadores relacionales
- * Playlist:     MEGA Curso JAVA desde 0 [ DAM - DAW ]
- *
- * Resumen:
- *   Quinto video del curso. Introduce los operadores relacionales, que
- *   permiten comparar valores y son la base de las estructuras condicionales.
- *
- *   Temas que probablemente cubre:
- *   - Operadores relacionales: >, <, >=, <=, ==, !=
- *   - Expresiones relacionales y su resultado booleano (true/false)
- *   - Diferencia entre asignacion (=) y comparacion (==)
- *   - Condiciones simples y compuestas
- *   - Tablas de verdad de operadores logicos (AND, OR, NOT)
- *   - Operadores logicos en pseudocodigo: Y, O, NO
- *   - Precedencia combinada: aritmeticos > relacionales > logicos
- *   - Ejemplos practicos de condiciones en algoritmos
- *
- * Conceptos clave para el examen:
- *   - Operador relacional: simbolo que compara dos valores
- *   - Operadores: > (mayor), < (menor), >= (mayor o igual), <= (menor o igual),
- *     == (igual que), != (distinto de)
- *   - Expresion relacional: devuelve un valor booleano (true / false)
- *   - Condicion: expresion relacional que se evalua en una decision
- *   - Operadores logicos: Y (AND) -> verdad si ambos son verdad
- *     O (OR) -> verdad si al menos uno es verdad
- *     NO (NOT) -> invierte el valor
- *   - Tablas de verdad: AND (V^V=V), OR (VvF=V), NOT (~V=F)
- *   - Evaluacion en cortocircuito: si la primera condicion ya determina
- *     el resultado, no se evalua la segunda
- *   - Precedencia: parentesis > aritmeticos > relacionales > logicos
- *   - Importante: = es asignacion, == es comparacion
- *   - Uso tipico: if (nota >= 5) entonces "Aprobado" sino "Suspenso"
- *
- * @author       Aula en la nube (YouTube)
- * @version      1.0
- * @since        2026-06-13
- */
+
 
 class Video_5_Operadores_Relacionales {
 
@@ -129,9 +88,7 @@ class Video_5_Operadores_Relacionales {
         mostrarInformacion();
     }
 
-    /**
-     * Muestra por consola la informacion y resumen del video.
-     */
+    
     public static void mostrarInformacion() {
         System.out.println();
         System.out.println("============================================");

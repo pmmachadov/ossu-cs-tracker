@@ -1,47 +1,4 @@
-/**
-  * Video 1 - Presentación MEGA Curso JAVA desde 0 ☕ DAM - DAW
- * URL:          https://www.youtube.com/watch?v=NFDjCN4r_68&list=PLG1qdjD__qH6ULjW5iN8E45m5nkaCNbUu
- * Canal:        Aula en la nube
- *               https://www.youtube.com/@aulaenlanube
- * Vídeo:        Video 1 - Presentación del MEGA Curso JAVA desde 0
- * Playlist:     🏆 MEGA Curso JAVA desde 0 [ DAM - DAW ]
- *
- * Resumen:
- *   Esta es una lista de reproducción con un curso completo de Java desde cero,
- *   orientado a los ciclos formativos de DAM (Desarrollo de Aplicaciones Multiplataforma)
- *   y DAW (Desarrollo de Aplicaciones Web).
- *
- *   El vídeo de presentación da inicio al curso, que cubre Java desde nivel
- *   principiante absoluto. El canal "Aula en la nube" se especializa en cursos
- *   de programación para Formación Profesional.
- *
- * Posibles temas del curso:
- *   - Fundamentos de Java (variables, tipos de datos, operadores)
- *   - Estructuras de control (condicionales, bucles)
- *   - Programación orientada a objetos (clases, herencia, polimorfismo, interfaces)
- *   - Colecciones y estructuras de datos
- *   - Entrada / Salida y ficheros
- *   - Bases de datos (JDBC)
- *   - Interfaces gráficas (Swing / JavaFX)
- *   - Conceptos avanzados (Java EE, etc.)
- *
- * Conceptos clave para el examen:
- *   - DAM: Desarrollo de Aplicaciones Multiplataforma
- *   - DAW: Desarrollo de Aplicaciones Web
- *   - JDK (Java Development Kit): kit de desarrollo, incluye JRE + herramientas
- *   - JRE (Java Runtime Environment): entorno de ejecucion, incluye JVM + librerias
- *   - JVM (Java Virtual Machine): maquina virtual que ejecuta el bytecode
- *   - Bytecode: codigo intermedio .class, independiente de la plataforma
- *   - javac: compilador de Java (.java -> .class)
- *   - java: lanzador que inicia la JVM y ejecuta el programa
- *   - POO (Programacion Orientada a Objetos): paradigma central de Java
- *   - Write Once, Run Away (WORA): filosofia multiplataforma de Java
- *   - Ciclo de desarrollo: editar -> compilar (javac) -> ejecutar (java)
- *
- * @author       Aula en la nube (YouTube)
- * @version      1.0
- * @since        2026-06-13
- */
+
 
 class Video_1_Presentacion_MEGA_Curso_Java_Desde_0 {
 
@@ -116,9 +73,7 @@ class Video_1_Presentacion_MEGA_Curso_Java_Desde_0 {
         mostrarInformacion();
     }
 
-    /**
-     * Muestra por consola la información del vídeo, la playlist y el resumen.
-     */
+    
     public static void mostrarInformacion() {
         System.out.println();
         System.out.println("╔══════════════════════════════════════════════════╗");

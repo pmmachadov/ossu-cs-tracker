@@ -1,23 +1,4 @@
-/**
- * Video 16 - Ejercicios adicionales y de ampliacion DAM - DAW
- * URL:          https://www.youtube.com/watch?v=ZzFF_aXLO5g&list=PLG1qdjD__qH6ULjW5iN8E45m5nkaCNbUu&index=16
- * Canal:        Aula en la nube
- *               https://www.youtube.com/@aulaenlanube
- * Video:        Video 16 - Ejercicios adicionales y de ampliacion
- * Playlist:     MEGA Curso JAVA desde 0 [ DAM - DAW ]
- *
- * Resumen basado en la transcripcion del video:
- *   Cinco ejercicios de repaso de toda la unidad 1:
- *   1) Intercambiar valor de dos variables (usando variable auxiliar)
- *   2) Convertir minutos a dias, horas y minutos
- *   3) Leer 5 numeros: detectar negativos y hallar el maximo
- *   4) Contar digitos de un numero
- *   5) Leer N numeros, hallar maximo, minimo y cuantas veces aparece cada uno
- *
- * @author       Aula en la nube (YouTube)
- * @version      1.0
- * @since        2026-06-13
- */
+
 
 class Video_16_Ejercicios_Adicionales {
 

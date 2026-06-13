@@ -1,23 +1,4 @@
-/**
- * Video 15 - Bucles anidados en pseudocodigo DAM - DAW
- * URL:          https://www.youtube.com/watch?v=V-WDyYJqPnY&list=PLG1qdjD__qH6ULjW5iN8E45m5nkaCNbUu&index=15
- * Canal:        Aula en la nube
- *               https://www.youtube.com/@aulaenlanube
- * Video:        Video 15 - Bucles anidados (seguimiento de algoritmos)
- * Playlist:     MEGA Curso JAVA desde 0 [ DAM - DAW ]
- *
- * Resumen basado en la transcripcion del video:
- *   Ejemplo de algoritmo con DOS BUCLES ANIDADOS (un bucle dentro de otro).
- *   Se analiza paso a paso la traza, viendo como el bucle interno se ejecuta
- *   completo por cada iteracion del bucle externo.
- *
- *   Tambien se muestran modificaciones cambiando las condiciones de los bucles
- *   (>= vs >) para ver como afecta a la salida.
- *
- * @author       Aula en la nube (YouTube)
- * @version      1.0
- * @since        2026-06-13
- */
+
 
 class Video_15_Bucles_Anidados {
 

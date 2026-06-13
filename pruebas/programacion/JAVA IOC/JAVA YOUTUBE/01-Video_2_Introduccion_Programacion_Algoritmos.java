@@ -1,46 +1,4 @@
-/**
- * Video 2 - Introduccion a la programacion y los algoritmos DAM - DAW
- * URL:          https://www.youtube.com/watch?v=dfEEG4A_Hoo&list=PLG1qdjD__qH6ULjW5iN8E45m5nkaCNbUu&index=2
- * Canal:        Aula en la nube
- *               https://www.youtube.com/@aulaenlanube
- * Video:        Video 2 - Introduccion a la programacion y los algoritmos
- * Playlist:     MEGA Curso JAVA desde 0 [ DAM - DAW ]
- *
- * Resumen:
- *   Segundo video del MEGA Curso JAVA desde 0. En esta ocasion se introduce
- *   el concepto de programacion y algoritmos, sentando las bases teoricas
- *   antes de empezar a escribir codigo Java.
- *
- *   Temas que probablemente cubre:
- *   - Que es la programacion?
- *   - Que es un algoritmo?
- *   - Caracteristicas de los algoritmos (precisos, deterministas, finitos)
- *   - Diagramas de flujo y pseudocodigo
- *   - Conceptos basicos: variables, constantes, tipos de datos
- *   - Estructuras de control basicas (secuencia, seleccion, iteracion)
- *   - Primer acercamiento a la logica de programacion
- *
- * Conceptos clave para el examen:
- *   - Programa: conjunto de instrucciones que ejecuta un ordenador
- *   - Algoritmo: conjunto de pasos ordenados y finitos para resolver un problema
- *   - Lenguaje de programacion: idioma formal para escribir programas
- *   - Codigo fuente: texto escrito en un lenguaje de programacion
- *   - Compilacion: traduccion de codigo fuente a codigo maquina (ej: javac)
- *   - Interpretacion: ejecucion linea por linea sin compilar previamente
- *   - Pseudocodigo: lenguaje informal para describir algoritmos
- *   - Diagrama de flujo: representacion grafica de un algoritmo
- *   - Variable: espacio de memoria que almacena un valor que puede cambiar
- *   - Constante: valor que no cambia durante la ejecucion
- *   - Tipo de dato: entero, real, caracter, booleano
- *   - Estructuras de control: secuencia, seleccion (if), iteracion (while, for)
- *   - Depuracion (debugging): proceso de encontrar y corregir errores
- *   - Programa informatico vs algoritmo: el programa es la implementacion
- *     del algoritmo en un lenguaje de programacion
- *
- * @author       Aula en la nube (YouTube)
- * @version      1.0
- * @since        2026-06-13
- */
+
 
 class Video_2_Introduccion_Programacion_Algoritmos {
 
@@ -112,9 +70,7 @@ class Video_2_Introduccion_Programacion_Algoritmos {
         mostrarInformacion();
     }
 
-    /**
-     * Muestra por consola la informacion del video, la playlist y el resumen.
-     */
+    
     public static void mostrarInformacion() {
         System.out.println();
         System.out.println("============================================");

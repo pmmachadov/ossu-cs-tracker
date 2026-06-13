@@ -1,36 +1,4 @@
-/**
- * Video 7 - Instrucciones en pseudocodigo DAM - DAW
- * URL:          https://www.youtube.com/watch?v=taSJeALBVGk&list=PLG1qdjD__qH6ULjW5iN8E45m5nkaCNbUu&index=7
- * Canal:        Aula en la nube
- *               https://www.youtube.com/@aulaenlanube
- * Video:        Video 7 - Instrucciones en pseudocodigo
- * Playlist:     MEGA Curso JAVA desde 0 [ DAM - DAW ]
- *
- * Resumen basado en la transcripcion del video:
- *   Clasificacion de los distintos tipos de instrucciones en pseudocodigo:
- *   declarativas, primitivas (entrada, salida, asignacion) y de control.
- *   Se explica la sintaxis de cada una con ejemplos.
- *
- *   Ejercicios resueltos:
- *   1) Algoritmo que dada una distancia en millas marinas, la escribe en metros
- *      (1 milla marina = 1852 metros)
- *   2) Algoritmo que dado precio y porcentaje de descuento, escribe el precio pagado
- *
- * Conceptos clave para el examen:
- *   - Instrucciones declarativas: declarar variables/constantes con nombre y tipo
- *   - Instrucciones primitivas: leer (entrada), escribir (salida), asignacion
- *   - Instrucciones de control: alteran el orden de ejecucion (SI, MIENTRAS, etc.)
- *   - Leer(): primitiva de entrada, guarda datos desde teclado en variables
- *   - Escribir(): primitiva de salida, muestra datos por pantalla
- *   - Asignacion: guarda el resultado de una expresion en una variable
- *   - Concatenacion con +: se pueden unir textos y variables en Escribir()
- *   - Indentacion (tabulacion): obligatoria para claridad del codigo
- *   - Palabras clave en mayusculas: Algoritmo, Definir, Leer, Escribir, etc.
- *
- * @author       Aula en la nube (YouTube)
- * @version      1.0
- * @since        2026-06-13
- */
+
 
 class Video_7_Instrucciones_Pseudocodigo {
 

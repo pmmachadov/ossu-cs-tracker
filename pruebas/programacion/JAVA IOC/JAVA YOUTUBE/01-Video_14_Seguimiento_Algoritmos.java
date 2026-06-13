@@ -1,21 +1,4 @@
-/**
- * Video 14 - Ejercicios de seguimiento de algoritmos DAM - DAW
- * URL:          https://www.youtube.com/watch?v=rH60985e4PM&list=PLG1qdjD__qH6ULjW5iN8E45m5nkaCNbUu&index=14
- * Canal:        Aula en la nube
- *               https://www.youtube.com/@aulaenlanube
- * Video:        Video 14 - Ejercicios de seguimiento de algoritmos
- * Playlist:     MEGA Curso JAVA desde 0 [ DAM - DAW ]
- *
- * Resumen basado en la transcripcion del video:
- *   Actividades de seguimiento de algoritmos (traza). Se deben determinar
- *   los valores finales de las variables tras ejecutar cada algoritmo,
- *   usando bucles, condicionales, operadores aritmeticos, relacionales y logicos.
- *   Muy util para asimilar el funcionamiento de las estructuras de control.
- *
- * @author       Aula en la nube (YouTube)
- * @version      1.0
- * @since        2026-06-13
- */
+
 
 class Video_14_Seguimiento_Algoritmos {
 

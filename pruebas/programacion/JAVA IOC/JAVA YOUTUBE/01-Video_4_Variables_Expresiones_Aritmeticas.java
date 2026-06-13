@@ -1,47 +1,4 @@
-/**
- * Video 4 - Variables y expresiones aritmeticas DAM - DAW
- * URL:          https://www.youtube.com/watch?v=pgF8U9WxPts&list=PLG1qdjD__qH6ULjW5iN8E45m5nkaCNbUu&index=4
- * Canal:        Aula en la nube
- *               https://www.youtube.com/@aulaenlanube
- * Video:        Video 4 - Variables y expresiones aritmeticas
- * Playlist:     MEGA Curso JAVA desde 0 [ DAM - DAW ]
- *
- * Resumen:
- *   Cuarto video del curso. Se introducen las variables, los tipos de datos,
- *   las expresiones aritmeticas y las instrucciones basicas en pseudocodigo
- *   como paso previo a Java.
- *
- *   Temas que probablemente cubre:
- *   - Datos: concepto, tipos (numericos, logicos, caracteres)
- *   - Variables: declaracion, inicializacion, asignacion
- *   - Expresiones aritmeticas: operandos, operadores, precedencia
- *   - Instrucciones: secuenciales, de asignacion, de E/S
- *   - Operadores aritmeticos: +, -, *, /, modulo (%)
- *   - Jerarquia de operadores (precedencia)
- *   - Ejemplos de algoritmos con calculos aritmeticos
- *
- * Conceptos clave para el examen:
- *   - Dato: valor elemental que el ordenador procesa (numeros, texto, booleanos)
- *   - Tipos de datos: enteros (int), reales (double), booleanos (boolean), caracter (char)
- *   - Variable: espacio de memoria con nombre y tipo para almacenar datos
- *   - Declaracion de variable: especificar tipo y nombre (ej: int edad)
- *   - Inicializacion: dar un valor por primera vez a una variable
- *   - Asignacion: cambiar el valor de una variable (ej: edad = 18)
- *   - Expresion: combinacion de operandos y operadores que produce un valor
- *   - Expresion aritmetica: usa operadores matematicos (+, -, *, /, %)
- *   - Instruccion (sentencia): orden que ejecuta el ordenador
- *   - Tipos de instrucciones: asignacion, E/S (Leer/Escribir), condicional, iterativa
- *   - Instruccion de asignacion: variable = expresion
- *   - Instruccion de entrada: leer variable desde teclado
- *   - Instruccion de salida: mostrar resultado por pantalla
- *   - Precedencia de operadores: parentesis > multiplicacion/division/modulo > suma/resta
- *   - Contador: variable que incrementa en un valor constante (cont = cont + 1)
- *   - Acumulador: variable que acumula valores (suma = suma + valor)
- *
- * @author       Aula en la nube (YouTube)
- * @version      1.0
- * @since        2026-06-13
- */
+
 
 class Video_4_Variables_Expresiones_Aritmeticas {
 
@@ -119,9 +76,7 @@ class Video_4_Variables_Expresiones_Aritmeticas {
         mostrarInformacion();
     }
 
-    /**
-     * Muestra por consola la informacion y resumen del video.
-     */
+    
     public static void mostrarInformacion() {
         System.out.println();
         System.out.println("============================================");

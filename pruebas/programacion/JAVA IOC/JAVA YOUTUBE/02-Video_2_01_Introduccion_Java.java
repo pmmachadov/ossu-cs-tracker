@@ -1,36 +1,4 @@
-/**
- * Video 17 (Tema 2) - Introduccion a Java: historia, caracteristicas y funcionamiento
- * URL:          https://www.youtube.com/watch?v=8gkaitxt-CI&list=PLG1qdjD__qH6ULjW5iN8E45m5nkaCNbUu&index=17
- * Canal:        Aula en la nube
- *               https://www.youtube.com/@aulaenlanube
- * Video:        2-1 Introduccion a Java
- * Playlist:     MEGA Curso JAVA desde 0 [ DAM - DAW ]
- *
- * Resumen basado en la transcripcion del video:
- *   Primer video del TEMA 2. Se presenta el lenguaje Java: origen, historia,
- *   caracteristicas y funcionamiento interno (JVM, bytecode, compilador JIT).
- *
- * Conceptos clave para el examen:
- *   - Java: creado por Sun Microsystems, origen en 1991 (nombre Oak),
- *     presentado en 1995, primera version JDK 1.0 en 1996
- *   - James Gosling: creador principal de Java
- *   - Nombre "Java": viene de una variedad de cafe de la isla de Java (Indonesia)
- *   - Logotipo: una taza de cafe humeante
- *   - Objetivo: "Write Once, Run Anywhere" (WORA)
- *   - JVM (Java Virtual Machine): maquina virtual que ejecuta el bytecode
- *   - Bytecode (.class): codigo intermedio independiente de la plataforma
- *   - javac: compilador de Java (.java -> .class)
- *   - JIT (Just in Time): compilador en tiempo de ejecucion que optimiza
- *     metodos usados frecuentemente
- *   - Garbage Collector: recolector de basura, libera memoria automaticamente
- *   - Orientacion a objetos: paradigma principal de Java
- *   - Codigo fuente (.java) -> compilador (javac) -> bytecode (.class)
- *     -> JVM -> codigo maquina -> Hardware
- *
- * @author       Aula en la nube (YouTube)
- * @version      1.0
- * @since        2026-06-13
- */
+
 
 class Video_2_01_Introduccion_Java {
 

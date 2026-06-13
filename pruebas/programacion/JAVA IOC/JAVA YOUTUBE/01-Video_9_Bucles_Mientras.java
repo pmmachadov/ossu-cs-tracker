@@ -1,32 +1,4 @@
-/**
- * Video 9 - Tipos de bucles pseudocodigo (MIENTRAS - WHILE) DAM - DAW
- * URL:          https://www.youtube.com/watch?v=gWYWRs9d_ZI&list=PLG1qdjD__qH6ULjW5iN8E45m5nkaCNbUu&index=9
- * Canal:        Aula en la nube
- *               https://www.youtube.com/@aulaenlanube
- * Video:        Video 9 - Tipos de bucles pseudocodigo (MIENTRAS - WHILE)
- * Playlist:     MEGA Curso JAVA desde 0 [ DAM - DAW ]
- *
- * Resumen basado en la transcripcion del video:
- *   Introduccion a las estructuras de control repetitivas (bucles).
- *   Explica los tres tipos principales: MIENTRAS (WHILE), REPETIR (DO-WHILE)
- *   y PARA (FOR), con el ejercicio de calcular la potencia de un numero
- *   mediante multiplicaciones sucesivas.
- *
- *   El video cubre:
- *   - Concepto de bucle: bloque que se ejecuta mas de una vez segun condicion
- *   - Bucle MIENTRAS: evalua condicion ANTES de ejecutar (0 o mas veces)
- *   - Bucle REPETIR-MIENTRAS: ejecuta al menos 1 vez, condicion al final
- *   - Bucle PARA: version abreviada con inicializacion, condicion e incremento
- *   - Ordinograma (diagrama de flujo) del bucle mientras
- *   - Ejercicio: calcular potencia (base^exponente) con bucle mientras
- *   - Traza de ejecucion detallada
- *   - Error comun: condicion incorrecta (menor en vez de menor o igual)
- *   - Dos soluciones correctas: contador=1 con <=, o contador=0 con <
- *
- * @author       Aula en la nube (YouTube)
- * @version      1.0
- * @since        2026-06-13
- */
+
 
 class Video_9_Bucles_Mientras {
 
@@ -217,9 +189,7 @@ class Video_9_Bucles_Mientras {
         mostrarInformacion();
     }
 
-    /**
-     * Muestra por consola la informacion y resumen del video.
-     */
+    
     public static void mostrarInformacion() {
         System.out.println();
         System.out.println("============================================");

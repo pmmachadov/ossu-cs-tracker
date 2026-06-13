@@ -1,40 +1,4 @@
-/**
- * Video 10 - Ejercicio bucle mientras en pseudocodigo DAM - DAW
- * URL:          https://www.youtube.com/watch?v=P73Sa4dzvoc&list=PLG1qdjD__qH6ULjW5iN8E45m5nkaCNbUu&index=10
- * Canal:        Aula en la nube
- *               https://www.youtube.com/@aulaenlanube
- * Video:        Video 10 - Ejercicio bucle mientras en pseudocodigo
- * Playlist:     MEGA Curso JAVA desde 0 [ DAM - DAW ]
- *
- * Resumen basado en la transcripcion del video:
- *   Ejercicio practico: disenar un algoritmo que lea dos numeros enteros
- *   a y b, y calcule su multiplicacion mediante SUMAS SUCESIVAS (sin usar
- *   el operador de multiplicacion). Se utiliza el bucle MIENTRAS.
- *
- *   El video explica:
- *   - Declaracion de variables: num1, num2, producto, contador
- *   - Inicializacion de producto y contador a 0
- *   - Bucle MIENTRAS con condicion num2 > contador
- *   - En cada iteracion: producto = producto + num1, contador++
- *   - Traza de ejecucion paso a paso con tabla de valores
- *   - Mejora: comprobar si num1 = 0 para evitar iteraciones innecesarias
- *   - Importancia de entender la condicion del bucle y el incremento
- *     del contador para evitar bucles infinitos
- *
- * Conceptos clave para el examen:
- *   - Sumas sucesivas: multiplicar a*b = sumar "a" repetidamente "b" veces
- *   - Bucle MIENTRAS: estructura iterativa de pre-condicion
- *   - Contador: variable que se incrementa en cada iteracion
- *   - Acumulador (producto): variable que guarda el resultado parcial
- *   - Condicion del bucle define cuantas iteraciones se ejecutan
- *   - Cuidado con la condicion: > vs >= cambia el numero de iteraciones
- *   - Optimizacion: evitar iteraciones innecesarias (ej: num1 = 0)
- *   - Traza de ejecucion: tabla con valores de cada variable en cada paso
- *
- * @author       Aula en la nube (YouTube)
- * @version      1.0
- * @since        2026-06-13
- */
+
 
 class Video_10_Ejercicio_Bucle_Mientras {
 
@@ -155,9 +119,7 @@ class Video_10_Ejercicio_Bucle_Mientras {
         mostrarInformacion();
     }
 
-    /**
-     * Muestra por consola la informacion y resumen del video.
-     */
+    
     public static void mostrarInformacion() {
         System.out.println();
         System.out.println("============================================");

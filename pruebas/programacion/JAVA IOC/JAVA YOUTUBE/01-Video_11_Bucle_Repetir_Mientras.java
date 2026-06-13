@@ -1,33 +1,4 @@
-/**
- * Video 11 - Bucle REPETIR-MIENTRAS (DO-WHILE) en pseudocodigo DAM - DAW
- * URL:          https://www.youtube.com/watch?v=bRwz1J9hxEg&list=PLG1qdjD__qH6ULjW5iN8E45m5nkaCNbUu&index=11
- * Canal:        Aula en la nube
- *               https://www.youtube.com/@aulaenlanube
- * Video:        Video 11 - Bucle REPETIR-MIENTRAS (DO-WHILE)
- * Playlist:     MEGA Curso JAVA desde 0 [ DAM - DAW ]
- *
- * Resumen basado en la transcripcion del video:
- *   Se explica la estructura repetitiva REPETIR-MIENTRAS (bucle do-while).
- *   La particularidad es que el cuerpo del bucle se ejecuta AL MENOS UNA VEZ,
- *   porque la condicion se comprueba al final.
- *
- *   Ejercicio resuelto:
- *   Sumar los n primeros numeros naturales, siendo n un numero mayor que 1.
- *   Ej: n=3 -> 3+2+1=6, n=5 -> 5+4+3+2+1=15
- *
- * Conceptos clave para el examen:
- *   - REPETIR-MIENTRAS: bucle de post-condicion (se ejecuta 1 o mas veces)
- *   - Sintaxis: Repetir ... Hasta Que (condicion)  o  Repetir ... Mientras (condicion)
- *   - La condicion se evalua al final, a diferencia del MIENTRAS que evalua al inicio
- *   - Diferencia con MIENTRAS: MIENTRAS puede ejecutarse 0 veces; REPETIR siempre al menos 1
- *   - Contador: variable que se incrementa en cada iteracion
- *   - Acumulador (suma): variable que guarda la suma parcial
- *   - Traza de ejecucion: seguir valores de las variables paso a paso
- *
- * @author       Aula en la nube (YouTube)
- * @version      1.0
- * @since        2026-06-13
- */
+
 
 class Video_11_Bucle_Repetir_Mientras {
 

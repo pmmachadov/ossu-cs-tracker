@@ -1,35 +1,4 @@
-/**
- * Video 13 - Ejercicios de repaso: bucles, condicionales y acumuladores DAM - DAW
- * URL:          https://www.youtube.com/watch?v=3FIomL6wFFM&list=PLG1qdjD__qH6ULjW5iN8E45m5nkaCNbUu&index=13
- * Canal:        Aula en la nube
- *               https://www.youtube.com/@aulaenlanube
- * Video:        Video 13 - Ejercicios de repaso
- * Playlist:     MEGA Curso JAVA desde 0 [ DAM - DAW ]
- *
- * Resumen basado en la transcripcion del video:
- *   Tres ejercicios de repaso para asimilar bucles, condicionales y acumuladores.
- *
- *   Ejercicios:
- *   1) Sumar los numeros pares entre 1 y 10 (2+4+6+8+10=30). Dos soluciones:
- *      - Con SI + MIENTRAS (recorre 1..10, comprueba MOD)
- *      - Mas eficiente: MIENTRAS con incremento de 2 en 2 (sin IF)
- *   2) Leer puntuaciones hasta cero, multiplicando por 0.3 si estan entre
- *      2000-3000, o por 0.2 si no, acumulando el total
- *   3) Calcular el factorial de un numero (ej: 5! = 5*4*3*2*1 = 120)
- *
- * Conceptos clave para el examen:
- *   - Acumulador: variable que acumula resultados (suma, producto, total)
- *   - Eficiencia: evitar iteraciones/condiciones innecesarias
- *   - Incremento de 2 en 2 para saltar pares/impares
- *   - AND (Y) para rangos: condicion1 Y condicion2
- *   - Factorial: producto de todos los enteros desde N hasta 1
- *   - Decremento: contador = contador - 1 (para recorrer hacia atras)
- *   - Bucle PARA como alternativa al MIENTRAS
- *
- * @author       Aula en la nube (YouTube)
- * @version      1.0
- * @since        2026-06-13
- */
+
 
 class Video_13_Ejercicios_Repaso {
 

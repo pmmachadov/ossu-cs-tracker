@@ -1,37 +1,4 @@
-/**
- * Video 8 - Estructuras de control alternativas pseudocodigo (SI - IFS) DAM - DAW
- * URL:          https://www.youtube.com/watch?v=tldDbZ9MSoA&list=PLG1qdjD__qH6ULjW5iN8E45m5nkaCNbUu&index=8
- * Canal:        Aula en la nube
- *               https://www.youtube.com/@aulaenlanube
- * Video:        Video 8 - Estructuras de control alternativas (SI - IFS)
- * Playlist:     MEGA Curso JAVA desde 0 [ DAM - DAW ]
- *
- * Resumen basado en la transcripcion del video:
- *   Se explican las estructuras de control de tipo alternativo (condicionales):
- *   SI simple, SI-SINO (doble), y SI anidados. Se recalca la importancia de
- *   la indentacion (tabulacion) del codigo dentro de cada estructura.
- *
- *   Ejercicios resueltos:
- *   1) Determinar si un numero es par o impar (usando MOD)
- *   2) Determinar si un numero N es divisible por M
- *   3) Leer dos valores X e Y, determinar si son iguales y si no, cual es mayor
- *
- * Conceptos clave para el examen:
- *   - Estructura de control: evalua una expresion logica y segun el resultado
- *     ejecuta unas instrucciones u otras
- *   - Indentacion (tabulacion): obligatoria, el codigo dentro de una estructura
- *     debe ir tabulado para saber que instrucciones pertenecen a cada condicion
- *   - SI simple: si condicion verdadera -> ejecuta instrucciones; si no, las salta
- *   - SI-SINO (doble): si verdad -> bloque verdad; si falso -> bloque sino
- *   - SI anidados: un SI dentro de otro SI (o dentro de un SINO)
- *   - MOD (resto): operador para obtener el resto de una division entera
- *   - Concatenacion con coma: se puede concatenar texto y variables separando con comas
- *   - Operador = en pseudocodigo: se usa = para comparar (en Java es ==)
- *
- * @author       Aula en la nube (YouTube)
- * @version      1.0
- * @since        2026-06-13
- */
+
 
 class Video_8_Estructuras_Control_Alternativas {
 
@@ -184,9 +151,7 @@ class Video_8_Estructuras_Control_Alternativas {
         mostrarInformacion();
     }
 
-    /**
-     * Muestra por consola la informacion y resumen del video.
-     */
+    
     public static void mostrarInformacion() {
         System.out.println();
         System.out.println("============================================");

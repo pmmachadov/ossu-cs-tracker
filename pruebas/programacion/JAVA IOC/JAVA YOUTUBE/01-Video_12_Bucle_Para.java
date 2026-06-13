@@ -1,34 +1,4 @@
-/**
- * Video 12 - Bucle PARA (FOR) en pseudocodigo DAM - DAW
- * URL:          https://www.youtube.com/watch?v=ijz6rAu5Trw&list=PLG1qdjD__qH6ULjW5iN8E45m5nkaCNbUu&index=12
- * Canal:        Aula en la nube
- *               https://www.youtube.com/@aulaenlanube
- * Video:        Video 12 - Bucle PARA (FOR)
- * Playlist:     MEGA Curso JAVA desde 0 [ DAM - DAW ]
- *
- * Resumen basado en la transcripcion del video:
- *   Se explica la estructura repetitiva PARA (bucle FOR). Es una forma
- *   abreviada de escribir un bucle MIENTRAS, donde en una misma linea se
- *   incluyen: inicializacion del contador, condicion, e incremento/decremento.
- *   Se usa cuando se sabe de antemano cuantas veces se va a repetir el bucle.
- *
- *   Ejercicio resuelto:
- *   Leer cinco valores numericos y calcular su producto usando un bucle PARA.
- *
- * Conceptos clave para el examen:
- *   - Bucle PARA (FOR): estructura repetitiva con contador explicito
- *   - Sintaxis: Para (inicializacion; condicion; incremento)
- *   - Equivalente a MIENTRAS pero mas compacto
- *   - Se usa cuando se conoce el numero exacto de iteraciones
- *   - Inicializacion se ejecuta UNA SOLA VEZ al entrar al bucle
- *   - Incremento se ejecuta al FINAL de cada iteracion
- *   - Se puede inicializar en 0 o en 1, ajustando la condicion
- *   - En Java: for (int i=0; i<5; i++) { ... }
- *
- * @author       Aula en la nube (YouTube)
- * @version      1.0
- * @since        2026-06-13
- */
+
 
 class Video_12_Bucle_Para {
 

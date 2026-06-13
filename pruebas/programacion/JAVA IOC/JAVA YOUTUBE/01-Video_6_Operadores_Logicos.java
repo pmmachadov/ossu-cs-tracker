@@ -1,47 +1,4 @@
-/**
- * Video 6 - Introduccion a la programacion: operadores logicos DAM - DAW
- * URL:          https://www.youtube.com/watch?v=GwwRkMo012Y&list=PLG1qdjD__qH6ULjW5iN8E45m5nkaCNbUu&index=6
- * Canal:        Aula en la nube
- *               https://www.youtube.com/@aulaenlanube
- * Video:        Video 6 - Operadores logicos
- * Playlist:     MEGA Curso JAVA desde 0 [ DAM - DAW ]
- *
- * Resumen:
- *   Sexto video del curso. Profundiza en los operadores logicos (AND, OR, NOT),
- *   sus tablas de verdad, propiedades y aplicaciones en condiciones compuestas.
- *
- *   Temas que probablemente cubre:
- *   - Repaso de operadores logicos: AND (Y), OR (O), NOT (NO)
- *   - Tablas de verdad detalladas
- *   - Condiciones compuestas con multiples operadores
- *   - Evaluacion en cortocircuito (short-circuit)
- *   - Leyes de De Morgan
- *   - Prioridad y uso de parentesis en expresiones logicas
- *   - Ejemplos practicos: rangos de valores, validaciones, logica inversa
- *   - Diferencia entre condiciones mutuamente excluyentes y solapadas
- *
- * Conceptos clave para el examen:
- *   - Operador logico AND (Y): verdad solo si ambas condiciones son verdaderas
- *   - Operador logico OR (O): verdad si al menos una condicion es verdadera
- *   - Operador logico NOT (NO): invierte el valor booleano
- *   - Tabla de verdad AND: V^V=V, V^F=F, F^V=F, F^F=F
- *   - Tabla de verdad OR: VvV=V, VvF=V, FvV=V, FvF=F
- *   - Tabla de verdad NOT: ~V=F, ~F=V
- *   - Evaluacion en cortocircuito (short-circuit):
- *     AND: si la primera condicion es false, la segunda no se evalua
- *     OR: si la primera condicion es true, la segunda no se evalua
- *   - Leyes de De Morgan:
- *     NOT (A AND B) = (NOT A) OR (NOT B)
- *     NOT (A OR B) = (NOT A) AND (NOT B)
- *   - Propiedades: conmutativa, asociativa, distributiva, elemento neutro
- *   - Prioridad: NOT > AND > OR (usar parentesis para cambiar)
- *   - Rango: if (x > 0 AND x < 100) es equivalente a x en (0,100)
- *   - Condiciones excluyentes vs incluyentes con OR
- *
- * @author       Aula en la nube (YouTube)
- * @version      1.0
- * @since        2026-06-13
- */
+
 
 class Video_6_Operadores_Logicos {
 
@@ -130,9 +87,7 @@ class Video_6_Operadores_Logicos {
         mostrarInformacion();
     }
 
-    /**
-     * Muestra por consola la informacion y resumen del video.
-     */
+    
     public static void mostrarInformacion() {
         System.out.println();
         System.out.println("============================================");
