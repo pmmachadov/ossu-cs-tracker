@@ -7,6 +7,7 @@ class Video_15_Bucles_Anidados {
     public static final String CANAL = "Aula en la nube";
     public static final String URL_CANAL = "https://www.youtube.com/@aulaenlanube";
     public static final String PLAYLIST = "MEGA Curso JAVA desde 0 [ DAM - DAW ]";
+    public static final String REPO = "https://github.com/aulaenlanube/curso-programacion-java";
 
     public static final String RESUMEN =
         """

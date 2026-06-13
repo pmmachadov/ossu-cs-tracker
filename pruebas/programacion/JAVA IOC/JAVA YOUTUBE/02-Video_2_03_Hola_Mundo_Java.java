@@ -5,6 +5,7 @@ class Video_2_03_Hola_Mundo_Java {
     public static final String CANAL = "Aula en la nube";
     public static final String URL_CANAL = "https://www.youtube.com/@aulaenlanube";
     public static final String PLAYLIST = "MEGA Curso JAVA desde 0 [ DAM - DAW ] - TEMA 2";
+    public static final String REPO = "https://github.com/aulaenlanube/curso-programacion-java";
 
     public static final String RESUMEN =
         """
@@ -76,6 +77,17 @@ class Video_2_03_Hola_Mundo_Java {
 
         Java requiere mas codigo por su naturaleza orientada a objetos,
         pero esto da ventajas en programas grandes y complejos.
+
+
+        ----------------------- COMANDOS PARA COMPILAR Y EJECUTAR (TERMINAL) -----------------------
+
+        
+        Mi ejemplo
+        javac HolaMundo.java
+        java HolaMundo
+
+        Nota: javac es el compilador de Java (parte del JDK)
+              java es el lanzador que inicia la JVM
         ================================================================
         """;
 
