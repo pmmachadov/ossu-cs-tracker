@@ -30,7 +30,7 @@
  * @since        2026-06-13
  */
 
-public class Video_12_Bucle_Para {
+class Video_12_Bucle_Para {
 
     public static final String TITULO = "Video 12 - Bucle PARA (FOR) en pseudocodigo DAM - DAW";
     public static final String URL = "https://www.youtube.com/watch?v=ijz6rAu5Trw&list=PLG1qdjD__qH6ULjW5iN8E45m5nkaCNbUu&index=12";

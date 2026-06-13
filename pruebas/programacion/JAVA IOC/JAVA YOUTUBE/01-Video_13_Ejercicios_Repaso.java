@@ -31,7 +31,7 @@
  * @since        2026-06-13
  */
 
-public class Video_13_Ejercicios_Repaso {
+class Video_13_Ejercicios_Repaso {
 
     public static final String TITULO = "Video 13 - Ejercicios de repaso: bucles, condicionales y acumuladores DAM - DAW";
     public static final String URL = "https://www.youtube.com/watch?v=3FIomL6wFFM&list=PLG1qdjD__qH6ULjW5iN8E45m5nkaCNbUu&index=13";

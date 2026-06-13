@@ -19,7 +19,7 @@
  * @since        2026-06-13
  */
 
-public class Video_15_Bucles_Anidados {
+class Video_15_Bucles_Anidados {
 
     public static final String TITULO = "Video 15 - Bucles anidados en pseudocodigo DAM - DAW";
     public static final String URL = "https://www.youtube.com/watch?v=V-WDyYJqPnY&list=PLG1qdjD__qH6ULjW5iN8E45m5nkaCNbUu&index=15";

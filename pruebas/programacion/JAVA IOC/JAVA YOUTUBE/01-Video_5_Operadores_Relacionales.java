@@ -41,7 +41,7 @@
  * @since        2026-06-13
  */
 
-public class Video_5_Operadores_Relacionales {
+class Video_5_Operadores_Relacionales {
 
     // -------------------------------------------------------------
     // Datos del video y la playlist

@@ -41,7 +41,7 @@
  * @since        2026-06-13
  */
 
-public class Video_3_Representacion_Algoritmos {
+class Video_3_Representacion_Algoritmos {
 
     // -------------------------------------------------------------
     // Datos del video y la playlist

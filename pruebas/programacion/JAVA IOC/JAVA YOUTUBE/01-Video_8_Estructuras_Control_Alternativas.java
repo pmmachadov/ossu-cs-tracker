@@ -33,7 +33,7 @@
  * @since        2026-06-13
  */
 
-public class Video_8_Estructuras_Control_Alternativas {
+class Video_8_Estructuras_Control_Alternativas {
 
     // -------------------------------------------------------------
     // Datos del video y la playlist

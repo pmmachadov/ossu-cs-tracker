@@ -17,7 +17,7 @@
  * @since        2026-06-13
  */
 
-public class Video_14_Seguimiento_Algoritmos {
+class Video_14_Seguimiento_Algoritmos {
 
     public static final String TITULO = "Video 14 - Ejercicios de seguimiento de algoritmos DAM - DAW";
     public static final String URL = "https://www.youtube.com/watch?v=rH60985e4PM&list=PLG1qdjD__qH6ULjW5iN8E45m5nkaCNbUu&index=14";

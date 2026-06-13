@@ -32,7 +32,7 @@
  * @since        2026-06-13
  */
 
-public class Video_7_Instrucciones_Pseudocodigo {
+class Video_7_Instrucciones_Pseudocodigo {
 
     public static final String TITULO = "Video 7 - Instrucciones en pseudocodigo DAM - DAW";
     public static final String URL = "https://www.youtube.com/watch?v=taSJeALBVGk&list=PLG1qdjD__qH6ULjW5iN8E45m5nkaCNbUu&index=7";

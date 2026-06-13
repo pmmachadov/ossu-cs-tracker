@@ -28,7 +28,7 @@
  * @since        2026-06-13
  */
 
-public class Video_9_Bucles_Mientras {
+class Video_9_Bucles_Mientras {
 
     // -------------------------------------------------------------
     // Datos del video y la playlist

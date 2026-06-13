@@ -43,7 +43,7 @@
  * @since        2026-06-13
  */
 
-public class Video_4_Variables_Expresiones_Aritmeticas {
+class Video_4_Variables_Expresiones_Aritmeticas {
 
     // -------------------------------------------------------------
     // Datos del video y la playlist

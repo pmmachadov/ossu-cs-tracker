@@ -43,7 +43,7 @@
  * @since        2026-06-13
  */
 
-public class Video_6_Operadores_Logicos {
+class Video_6_Operadores_Logicos {
 
     // -------------------------------------------------------------
     // Datos del video y la playlist

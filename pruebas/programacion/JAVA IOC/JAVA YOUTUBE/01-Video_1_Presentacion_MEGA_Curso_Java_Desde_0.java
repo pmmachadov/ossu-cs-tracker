@@ -43,7 +43,7 @@
  * @since        2026-06-13
  */
 
-public class Video_1_Presentacion_MEGA_Curso_Java_Desde_0 {
+class Video_1_Presentacion_MEGA_Curso_Java_Desde_0 {
 
     // ──────────────────────────────────────────────────────────────
     // Datos del vídeo y la playlist

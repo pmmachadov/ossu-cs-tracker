@@ -36,7 +36,7 @@
  * @since        2026-06-13
  */
 
-public class Video_10_Ejercicio_Bucle_Mientras {
+class Video_10_Ejercicio_Bucle_Mientras {
 
     // -------------------------------------------------------------
     // Datos del video y la playlist

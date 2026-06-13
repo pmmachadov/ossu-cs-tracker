@@ -42,7 +42,7 @@
  * @since        2026-06-13
  */
 
-public class Video_2_Introduccion_Programacion_Algoritmos {
+class Video_2_Introduccion_Programacion_Algoritmos {
 
     // -------------------------------------------------------------
     // Datos del video y la playlist

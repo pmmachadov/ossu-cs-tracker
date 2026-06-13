@@ -29,7 +29,7 @@
  * @since        2026-06-13
  */
 
-public class Video_11_Bucle_Repetir_Mientras {
+class Video_11_Bucle_Repetir_Mientras {
 
     public static final String TITULO = "Video 11 - Bucle REPETIR-MIENTRAS (DO-WHILE) en pseudocodigo DAM - DAW";
     public static final String URL = "https://www.youtube.com/watch?v=bRwz1J9hxEg&list=PLG1qdjD__qH6ULjW5iN8E45m5nkaCNbUu&index=11";
