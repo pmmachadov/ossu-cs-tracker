@@ -28,11 +28,15 @@
  * Conceptos clave para el examen:
  *   - DAM: Desarrollo de Aplicaciones Multiplataforma
  *   - DAW: Desarrollo de Aplicaciones Web
- *   - JDK: kit de desarrollo, incluye compilador y JVM
- *   - JVM: máquina virtual que ejecuta el bytecode
- *   - Bytecode: código .class portable entre plataformas
- *   - javac: compilador de Java
- *   - POO: paradigma central de Java
+ *   - JDK (Java Development Kit): kit de desarrollo, incluye JRE + herramientas
+ *   - JRE (Java Runtime Environment): entorno de ejecucion, incluye JVM + librerias
+ *   - JVM (Java Virtual Machine): maquina virtual que ejecuta el bytecode
+ *   - Bytecode: codigo intermedio .class, independiente de la plataforma
+ *   - javac: compilador de Java (.java -> .class)
+ *   - java: lanzador que inicia la JVM y ejecuta el programa
+ *   - POO (Programacion Orientada a Objetos): paradigma central de Java
+ *   - Write Once, Run Away (WORA): filosofia multiplataforma de Java
+ *   - Ciclo de desarrollo: editar -> compilar (javac) -> ejecutar (java)
  *
  * @author       Aula en la nube (YouTube)
  * @version      1.0
@@ -91,14 +95,17 @@ public class Video_1_Presentacion_MEGA_Curso_Java_Desde_0 {
 
         --- CONCEPTOS CLAVE PARA EL EXAMEN ---
 
-        • DAM → Desarrollo de Aplicaciones Multiplataforma
-        • DAW → Desarrollo de Aplicaciones Web
-        • JDK → Java Development Kit
-        • JVM → Java Virtual Machine
-        • Bytecode → Código .class portable
-        • javac → Compilador: .java → .class
-        • POO → Programación Orientada a Objetos
-        • Write once, run anywhere
+        • DAM   -> Desarrollo de Aplicaciones Multiplataforma
+        • DAW   -> Desarrollo de Aplicaciones Web
+        • JDK   -> Java Development Kit (compilador + JRE + herramientas)
+        • JRE   -> Java Runtime Environment (JVM + librerias)
+        • JVM   -> Java Virtual Machine (ejecuta bytecode)
+        • Bytecode -> Codigo .class independiente de plataforma
+        • javac -> Compilador: .java -> .class
+        • java  -> Lanzador: inicia JVM y ejecuta el programa
+        • POO   -> Programacion Orientada a Objetos
+        • Ciclo de desarrollo: editar (.java) -> compilar (javac) -> ejecutar (java)
+        • Write once, run anywhere (WORA)
         ================================================================
         """;
 

@@ -1,34 +1,41 @@
 /**
- * Video 2 - Introducción a la programación y los algoritmos ☕ DAM - DAW
+ * Video 2 - Introduccion a la programacion y los algoritmos DAM - DAW
  * URL:          https://www.youtube.com/watch?v=dfEEG4A_Hoo&list=PLG1qdjD__qH6ULjW5iN8E45m5nkaCNbUu&index=2
  * Canal:        Aula en la nube
  *               https://www.youtube.com/@aulaenlanube
- * Vídeo:        Video 2 - Introducción a la programación y los algoritmos
- * Playlist:     🏆 MEGA Curso JAVA desde 0 [ DAM - DAW ]
+ * Video:        Video 2 - Introduccion a la programacion y los algoritmos
+ * Playlist:     MEGA Curso JAVA desde 0 [ DAM - DAW ]
  *
  * Resumen:
- *   Segundo vídeo del MEGA Curso JAVA desde 0. En esta ocasión se introduce
- *   el concepto de programación y algoritmos, sentando las bases teóricas
- *   antes de empezar a escribir código Java.
+ *   Segundo video del MEGA Curso JAVA desde 0. En esta ocasion se introduce
+ *   el concepto de programacion y algoritmos, sentando las bases teoricas
+ *   antes de empezar a escribir codigo Java.
  *
  *   Temas que probablemente cubre:
- *   - ¿Qué es la programación?
- *   - ¿Qué es un algoritmo?
- *   - Características de los algoritmos (precisos, deterministas, finitos)
- *   - Diagramas de flujo y pseudocódigo
- *   - Conceptos básicos: variables, constantes, tipos de datos
- *   - Estructuras de control básicas (secuencia, selección, iteración)
- *   - Primer acercamiento a la lógica de programación
+ *   - Que es la programacion?
+ *   - Que es un algoritmo?
+ *   - Caracteristicas de los algoritmos (precisos, deterministas, finitos)
+ *   - Diagramas de flujo y pseudocodigo
+ *   - Conceptos basicos: variables, constantes, tipos de datos
+ *   - Estructuras de control basicas (secuencia, seleccion, iteracion)
+ *   - Primer acercamiento a la logica de programacion
  *
  * Conceptos clave para el examen:
+ *   - Programa: conjunto de instrucciones que ejecuta un ordenador
  *   - Algoritmo: conjunto de pasos ordenados y finitos para resolver un problema
- *   - Pseudocódigo: lenguaje informal para describir algoritmos
- *   - Diagrama de flujo: representación gráfica de un algoritmo
+ *   - Lenguaje de programacion: idioma formal para escribir programas
+ *   - Codigo fuente: texto escrito en un lenguaje de programacion
+ *   - Compilacion: traduccion de codigo fuente a codigo maquina (ej: javac)
+ *   - Interpretacion: ejecucion linea por linea sin compilar previamente
+ *   - Pseudocodigo: lenguaje informal para describir algoritmos
+ *   - Diagrama de flujo: representacion grafica de un algoritmo
  *   - Variable: espacio de memoria que almacena un valor que puede cambiar
- *   - Constante: valor que no cambia durante la ejecución
- *   - Tipo de dato: entero, real, carácter, booleano, etc.
- *   - Estructuras de control: secuencia, selección (if), iteración (while, for)
- *   - Depuración: proceso de encontrar y corregir errores
+ *   - Constante: valor que no cambia durante la ejecucion
+ *   - Tipo de dato: entero, real, caracter, booleano
+ *   - Estructuras de control: secuencia, seleccion (if), iteracion (while, for)
+ *   - Depuracion (debugging): proceso de encontrar y corregir errores
+ *   - Programa informatico vs algoritmo: el programa es la implementacion
+ *     del algoritmo en un lenguaje de programacion
  *
  * @author       Aula en la nube (YouTube)
  * @version      1.0
@@ -37,81 +44,86 @@
 
 public class Video_2_Introduccion_Programacion_Algoritmos {
 
-    // ──────────────────────────────────────────────────────────────
-    // Datos del vídeo y la playlist
-    // ──────────────────────────────────────────────────────────────
-    public static final String TITULO = "Video 2 - Introducción a la programación y los algoritmos ☕ DAM - DAW";
+    // -------------------------------------------------------------
+    // Datos del video y la playlist
+    // -------------------------------------------------------------
+    public static final String TITULO = "Video 2 - Introduccion a la programacion y los algoritmos DAM - DAW";
     public static final String URL = "https://www.youtube.com/watch?v=dfEEG4A_Hoo&list=PLG1qdjD__qH6ULjW5iN8E45m5nkaCNbUu&index=2";
     public static final String CANAL = "Aula en la nube";
     public static final String URL_CANAL = "https://www.youtube.com/@aulaenlanube";
-    public static final String PLAYLIST = "🏆 MEGA Curso JAVA desde 0 [ DAM - DAW ]";
+    public static final String PLAYLIST = "MEGA Curso JAVA desde 0 [ DAM - DAW ]";
 
-    // ──────────────────────────────────────────────────────────────
+    // -------------------------------------------------------------
     // Resumen en formato texto
-    // ──────────────────────────────────────────────────────────────
+    // -------------------------------------------------------------
     public static final String RESUMEN =
         """
         ================================================================
-          VIDEO 2 - INTRODUCCIÓN A LA PROGRAMACIÓN Y LOS ALGORITMOS
+          VIDEO 2 - INTRODUCCION A LA PROGRAMACION Y LOS ALGORITMOS
         ================================================================
 
-        Vídeo:        Video 2 - Introducción a la programación y los algoritmos ☕
+        Video:        Video 2 - Introduccion a la programacion y los algoritmos
         Canal:        Aula en la nube
-        Playlist:     🏆 MEGA Curso JAVA desde 0 [ DAM - DAW ]
+        Playlist:     MEGA Curso JAVA desde 0 [ DAM - DAW ]
 
         --- RESUMEN ---
 
-        Segundo vídeo del MEGA Curso JAVA desde 0. Se introducen los
-        conceptos fundamentales de la programación y los algoritmos,
-        sentando las bases teóricas antes de escribir la primera línea
-        de código Java.
+        Segundo video del MEGA Curso JAVA desde 0. Se introducen los
+        conceptos fundamentales de la programacion y los algoritmos,
+        sentando las bases teoricas antes de escribir la primera linea
+        de codigo Java.
 
         Temas que probablemente cubre:
-          1. ¿Qué es la programación?
-          2. ¿Qué es un algoritmo?
-          3. Características de los algoritmos
+          1. Que es la programacion?
+          2. Que es un algoritmo?
+          3. Caracteristicas de los algoritmos
              (precisos, deterministas, finitos)
-          4. Diagramas de flujo y pseudocódigo
-          5. Conceptos básicos: variables, constantes, tipos de datos
-          6. Estructuras de control básicas
-             (secuencia, selección, iteración)
-          7. Primer acercamiento a la lógica de programación
+          4. Diagramas de flujo y pseudocodigo
+          5. Conceptos basicos: variables, constantes, tipos de datos
+          6. Estructuras de control basicas
+             (secuencia, seleccion, iteracion)
+          7. Primer acercamiento a la logica de programacion
 
         Ideal para quienes empiezan desde cero y necesitan entender
         los fundamentos antes de meterse de lleno en Java.
 
         --- CONCEPTOS CLAVE PARA EL EXAMEN ---
 
-        • Algoritmo → Pasos ordenados y finitos para resolver un problema
-        • Pseudocódigo → Lenguaje informal para describir algoritmos
-        • Diagrama de flujo → Representación gráfica de un algoritmo
-        • Variable → Espacio de memoria que almacena un valor mutable
-        • Constante → Valor que no cambia durante la ejecución
-        • Tipo de dato → entero, real, carácter, booleano
-        • Estructuras de control → secuencia, selección (if), iteración (while, for)
-        • Depuración → Proceso de encontrar y corregir errores
+        * Programa -> Conjunto de instrucciones que ejecuta un ordenador
+        * Algoritmo -> Pasos ordenados y finitos para resolver un problema
+        * Lenguaje de programacion -> Idioma formal para escribir programas
+        * Codigo fuente -> Texto escrito en un lenguaje de programacion
+        * Compilacion -> Traduccion de codigo fuente a codigo maquina
+        * Interpretacion -> Ejecucion linea por linea sin compilar
+        * Pseudocodigo -> Lenguaje informal para describir algoritmos
+        * Diagrama de flujo -> Representacion grafica de un algoritmo
+        * Variable -> Espacio de memoria que almacena un valor mutable
+        * Constante -> Valor que no cambia durante la ejecucion
+        * Tipo de dato -> entero, real, caracter, booleano
+        * Estructuras de control -> secuencia, seleccion (if), iteracion (while, for)
+        * Depuracion (debugging) -> Proceso de encontrar y corregir errores
         ================================================================
         """;
 
-    // ──────────────────────────────────────────────────────────────
-    // Método principal
-    // ──────────────────────────────────────────────────────────────
+    // -------------------------------------------------------------
+    // Metodo principal
+    // -------------------------------------------------------------
     public static void main(String[] args) {
         mostrarInformacion();
     }
 
     /**
-     * Muestra por consola la información del vídeo, la playlist y el resumen.
+     * Muestra por consola la informacion del video, la playlist y el resumen.
      */
     public static void mostrarInformacion() {
         System.out.println();
-        System.out.println("╔══════════════════════════════════════════════════╗");
-        System.out.println("║   INFORMACIÓN DEL VÍDEO                        ║");
-        System.out.println("╚══════════════════════════════════════════════════╝");
-        System.out.println("Vídeo:      " + TITULO);
+        System.out.println("============================================");
+        System.out.println("   INFORMACION DEL VIDEO");
+        System.out.println("============================================");
+        System.out.println("Video:      " + TITULO);
         System.out.println("Canal:      " + CANAL);
         System.out.println("URL Canal:  " + URL_CANAL);
-        System.out.println("URL Vídeo:  " + URL);
+        System.out.println("URL Video:  " + URL);
         System.out.println("Playlist:   " + PLAYLIST);
         System.out.println();
         System.out.println(RESUMEN);
