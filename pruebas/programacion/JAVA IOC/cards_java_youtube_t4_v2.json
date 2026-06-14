@@ -1,0 +1,78 @@
+{
+  "id": "programacion-java-youtube-t4-v2",
+  "name": "Java YouTube - Tema 4: Búsqueda Binaria (recursiva)",
+  "description": "Cards del curso JAVA desde 0 - Algoritmo de búsqueda binaria recursiva en arrays ordenados: implementación, método intermedio, traza y complejidad",
+  "subject": "Programación - Java",
+  "cards": [
+    {
+      "id": "java-t4-v2-001",
+      "front": "¿Qué es el algoritmo de búsqueda binaria?",
+      "back": "Es un algoritmo MUY EFICIENTE para buscar un elemento en una colección ORDENADA.\n\nEn lugar de analizar todos los elementos uno por uno (búsqueda lineal), lo que hace es:\n1. Colocarse en el MEDIO de la colección.\n2. Si ese elemento es el buscado → FIN (encontrado).\n3. Si el elemento del medio es MAYOR que el buscado → buscar en la MITAD IZQUIERDA (todos los de la derecha son mayores).\n4. Si el elemento del medio es MENOR que el buscado → buscar en la MITAD DERECHA (todos los de la izquierda son menores).\n\nREQUISITO: el array debe estar ORDENADO (ascendente).\n\nComplejidad: O(log n) — mucho más eficiente que búsqueda lineal O(n).\n\nEjemplo: buscar el 4 en {1,2,3,4,5,6,7,8} → en 1 paso lo encuentra (el 4 está en el medio).",
+      "tags": ["java", "busqueda-binaria", "algoritmo", "definicion", "tema-4"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "java-t4-v2-002",
+      "front": "Implementa el método de búsqueda binaria recursiva en Java.\n\nFirma: static boolean busquedaBinaria(int[] nums, int buscado, int limiteInf, int limiteSup)",
+      "back": "static boolean busquedaBinaria(int[] nums, int buscado, int limiteInf, int limiteSup) {\n    // Caso base: no quedan elementos\n    if (limiteInf > limiteSup) {\n        return false;\n    }\n\n    int mitad = (limiteInf + limiteSup) / 2;\n\n    if (nums[mitad] == buscado) {\n        return true;  // Encontrado\n    } else if (nums[mitad] < buscado) {\n        // Buscar en la mitad derecha\n        return busquedaBinaria(nums, buscado, mitad + 1, limiteSup);\n    } else {\n        // Buscar en la mitad izquierda\n        return busquedaBinaria(nums, buscado, limiteInf, mitad - 1);\n    }\n}\n\nParámetros:\n- nums: array de enteros ORDENADO\n- buscado: número a encontrar\n- limiteInf: índice inferior del subarray\n- limiteSup: índice superior del subarray\n\nDevuelve: true si lo encuentra, false si no.",
+      "tags": ["java", "busqueda-binaria", "recursividad", "codigo", "tema-4"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t4-v2-003",
+      "front": "Explica el caso base de la búsqueda binaria recursiva.\n\n¿Cuándo devuelve false?",
+      "back": "El caso base es:\n\nif (limiteInf > limiteSup) {\n    return false;\n}\n\nEsto ocurre cuando:\n- Hemos dividido el array tantas veces que ya no quedan elementos.\n- El límite inferior ha superado al límite superior.\n- Significa que el elemento NO está en el array.\n\nEjemplo: buscar 9 en {1,2,3,4,5,6,7,8}\n1º: inf=0, sup=7 → mitad=3 (nums[3]=4). 9>4 → buscar derecha (inf=4, sup=7)\n2º: inf=4, sup=7 → mitad=5 (nums[5]=6). 9>6 → buscar derecha (inf=6, sup=7)\n3º: inf=6, sup=7 → mitad=6 (nums[6]=7). 9>7 → buscar derecha (inf=7, sup=7)\n4º: inf=7, sup=7 → mitad=7 (nums[7]=8). 9>8 → buscar derecha (inf=8, sup=7)\n5º: inf=8 > sup=7 → return false (no encontrado)\n\nNOTA: La condición es inf > sup, NO inf >= sup. Si inf == sup aún hay 1 elemento.",
+      "tags": ["java", "busqueda-binaria", "recursividad", "caso-base", "tema-4"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t4-v2-004",
+      "front": "¿Cómo se calcula la posición central (mitad) en la búsqueda binaria?",
+      "back": "int mitad = (limiteInf + limiteSup) / 2;\n\nSe suman los dos límites y se divide entre 2.\n\nIMPORTANTE: Al ser enteros, la división TRUNCA (no redondea).\n\nEjemplos:\n- inf=0, sup=7 → (0+7)/2 = 3 → mitad = 3\n- inf=4, sup=7 → (4+7)/2 = 5 → mitad = 5\n- inf=1, sup=2 → (1+2)/2 = 1 → mitad = 1\n- inf=2, sup=3 → (2+3)/2 = 2 → mitad = 2\n\nSiempre se queda con el elemento de la IZQUIERDA del centro cuando hay un número par de elementos.\n\nPara arrays con 8 elementos (0 a 7):\n- mitad = 3 → nums[3] es el 4º elemento (índice 3, no el 3.5).",
+      "tags": ["java", "busqueda-binaria", "mitad", "indice", "calculo", "tema-4"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "java-t4-v2-005",
+      "front": "Explica las 3 condiciones dentro de la búsqueda binaria recursiva.",
+      "back": "Dentro del método, después de calcular la mitad, hay TRES casos:\n\n1. nums[mitad] == buscado:\n   return true;\n   → El elemento central ES el que buscamos. FIN.\n\n2. nums[mitad] < buscado:\n   return busquedaBinaria(nums, buscado, mitad + 1, limiteSup);\n   → El central es MENOR que el buscado.\n   → Todos los de la izquierda son aún menores.\n   → Buscar en la MITAD DERECHA (desde mitad+1 hasta limiteSup).\n\n3. nums[mitad] > buscado (else):\n   return busquedaBinaria(nums, buscado, limiteInf, mitad - 1);\n   → El central es MAYOR que el buscado.\n   → Todos los de la derecha son aún mayores.\n   → Buscar en la MITAD IZQUIERDA (desde limiteInf hasta mitad-1).\n\nEjemplo básico: buscar 4 en {1,2,3,4,5,6,7,8}\n- mit=3, nums[3]=4, 4==4 → return true (¡1 sola llamada!)",
+      "tags": ["java", "busqueda-binaria", "condiciones", "recursividad", "tema-4"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t4-v2-006",
+      "front": "¿Qué es el método intermedio (wrapper) y por qué se usa en la búsqueda binaria?",
+      "back": "El método recursivo necesita 4 parámetros: nums, buscado, limiteInf, limiteSup.\n\nEs INCÓMODO llamarlo siempre con los límites iniciales (0 y length-1).\n\nSolución: crear un método INTERMEDIO que solo reciba 2 parámetros:\n\nstatic void mostrarBusquedaBinaria(int[] nums, int buscado) {\n    if (busquedaBinaria(nums, buscado, 0, nums.length - 1)) {\n        System.out.println(\"El numero \" + buscado + \" esta en el array\");\n    } else {\n        System.out.println(\"El numero \" + buscado + \" NO esta en el array\");\n    }\n}\n\nEste método:\n- Inicializa los límites a 0 y nums.length-1.\n- Llama al método recursivo.\n- Muestra el resultado por pantalla.\n\nEjemplo de uso:\nmostrarBusquedaBinaria(nums, 4);  // \"El numero 4 esta en el array\"\nmostrarBusquedaBinaria(nums, 9);  // \"El numero 9 NO esta en el array\"",
+      "tags": ["java", "busqueda-binaria", "metodo-intermedio", "wrapper", "tema-4"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "java-t4-v2-007",
+      "front": "Haz la traza de búsqueda binaria para buscar el 9 en: {1, 2, 3, 4, 5, 6, 7, 8}\n\nExplica paso a paso por qué NO lo encuentra.",
+      "back": "Array: {1,2,3,4,5,6,7,8} (índices 0..7)\nBuscado: 9\n\nLLAMADA 1: busquedaBinaria(nums, 9, 0, 7)\n- inf=0, sup=7 → 0 < 7 ✓ (no es caso base)\n- mitad = (0+7)/2 = 3\n- nums[3] = 4\n- 4 < 9 → buscar derecha: busquedaBinaria(nums, 9, 4, 7)\n\nLLAMADA 2: busquedaBinaria(nums, 9, 4, 7)\n- inf=4, sup=7 → 4 < 7 ✓\n- mitad = (4+7)/2 = 5\n- nums[5] = 6\n- 6 < 9 → buscar derecha: busquedaBinaria(nums, 9, 6, 7)\n\nLLAMADA 3: busquedaBinaria(nums, 9, 6, 7)\n- inf=6, sup=7 → 6 < 7 ✓\n- mitad = (6+7)/2 = 6\n- nums[6] = 7\n- 7 < 9 → buscar derecha: busquedaBinaria(nums, 9, 7, 7)\n\nLLAMADA 4: busquedaBinaria(nums, 9, 7, 7)\n- inf=7, sup=7 → 7 <= 7, NO es caso base aún\n- mitad = (7+7)/2 = 7\n- nums[7] = 8\n- 8 < 9 → buscar derecha: busquedaBinaria(nums, 9, 8, 7)\n\nLLAMADA 5: busquedaBinaria(nums, 9, 8, 7)\n- inf=8, sup=7 → 8 > 7 → caso base: return FALSE\n- El 9 NO está en el array.\n\n5 llamadas recursivas en total.",
+      "tags": ["java", "busqueda-binaria", "traza", "recursividad", "ejemplo", "tema-4"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "java-t4-v2-008",
+      "front": "¿Cuál es la complejidad de la búsqueda binaria y por qué es más eficiente que la búsqueda lineal?",
+      "back": "BÚSQUEDA BINARIA: O(log n)\nBÚSQUEDA LINEAL: O(n)\n\n¿Por qué es más eficiente la binaria?\n- En cada paso DIVIDE el problema a la mitad.\n- No necesita revisar todos los elementos.\n\nEjemplo con array de 8 elementos:\n- Lineal: hasta 8 comparaciones.\n- Binaria: máximo 4 comparaciones (log₂8 = 3 comparaciones + 1).\n\nEjemplo con array de 1.000.000 elementos:\n- Lineal: hasta 1.000.000 comparaciones.\n- Binaria: máximo 20 comparaciones (log₂1.000.000 ≈ 20).\n\n¡La binaria es 50.000 VECES más rápida para 1 millón de elementos!\n\nREQUISITO: el array debe estar ORDENADO. Si no, no funciona.\n\nPara arrays pequeños (n < 100), la diferencia es pequeña.\nPara arrays GRANDES, la búsqueda binaria es MUCHO más eficiente.",
+      "tags": ["java", "busqueda-binaria", "complejidad", "eficiencia", "O-log-n", "tema-4"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t4-v2-009",
+      "front": "Escribe el código COMPLETO de la búsqueda binaria recursiva (método recursivo + método intermedio).\n\nIncluye el main con:\n- Array {1,2,3,4,5,6,7,8}\n- Buscar el 4 (existe)\n- Buscar el 9 (no existe)",
+      "back": "class BusquedaBinaria {\n\n    static boolean busquedaBinaria(int[] nums, int buscado, int limiteInf, int limiteSup) {\n        if (limiteInf > limiteSup) {\n            return false;\n        }\n\n        int mitad = (limiteInf + limiteSup) / 2;\n\n        if (nums[mitad] == buscado) {\n            return true;\n        } else if (nums[mitad] < buscado) {\n            return busquedaBinaria(nums, buscado, mitad + 1, limiteSup);\n        } else {\n            return busquedaBinaria(nums, buscado, limiteInf, mitad - 1);\n        }\n    }\n\n    static void mostrarBusquedaBinaria(int[] nums, int buscado) {\n        if (busquedaBinaria(nums, buscado, 0, nums.length - 1)) {\n            System.out.println(\"El numero \" + buscado + \" esta en el array\");\n        } else {\n            System.out.println(\"El numero \" + buscado + \" NO esta en el array\");\n        }\n    }\n\n    public static void main(String[] args) {\n        int[] nums = {1, 2, 3, 4, 5, 6, 7, 8};\n\n        mostrarBusquedaBinaria(nums, 4);  // \"El numero 4 esta en el array\"\n        mostrarBusquedaBinaria(nums, 9);  // \"El numero 9 NO esta en el array\"\n    }\n}\n\nSalida:\nEl numero 4 esta en el array\nEl numero 9 NO esta en el array",
+      "tags": ["java", "busqueda-binaria", "codigo-completo", "recursividad", "tema-4"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t4-v2-010",
+      "front": "¿Qué diferencia hay entre nums[mitad] < buscado y nums[mitad] > buscado en la búsqueda binaria?\n\nPista: ¿hacia qué lado se busca en cada caso?",
+      "back": "SI nums[mitad] < buscado:\n- El elemento del centro es MENOR que el buscado.\n- Como el array está ordenado ASCENDENTE, todos los de la IZQUIERDA son aún más pequeños.\n- Buscar en la MITAD DERECHA.\n- Llamada: busquedaBinaria(nums, buscado, mitad + 1, limiteSup)\n\nSI nums[mitad] > buscado (else):\n- El elemento del centro es MAYOR que el buscado.\n- Todos los de la DERECHA son aún más grandes.\n- Buscar en la MITAD IZQUIERDA.\n- Llamada: busquedaBinaria(nums, buscado, limiteInf, mitad - 1)\n\nRegla mnemotécnica:\n- El buscado es mayor que el centro → ve a la derecha (números más grandes).\n- El buscado es menor que el centro → ve a la izquierda (números más pequeños).\n\nEjemplo: buscar 9 (grande) en {1..8} → nums[3]=4 < 9 → derecha.\nEjemplo: buscar 2 (pequeño) en {1..8} → nums[3]=4 > 2 → izquierda.",
+      "tags": ["java", "busqueda-binaria", "recursividad", "derecha-izquierda", "comparacion", "tema-4"],
+      "difficulty": "medium"
+    }
+  ]
+}
