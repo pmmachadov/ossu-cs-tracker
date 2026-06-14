@@ -68,6 +68,28 @@ class Video_2_27_Operador_Ternario {
         String texto = "La letra a ha aparecido " + cantidad + " "
             + (cantidad == 1 ? "vez" : "veces");
 
+  --- RECORDAR ---
+
+            //caso 1
+int a = 1, b = 2, c = 3;
+int resultado = a++ == 2 && c > b++ ? a += b :
+                a > 0 && a == b ? a += c :
+                a == c ? a++ : a--;
+
+//caso 2
+a = 1; b = 2; c = 3;
+resultado = a++ == 1 && a > b++ ? a += b :
+            a > 0 && a == b ? a += c :
+            a == c ? a++ : a--;
+
+//caso 3
+a = 1; b = 2; c = 3;
+resultado = a++ == 1 && a > b++ ? a += b :
+            a > 0 && a == b ? a += c :
+            b == c ? a++ : a--;
+
+
+
         --- PRECAUCION ---
 
         * Las ternarias simples son utiles y legibles.
