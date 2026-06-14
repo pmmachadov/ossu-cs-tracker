@@ -1,0 +1,50 @@
+{
+  "id": "programacion-java-youtube-t3-v8",
+  "name": "Java YouTube - Tema 3: Ejercicio pila de llamadas",
+  "description": "Cards del curso JAVA desde 0 - Ejercicio práctico de pila de llamadas con proceso1 y proceso2, depuración con breakpoints",
+  "subject": "Programación - Java",
+  "cards": [
+    {
+      "id": "java-t3-v8-001",
+      "front": "Dado el código:\n\nstatic int proceso1(int a) {\n    int x = 0;\n    for (int i = 0; i <= a; i += 2) {\n        x += proceso2(i, i + 1);\n    }\n    return x;\n}\n\nstatic int proceso2(int a, int b) {\n    int y = 1;\n    for (int j = 0; j < a + b; j++) {\n        y++;\n    }\n    return y;\n}\n\nint x = proceso1(4);\nSystem.out.println(x);\n\n¿Qué se imprime?",
+      "back": "Se imprime: 18\n\nExplicación:\nproceso1(4): a=4, x=0, i recorre 0,2,4 (paso 2, 3 vueltas)\n\nVuelta 1 (i=0): x += proceso2(0,1)\n  proceso2(0,1): a=0,b=1, y=1, j<1 (1 iteración): y=2 → return 2\n  x = 0 + 2 = 2\n\nVuelta 2 (i=2): x += proceso2(2,3)\n  proceso2(2,3): a=2,b=3, y=1, j<5 (5 iteraciones): y=6 → return 6\n  x = 2 + 6 = 8\n\nVuelta 3 (i=4): x += proceso2(4,5)\n  proceso2(4,5): a=4,b=5, y=1, j<9 (9 iteraciones): y=10 → return 10\n  x = 8 + 10 = 18\n\nFórmula: proceso2(a,b) = 1 + (a + b)\nproceso1(4) = 0 + 2 + 6 + 10 = 18",
+      "tags": ["java", "pila-llamadas", "ejercicio", "proceso1", "proceso2", "tema-3"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "java-t3-v8-002",
+      "front": "¿Cuántas vueltas da el bucle for en proceso1(4)?\n\nfor (int i = 0; i <= a; i += 2)",
+      "back": "Da 3 vueltas para a=4:\n- i=0 → entra (0 <= 4)\n- i=2 → entra (2 <= 4)\n- i=4 → entra (4 <= 4)\n- i=6 → NO entra (6 > 4), termina el bucle\n\nEl incremento es i += 2, por lo que i toma valores 0, 2, 4.",
+      "tags": ["java", "bucle", "for", "incremento", "tema-3"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "java-t3-v8-003",
+      "front": "¿Cuántas vueltas da el bucle en proceso2(a, b)?\n\nfor (int j = 0; j < a + b; j++)",
+      "back": "Da exactamente (a + b) vueltas, porque j empieza en 0 y la condición es j < a + b.\n\nEjemplos:\n- proceso2(0,1): a+b=1 → 1 vuelta\n- proceso2(2,3): a+b=5 → 5 vueltas\n- proceso2(4,5): a+b=9 → 9 vueltas\n\nComo y empieza en 1 y se incrementa una vez por cada vuelta:\nproceso2(a,b) = 1 + (a + b)",
+      "tags": ["java", "bucle", "for", "proceso2", "formula", "tema-3"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t3-v8-004",
+      "front": "¿Cuál es la fórmula simplificada de proceso2(a, b)?\n\nstatic int proceso2(int a, int b) {\n    int y = 1;\n    for (int j = 0; j < a + b; j++) {\n        y++;\n    }\n    return y;\n}",
+      "back": "proceso2(a, b) = 1 + (a + b)\n\nExplicación:\n- y empieza en 1.\n- El bucle da exactamente (a + b) iteraciones.\n- En cada iteración se incrementa y en 1.\n- Por lo tanto, y = 1 + (a + b).\n\nEjemplos:\n- proceso2(0,1) = 1 + 1 = 2\n- proceso2(2,3) = 1 + 5 = 6\n- proceso2(4,5) = 1 + 9 = 10",
+      "tags": ["java", "pila-llamadas", "formula", "proceso2", "optimizacion", "tema-3"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t3-v8-005",
+      "front": "¿Cómo usarías el depurador de VS Code para seguir la pila de llamadas de proceso1(4)?",
+      "back": "1. Poner un BREAKPOINT (clic izquierdo al lado del número de línea) en la línea donde se llama a proceso1(4).\n2. Iniciar depuración (F5 o clic en 'Run and Debug').\n3. Usar Step Into (F11) para entrar en proceso1.\n4. Observar el panel CALL STACK para ver: main → proceso1.\n5. Al llegar a proceso2(i, i+1), Step Into para entrar en proceso2.\n6. El Call Stack mostrará: main → proceso1 → proceso2.\n7. Usar Step Over (F10) para ejecutar sin entrar en métodos.\n8. Para bucles largos: poner otro breakpoint en el return y pulsar Continue (F5).\n9. En el panel VARIABLES se ven los valores locales de cada frame.",
+      "tags": ["java", "depurador", "debug", "vscode", "breakpoint", "call-stack", "tema-3"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t3-v8-006",
+      "front": "¿Cuál es el valor de x después de CADA vuelta del bucle en proceso1(4)?",
+      "back": "proceso1(4): a=4, x inicial = 0\n\nDespués de vuelta 1 (i=0): x = 0 + proceso2(0,1) = 0 + 2 = 2\nDespués de vuelta 2 (i=2): x = 2 + proceso2(2,3) = 2 + 6 = 8\nDespués de vuelta 3 (i=4): x = 8 + proceso2(4,5) = 8 + 10 = 18\n\nValor final retornado: 18\n\n(en el main, x = 18 → System.out.println(x) imprime 18)",
+      "tags": ["java", "pila-llamadas", "ejercicio", "traza", "tema-3"],
+      "difficulty": "medium"
+    }
+  ]
+}

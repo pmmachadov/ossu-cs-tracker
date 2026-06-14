@@ -1,0 +1,71 @@
+{
+  "id": "programacion-java-youtube-t3-v6",
+  "name": "Java YouTube - Tema 3: Sobrecarga de métodos",
+  "description": "Cards del curso JAVA desde 0 - Sobrecarga (overloading), reglas, tipos de retorno, promoción de tipos",
+  "subject": "Programación - Java",
+  "cards": [
+    {
+      "id": "java-t3-v6-001",
+      "front": "¿Qué es la sobrecarga de métodos (overloading) en Java?",
+      "back": "Es la capacidad de tener VARIOS métodos con el MISMO nombre pero con DIFERENTES parámetros (distinto número o tipo). El compilador decide cuál ejecutar según los argumentos que se pasen en la llamada.\n\nEjemplo válido:\n- saludar()\n- saludar(String nombre)\n- saludar(String nombre, String ciudad)",
+      "tags": ["java", "metodos", "sobrecarga", "overloading", "tema-3"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "java-t3-v6-002",
+      "front": "¿Cuáles son las reglas para que dos métodos con el mismo nombre sean válidos en Java?",
+      "back": "REGLAS DE SOBRECARGA:\n1. Deben diferenciarse en el NÚMERO de parámetros.\n2. O en el TIPO de al menos UN parámetro.\n3. El tipo de RETORNO NO cuenta para diferenciarlos.\n\nSi dos métodos tienen los MISMOS parámetros (mismo tipo y cantidad), dará ERROR de compilación aunque el retorno sea distinto.",
+      "tags": ["java", "metodos", "sobrecarga", "reglas", "tema-3"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t3-v6-003",
+      "front": "¿Se pueden tener dos métodos sobrecargados sin parámetros?",
+      "back": "NO. Si dos métodos tienen el mismo nombre y NINGÚN parámetro, son idénticos para el compilador. Dará ERROR de compilación, aunque el tipo de retorno sea diferente.\n\nEjemplo INCORRECTO:\nstatic String saludar() { ... }\nstatic void saludar() { ... }\n-> ERROR: Java no sabe cuál llamar al ejecutar saludar()",
+      "tags": ["java", "metodos", "sobrecarga", "sin-parametros", "tema-3"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t3-v6-004",
+      "front": "¿Son válidos estos dos métodos? ¿Por qué?\n\nstatic int suma(int a, int b) { return a + b; }\nstatic void suma(int a, int b) { System.out.println(a+b); }",
+      "back": "NO son válidos. Aunque el tipo de retorno es diferente (int vs void), ambos métodos tienen los MISMOS parámetros (int a, int b). Java no puede diferenciarlos y da ERROR de compilación.\n\nSolución: cambiar el tipo de al menos un parámetro:\nstatic void suma(double a, double b) { ... }  // AHORA SÍ",
+      "tags": ["java", "metodos", "sobrecarga", "error", "tema-3"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "java-t3-v6-005",
+      "front": "Dados estos métodos:\n\nstatic int suma(int a, int b) { return a + b; }\nstatic void suma(double a, double b) { System.out.println(a + b); }\n\n¿Qué método se ejecuta en cada caso?\n1. suma(1, 2)\n2. suma(1.0, 2.0)\n3. suma(1.0, 2)",
+      "back": "1. suma(1, 2) -> suma(int, int) porque ambos argumentos son int. Devuelve 3.\n\n2. suma(1.0, 2.0) -> suma(double, double) porque ambos son double. Imprime 3.0.\n\n3. suma(1.0, 2) -> suma(double, double). Java convierte el int (2) a double (2.0) automáticamente. Imprime 3.0.",
+      "tags": ["java", "metodos", "sobrecarga", "promocion", "ejercicio", "tema-3"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "java-t3-v6-006",
+      "front": "¿Qué es la promoción de tipos en la sobrecarga de métodos?",
+      "back": "Java puede convertir automáticamente un tipo a otro más amplio cuando busca el método adecuado:\n\n- int -> long -> float -> double (conversión automática, sin pérdida)\n- char -> int (se convierte a su valor Unicode: 'a' = 97)\n\nEjemplo:\nsuma(int a, int b) y suma(double a, double b)\nAl llamar suma('a', 3) -> usa suma(int, int) porque 'a' se convierte a 97.",
+      "tags": ["java", "metodos", "sobrecarga", "promocion", "tipos", "tema-3"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t3-v6-007",
+      "front": "¿Qué valor imprime suma('a', 3) si existe:\nstatic int suma(int a, int b) { return a + b; }",
+      "back": "Imprime: 100\n\nExplicación: El char 'a' se convierte automáticamente a su valor en la tabla Unicode/ASCII, que es 97. Entonces suma(97, 3) = 100.\n\nOtros ejemplos:\n- 'A' + 3 = 68 ('A' = 65)\n- '0' + 3 = 51 ('0' = 48)",
+      "tags": ["java", "metodos", "sobrecarga", "char", "ascii", "ejercicio", "tema-3"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t3-v6-008",
+      "front": "¿Es válida esta sobrecarga? ¿Por qué?\n\nstatic String presentar(String nombre) { ... }\nstatic String presentar(String nombre, int edad) { ... }\nstatic String presentar(String nombre, String idioma) { ... }",
+      "back": "SÍ es válida. Los tres métodos tienen el mismo nombre 'presentar' pero:\n- 1º: 1 parámetro (String)\n- 2º: 2 parámetros (String, int)\n- 3º: 2 parámetros (String, String)\n\nAunque el 2º y 3º tienen el mismo número de parámetros, el TIPO del segundo parámetro es diferente (int vs String), por lo que son distinguibles.",
+      "tags": ["java", "metodos", "sobrecarga", "ejemplo", "tema-3"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t3-v6-009",
+      "front": "¿Qué ocurre si llamamos a saludar(\"Pepe\") sin asignar el resultado a ninguna variable, teniendo:\n\nstatic String saludar(String nombre) { return \"Hola \" + nombre; }",
+      "back": "El método se ejecuta correctamente y devuelve \"Hola Pepe\", pero ese valor se PIERDE porque no se asigna a ninguna variable ni se usa en una expresión. No se muestra nada por pantalla (a menos que el método mismo imprima algo).\n\nPara ver el resultado hay que:\n- Asignarlo: String texto = saludar(\"Pepe\"); System.out.println(texto);\n- O usarlo directamente: System.out.println(saludar(\"Pepe\"));",
+      "tags": ["java", "metodos", "sobrecarga", "retorno", "perdida", "tema-3"],
+      "difficulty": "easy"
+    }
+  ]
+}

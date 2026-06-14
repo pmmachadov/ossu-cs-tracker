@@ -1,0 +1,64 @@
+{
+  "id": "programacion-java-youtube-t3-v9",
+  "name": "Java YouTube - Tema 3: Menú de opciones con métodos",
+  "description": "Cards del curso JAVA desde 0 - Menú de figuras con métodos, JavaDoc, bucles anidados, Scanner, do-while, switch",
+  "subject": "Programación - Java",
+  "cards": [
+    {
+      "id": "java-t3-v9-001",
+      "front": "¿Cómo se implementa un menú cíclico en Java que se repite hasta que el usuario elige salir?",
+      "back": "Con un bucle do-while que se ejecuta mientras la opción sea distinta de la de salida:\n\nScanner entrada = new Scanner(System.in);\nint opcion;\ndo {\n    mostrarMenu();\n    opcion = entrada.nextInt();\n    switch (opcion) {\n        case 1: ... break;\n        case 2: ... break;\n        case 5: System.out.println(\"Fin\"); break;\n        default: System.out.println(\"Opcion no valida\");\n    }\n} while (opcion != 5);\nentrada.close();\n\nEl do-while garantiza que el menú se muestra al menos una vez.",
+      "tags": ["java", "menu", "do-while", "switch", "scanner", "tema-3"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t3-v9-002",
+      "front": "¿Cómo se dibuja un cuadrado de nxn con asteriscos (con relleno) usando bucles anidados?",
+      "back": "for (int fila = 0; fila < n; fila++) {\n    for (int col = 0; col < n; col++) {\n        System.out.print(\"*\");\n    }\n    System.out.println();\n}\n\n- El bucle externo controla las FILAS (altura).\n- El bucle interno controla las COLUMNAS (anchura).\n- Se imprime \"*\" en cada posición, sin salto de línea.\n- Al final de cada fila, System.out.println() para saltar a la siguiente.",
+      "tags": ["java", "figuras", "cuadrado", "bucles-anidados", "tema-3"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "java-t3-v9-003",
+      "front": "¿Cómo se dibuja un cuadrado sin relleno (solo el borde) con asteriscos?",
+      "back": "for (int fila = 0; fila < n; fila++) {\n    for (int col = 0; col < n; col++) {\n        if (fila == 0 || fila == n-1 || col == 0 || col == n-1) {\n            System.out.print(\"*\");\n        } else {\n            System.out.print(\" \");\n        }\n    }\n    System.out.println();\n}\n\nSe imprime \"*\" solo si:\n- Es la primera o última fila (fila == 0 || fila == n-1)\n- Es la primera o última columna (col == 0 || col == n-1)\nEn cualquier otro caso, se imprime un espacio \" \".",
+      "tags": ["java", "figuras", "cuadrado", "sin-relleno", "borde", "tema-3"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t3-v9-004",
+      "front": "¿Cómo se dibuja un triángulo rectángulo con relleno de altura dada?",
+      "back": "for (int fila = 0; fila < altura; fila++) {\n    for (int col = 0; col <= fila; col++) {\n        System.out.print(\"*\");\n    }\n    System.out.println();\n}\n\n- fila 0: 1 asterisco\n- fila 1: 2 asteriscos\n- fila 2: 3 asteriscos\n- ...\n- fila n-1: n asteriscos\n\nEl bucle interno imprime hasta `col <= fila`, por lo que cada fila tiene (fila+1) asteriscos.",
+      "tags": ["java", "figuras", "triangulo", "rectangulo", "relleno", "tema-3"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "java-t3-v9-005",
+      "front": "¿Cómo se dibuja un triángulo rectángulo sin relleno (solo borde)?",
+      "back": "for (int fila = 0; fila < altura; fila++) {\n    for (int col = 0; col <= fila; col++) {\n        if (fila == altura-1 || col == 0 || col == fila) {\n            System.out.print(\"*\");\n        } else {\n            System.out.print(\" \");\n        }\n    }\n    System.out.println();\n}\n\nSe imprime \"*\" solo si:\n- Es la última fila (fila == altura-1) → base del triángulo\n- Es la primera columna (col == 0) → lado izquierdo\n- Es la diagonal (col == fila) → hipotenusa\n\nEl interior se rellena con espacios \" \".",
+      "tags": ["java", "figuras", "triangulo", "sin-relleno", "borde", "tema-3"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t3-v9-006",
+      "front": "¿Qué son los comentarios JavaDoc (/**) y cómo se usan?",
+      "back": "Los comentarios JavaDoc se escriben con /** ... */ antes de un método o clase. Sirven para documentar el código y VS Code los muestra al usar el método.\n\nEstructura:\n/**\n * Descripción del método\n * @param nombreParámetro descripción del parámetro\n * @return descripción del valor devuelto (si no es void)\n */\n\nEn VS Code: /** + Enter genera la plantilla automáticamente.\n\nEjemplo:\n/**\n * Dibuja un cuadrado con relleno\n * @param n lado del cuadrado\n */\nstatic void cuadrado(int n) { ... }",
+      "tags": ["java", "javadoc", "documentacion", "comentarios", "tema-3"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "java-t3-v9-007",
+      "front": "¿Por qué es buena práctica separar el código en métodos en lugar de ponerlo todo en el main?",
+      "back": "Ventajas de usar métodos:\n1. REUTILIZACIÓN: el mismo método se puede llamar varias veces.\n2. LEGIBILIDAD: el main queda más limpio y fácil de entender.\n3. MANTENIBILIDAD: si hay que cambiar la lógica, se modifica solo un método.\n4. ORGANIZACIÓN: cada método tiene una responsabilidad única.\n5. FACILITA PRUEBAS: se puede probar cada método por separado.\n\nEn el ejercicio del menú de figuras, cada figura (cuadrado, triángulo) tiene su propio método, y el main solo gestiona el flujo del menú.",
+      "tags": ["java", "metodos", "buenas-practicas", "organizacion", "tema-3"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t3-v9-008",
+      "front": "¿Cómo se puede pedir la dimensión de la figura por teclado dentro del menú?",
+      "back": "Dentro del switch, antes de llamar al método de la figura, se pide la dimensión:\n\nScanner entrada = new Scanner(System.in);\nint opcion, dimension;\n\ndo {\n    mostrarMenu();\n    opcion = entrada.nextInt();\n    \n    if (opcion >= 1 && opcion <= 4) {\n        System.out.print(\"Indica el tamano de la figura: \");\n        dimension = entrada.nextInt();\n    }\n    \n    switch (opcion) {\n        case 1: cuadrado(dimension); break;\n        case 2: cuadradoSinRelleno(dimension); break;\n        case 3: triangulo(dimension); break;\n        case 4: trianguloSinRelleno(dimension); break;\n        case 5: System.out.println(\"Fin del programa\"); break;\n        default: System.out.println(\"Opcion no valida\");\n    }\n} while (opcion != 5);\n\nAsí se evita pedir tamaño cuando la opción no es válida o es salir.",
+      "tags": ["java", "menu", "dimension", "scanner", "interactivo", "tema-3"],
+      "difficulty": "medium"
+    }
+  ]
+}

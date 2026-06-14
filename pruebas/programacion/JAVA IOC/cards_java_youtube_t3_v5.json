@@ -1,0 +1,78 @@
+{
+  "id": "programacion-java-youtube-t3-v5",
+  "name": "Java YouTube - Tema 3: Variables locales y globales",
+  "description": "Cards del curso JAVA desde 0 - Variables locales, globales, ámbito (scope), static",
+  "subject": "Programación - Java",
+  "cards": [
+    {
+      "id": "java-t3-v5-001",
+      "front": "¿Qué es una variable local en Java?",
+      "back": "Es una variable que se declara DENTRO de un método (incluido el main). Solo existe y es accesible dentro de ese método. Al terminar el método, la variable local se destruye.\n\nEjemplo:\npublic static void main(String[] args) {\n    int x = 10;  // x es variable LOCAL del main\n}\n// Aquí x ya NO existe",
+      "tags": ["java", "variables", "locales", "ambito", "tema-3"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "java-t3-v5-002",
+      "front": "¿Qué es una variable global (de clase) en Java?",
+      "back": "Es una variable que se declara DENTRO de la clase pero FUERA de cualquier método. Es accesible desde TODOS los métodos de la clase (si usan static). Se declara con la palabra clave 'static'.\n\nEjemplo:\nclass Ejemplo {\n    static int x = 5;  // Variable GLOBAL de clase\n\n    public static void main(String[] args) {\n        System.out.println(x);  // 5\n    }\n}",
+      "tags": ["java", "variables", "globales", "clase", "static", "tema-3"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "java-t3-v5-003",
+      "front": "¿Los parámetros de un método se consideran variables locales?",
+      "back": "Sí. Los parámetros formales de un método se consideran variables LOCALES del mismo. Se pueden usar dentro del cuerpo del método como cualquier otra variable local, pero NO existen fuera de él.\n\nEjemplo:\nstatic void metodo(int z) {\n    // z es variable LOCAL (parametro formal)\n    System.out.println(z);\n}\n// Fuera del metodo, z NO existe",
+      "tags": ["java", "variables", "locales", "parametros", "ambito", "tema-3"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "java-t3-v5-004",
+      "front": "¿Qué ocurre si una variable local tiene el mismo nombre que una variable global?",
+      "back": "La variable local SOBREESCRIBE (oculta) a la variable global dentro de ese método. El método usará la variable local, no la global.\n\nEjemplo:\nstatic int x = 100;  // Global\n\nstatic void metodo() {\n    int x = 5;  // Local - oculta a la global\n    System.out.println(x);  // 5 (local), NO 100\n}",
+      "tags": ["java", "variables", "locales", "globales", "sombreamiento", "tema-3"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t3-v5-005",
+      "front": "¿Se debe usar static en las variables globales por ahora?",
+      "back": "Sí, de momento. Al igual que los métodos, las variables globales se declaran con 'static' para poder usarlas desde métodos static (como el main) sin necesidad de crear objetos. En programación orientada a objetos se explicará con más detalle.\n\nEjemplo correcto:\nclass Ejemplo {\n    static int num = 5;  // static necesario\n\n    public static void main(String[] args) {\n        System.out.println(num);  // Accede sin problema\n    }\n}",
+      "tags": ["java", "variables", "globales", "static", "tema-3"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t3-v5-006",
+      "front": "¿Importa el orden de declaración de una variable global en la clase?",
+      "back": "No. Da igual si la variable global está declarada antes o después de los métodos. Todos los métodos de la clase pueden acceder a ella independientemente de dónde esté declarada.\n\nEjemplo (válido):\nclass Ejemplo {\n    static void metodo() {\n        System.out.println(num);  // Accede aunque esté declarada después\n    }\n    static int num = 10;  // Global declarada después del método\n}",
+      "tags": ["java", "variables", "globales", "orden", "ambito", "tema-3"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t3-v5-007",
+      "front": "Dado el código:\n\nstatic int x;  // Global\n\nstatic int cubo(int z) {\n    int x = z * z * z;  // Local con mismo nombre\n    return x;\n}\n\npublic static void main(String[] args) {\n    int p = 10;\n    x = cubo(p);\n    System.out.println(x);\n}\n\n¿Qué se imprime?",
+      "back": "Se imprime: 1000\n\nExplicación:\n1. En cubo(10), se declara una variable LOCAL x = 10*10*10 = 1000.\n2. Esta x local es la que se devuelve (return x).\n3. En el main, x = cubo(p) asigna el resultado (1000) a la variable GLOBAL x.\n4. Por eso System.out.println(x) imprime 1000.\n\nNOTA: La x local del método cubo y la x global son distintas. La local oculta a la global dentro del método.",
+      "tags": ["java", "variables", "locales", "globales", "ejercicio", "ambito", "tema-3"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "java-t3-v5-008",
+      "front": "Dado el código:\n\nstatic int numb = 5;  // Global\n\nstatic int cubo(int numb) {\n    int x = numb * numb * numb;\n    return x;\n}\n\npublic static void main(String[] args) {\n    numb = cubo(numb - 1);\n    System.out.println(numb);\n}\n\n¿Qué se imprime?",
+      "back": "Se imprime: 64\n\nExplicación paso a paso:\n1. Variable global numb = 5.\n2. En main: numb = cubo(numb - 1) = cubo(4).\n3. En cubo(int numb): el parámetro formal numb (local) recibe 4.\n4. x = 4 * 4 * 4 = 64.\n5. Se devuelve 64.\n6. Ese 64 se asigna a la variable GLOBAL numb.\n7. System.out.println(numb) imprime 64.\n\nLa variable global numb cambia de 5 a 64.",
+      "tags": ["java", "variables", "locales", "globales", "ejercicio", "parametros", "tema-3"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "java-t3-v5-009",
+      "front": "Dado el código:\n\nstatic int numb = 5;  // Global\n\nstatic int cubo(int numb) {\n    int x = numb * numb * numb;\n    return x;\n}\n\npublic static void main(String[] args) {\n    int numb = 10;  // Local del main\n    numb = cubo(numb);\n    System.out.println(numb);\n}\n\n¿Qué se imprime?",
+      "back": "Se imprime: 1000\n\nExplicación paso a paso:\n1. Variable global numb = 5.\n2. En main: se declara variable LOCAL numb = 10 (oculta a la global).\n3. numb (local) = cubo(10).\n4. En cubo(int numb): parámetro local recibe 10.\n5. x = 10 * 10 * 10 = 1000.\n6. Se devuelve 1000.\n7. Ese 1000 se asigna a la variable LOCAL numb del main.\n8. System.out.println(numb) imprime 1000 (la local).\n9. La variable global numb sigue siendo 5 (no se tocó).",
+      "tags": ["java", "variables", "locales", "globales", "ejercicio", "sombreamiento", "tema-3"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "java-t3-v5-010",
+      "front": "¿Cuál es la diferencia fundamental entre variable local y variable global?",
+      "back": "VARIABLE LOCAL:\n- Se declara DENTRO de un método.\n- Solo es accesible desde ese método.\n- Se destruye al terminar el método.\n- Tiene prioridad sobre la global si tienen el mismo nombre.\n\nVARIABLE GLOBAL (de clase):\n- Se declara DENTRO de la clase, FUERA de los métodos.\n- Es accesible desde TODOS los métodos de la clase.\n- Se declara con 'static' (por ahora).\n- Existe mientras la clase exista.\n\nEjemplo:\nclass Demo {\n    static int global = 10;  // Global\n\n    static void metodo() {\n        int local = 5;       // Local\n        System.out.println(global);  // OK: accede a global\n    }\n    // local NO existe fuera de metodo()\n}",
+      "tags": ["java", "variables", "locales", "globales", "diferencia", "tema-3"],
+      "difficulty": "medium"
+    }
+  ]
+}

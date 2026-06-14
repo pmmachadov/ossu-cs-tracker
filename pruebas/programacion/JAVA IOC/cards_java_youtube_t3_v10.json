@@ -1,0 +1,64 @@
+{
+  "id": "programacion-java-youtube-t3-v10",
+  "name": "Java YouTube - Tema 3: Recursividad",
+  "description": "Cards del curso JAVA desde 0 - Recursividad, factorial, caso base, caso general, pila de llamadas, StackOverflowError",
+  "subject": "Programación - Java",
+  "cards": [
+    {
+      "id": "java-t3-v10-001",
+      "front": "¿Qué es un método recursivo en Java?",
+      "back": "Un método recursivo es aquel que se llama a SÍ MISMO durante su ejecución. Es una alternativa a los bucles (iteración) para resolver problemas que pueden descomponerse en subproblemas más pequeños del mismo tipo.\n\nEjemplo básico:\nstatic int factorial(int n) {\n    if (n == 0) {\n        return 1;                 // Caso base\n    } else {\n        return n * factorial(n - 1);  // Llamada recursiva\n    }\n}",
+      "tags": ["java", "recursividad", "recursion", "definicion", "tema-3"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "java-t3-v10-002",
+      "front": "¿Cuáles son las dos partes fundamentales de un método recursivo?",
+      "back": "1. CASO BASE: condición que DETIENE la recursión. Es la solución más simple posible. Sin caso base → recursión infinita → StackOverflowError.\n\n2. CASO GENERAL (o recursivo): el método se llama a sí mismo con un problema MÁS PEQUEÑO (normalmente n-1, n/2, etc.). Cada llamada debe acercarse al caso base.\n\nEjemplo en factorial:\n- Caso base: if (n == 0) return 1;\n- Caso general: return n * factorial(n - 1);",
+      "tags": ["java", "recursividad", "caso-base", "caso-general", "tema-3"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t3-v10-003",
+      "front": "¿Qué es el factorial de un número y cómo se implementa recursivamente?",
+      "back": "n! = n * (n-1) * (n-2) * ... * 1\n\nDefinición recursiva:\n- 0! = 1  (caso base)\n- n! = n * (n-1)!  (caso general, para n > 0)\n\nCódigo:\nstatic int factorial(int n) {\n    if (n == 0) {\n        return 1;\n    } else {\n        return n * factorial(n - 1);\n    }\n}\n\nEjemplos:\n- factorial(0) = 1\n- factorial(3) = 3 * 2 * 1 * 1 = 6\n- factorial(4) = 4 * 3 * 2 * 1 * 1 = 24\n- factorial(5) = 5 * 4 * 3 * 2 * 1 * 1 = 120",
+      "tags": ["java", "recursividad", "factorial", "ejemplo", "tema-3"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t3-v10-004",
+      "front": "Explica paso a paso cómo se resuelve factorial(4) en la pila de llamadas.",
+      "back": "APILADO (orden de llamadas):\n  factorial(4) -> 4 * factorial(3)\n    factorial(3) -> 3 * factorial(2)\n      factorial(2) -> 2 * factorial(1)\n        factorial(1) -> 1 * factorial(0)\n          factorial(0) -> return 1  ← CASO BASE\n\nDESAPILADO (orden de retornos):\n          factorial(0) = 1\n        factorial(1) = 1 * 1 = 1\n      factorial(2) = 2 * 1 = 2\n    factorial(3) = 3 * 2 = 6\n  factorial(4) = 4 * 6 = 24\n\nLa pila llegó a tener 6 niveles (main + 5 llamadas a factorial).",
+      "tags": ["java", "recursividad", "factorial", "pila-llamadas", "traza", "tema-3"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "java-t3-v10-005",
+      "front": "¿Qué ocurre si un método recursivo no tiene caso base?",
+      "back": "Se produce una RECURSIÓN INFINITA: el método se llama a sí mismo sin parar, apilando infinitos frames en la pila de llamadas hasta que la memoria se agota. Esto lanza un StackOverflowError (desbordamiento de pila).\n\nEjemplo de código peligroso:\nstatic int recursionInfinita() {\n    return recursionInfinita();  // Sin caso base\n}\n\nSiempre debe haber:\n1. Un caso base que detenga la recursión.\n2. Una llamada recursiva que se acerque al caso base (n-1, n/2, etc.).",
+      "tags": ["java", "recursividad", "stackoverflow", "error", "caso-base", "tema-3"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t3-v10-006",
+      "front": "¿Cuál es la diferencia entre recursión e iteración (bucles)?",
+      "back": "ITERACIÓN (for/while):\n- Usa una misma variable que se actualiza en cada vuelta.\n- NO apila frames en la pila (menos memoria).\n- Generalmente más eficiente.\n- Puede ser más complejo de leer para ciertos problemas.\n\nRECURSIÓN:\n- El método se llama a sí mismo.\n- Cada llamada APILA un nuevo frame en la pila (más memoria).\n- Puede causar StackOverflowError si es muy profunda.\n- Más legible para problemas como factorial, Fibonacci, árboles.\n\nEn general: la recursión es más elegante pero menos eficiente en memoria.",
+      "tags": ["java", "recursividad", "iteracion", "comparacion", "eficiencia", "tema-3"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t3-v10-007",
+      "front": "¿Cómo se implementa la suma de 1 a n de forma recursiva?",
+      "back": "Caso base: suma(1) = 1\nCaso general: suma(n) = n + suma(n-1)\n\nCódigo:\nstatic int sumaRecursiva(int n) {\n    if (n == 1) {\n        return 1;              // Caso base\n    } else {\n        return n + sumaRecursiva(n - 1);  // Caso general\n    }\n}\n\nEjemplo: sumaRecursiva(10) = 10+9+8+...+1 = 55",
+      "tags": ["java", "recursividad", "suma", "ejemplo", "tema-3"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t3-v10-008",
+      "front": "¿Por qué la recursión hace un uso intensivo de la pila de llamadas?",
+      "back": "Porque cada llamada recursiva crea un NUEVO registro de activación (stack frame) que se apila encima del anterior. Cada frame contiene sus propias variables locales y parámetros.\n\nEjemplo con factorial(4): se apilan 5 frames de factorial (fact4, fact3, fact2, fact1, fact0) encima del main. La pila llega a tener 6 niveles.\n\nProblemas:\n- Consume más memoria que un bucle.\n- Si la recursión es muy profunda (ej: factorial(100000)), se agota la pila → StackOverflowError.\n\nPor eso la recursión no siempre es la mejor opción; hay que usarla con cuidado.",
+      "tags": ["java", "recursividad", "pila-llamadas", "memoria", "stack-frame", "tema-3"],
+      "difficulty": "hard"
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "id": "programacion-java-youtube-t3-v7",
+  "name": "Java YouTube - Tema 3: Pila de llamadas",
+  "description": "Cards del curso JAVA desde 0 - Pila de llamadas (call stack), registros de activación, orden de ejecución, recursión básica",
+  "subject": "Programación - Java",
+  "cards": [
+    {
+      "id": "java-t3-v7-001",
+      "front": "¿Qué es la pila de llamadas (call stack) en Java?",
+      "back": "Es una estructura de datos (en memoria RAM) que utiliza la JVM para gestionar las llamadas a métodos. Funciona como una pila LIFO (Last In, First Out): el último método que se apila es el primero en ejecutarse y desapilarse.\n\n- El primer método en apilarse es el main.\n- Cada llamada a un método nuevo se apila encima.\n- Cuando un método termina (return o fin de void), se desapila.\n- Al desapilar el main, el programa termina.",
+      "tags": ["java", "pila-llamadas", "call-stack", "jvm", "tema-3"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "java-t3-v7-002",
+      "front": "¿Qué es un registro de activación (stack frame)?",
+      "back": "Cada vez que se invoca un método, se crea un registro de activación (stack frame) que se apila en la pila de llamadas. Este registro contiene:\n\n- Las variables LOCALES del método.\n- Los PARÁMETROS recibidos.\n- La dirección de retorno (a dónde volver cuando termine).\n\nCada método solo puede acceder a la información de su propio registro de activación (más las variables globales si las hay).",
+      "tags": ["java", "pila-llamadas", "registro-activacion", "stack-frame", "tema-3"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t3-v7-003",
+      "front": "¿Cuál es el orden de ejecución cuando un método A llama a un método B, y B llama a C?",
+      "back": "Orden de apilado (ejecución):\n1. Se apila main (primero en ejecutarse).\n2. main llama a A → se apila A encima.\n3. A llama a B → se apila B encima.\n4. B llama a C → se apila C encima.\n\nOrden de desapilado (finalización):\n5. C termina → se desapila C, vuelve a B.\n6. B termina → se desapila B, vuelve a A.\n7. A termina → se desapila A, vuelve a main.\n8. main termina → se desapila main, programa termina.\n\nEs decir, el ÚLTIMO en apilarse es el PRIMERO en desapilarse (LIFO).",
+      "tags": ["java", "pila-llamadas", "orden-ejecucion", "lifo", "tema-3"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t3-v7-004",
+      "front": "Dado el código:\n\nstatic int proceso(int n) {\n    int s = 0;\n    for (int i = 0; i < n; i++) {\n        s += i;\n    }\n    return s;\n}\n\npublic static void main(String[] args) {\n    int num = 3;\n    int sum = proceso(num);\n    System.out.println(sum);\n}\n\n¿Qué devuelve proceso(3) y qué se imprime?",
+      "back": "proceso(3) devuelve 3. Se imprime 3.\n\nExplicación paso a paso del bucle (n=3):\n- i=0: s = 0 + 0 = 0\n- i=1: s = 0 + 1 = 1\n- i=2: s = 1 + 2 = 3\n- i=3: condición falsa, sale del bucle.\n\nreturn s → 3.\n\nPila de llamadas:\n1. main: num=3, sum=? → apila proceso(3)\n2. proceso(3): n=3, i=0→1→2→3, s=0→1→3 → return 3 → desapila\n3. main: sum=3 → imprime 3 → desapila main (fin)",
+      "tags": ["java", "pila-llamadas", "ejercicio", "bucle", "tema-3"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t3-v7-005",
+      "front": "Dado el código del vídeo (ejercicio complejo):\n\nstatic int proceso2(int n2) {\n    int p2 = 1;\n    for (int i = 0; i < n2; i++) {\n        p2 += n2;\n    }\n    return p2;\n}\n\nstatic int proceso1(int n1) {\n    int p1 = 1;\n    for (int i = 0; i < n1; i++) {\n        p1 += proceso2(i);\n    }\n    return p1;\n}\n\npublic static void main(String[] args) {\n    int num = 3;\n    int res = proceso1(num);\n    System.out.println(res);\n}\n\n¿Qué se imprime?",
+      "back": "Se imprime: 9\n\nExplicación de proceso1(3):\np1 = 1\nVuelta 1 (i=0): p1 += proceso2(0) → proceso2(0) devuelve 1 → p1=2\nVuelta 2 (i=1): p1 += proceso2(1) → proceso2(1): bucle 1 vez, p2=1+1=2 → devuelve 2 → p1=2+2=4\nVuelta 3 (i=2): p1 += proceso2(2) → proceso2(2): bucle 2 veces, p2=1+2=3, luego 3+2=5 → devuelve 5 → p1=4+5=9\n\nreturn 9.\n\nLa pila llegó a tener 3 niveles: main → proceso1 → proceso2",
+      "tags": ["java", "pila-llamadas", "ejercicio", "complejo", "tema-3"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "java-t3-v7-006",
+      "front": "¿Dónde se almacena la pila de llamadas en Java?",
+      "back": "La pila de llamadas se almacena en la memoria RAM. Es una zona de memoria reservada por la JVM (Java Virtual Machine) para gestionar la ejecución de métodos.\n\n- Cada hilo (thread) tiene su propia pila de llamadas.\n- Si la pila se llena (demasiadas llamadas anidadas), se produce un desbordamiento de pila: StackOverflowError (típico en recursión infinita).\n- La pila es más rápida que el heap, pero tiene tamaño limitado.",
+      "tags": ["java", "pila-llamadas", "memoria", "ram", "jvm", "stackoverflow", "tema-3"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t3-v7-007",
+      "front": "Un método solo puede acceder a la información de su propio registro de activación. ¿Verdadero o falso?",
+      "back": "VERDADERO (con matices).\n\nUn método solo puede acceder directamente a:\n- Sus propias variables locales.\n- Sus propios parámetros.\n- Variables GLOBALES (de clase, static) si las hay.\n\nNO puede acceder a las variables locales de otros métodos aunque estén en la pila. Cada registro de activación es independiente.\n\nEsto es lo que hace que Java sea seguro: un método no puede modificar accidentalmente las variables de otro método.",
+      "tags": ["java", "pila-llamadas", "registro-activacion", "variables", "tema-3"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t3-v7-008",
+      "front": "¿Qué es y cómo funciona la recursión en relación con la pila de llamadas?",
+      "back": "La recursión es cuando un método se llama a sí mismo. Cada llamada recursiva crea un NUEVO registro de activación en la pila, con sus propias variables locales.\n\nEjemplo: factorial(4)\nPila: factorial(4) → factorial(3) → factorial(2) → factorial(1)\n\n1. factorial(4): 4 * factorial(3) → espera\n2. factorial(3): 3 * factorial(2) → espera\n3. factorial(2): 2 * factorial(1) → espera\n4. factorial(1): return 1 (caso base) → DESAPILA\n5. factorial(2): 2 * 1 = 2 → DESAPILA\n6. factorial(3): 3 * 2 = 6 → DESAPILA\n7. factorial(4): 4 * 6 = 24 → DESAPILA\n\nSin caso base (condición de parada) → StackOverflowError.",
+      "tags": ["java", "pila-llamadas", "recursion", "factorial", "stackoverflow", "tema-3"],
+      "difficulty": "hard"
+    }
+  ]
+}

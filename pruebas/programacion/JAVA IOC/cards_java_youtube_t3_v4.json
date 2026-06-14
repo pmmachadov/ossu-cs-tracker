@@ -1,0 +1,85 @@
+{
+  "id": "programacion-java-youtube-t3",
+  "name": "Java YouTube - Tema 3: Métodos",
+  "description": "Cards del curso JAVA desde 0 - Paso por valor, Declaración de métodos, Ejercicios",
+  "subject": "Programación - Java",
+  "cards": [
+    {
+      "id": "java-t3-v4-001",
+      "front": "¿Qué es el paso por valor en Java?",
+      "back": "Es el mecanismo por el cual, al pasar una variable como parámetro a un método, se envía una COPIA del valor de esa variable, no la variable en sí. Si dentro del método se modifica el parámetro, la variable original NO se modifica.",
+      "tags": ["java", "metodos", "paso-por-valor", "tema-3"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "java-t3-v4-002",
+      "front": "¿Qué ocurre si modificamos un parámetro primitivo dentro de un método en Java?",
+      "back": "Como Java usa paso por valor con tipos primitivos, modificar el parámetro dentro del método solo afecta a la COPIA local. La variable original del ámbito exterior (ej: main) NO se modifica.\n\nEjemplo:\nint x = 5;\nmetodo(x);  // Se pasa copia de 5\n// x sigue siendo 5 aunque dentro del método se modifique",
+      "tags": ["java", "metodos", "paso-por-valor", "tema-3"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "java-t3-v4-003",
+      "front": "¿Existen punteros en Java como en C/C++?",
+      "back": "No exactamente. En C/C++ los punteros son tipos de dato explícitos que almacenan direcciones de memoria. En Java no existe el tipo 'puntero' como tal, pero internamente las referencias a objetos funcionan como punteros 'escondidos'.\n\n- Con primitivos: paso por valor (copia del dato).\n- Con objetos: se pasa una copia de la referencia (el objeto se puede modificar, pero la referencia en sí no se puede reasignar).",
+      "tags": ["java", "metodos", "punteros", "tema-3"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t3-v4-004",
+      "front": "¿Puede una variable y un método llamarse igual en Java?",
+      "back": "Sí, es perfectamente válido. El compilador distingue porque los métodos siempre llevan paréntesis (aunque estén vacíos), mientras que las variables no.\n\nEjemplo:\nint doble;       // Variable\ndoble(5);        // Método\n\nLos paréntesis ( ) indican que es una llamada a método.",
+      "tags": ["java", "metodos", "identificadores", "tema-3"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t3-v4-005",
+      "front": "¿Puede un parámetro formal llamarse igual que la variable que se le pasa desde el main?",
+      "back": "Sí. Son variables DISTINTAS porque pertenecen a ÁMBITOS diferentes:\n- La variable del main pertenece al ámbito del método main.\n- El parámetro formal pertenece al ámbito del método al que se llama.\n\nAunque se llamen igual, son independientes y modificar una no afecta a la otra (paso por valor).",
+      "tags": ["java", "metodos", "ambito", "tema-3"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t3-v4-006",
+      "front": "¿Qué significa public static void main(String[] args)?",
+      "back": "Es la declaración del método principal (punto de entrada) en Java:\n\n- public: accesible desde cualquier clase.\n- static: se puede ejecutar sin crear un objeto.\n- void: no devuelve ningún valor.\n- main: nombre del método (la JVM lo busca para iniciar).\n- String[] args: array de Strings con los argumentos pasados por línea de comandos.\n\nEjemplo:\njava MiClase arg1 arg2\n→ args[0] = \"arg1\", args[1] = \"arg2\"",
+      "tags": ["java", "metodos", "main", "tema-3"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "java-t3-v4-007",
+      "front": "¿Cómo se accede a los argumentos pasados por consola en el método main?",
+      "back": "Los argumentos se reciben en el parámetro String[] args del main. Se accede como a cualquier array:\n\nfor (int i = 0; i < args.length; i++) {\n    System.out.println(args[i]);\n}\n\nEjemplo de ejecución:\njava Programa.java hola mundo 123\n→ args[0]=\"hola\", args[1]=\"mundo\", args[2]=\"123\"",
+      "tags": ["java", "metodos", "main", "argumentos", "tema-3"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "java-t3-v4-008",
+      "front": "Dado el código:\nint numb = 10;\nint doble = doble(numb);\n\nstatic int doble(int a) {\n    a = a * 2;\n    return a;\n}\n\n¿Qué valores tienen numb y doble al final?",
+      "back": "numb = 10 (NO cambia, sigue siendo 10)\ndoble = 20 (resultado del método)\n\nExplicación: Al llamar a doble(numb), se pasa una COPIA del valor 10. Dentro del método, a se multiplica por 2 (a=20), pero eso no afecta a la variable original numb del main. El método devuelve 20, que se asigna a la variable doble.",
+      "tags": ["java", "metodos", "paso-por-valor", "ejercicio", "tema-3"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t3-v4-009",
+      "front": "¿Cuál es la ventaja de que Java use paso por valor en lugar de punteros explícitos?",
+      "back": "Java es más SEGURO y menos propenso a errores que C/C++ porque:\n- No se puede modificar accidentalmente una variable original desde un método.\n- No hay riesgo de acceder a direcciones de memoria inválidas.\n- La gestión de memoria es más sencilla (no hay que liberar manualmente).\n\nSin embargo, los punteros de C/C++ dan más control sobre la memoria, lo que es útil para programación de sistemas operativos y aplicaciones de bajo nivel.",
+      "tags": ["java", "metodos", "paso-por-valor", "punteros", "tema-3"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t3-v4-010",
+      "front": "¿Qué diferencia hay entre paso por valor y paso por referencia?",
+      "back": "PASO POR VALOR:\n- Se envía una COPIA del valor de la variable.\n- La variable original NO se modifica.\n- Es el único mecanismo en Java para tipos primitivos.\n\nPASO POR REFERENCIA:\n- Se envía la dirección de memoria de la variable.\n- La variable original SÍ se puede modificar desde el método.\n- Existe en C/C++ mediante punteros.\n\nNOTA: En Java, con objetos se pasa la referencia por valor (copia de la referencia). El objeto se puede modificar, pero la referencia en sí no se puede reasignar desde el método.",
+      "tags": ["java", "metodos", "paso-por-valor", "referencia", "tema-3"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "java-t3-v4-011",
+      "front": "¿Qué ocurre al ejecutar este código?\n\nint num = 5;\nint resultado = metodoMismoNombre(num);\n\nstatic int metodoMismoNombre(int num) {\n    num = num * 2;\n    return num;\n}",
+      "back": "num = 5 (la variable del main NO cambia)\nresultado = 10\n\nAunque el parámetro del método se llame igual que la variable del main (num), son variables distintas con ámbitos diferentes. El método recibe una copia del valor (5), la multiplica por 2 (10), y devuelve el resultado. El num del main sigue siendo 5.",
+      "tags": ["java", "metodos", "paso-por-valor", "ambito", "ejercicio", "tema-3"],
+      "difficulty": "medium"
+    }
+  ]
+}
