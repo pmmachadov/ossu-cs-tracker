@@ -1,0 +1,57 @@
+{
+  "id": "programacion-java-youtube-t4-v1",
+  "name": "Java YouTube - Tema 4: Arrays (introducción)",
+  "description": "Cards del curso JAVA desde 0 - Arrays unidimensionales: declaración, inicialización, length, for-each, valores por defecto",
+  "subject": "Programación - Java",
+  "cards": [
+    {
+      "id": "java-t4-v1-001",
+      "front": "¿Qué es un array en Java?",
+      "back": "Un array es una colección de tamaño FIJO que contiene variables del MISMO TIPO.\n\nCaracterísticas:\n- Se accede a cada elemento mediante un ÍNDICE numérico.\n- El primer índice es 0.\n- El último índice es longitud - 1.\n- El tamaño se fija al crearlo (con new) y NO se puede modificar.\n- Todos los elementos son del mismo tipo (int, double, String, etc.).\n\nDeclaración:\nint[] notas = new int[8];  // Array de 8 enteros\nint notas[] = new int[8];  // Otra sintaxis válida",
+      "tags": ["java", "arrays", "definicion", "tema-4"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "java-t4-v1-002",
+      "front": "¿Cómo se declara e inicializa un array en Java?",
+      "back": "SIN VALORES INICIALES (todos a valor por defecto):\nint[] notas = new int[5];  // {0, 0, 0, 0, 0}\n\nCON VALORES INICIALES:\nint[] notas = {10, 20, 30, 40, 50};  // 5 elementos\n\nDECLARAR PRIMERO, INICIALIZAR DESPUÉS:\nint[] notas;          // Solo declaración\nnotas = new int[5];   // Inicialización\n\nDOS SINTAXIS:\nint[] notas = new int[5];   // Recomendada\nint notas[] = new int[5];   // También válida",
+      "tags": ["java", "arrays", "declaracion", "inicializacion", "tema-4"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "java-t4-v1-003",
+      "front": "¿Qué es la propiedad length en un array?",
+      "back": "length es un ATRIBUTO (no un método, no lleva paréntesis) que devuelve el número de elementos del array.\n\nint[] arr = {10, 20, 30};\narr.length → 3\n\nÚltimo elemento:\narr[arr.length - 1]  → arr[2] = 30\n\nBucle típico:\nfor (int i = 0; i < arr.length; i++) {\n    System.out.println(arr[i]);\n}\n\n¡Cuidado! arr.length es el tamaño total, pero el último índice es length-1.",
+      "tags": ["java", "arrays", "length", "propiedad", "tema-4"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "java-t4-v1-004",
+      "front": "¿Qué valores por defecto tienen los arrays según su tipo?",
+      "back": "int, short, byte, long → 0\nfloat, double → 0.0\nboolean → false\nchar → '\\0' (carácter nulo Unicode, el primero)\nObjetos (String incluido) → null\n\nEjemplo:\nint[] nums = new int[5];      // {0, 0, 0, 0, 0}\nboolean[] flags = new boolean[3]; // {false, false, false}\nString[] nombres = new String[4]; // {null, null, null, null}\n\nSi no se asignan valores, todos los elementos tendrán el valor por defecto de su tipo.",
+      "tags": ["java", "arrays", "valores-por-defecto", "tipos", "tema-4"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "java-t4-v1-005",
+      "front": "¿Qué es ArrayIndexOutOfBoundsException y cuándo ocurre?",
+      "back": "Es una excepción (error en tiempo de ejecución) que ocurre cuando se intenta acceder a un índice que NO existe en el array.\n\nint[] arr = new int[5];  // Índices válidos: 0, 1, 2, 3, 4\narr[5] = 10;  // ERROR: ArrayIndexOutOfBoundsException\n\nEl índice 5 no existe porque el array tiene 5 elementos (0..4).\n\nRegla: el último índice válido es SIEMPRE longitud - 1.\n\nSiempre usar:\nfor (int i = 0; i < arr.length; i++)  // NUNCA <=\n\nUn error común: confundir length (tamaño) con el último índice (length-1).",
+      "tags": ["java", "arrays", "exception", "error", "indice", "tema-4"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t4-v1-006",
+      "front": "¿Cómo se recorre un array con el bucle for-each (for mejorado)?",
+      "back": "Sintaxis:\nfor (tipo variable : array) {\n    // usar variable\n}\n\nEjemplo:\nint[] numeros = {10, 20, 30, 40, 50};\nfor (int n : numeros) {\n    System.out.println(n);\n}\n\nVentajas:\n- Más corto y legible.\n- No hay riesgo de error con índices.\n\nDesventajas:\n- Solo LECTURA: NO se pueden modificar los elementos.\n- No se tiene acceso al índice (no se sabe en qué posición se está).\n\nPara modificar elementos se necesita el for tradicional con índice.",
+      "tags": ["java", "arrays", "for-each", "bucle", "recorrer", "tema-4"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t4-v1-007",
+      "front": "¿Cuál es la estructura típica del bucle for para recorrer un array?",
+      "back": "for (int i = 0; i < array.length; i++) {\n    // array[i] es el elemento en la posición i\n}\n\nEsta estructura funciona para CUALQUIER array, independientemente de su tamaño:\n- Inicialización: i = 0 (primer elemento)\n- Condición: i < array.length (mientras no superemos el tamaño)\n- Incremento: i++ (pasar al siguiente elemento)\n\nEjemplo completo:\nint[] notas = new int[5];\nfor (int i = 0; i < notas.length; i++) {\n    notas[i] = i * 2;  // Asigna {0, 2, 4, 6, 8}\n}\n\nNUNCA usar i <= array.length (eso daría ArrayIndexOutOfBoundsException en la última iteración).",
+      "tags": ["java", "arrays", "bucle", "for", "recorrer", "tema-4"],
+      "difficulty": "easy"
+    }
+  ]
+}

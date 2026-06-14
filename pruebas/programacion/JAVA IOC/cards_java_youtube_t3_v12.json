@@ -1,0 +1,57 @@
+{
+  "id": "programacion-java-youtube-t3-v12",
+  "name": "Java YouTube - Tema 3: Ejercicios resueltos recursividad",
+  "description": "Cards del curso JAVA desde 0 - 7 ejercicios de recursividad: dígitos, potencia, invertir, binario, palabra ordenada, suma 1..n",
+  "subject": "Programación - Java",
+  "cards": [
+    {
+      "id": "java-t3-v12-001",
+      "front": "Ejercicio: Implementa un método recursivo que cuente la cantidad de dígitos de un número n > 0.\n\nEj: digitos(121) = 3, digitos(5) = 1",
+      "back": "static int digitos(int n) {\n    if (n == 0) {\n        return 0;               // Caso base\n    } else {\n        return 1 + digitos(n / 10);  // Cuenta 1 digito y sigue con el resto\n    }\n}\n\nLógica: dividir entre 10 elimina el último dígito.\n- digitos(5): 1 + digitos(0) = 1 + 0 = 1\n- digitos(144): 1 + digitos(14) = 1 + 1 + digitos(1) = 1 + 1 + 1 + digitos(0) = 3\n\nAlternativa con operador ternario:\nreturn (n == 0) ? 0 : 1 + digitos(n / 10);",
+      "tags": ["java", "recursividad", "ejercicio", "digitos", "contar", "tema-3"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t3-v12-002",
+      "front": "Ejercicio: Implementa un método recursivo que calcule base^exponente (números positivos).\n\nEj: potencia(2, 4) = 16",
+      "back": "static int potencia(int base, int exp) {\n    if (exp == 0) {\n        return 1;  // Caso base: cualquier número^0 = 1\n    } else {\n        return base * potencia(base, exp - 1);\n    }\n}\n\nLógica: base^exp = base * base^(exp-1)\n- potencia(2, 4) = 2 * potencia(2, 3)\n  = 2 * 2 * potencia(2, 2)\n  = 2 * 2 * 2 * potencia(2, 1)\n  = 2 * 2 * 2 * 2 * potencia(2, 0)\n  = 2 * 2 * 2 * 2 * 1 = 16",
+      "tags": ["java", "recursividad", "ejercicio", "potencia", "exponente", "tema-3"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t3-v12-003",
+      "front": "Ejercicio: Implementa un método recursivo que imprima un número invertido.\n\nEj: invertir(145) → imprime 541",
+      "back": "static void invertir(int n) {\n    if (n >= 0 && n < 10) {\n        System.out.println(n);   // Caso base: un solo dígito\n    } else {\n        System.out.print(n % 10);  // Imprime el último dígito\n        invertir(n / 10);         // Llama recursivamente sin el último\n    }\n}\n\nLógica:\n- n % 10 → obtiene el último dígito\n- n / 10 → elimina el último dígito\n\nTraza invertir(145):\n1. print(145 % 10) = print(5) → invertir(14)\n2. print(14 % 10) = print(4) → invertir(1)\n3. println(1) → caso base\n\nSalida: 541",
+      "tags": ["java", "recursividad", "ejercicio", "invertir", "digitos", "tema-3"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t3-v12-004",
+      "front": "Ejercicio: Implementa un método recursivo que compruebe si un número es binario (solo 0s y 1s).\n\nEj: esBinario(1011) = true, esBinario(123) = false",
+      "back": "static boolean esBinario(int n) {\n    // Caso base: un solo dígito\n    if (n >= 0 && n < 10) {\n        return (n == 0 || n == 1);\n    }\n    // Caso general\n    if (n % 10 == 0 || n % 10 == 1) {\n        return esBinario(n / 10);  // Este dígito es válido, seguir\n    } else {\n        return false;  // Dígito no binario encontrado\n    }\n}\n\nLógica: analizar el último dígito con %10.\nSi es 0 o 1, seguir con el siguiente (n/10).\nSi no, devolver false.\nSi llegamos a un solo dígito, comprobar si es 0 o 1.",
+      "tags": ["java", "recursividad", "ejercicio", "binario", "comprobar", "tema-3"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t3-v12-005",
+      "front": "Ejercicio: Implementa un método recursivo que convierta un número decimal a binario (devuelve entero).\n\nEj: convertirBinario(15) = 1111",
+      "back": "static int convertirBinario(int n) {\n    if (n == 0 || n == 1) {\n        return n;  // Caso base: 0→0, 1→1\n    } else {\n        return (n % 2) + 10 * convertirBinario(n / 2);\n    }\n}\n\nLógica:\n- n % 2 → resto de dividir entre 2 (0 o 1), va a la derecha\n- n / 2 → siguiente número a convertir\n- * 10 → desplaza el resultado anterior a la izquierda\n\nVERSIÓN VOID (más simple):\nstatic void imprimirBinario(int n) {\n    if (n > 1) {\n        imprimirBinario(n / 2);\n    }\n    System.out.print(n % 2);\n}\n\nTraza convertirBinario(15):\n→ 15%2 + 10*conv(7) = 1 + 10*(1 + 10*conv(3))\n= 1 + 10*(1 + 10*(1 + 10*conv(1)))\n= 1 + 10*(1 + 10*(1 + 10*1))\n= 1 + 10*(1 + 10*(1 + 10))\n= 1 + 10*(1 + 110) = 1 + 10*111 = 1 + 1110 = 1111",
+      "tags": ["java", "recursividad", "ejercicio", "binario", "conversion", "decimal", "tema-3"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "java-t3-v12-006",
+      "front": "Ejercicio: Implementa un método recursivo que compruebe si una palabra está ordenada alfabéticamente.\n\nEj: palabraOrdenada(\"abcde\") = true, palabraOrdenada(\"abcdfe\") = false",
+      "back": "static boolean palabraOrdenada(String cad) {\n    cad = cad.toLowerCase();  // Ignorar mayúsculas\n    // Caso base: 0 o 1 letras → ordenada\n    if (cad.length() <= 1) {\n        return true;\n    }\n    // Caso general\n    if (cad.charAt(0) <= cad.charAt(1)) {\n        return palabraOrdenada(cad.substring(1));  // 1ª ≤ 2ª, seguir\n    } else {\n        return false;  // 1ª > 2ª, no ordenada\n    }\n}\n\nLógica:\n- Comparar primera letra (charAt(0)) con segunda (charAt(1)).\n- Si primera ≤ segunda (según ASCII/Unicode), seguir con substring desde 1.\n- Si primera > segunda, devolver false.\n- Cuando quede 1 letra (o 0), devolver true.\n\nEl método convierte a minúsculas con toLowerCase() para evitar\nproblemas con mayúsculas (las mayúsculas tienen menor valor ASCII).",
+      "tags": ["java", "recursividad", "ejercicio", "palabra", "orden-alfabetico", "string", "tema-3"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "java-t3-v12-007",
+      "front": "Ejercicio: Implementa un método recursivo que muestre la suma de 1 a n en formato: 1+2+3+4 = 10\n\n(versión creciente, que es como pide el enunciado)",
+      "back": "// Versión CRECIENTE: 1 + 2 + ... + n\nstatic void sumaCreciente(int cont, int n, int total) {\n    if (cont < n) {\n        System.out.print(cont + \" + \");\n        sumaCreciente(cont + 1, n, total + cont);\n    } else {\n        System.out.println(cont + \" = \" + (total + cont));\n    }\n}\n\n// Método auxiliar (solo requiere n)\nstatic void mostrarSumaCreciente(int n) {\n    sumaCreciente(1, n, 0);\n}\n\n// Versión DECRECIENTE: 4 + 3 + 2 + 1 = 10 (más fácil)\nstatic void sumaDecreciente(int n, int total) {\n    if (n == 1) {\n        System.out.println(\"1 = \" + (total + 1));\n    } else {\n        System.out.print(n + \" + \");\n        sumaDecreciente(n - 1, total + n);\n    }\n}\n\nTraza mostrarSumaCreciente(4):\n→ sumaCreciente(1,4,0): print(\"1 + \") → sumaCreciente(2,4,1)\n→ print(\"2 + \") → sumaCreciente(3,4,3)\n→ print(\"3 + \") → sumaCreciente(4,4,6)\n→ println(\"4 = 10\") ← (6+4=10)",
+      "tags": ["java", "recursividad", "ejercicio", "suma", "creciente", "decreciente", "tema-3"],
+      "difficulty": "hard"
+    }
+  ]
+}

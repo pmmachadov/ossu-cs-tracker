@@ -1,0 +1,43 @@
+{
+  "id": "programacion-java-youtube-t3-v11",
+  "name": "Java YouTube - Tema 3: Triángulo recursivo",
+  "description": "Cards del curso JAVA desde 0 - Triángulo recursivo con asteriscos, dos soluciones, eficiencia de pila",
+  "subject": "Programación - Java",
+  "cards": [
+    {
+      "id": "java-t3-v11-001",
+      "front": "¿Cómo se dibuja un triángulo rectángulo de asteriscos de forma recursiva? (Solución 1: tree)",
+      "back": "Con un método tree(int a, int b, int n) que usa 3 parámetros como contadores:\n- a = fila actual\n- b = columna actual\n- n = altura total\n\nCódigo:\nstatic void tree(int a, int b, int n) {\n    if (a > b) {\n        System.out.print(\"*\");\n        tree(a, b + 1, n);       // Siguiente columna\n    } else {\n        System.out.println();     // Salto de línea\n        if (n > a + 1) {\n            tree(a + 1, 0, n);   // Siguiente fila\n        }\n    }\n}\n\nLlamada inicial: tree(0, 0, 3)",
+      "tags": ["java", "recursividad", "triangulo", "tree", "solucion-1", "tema-3"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "java-t3-v11-002",
+      "front": "¿Cómo se implementa la solución más eficiente del triángulo recursivo con dos métodos?",
+      "back": "Con dos métodos recursivos:\n\n1. triangulo(int n) - controla las FILAS:\n   - Se llama a sí mismo con n-1 (va de la altura hacia abajo)\n   - Luego llama a filaTriangulo(n) para imprimir la fila actual\n\n2. filaTriangulo(int n) - controla las COLUMNAS:\n   - Imprime '*' y se llama con n-1\n   - Cuando n=0, imprime salto de línea (caso base)\n\nCódigo:\nstatic void triangulo(int n) {\n    if (n > 0) {\n        triangulo(n - 1);        // Primero filas anteriores\n        filaTriangulo(n);        // Luego esta fila\n    }\n}\n\nstatic void filaTriangulo(int n) {\n    if (n > 0) {\n        System.out.print(\"*\");\n        filaTriangulo(n - 1);\n    } else {\n        System.out.println();\n    }\n}\n\nLlamada inicial: triangulo(3)",
+      "tags": ["java", "recursividad", "triangulo", "solucion-2", "eficiente", "tema-3"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "java-t3-v11-003",
+      "front": "¿Cuál es la diferencia de eficiencia entre las dos soluciones del triángulo recursivo (altura 3)?",
+      "back": "SOLUCIÓN 1 (tree(a,b,n)):\n- Pila máxima: 10 llamadas anidadas para altura 3.\n- Cada asterisco y cada salto de línea son una llamada recursiva.\n- Para altura 10, la pila crece muchísimo.\n\nSOLUCIÓN 2 (triangulo + filaTriangulo):\n- Pila máxima: 6 llamadas anidadas para altura 3.\n- Las filas se apilan primero (triangulo), luego se resuelven una a una (filaTriangulo).\n- Para altura 10, la pila crece mucho menos.\n\nLa solución 2 es MEJOR porque las llamadas a filaTriangulo se resuelven y desapilan antes de pasar a la siguiente fila, usando menos memoria.",
+      "tags": ["java", "recursividad", "triangulo", "eficiencia", "pila", "comparacion", "tema-3"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "java-t3-v11-004",
+      "front": "¿Cómo simula la recursión un bucle for anidado en el método tree(a, b, n)?",
+      "back": "La recursión con parámetros contadores reemplaza los bucles:\n\nBucle for equivalente:\nfor (int a = 0; a < n; a++) {          // Filas\n    for (int b = 0; b <= a; b++) {      // Columnas\n        System.out.print(\"*\");\n    }\n    System.out.println();\n}\n\nVersión recursiva tree(a, b, n):\n- El IF (a > b) equivale al bucle interno de columnas.\n  - Imprime '*' y llama a tree(a, b+1, n) -> incremento de columna.\n- El ELSE equivale al fin de la fila.\n  - Imprime salto de línea.\n  - Si quedan filas (n > a+1), llama a tree(a+1, 0, n) -> siguiente fila.\n\nParámetros:\n- a = contador de fila (se incrementa al cambiar de fila)\n- b = contador de columna (se incrementa al imprimir asterisco)\n- n = límite (altura total) - nunca cambia",
+      "tags": ["java", "recursividad", "triangulo", "for-anidado", "simulacion", "tema-3"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "java-t3-v11-005",
+      "front": "¿Por qué la solución con triangulo(n) + filaTriangulo(n) es más eficiente que tree(a,b,n)?",
+      "back": "Porque separa las dos responsabilidades:\n\n1. triangulo(n) se encarga de las FILAS:\n   - Se llama recursivamente con n-1 hasta llegar a 0 (caso base).\n   - Solo apila N llamadas (una por cada fila).\n   - Cuando vuelve del caso base, llama a filaTriangulo(n) que se resuelve y DESAPILA.\n\n2. filaTriangulo(n) se encarga de las COLUMNAS:\n   - Imprime '*' y se llama con n-1.\n   - Cuando termina (n=0), se desapila completamente.\n\nEn tree(a,b,n): la pila crece continuamente porque las llamadas para una fila NO se resuelven hasta que terminan todas las filas siguientes.\n\nPara altura 3:\n- tree: 10 llamadas en pila\n- triangulo+fila: 6 llamadas en pila\n\nPara altura 10:\n- tree: ~65 llamadas\n- triangulo+fila: ~15 llamadas",
+      "tags": ["java", "recursividad", "triangulo", "eficiencia", "pila", "comparacion", "tema-3"],
+      "difficulty": "hard"
+    }
+  ]
+}
