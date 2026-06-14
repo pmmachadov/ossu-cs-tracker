@@ -61,6 +61,8 @@ function App() {
           "/data/preguntas-directas/pd-all.json",
           "/data/preguntas-directas/materias salvadas/pd-dwec.json",
           "/data/programacion.json",
+          "/data/java.json",
+          "/data/java-ejercicios.json",
           "/data/libros/tips-web-dev.json",
           "/data/libros/eloquent-js.json",
         ];

@@ -490,6 +490,43 @@
   font-family: 'Fira Code', 'JetBrains Mono', 'Consolas', monospace;
 }
 
+/* Boton copiar codigo - mas grande, bonito y se pone verde brillante */
+.copy-code-btn {
+  background: #1e1e1e;
+  color: #bbbbbb;
+  border: 1px solid #555555;
+  border-radius: 8px;
+  padding: 8px 22px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-family: 'Segoe UI', 'Fira Code', monospace;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  user-select: none;
+  letter-spacing: 0.3px;
+  line-height: 1.4;
+}
+
+.copy-code-btn:hover {
+  background: #333333;
+  color: #ffffff;
+  border-color: #888888;
+  transform: scale(1.03);
+}
+
+.copy-code-btn:active {
+  transform: scale(0.95);
+}
+
+.copy-code-btn.copied {
+  background: #0d7a3f;
+  color: #ffffff;
+  border-color: #00ff88;
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.6);
+  font-weight: 700;
+  transform: scale(1.02);
+}
+
 .code-block-wrapper pre {
   margin: 0 !important;
   text-align: left !important;

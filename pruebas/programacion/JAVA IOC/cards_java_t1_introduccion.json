@@ -1,0 +1,58 @@
+{
+  "id": "cards-java-t1",
+  "name": "Java - Tema 1: Introducción a la programación",
+  "description": "Cards sobre algoritmos, pseudocódigo, diagramas de flujo, variables, expresiones aritméticas, operadores relacionales y lógicos del curso IOC - Aula en la nube",
+  "subject": "Programación - Java",
+  "deck": "Java",
+  "cards": [
+    {
+      "id": "java-t1-001",
+      "front": "¿Qué es un algoritmo?",
+      "back": "Un algoritmo es un conjunto de instrucciones (pasos) ordenadas y finitas que permiten resolver un problema.\n\nCaracterísticas:\n- Preciso: cada paso debe estar claramente definido.\n- Ordenado: los pasos deben ejecutarse en un orden específico.\n- Finito: debe terminar después de un número determinado de pasos.\n\nEjemplo: Receta de cocina, instrucciones de montaje, algoritmo de ordenación.",
+      "tags": ["java", "algoritmo", "definicion", "tema-1"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "java-t1-002",
+      "front": "¿Qué es un pseudocódigo y cómo se representa un algoritmo?",
+      "back": "El pseudocódigo es una forma de representar algoritmos utilizando un lenguaje cercano al humano pero con estructura de programación.\n\nNO es código real, es una mezcla de lenguaje natural y estructura de programación.\n\nFormas de representar algoritmos:\n1. Pseudocódigo: lenguaje cercano al humano.\n2. Diagramas de flujo: representación gráfica con figuras geométricas.\n3. Lenguaje de programación: código ejecutable (Java, Python, etc.).\n\nEjemplo de pseudocódigo:\nINICIO\n  LEER nota\n  SI nota >= 5 ENTONCES\n    ESCRIBIR \"Aprobado\"\n  SINO\n    ESCRIBIR \"Suspenso\"\n  FIN SI\nFIN",
+      "tags": ["java", "algoritmo", "pseudocodigo", "representacion", "tema-1"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "java-t1-003",
+      "front": "¿Qué es una variable en programación?",
+      "back": "Una variable es un espacio en memoria que almacena un valor que puede cambiar durante la ejecución del programa.\n\nCaracterísticas:\n- Tiene un nombre (identificador).\n- Tiene un tipo de datos (determina qué valores puede contener).\n- Tiene un valor que se puede modificar.\n\nEjemplo:\ncontador = 0     // declaración e inicialización\ncontador = 5     // la variable cambia de valor\ncontador = 10    // vuelve a cambiar\n\nReglas para nombres de variables:\n- Deben empezar con letra o guión bajo.\n- No pueden contener espacios.\n- Sensibles a mayúsculas/minúsculas (edad != Edad).\n- No pueden ser palabras reservadas del lenguaje.",
+      "tags": ["java", "variables", "memoria", "tema-1"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "java-t1-004",
+      "front": "¿Qué son los operadores relacionales y cuáles son?",
+      "back": "Los operadores relacionales se usan para COMPARAR dos valores. El resultado siempre es un valor BOOLEANO (true o false).\n\n>   Mayor que         5 > 3 → true\n<   Menor que         5 < 3 → false\n>=  Mayor o igual    5 >= 5 → true\n<=  Menor o igual    5 <= 3 → false\n==  Igual a          5 == 5 → true\n!=  Distinto de      5 != 5 → false\n\nEjemplo en pseudocódigo:\nSI edad >= 18 ENTONCES\n  ESCRIBIR \"Eres mayor de edad\"\nFIN SI\n\nOJO: == es comparación, = es asignación (son diferentes).",
+      "tags": ["java", "operadores", "relacionales", "comparacion", "tema-1"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "java-t1-005",
+      "front": "¿Qué son los operadores lógicos y cuáles son?",
+      "back": "Los operadores lógicos combinan condiciones booleanas. Trabajan con valores true/false.\n\nY (AND) - Símbolo: ∧ o AND\n- SÓLO si las dos condiciones son true → resultado true.\n- true ∧ true = true\n- true ∧ false = false\n- false ∧ true = false\n- false ∧ false = false\n\nO (OR) - Símbolo: ∨ o OR\n- Con que UNA sea true → resultado true.\n- true ∨ true = true\n- true ∨ false = true\n- false ∨ true = true\n- false ∨ false = false\n\nNO (NOT) - Símbolo: ¬ o NOT\n- Invierte el valor: ¬true = false, ¬false = true\n\nEjemplo:\nSI (edad >= 18) Y (tiene_carnet = true) ENTONCES\n  \"Puede conducir\"\nFIN SI",
+      "tags": ["java", "operadores", "logicos", "AND", "OR", "NOT", "tema-1"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "java-t1-006",
+      "front": "¿Qué son las expresiones aritméticas y cuál es la prioridad de operadores?",
+      "back": "Las expresiones aritméticas combinan números y operadores para producir un resultado numérico.\n\nOperadores:\n+  Suma\n-  Resta\n*  Multiplicación\n/  División\n%  Módulo (resto de la división)\n\nPrioridad (de mayor a menor):\n1. Paréntesis ()\n2. Multiplicación *, división /, módulo %\n3. Suma +, resta -\n\nEjemplo:\n2 + 3 * 4 = 2 + 12 = 14\n(2 + 3) * 4 = 5 * 4 = 20\n17 % 5 = 2 (resto de dividir 17 entre 5 = 3*5=15, resto=2)\n\nLos paréntesis anidados se resuelven de dentro hacia fuera.",
+      "tags": ["java", "expresiones", "aritmeticas", "prioridad", "operadores", "tema-1"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "java-t1-007",
+      "front": "¿Qué son las estructuras de control alternativas (condicionales)?",
+      "back": "Permiten ejecutar un bloque de código u otro según una condición.\n\nTipos:\n\n1. SI ENTONCES (if):\nSI (condición) ENTONCES\n  // código si condición es true\nFIN SI\n\n2. SI ENTONCES SI NO (if-else):\nSI (condición) ENTONCES\n  // código si true\nSI NO\n  // código si false\nFIN SI\n\n3. SEGUN (switch):\nSEGUN (variable) HACER\n  CASO valor1: instrumentos\n  CASO valor2: instrumentos\n  ...\nFIN SEGUN\n\nEjemplo:\nSI (nota >= 5) ENTONCES\n  ESCRIBIR \"Aprobado\"\nSI NO\n  ESCRIBIR \"Suspenso\"\nFIN SI",
+      "tags": ["java", "estructuras", "control", "condicionales", "if", "switch", "tema-1"],
+      "difficulty": "easy"
+    }
+  ]
+}

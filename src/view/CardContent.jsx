@@ -291,6 +291,43 @@ const renderCardContent = (text, cardImageUrl) => {
       <div key={`code-${keySuffix}`} className="code-block-wrapper">
         <div className="code-block-header">
           <span className="code-lang-label">{lang}</span>
+          <button
+            className="copy-code-btn"
+            onClick={(e) => {
+              e.stopPropagation();
+              const btn = e.currentTarget;
+              const copyText = () => {
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                  return navigator.clipboard.writeText(code);
+                }
+                // Fallback para HTTP
+                const ta = document.createElement("textarea");
+                ta.value = code;
+                ta.style.position = "fixed";
+                ta.style.opacity = "0";
+                document.body.appendChild(ta);
+                ta.select();
+                document.execCommand("copy");
+                document.body.removeChild(ta);
+                return Promise.resolve();
+              };
+              copyText().then(() => {
+                btn.classList.add("copied");
+                btn.textContent = "✓ Copiado";
+                setTimeout(() => {
+                  btn.classList.remove("copied");
+                  btn.textContent = "Copiar";
+                }, 2000);
+              }).catch(() => {
+                btn.textContent = "Error";
+                setTimeout(() => {
+                  btn.textContent = "Copiar";
+                }, 2000);
+              });
+            }}
+          >
+            Copiar
+          </button>
         </div>
         <SyntaxHighlighter
           language={lang}

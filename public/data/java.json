@@ -1,0 +1,975 @@
+{
+  "id": "java",
+  "name": "Java",
+  "description": "Mazo completo de Java del IOC - Aula en la nube. 9 temas: Introduccion a la programacion, Introduccion a Java, Metodos, Arrays, POO, Herencia y excepciones, Colecciones y APIs, Almacenamiento de datos, Interfaces graficas Swing",
+  "subject": "Programacion",
+  "cards": [
+    {
+      "id": "java-t1-001",
+      "front": "Que es un algoritmo?",
+      "back": "Un algoritmo es un conjunto de instrucciones ordenadas y finitas que permiten resolver un problema.\n\nCaracteristicas:\n- Preciso: cada paso definido claramente\n- Ordenado: los pasos tienen un orden especifico\n- Finito: termina en un numero determinado de pasos",
+      "tags": [
+        "java",
+        "algoritmo",
+        "tema-1"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "java-t1-002",
+      "front": "Que es el pseudocodigo?",
+      "back": "Forma de representar algoritmos usando lenguaje cercano al humano con estructura de programacion.\n\nFormas de representar algoritmos:\n1. Pseudocodigo\n2. Diagramas de flujo (representacion grafica)\n3. Lenguaje de programacion (Java, Python...)",
+      "tags": [
+        "java",
+        "pseudocodigo",
+        "tema-1"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "java-t1-003",
+      "front": "Operadores relacionales: cuales son?",
+      "back": "Comparan dos valores. Resultado: boolean (true/false).\n\n>  Mayor que\n<  Menor que\n>= Mayor o igual\n<= Menor o igual\n== Igual a\n!= Distinto de",
+      "tags": [
+        "java",
+        "operadores",
+        "relacionales",
+        "tema-1"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "java-t1-004",
+      "front": "Operadores logicos: AND, OR, NOT",
+      "back": "AND (Y): true solo si ambas condiciones son true\nOR (O): true si al menos una es true\nNOT (NO): invierte el valor (true->false, false->true)",
+      "tags": [
+        "java",
+        "operadores",
+        "logicos",
+        "tema-1"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "java-t1-005",
+      "front": "Prioridad de operadores aritmeticos",
+      "back": "1. Parentesis ()\n2. Multiplicacion *, division /, modulo %\n3. Suma +, resta -\n\nEj: 2 + 3 * 4 = 2 + 12 = 14\n(2+3)*4 = 5*4 = 20\n17 % 5 = 2",
+      "tags": [
+        "java",
+        "aritmetica",
+        "prioridad",
+        "tema-1"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "java-t2-001",
+      "front": "Estructura basica de un programa Java",
+      "back": "public class NombreClase {\n    public static void main(String[] args) {\n        System.out.println(\"Hola Mundo\");\n    }\n}\n\n- El nombre de la clase debe coincidir con el nombre del archivo .java\n- main es el punto de entrada del programa\n- System.out.println() imprime texto en consola",
+      "tags": [
+        "java",
+        "estructura",
+        "main",
+        "tema-2"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "java-t2-002",
+      "front": "Tipos de datos primitivos en Java",
+      "back": "Enteros: byte (8 bits), short (16), int (32), long (64)\nDecimales: float (32), double (64)\nCaracter: char (16 bits, Unicode)\nBooleano: boolean (true/false)\n\nMas usados: int, double, boolean, char",
+      "tags": [
+        "java",
+        "tipos",
+        "primitivos",
+        "tema-2"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "java-t2-003",
+      "front": "Declaracion de variables en Java",
+      "back": "Tipo nombre = valor;\n\nint edad = 25;\ndouble precio = 19.99;\nboolean activo = true;\nchar letra = 'A';\nString saludo = \"Hola\";\n\nReglas:\n- Empezar con letra o _\n- Sin espacios\n- Case sensitive\n- No palabras reservadas",
+      "tags": [
+        "java",
+        "variables",
+        "declaracion",
+        "tema-2"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "java-t2-004",
+      "front": "Metodos de la clase String",
+      "back": "String s = \"Hola Mundo\";\n\ns.length() -> 10\ns.charAt(0) -> 'H'\ns.substring(0,4) -> \"Hola\"\ns.indexOf(\"Mun\") -> 5\ns.toUpperCase() -> \"HOLA MUNDO\"\ns.toLowerCase() -> \"hola mundo\"\ns.replace('o','x') -> \"Hxla Mundx\"\ns.trim() -> elimina espacios\ns.equals(\"hola\") -> false (compara contenido)\ns.equalsIgnoreCase(\"HOLA\") -> true\ns.contains(\"Mun\") -> true\ns.split(\" \") -> [\"Hola\", \"Mundo\"]\n\nUsa equals() para comparar Strings, no ==",
+      "tags": [
+        "java",
+        "string",
+        "metodos",
+        "tema-2"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t2-005",
+      "front": "Estructura if-else en Java",
+      "back": "if (condicion) {\n    // codigo si true\n} else if (otraCondicion) {\n    // codigo si otraCondicion true\n} else {\n    // codigo si todas falsas\n}\n\nEjemplo:\nif (nota >= 5) {\n    System.out.println(\"Aprobado\");\n} else {\n    System.out.println(\"Suspenso\");\n}",
+      "tags": [
+        "java",
+        "if",
+        "else",
+        "condicional",
+        "tema-2"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "java-t2-006",
+      "front": "Switch en Java",
+      "back": "switch (variable) {\n    case valor1:\n        // codigo\n        break;\n    case valor2:\n        // codigo\n        break;\n    default:\n        // codigo si ningun caso\n}\n\nSoporta: int, char, String (a partir de Java 7).\nUsa break para evitar fall-through.",
+      "tags": [
+        "java",
+        "switch",
+        "condicional",
+        "tema-2"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t2-007",
+      "front": "Bucle while y do-while en Java",
+      "back": "while (condicion) {\n    // codigo mientras condicion sea true\n    // Puede ejecutarse 0 veces\n}\n\ndo {\n    // codigo se ejecuta al menos 1 vez\n} while (condicion);\n\nDiferencia: do-while ejecuta el bloque al menos una vez, while puede ejecutarse 0 veces.",
+      "tags": [
+        "java",
+        "while",
+        "do-while",
+        "bucles",
+        "tema-2"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "java-t2-008",
+      "front": "Bucle for en Java",
+      "back": "for (inicializacion; condicion; incremento) {\n    // codigo\n}\n\nEjemplo:\nfor (int i = 0; i < 10; i++) {\n    System.out.println(i);\n}\n\nPartes:\n1. Inicializacion: se ejecuta 1 vez al inicio\n2. Condicion: se evalua antes de cada iteracion\n3. Incremento: se ejecuta al final de cada iteracion",
+      "tags": [
+        "java",
+        "for",
+        "bucle",
+        "tema-2"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "java-t2-009",
+      "front": "Break y continue en bucles",
+      "back": "break: sale del bucle por completo\ncontinue: salta a la siguiente iteracion\n\nfor (int i = 0; i < 10; i++) {\n    if (i == 5) break;    // sale en i=5\n    if (i == 2) continue;  // salta i=2\n    System.out.println(i); // 0,1,3,4\n}",
+      "tags": [
+        "java",
+        "break",
+        "continue",
+        "bucles",
+        "tema-2"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t2-010",
+      "front": "Casting y parseo en Java",
+      "back": "Casting implicito (automatico): int -> double\nCasting explicito: (tipo) variable\n\nint a = 5;\ndouble b = a;           // implicito: 5.0\nint c = (int) 5.7;      // explicito: 5 (trunca)\n\nParseo de String a numero:\nint n = Integer.parseInt(\"123\");\ndouble d = Double.parseDouble(\"3.14\");\n\nDe numero a String:\nString s = String.valueOf(123);",
+      "tags": [
+        "java",
+        "casting",
+        "parse",
+        "conversion",
+        "tema-2"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t2-011",
+      "front": "Scanner: leer entrada del usuario",
+      "back": "import java.util.Scanner;\n\nScanner sc = new Scanner(System.in);\nString texto = sc.nextLine();   // leer String\nint num = sc.nextInt();         // leer int\ndouble d = sc.nextDouble();     // leer double\n\nSiempre cerrar el Scanner al final:\nsc.close();",
+      "tags": [
+        "java",
+        "scanner",
+        "entrada",
+        "tema-2"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "java-t2-012",
+      "front": "Operador ternario en Java",
+      "back": "condicion ? valor_true : valor_false\n\nEjemplo:\nint edad = 18;\nString mensaje = (edad >= 18) ? \"Mayor\" : \"Menor\";\n\nEquivalente a:\nif (edad >= 18) {\n    mensaje = \"Mayor\";\n} else {\n    mensaje = \"Menor\";\n}",
+      "tags": [
+        "java",
+        "ternario",
+        "operador",
+        "tema-2"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "java-t3-001",
+      "front": "Sintaxis de un metodo en Java",
+      "back": "[modificador] [tipo_retorno] nombre([parametros]) {\n    // cuerpo\n    return valor;\n}\n\nEjemplo:\nstatic int suma(int a, int b) {\n    return a + b;\n}\n\n- void si no devuelve nada\n- static para metodo de clase (sin instanciar)",
+      "tags": [
+        "java",
+        "metodos",
+        "sintaxis",
+        "tema-3"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "java-t3-002",
+      "front": "Paso por valor en Java",
+      "back": "En Java, los argumentos se pasan SIEMPRE por valor (se copia el valor).\n\nModificar el parametro NO afecta al original.\n\nstatic void incrementar(int x) {\n    x = x + 1;  // solo cambia la copia\n}\nint a = 5;\nincrementar(a);\nSystem.out.println(a);  // 5 (NO cambio)\n\nCon objetos: se copia la referencia, el objeto SI puede modificarse.",
+      "tags": [
+        "java",
+        "paso-por-valor",
+        "parametros",
+        "tema-3"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t3-003",
+      "front": "Variables locales vs globales",
+      "back": "LOCALES: dentro de metodos. Solo existen en ese ambito. Deben inicializarse.\nGLOBALES: fuera de metodos, dentro de la clase. Tienen valor por defecto.\n\nclass Ejemplo {\n    static int global = 10;  // global\n    static void metodo() {\n        int local = 5;       // local\n        System.out.println(global + local);\n    }\n}",
+      "tags": [
+        "java",
+        "variables",
+        "locales",
+        "globales",
+        "scope",
+        "tema-3"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t3-004",
+      "front": "Sobrecarga de metodos (overloading)",
+      "back": "Multiples metodos con MISMO nombre pero DIFERENTES parametros.\n\nJava diferencia por: numero, tipo y orden de parametros.\nNO diferencia por tipo de retorno.\n\nstatic int suma(int a, int b) { return a+b; }\nstatic double suma(double a, double b) { return a+b; }\nstatic int suma(int a, int b, int c) { return a+b+c; }",
+      "tags": [
+        "java",
+        "sobrecarga",
+        "overloading",
+        "tema-3"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t3-005",
+      "front": "Factorial recursivo en Java",
+      "back": "static int factorial(int n) {\n    if (n == 0) return 1;           // Caso base\n    return n * factorial(n - 1);     // Caso general\n}\n\nTraza fact(4):\n4 * fact(3) = 4 * 3 * fact(2)\n= 4 * 3 * 2 * fact(1)\n= 4 * 3 * 2 * 1 * fact(0)\n= 4 * 3 * 2 * 1 * 1 = 24",
+      "tags": [
+        "java",
+        "recursividad",
+        "factorial",
+        "tema-3"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t3-006",
+      "front": "Fibonacci recursivo",
+      "back": "static int fibonacci(int n) {\n    if (n <= 1) return n;\n    return fibonacci(n-1) + fibonacci(n-2);\n}\n\nfib(4) = fib(3)+fib(2) = 2+1 = 3\n\nComplejidad O(2^n) - muy ineficiente.\n\nIterativa (eficiente):\nstatic int fibonacciIt(int n) {\n    if (n <= 1) return n;\n    int a=0, b=1;\n    for (int i=2; i<=n; i++) { b=a+b; a=b-a; }\n    return b;\n}",
+      "tags": [
+        "java",
+        "recursividad",
+        "fibonacci",
+        "tema-3"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "java-t3-007",
+      "front": "Busqueda binaria recursiva",
+      "back": "Busca en array ORDENADO dividiendo por la mitad.\n\nstatic boolean busquedaBinaria(int[] nums, int buscado, int inf, int sup) {\n    if (inf > sup) return false;\n    int mitad = (inf+sup)/2;\n    if (nums[mitad] < buscado)\n        return busquedaBinaria(nums, buscado, mitad+1, sup);\n    else if (nums[mitad] > buscado)\n        return busquedaBinaria(nums, buscado, inf, mitad-1);\n    else return true;\n}\n\nRequisito: array ORDENADO. Complejidad: O(log n).",
+      "tags": [
+        "java",
+        "busqueda-binaria",
+        "recursividad",
+        "tema-3"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "java-t4-001",
+      "front": "Declaracion de arrays en Java",
+      "back": "int[] numeros = new int[5];       // {0,0,0,0,0}\nint[] numeros2 = {1,2,3,4,5};     // con valores\nint numeros3[] = new int[5];       // otra sintaxis\n\nAcceso:\nnumeros[0] = 10;       // primer elemento\nint x = numeros[2];    // leer tercer elemento\n\nPropiedad:\nnumeros.length  // tamano del array (5)",
+      "tags": [
+        "java",
+        "arrays",
+        "declaracion",
+        "tema-4"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "java-t4-002",
+      "front": "For-each en Java",
+      "back": "for (tipo variable : array) {\n    // usar variable\n}\n\nint[] nums = {10,20,30};\nfor (int n : nums) {\n    System.out.println(n);\n}\n\nSolo LECTURA: no se pueden modificar elementos.\nNo se tiene acceso al indice.",
+      "tags": [
+        "java",
+        "arrays",
+        "for-each",
+        "foreach",
+        "tema-4"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "java-t4-003",
+      "front": "Matrices (arrays bidimensionales)",
+      "back": "int[][] matriz = new int[3][4];  // 3 filas, 4 columnas\nint[][] matriz2 = {{1,2},{3,4},{5,6}};\n\nAcceso:\nmatriz[0][0] = 5;     // fila 0, columna 0\nint x = matriz[1][2]; // fila 1, columna 2\n\nRecorrido:\nfor (int i=0; i<matriz.length; i++) {\n    for (int j=0; j<matriz[i].length; j++) {\n        System.out.print(matriz[i][j]);\n    }\n}",
+      "tags": [
+        "java",
+        "matrices",
+        "arrays-2d",
+        "tema-4"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t4-004",
+      "front": "Matrices irregulares en Java",
+      "back": "Cada fila puede tener un numero diferente de columnas.\n\nint[][] irregular = new int[3][];\nirregular[0] = new int[2];  // fila 0: 2 cols\nirregular[1] = new int[4];  // fila 1: 4 cols\nirregular[2] = new int[3];  // fila 2: 3 cols\n\nO directamente:\nint[][] irr = {{1,2}, {3,4,5,6}, {7,8,9}};",
+      "tags": [
+        "java",
+        "matrices",
+        "irregulares",
+        "tema-4"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t4-005",
+      "front": "Algoritmo de la burbuja (Bubble Sort)",
+      "back": "Compara pares adyacentes e intercambia si estan en orden incorrecto.\n\nstatic int[] burbuja(int[] vector) {\n    for (int i = 0; i < vector.length; i++) {\n        for (int j = 0; j < vector.length-i-1; j++) {\n            if (vector[j] > vector[j+1]) {\n                int aux = vector[j];\n                vector[j] = vector[j+1];\n                vector[j+1] = aux;\n            }\n        }\n    }\n    return vector;\n}\n\nComplejidad: O(n^2).",
+      "tags": [
+        "java",
+        "ordenacion",
+        "burbuja",
+        "tema-4"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t4-006",
+      "front": "Algoritmo Quicksort",
+      "back": "Algoritmo de ordenacion mas rapido (divide y venceras).\n\nstatic void quicksort(int[] arr, int izq, int der) {\n    int pivote = arr[izq];\n    int i=izq, j=der, aux;\n    while (i < j) {\n        while (arr[i] <= pivote && i < j) i++;\n        while (arr[j] > pivote) j--;\n        if (i < j) { aux=arr[i]; arr[i]=arr[j]; arr[j]=aux; }\n    }\n    arr[izq] = arr[j];\n    arr[j] = pivote;\n    if (izq < j-1) quicksort(arr, izq, j-1);\n    if (j+1 < der) quicksort(arr, j+1, der);\n}\n\nComplejidad: O(n log n) promedio.",
+      "tags": [
+        "java",
+        "ordenacion",
+        "quicksort",
+        "tema-4"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "java-t4-007",
+      "front": "Varargs en Java",
+      "back": "Permite pasar un numero variable de argumentos a un metodo.\n\nstatic void mostrar(String... palabras) {\n    for (String p : palabras) {\n        System.out.println(p);\n    }\n}\n\nmostrar(\"Hola\");\nmostrar(\"Hola\", \"Mundo\", \"Java\");\n\nSintaxis: tipo... nombre\nSolo puede haber UN varargs y debe ser el ULTIMO parametro.",
+      "tags": [
+        "java",
+        "varargs",
+        "argumentos-variables",
+        "tema-4"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t5-001",
+      "front": "Clase y objeto en Java",
+      "back": "CLASE: plantilla que define atributos y metodos.\nOBJETO: instancia de una clase (ejemplar concreto).\n\nclass Persona {\n    String nombre;\n    int edad;\n\n    void saludar() {\n        System.out.println(\"Hola, soy \" + nombre);\n    }\n}\n\n// Crear objeto\nPersona p = new Persona();\np.nombre = \"Pablo\";\np.saludar();",
+      "tags": [
+        "java",
+        "poo",
+        "clase",
+        "objeto",
+        "tema-5"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "java-t5-002",
+      "front": "Constructor en Java",
+      "back": "Metodo especial que se ejecuta al crear un objeto con new.\n\nclass Persona {\n    String nombre;\n\n    Persona() {                          // Constructor por defecto\n        this.nombre = \"Desconocido\";\n    }\n\n    Persona(String nombre) {            // Constructor con parametros\n        this.nombre = nombre;\n    }\n}\n\nPersona p1 = new Persona();            // \"Desconocido\"\nPersona p2 = new Persona(\"Pablo\");     // \"Pablo\"\n\n- Mismo nombre que la clase\n- No tiene tipo de retorno (ni void)\n- Puede haber sobrecarga de constructores",
+      "tags": [
+        "java",
+        "poo",
+        "constructor",
+        "tema-5"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t5-003",
+      "front": "Getters y Setters (encapsulacion)",
+      "back": "Atributos private, acceso mediante metodos publicos.\n\nclass Persona {\n    private int edad;\n\n    public int getEdad() {\n        return edad;\n    }\n\n    public void setEdad(int edad) {\n        if (edad >= 0) {  // validacion\n            this.edad = edad;\n        }\n    }\n}\n\nBeneficios: control de acceso, validacion, flexibilidad.",
+      "tags": [
+        "java",
+        "poo",
+        "getters",
+        "setters",
+        "encapsulacion",
+        "tema-5"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t5-004",
+      "front": "Metodos static en Java",
+      "back": "Pertenece a la CLASE, no a las instancias. Se invoca con NombreClase.metodo().\n\nclass MathUtil {\n    static int suma(int a, int b) {\n        return a + b;\n    }\n}\n\nint r = MathUtil.suma(5, 3);  // Sin crear objeto\n\n- No puede acceder a atributos de instancia (no-static)\n- Se usa para utilidades, constantes, factory methods\n- main() es static",
+      "tags": [
+        "java",
+        "static",
+        "metodos-estaticos",
+        "tema-5"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t5-005",
+      "front": "Paso por valor vs referencia en objetos",
+      "back": "Tipos primitivos: se pasa COPIA del valor (no se modifica el original).\nObjetos: se pasa COPIA de la REFERENCIA (el objeto SI puede modificarse).\n\nstatic void cambiar(int[] arr) {\n    arr[0] = 99;  // Modifica el objeto original\n}\n\nint[] nums = {1,2,3};\ncambiar(nums);\nSystem.out.println(nums[0]);  // 99 (cambio)\n\nString es INMUTABLE: cualquier cambio crea un nuevo objeto.",
+      "tags": [
+        "java",
+        "poo",
+        "valor",
+        "referencia",
+        "tema-5"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t5-006",
+      "front": "Objetos inmutables en Java",
+      "back": "Un objeto inmutable NO puede modificarse una vez creado.\n\nCaracteristicas:\n- Todos los atributos son final y private\n- No tiene setters\n- Los metodos no modifican el estado\n- Si necesita cambios, devuelve un nuevo objeto\n\nEjemplo: String es inmutable.\ns = s.toUpperCase();  // Crea NUEVO String, no modifica el original\n\nVentajas: seguros para hilos, simples, sin efectos secundarios.",
+      "tags": [
+        "java",
+        "poo",
+        "inmutable",
+        "tema-5"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t5-007",
+      "front": "ArrayList en Java",
+      "back": "import java.util.ArrayList;\n\nArrayList<String> lista = new ArrayList<>();\nlista.add(\"Hola\");           // anadir\nlista.add(0, \"Primero\");     // insertar en posicion\nlista.get(0);                 // obtener\nlista.set(0, \"Nuevo\");       // modificar\nlista.remove(0);              // eliminar por indice\nlista.size();                 // tamano\nlista.contains(\"Hola\");      // contiene?\nlista.clear();                // vaciar\n\nArrayList: tamano DINAMICO (crece/se reduce).",
+      "tags": [
+        "java",
+        "arraylist",
+        "colecciones",
+        "tema-5"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t6-001",
+      "front": "Herencia en Java (extends)",
+      "back": "Una clase HIJA hereda atributos y metodos de una clase PADRE.\n\nclass Animal {\n    void comer() { System.out.println(\"Come\"); }\n}\n\nclass Perro extends Animal {\n    void ladrar() { System.out.println(\"Guau\"); }\n}\n\nPerro p = new Perro();\np.comer();   // heredado\np.ladrar();  // propio\n\n- Usa extends\n- Herencia simple (una sola clase padre)\n- private no se hereda\n- super para acceder al padre",
+      "tags": [
+        "java",
+        "herencia",
+        "extends",
+        "poo",
+        "tema-6"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t6-002",
+      "front": "Super en Java",
+      "back": "super se usa para acceder a miembros de la clase PADRE.\n\nclass Estudiante extends Persona {\n    String curso;\n\n    Estudiante(String nombre, String curso) {\n        super(nombre);  // llama al constructor del padre\n        this.curso = curso;\n    }\n\n    void mostrar() {\n        super.mostrar();  // llama al metodo del padre\n        System.out.println(\"Curso: \" + curso);\n    }\n}\n\nUsos:\n- super() llamar constructor del padre\n- super.metodo() llamar metodo sobreescrito\n- super.atributo acceder a atributo del padre",
+      "tags": [
+        "java",
+        "herencia",
+        "super",
+        "poo",
+        "tema-6"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t6-003",
+      "front": "Override (sobrescritura de metodos)",
+      "back": "Re definir un metodo heredado en la clase hija.\n\nclass Animal {\n    void sonido() { System.out.println(\"...\"); }\n}\n\nclass Perro extends Animal {\n    @Override\n    void sonido() { System.out.println(\"Guau\"); }\n}\n\nReglas:\n- Misma firma (nombre + parametros)\n- Mismo tipo de retorno o covariante\n- @Override es opcional pero recomendado\n- No puede ser menos accesible que el padre",
+      "tags": [
+        "java",
+        "override",
+        "sobrescritura",
+        "polimorfismo",
+        "tema-6"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t6-004",
+      "front": "Clases abstractas en Java",
+      "back": "Clase que NO se puede instanciar directamente. Puede tener metodos abstractos (sin cuerpo).\n\nabstract class Figura {\n    abstract double area();  // sin cuerpo\n    \n    void mostrar() {\n        System.out.println(\"Area: \" + area());\n    }\n}\n\nclass Circulo extends Figura {\n    double area() { return Math.PI * radio * radio; }\n}\n\n- Las hijas DEBEN implementar los metodos abstractos\n- Sirve como plantilla/contrato",
+      "tags": [
+        "java",
+        "abstracta",
+        "clase-abstracta",
+        "poo",
+        "tema-6"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "java-t6-005",
+      "front": "Tipos enumerados (enum) en Java",
+      "back": "Tipo especial que define un conjunto fijo de constantes.\n\nenum DiaSemana {\n    LUNES, MARTES, MIERCOLES, JUEVES, VIERNES, SABADO, DOMINGO\n}\n\nDiaSemana hoy = DiaSemana.LUNES;\n\nswitch (hoy) {\n    case LUNES: System.out.println(\"Laboral\"); break;\n    case SABADO:\n    case DOMINGO: System.out.println(\"Finde\"); break;\n}\n\nMetodos: values(), valueOf(), ordinal()",
+      "tags": [
+        "java",
+        "enum",
+        "enumerados",
+        "tema-6"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t6-006",
+      "front": "Try-catch para manejar excepciones",
+      "back": "try {\n    // codigo que puede lanzar excepcion\n    int r = 10 / 0;\n} catch (ArithmeticException e) {\n    System.out.println(\"Error: \" + e.getMessage());\n} catch (Exception e) {\n    System.out.println(\"Error general\");\n} finally {\n    System.out.println(\"Siempre se ejecuta\");\n}\n\n- try: codigo peligroso\n- catch: manejar la excepcion (puede haber varios)\n- finally: se ejecuta siempre (opcional)\n- Orden: de mas especifico a mas general",
+      "tags": [
+        "java",
+        "excepciones",
+        "try",
+        "catch",
+        "finally",
+        "tema-6"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t6-007",
+      "front": "Excepciones verificadas vs no verificadas",
+      "back": "VERIFICADAS (checked):\n- El compilador OBLIGA a manejarlas (try-catch o throws)\n- Ej: IOException, FileNotFoundException\n\nNO VERIFICADAS (unchecked):\n- Heredan de RuntimeException\n- No es obligatorio manejarlas\n- Ej: ArithmeticException, NullPointerException, ArrayIndexOutOfBoundsException\n\nthrows: declara que un metodo puede lanzar una excepcion:\nstatic void leerArchivo() throws IOException {\n    FileReader f = new FileReader(\"archivo.txt\");\n}",
+      "tags": [
+        "java",
+        "excepciones",
+        "checked",
+        "unchecked",
+        "throws",
+        "tema-6"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "java-t6-008",
+      "front": "Excepciones personalizadas",
+      "back": "Crear tu propia clase de excepcion.\n\nclass MiExcepcion extends Exception {\n    public MiExcepcion(String mensaje) {\n        super(mensaje);\n    }\n}\n\n// Usarla\nvoid metodo() throws MiExcepcion {\n    if (error) {\n        throw new MiExcepcion(\"Algo salio mal\");\n    }\n}\n\n- extends Exception -> verificada\n- extends RuntimeException -> no verificada\n- Usar throw para lanzarla",
+      "tags": [
+        "java",
+        "excepciones",
+        "personalizadas",
+        "throw",
+        "tema-6"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "java-t7-001",
+      "front": "Iterator en Java",
+      "back": "Permite recorrer y eliminar elementos de una coleccion.\n\nArrayList<String> list = new ArrayList<>();\nlist.add(\"A\"); list.add(\"B\"); list.add(\"C\");\n\nIterator<String> it = list.iterator();\nwhile (it.hasNext()) {\n    String s = it.next();\n    if (s.equals(\"B\")) it.remove();  // eliminar seguro\n}\n\n- hasNext(): hay mas elementos?\n- next(): obtener siguiente\n- remove(): eliminar el ultimo devuelto por next()",
+      "tags": [
+        "java",
+        "iterator",
+        "colecciones",
+        "tema-7"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t7-002",
+      "front": "HashSet en Java",
+      "back": "Coleccion SIN duplicados y SIN orden.\n\nimport java.util.HashSet;\n\nHashSet<String> set = new HashSet<>();\nset.add(\"A\");\nset.add(\"B\");\nset.add(\"A\");  // No se anade (duplicado)\nset.contains(\"A\");  // true\nset.remove(\"A\");\nset.size();  // 1\n\n- No permite duplicados\n- No garantiza orden\n- Rapido para busquedas (O(1))",
+      "tags": [
+        "java",
+        "hashset",
+        "colecciones",
+        "tema-7"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t7-003",
+      "front": "HashMap en Java (clave-valor)",
+      "back": "Almacena pares clave-valor. Claves unicas.\n\nimport java.util.HashMap;\nimport java.util.Map;\n\nMap<String, Integer> edades = new HashMap<>();\nedades.put(\"Pablo\", 30);\nedades.put(\"Ana\", 25);\nedades.get(\"Pablo\");         // 30\nedades.getOrDefault(\"Luis\", 0);  // 0\nedades.containsKey(\"Ana\");   // true\nedades.keySet();              // todas las claves\nedades.values();              // todos los valores\n\nfor (Map.Entry<String, Integer> e : edades.entrySet()) {\n    System.out.println(e.getKey() + \": \" + e.getValue());\n}",
+      "tags": [
+        "java",
+        "hashmap",
+        "map",
+        "colecciones",
+        "tema-7"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t7-004",
+      "front": "TreeMap vs HashMap",
+      "back": "HashMap: sin orden, O(1) en operaciones basicas.\nTreeMap: ordenado por clave, O(log n).\n\nTreeMap<Integer, String> tm = new TreeMap<>();\ntm.put(3, \"Tres\");\ntm.put(1, \"Uno\");\ntm.put(2, \"Dos\");\n// Orden: 1->Uno, 2->Dos, 3->Tres\n\nMetodos adicionales de TreeMap:\nfirstKey(), lastKey(), higherKey(), lowerKey()\nsubMap(from, to), headMap(to), tailMap(from)",
+      "tags": [
+        "java",
+        "treemap",
+        "hashmap",
+        "map",
+        "colecciones",
+        "tema-7"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "java-t7-005",
+      "front": "TreeSet en Java",
+      "back": "HashSet pero ordenado (TreeSet ordena automaticamente).\n\nTreeSet<Integer> ts = new TreeSet<>();\nts.add(5); ts.add(1); ts.add(3);\n// Contiene: 1, 3, 5 (ordenado)\n\nMetodos:\nfirst(): menor elemento\nlast(): mayor elemento\nhigher(x): primer elemento > x\nlower(x): primer elemento < x\nsubSet(a,b): elementos entre a y b",
+      "tags": [
+        "java",
+        "treeset",
+        "set",
+        "colecciones",
+        "tema-7"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "java-t7-006",
+      "front": "Comparator y Comparable en Java",
+      "back": "Comparable: orden NATURAL de una clase (implementa compareTo).\nComparator: orden ALTERNATIVO (clase separada).\n\n// Comparable\nclass Alumno implements Comparable<Alumno> {\n    int nia;\n    public int compareTo(Alumno o) { return this.nia - o.nia; }\n}\n\n// Comparator\nclass PorEdad implements Comparator<Alumno> {\n    public int compare(Alumno a, Alumno b) { return a.edad - b.edad; }\n}\n\nCollections.sort(lista);                   // usa Comparable\nCollections.sort(lista, new PorEdad());    // usa Comparator",
+      "tags": [
+        "java",
+        "comparable",
+        "comparator",
+        "ordenacion",
+        "tema-7"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "java-t7-007",
+      "front": "Streams y lambda en Java",
+      "back": "Programacion funcional con streams.\n\nList<Integer> nums = Arrays.asList(1,2,3,4,5,6);\n\n// Filtrar pares y multiplicar por 2\nnums.stream()\n    .filter(n -> n % 2 == 0)     // lambda: n -> expresion\n    .map(n -> n * 2)\n    .forEach(System.out::println);  // method reference\n\nOperaciones:\nfilter, map, reduce, collect, sorted, distinct, limit, count\n\nMetodos terminales: forEach, collect, count, reduce\nMetodos intermedios: filter, map, sorted, distinct, limit",
+      "tags": [
+        "java",
+        "streams",
+        "lambda",
+        "funcional",
+        "tema-7"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "java-t8-001",
+      "front": "Leer archivo de texto en Java",
+      "back": "import java.io.*;\n\n// Con FileReader y BufferedReader\nBufferedReader br = new BufferedReader(new FileReader(\"archivo.txt\"));\nString linea;\nwhile ((linea = br.readLine()) != null) {\n    System.out.println(linea);\n}\nbr.close();\n\n// Con try-with-resources (auto-close)\ntry (BufferedReader br = new BufferedReader(new FileReader(\"archivo.txt\"))) {\n    br.lines().forEach(System.out::println);\n} catch (IOException e) {\n    e.printStackTrace();\n}",
+      "tags": [
+        "java",
+        "ficheros",
+        "lectura",
+        "bufferedreader",
+        "tema-8"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t8-002",
+      "front": "Escribir archivo de texto en Java",
+      "back": "import java.io.*;\n\n// Con FileWriter y BufferedWriter\nBufferedWriter bw = new BufferedWriter(new FileWriter(\"salida.txt\"));\nbw.write(\"Linea 1\");\nbw.newLine();\nbw.write(\"Linea 2\");\nbw.close();\n\n// Modo append (anadir al final)\nBufferedWriter bw2 = new BufferedWriter(new FileWriter(\"salida.txt\", true));\n\n// try-with-resources\ntry (BufferedWriter bw = new BufferedWriter(new FileWriter(\"salida.txt\"))) {\n    bw.write(\"Hola Mundo\");\n} catch (IOException e) {\n    e.printStackTrace();\n}",
+      "tags": [
+        "java",
+        "ficheros",
+        "escritura",
+        "bufferedwriter",
+        "tema-8"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t8-003",
+      "front": "Conectar a MySQL desde Java (JDBC)",
+      "back": "import java.sql.*;\n\nString url = \"jdbc:mysql://localhost:3306/mibd\";\nString user = \"root\";\nString pass = \"\";\n\ntry (Connection conn = DriverManager.getConnection(url, user, pass);\n     Statement stmt = conn.createStatement()) {\n\n    // Consulta\n    ResultSet rs = stmt.executeQuery(\"SELECT * FROM alumnos\");\n    while (rs.next()) {\n        System.out.println(rs.getString(\"nombre\"));\n    }\n\n    // Insercion\n    int filas = stmt.executeUpdate(\"INSERT INTO alumnos VALUES ('Pablo')\");\n\n} catch (SQLException e) {\n    e.printStackTrace();\n}\n\nUsar PreparedStatement para evitar SQL injection.",
+      "tags": [
+        "java",
+        "mysql",
+        "jdbc",
+        "bbdd",
+        "tema-8"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "java-t8-004",
+      "front": "PreparedStatement en JDBC",
+      "back": "Evita SQL injection y es mas eficiente.\n\nString sql = \"INSERT INTO usuarios (nombre, edad) VALUES (?, ?)\";\n\ntry (PreparedStatement ps = conn.prepareStatement(sql)) {\n    ps.setString(1, \"Pablo\");   // primer ?\n    ps.setInt(2, 30);           // segundo ?\n    ps.executeUpdate();\n}\n\nVentajas:\n- Parametrizado: evita inyeccion SQL\n- Reutilizable\n- Mas legible\n- Mejor rendimiento si se ejecuta varias veces",
+      "tags": [
+        "java",
+        "mysql",
+        "preparedstatement",
+        "jdbc",
+        "tema-8"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "java-t9-001",
+      "front": "Crear ventana basica con JFrame",
+      "back": "import javax.swing.*;\nimport java.awt.*;\n\nJFrame ventana = new JFrame(\"Mi Ventana\");\nventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);\nventana.setSize(400, 300);\nventana.setVisible(true);\n\nMetodos utiles:\n- setTitle(\"Titulo\")\n- setSize(ancho, alto)\n- setLocationRelativeTo(null)  // centrar en pantalla\n- setResizable(false)\n- setLayout(new BorderLayout())\n- setVisible(true)\n- setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE)\n- pack()  // ajustar tamano al contenido",
+      "tags": [
+        "java",
+        "swing",
+        "jframe",
+        "ventana",
+        "tema-9"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "java-t9-002",
+      "front": "JLabel, JButton y JTextField en Swing",
+      "back": "JLabel: texto estatico\nJLabel etiqueta = new JLabel(\"Nombre:\", SwingConstants.CENTER);\n\nJButton: boton clickable\nJButton boton = new JButton(\"Saludar\");\nboton.addActionListener(e -> System.out.println(\"Hola!\"));\n\nJTextField: campo de texto\nJTextField campo = new JTextField(20);  // 20 columnas\ncampo.getText();   // obtener texto\ncampo.setText(\"\"); // limpiar\n\nJPanel: contenedor para agrupar componentes\nJPanel panel = new JPanel();\npanel.add(etiqueta);\npanel.add(campo);\npanel.add(boton);\n\nventana.add(panel);",
+      "tags": [
+        "java",
+        "swing",
+        "jlabel",
+        "jbutton",
+        "jtextfield",
+        "tema-9"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t9-003",
+      "front": "Layouts en Swing (BorderLayout)",
+      "back": "BorderLayout divide en 5 regiones.\n\nventana.setLayout(new BorderLayout());\nventana.add(new JButton(\"Norte\"), BorderLayout.NORTH);\nventana.add(new JButton(\"Sur\"), BorderLayout.SOUTH);\nventana.add(new JButton(\"Centro\"), BorderLayout.CENTER);\nventana.add(new JButton(\"Este\"), BorderLayout.EAST);\nventana.add(new JButton(\"Oeste\"), BorderLayout.WEST);\n\nOtros layouts:\n- FlowLayout: orden de izquierda a derecha\n- GridLayout: tabla de filas x columnas\n- BoxLayout: una fila o columna\n\nJPanel usa FlowLayout por defecto.",
+      "tags": [
+        "java",
+        "swing",
+        "layout",
+        "borderlayout",
+        "tema-9"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t9-004",
+      "front": "Eventos en Swing (ActionListener)",
+      "back": "Para responder a acciones del usuario.\n\n// Con lambda (Java 8+)\nboton.addActionListener(e -> {\n    System.out.println(\"Clickeado!\");\n});\n\n// Con clase anonima\nboton.addActionListener(new ActionListener() {\n    public void actionPerformed(ActionEvent e) {\n        System.out.println(\"Clickeado!\");\n    }\n});\n\nOtros listeners:\n- MouseListener (click, enter, exit)\n- KeyListener (teclas)\n- WindowListener (cerrar, minimizar)",
+      "tags": [
+        "java",
+        "swing",
+        "eventos",
+        "actionlistener",
+        "tema-9"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t9-005",
+      "front": "JOptionPane: dialogos en Swing",
+      "back": "Mensajes y entrada de datos rapidos.\n\n// Mensaje informativo\nJOptionPane.showMessageDialog(null, \"Operacion completada\");\n\n// Mensaje de error\nJOptionPane.showMessageDialog(null, \"Error!\", \"Error\", JOptionPane.ERROR_MESSAGE);\n\n// Confirmacion\nint r = JOptionPane.showConfirmDialog(null, \"Seguro?\");\n// r: YES_OPTION(0), NO_OPTION(1), CANCEL_OPTION(2)\n\n// Entrada de texto\nString nombre = JOptionPane.showInputDialog(\"Como te llamas?\");\n\n// Seleccion de opciones\nString[] opciones = {\"Rojo\", \"Verde\", \"Azul\"};\nString elegido = (String) JOptionPane.showInputDialog(null, \"Elige:\", \"Color\",\n    JOptionPane.QUESTION_MESSAGE, null, opciones, opciones[0]);",
+      "tags": [
+        "java",
+        "swing",
+        "joptionpane",
+        "dialogos",
+        "tema-9"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t9-006",
+      "front": "Dibujar figuras con Graphics en Swing",
+      "back": "Sobrescribir paintComponent de JPanel.\n\nclass PanelDibujo extends JPanel {\n    @Override\n    protected void paintComponent(Graphics g) {\n        super.paintComponent(g);\n        g.setColor(Color.RED);\n        g.fillRect(50, 50, 100, 80);     // rectangulo\n        g.setColor(Color.BLUE);\n        g.fillOval(200, 50, 80, 80);      // circulo\n        g.setColor(Color.GREEN);\n        g.drawLine(0, 0, 400, 300);       // linea\n        g.setColor(Color.BLACK);\n        g.drawString(\"Hola\", 150, 200);   // texto\n    }\n}\n\n// En el main\nventana.add(new PanelDibujo());\n\nMetodos: drawRect, fillRect, drawOval, fillOval, drawLine, drawString, setColor, setFont",
+      "tags": [
+        "java",
+        "swing",
+        "graphics",
+        "dibujo",
+        "tema-9"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "java-t9-007",
+      "front": "JFileChooser: selector de archivos",
+      "back": "import javax.swing.JFileChooser;\n\nJFileChooser fc = new JFileChooser();\nfc.setDialogTitle(\"Abrir archivo\");\n\nint resultado = fc.showOpenDialog(null);\nif (resultado == JFileChooser.APPROVE_OPTION) {\n    java.io.File archivo = fc.getSelectedFile();\n    System.out.println(\"Seleccionado: \" + archivo.getPath());\n}\n\nFiltros:\nimport javax.swing.filechooser.FileNameExtensionFilter;\nfc.setFileFilter(new FileNameExtensionFilter(\"Imagenes\", \"jpg\", \"png\"));\n\nTipos: showOpenDialog, showSaveDialog, showDialog",
+      "tags": [
+        "java",
+        "swing",
+        "jfilechooser",
+        "archivos",
+        "tema-9"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t1-006",
+      "front": "Compiladores vs Interpretes: diferencias",
+      "back": "COMPILADOR:\n- Traduce TODO el codigo a lenguaje maquina ANTES de ejecutar.\n- Genera un archivo ejecutable (.exe, .class).\n- Ejemplos: Java, C, C++.\n- Pasos: Edicion -> Compilacion -> Ejecucion.\n- Mas rapido en ejecucion.\n\nINTERPRETE:\n- Traduce y ejecuta INSTRUCCION POR INSTRUCCION.\n- No genera archivo ejecutable.\n- Ejemplos: JavaScript, Python.\n- Pasos: Edicion -> Interpretacion.\n- Mas lento en ejecucion.\n\nJava usa ambos: compila a bytecode (.class) y la JVM lo interpreta.",
+      "tags": [
+        "java",
+        "compilador",
+        "interprete",
+        "tema-1"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "java-t1-007",
+      "front": "Lenguajes de alto nivel vs bajo nivel",
+      "back": "BAJO NIVEL:\n- Proximos al lenguaje maquina (binario).\n- Dependientes del hardware.\n- Dificiles de leer/escribir.\n- Ej: Lenguaje maquina, Ensamblador.\n\nALTO NIVEL:\n- Proximos al lenguaje humano.\n- Independientes del hardware.\n- Mas faciles de leer/escribir.\n- Usan palabras en ingles (if, while, class).\n- Ej: Java, Python, JavaScript, C++.\n\nJava es un lenguaje de ALTO NIVEL.",
+      "tags": [
+        "java",
+        "lenguajes",
+        "nivel",
+        "tema-1"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "java-t1-008",
+      "front": "Diagramas de flujo: simbolos basicos",
+      "back": "Los diagramas de flujo (ordinogramas) representan algoritmos graficamente.\n\nSIMBOLOS PRINCIPALES:\n- Ovalo / Elipse: INICIO / FIN\n- Paralelogramo: ENTRADA / SALIDA de datos (leer, escribir)\n- Rombo: DECISION / CONDICION (if)\n- Rectangulo: PROCESO / ACCION (asignacion, operacion)\n- Flecha: FLUJO / DIRECCION\n- Circulo: CONECTOR (dentro de la misma pagina)\n\nCada figura tiene un significado estandar y facilita entender la logica del algoritmo sin leer codigo.",
+      "tags": [
+        "java",
+        "diagramas-flujo",
+        "ordinogramas",
+        "simbolos",
+        "tema-1"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "java-t7-008",
+      "front": "Estructuras de datos: Pila, Cola, Lista, Arbol, Tabla hash",
+      "back": "PILA (Stack): LIFO (Last In, First Out). El ultimo en entrar es el primero en salir. Ej: pila de platos.\n\nCOLA (Queue): FIFO (First In, First Out). El primero en entrar es el primero en salir. Ej: cola del supermercado.\n\nLISTA (List): Secuencia ordenada de elementos. Puede tener duplicados. Ej: ArrayList, LinkedList.\n\nARBOL (Tree): Estructura jerarquica con nodos. Cada nodo tiene 0 o mas hijos. Ej: arbol de directorios.\n\nTABLA HASH (HashMap): Almacena pares clave-valor. Acceso rapido O(1) promedio.\n\nJava implementa estas estructuras en java.util.",
+      "tags": [
+        "java",
+        "estructuras-datos",
+        "pila",
+        "cola",
+        "lista",
+        "arbol",
+        "hashmap",
+        "tema-7"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t7-009",
+      "front": "Paquetes en Java: package e import",
+      "back": "Los paquetes organizan las clases en grupos logicos.\n\npackage: declara a que paquete pertenece la clase.\npackage aulaenlanube.tema7.ejemplos;\n\nimport: importa clases de otros paquetes para usarlas.\nimport java.util.ArrayList;\nimport java.util.*;  // Todas las clases de java.util\n\nSIN import: hay que usar el nombre completo.\njava.util.ArrayList<String> lista = new java.util.ArrayList<>();\n\nConvencion de nombres:\n- Todo en minusculas.\n- Dominio invertido: com.miempresa.miproyecto\n\nLa estructura de directorios debe coincidir con los paquetes.",
+      "tags": [
+        "java",
+        "paquetes",
+        "package",
+        "import",
+        "organizacion",
+        "tema-7"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t7-010",
+      "front": "Javadoc: documentar APIs en Java",
+      "back": "Javadoc genera documentacion HTML a partir de comentarios especiales.\n\n/**\n * Descripcion de la clase/metodo\n * @param nombre Descripcion del parametro\n * @return Descripcion del valor devuelto\n * @throws ExcepcionDesc Cuando se lanza\n */\n\nEjemplo:\n/**\n * Calcula el area de un circulo\n * @param radio El radio del circulo (debe ser >= 0)\n * @return El area calculada\n */\nstatic double areaCirculo(double radio) {\n    return Math.PI * radio * radio;\n}\n\nEtiquetas comunes:\n@param, @return, @throws, @see, @author, @version, @since, @deprecated",
+      "tags": [
+        "java",
+        "javadoc",
+        "documentacion",
+        "api",
+        "tema-7"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t7-011",
+      "front": "Interfaces funcionales y expresiones lambda en Java",
+      "back": "INTERFAZ FUNCIONAL: interfaz con UN SOLO metodo abstracto.\n- @FunctionalInterface (opcional pero recomendado)\n- Puede tener metodos default y static.\n- Se puede usar con expresiones lambda.\n\nEjemplo:\n@FunctionalInterface\ninterface Calculadora {\n    int operar(int a, int b);\n}\n\nEXPRESION LAMBDA: forma concisa de implementar una interfaz funcional.\n(parametros) -> { cuerpo }\n\n// Sin lambda\nCalculadora suma = new Calculadora() {\n    public int operar(int a, int b) { return a + b; }\n};\n\n// Con lambda\nCalculadora suma = (a, b) -> a + b;\nCalculadora resta = (a, b) -> { return a - b; };\n\nInterfaces funcionales en Java:\n- Consumer<T>, Supplier<T>, Function<T,R>, Predicate<T>",
+      "tags": [
+        "java",
+        "lambda",
+        "interfaz-funcional",
+        "functional-interface",
+        "tema-7"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "java-t6-009",
+      "front": "Finally en try-catch-finally",
+      "back": "El bloque finally se ejecuta SIEMPRE, haya o no excepcion.\n\nFileReader file = null;\ntry {\n    file = new FileReader(\"archivo.txt\");\n    // procesar archivo...\n} catch (IOException e) {\n    System.out.println(\"Error: \" + e.getMessage());\n} finally {\n    // Se ejecuta siempre\n    if (file != null) {\n        try { file.close(); } catch (IOException e) { }\n    }\n}\n\nUsos tipicos:\n- Cerrar recursos (archivos, conexiones BD).\n- Liberar memoria.\n- Ejecutar limpieza.\n\nDesde Java 7: try-with-resources automatico.\ntry (FileReader file = new FileReader(\"archivo.txt\")) {\n    // file se cierra automaticamente\n}",
+      "tags": [
+        "java",
+        "excepciones",
+        "finally",
+        "recursos",
+        "tema-6"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t6-010",
+      "front": "Lanzar excepciones con throws y throw",
+      "back": "throws: DECLARA que un metodo puede lanzar una excepcion (en la firma).\nthrow: LANZA explicitamente una excepcion (en el cuerpo).\n\n// throws en la firma: quien llama debe manejar la excepcion\nstatic void leerArchivo(String ruta) throws IOException, FileNotFoundException {\n    if (ruta == null) {\n        throw new IllegalArgumentException(\"Ruta no puede ser null\");\n    }\n    FileReader file = new FileReader(ruta);\n}\n\n// throw para lanzar la excepcion\nstatic void validarEdad(int edad) {\n    if (edad < 0 || edad > 150) {\n        throw new IllegalArgumentException(\"Edad no valida: \" + edad);\n    }\n}\n\nthrows se usa con EXCEPCIONES VERIFICADAS (checked).\nthrow sirve para cualquier tipo de excepcion.",
+      "tags": [
+        "java",
+        "excepciones",
+        "throws",
+        "throw",
+        "lanzar",
+        "tema-6"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t8-005",
+      "front": "Serializacion en Java: ObjectOutputStream / ObjectInputStream",
+      "back": "Permite guardar OBJETOS COMPLETOS en archivos binarios.\n\nLa clase debe implementar Serializable (interfaz marcador, sin metodos).\n\nimport java.io.*;\n\n// Guardar objeto\nclass Persona implements Serializable {\n    String nombre;\n    int edad;\n}\n\n// ESCRIBIR\nObjectOutputStream oos = new ObjectOutputStream(\n    new FileOutputStream(\"persona.dat\"));\noos.writeObject(new Persona(\"Juan\", 25));\noos.close();\n\n// LEER\nObjectInputStream ois = new ObjectInputStream(\n    new FileInputStream(\"persona.dat\"));\nPersona p = (Persona) ois.readObject();\nois.close();\n\nPalabra clave: transient -> no serializa ese atributo.",
+      "tags": [
+        "java",
+        "serializacion",
+        "objectoutputstream",
+        "objectinputstream",
+        "ficheros",
+        "tema-8"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "java-t9-008",
+      "front": "AWT vs Swing vs JavaFX en Java",
+      "back": "AWT (Abstract Window Toolkit):\n- Original, componentes nativos del SO.\n- Pesado, dependiente de la plataforma.\n- Poco usado hoy en dia.\n- Paquete: java.awt.*\n\nSWING:\n- Construido sobre AWT, componentes ligeros (pintados en Java).\n- Mas portable y personalizable.\n- El mas usado en el curso IOC.\n- Paquete: javax.swing.*\n\nJAVAFX:\n- Sucesor moderno de Swing.\n- CSS para estilos, FXML para layouts.\n- Animaciones, graficos 3D, multimedia.\n- Paquete: javafx.*\n- No incluido en JDK desde Java 11 (hay que agregarlo).",
+      "tags": [
+        "java",
+        "swing",
+        "awt",
+        "javafx",
+        "gui",
+        "comparativa",
+        "tema-9"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t9-009",
+      "front": "Maven: gestion de dependencias en proyectos Java",
+      "back": "Maven es una herramienta de gestion y construccion de proyectos Java.\n\nARCHIVO POM (pom.xml):\n- Define dependencias, plugins, configuracion.\n- Formato XML.\n\n<dependencies>\n    <dependency>\n        <groupId>mysql</groupId>\n        <artifactId>mysql-connector-java</artifactId>\n        <version>8.0.33</version>\n    </dependency>\n</dependencies>\n\nFASES DE MAVEN:\n1. compile -> compila el codigo\n2. test -> ejecuta los tests\n3. package -> genera el .jar/.war\n4. install -> copia en repositorio local\n\nComandos:\nmvn clean compile\nmvn package\nmvn clean install\n\nVentajas: gestion automatica de dependencias, estandarizacion.",
+      "tags": [
+        "java",
+        "maven",
+        "dependencias",
+        "pom",
+        "build",
+        "tema-9"
+      ],
+      "difficulty": "hard"
+    }
+  ]
+}

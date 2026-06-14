@@ -1,0 +1,135 @@
+{
+  "id": "cards-java-t2",
+  "name": "Java - Tema 2: Introducción a Java",
+  "description": "Cards del curso Java IOC - Sintaxis básica, tipos, variables, Strings, Scanner, condicionales, bucles, arrays",
+  "subject": "Programación - Java",
+  "deck": "Java",
+  "cards": [
+    {
+      "id": "java-t2-001",
+      "front": "¿Cómo se escribe un 'Hola Mundo' en Java?",
+      "back": "class HolaMundo {\n    public static void main(String[] args) {\n        System.out.println(\"Hola Mundo\");\n    }\n}\n\nEstructura básica:\n- class NombreClase { ... } → define la clase.\n- public static void main(String[] args) → método principal (entrada del programa).\n- System.out.println() → imprime texto en pantalla y salta de línea.\n- System.out.print() → imprime SIN saltar de línea.\n\nEl nombre de la clase debe coincidir con el nombre del archivo .java.\nEl método main es obligatorio para que un programa sea ejecutable.",
+      "tags": ["java", "hola-mundo", "main", "sintaxis", "tema-2"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "java-t2-002",
+      "front": "¿Cuáles son los tipos de datos primitivos en Java?",
+      "back": "byte → 8 bits, entero (-128 a 127)\nshort → 16 bits, entero (-32.768 a 32.767)\nint → 32 bits, entero (-2^31 a 2^31-1)\nlong → 64 bits, entero (con L al final: 100L)\nfloat → 32 bits, decimal (con f al final: 3.14f)\ndouble → 64 bits, decimal (3.14)\nchar → 16 bits, caracter Unicode ('A', 'ñ', '\\u00F1')\nboolean → true o false\n\nString NO es primitivo, es una clase.\n\nEjemplo:\nint edad = 25;\ndouble precio = 19.99;\nchar letra = 'A';\nboolean activo = true;",
+      "tags": ["java", "tipos", "datos", "primitivos", "variables", "tema-2"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "java-t2-003",
+      "front": "¿Cómo se declaran e inicializan variables en Java?",
+      "back": "Sintaxis: tipo nombre = valor;\n\nint numero = 10;\ndouble precio = 9.99;\nString texto = \"Hola\";\nboolean mayor = true;\n\nReglas:\n- El nombre debe empezar con letra, _ o $. NO con número.\n- Sensible a mayúsculas/minúsculas (contador != Contador).\n- No usar palabras reservadas (class, int, if, etc.).\n- Convención: usar camelCase (miVariable, numeroAlumnos).\n\nDeclarar sin inicializar (luego se asigna):\nint edad;\nedad = 25;\n\nMúltiples variables en una línea:\nint a, b, c;\nint x = 1, y = 2;",
+      "tags": ["java", "variables", "declaracion", "inicializacion", "sintaxis", "tema-2"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "java-t2-004",
+      "front": "¿Qué métodos principales tiene la clase String en Java?",
+      "back": "String es una clase (NO primitivo). Sus objetos son INMUTABLES.\n\nPrincipales métodos:\n\n.length() → longitud del String\n\"Hola\".length() → 4\n\n.charAt(pos) → caracter en posición\n\"Hola\".charAt(1) → 'o'\n\n.substring(inicio, fin) → subcadena\n\"Hola\".substring(1, 3) → \"ol\"\n\n.equals(otro) → compara contenido (== compara referencias)\n\"Hola\".equals(\"Hola\") → true\n\n.equalsIgnoreCase(otro) → igual ignorando mayúsculas\n\n.indexOf(caracter) → primera posición donde aparece\n\"Hola\".indexOf('o') → 1\n\n.toUpperCase() / .toLowerCase() → convertir mayúsculas/minúsculas\n\n.trim() → elimina espacios al inicio y final\n\n.replace(viejo, nuevo) → reemplaza caracteres\n\n.split(regex) → divide el String en un array",
+      "tags": ["java", "String", "metodos", "cadenas", "tema-2"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t2-005",
+      "front": "¿Cómo se lee entrada del usuario con Scanner en Java?",
+      "back": "import java.util.Scanner;\n\nScanner entrada = new Scanner(System.in);\n\nString texto = entrada.nextLine();     // leer línea completa\nint num = entrada.nextInt();           // leer entero\ndouble decimal = entrada.nextDouble(); // leer decimal\n\nEjemplo:\nScanner sc = new Scanner(System.in);\nSystem.out.print(\"Dime tu nombre: \");\nString nombre = sc.nextLine();\nSystem.out.print(\"Dime tu edad: \");\nint edad = sc.nextInt();\nSystem.out.println(\"Te llamas \" + nombre + \" y tienes \" + edad + \" años\");\nsc.close();  // cerrar al terminar\n\nOJO: nextInt() no consume el salto de línea. Si mezclas nextInt() y nextLine(), puede dar problemas (el nextLine() coge el \\n pendiente).",
+      "tags": ["java", "Scanner", "entrada", "usuario", "input", "tema-2"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t2-006",
+      "front": "¿Cómo funciona el if-else en Java?",
+      "back": "if (condicion) {\n    // código si condición es true\n} else if (otraCondicion) {\n    // código si otraCondicion es true\n} else {\n    // código si ninguna es true\n}\n\nEjemplo:\nint nota = 7;\nif (nota >= 5) {\n    System.out.println(\"Aprobado\");\n} else {\n    System.out.println(\"Suspenso\");\n}\n\nIf-else anidados:\nif (nota >= 9) {\n    System.out.println(\"Sobresaliente\");\n} else if (nota >= 7) {\n    System.out.println(\"Notable\");\n} else if (nota >= 5) {\n    System.out.println(\"Aprobado\");\n} else {\n    System.out.println(\"Suspenso\");\n}\n\nLas llaves son opcionales si solo hay UNA línea de código.\nLa condición debe ser una expresión booleana (true/false).",
+      "tags": ["java", "if", "else", "condicionales", "control", "tema-2"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "java-t2-007",
+      "front": "¿Cómo funciona el switch en Java?",
+      "back": "switch (variable) {\n    case valor1:\n        // código\n        break;\n    case valor2:\n        // código\n        break;\n    default:\n        // código si ninguno\n}\n\nEjemplo:\nint dia = 3;\nswitch (dia) {\n    case 1:\n        System.out.println(\"Lunes\");\n        break;\n    case 2:\n        System.out.println(\"Martes\");\n        break;\n    case 3:\n        System.out.println(\"Miércoles\");\n        break;\n    default:\n        System.out.println(\"Día no válido\");\n}\n\nFunciona con: byte, short, int, char, String (Java 7+), enum.\nbreak → sale del switch. Si no se pone, continúa al siguiente case (fall-through).\ndafault → opcional, se ejecuta si ningún case coincide.\n\nJava 14+ también tiene switch expresión con ->",
+      "tags": ["java", "switch", "condicionales", "control", "tema-2"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t2-008",
+      "front": "¿Cómo funciona el operador ternario en Java?",
+      "back": "Sintaxis: condición ? valor_si_true : valor_si_false\n\nEs una forma abreviada de if-else que devuelve un valor.\n\nEjemplo:\nint edad = 18;\nString mensaje = (edad >= 18) ? \"Mayor de edad\" : \"Menor de edad\";\nSystem.out.println(mensaje);\n\nEquivalente con if-else:\nString mensaje;\nif (edad >= 18) {\n    mensaje = \"Mayor de edad\";\n} else {\n    mensaje = \"Menor de edad\";\n}\n\nSe puede anidar (no recomendado):\nint nota = 7;\nString resultado = (nota >= 9) ? \"Sobre\" : (nota >= 7) ? \"Notable\" : \"Apro\";\n\nÚtil para asignaciones rápidas y return condicional.",
+      "tags": ["java", "ternario", "operador", "condicional", "tema-2"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t2-009",
+      "front": "¿Cómo funcionan los bucles while y do-while en Java?",
+      "back": "WHILE: repite mientras la condición sea true. Puede ejecutarse 0 veces.\nint i = 0;\nwhile (i < 5) {\n    System.out.println(i);\n    i++;\n}\n\nDO-WHILE: ejecuta al menos 1 vez, luego repite mientras condición true.\nint i = 0;\ndo {\n    System.out.println(i);\n    i++;\n} while (i < 5);\n\nDiferencia clave:\n- while: primero comprueba, luego ejecuta.\n- do-while: primero ejecuta, luego comprueba.\n\nEjemplo menú (típico uso do-while):\nString opcion;\ndo {\n    System.out.println(\"1. Opción 1\");\n    System.out.println(\"2. Salir\");\n    opcion = scanner.nextLine();\n} while (!opcion.equals(\"2\"));",
+      "tags": ["java", "while", "do-while", "bucles", "iteracion", "tema-2"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t2-010",
+      "front": "¿Cómo funciona el bucle for en Java?",
+      "back": "for (inicialización; condición; incremento) {\n    // código a repetir\n}\n\nEjemplo básico:\nfor (int i = 0; i < 5; i++) {\n    System.out.println(i);\n}  // Imprime 0, 1, 2, 3, 4\n\nPartes:\n1. Inicialización: se ejecuta UNA VEZ al principio.\n2. Condición: se evalúa antes de cada iteración.\n3. Incremento: se ejecuta al final de cada iteración.\n\nEjemplo decreciente:\nfor (int i = 10; i > 0; i--) {\n    System.out.println(i);\n}\n\nEjemplo con paso de 2:\nfor (int i = 0; i < 10; i += 2) {\n    System.out.println(i);  // 0, 2, 4, 6, 8\n}\n\nBucle infinito (no recomendado):\nfor (;;) { }",
+      "tags": ["java", "for", "bucle", "iteracion", "tema-2"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "java-t2-011",
+      "front": "¿Qué hacen break y continue en los bucles?",
+      "back": "break: sale del bucle inmediatamente.\nfor (int i = 0; i < 10; i++) {\n    if (i == 5) break;\n    System.out.print(i + \" \");  // 0 1 2 3 4\n}\n\ncontinue: salta a la siguiente iteración (ignora el resto del código).\nfor (int i = 0; i < 10; i++) {\n    if (i % 2 == 0) continue;\n    System.out.print(i + \" \");  // 1 3 5 7 9\n}\n\nbreak en switch: sale del switch.\nbreak en bucles anidados: solo sale del bucle más interno.\n\nPara salir de un bucle externo desde dentro, se puede usar una etiqueta (goto simulado):\nouter:\nfor (int i = 0; i < 3; i++) {\n    for (int j = 0; j < 3; j++) {\n        if (i == 1 && j == 1) break outer;\n    }\n}",
+      "tags": ["java", "break", "continue", "bucles", "control", "tema-2"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t2-012",
+      "front": "¿Qué son los bucles for anidados y cómo se usan?",
+      "back": "Un bucle for dentro de otro bucle for. Útil para recorrer matrices, dibujar figuras, etc.\n\nfor (int i = 0; i < 3; i++) {\n    for (int j = 0; j < 3; j++) {\n        System.out.print(\"[\" + i + \"][\" + j + \"] \");\n    }\n    System.out.println();\n}\n\nSalida:\n[0][0] [0][1] [0][2]\n[1][0] [1][1] [1][2]\n[2][0] [2][1] [2][2]\n\nEjemplo - tabla de multiplicar:\nfor (int i = 1; i <= 10; i++) {\n    for (int j = 1; j <= 10; j++) {\n        System.out.print((i*j) + \"\\t\");\n    }\n    System.out.println();\n}\n\nEjemplo - figura (triángulo):\nfor (int i = 0; i < 5; i++) {\n    for (int j = 0; j <= i; j++) {\n        System.out.print(\"* \");\n    }\n    System.out.println();\n}",
+      "tags": ["java", "for", "anidados", "bucles", "figuras", "tema-2"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t2-013",
+      "front": "¿Qué es el casting y el parseo en Java?",
+      "back": "CASTING (conversión entre tipos compatibles):\n- Implícito: automático de tipo pequeño a grande.\n  int a = 5;\n  double b = a;  // int → double, OK\n\n- Explícito: de tipo grande a pequeño (puede perder datos).\n  double x = 5.7;\n  int y = (int) x;  // y = 5 (pierde decimales)\n\nPARSEO (convertir String a número):\n- Integer.parseInt(\"123\") → 123\n- Double.parseDouble(\"3.14\") → 3.14\n- Boolean.parseBoolean(\"true\") → true\n\nEjemplo:\nString edadStr = \"25\";\nint edad = Integer.parseInt(edadStr);\nSystem.out.println(edad + 1);  // 26 (no 251)\n\nOJO: parseInt lanza NumberFormatException si el String no es un número válido.",
+      "tags": ["java", "casting", "parseo", "conversion", "tipos", "tema-2"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t2-014",
+      "front": "¿Qué son las secuencias de escape en Java?",
+      "back": "Las secuencias de escape permiten incluir caracteres especiales dentro de un String.\n\n\\n → nueva línea\n\\t → tabulación\n\\r → retorno de carro\n\\\" → comillas dobles\n\\' → comilla simple\n\\\\ → barra invertida\n\\b → retroceso (backspace)\n\nEjemplos:\nSystem.out.println(\"Línea 1\\nLínea 2\");\n// Línea 1\n// Línea 2\n\nSystem.out.println(\"\\tTabulado\");\n//     Tabulado\n\nSystem.out.println(\"Él dijo: \\\"Hola\\\"\");\n// Él dijo: \"Hola\"\n\nSystem.out.println(\"Ruta: C:\\\\Users\\\\Pablo\");\n// Ruta: C:\\Users\\Pablo",
+      "tags": ["java", "escape", "secuencias", "strings", "caracteres", "tema-2"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "java-t2-015",
+      "front": "¿Cómo funciona la precedencia de operadores en Java?",
+      "back": "Orden de evaluación (de mayor a menor prioridad):\n\n1. Paréntesis ()\n2. Unarios: ++ -- + - !\n3. Multiplicativos: * / %\n4. Aditivos: + -\n5. Relacionales: < > <= >= instanceof\n6. Igualdad: == !=\n7. Lógicos AND: &&\n8. Lógicos OR: ||\n9. Ternario: ? :\n10. Asignación: = += -= *= /= %=\n\nEjemplo complejo:\nint x = 5 + 3 * 2 - 4 / 2;\n// 1º: 3*2 = 6\n// 2º: 4/2 = 2\n// 3º: 5 + 6 = 11\n// 4º: 11 - 2 = 9\n// x = 9\n\nCuando hay dudas: usar paréntesis para ser explícito.",
+      "tags": ["java", "precedencia", "operadores", "prioridad", "tema-2"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "java-t2-016",
+      "front": "¿Qué es la clase Math en Java?",
+      "back": "La clase Math proporciona métodos y constantes matemáticas. TODOS son estáticos.\n\nConstantes:\nMath.PI → 3.14159...\nMath.E → 2.71828...\n\nMétodos principales:\nMath.abs(x) → valor absoluto\nMath.max(a, b) → el mayor\nMath.min(a, b) → el menor\nMath.sqrt(x) → raíz cuadrada\nMath.pow(x, y) → x^y\nMath.round(x) → redondeo (4.5 → 5)\nMath.ceil(x) → redondeo hacia arriba (4.2 → 5.0)\nMath.floor(x) → redondeo hacia abajo (4.8 → 4.0)\nMath.random() → aleatorio entre 0.0 y 1.0 (excluido 1)\nMath.sin(x), Math.cos(x), Math.tan(x) → trigonometría\n\nAleatorio entre min y max (incluidos):\nint aleatorio = (int)(Math.random() * (max - min + 1)) + min;",
+      "tags": ["java", "Math", "clase", "matematicas", "metodos-estaticos", "tema-2"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "java-t2-017",
+      "front": "¿Qué es la precisión de decimales en Java y cómo se maneja?",
+      "back": "Los números decimales en Java (float/double) pueden tener errores de precisión.\n\nProblema:\ndouble resultado = 0.1 + 0.2;  // 0.30000000000000004 (NO 0.3)\n\nSoluciones:\n\n1. Redondear al mostrar:\nSystem.out.printf(\"%.2f\", 0.1 + 0.2);  // 0.30\n\n2. String.format:\nString s = String.format(\"%.2f\", 0.1 + 0.2);\n\n3. BigDecimal (para cálculos precisos, ej. dinero):\nimport java.math.BigDecimal;\nBigDecimal a = new BigDecimal(\"0.1\");\nBigDecimal b = new BigDecimal(\"0.2\");\nBigDecimal suma = a.add(b);  // 0.3 exacto\n\n4. Multiplicar por potencia de 10 y usar enteros:\ndouble decimal = 3.57;\nint centimos = (int)(decimal * 100);  // 357 céntimos\n\nPara comparar doubles NUNCA usar ==, usar un margen:\nif (Math.abs(a - b) < 0.0001)",
+      "tags": ["java", "precision", "decimales", "BigDecimal", "double", "tema-2"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "java-t2-018",
+      "front": "¿Cómo se declaran e inicializan arrays en Java?",
+      "back": "SIN VALORES INICIALES:\nint[] notas = new int[5];  // {0, 0, 0, 0, 0}\n\nCON VALORES INICIALES:\nint[] notas = {10, 20, 30, 40, 50};  // 5 elementos\n\nDECLARAR PRIMERO, CREAR DESPUÉS:\nint[] notas;\nnotas = new int[5];\n\nDOS SINTAXIS VÁLIDAS:\nint[] notas = new int[5];   // Recomendada (Java-style)\nint notas[] = new int[5];   // También válida (C-style)\n\nAcceso a elementos:\nnotas[0] = 10;  // primer elemento (índice 0)\nnotas[4] = 50;  // último elemento (índice length-1)\n\nValores por defecto según tipo:\n- int/short/byte/long → 0\n- double/float → 0.0\n- boolean → false\n- char → '\\0'\n- String/objetos → null",
+      "tags": ["java", "arrays", "declaracion", "inicializacion", "tema-2"],
+      "difficulty": "easy"
+    }
+  ]
+}
