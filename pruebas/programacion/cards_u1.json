@@ -320,6 +320,41 @@
       "difficulty": "hard"
     },
     {
+      "id": "prog-u1-045b",
+      "front": "¿Cuál es la diferencia entre next() y nextLine() de Scanner?",
+      "back": "- next(): Lee una palabra individual hasta el primer espacio en blanco.\\n- nextLine(): Lee toda la línea completa hasta el salto de línea (intro).\\n\\nEjemplo con entrada \"Edu Perez\":\\n  next() -> \"Edu\"\\n  nextLine() -> \"Edu Perez\"",
+      "tags": ["programacion", "unidad-1", "entrada-salida"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u1-045c",
+      "front": "¿Qué problema ocurre al usar nextInt() seguido de nextLine() en Scanner y cómo se soluciona?",
+      "back": "PROBLEMA: nextInt() lee el número pero DEJA el salto de línea (\\\\n) en el buffer. Cuando luego se llama a nextLine(), este consume inmediatamente ese \\\\n sin esperar entrada del usuario, asignando una cadena vacía.\\n\\nSOLUCIÓN: Limpiar el buffer con un nextLine() extra después de nextInt():\\n  int n = entrada.nextInt();\\n  entrada.nextLine();  // Consume el \\\\n\\n  String nombre = entrada.nextLine();  // Ahora funciona correctamente",
+      "tags": ["programacion", "unidad-1", "entrada-salida"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u1-045d",
+      "front": "¿Qué hace el método hasNextInt() de la clase Scanner?",
+      "back": "hasNextInt() devuelve un valor booleano (true/false) que indica si el siguiente elemento a leer es un número entero válido.\\n\\nSe usa como condición en bucles para validar la entrada antes de leer, evitando errores de ejecución si el usuario introduce texto donde se espera un número.",
+      "tags": ["programacion", "unidad-1", "entrada-salida"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "prog-u1-045e",
+      "front": "¿Por qué se debe cerrar un objeto Scanner al finalizar el programa?",
+      "back": "Se debe cerrar con entrada.close() para liberar los recursos asociados al flujo de entrada.\\n\\nSi no se cierra, Java muestra una advertencia (warning), no un error de compilación.\\nEs una buena práctica de programación cerrar siempre los recursos que se abren.",
+      "tags": ["programacion", "unidad-1", "entrada-salida"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u1-045f",
+      "front": "¿Cómo se crea un objeto Scanner para leer del teclado y qué importación se necesita?",
+      "back": "Importación necesaria:\\n  import java.util.Scanner;\\n\\nCreación del objeto:\\n  Scanner entrada = new Scanner(System.in);\\n\\n- System.in representa la entrada estándar (teclado)\\n- El nombre del objeto (entrada) puede cambiarse (ej: teclado, lector)\\n- Cuando se escribe esta línea, Java sugiere automáticamente importar java.util.Scanner",
+      "tags": ["programacion", "unidad-1", "entrada-salida"],
+      "difficulty": "easy"
+    },
+    {
       "id": "prog-u1-046",
       "front": "¿Qué es el operador de asignación y cómo funciona en Java?",
       "back": "El operador de asignación es '='.\\nPrimero se evalúa la expresión de la derecha y luego se almacena el resultado en la variable de la izquierda.\\nEjemplo: resultado = dividendo / divisor;",
