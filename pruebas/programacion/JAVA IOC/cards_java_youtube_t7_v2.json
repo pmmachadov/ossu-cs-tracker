@@ -1,0 +1,78 @@
+{
+  "id": "programacion-java-youtube-t7-v2",
+  "name": "Java YouTube - Tema 7: Programación Funcional (API Stream)",
+  "description": "Cards del curso JAVA desde 0 - API Stream: operaciones intermedias (filter, map, flatMap, sorted, distinct, takeWhile, dropWhile) y terminales (collect, reduce, forEach, count)",
+  "subject": "Programación - Java",
+  "cards": [
+    {
+      "id": "java-t7-v2-001",
+      "front": "¿Qué es la API de Stream en Java?",
+      "back": "Es una API introducida en Java 8 (junto con interfaces funcionales, lambdas y métodos referenciados) que permite procesar datos de forma funcional.\\n\\nUn Stream es una secuencia de elementos que se pueden procesar en paralelo o de forma secuencial.\\n\\nProporciona métodos para:\\n- Filtrar elementos\\n- Transformar tipos de datos\\n- Convertir colecciones\\n\\nNO almacena datos, solo los procesa.\\n\\nEjemplo básico:\\n```java\\nList<String> resultado = lista.stream()\\n    .filter(n -> n.length() > 3)\\n    .map(String::toUpperCase)\\n    .sorted()\\n    .collect(Collectors.toList());\\n```",
+      "tags": ["java", "stream", "api-stream", "programacion-funcional", "definicion", "tema-7"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "java-t7-v2-002",
+      "front": "¿Cuáles son los dos componentes principales de la API Stream?",
+      "back": "1. OPERACIONES INTERMEDIAS\\n   - Transforman un Stream en OTRO Stream\\n   - Son PEREZOSAS (lazy): no se ejecutan hasta que se invoca una terminal\\n   - Ej: filter, map, sorted, distinct, flatMap\\n\\n2. OPERACIONES TERMINALES\\n   - Producen un RESULTADO final (nueva colección, valor único, acción)\\n   - Desencadenan la ejecución de todas las intermedias\\n   - Ej: collect, reduce, forEach, count, min, max\\n\\nESQUEMA:\\n```\\nStream -> [filter] -> [map] -> [sorted] -> collect -> Lista\\n  (lazy)   (lazy)    (lazy)    (lazy)    (terminal) (resultado)\\n```\\n\\nSin operación terminal, las intermedias NO se ejecutan nunca.",
+      "tags": ["java", "stream", "intermedias", "terminales", "lazy", "tema-7"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t7-v2-003",
+      "front": "¿Qué es una operación intermedia perezosa (lazy)?",
+      "back": "Una operación intermedia perezosa es aquella que NO se ejecuta en el momento en que se declara. Simplemente queda REGISTRADA en la cadena de operaciones.\\n\\nTodas las operaciones intermedias se EJECUTAN DE GOLPE cuando se invoca una operación TERMINAL.\\n\\nEjemplo:\\n```java\\nlista.stream()\\n    .filter(n -> n % 2 == 0)   // NO se ejecuta aún\\n    .map(n -> n * n)           // NO se ejecuta aún\\n    .forEach(System.out::println); // TERMINAL: AQUÍ se ejecuta TODO\\n```\\n\\nVentajas:\\n- Optimización: Java puede combinar operaciones\\n- Eficiencia: solo se procesan los elementos necesarios\\n- Posibilidad de trabajar con streams infinitos (takeWhile, limit)",
+      "tags": ["java", "stream", "lazy", "perezosa", "intermedia", "tema-7"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t7-v2-004",
+      "front": "Nombra al menos 5 operaciones intermedias de la API Stream y explica brevemente cada una.",
+      "back": "1. filter(Predicate<T>)\\n   - Filtra elementos según una condición.\\n   - Ej: .filter(nombre -> nombre.length() > 3)\\n\\n2. map(Function<T,R>)\\n   - Transforma cada elemento aplicando una función.\\n   - Ej: .map(String::toUpperCase)\\n\\n3. flatMap(Function<T, Stream<R>>)\\n   - Aplana un Stream de colecciones en elementos individuales.\\n   - Ej: .flatMap(Collection::stream)\\n\\n4. distinct()\\n   - Elimina elementos duplicados (usa equals()).\\n\\n5. sorted() / sorted(Comparator<T>)\\n   - sorted() ordena por orden natural (Comparable)\\n   - sorted(Comparator) ordena según un comparador.\\n\\n6. takeWhile(Predicate<T>)\\n   - Toma elementos MIENTRAS se cumpla la condición.\\n\\n7. dropWhile(Predicate<T>)\\n   - Elimina elementos MIENTRAS se cumpla la condición.",
+      "tags": ["java", "stream", "intermedias", "filter", "map", "sorted", "distinct", "tema-7"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t7-v2-005",
+      "front": "Nombra al menos 5 operaciones terminales de la API Stream y explica brevemente cada una.",
+      "back": "1. forEach(Consumer<T>)\\n   - Ejecuta una acción por cada elemento.\\n   - Ej: .forEach(System.out::println)\\n\\n2. collect(Collector<T,A,R>)\\n   - Transforma el Stream en una colección u objeto.\\n   - Ej: .collect(Collectors.toList())\\n\\n3. reduce(identidad, BinaryOperator<T>)\\n   - Combina los elementos en un único valor usando un acumulador.\\n   - Ej: .reduce(0, Integer::sum)\\n\\n4. count()\\n   - Cuenta el número de elementos (devuelve long).\\n   - Ej: long total = stream.count();\\n\\n5. min(Comparator<T>) / max(Comparator<T>)\\n   - Devuelve el elemento mínimo/máximo según un Comparator.\\n\\n6. anyMatch(Predicate) / allMatch(Predicate) / noneMatch(Predicate)\\n   - Evalúa si alguno/todos/ninguno cumplen la condición.",
+      "tags": ["java", "stream", "terminales", "foreach", "collect", "reduce", "count", "tema-7"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t7-v2-006",
+      "front": "Escribe un ejemplo completo de Stream API que: filtre nombres con más de 3 letras, los pase a mayúsculas, los ordene alfabéticamente y los guarde en una nueva lista.",
+      "back": "```java\\nimport java.util.Arrays;\\nimport java.util.List;\\nimport java.util.stream.Collectors;\\n\\npublic class EjemploStreams1 {\\n    public static void main(String[] args) {\\n        List<String> nombres = Arrays.asList(\\\"Ana\\\", \\\"Carlos\\\", \\\"Antonio\\\", \\\"David\\\", \\\"Eva\\\");\\n\\n        List<String> nombresFiltrados = nombres.stream()\\n                .filter(nombre -> nombre.length() > 3)\\n                .map(String::toUpperCase)\\n                .sorted()\\n                .collect(Collectors.toList());\\n\\n        System.out.println(nombresFiltrados);\\n        // [ANTONIO, CARLOS, DAVID]\\n        // \\\"Ana\\\"(3) y \\\"Eva\\\"(3) se eliminan en el filter\\n    }\\n}\\n```\\n\\nTambién se puede usar .forEach(System.out::println) en vez de collect para imprimir directamente.\\n\\nSi se cambia sorted() por sorted(String.CASE_INSENSITIVE_ORDER), se ordena sin distinguir mayúsculas.",
+      "tags": ["java", "stream", "ejemplo", "filter", "map", "sorted", "collect", "tema-7"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t7-v2-007",
+      "front": "Explica cómo funciona reduce() con un ejemplo práctico: suma de los cuadrados de los números pares.",
+      "back": "reduce(identidad, BinaryOperator<T>) combina todos los elementos del Stream en un único valor.\\n\\nEjemplo: suma de los cuadrados de los números pares\\n```java\\nList<Integer> numeros = Arrays.asList(1, 2, 3, 4);\\n\\nint sumaCuadradosPares = numeros.stream()\\n        .filter(n -> n % 2 == 0)    // Stream: [2, 4]\\n        .map(n -> n * n)            // Stream: [4, 16]\\n        .reduce(0, Integer::sum);   // 0 + 4 + 16 = 20\\n\\nSystem.out.println(sumaCuadradosPares); // 20\\n```\\n\\n¿Cómo funciona reduce(0, Integer::sum)?\\n1. acumulado = 0 (identidad)\\n2. acumulado = 0 + 4 = 4\\n3. acumulado = 4 + 16 = 20\\n\\nReduce también se puede usar con lambda:\\n.reduce(0, (acumulado, n) -> acumulado + n * 2)\\n\\nEl acumulador debe ser compatible con el tipo de dato del Stream.",
+      "tags": ["java", "stream", "reduce", "acumulador", "identidad", "suma", "tema-7"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "java-t7-v2-008",
+      "front": "¿Qué diferencia hay entre filter y takeWhile? Pon un ejemplo.",
+      "back": "FILTER: evalúa TODOS los elementos del Stream y se queda con los que cumplen la condición.\\n\\ntakeWhile: toma elementos MIENTRAS se cumpla la condición. En cuanto un elemento NO la cumple, PARA y no sigue evaluando el resto.\\n\\nEJEMPLO con lista [1, 40] (ordenada):\\n```java\\n// filter: se queda con TODOS los < 20\\nList<Integer> filtrados = lista.stream()\\n    .filter(n -> n < 20)\\n    .toList();  // [1, 2, 3, ..., 19]\\n\\n// takeWhile: se queda con los < 20 PERO para al encontrar el 20\\nList<Integer> tomados = lista.stream()\\n    .takeWhile(n -> n < 20)\\n    .toList();  // [1, 2, 3, ..., 19]\\n\\n// dropWhile: ELIMINA mientras < 20, luego conserva el resto\\nList<Integer> restantes = lista.stream()\\n    .dropWhile(n -> n < 20)\\n    .toList();  // [20, 21, ..., 40]\\n```\\n\\nDiferencia clave: filter recorre TODO. takeWhile/dropWhile paran cuando la condición cambia (como un while).\\n\\nIMPORTANTE: takeWhile y dropWhile tienen sentido con datos ORDENADOS.",
+      "tags": ["java", "stream", "filter", "takewhile", "dropwhile", "diferencia", "tema-7"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "java-t7-v2-009",
+      "front": "Explica flatMap con un ejemplo práctico de listas anidadas.",
+      "back": "flatMap aplana un Stream de colecciones en un Stream de elementos individuales.\\n\\nÚtil cuando tenemos colecciones dentro de colecciones.\\n\\n```java\\nList<Integer> lista1 = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);\\nList<Integer> lista2 = List.of(11, 12, 13, 14, 15, 16, 17, 18, 19, 20);\\nList<List<Integer>> listaFinal = List.of(lista1, lista2);\\n\\n// SIN flatMap: Stream de 2 listas\\n// CON flatMap: Stream de 20 enteros\\nList<Integer> plana = listaFinal.stream()\\n    .flatMap(Collection::stream)  // aplana: 1,2,3...20\\n    .filter(n -> n % 10 == 0)     // 10, 20\\n    .map(n -> n / 10)             // 1, 2\\n    .toList();                    // [1, 2]\\n```\\n\\nProceso:\\n- listaFinal = [[1..10], [11..20]] (2 listas)\\n- flatMap: [1,2,3...20] (20 enteros)\\n- filter: [10, 20]\\n- map: [1, 2]\\n- toList: [1, 2]",
+      "tags": ["java", "stream", "flatmap", "aplanar", "listas-anidadas", "ejemplo", "tema-7"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t7-v2-010",
+      "front": "¿Cómo usarías Stream API para filtrar palabras, añadir un guión bajo y concatenarlas en una frase con reduce?",
+      "back": "```java\\nList<String> palabras = Arrays.asList(\\\"a\\\", \\\"ab\\\", \\\"abc\\\", \\\"abcd\\\");\\n\\nString frase = palabras.stream()\\n        .filter(p -> p.length() > 1)    // [\\\"ab\\\", \\\"abc\\\", \\\"abcd\\\"]\\n        .map(p -> p + \\\"_\\\")            // [\\\"ab_\\\", \\\"abc_\\\", \\\"abcd_\\\"]\\n        .reduce(\\\"Frase: \\\", String::concat);  // \\\"Frase: ab_abc_abcd_\\\"\\n\\nSystem.out.println(frase);\\n```\\n\\nCómo funciona reduce con String::concat:\\n1. acumulado = \\\"Frase: \\\" (identidad)\\n2. acumulado = \\\"Frase: \\\" + \\\"ab_\\\" = \\\"Frase: ab_\\\"\\n3. acumulado = \\\"Frase: ab_\\\" + \\\"abc_\\\" = \\\"Frase: ab_abc_\\\"\\n4. acumulado = \\\"Frase: ab_abc_\\\" + \\\"abcd_\\\" = \\\"Frase: ab_abc_abcd_\\\"\\n\\nSi cambiamos filter(p -> p.length() > 2):\\n- Se queda solo con [\\\"abc\\\", \\\"abcd\\\"]\\n- Resultado: \\\"Frase: abc_abcd_\\\"",
+      "tags": ["java", "stream", "reduce", "string", "concat", "ejemplo", "tema-7"],
+      "difficulty": "medium"
+    }
+  ]
+}

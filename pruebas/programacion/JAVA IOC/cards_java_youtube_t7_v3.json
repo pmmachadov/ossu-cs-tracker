@@ -1,0 +1,50 @@
+{
+  "id": "programacion-java-youtube-t7-v3",
+  "name": "Java YouTube - Tema 7: Ejemplos Programación Funcional",
+  "description": "Cards del curso JAVA desde 0 - flatMap, takeWhile, dropWhile, peek, reduce con lambda, lista de listas",
+  "subject": "Programación - Java",
+  "cards": [
+    {
+      "id": "java-t7-v3-001",
+      "front": "¿Qué hace flatMap() en la API Stream de Java?",
+      "back": "flatMap aplana un Stream de colecciones en un Stream de elementos individuales.\n\nEj: List<List<Integer>> listaFinal.stream().flatMap(Collection::stream)\n\nSin flatMap -> Stream de 4 listas.\nCon flatMap -> Stream de 40 enteros individuales.\n\nUtil para extraer elementos de colecciones anidadas.",
+      "tags": ["java", "stream", "flatmap", "aplanar", "tema-7"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t7-v3-002",
+      "front": "Diferencia entre filter() y takeWhile() en Stream.",
+      "back": "FILTER: evalua TODOS los elementos del Stream.\nTAKEWHILE: toma elementos MIENTRAS se cumpla la condicion. Al encontrar uno que NO cumple, PARA y no sigue.\n\nEj: [2,4,6,8,11,12]\n- filter(par) -> [2,4,6,8,12]\n- takeWhile(par) -> [2,4,6,8] (para al llegar al 11)",
+      "tags": ["java", "stream", "filter", "takewhile", "diferencia", "tema-7"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t7-v3-003",
+      "front": "¿Qué hace dropWhile() en Stream?",
+      "back": "ELIMINA elementos del Stream MIENTRAS se cumpla la condicion. Al encontrar uno que NO cumple, conserva el RESTO.\n\n.dropWhile(n -> n < 20) en [1..40] -> [20..40]\n\nSi el primer elemento no cumple la condicion, NO elimina nada.\n\n[2,4,6,8,10,11,12..] .dropWhile(par) -> [11,12..]",
+      "tags": ["java", "stream", "dropwhile", "eliminar", "tema-7"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t7-v3-004",
+      "front": "¿Qué es peek() en Stream y para qué sirve?",
+      "back": "Operacion INTERMEDIA de DEPURACION. Permite ver el estado del Stream en un punto sin modificarlo.\n\n.peek(n -> System.out.print(n + \" \"))\n\nSe usa para DEBUG, para ver como se transforman los datos paso a paso.\nNO debe usarse para modificar datos (solo observacion).",
+      "tags": ["java", "stream", "peek", "depuracion", "debug", "tema-7"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t7-v3-005",
+      "front": "¿Cómo se usa reduce() con una expresion lambda personalizada?",
+      "back": "reduce(identidad, (acumulado, elemento) -> expresion)\n\nint total = List.of(1,2,3,4).stream()\n    .reduce(0, (acum, n) -> acum + n * 2);\n\nIteraciones:\n1: acum=0, n=1 -> 0+2=2\n2: acum=2, n=2 -> 2+4=6\n3: acum=6, n=3 -> 6+6=12\n4: acum=12, n=4 -> 12+8=20\n\nResultado: 20\n\nCon Integer::sum (solo suma): .reduce(0, Integer::sum) = 10",
+      "tags": ["java", "stream", "reduce", "lambda", "acumulador", "tema-7"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t7-v3-006",
+      "front": "Implementa Stream: aplane 4 listas, filtre multiplos de 10, divida entre 10 y recolecte.",
+      "back": "List<Integer> l1=List.of(1,2,3,4,5,6,7,8,9,10);\nList<Integer> l2=List.of(11,12,13,14,15,16,17,18,19,20);\nList<Integer> l3=List.of(21,22,23,24,25,26,27,28,29,30);\nList<Integer> l4=List.of(31,32,33,34,35,36,37,38,39,40);\n\nList<List<Integer>> lf = List.of(l1,l2,l3,l4);\n\nList<Integer> r = lf.stream()\n    .flatMap(Collection::stream)  // [1..40]\n    .filter(n -> n % 10 == 0)     // [10,20,30,40]\n    .map(n -> n / 10)             // [1,2,3,4]\n    .collect(Collectors.toList());// [1,2,3,4]",
+      "tags": ["java", "stream", "flatmap", "filter", "map", "collect", "codigo", "tema-7"],
+      "difficulty": "hard"
+    }
+  ]
+}

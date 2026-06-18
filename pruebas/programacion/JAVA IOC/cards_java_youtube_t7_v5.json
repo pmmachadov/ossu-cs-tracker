@@ -1,0 +1,50 @@
+{
+  "id": "programacion-java-youtube-t7-v5",
+  "name": "Java YouTube - Tema 7: Programación Funcional Avanzada",
+  "description": "Cards del curso JAVA desde 0 - parallelStream, rendimiento, collect groupingBy, toMap, LinkedHashMap, orden por frecuencia de palabras",
+  "subject": "Programación - Java",
+  "cards": [
+    {
+      "id": "java-t7-v5-001",
+      "front": "¿Qué es parallelStream() y cómo mejora el rendimiento?",
+      "back": "parallelStream() divide automaticamente el trabajo en VARIOS subprocesos, aprovechando los multiples procesadores.\n\nSolo hay que cambiar:\n  coleccion.stream()     -> secuencial\n  coleccion.parallelStream() -> paralelo\n\nEjemplo:\nint[] nums = generarArray(10_000_000);\nInstant inicio = Instant.now();\nlista.parallelStream().sorted().toArray();\nInstant fin = Instant.now();\n\nlong ms = Duration.between(inicio, fin).toMillis();\n\nRendimiento (10 millones de elementos):\n- Secuencial: ~5.7 segundos\n- Paralelo:   ~1 segundo\n\nRendimiento (100 millones):\n- Secuencial: ~77 segundos\n- Paralelo:   ~7 segundos\n\nNO usar parallelStream para tareas simples o pocos datos.",
+      "tags": ["java", "stream", "parallelstream", "rendimiento", "multihilo", "tema-7"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "java-t7-v5-002",
+      "front": "¿Qué es Collectors.groupingBy() y cómo funciona?",
+      "back": "Collectors.groupingBy() agrupa elementos de un Stream en un Map.\nSimilar a GROUP BY de SQL.\n\nSintaxis basica:\nMap<K, List<T>> resultado = stream\n    .collect(Collectors.groupingBy(funcionClasificacion));\n\nEjemplo - agrupar palabras por si mismas y contar:\nMap<String, Long> conteo = Arrays.stream(texto.split(\"\\\\s+\"))\n    .collect(Collectors.groupingBy(\n        Function.identity(),     // clave: la palabra misma\n        Collectors.counting()    // valor: cantidad de apariciones\n    ));\n\nFunction.identity() devuelve el elemento sin modificarlo.\nCollectors.counting() cuenta cuantos elementos hay en cada grupo.\n\nResultado: {palabra=3, ejemplo=2, esto=1, es=1, un=1}",
+      "tags": ["java", "stream", "collectors", "groupingby", "agrupar", "tema-7"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "java-t7-v5-003",
+      "front": "¿Qué es Collectors.toMap() y cuales son sus parámetros?",
+      "back": "Collectors.toMap() recolecta elementos de un Stream en un Map.\n\nSintaxis completa (4 parametros):\nCollectors.toMap(\n    keyMapper,      // funcion para generar la clave\n    valueMapper,    // funcion para generar el valor\n    mergeFunction,  // funcion de combinacion si hay claves duplicadas\n    mapFactory      // constructor del Map (tipo concreto)\n);\n\nEjemplo con 2 parametros:\nMap<String, Integer> m = stream\n    .collect(Collectors.toMap(\n        e -> e.getKey(),    // clave: el key del entry\n        e -> e.getValue()   // valor: el value del entry\n    ));\n\nEjemplo con 4 parametros:\n.collect(Collectors.toMap(\n    Map.Entry::getKey,\n    Map.Entry::getValue,\n    (e1, e2) -> e1,          // si hay conflicto, usar el primero\n    LinkedHashMap::new        // usar LinkedHashMap (mantiene orden)\n));",
+      "tags": ["java", "stream", "collectors", "tomap", "map", "linkedhashmap", "tema-7"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "java-t7-v5-004",
+      "front": "¿Cómo ordenar palabras por frecuencia de mayor a menor usando Stream?",
+      "back": "String texto = \"Esto es un ejemplo ejemplo palabra palabra palabra\";\n\nMap<String, Long> palabrasOrden = Arrays.stream(texto.split(\"\\\\s+\"))\n    .collect(Collectors.groupingBy(      // agrupar palabras iguales\n        Function.identity(),              // clave: la palabra\n        Collectors.counting()))           // valor: frecuencia\n    .entrySet().stream()                  // convertir a Stream de entradas\n    .sorted(Map.Entry.<String, Long>      // ordenar por valor (frecuencia)\n        comparingByValue(Comparator.reverseOrder()))  // de mayor a menor\n    .collect(Collectors.toMap(\n        Map.Entry::getKey,                // clave: la palabra\n        Map.Entry::getValue,              // valor: la frecuencia\n        (e1, e2) -> e1,                   // combinacion (no necesaria)\n        LinkedHashMap::new));             // LinkedHashMap (mantiene orden)\n\nSystem.out.println(palabrasOrden);\n// {palabra=3, ejemplo=2, un=1, es=1, Esto=1}\n\nLinkedHashMap mantiene el orden de insercion,\npor lo que las palabras quedan ordenadas por frecuencia.",
+      "tags": ["java", "stream", "frecuencia", "groupingby", "sorted", "tomap", "linkedhashmap", "tema-7"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "java-t7-v5-005",
+      "front": "¿Qué es Function.identity() y para qué se usa en Stream?",
+      "back": "Function.identity() es una funcion que devuelve el elemento SIN modificarlo.\n\nEquivale a: x -> x (lambda identidad)\n\nSe usa cuando NO queremos transformar el elemento,\nsino mantenerlo tal cual.\n\nEjemplo tipico con groupingBy:\nMap<String, Long> conteo = stream\n    .collect(Collectors.groupingBy(\n        Function.identity(),  // la palabra sin cambios\n        Collectors.counting()\n    ));\n\nTambien se puede escribir como:\n    .collect(Collectors.groupingBy(\n        palabra -> palabra,   // lambda identidad\n        Collectors.counting()\n    ));\n\nSin identity agruparia aplicando alguna transformacion.\nCon identity agrupa por el valor exacto del elemento.",
+      "tags": ["java", "stream", "function-identity", "lambda", "groupingby", "tema-7"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t7-v5-006",
+      "front": "¿Qué es LinkedHashMap y por qué se usa con toMap()?",
+      "back": "LinkedHashMap es una implementacion de Map que MANTIENE el ORDEN DE INSERCION de los elementos.\n\nHashMap no garantiza ningun orden.\nTreeMap ordena por clave (orden natural o Comparator).\nLinkedHashMap ordena por insercion (el orden en que se añadieron).\n\nEjemplo:\n.collect(Collectors.toMap(\n    Map.Entry::getKey,\n    Map.Entry::getValue,\n    (e1, e2) -> e1,\n    LinkedHashMap::new    // <-- mantiene el orden de insercion\n));\n\nEs util cuando:\n- Ordenamos un Stream y queremos conservar ese orden en el Map\n- Queremos un Map predecible que recuerde el orden original\n\nSin LinkedHashMap, el HashMap reordenaria los elementos\nperdiendo la ordenacion que hicimos con sorted().",
+      "tags": ["java", "linkedhashmap", "tomap", "orden", "map", "tema-7"],
+      "difficulty": "medium"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "id": "programacion-java-youtube-t7-v4",
+  "name": "Java YouTube - Tema 7: Ejemplos API Stream",
+  "description": "Cards del curso JAVA desde 0 - palabras unicas, orden alfabetico, CASE_INSENSITIVE_ORDER, orden por longitud, comparator, contar letras, constructor reference, Trabajador",
+  "subject": "Programación - Java",
+  "cards": [
+    {
+      "id": "java-t7-v4-001",
+      "front": "¿Cómo se cuentan palabras unicas en un String usando Stream?",
+      "back": "String texto = \"Ejemplo ejemplo texto texto texto\";\n\nSet<String> unicas = Arrays.stream(texto.split(\"\\\\s+\"))\n    .map(String::toLowerCase)          // todas a minusculas\n    .collect(Collectors.toSet());      // Set -> sin duplicados\n\nint cantidad = unicas.size();  // 2 (ejemplo, texto)\n\nPasos:\n1. split(\"\\\\s+\") -> separa por espacios (1 o mas)\n2. stream() -> convierte array a Stream\n3. map(String::toLowerCase) -> normaliza mayus/minus\n4. collect(Collectors.toSet()) -> elimina duplicados (Set)\n5. size() -> cuenta elementos unicos",
+      "tags": ["java", "stream", "palabras-unicas", "set", "split", "tema-7"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t7-v4-002",
+      "front": "¿Cómo ordenar palabras alfabeticamente con sorted(), ignorando mayusculas?",
+      "back": "String texto = \"Ejemplo de ordenamiento alfabetico\";\n\nArrays.stream(texto.split(\"\\\\s+\"))\n    .sorted(String.CASE_INSENSITIVE_ORDER)  // ignora mayus/minus\n    .forEach(System.out::println);\n\nResultado: alfabetico, de, Ejemplo, ordenamiento\n\nString.CASE_INSENSITIVE_ORDER es un Comparator\nque ordena ignorando mayusculas/minusculas.\n\nSin CASE_INSENSITIVE_ORDER (solo sorted()):\n- Las MAYUSCULAS van primero (orden ASCII)\n- Ejemplo -> alfabetico -> de -> Java -> ordenamiento...",
+      "tags": ["java", "stream", "sorted", "case-insensitive", "orden", "tema-7"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t7-v4-003",
+      "front": "¿Cómo ordenar palabras por longitud de mayor a menor con Stream?",
+      "back": "String texto = \"Voy a aprobar programacion con buena nota\";\n\nList<String> resultado = Arrays.stream(texto.split(\"\\\\s+\"))\n    .distinct()                                    // elimina duplicados\n    .sorted(Comparator.comparingInt(String::length) // ordena por length\n        .reversed())                                // de mayor a menor\n    .toList();\n\nResultado: [programacion, aprobar, buena, nota, Voy, con, a]\n\nComparator.comparingInt(String::length):\n  crea un comparator basado en la longitud de las palabras\n.reversed(): invierte el orden (de mayor a menor)\n.distinct(): elimina palabras duplicadas antes de ordenar",
+      "tags": ["java", "stream", "sorted", "comparator", "longitud", "reversed", "tema-7"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "java-t7-v4-004",
+      "front": "¿Cómo crear un Comparator personalizado para contar letras especificas en Stream?",
+      "back": "// Ordenar palabras segun la cantidad de 'a' que contienen\nComparator<String> comparador = (p1, p2) -> {\n    int a1 = (int) p1.chars().filter(c -> c == 'a' || c == 'A').count();\n    int a2 = (int) p2.chars().filter(c -> c == 'a' || c == 'A').count();\n    return Integer.compare(a1, a2);  // de menos 'a' a mas 'a'\n};\n\nString texto = \"Ordenar palabras segun la cantidad de veces que aparece la letra a\";\n\nList<String> palabras = Arrays.stream(texto.split(\"\\\\s+\"))\n    .sorted(comparador)\n    .collect(Collectors.toList());\n\nUso de chars():\n- palabra.chars() convierte String a IntStream de caracteres\n- .filter(c -> c == 'a') filtra solo las 'a'\n- .count() cuenta cuantas hay (devuelve long, se castea a int)",
+      "tags": ["java", "stream", "comparator", "chars", "count", "letras", "tema-7"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "java-t7-v4-005",
+      "front": "¿Cómo filtrar palabras que contengan una letra especifica en Stream?",
+      "back": "// Solo palabras que tengan la letra 'a'\nList<String> resultado = Arrays.stream(texto.split(\"\\\\s+\"))\n    .map(String::toLowerCase)           // normalizar a minusculas\n    .filter(palabra -> palabra.contains(\"a\"))  // solo las que tienen 'a'\n    .sorted(comparador)                  // ordenar por cantidad de 'a'\n    .collect(Collectors.toList());\n\nSe usa map(String::toLowerCase) antes del filter\npara que contains(\"a\") encuentre tanto 'a' como 'A'.\n\nSin el map(), palabras como \"Java\" no pasarian\nel filter porque contains(\"a\") busca 'a' minuscula.",
+      "tags": ["java", "stream", "filter", "contains", "letras", "tema-7"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t7-v4-006",
+      "front": "¿Cómo usar un method reference a constructor (ClassName::new) en Stream?",
+      "back": "// Clase Trabajador con constructor que recibe String\nclass Trabajador {\n    String nombre;\n    Trabajador(String nombre) { this.nombre = nombre; }\n    public String toString() { return \"[nombre=\" + nombre + \"]\"; }\n}\n\n// Convertir List<String> a List<Trabajador> con constructor ref\nList<String> nombres = Arrays.asList(\"Tom\", \"Jon\", \"Kal\", \"Ana\");\n\nFunction<String, Trabajador> refConstructor = Trabajador::new;\n\nList<Trabajador> trabajadores = nombres.stream()\n    .map(refConstructor)               // String -> Trabajador\n    .collect(Collectors.toList());\n\nSystem.out.println(trabajadores);\n// [[nombre=Tom], [nombre=Jon], [nombre=Kal], [nombre=Ana]]\n\nTrabajador::new es un method reference al constructor.\nJava busca un constructor que reciba String (coincidencia de tipos).\nSi la lista fuera de Integer, buscaria un constructor que reciba int.",
+      "tags": ["java", "stream", "constructor", "method-reference", "trabajador", "map", "tema-7"],
+      "difficulty": "hard"
+    }
+  ]
+}

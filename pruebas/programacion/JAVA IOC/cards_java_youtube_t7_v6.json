@@ -1,0 +1,64 @@
+{
+  "id": "programacion-java-youtube-t7-v6",
+  "name": "Java YouTube - Tema 7: Ejercicios Colecciones",
+  "description": "Cards del curso JAVA desde 0 - Practica 1: equipo futbol, Futbolista, Deportista, Equipo, enum Posicion, comparator, iterator. Practica 2: AnalizadorTextos, HashMap, split, frecuencia palabras, palabras por longitud",
+  "subject": "Programación - Java",
+  "cards": [
+    {
+      "id": "java-t7-v6-001",
+      "front": "¿Como modelar un sistema de equipo de futbol con enum Posicion, interfaz Deportista, clase Futbolista y clase Equipo?",
+      "back": "ESTRUCTURA:\n\n1. ENUM Posicion: PORTERO, DEFENSA, CENTROCAMPISTA, DELANTERO\n   - Cada uno con nombre, salarioMin, salarioMax\n\n2. INTERFAZ Deportista:\n   - int getAnosProfesional()\n   - List<String> getListadoEquipos()\n   - int getTotalTrofeos()\n\n3. CLASE Futbolista implements Deportista:\n   - nombre, edad, posicion (Posicion), anosProfesional, equipos (List<String>), trofeos\n   - agregarEquipo(String equipo)\n   - toString() muestra nombre, edad, posicion\n   - getListadoEquipos() devuelve COPIA del ArrayList (encapsulacion)\n\n4. CLASE Equipo:\n   - nombre, List<Futbolista> futbolistas\n   - Map estatico MAX_FUTBOLISTAS_POSICION con maximos por posicion\n   - agregarFutbolista(): lanza excepcion si posicion llena\n   - listarFormacionEquipo(): ordena por posicion, recorre con Iterator",
+      "tags": ["java", "poo", "futbol", "equipo", "enum", "interfaz", "tema-7"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "java-t7-v6-002",
+      "front": "¿Como controlar que no se exceda el maximo de jugadores por posicion en un equipo?",
+      "back": "Se usa un Map estatico con los maximos:\nprivate static final Map<Posicion, Integer> MAX = new HashMap<>();\nstatic {\n    MAX.put(Posicion.PORTERO, 2);\n    MAX.put(Posicion.DEFENSA, 5);\n    MAX.put(Posicion.CENTROCAMPISTA, 5);\n    MAX.put(Posicion.DELANTERO, 4);\n}\n\nMetodo auxiliar:\nprivate int obtenerJugadoresPosicion(Posicion p) {\n    int cont = 0;\n    for (Futbolista f : futbolistas)\n        if (f.getPosicion() == p) cont++;\n    return cont;\n}\n\nEn agregarFutbolista():\nint actuales = obtenerJugadoresPosicion(f.getPosicion());\nint maximo = MAX.get(f.getPosicion());\nif (actuales >= maximo) {\n    throw new RegistroFutbolistaException(f);\n}\nfutbolistas.add(f);\n\nSi se intenta anadir un portero teniendo ya 2, se lanza la excepcion.",
+      "tags": ["java", "equipo", "maximo", "control", "excepcion", "map", "tema-7"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "java-t7-v6-003",
+      "front": "¿Como ordenar futbolistas por posicion (portero->defensa->centro->delantero) usando Comparator?",
+      "back": "Se crea un metodo auxiliar que asigna prioridad numerica a cada posicion:\n\nprivate int prioridadPosicion(Posicion p) {\n    return switch(p) {\n        case PORTERO -> 1;\n        case DEFENSA -> 2;\n        case CENTROCAMPISTA -> 3;\n        case DELANTERO -> 4;\n    };\n}\n\nLuego se usa sort con Comparator:\nfutbolistas.sort((f1, f2) -> Integer.compare(\n    prioridadPosicion(f1.getPosicion()),\n    prioridadPosicion(f2.getPosicion())));\n\nInteger.compare(a, b):\n- Si a < b -> negativo -> f1 va antes\n- Si a > b -> positivo -> f2 va antes\n- Si a == b -> 0 -> iguales\n\nResultado: porteros primero, luego defensas, centrocampistas, delanteros.",
+      "tags": ["java", "comparator", "ordenar", "posicion", "enum", "sort", "tema-7"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "java-t7-v6-004",
+      "front": "¿Como recorrer una lista con Iterator en lugar de for-each?",
+      "back": "Iterator<Futbolista> it = futbolistas.iterator();\nwhile (it.hasNext()) {\n    Futbolista f = it.next();\n    System.out.println(\"  \" + f);\n}\n\nMetodos de Iterator<E>:\n- boolean hasNext(): true si quedan elementos\n- E next(): devuelve el siguiente elemento\n- void remove(): elimina el ultimo elemento devuelto (OPCIONAL)\n\nVentajas de Iterator sobre for-each:\n- Permite modificar la lista durante el recorrido (remove)\n- Unifica el recorrido de cualquier Collection\n\nDesventajas:\n- Mas verboso que for-each\n\nSe pide explicitamente en el ejercicio usar Iterator.",
+      "tags": ["java", "iterator", "recorrer", "lista", "foreach", "tema-7"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "java-t7-v6-005",
+      "front": "¿Como implementar un AnalizadorTextos que cuente frecuencia de palabras usando HashMap?",
+      "back": "class AnalizadorTextos {\n    private String texto;\n    private HashMap<String, Integer> palabras = new HashMap<>();\n\n    public AnalizadorTextos(String texto) {\n        this.texto = texto.toLowerCase();\n        contarPalabras();\n    }\n\n    private void contarPalabras() {\n        String[] arr = texto.split(\"\\\\W+\");  // separa por NO letras/numeros\n        for (String str : arr) {\n            if (!str.isEmpty())\n                palabras.put(str, palabras.getOrDefault(str, 0) + 1);\n        }\n    }\n}\n\nClaves del algoritmo:\n1. split(\"\\\\W+\"): separa por cualquier caracter que NO sea letra, numero o _\n   (W mayuscula = cualquier caracter NO de palabra)\n2. toLowerCase(): no distingue mayusculas/minusculas\n3. getOrDefault(key, 0): si la clave no existe, devuelve 0; si existe, su valor\n4. put(key, valor+1): incrementa la frecuencia",
+      "tags": ["java", "hashmap", "analizador", "frecuencia", "split", "getordefault", "tema-7"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "java-t7-v6-006",
+      "front": "¿Como obtener las N palabras mas/menos frecuentes de un HashMap?",
+      "back": "public List<Map.Entry<String, Integer>> palabrasMasFrecuentes(int n) {\n    // Convertir entrySet a List para ordenar\n    List<Map.Entry<String, Integer>> lista = new ArrayList<>(palabras.entrySet());\n    // Ordenar por valor (frecuencia) descendente\n    lista.sort(Map.Entry.comparingByValue(Comparator.reverseOrder()));\n    // Devolver sublista con las n primeras\n    return lista.subList(0, Math.min(n, lista.size()));\n}\n\npublic List<Map.Entry<String, Integer>> palabrasMenosFrecuentes(int n) {\n    List<Map.Entry<String, Integer>> lista = new ArrayList<>(palabras.entrySet());\n    lista.sort(Map.Entry.comparingByValue());  // ascendente (menos frecuentes primero)\n    return lista.subList(0, Math.min(n, lista.size()));\n}\n\nDetalles:\n- entrySet() devuelve Set<Map.Entry<K,V>>\n- new ArrayList<>(collection): crea lista mutable para ordenar\n- comparingByValue(): orden natural del valor (Integer)\n- reverseOrder(): invierte el orden (mayor a menor)\n- subList(0, min(n, size)): evita IndexOutOfBounds si hay menos de n palabras\n- Math.min(n, lista.size()): se queda con el menor valor",
+      "tags": ["java", "hashmap", "frecuencia", "sort", "entryset", "subList", "tema-7"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "java-t7-v6-007",
+      "front": "¿Como agrupar palabras por longitud usando HashMap<Integer, List<String>>?",
+      "back": "public HashMap<Integer, List<String>> palabrasPorLongitud() {\n    HashMap<Integer, List<String>> resultado = new HashMap<>();\n\n    for (String palabra : palabras.keySet()) {\n        int longitud = palabra.length();\n\n        // Si no existe la clave, crea una lista vacia y la añade\n        resultado.computeIfAbsent(longitud, k -> new ArrayList<>()).add(palabra);\n    }\n\n    // Ordenar alfabeticamente cada lista\n    for (List<String> lista : resultado.values()) {\n        Collections.sort(lista);\n    }\n\n    return resultado;\n}\n\nAlternativa sin computeIfAbsent:\nif (!resultado.containsKey(longitud)) {\n    resultado.put(longitud, new ArrayList<>());\n}\nresultado.get(longitud).add(palabra);\n\nResultado: {3=[con, de], 4=[esto, un], 5=[texto], 8=[ejemplo]}\n\nSe usa HashMap para que clave=longitud, valor=lista de palabras con esa longitud.\nCollections.sort() ordena cada lista alfabeticamente.",
+      "tags": ["java", "hashmap", "agrupar", "longitud", "computeifabsent", "sort", "tema-7"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "java-t7-v6-008",
+      "front": "¿Que diferencia hay entre split(\"\\\\s+\") y split(\"\\\\W+\") en Java?",
+      "back": "split(\"\\\\s+\"):\n- Separa por ESPACIOS EN BLANCO (espacio, tab, salto de linea)\n- \\\\s = cualquier whitespace\n- + = uno o mas\n- Ej: \"Hola mundo\" -> [\"Hola\", \"mundo\"]\n- No separa por signos de puntuacion\n\nsplit(\"\\\\W+\"):\n- Sepa por cualquier caracter que NO sea letra, numero o _\n- \\\\W = cualquier caracter NO de palabra (W mayuscula = negacion de \\\\w)\n- \\\\w = [a-zA-Z0-9_] (letras, numeros, guion bajo)\n- Ej: \"Hola, mundo!\" -> [\"Hola\", \"mundo\"]\n- Separa por espacios, comas, puntos, signos, etc.\n\nsplit(\"\\\\W+\") es mejor para analisis de textos porque\nsepara automaticamente por cualquier signo de puntuacion.",
+      "tags": ["java", "split", "regex", "strings", "whitespace", "tema-7"],
+      "difficulty": "medium"
+    }
+  ]
+}
