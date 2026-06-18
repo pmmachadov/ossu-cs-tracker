@@ -204,7 +204,7 @@
     {
       "id": "u3-029",
       "front": "Como clonar una maquina virtual en VirtualBox",
-      "back": "COMANDO VBoxManage:\nVBoxManage clonevdi "rutaorigen\maquina1.vdi" "rutadestino\maquina2.vdi"\n\nUBICACION VBoxManage:\n- Windows XP: C:\Archivos de Programa\Oracle\VirtualBox\n- Windows 7+: C:\Program Files\Oracle\VirtualBox\n\nPROCESO:\n1. Abrir terminal en el directorio de VirtualBox\n2. Ejecutar comando clonevdi\n3. Crear nueva VM y asignar el VDI clonado",
+      "back": "COMANDO VBoxManage:\nVBoxManage clonevdi \"rutaorigen\\maquina1.vdi\" \"rutadestino\\maquina2.vdi\"\n\nUBICACION VBoxManage:\n- Windows XP: C:\\Archivos de Programa\\Oracle\\VirtualBox\n- Windows 7+: C:\\Program Files\\Oracle\\VirtualBox\n\nPROCESO:\n1. Abrir terminal en el directorio de VirtualBox\n2. Ejecutar comando clonevdi\n3. Crear nueva VM y asignar el VDI clonado",
       "tags": ["virtualbox", "practica", "laboratorio", "clonar"],
       "difficulty": "medium"
     },

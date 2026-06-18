@@ -3,7 +3,6 @@ import "./DeckList.css";
 import { Icons } from "./Icons";
 import {
   MAIN_SUBJECTS,
-  isExamDeck,
   getSubjectIcon,
   getSubjectColor,
 } from "./deckHelpers";
@@ -131,9 +130,8 @@ export function DeckList({
     }
   };
 
-  const examOnlyDecks = decks.filter((d) => isExamDeck(d));
-  const totalCards = examOnlyDecks.reduce((acc, d) => acc + d.cards.length, 0);
-  const totalStudied = examOnlyDecks.reduce(
+  const totalCards = decks.reduce((acc, d) => acc + d.cards.length, 0);
+  const totalStudied = decks.reduce(
     (acc, d) => acc + d.cards.filter((c) => c.status !== "new").length,
     0,
   );
