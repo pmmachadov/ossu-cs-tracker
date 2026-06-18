@@ -1,0 +1,23 @@
+=== TODOS LOS PDFS DEL REPO ===
+
+[ERR] examenes\ev1\Examen1 JAVA  - TEST [2022-2023].pdf | text.split is not a function
+[ERR] examenes\ev1\Examen1 JAVA - PRACTICO ]2022-2023].pdf | text.split is not a function
+[ERR] examenes\ev3\Examen Final JAVA - 2023.pdf | text.split is not a function
+[ERR] tema1\Introducción a la programación.pdf | text.split is not a function
+[ERR] tema2\apuntes\Introducción a JAVA.pdf | text.split is not a function
+[ERR] tema2\ejercicios\Enunciados\PRÁCTICA 1 JAVA - Iniciación.pdf | text.split is not a function
+[ERR] tema2\ejercicios\Enunciados\PRÁCTICA 2 JAVA - Strings.pdf | text.split is not a function
+[ERR] tema2\ejercicios\Enunciados\PRÁCTICA 3 JAVA - Figuras.pdf | text.split is not a function
+[ERR] tema2\ejercicios\Enunciados\PRÁCTICA AMPLIACIÓN - Figuras complejas.pdf | text.split is not a function
+[ERR] tema3\apuntes\Métodos en JAVA.pdf | text.split is not a function
+[ERR] tema4\apuntes\Arrays en JAVA.pdf | text.split is not a function
+[ERR] tema5\apuntes\POO en JAVA.pdf | text.split is not a function
+[ERR] tema6\apuntes\Herencia y excepciones en JAVA.pdf | text.split is not a function
+[ERR] tema6\ejercicios\practica1\Enunciado\Práctica 1 Herencia - Gestión de nóminas.pdf | text.split is not a function
+[ERR] tema6\ejercicios\practica2\Enunciado\Práctica 2 Herencia - Gestión de empleados.pdf | text.split is not a function
+[ERR] tema6\ejercicios\practica3\Enunciado\Práctica 3 Herencia - Gestión de biblioteca.pdf | text.split is not a function
+[ERR] tema6\ejercicios\practica4\Enunciado\Práctica 4 Herencia - Gestión de eventos deportivos.pdf | text.split is not a function
+[ERR] tema7\apuntes\Colecciones y APIS en JAVA.pdf | text.split is not a function
+[ERR] tema7\ejercicios\practica1\Enunciado\Práctica 1 Colecciones - Equipo de fútbol.pdf | text.split is not a function
+[ERR] tema8\apuntes\Almacenamiento de datos en JAVA.pdf | text.split is not a function
+[ERR] tema9\apuntes\Interfaz Gráfica en JAVA.pdf | text.split is not a function

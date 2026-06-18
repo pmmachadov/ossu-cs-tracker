@@ -3480,6 +3480,124 @@
         "archivos"
       ],
       "difficulty": "medium"
+    },
+    {
+      "id": "prog-u7-001",
+      "front": "¿Qué es JTextArea en Java Swing?",
+      "back": "JTextArea es un componente de Swing que permite al usuario introducir o editar múltiples líneas de texto. A diferencia de JTextField (una sola línea), JTextArea puede mostrar y editar varias líneas.\n\nSintaxis:\nJTextArea area = new JTextArea(10, 30);  // 10 filas, 30 columnas\narea.setText(\"Texto inicial\");\nString texto = area.getText();\n\nPara habilitar el scroll: new JScrollPane(area);",
+      "tags": [
+        "programacion",
+        "gui",
+        "swing",
+        "JTextArea",
+        "componentes"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u7-002",
+      "front": "¿Cómo se añade una JTextArea a un JScrollPane en Swing?",
+      "back": "JTextArea no tiene scroll propio. Para que el texto se desplace cuando sea demasiado largo, se debe envolver en un JScrollPane:\n\nJTextArea area = new JTextArea(15, 40);\narea.setLineWrap(true);           // salto de línea automático\narea.setWrapStyleWord(true);      // salto por palabras completas\nJScrollPane scroll = new JScrollPane(area);\n\nLuego se añade el JScrollPane al contenedor (JFrame, JPanel).",
+      "tags": [
+        "programacion",
+        "gui",
+        "swing",
+        "JTextArea",
+        "JScrollPane"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u7-003",
+      "front": "¿Cuál es la diferencia entre JTextField y JTextArea en Swing?",
+      "back": "JTextField: entrada de texto de una sola línea. No tiene salto de línea. Usa ActionListener para detectar Enter.\n\nJTextArea: entrada de texto de múltiples líneas. Puede mostrar y editar bloques de texto. Necesita JScrollPane para scroll. Usa métodos como append(), setText(), getText().\n\nEjemplos:\nJTextField tf = new JTextField(20);           // 1 línea\nJTextArea ta = new JTextArea(10, 30);         // múltiples líneas\nta.append(\"Nueva línea\\n\");                    // añadir texto",
+      "tags": [
+        "programacion",
+        "gui",
+        "swing",
+        "JTextField",
+        "JTextArea"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u7-004",
+      "front": "¿Qué es JCheckBox en Java Swing y cómo se usa?",
+      "back": "JCheckBox es un componente Swing que representa una casilla de verificación (checkbox). Permite seleccionar o deseleccionar una opción. Se pueden seleccionar varias casillas simultáneamente.\n\nSintaxis:\nJCheckBox check1 = new JCheckBox(\"Opción 1\");\nJCheckBox check2 = new JCheckBox(\"Opción 2\", true);  // seleccionado por defecto\n\nPara comprobar si está seleccionado:\nif (check1.isSelected()) { ... }\n\nItemListener:\ncheck1.addItemListener(e -> {\n    if (e.getStateChange() == ItemEvent.SELECTED) { ... }\n});",
+      "tags": [
+        "programacion",
+        "gui",
+        "swing",
+        "JCheckBox",
+        "componentes"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u7-005",
+      "front": "¿Qué es JRadioButton y cómo se agrupan en Java Swing?",
+      "back": "JRadioButton es un componente Swing para opciones exclusivas (solo una seleccionable del grupo). Deben agruparse con ButtonGroup para que solo uno esté seleccionado a la vez.\n\nSintaxis:\nJRadioButton rb1 = new JRadioButton(\"Masculino\");\nJRadioButton rb2 = new JRadioButton(\"Femenino\");\nJRadioButton rb3 = new JRadioButton(\"Otro\");\n\nButtonGroup grupo = new ButtonGroup();\ngrupo.add(rb1);\ngrupo.add(rb2);\ngrupo.add(rb3);\n\nActionListener:\nrb1.addActionListener(e -> System.out.println(\"Seleccionado: \" + e.getActionCommand()));",
+      "tags": [
+        "programacion",
+        "gui",
+        "swing",
+        "JRadioButton",
+        "ButtonGroup"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u7-006",
+      "front": "¿Qué es JComboBox en Java Swing y cómo se usa?",
+      "back": "JComboBox es un componente Swing que muestra un menú desplegable con opciones. Solo se ve la opción activa, y al hacer clic se despliega la lista.\n\nSintaxis:\nString[] opciones = {\"Rojo\", \"Verde\", \"Azul\"};\nJComboBox<String> combo = new JComboBox<>(opciones);\ncombo.setSelectedIndex(0);  // seleccionar por defecto\n\nObtener selección:\nString seleccion = (String) combo.getSelectedItem();\nint indice = combo.getSelectedIndex();\n\nActionListener:\ncombo.addActionListener(e -> {\n    String item = (String) combo.getSelectedItem();\n});",
+      "tags": [
+        "programacion",
+        "gui",
+        "swing",
+        "JComboBox",
+        "componentes"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u7-007",
+      "front": "¿Cómo se crea una barra de menú en Java Swing (JMenuBar, JMenu, JMenuItem)?",
+      "back": "Para crear un menú en Swing se usan tres clases:\n\n1. JMenuBar: la barra que contiene los menús (se coloca en el JFrame)\n2. JMenu: cada menú desplegable (Archivo, Editar, Ayuda...)\n3. JMenuItem: cada opción dentro de un menú\n\nEjemplo:\nJMenuBar menuBar = new JMenuBar();\n\nJMenu archivo = new JMenu(\"Archivo\");\nJMenuItem abrir = new JMenuItem(\"Abrir\");\nJMenuItem guardar = new JMenuItem(\"Guardar\");\nJMenuItem salir = new JMenuItem(\"Salir\");\n\narchivo.add(abrir);\narchivo.add(guardar);\narchivo.addSeparator();  // línea separadora\narchivo.add(salir);\n\nmenuBar.add(archivo);\nframe.setJMenuBar(menuBar);\n\nManejadores:\nitem.addActionListener(e -> { ... });",
+      "tags": [
+        "programacion",
+        "gui",
+        "swing",
+        "JMenuBar",
+        "JMenu",
+        "JMenuItem"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u7-008",
+      "front": "¿Qué es JDialog en Java Swing y cómo se diferencia de JOptionPane?",
+      "back": "JDialog es una ventana emergente personalizable en Swing. A diferencia de JOptionPane (diálogos predefinidos), JDialog permite diseñar el contenido libremente.\n\nSintaxis:\nJDialog dialogo = new JDialog(frame, \"Título\", true);  // true = modal\nDialogo.setSize(300, 200);\ndialogo.setLayout(new FlowLayout());\ndialogo.add(new JLabel(\"Mensaje\"));\ndialogo.add(new JButton(\"Cerrar\"));\ndialogo.setVisible(true);\n\nModal: true bloquea la ventana padre hasta cerrar el diálogo.\nModal: false permite interactuar con ambas ventanas.\nPara cerrar: dialogo.dispose();",
+      "tags": [
+        "programacion",
+        "gui",
+        "swing",
+        "JDialog",
+        "dialogos"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "prog-u7-009",
+      "front": "¿Cómo se crea un menú contextual (popup) en Java Swing?",
+      "back": "JPopupMenu crea un menú contextual que aparece al hacer clic derecho. Se usa junto con MouseListener.\n\nSintaxis:\nJPopupMenu popup = new JPopupMenu();\nJMenuItem op1 = new JMenuItem(\"Copiar\");\nJMenuItem op2 = new JMenuItem(\"Pegar\");\npopup.add(op1);\npopup.add(op2);\n\n// Asociar al componente:\ncomponente.addMouseListener(new MouseAdapter() {\n    public void mouseReleased(MouseEvent e) {\n        if (e.isPopupTrigger()) {  // clic derecho\n            popup.show(componente, e.getX(), e.getY());\n        }\n    }\n});\n\nTambién se puede usar MouseAdapter para solo sobrescribir el método deseado.",
+      "tags": [
+        "programacion",
+        "gui",
+        "swing",
+        "JPopupMenu",
+        "menu-contextual"
+      ],
+      "difficulty": "medium"
     }
   ]
 }
