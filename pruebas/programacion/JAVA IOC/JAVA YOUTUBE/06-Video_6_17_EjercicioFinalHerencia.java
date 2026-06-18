@@ -13,61 +13,74 @@ class Video_6_17_EjercicioFinalHerencia {
     public static final String PLAYLIST = "MEGA Curso JAVA desde 0 [ DAM - DAW ] - TEMA 6";
     public static final String REPO = "https://github.com/aulaenlanube/curso-programacion-java";
 
-    public static final String RESUMEN = "RESUMEN RAPIDO - EJERCICIO FINAL HERENCIA (TEMA 6 - V17)\n"
-        + "====================================================\n\n"
-        + "PARTE 1: REFACTORIZACION DE LA APP SUCURSAL BANCARIA\n"
-        + "(Este video cubre solo la primera diapositiva; excepciones en el siguiente video)\n\n"
-        + "1. CLASE CUENTA -> ABSTRACT PUBLIC ABSTRACT CLASS CUENTA\n"
-        + "   - Ya no se pueden crear instancias de Cuenta directamente\n"
-        + "   - Atributos: numeroCuenta, saldo, titular, movimientos -> todos PROTECTED\n"
-        + "   - Metodo verDatos() -> ABSTRACT (cada subclase implementa su propio formato)\n"
-        + "   - Metodos ingreso() y retiro() -> se dejaran como abstractos para el siguiente video\n\n"
-        + "2. TRES SUBCLASES DE CUENTA (extends Cuenta):\n\n"
-        + "   a) CuentaCorriente:\n"
-        + "      - Constructor: super(numCuenta, 0, titular)  -> SALDO INICIAL = 0\n"
-        + "      - toString(): \"Cuenta Corriente \" + super.toString()\n"
-        + "      - verDatos(): muestra numero + \" - Cuenta Corriente\" + movimientos\n\n"
-        + "   b) CuentaVivienda:\n"
-        + "      - Constructor: super(numCuenta, 1000, titular) -> SALDO INICIAL = 1000\n"
-        + "      - toString(): \"Cuenta Vivienda \" + super.toString()\n"
-        + "      - verDatos(): muestra numero + \" - Cuenta Vivienda\" + movimientos\n\n"
-        + "   c) FondoInversion:\n"
-        + "      - Atributo adicional: private Double interes\n"
-        + "      - Constructor: super(numCuenta, 5000, titular) -> SALDO INICIAL = 5000\n"
-        + "      - Metodo privado calcularInteres():\n"
-        + "          if (saldo >= 100000) -> 5%\n"
-        + "          else if (saldo >= 50000) -> 4%\n"
-        + "          else -> 2%\n"
-        + "        (Importante: orden de condiciones de > a menor)\n"
-        + "      - Se llama a calcularInteres() al final del constructor\n"
-        + "      - toString(): \"Fondo Inversion \" + super.toString()\n"
-        + "      - verDatos(): muestra numero + \" - Fondo de Inversion\" + \" Interes: \" + interes + \"%\"\n\n"
-        + "3. METODOS ABSTRACTOS EN CUENTA:\n"
-        + "   - public abstract void verDatos()\n"
-        + "   - (ingreso y retiro se dejaran como abstractos para el video de excepciones)\n\n"
-        + "4. MODIFICACIONES EN AppSucursalBancaria:\n"
-        + "   - En crearCuenta(): se pide tipo de cuenta antes de crearla\n"
-        + "   - Nuevo metodo estatico: validarCuenta(Cliente c) -> devuelve una Cuenta\n"
-        + "   - Menu tipo cuenta: 1. Cuenta Corriente, 2. Cuenta Vivienda, 3. Fondo Inversion\n"
-        + "   - Switch con return: cada opcion crea la subclase correspondiente\n"
-        + "   - Bucle while(true) hasta que se seleccione una opcion valida\n\n"
-        + "5. MOSTRAR TIPO EN LAS LISTAS:\n"
-        + "   - Se redefine toString() en cada subclase:\n"
-        + "     return \"Cuenta Corriente \" + super.toString();\n"
-        + "     return \"Cuenta Vivienda \" + super.toString();\n"
-        + "     return \"Fondo Inversion \" + super.toString();\n\n"
-        + "CONCEPTOS CLAVE:\n"
-        + "- Clase abstracta: no se puede instanciar, pero sirve como tipo comun\n"
-        + "- Polimorfismo: Cuenta c = new FondoInversion(...);\n"
-        + "- Protected: visible para subclases (numeroCuenta, saldo, titular, getMovimientos)\n"
-        + "- super() para llamar al constructor de la clase padre\n"
-        + "- this(x,y) para llamar a otro constructor de la misma clase\n"
-        + "- instanceof y casting no son necesarios si se usa polimorfismo bien\n"
-        + "- El metodo verDatos() abstracto obliga a cada subclase a implementarlo\n"
-        + "- El tipo de cuenta se muestra en toString() y en verDatos()\n"
-        + "- La lista de cuentas existentes muestra el tipo (ej: \"Cuenta Corriente [1 - Pepe Torres]\")\n"
-        + "- El saldo inicial depende del tipo de cuenta: 0 / 1000 / 5000\n"
-        + "- El interes del fondo se recalcula con cada cambio de saldo (pendiente)\n";
+    public static final String CONTENIDO = """
+        ================================================================
+          VIDEO 6-17 - EJERCICIO FINAL HERENCIA
+        ================================================================
+
+        Video:        6-17 JAVA: Ejercicio Final Herencia
+        Canal:        Aula en la nube
+        Playlist:     MEGA Curso JAVA desde 0 [ DAM - DAW ] - TEMA 6
+
+        --- RESUMEN (transcripcion) ---
+
+        Refactorizacion de la App Sucursal Bancaria usando herencia.
+        Clase Cuenta pasa a ser abstracta con tres subclases.
+
+        --- 1. CLASE CUENTA -> ABSTRACT ---
+
+        Se declara public abstract class Cuenta.
+        Atributos: numeroCuenta, saldo, titular, movimientos -> todos PROTECTED.
+        Metodo verDatos() -> ABSTRACT (cada subclase implementa su formato).
+        Metodos ingreso() y retiro() se dejaran como abstractos en el
+        siguiente video (excepciones).
+
+        --- 2. TRES SUBCLASES ---
+
+        a) CuentaCorriente:
+           - Constructor: super(numCuenta, 0, titular) -> SALDO INICIAL = 0
+           - toString(): "Cuenta Corriente " + super.toString()
+
+        b) CuentaVivienda:
+           - Constructor: super(numCuenta, 1000, titular) -> SALDO INICIAL = 1000
+           - toString(): "Cuenta Vivienda " + super.toString()
+
+        c) FondoInversion:
+           - Atributo adicional: private double interes
+           - Constructor: super(numCuenta, 5000, titular) -> SALDO INICIAL = 5000
+           - Metodo privado calcularInteres():
+               if (saldo >= 100000) -> 5%
+               else if (saldo >= 50000) -> 4%
+               else -> 2%
+           - toString(): "Fondo Inversion " + super.toString()
+
+        --- 3. METODOS ABSTRACTOS ---
+
+        public abstract void verDatos()  (implementado en cada subclase)
+        public abstract void ingreso()   (pendiente, proximo video)
+        public abstract void retiro()    (pendiente, proximo video)
+
+        --- 4. MODIFICACIONES EN AppSucursalBancaria ---
+
+        - Al crear cuenta se pregunta el tipo
+        - Nuevo metodo: validarCuenta(Cliente) -> Cuenta
+        - Menu tipo: 1. Corriente, 2. Vivienda, 3. Fondo Inversion
+        - Switch con return en cada caso
+
+        --- 5. TOSTRING POR SUBCLASE ---
+
+        Cada subclase antepone su tipo: "Cuenta Corriente [1 - Pepe]"
+
+        --- CONCEPTOS CLAVE ---
+
+        - Clase abstracta: no instanciable, sirve como tipo comun
+        - Polimorfismo: Cuenta c = new FondoInversion(...)
+        - Protected visible para subclases
+        - super() llama al constructor padre
+        - Orden de condiciones en calcularInteres: de mayor a menor
+        - Saldo inicial segun tipo: 0 / 1000 / 5000
+        ================================================================
+        """;
 
     // ================================================================
     // VARIABLES ESTATICAS
@@ -269,11 +282,7 @@ class Video_6_17_EjercicioFinalHerencia {
     // MAIN
     // ================================================================
     public static void main(String[] args) {
-        System.out.println("TITULO: " + TITULO);
-        System.out.println("URL:    " + URL);
-        System.out.println();
-        System.out.println("TEMA 6 - V17: EJERCICIO FINAL HERENCIA (PARTE 1)");
-        System.out.println("(Gestion de excepciones en el siguiente video)");
+        System.out.println(CONTENIDO);
         System.out.println();
 
         int opcion;
