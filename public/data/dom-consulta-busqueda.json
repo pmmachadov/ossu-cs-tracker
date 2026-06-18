@@ -1,8 +1,8 @@
-{
+﻿{
   "id": "dom-consulta-busqueda",
   "name": "DOM: Consulta y Busqueda",
   "description": "Navegacion por el arbol DOM, relaciones entre nodos y metodos de busqueda de elementos",
-  "subject": "Materias salvadas",
+  "subject": "Desarrollo Web en Entorno Cliente",
   "created": "2026-04-11",
   "cards": [
     {

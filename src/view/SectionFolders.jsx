@@ -65,6 +65,75 @@ export function PreguntasDirectasFolder({
   );
 }
 
+export function SubjectFolder({
+  subject,
+  decks,
+  icon,
+  color,
+  show,
+  onToggle,
+  doneMap,
+  onToggleDone,
+  onStudyDeck,
+  onStatsDeck,
+  onEditDeck,
+  onOpenResetModal,
+  sectionProgress = 0,
+}) {
+  if (decks.length === 0) return null;
+
+  const progClass = sectionProgress === 0 ? "progress-0"
+    : sectionProgress === 100 ? "progress-done"
+    : sectionProgress <= 33 ? "progress-start"
+    : sectionProgress <= 66 ? "progress-mid"
+    : "progress-high";
+
+  const subjectColor = color || { accent: "#5f6368", bg: "rgba(95, 99, 104, 0.08)" };
+
+  return (
+    <div
+      className={`materias-section section-progress ${progClass}`}
+      data-progress={sectionProgress}
+      style={{
+        borderLeft: `3px solid ${subjectColor.accent}`,
+      }}
+    >
+      <button
+        className="materias-toggle"
+        onClick={onToggle}
+        aria-expanded={show}
+      >
+        <span className="materias-icon">{icon || "📁"}</span>
+        <span className="materias-label">{subject}</span>
+        <span className="materias-count">
+          {decks.length} mazo{decks.length !== 1 ? "s" : ""}
+        </span>
+        <span className={`materias-chevron ${show ? "open" : ""}`}>
+          {show ? Icons.chevronUp : Icons.chevronDown}
+        </span>
+      </button>
+
+      {show && (
+        <div className="decks-grid materias-subgrid animate-fade-in">
+          {decks.map((d) => (
+            <DeckCard
+              key={d.id}
+              deck={d}
+              doneMap={doneMap}
+              onToggleDone={onToggleDone}
+              theme="theme-green"
+              onStudyDeck={onStudyDeck}
+              onStatsDeck={onStatsDeck}
+              onEditDeck={onEditDeck}
+              onOpenResetModal={onOpenResetModal}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
 export function MateriasFolder({
   groups,
   show,

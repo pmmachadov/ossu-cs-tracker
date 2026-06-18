@@ -1,8 +1,8 @@
-{
+﻿{
   "id": "prueba-si-eac2",
   "name": "Prueba - EAC2 Sistemas Informáticos",
   "description": "Sistemas de archivos, particionamiento MBR/GPT, LVM, gestión de usuarios y permisos, logs, FTP, Wireshark y políticas de seguridad",
-  "subject": "Sistemas Informáticos",
+  "subject": "Sistemas Informaticos",
   "cards": [
     {
       "id": "si-eac2-01",

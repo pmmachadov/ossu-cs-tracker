@@ -1,8 +1,8 @@
-{
+﻿{
   "id": "dom-eventos",
   "name": "DOM: Eventos y Event Listeners",
   "description": "addEventListener, removeEventListener, objeto event, propagacion y stopPropagation",
-  "subject": "Materias salvadas",
+  "subject": "Desarrollo Web en Entorno Cliente",
   "created": "2026-04-11",
   "cards": [
     {

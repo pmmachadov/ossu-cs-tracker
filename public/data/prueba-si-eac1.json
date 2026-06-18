@@ -1,8 +1,8 @@
-{
+﻿{
   "id": "prueba-si-eac1",
   "name": "Prueba - EAC1 Sistemas Informáticos",
   "description": "Hardware, componentes de placa base, memoria, almacenamiento, BIOS/UEFI, virtualización e instalación de sistemas operativos",
-  "subject": "Sistemas Informáticos",
+  "subject": "Sistemas Informaticos",
   "cards": [
     {
       "id": "si-eac1-01",

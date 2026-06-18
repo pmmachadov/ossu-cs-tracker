@@ -9,7 +9,7 @@ import {
 } from "./deckHelpers";
 import {
   PreguntasDirectasFolder,
-  MateriasFolder,
+  SubjectFolder,
   PracticasFolder,
   ExamenesFolder,
   PruebasFolder,
@@ -46,13 +46,13 @@ export function DeckList({
 
   const [showExtras, setShowExtras] = useState(false);
   const [showPruebas, setShowPruebas] = useState(false);
-  const [showMaterias, setShowMaterias] = useState(false);
   const [showPracticas, setShowPracticas] = useState(false);
   const [showExamenes, setShowExamenes] = useState(false);
   const [showPreguntasDirectas, setShowPreguntasDirectas] = useState(false);
   const [showLibros, setShowLibros] = useState(false);
   const [showMateriasSalvadas, setShowMateriasSalvadas] = useState(false);
   const [showMas, setShowMas] = useState(false);
+  const [openSubjects, setOpenSubjects] = useState({}); // cada materia se abre/cierra individualmente
 
   const [doneMap, setDoneMap] = useState(() => {
     try {
@@ -332,13 +332,31 @@ export function DeckList({
         {...folderProps}
       />
 
-      <MateriasFolder
-        groups={mainGroups}
-        show={showMaterias}
-        onToggle={() => setShowMaterias(!showMaterias)}
-        sectionProgress={mainProgress}
-        {...folderProps}
-      />
+      {MAIN_SUBJECTS.map((subject) => {
+        const subjectDecks = mainGroups[subject] || [];
+        if (subjectDecks.length === 0) return null;
+        const color = getSubjectColor(subject);
+        const icon = getSubjectIcon(subject);
+        const isOpen = openSubjects[subject] || false;
+        return (
+          <SubjectFolder
+            key={subject}
+            subject={subject}
+            decks={subjectDecks}
+            icon={icon}
+            color={color}
+            show={isOpen}
+            onToggle={() =>
+              setOpenSubjects((prev) => ({
+                ...prev,
+                [subject]: !prev[subject],
+              }))
+            }
+            sectionProgress={calcSectionProgress(subjectDecks)}
+            {...folderProps}
+          />
+        );
+      })}
 
       <PracticasFolder
         decks={practicaDecks}

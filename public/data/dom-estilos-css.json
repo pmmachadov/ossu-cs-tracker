@@ -1,8 +1,8 @@
-{
+﻿{
   "id": "dom-estilos-css",
   "name": "DOM: Modificacion de Estilos CSS",
   "description": "Manipulacion de estilos con style, className y classList (add, remove, toggle, contains)",
-  "subject": "Materias salvadas",
+  "subject": "Desarrollo Web en Entorno Cliente",
   "created": "2026-04-11",
   "cards": [
     {

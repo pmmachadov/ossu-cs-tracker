@@ -1,8 +1,8 @@
-{
+﻿{
   "id": "prueba-si-eac3",
   "name": "Prueba - EAC3 Sistemas Informáticos",
   "description": "Redes, TCP/IP, Active Directory, DNS, Samba, SSH, correo electrónico, Git y servicios de red",
-  "subject": "Sistemas Informáticos",
+  "subject": "Sistemas Informaticos",
   "cards": [
     {
       "id": "si-eac3-01",

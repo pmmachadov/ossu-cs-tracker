@@ -1,8 +1,8 @@
-{
+﻿{
   "id": "dom-ejemplos-practicos",
   "name": "DOM: Ejemplos Practicos con Impress.js",
   "description": "Proyecto completo Guia interactiva del DOM usando impress.js - integra textos, estilos, listas y eventos",
-  "subject": "Materias salvadas",
+  "subject": "Desarrollo Web en Entorno Cliente",
   "created": "2026-04-11",
   "cards": [
     {

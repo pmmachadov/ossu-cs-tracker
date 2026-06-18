@@ -1,8 +1,8 @@
-{
+﻿{
   "id": "dwec-completo",
   "name": "Desarrollo Web en Entorno Cliente",
   "description": "Módulo completo: sintaxis JS, DOM, eventos, estilos, módulos, Express y comunicación asíncrona",
-  "subject": "Materias salvadas",
+  "subject": "Desarrollo Web en Entorno Cliente",
   "cards": [
     {
       "id": "dwec-001",

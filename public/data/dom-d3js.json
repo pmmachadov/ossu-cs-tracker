@@ -1,8 +1,8 @@
-{
+﻿{
   "id": "dom-d3js",
   "name": "DOM: Ejemplos Practicos con D3.js",
   "description": "Panel de encuestas con DOM clasico y D3.js - manipulacion de datos y visualizacion con SVG",
-  "subject": "Materias salvadas",
+  "subject": "Desarrollo Web en Entorno Cliente",
   "created": "2026-04-11",
   "cards": [
     {

@@ -1,8 +1,8 @@
-{
+﻿{
   "id": "dwec-modulos",
   "name": "DWEC: Módulos y Empaquetadores",
   "description": "Módulos ES6 (export/import), empaquetadores (Vite, Webpack, Parcel, Rollup) y estructura de proyectos modernos",
-  "subject": "Materias salvadas",
+  "subject": "Desarrollo Web en Entorno Cliente",
   "cards": [
     {
       "id": "mod-001",

@@ -1,8 +1,8 @@
-{
+﻿{
   "id": "practicas-dwec",
   "name": "Prácticas DWEC",
   "description": "25 ejercicios prácticos de Desarrollo Web en Entorno Cliente extraídos de EACs y proyectos.",
-  "subject": "Materias salvadas",
+  "subject": "Desarrollo Web en Entorno Cliente",
   "cards": [
     {
       "front": "Crear un campo de texto que muestre un contador de caracteres en tiempo real y un botón para limpiar el campo.",

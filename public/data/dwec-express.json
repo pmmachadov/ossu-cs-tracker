@@ -1,8 +1,8 @@
-{
+﻿{
   "id": "dwec-express",
   "name": "DWEC: Framework Express y Envío de Datos",
   "description": "ExpressJS, rutas GET/POST, middleware, SQLite, formularios al servidor",
-  "subject": "Materias salvadas",
+  "subject": "Desarrollo Web en Entorno Cliente",
   "cards": [
     {
       "id": "expr-001",
