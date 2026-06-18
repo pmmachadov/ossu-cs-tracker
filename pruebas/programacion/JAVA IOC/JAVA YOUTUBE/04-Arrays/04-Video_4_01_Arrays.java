@@ -1,4 +1,4 @@
-﻿class Video_4_01_Arrays {
+class Video_4_01_Arrays {
 
     // -------------------------------------------------------------
     // Datos del video y la playlist
