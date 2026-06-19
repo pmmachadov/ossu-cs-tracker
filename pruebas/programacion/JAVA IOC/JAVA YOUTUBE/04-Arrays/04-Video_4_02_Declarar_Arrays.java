@@ -13,100 +13,132 @@ class Video_4_02_Declarar_Arrays {
     // -------------------------------------------------------------
     // RESUMEN para el examen (CHULETA)
     // -------------------------------------------------------------
-    public static final String RESUMEN =
-        """
-        ====================================================================
-          RESUMEN RAPIDO - DECLARAR ARRAYS (TEMA 4 - V2)
-        ====================================================================
+    public static final String RESUMEN = """
+                                           ====================================================================
+                                             RESUMEN RAPIDO - DECLARAR ARRAYS (TEMA 4 - V2)
+                                           ====================================================================
 
-        --- INICIALIZACION DIRECTA CON VALORES ---
-        Se pueden declarar e inicializar arrays directamente con llaves {},
-        SIN usar 'new' ni especificar el tamaño (se deduce automaticamente).
+                                           --- INICIALIZACION DIRECTA CON VALORES ---
+                                           Se pueden declarar e inicializar arrays directamente con llaves {},
+                                           SIN usar 'new' ni especificar el tamaño (se deduce automaticamente).
 
-        int[] notas = {6, 7, 8, 1, 10, 5};
-          -> Array de 6 enteros. Longitud automatica: notas.length = 6
+                                           int[] notas = {6, 7, 8, 1, 10, 5};
+                                             -> Array de 6 enteros. Longitud automatica: notas.length = 6
 
-        String[] nombres = {"Juan", "Maria", "Pedro"};
-          -> Array de 3 Strings. Longitud automatica: nombres.length = 3
+                                           String[] nombres = {"Juan", "Maria", "Pedro"};
+                                             -> Array de 3 Strings. Longitud automatica: nombres.length = 3
 
-        --- REGLAS DE LA INICIALIZACION DIRECTA ---
-        * Los valores van entre llaves { } separados por comas.
-        * Los Strings deben ir entre comillas dobles.
-        * El tipo del array debe coincidir con los valores.
-        * NO se puede usar en dos lineas separadas (declaracion e inicializacion por separado SOLO con 'new').
+                                           --- REGLAS DE LA INICIALIZACION DIRECTA ---
+                                           * Los valores van entre llaves { } separados por comas.
+                                           * Los Strings deben ir entre comillas dobles.
+                                           * El tipo del array debe coincidir con los valores.
+                                           * NO se puede usar en dos lineas separadas (declaracion e inicializacion por separado SOLO con 'new').
 
-        --- RECORRER ARRAYS (bucle for clasico) ---
-        int[] notas = {6, 7, 8, 1, 10, 5};
-        for (int i = 0; i < notas.length; i++) {
-            System.out.println(notas[i]);
-        }
-        * Siempre: i empieza en 0, termina en length-1.
-        * notas.length es el numero de elementos.
-        * notas[notas.length - 1] es el ultimo elemento.
-        * Si accedes a notas[notas.length] -> ArrayIndexOutOfBoundsException
+                                           --- RECORRER ARRAYS (bucle for clasico) ---
+                                           int[] notas = {6, 7, 8, 1, 10, 5};
+                                           for (int i = 0; i < notas.length; i++) {
+                                               System.out.println(notas[i]);
+                                           }
+                                           * Siempre: i empieza en 0, termina en length-1.
+                                           * notas.length es el numero de elementos.
+                                           * notas[notas.length - 1] es el ultimo elemento.
+                                           * Si accedes a notas[notas.length] -> ArrayIndexOutOfBoundsException
 
-        --- MOSTRAR ARRAYS EN UNA LINEA ---
-        for (int i = 0; i < notas.length; i++) {
-            System.out.print(\"[\" + notas[i] + \"] \");
-        }
-        -> Salida: [6] [7] [8] [1] [10] [5]
+                                           --- MOSTRAR ARRAYS EN UNA LINEA ---
+                                           for (int i = 0; i < notas.length; i++) {
+                                               System.out.print(\"[\" + notas[i] + \"] \");
+                                           }
+                                           -> Salida: [6] [7] [8] [1] [10] [5]
 
-        --- METODO QUE MUESTRA UN ARRAY ---
-        static void mostrarArray(int[] n) {
-            for (int i = 0; i < n.length; i++) {
-                System.out.print(\"[\" + n[i] + \"] \");
+                                           --- METODO QUE MUESTRA UN ARRAY ---
+                                           static void mostrarArray(int[] n) {
+                                               for (int i = 0; i < n.length; i++) {
+                                                   System.out.print(\"[\" + n[i] + \"] \");
+                                               }
+                                               System.out.println();
+                                           }
+
+                                           --- METODO QUE DEVUELVE UN ARRAY ---
+                                           static int[] crearArray(int elementos) {
+                                               int[] array = new int[elementos];
+                                               Random r = new Random();
+                                               for (int i = 0; i < array.length; i++) {
+                                                   array[i] = r.nextInt(100);  // aleatorio entre 0 y 99
+                                               }
+                                               return array;
+                                           }
+                                           * Para devolver un array: indicar tipo + corchetes en la firma (int[]).
+                                           * Se puede pasar como parametro a otro metodo directamente:
+                                             mostrarArray(crearArray(10));
+
+                                           --- CLASE RANDOM ---
+                                           import java.util.Random;
+                                           Random r = new Random();
+                                           r.nextInt()       -> entero aleatorio (rango completo)
+                                           r.nextInt(100)    -> entero entre 0 y 99 (100 NO incluido)
+                                           r.nextInt(min, max) -> entero entre min y max-1
+
+                                           --- PERSONALIZAR METODOS CON PARAMETROS ---
+                                           static int[] crearArray(int elementos, int max) {
+                                               int[] array = new int[elementos];
+                                               Random r = new Random();
+                                               for (int i = 0; i < array.length; i++) {
+                                                   array[i] = r.nextInt(max);  // entre 0 y max-1
+                                               }
+                                               return array;
+                                           }
+
+                                           --- MOSTRAR ARRAY CON SEPARADOR PERSONALIZADO ---
+                                           static void mostrarArray(int[] n, String separador) {
+                                               for (int i = 0; i < n.length - 1; i++) {
+                                                   System.out.print(n[i] + separador);
+                                               }
+                                               System.out.println(n[n.length - 1]);  // ultimo sin separador
+                                           }
+                                           * El ultimo elemento se muestra FUERA del bucle para evitar separador al final.
+                                           * El separador puede ser cualquier String: \" - \", \" | \", \"--\", etc.
+                                           *
+                                           *
+                                           * import java.util.Random;
+                                           *
+                                           * ------------------------------
+
+                          import java.util.Random;
+
+            public class pruebasJAVA {
+                public static void main(String[] args) {
+                    int[] array = crearArray(10);
+                    mostrarArray(array);
+                }
+
+                public static int[] crearArray(int elementos) {
+                    int[] array = new int[elementos];
+                    Random r = new Random();
+                    for (int i = 0; i < array.length; i++) {
+                        array[i] = r.nextInt(100);
+                    }
+                    return array;
+                }
+
+                static void mostrarArray(int[] n) {
+                    for (int i = 0; i < n.length; i++) {
+                        System.out.println("[" + n[i] + "]");
+                    }
+                }
             }
-            System.out.println();
-        }
 
-        --- METODO QUE DEVUELVE UN ARRAY ---
-        static int[] crearArray(int elementos) {
-            int[] array = new int[elementos];
-            Random r = new Random();
-            for (int i = 0; i < array.length; i++) {
-                array[i] = r.nextInt(100);  // aleatorio entre 0 y 99
-            }
-            return array;
-        }
-        * Para devolver un array: indicar tipo + corchetes en la firma (int[]).
-        * Se puede pasar como parametro a otro metodo directamente:
-          mostrarArray(crearArray(10));
 
-        --- CLASE RANDOM ---
-        import java.util.Random;
-        Random r = new Random();
-        r.nextInt()       -> entero aleatorio (rango completo)
-        r.nextInt(100)    -> entero entre 0 y 99 (100 NO incluido)
-        r.nextInt(min, max) -> entero entre min y max-1
+                        * ------------------------------
 
-        --- PERSONALIZAR METODOS CON PARAMETROS ---
-        static int[] crearArray(int elementos, int max) {
-            int[] array = new int[elementos];
-            Random r = new Random();
-            for (int i = 0; i < array.length; i++) {
-                array[i] = r.nextInt(max);  // entre 0 y max-1
-            }
-            return array;
-        }
 
-        --- MOSTRAR ARRAY CON SEPARADOR PERSONALIZADO ---
-        static void mostrarArray(int[] n, String separador) {
-            for (int i = 0; i < n.length - 1; i++) {
-                System.out.print(n[i] + separador);
-            }
-            System.out.println(n[n.length - 1]);  // ultimo sin separador
-        }
-        * El ultimo elemento se muestra FUERA del bucle para evitar separador al final.
-        * El separador puede ser cualquier String: \" - \", \" | \", \"--\", etc.
+                                           --- CONSEJOS ---
+                                           * Inicializacion directa con { } es mas rapida que new + asignar uno a uno.
+                                           * Para arrays grandes o con valores aleatorios, usar new y llenar con bucle.
+                                           * Los metodos que trabajan con arrays suelen recibir el array como parametro.
+                                           * Se puede encadenar: mostrarArray(crearArray(10, 100));
 
-        --- CONSEJOS ---
-        * Inicializacion directa con { } es mas rapida que new + asignar uno a uno.
-        * Para arrays grandes o con valores aleatorios, usar new y llenar con bucle.
-        * Los metodos que trabajan con arrays suelen recibir el array como parametro.
-        * Se puede encadenar: mostrarArray(crearArray(10, 100));
-
-        ====================================================================
-        """;
+                                           ====================================================================
+                                           """;
 
     // -------------------------------------------------------------
     // METODO PRINCIPAL
@@ -124,7 +156,7 @@ class Video_4_02_Declarar_Arrays {
         // ============================================================
 
         separador("EJEMPLO 1: Inicializacion directa int[]");
-        int[] notas = {6, 7, 8, 1, 10, 5};
+        int[] notas = { 6, 7, 8, 1, 10, 5 };
         System.out.println("  int[] notas = {6, 7, 8, 1, 10, 5};");
         System.out.println("  Longitud: " + notas.length + " elementos");
         System.out.print("  Contenido: ");
@@ -139,7 +171,7 @@ class Video_4_02_Declarar_Arrays {
         // ============================================================
 
         separador("EJEMPLO 2: Inicializacion directa String[]");
-        String[] nombres = {"Juan", "Maria", "Pedro"};
+        String[] nombres = { "Juan", "Maria", "Pedro" };
         System.out.println("  String[] nombres = {\"Juan\", \"Maria\", \"Pedro\"};");
         System.out.println("  Longitud: " + nombres.length + " elementos");
         System.out.print("  Contenido: ");
@@ -154,7 +186,7 @@ class Video_4_02_Declarar_Arrays {
         // ============================================================
 
         separador("EJEMPLO 3: Mostrar array formateado");
-        int[] arr = {1, 2, 5, 8, 9, 15, 24, 8};
+        int[] arr = { 1, 2, 5, 8, 9, 15, 24, 8 };
         System.out.println("  int[] arr = {1, 2, 5, 8, 9, 15, 24, 8};");
         System.out.print("  arr = ");
         for (int i = 0; i < arr.length; i++) {
@@ -169,7 +201,7 @@ class Video_4_02_Declarar_Arrays {
         // ============================================================
 
         separador("EJEMPLO 4: Metodo mostrarArray(int[])");
-        int[] valores = {10, 20, 30, 40, 50};
+        int[] valores = { 10, 20, 30, 40, 50 };
         System.out.println("  int[] valores = {10, 20, 30, 40, 50};");
         System.out.print("  mostrarArray(valores) -> ");
         mostrarArray(valores);
@@ -227,7 +259,7 @@ class Video_4_02_Declarar_Arrays {
         // ============================================================
 
         separador("EJEMPLO 9: mostrarArray con separador personalizado");
-        int[] datos = {5, 10, 15, 20, 25};
+        int[] datos = { 5, 10, 15, 20, 25 };
         System.out.println("  int[] datos = {5, 10, 15, 20, 25};");
         System.out.print("  Con separador \" - \": ");
         mostrarArray(datos, " - ");
@@ -289,7 +321,7 @@ class Video_4_02_Declarar_Arrays {
         int[] array = new int[elementos];
         java.util.Random r = new java.util.Random();
         for (int i = 0; i < array.length; i++) {
-            array[i] = r.nextInt(100);  // aleatorio entre 0 y 99
+            array[i] = r.nextInt(100); // aleatorio entre 0 y 99
         }
         return array;
     }
@@ -299,7 +331,7 @@ class Video_4_02_Declarar_Arrays {
         int[] array = new int[elementos];
         java.util.Random r = new java.util.Random();
         for (int i = 0; i < array.length; i++) {
-            array[i] = r.nextInt(max);  // aleatorio entre 0 y max-1
+            array[i] = r.nextInt(max); // aleatorio entre 0 y max-1
         }
         return array;
     }
@@ -310,7 +342,7 @@ class Video_4_02_Declarar_Arrays {
         for (int i = 0; i < n.length - 1; i++) {
             System.out.print(n[i] + separador);
         }
-        System.out.println(n[n.length - 1]);  // ultimo elemento sin separador
+        System.out.println(n[n.length - 1]); // ultimo elemento sin separador
     }
 
     public static void separador(String titulo) {
