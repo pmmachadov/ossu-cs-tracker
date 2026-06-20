@@ -1,0 +1,3 @@
+[submodule "pruebas/programacion/JAVA IOC/curso-programacion-java"]
+	path = pruebas/programacion/JAVA IOC/curso-programacion-java
+	url = https://github.com/aulaenlanube/curso-programacion-java.git
