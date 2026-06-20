@@ -1,0 +1,17 @@
+public class pruebasJAVA {
+
+    public static void main(String[] args) {
+        int[] = {5,7,8,0,3,2,1,4}
+    }
+
+    static void ejercicio1(int[] array, int n) {
+        int contador = 0;
+
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == n)
+                contador++;
+        }
+        System.out.println(n + contador);
+    }
+}
+
