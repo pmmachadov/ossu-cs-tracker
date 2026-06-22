@@ -1,0 +1,592 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Visualizador de Matrices en Java - Edición Colorida</title>
+    <style>
+      :root {
+        --bg-color: #1a1a1d;
+        --sidebar-bg: #222228;
+        --text-color: #e0e0e0;
+        --keyword-color: #ff79c6; /* Rosa vibrante */
+        --variable-color: #50fa7b; /* Verde neón */
+        --number-color: #bd93f9; /* Morado */
+        --type-color: #8be9fd; /* Cian */
+        --comment-color: #6272a4;
+        --string-color: #f1fa8c; /* Amarillo claro */
+        --highlight-bg: rgba(255, 121, 198, 0.2); /* Rosa translúcido */
+        --highlight-border: #ff79c6;
+        --active-cell-color: #ffb86c; /* Naranja brillante */
+      }
+
+      body {
+        font-family: 'Fira Code', 'Consolas', monospace;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        margin: 0;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        box-sizing: border-box;
+        min-height: 100vh;
+      }
+
+      h1 {
+        margin-bottom: 5px;
+        color: #fff;
+        font-size: 1.8rem;
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+      }
+
+      p.subtitle {
+        margin: 0 0 20px 0;
+        color: #aaa;
+        font-size: 1rem;
+      }
+
+      .controls {
+        background-color: var(--sidebar-bg);
+        padding: 15px 30px;
+        border-radius: 8px;
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        border: 1px solid #333;
+      }
+
+      button {
+        background-color: #bd93f9; /* Morado */
+        color: #1a1a1d;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 1rem;
+        transition: all 0.2s ease;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+      }
+
+      button:hover {
+        background-color: #ff79c6; /* Rosa en hover */
+        transform: translateY(-2px);
+      }
+
+      button:disabled {
+        background-color: #555;
+        cursor: not-allowed;
+        transform: none;
+      }
+
+      .speed-control {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: #ccc;
+      }
+
+      input[type='range'] {
+        cursor: pointer;
+      }
+
+      .main-container {
+        display: flex;
+        gap: 20px;
+        width: 100%;
+        max-width: 1200px;
+        height: 75vh;
+      }
+
+      .panel {
+        flex: 1;
+        background-color: var(--sidebar-bg);
+        border-radius: 8px;
+        padding: 25px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        overflow: auto;
+        display: flex;
+        flex-direction: column;
+        border: 1px solid #333;
+      }
+
+      .panel-title {
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        color: #888;
+        margin-top: 0;
+        margin-bottom: 20px;
+        border-bottom: 2px solid #444;
+        padding-bottom: 8px;
+      }
+
+      /* Código Java */
+      pre {
+        margin: 0;
+        font-family: 'Fira Code', 'Consolas', monospace;
+        font-size: 1rem;
+        line-height: 1.5;
+      }
+
+      .code-line {
+        display: block;
+        padding: 2px 8px;
+        border-left: 4px solid transparent;
+      }
+
+      .code-line.active {
+        background-color: var(--highlight-bg);
+        border-left-color: var(--highlight-border);
+        border-radius: 4px;
+      }
+
+      /* Colores Syntax Highlighting (Inspirado en Dracula) */
+      .kw {
+        color: var(--keyword-color);
+        font-weight: bold;
+      }
+      .va {
+        color: var(--variable-color);
+      }
+      .nu {
+        color: var(--number-color);
+      }
+      .ty {
+        color: var(--type-color);
+        font-style: italic;
+      }
+      .co {
+        color: var(--comment-color);
+      }
+      .st {
+        color: var(--string-color);
+      }
+
+      /* Variables */
+      .variables-bar {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 20px;
+      }
+
+      .variable-tag {
+        background: #111;
+        padding: 8px 16px;
+        border-radius: 6px;
+        font-family: 'Fira Code', monospace;
+        font-size: 1rem;
+        border: 1px solid #444;
+        box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+      }
+
+      .variable-tag span {
+        color: var(--number-color);
+        font-weight: bold;
+      }
+
+      /* Visualización de la Matriz */
+      .matrix-grid {
+        display: grid;
+        grid-template-columns: repeat(10, 1fr);
+        gap: 8px;
+        background: #111;
+        padding: 20px;
+        border-radius: 8px;
+        border: 1px solid #444;
+        margin-bottom: 20px;
+        box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8);
+      }
+
+      .matrix-cell {
+        aspect-ratio: 1;
+        background-color: #222;
+        border: 1px solid #333;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Fira Code', monospace;
+        font-weight: bold;
+        font-size: 1.2rem;
+        color: #444;
+        transition: all 0.15s ease-out;
+      }
+
+      /* Degradado de colores para las celdas llenas */
+      .matrix-cell.filled {
+        color: #fff;
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+      }
+      .matrix-cell.filled[data-val='0'] {
+        background-color: #ff5555;
+        border-color: #ff5555;
+      } /* Rojo */
+      .matrix-cell.filled[data-val='1'] {
+        background-color: #ffb86c;
+        border-color: #ffb86c;
+      } /* Naranja */
+      .matrix-cell.filled[data-val='2'] {
+        background-color: #f1fa8c;
+        border-color: #f1fa8c;
+        color: #222;
+        text-shadow: none;
+      } /* Amarillo */
+      .matrix-cell.filled[data-val='3'] {
+        background-color: #50fa7b;
+        border-color: #50fa7b;
+        color: #222;
+        text-shadow: none;
+      } /* Verde */
+      .matrix-cell.filled[data-val='4'] {
+        background-color: #8be9fd;
+        border-color: #8be9fd;
+        color: #222;
+        text-shadow: none;
+      } /* Cian */
+
+      .matrix-cell.active-look {
+        border-color: var(--active-cell-color);
+        box-shadow: 0 0 15px var(--active-cell-color);
+        transform: scale(1.1);
+        color: #fff !important;
+        z-index: 10;
+      }
+
+      /* Consola de Salida */
+      .console-box {
+        background-color: #000;
+        color: #50fa7b; /* Verde neón para el texto de consola */
+        font-family: 'Fira Code', monospace;
+        padding: 15px;
+        border-radius: 6px;
+        flex-grow: 1;
+        overflow-y: auto;
+        white-space: pre-wrap;
+        font-size: 1rem;
+        border: 1px solid #333;
+        line-height: 1.4;
+        box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8);
+      }
+
+      .explanation {
+        font-style: italic;
+        color: #ffb86c; /* Naranja para la explicación */
+        margin-bottom: 15px;
+        min-height: 40px;
+        font-size: 1.05rem;
+        border-left: 3px solid #ffb86c;
+        padding-left: 10px;
+      }
+
+      /* Panel Inferior Colorido (inspirado en la imagen) */
+      .bottom-rainbow-panel {
+        width: 100%;
+        max-width: 1200px;
+        background-color: var(--sidebar-bg);
+        border-radius: 8px;
+        padding: 15px 25px;
+        margin-top: 20px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        border: 1px solid #333;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .rainbow-strip {
+        height: 10px;
+        width: 100%;
+        border-radius: 5px;
+        background: linear-gradient(
+          90deg,
+          #ff5555,
+          #ffb86c,
+          #f1fa8c,
+          #50fa7b,
+          #8be9fd,
+          #bd93f9,
+          #ff79c6
+        );
+        box-shadow: 0 0 10px rgba(189, 147, 249, 0.5);
+      }
+
+      .linear-values {
+        display: flex;
+        gap: 5px;
+        font-family: 'Fira Code', monospace;
+        font-size: 0.9rem;
+        overflow-x: auto;
+        padding-bottom: 5px;
+      }
+
+      .linear-val-box {
+        padding: 4px 8px;
+        border-radius: 4px;
+        color: #fff;
+        white-space: nowrap;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Visualizador de Bucles Anidados (Matrices)</h1>
+    <p class="subtitle">Recorrido dinámico y muy colorido del código Java</p>
+
+    <div class="controls">
+      <button id="btn-play">▶ Ejecutar</button>
+      <button id="btn-step">➔ Paso a Paso</button>
+      <button id="btn-reset">↺ Reiniciar</button>
+
+      <div class="speed-control">
+        <label for="speed">Velocidad:</label>
+        <input type="range" id="speed" min="50" max="1500" value="400" step="50" />
+        <span id="speed-val">0.4s</span>
+      </div>
+    </div>
+
+    <div class="main-container">
+      <div class="panel">
+        <p class="panel-title">Código Java (Sintaxis Dracula)</p>
+        <pre><code><span class="code-line" id="line-1"><span class="kw">public class</span> <span class="ty">EjerciciosIniciacion</span> {</span><span class="code-line" id="line-2">    <span class="kw">public static void</span> <span class="va">main</span>(<span class="ty">String</span>[] <span class="va">args</span>) {</span><span class="code-line" id="line-3">        <span class="kw">int</span>[][] <span class="va">matriz</span> = <span class="kw">new int</span>[<span class="nu">5</span>][<span class="nu">10</span>];</span><span class="code-line" id="line-4"></span><span class="code-line" id="line-5">        <span class="kw">for</span> (<span class="kw">int</span> <span class="va">fila</span> = <span class="nu">0</span>; <span class="va">fila</span> &lt; <span class="va">matriz</span>.<span class="va">length</span>; <span class="va">fila</span>++) {</span><span class="code-line" id="line-6">            <span class="kw">for</span> (<span class="kw">int</span> <span class="va">columna</span> = <span class="nu">0</span>; <span class="va">columna</span> &lt; <span class="va">matriz</span>[<span class="va">fila</span>].<span class="va">length</span>; <span class="va">columna</span>++) {</span><span class="code-line" id="line-7">                <span class="va">matriz</span>[<span class="va">fila</span>][<span class="va">columna</span>] = <span class="va">fila</span>;</span><span class="code-line" id="line-8">                <span class="va">System</span>.<span class="va">out</span>.<span class="va">print</span>(<span class="va">matriz</span>[<span class="va">fila</span>][<span class="va">columna</span>] + <span class="st">" "</span>);</span><span class="code-line" id="line-9">            }</span><span class="code-line" id="line-10">            <span class="va">System</span>.<span class="va">out</span>.<span class="va">println</span>();</span><span class="code-line" id="line-11">        }</span><span class="code-line" id="line-12">    }</span><span class="code-line" id="line-13">}</span></code></pre>
+      </div>
+
+      <div class="panel">
+        <p class="panel-title">Estado de la Matriz (Colores Dinámicos)</p>
+
+        <div class="variables-bar">
+          <div class="variable-tag">fila: <span id="v-fila">-</span></div>
+          <div class="variable-tag">columna: <span id="v-columna">-</span></div>
+          <div class="variable-tag">Valor: <span id="v-val">-</span></div>
+        </div>
+
+        <div class="explanation" id="explanation">Haz clic en Ejecutar o Paso a Paso.</div>
+
+        <div class="matrix-grid" id="grid"></div>
+
+        <p class="panel-title" style="margin-top: 15px; margin-bottom: 8px">
+          Salida de Consola Neón
+        </p>
+        <div class="console-box" id="console"></div>
+      </div>
+    </div>
+
+    <div class="bottom-rainbow-panel">
+      <div class="rainbow-strip"></div>
+      <div class="panel-title" style="margin-bottom: 5px; border: none">
+        Visualización Lineal de Valores (System.out.print)
+      </div>
+      <div class="linear-values" id="linear-values-container"></div>
+    </div>
+
+    <script>
+      const steps = [];
+      const matrixRows = 5;
+      const matrixCols = 10;
+
+      steps.push({
+        line: 3,
+        f: '-',
+        c: '-',
+        msg: 'Se inicializa la matriz de 5x10 con ceros por defecto.',
+        action: 'init',
+      });
+
+      for (let f = 0; f < matrixRows; f++) {
+        steps.push({ line: 5, f: f, c: '-', msg: `Bucle externo: comienza fila ${f}.` });
+
+        for (let c = 0; c < matrixCols; c++) {
+          steps.push({ line: 6, f: f, c: c, msg: `Bucle interno: columna ${c}.` });
+          steps.push({
+            line: 7,
+            f: f,
+            c: c,
+            msg: `Asignación: matriz[${f}][${c}] = ${f};`,
+            action: 'write',
+            targetF: f,
+            targetC: c,
+            val: f,
+          });
+          steps.push({
+            line: 8,
+            f: f,
+            c: c,
+            msg: `System.out.print imprime '${f} '.`,
+            action: 'print',
+            text: f + ' ',
+            val: f,
+          });
+        }
+        steps.push({
+          line: 6,
+          f: f,
+          c: matrixCols,
+          msg: `Fin columna ${matrixCols}. Sale del bucle interno.`,
+        });
+        steps.push({
+          line: 10,
+          f: f,
+          c: '-',
+          msg: `System.out.println() hace un salto de línea.`,
+          action: 'print',
+          text: '\n',
+        });
+      }
+      steps.push({ line: 5, f: matrixRows, c: '-', msg: 'Fila = 5. Fin del bucle externo.' });
+      steps.push({ line: 12, f: '-', c: '-', msg: 'Fin del programa.' });
+
+      let currentStep = -1;
+      let isPlaying = false;
+      let intervalId = null;
+      let accumulatedConsole = '';
+      const cellColors = ['#ff5555', '#ffb86c', '#f1fa8c', '#50fa7b', '#8be9fd'];
+
+      const grid = document.getElementById('grid');
+      const consoleBox = document.getElementById('console');
+      const explanation = document.getElementById('explanation');
+      const vFila = document.getElementById('v-fila');
+      const vColumna = document.getElementById('v-columna');
+      const vVal = document.getElementById('v-val');
+      const linearValuesContainer = document.getElementById('linear-values-container');
+
+      const btnPlay = document.getElementById('btn-play');
+      const btnStep = document.getElementById('btn-step');
+      const btnReset = document.getElementById('btn-reset');
+      const speedInput = document.getElementById('speed');
+      const speedVal = document.getElementById('speed-val');
+
+      function buildVisualGrid() {
+        grid.innerHTML = '';
+        for (let i = 0; i < matrixRows; i++) {
+          for (let j = 0; j < matrixCols; j++) {
+            const cell = document.createElement('div');
+            cell.className = 'matrix-cell';
+            cell.id = `cell-${i}-${j}`;
+            cell.innerText = '0';
+            grid.appendChild(cell);
+          }
+        }
+      }
+
+      function updateSpeedLabel() {
+        speedVal.innerText = (speedInput.value / 1000).toFixed(1) + 's';
+      }
+
+      function executeStep() {
+        if (currentStep >= steps.length - 1) {
+          pause();
+          return;
+        }
+
+        currentStep++;
+        const step = steps[currentStep];
+
+        document.querySelectorAll('.code-line').forEach((el) => el.classList.remove('active'));
+        document
+          .querySelectorAll('.matrix-cell')
+          .forEach((el) => el.classList.remove('active-look'));
+
+        const lineEl = document.getElementById(`line-${step.line}`);
+        if (lineEl) lineEl.classList.add('active');
+
+        vFila.innerText = step.f;
+        vColumna.innerText = step.c === matrixCols ? '-' : step.c;
+        vVal.innerText = step.f !== '-' && step.c !== '-' && step.c !== matrixCols ? step.f : '-';
+        explanation.innerText = step.msg;
+
+        if (step.action === 'init') {
+          buildVisualGrid();
+          linearValuesContainer.innerHTML = '';
+        } else if (step.action === 'write') {
+          const cell = document.getElementById(`cell-${step.targetF}-${step.targetC}`);
+          if (cell) {
+            cell.innerText = step.val;
+            cell.setAttribute('data-val', step.val);
+            cell.classList.add('filled', 'active-look');
+          }
+        } else if (step.action === 'print') {
+          accumulatedConsole += step.text;
+          consoleBox.innerText = accumulatedConsole;
+          consoleBox.scrollTop = consoleBox.scrollHeight;
+
+          if (step.c !== '-') {
+            const cell = document.getElementById(`cell-${step.f}-${step.c}`);
+            if (cell) cell.classList.add('active-look');
+
+            // Añadir valor a la visualización lineal inferior
+            const valBox = document.createElement('div');
+            valBox.className = 'linear-val-box';
+            valBox.style.backgroundColor = cellColors[step.val];
+            if (step.val === 2 || step.val === 3 || step.val === 4) valBox.style.color = '#222'; // Ajuste contraste
+            valBox.innerText = step.val;
+            linearValuesContainer.appendChild(valBox);
+            linearValuesContainer.scrollLeft = linearValuesContainer.scrollWidth;
+          }
+        }
+      }
+
+      function play() {
+        isPlaying = true;
+        btnPlay.innerText = '⏸ Pausa';
+        btnStep.disabled = true;
+        intervalId = setInterval(() => {
+          if (currentStep < steps.length - 1) {
+            executeStep();
+          } else {
+            pause();
+          }
+        }, speedInput.value);
+      }
+
+      function pause() {
+        isPlaying = false;
+        btnPlay.innerText = '▶ Ejecutar';
+        btnStep.disabled = false;
+        clearInterval(intervalId);
+      }
+
+      function reset() {
+        pause();
+        currentStep = -1;
+        accumulatedConsole = '';
+        consoleBox.innerText = '';
+        linearValuesContainer.innerHTML = '';
+        explanation.innerText = 'Haz clic en Ejecutar o Paso a Paso.';
+        vFila.innerText = '-';
+        vColumna.innerText = '-';
+        vVal.innerText = '-';
+        document.querySelectorAll('.code-line').forEach((el) => el.classList.remove('active'));
+        buildVisualGrid();
+      }
+
+      btnPlay.addEventListener('click', () => {
+        if (isPlaying) {
+          pause();
+        } else {
+          if (currentStep >= steps.length - 1) reset();
+          play();
+        }
+      });
+
+      btnStep.addEventListener('click', () => {
+        if (currentStep >= steps.length - 1) reset();
+        executeStep();
+      });
+
+      btnReset.addEventListener('click', reset);
+
+      speedInput.addEventListener('input', () => {
+        updateSpeedLabel();
+        if (isPlaying) {
+          pause();
+          play();
+        }
+      });
+
+      buildVisualGrid();
+      updateSpeedLabel();
+    </script>
+  </body>
+</html>
