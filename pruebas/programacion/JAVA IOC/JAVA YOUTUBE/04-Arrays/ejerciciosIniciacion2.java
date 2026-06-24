@@ -1,16 +1,15 @@
 public class ejerciciosIniciacion2 {
 
     public static void main(String[] args) {
-        int[][] b = new int[3][];
-        b[0] = new int[4];
-        b[1] = new int[5];
+        int[][] a = new int[3][];
+        a[0] = new int[4];
+        a[1] = new int[5];
 
-        for (int fila = 0; fila < b.length; fila++) {
-            for (int columna = 0; b[fila] != null && columna < b[fila].length; columna++) {
-                System.out.print(b[fila][columna] + " ");
+        for (int f = 0; f < a.length; f++) {
+            for (int c = 0; a[f] != null && c < a[f].length; c++) {
+                System.out.print(a[f][c] + " ");
             }
             System.out.println();
         }
     }
-
 }
