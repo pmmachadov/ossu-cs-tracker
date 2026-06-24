@@ -11,115 +11,114 @@
     public static final String REPO = "https://github.com/aulaenlanube/curso-programacion-java";
 
     // -------------------------------------------------------------
-    // RESUMEN para el examen (CHULETA)
+    // RESUMEN para el examen
     // -------------------------------------------------------------
-    public static final String RESUMEN =
-        """
-        ====================================================================
-          RESUMEN RAPIDO - EJERCICIO MATRICES: DIAGONAL (TEMA 4 - V8)
-        ====================================================================
+    public static final String RESUMEN = """
+            ====================================================================
+              RESUMEN RAPIDO - EJERCICIO MATRICES: DIAGONAL (TEMA 4 - V8)
+            ====================================================================
 
-        --- ENUNCIADO ---
-        Crear una matriz NxN de enteros.
-        Imprimir una X en la diagonal principal y un guion en el resto.
+            --- ENUNCIADO ---
+            Crear una matriz NxN de enteros.
+            Imprimir una X en la diagonal principal y un guion en el resto.
 
-        --- METODO 1: crearMatriz(int n) ---
-        static int[][] crearMatriz(int n) {
-            int[][] m = new int[n][n];
-            for (int i = 0; i < m.length; i++) {
-                for (int j = 0; j < m[i].length; j++) {
-                    if (i == j) {
-                        m[i][j] = 1;  // X
-                    } else {
-                        m[i][j] = 0;  // guion
+            --- METODO 1: crearMatriz(int n) ---
+            static int[][] crearMatriz(int n) {
+                int[][] m = new int[n][n];
+                for (int i = 0; i < m.length; i++) {
+                    for (int j = 0; j < m[i].length; j++) {
+                        if (i == j) {
+                            m[i][j] = 1;  // X
+                        } else {
+                            m[i][j] = 0;  // guion
+                        }
                     }
                 }
+                return m;
             }
-            return m;
-        }
 
-        - La matriz se rellena con 0 (guion) y 1 (X).
-        - Diagonal principal: i == j.
+            - La matriz se rellena con 0 (guion) y 1 (X).
+            - Diagonal principal: i == j.
 
-        --- METODO 2: imprimirMatriz(int[][] m) con for-each ---
-        static void imprimirMatriz(int[][] m) {
-            for (int[] fila : m) {
-                for (int columna : fila) {
-                    if (columna == 1) {
-                        System.out.print("X ");
-                    } else {
-                        System.out.print("- ");
+            --- METODO 2: imprimirMatriz(int[][] m) con for-each ---
+            static void imprimirMatriz(int[][] m) {
+                for (int[] fila : m) {
+                    for (int columna : fila) {
+                        if (columna == 1) {
+                            System.out.print("X ");
+                        } else {
+                            System.out.print("- ");
+                        }
                     }
+                    System.out.println();
+                }
+            }
+
+            --- METODO 3: imprimirMatrizInvertida (diagonal inversa) ---
+            La X aparece al final de la primera fila y al inicio de la ultima.
+
+            Version con for clasico (recorriendo de derecha a izquierda):
+            for (int i = 0; i < m.length; i++) {
+                for (int j = m[i].length - 1; j >= 0; j--) {
+                    if (m[i][j] == 1) System.out.print("X ");
+                    else System.out.print("- ");
                 }
                 System.out.println();
             }
-        }
 
-        --- METODO 3: imprimirMatrizInvertida (diagonal inversa) ---
-        La X aparece al final de la primera fila y al inicio de la ultima.
-
-        Version con for clasico (recorriendo de derecha a izquierda):
-        for (int i = 0; i < m.length; i++) {
-            for (int j = m[i].length - 1; j >= 0; j--) {
-                if (m[i][j] == 1) System.out.print("X ");
-                else System.out.print("- ");
+            Version con for-each SIN indices (acumulando en String):
+            for (int[] fila : m) {
+                String linea = "";
+                for (int columna : fila) {
+                    if (columna == 1) linea = "X " + linea;
+                    else linea = "- " + linea;
+                }
+                System.out.println(linea);
             }
-            System.out.println();
-        }
 
-        Version con for-each SIN indices (acumulando en String):
-        for (int[] fila : m) {
-            String linea = "";
-            for (int columna : fila) {
-                if (columna == 1) linea = "X " + linea;
-                else linea = "- " + linea;
-            }
-            System.out.println(linea);
-        }
+            --- TRUCO: invertir sin indices ---
+            En lugar de recorrer al reves, se va acumulando AL PRINCIPIO
+            de la String: linea = "X " + linea;  (en vez de linea += "X ")
 
-        --- TRUCO: invertir sin indices ---
-        En lugar de recorrer al reves, se va acumulando AL PRINCIPIO
-        de la String: linea = "X " + linea;  (en vez de linea += "X ")
+            ====================================================================
 
-        ====================================================================
+            --- CONSEJOS PARA EL EXAMEN ---
 
-        --- CONSEJOS PARA EL EXAMEN ---
+            1. DIAGONAL PRINCIPAL:
+               - i == j  (fila y columna iguales)
+               - Recorrido normal: de izquierda a derecha.
 
-        1. DIAGONAL PRINCIPAL:
-           - i == j  (fila y columna iguales)
-           - Recorrido normal: de izquierda a derecha.
+            2. DIAGONAL INVERSA (opcional):
+               - i + j == n - 1 (para cuando pidan la otra diagonal)
+               - O simplemente recorrer de derecha a izquierda.
 
-        2. DIAGONAL INVERSA (opcional):
-           - i + j == n - 1 (para cuando pidan la otra diagonal)
-           - O simplemente recorrer de derecha a izquierda.
+            3. MATRIZ DE ENTEROS:
+               - Aunque visualmente sea X y -, internamente son int (0 y 1).
+               - Luego al imprimir se convierte 1 -> "X", 0 -> "-".
 
-        3. MATRIZ DE ENTEROS:
-           - Aunque visualmente sea X y -, internamente son int (0 y 1).
-           - Luego al imprimir se convierte 1 -> "X", 0 -> "-".
+            4. RECORRER AL REVES CON FOR:
+               - Inicializar j = m[i].length - 1
+               - Condicion: j >= 0
+               - Decremento: j--
 
-        4. RECORRER AL REVES CON FOR:
-           - Inicializar j = m[i].length - 1
-           - Condicion: j >= 0
-           - Decremento: j--
+            5. INVERTIR CON FOR-EACH (truco):
+               - linea = "X " + linea;  // pone al principio
+               - linea = "- " + linea;
+               - Al final, linea tiene la fila invertida.
 
-        5. INVERTIR CON FOR-EACH (truco):
-           - linea = "X " + linea;  // pone al principio
-           - linea = "- " + linea;
-           - Al final, linea tiene la fila invertida.
+            6. ERRORES TIPICOS:
+               - Confundir m[i][j] con m[j][i] (acceder traspuesto).
+               - Usar m.length para todo (columnas usa m[i].length).
+               - Olvidar que for-each es solo lectura (aqui vale porque solo leemos).
+               - Inicializar la String fuera del bucle externo (se acumulan filas).
 
-        6. ERRORES TIPICOS:
-           - Confundir m[i][j] con m[j][i] (acceder traspuesto).
-           - Usar m.length para todo (columnas usa m[i].length).
-           - Olvidar que for-each es solo lectura (aqui vale porque solo leemos).
-           - Inicializar la String fuera del bucle externo (se acumulan filas).
+            7. TRUCOS RAPIDOS:
+               - Una sola linea: imprimirMatriz(crearMatriz(4));
+               - Para N=4, indices validos: 0..3 en filas y columnas.
+               - Diagonal inversa con indices: i + j == n - 1.
 
-        7. TRUCOS RAPIDOS:
-           - Una sola linea: imprimirMatriz(crearMatriz(4));
-           - Para N=4, indices validos: 0..3 en filas y columnas.
-           - Diagonal inversa con indices: i + j == n - 1.
-
-        ====================================================================
-        """;
+            ====================================================================
+            """;
 
     // -------------------------------------------------------------
     // METODO PRINCIPAL
@@ -198,9 +197,9 @@
         for (int i = 0; i < m.length; i++) {
             for (int j = 0; j < m[i].length; j++) {
                 if (i == j) {
-                    m[i][j] = 1;  // X
+                    m[i][j] = 1; // X
                 } else {
-                    m[i][j] = 0;  // guion
+                    m[i][j] = 0; // guion
                 }
             }
         }
@@ -247,7 +246,7 @@
             String linea = "";
             for (int columna : fila) {
                 if (columna == 1) {
-                    linea = "X " + linea;     // acumula al PRINCIPIO
+                    linea = "X " + linea; // acumula al PRINCIPIO
                 } else {
                     linea = "- " + linea;
                 }
