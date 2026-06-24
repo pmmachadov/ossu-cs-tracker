@@ -1,4 +1,4 @@
-public class EjerciciosIniciacion {
+public class ejerciciosIniciacion2 {
 
     public static void main(String[] args) {
         int[][] b = new int[3][];
@@ -12,4 +12,5 @@ public class EjerciciosIniciacion {
             System.out.println();
         }
     }
+
 }
