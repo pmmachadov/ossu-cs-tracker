@@ -1,19 +1,10 @@
 public class Main {
     public static void main(String[] args) {
-        int[] notas = { 5, 8, 6, 9 };
 
-        double media = calcularMedia(notas);
-
-        System.out.println("Tu nota media es: " + media);
+    static int factorial(int n) {
+        if(n == 0) {
+            return 1;        }
     }
-
-    static double calcularMedia(int[] notas) {
-        int suma = 0;
-
-        for (int n : notas) {
-            suma += n;
-        }
-
-        return suma / (double) notas.length;
+    return n * factorial(n - 1);
     }
 }
