@@ -1,23 +1,20 @@
 public class Main {
 
-    static float calculaDiferencia(float[] t, int n) {
-        if (n <= 0)
-            return -1;
-
-        float max = t[0];
-        float min = t[0];
-
-        for (int i = 1; i < n; i++) {
-            if (t[i] > max)
-                max = t[i];
-            if (t[i] < min)
-                min = t[i];
+    static class Calculo {
+        static float calcularMedia(float[] temperaturas, int cantidad) {
+            float sumaTemperaturas = 0;
+            for (int indice = 0; indice < cantidad; indice++) {
+                sumaTemperaturas += temperaturas[indice];
+            }
+            return sumaTemperaturas / cantidad;
         }
-
-        return max - min;
     }
 
     public static void main(String[] args) {
-        System.out.println("Dif: " + calculaDiferencia(new float[] { 20.5f, 21.1f, 19.8f, 22f }, 4));
+        float[] temperaturas = { 20.5f, 21.0f, 19.5f };
+
+        float mediaCalculada = Calculo.calcularMedia(temperaturas, 3);
+
+        System.out.println("Media: " + mediaCalculada);
     }
 }
