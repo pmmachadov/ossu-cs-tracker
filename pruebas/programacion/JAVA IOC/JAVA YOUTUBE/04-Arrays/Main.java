@@ -1,20 +1,19 @@
+import java.util.Random;
+
 public class Main {
-
-    static class Calculo {
-        static float calcularMedia(float[] temperaturas, int cantidad) {
-            float sumaTemperaturas = 0;
-            for (int indice = 0; indice < cantidad; indice++) {
-                sumaTemperaturas += temperaturas[indice];
-            }
-            return sumaTemperaturas / cantidad;
-        }
-    }
-
     public static void main(String[] args) {
-        float[] temperaturas = { 20.5f, 21.0f, 19.5f };
+        Random r1 = new Random();
 
-        float mediaCalculada = Calculo.calcularMedia(temperaturas, 3);
+        for (int i = 0; i < 5; i++) {
+            int a = r1.nextInt(100);
+            System.out.println(a);
+        }
 
-        System.out.println("Media: " + mediaCalculada);
+        Random r2 = new Random(42);
+
+        for (int i = 0; i < 5; i++) {
+            int a = r2.nextInt(100);
+            System.out.println(a);
+        }
     }
 }
