@@ -1,0 +1,515 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Visualizador de Código - Recursividad</title>
+    <style>
+      :root {
+        --bg-color: #1e1e1e;
+        --panel-bg: #252526;
+        --text-color: #cccccc;
+        --highlight: #3a3d41;
+        --border: #3c3c3c;
+        --accent: #007acc;
+
+        /* Syntax colors */
+        --kw: #569cd6;
+        --type: #4ec9b0;
+        --str: #ce9178;
+        --comment: #6a9955;
+        --num: #b5cea8;
+      }
+
+      body {
+        margin: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      /* Top Bar */
+      .toolbar {
+        background-color: #333333;
+        padding: 10px 20px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        border-bottom: 1px solid var(--border);
+      }
+
+      button {
+        background-color: var(--accent);
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: bold;
+      }
+
+      button:hover {
+        background-color: #005f9e;
+      }
+
+      .speed-control {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 14px;
+      }
+
+      /* Main layout */
+      .main-container {
+        display: flex;
+        flex: 1;
+        overflow: hidden;
+      }
+
+      /* Code Editor Panel */
+      .code-panel {
+        flex: 6;
+        background-color: var(--bg-color);
+        border-right: 1px solid var(--border);
+        overflow-y: auto;
+        font-family: 'Consolas', 'Courier New', monospace;
+        font-size: 14px;
+        line-height: 1.5;
+        padding-bottom: 50px;
+      }
+
+      .code-line {
+        display: flex;
+        padding: 0 10px;
+        border-left: 3px solid transparent;
+      }
+
+      .code-line.active {
+        background-color: var(--highlight);
+        border-left: 3px solid var(--accent);
+      }
+
+      .line-num {
+        color: #858585;
+        width: 30px;
+        text-align: right;
+        padding-right: 15px;
+        user-select: none;
+      }
+
+      .code-content {
+        white-space: pre;
+      }
+
+      /* Sidebar (Stack, Vars, Console) */
+      .sidebar {
+        flex: 4;
+        display: flex;
+        flex-direction: column;
+        background-color: var(--panel-bg);
+      }
+
+      .section {
+        display: flex;
+        flex-direction: column;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .section-half {
+        flex: 1;
+        min-height: 200px;
+        overflow-y: auto;
+      }
+
+      .section-header {
+        background-color: #2d2d2d;
+        padding: 5px 10px;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        border-bottom: 1px solid var(--border);
+        position: sticky;
+        top: 0;
+      }
+
+      .content-area {
+        padding: 10px;
+        font-family: 'Consolas', monospace;
+        font-size: 13px;
+      }
+
+      /* Call Stack & Variables */
+      .stack-frame {
+        background-color: #333;
+        margin-bottom: 8px;
+        padding: 8px;
+        border-radius: 4px;
+        border-left: 3px solid transparent;
+      }
+
+      .stack-frame.active-frame {
+        border-left-color: #4ec9b0;
+        background-color: #3a3a3a;
+      }
+
+      .frame-name {
+        color: #dcdcaa;
+        font-weight: bold;
+        margin-bottom: 4px;
+      }
+
+      .frame-vars {
+        color: #9cdcfe;
+      }
+
+      /* Console */
+      .console-output {
+        color: #cccccc;
+        white-space: pre-wrap;
+      }
+
+      /* Syntax colors mapping */
+      .kw {
+        color: var(--kw);
+      }
+      .type {
+        color: var(--type);
+      }
+      .str {
+        color: var(--str);
+      }
+      .comment {
+        color: var(--comment);
+      }
+      .num {
+        color: var(--num);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="toolbar">
+      <button id="play-btn">Ejecutar / Debug</button>
+      <button id="reset-btn" style="background-color: #555">Reiniciar</button>
+      <div class="speed-control">
+        <label for="speed">Lento</label>
+        <input type="range" id="speed" min="1" max="10" value="5" />
+        <label for="speed">Rápido</label>
+      </div>
+    </div>
+
+    <div class="main-container">
+      <div class="code-panel" id="code-container">
+        <!-- Code will be injected here -->
+      </div>
+
+      <div class="sidebar">
+        <div class="section section-half">
+          <div class="section-header">Pila de Llamadas y Variables (Call Stack)</div>
+          <div class="content-area" id="call-stack">
+            <div style="color: #666; font-style: italic">Esperando ejecución...</div>
+          </div>
+        </div>
+
+        <div class="section section-half" style="border-bottom: none">
+          <div class="section-header">Consola de Salida</div>
+          <div class="content-area console-output" id="console-output"></div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const rawCode = `public class Main {
+    public static void main(String[] args) {
+        System.out.println("--- 1. POTENCIA RECURSIVA ---");
+        System.out.println("2^4 = " + potencia(2, 4)); // 16
+        System.out.println("5^3 = " + potencia(5, 3)); // 125
+        System.out.println("7^0 = " + potencia(7, 0)); // 1
+
+        System.out.println("\\n--- 2. COMPROBAR BINARIO ---");
+        System.out.println("1011 es binario? " + esBinario(1011)); // true
+        System.out.println("1001 es binario? " + esBinario(1001)); // true
+        System.out.println("123 es binario? " + esBinario(123)); // false
+        System.out.println("1020 es binario? " + esBinario(1020)); // false
+    }
+
+    static int potencia(int base, int exp) {
+        if (exp == 0) {
+            return 1;
+        } else {
+            return base * potencia(base, exp - 1);
+        }
+    }
+
+    static boolean esBinario(int n) {
+        if (n < 10) {
+            return (n == 0 || n == 1);
+        }
+
+        if (n % 10 == 0 || n % 10 == 1) {
+            return esBinario(n / 10);
+        } else {
+            return false;
+        }
+    }
+}`;
+
+      // 1. GENERAR EL CÓDIGO HTML CON COLORES (SYNTAX HIGHLIGHTING)
+      function highlightSyntax(code) {
+        return code
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(
+            /\b(public|class|static|void|int|boolean|if|else|return)\b/g,
+            '<span class="kw">$1</span>',
+          )
+          .replace(/\b(String|System|out|println)\b/g, '<span class="type">$1</span>')
+          .replace(/("[^"]*")/g, '<span class="str">$1</span>')
+          .replace(/(\/\/.*)/g, '<span class="comment">$1</span>')
+          .replace(/\b(\d+)\b/g, '<span class="num">$1</span>');
+      }
+
+      const codeContainer = document.getElementById('code-container');
+      rawCode.split('\n').forEach((line, index) => {
+        const div = document.createElement('div');
+        div.className = 'code-line';
+        div.id = 'line-' + (index + 1);
+
+        const lineNum = document.createElement('span');
+        lineNum.className = 'line-num';
+        lineNum.innerText = index + 1;
+
+        const codeSpan = document.createElement('span');
+        codeSpan.className = 'code-content';
+        codeSpan.innerHTML = highlightSyntax(line) || ' ';
+
+        div.appendChild(lineNum);
+        div.appendChild(codeSpan);
+        codeContainer.appendChild(div);
+      });
+
+      // 2. LÓGICA DEL MOTOR DE DEBUGGING
+      let isRunning = false;
+      let isPaused = false;
+      let callStack = [];
+      let stopRequested = false;
+
+      async function step(line) {
+        if (stopRequested) throw new Error('Detenido');
+
+        // Pausar si el usuario presionó Pause
+        while (isPaused) {
+          await new Promise((r) => setTimeout(r, 100));
+          if (stopRequested) throw new Error('Detenido');
+        }
+
+        // Actualizar Interfaz: Línea Activa
+        document.querySelectorAll('.code-line').forEach((el) => el.classList.remove('active'));
+        if (line !== -1) {
+          const lineEl = document.getElementById('line-' + line);
+          if (lineEl) {
+            lineEl.classList.add('active');
+            // Scroll suave hacia la línea activa
+            lineEl.scrollIntoView({ block: 'center', behavior: 'smooth' });
+          }
+        }
+
+        // Actualizar Interfaz: Call Stack y Variables
+        renderCallStack();
+
+        // Esperar basado en la velocidad seleccionada
+        const speedSlider = document.getElementById('speed').value;
+        const ms = (11 - speedSlider) * 200; // De 200ms a 2000ms
+        await new Promise((r) => setTimeout(r, ms));
+      }
+
+      function renderCallStack() {
+        const container = document.getElementById('call-stack');
+        container.innerHTML = '';
+
+        if (callStack.length === 0) {
+          container.innerHTML =
+            '<div style="color: #666; font-style: italic;">Sin llamadas activas...</div>';
+          return;
+        }
+
+        // Renderizar la pila en orden inverso (Top of stack arriba)
+        for (let i = callStack.length - 1; i >= 0; i--) {
+          const frame = callStack[i];
+          const div = document.createElement('div');
+          div.className = 'stack-frame' + (i === callStack.length - 1 ? ' active-frame' : '');
+
+          const name = document.createElement('div');
+          name.className = 'frame-name';
+          name.innerText = frame.name;
+
+          const vars = document.createElement('div');
+          vars.className = 'frame-vars';
+          let varsText = Object.entries(frame.vars)
+            .map(([k, v]) => `${k}: ${v}`)
+            .join(', ');
+          vars.innerText = varsText || 'Sin variables locales';
+
+          div.appendChild(name);
+          div.appendChild(vars);
+          container.appendChild(div);
+        }
+      }
+
+      function printConsole(text) {
+        const consoleEl = document.getElementById('console-output');
+        // Reemplazar saltos de línea explícitos si los hay
+        text = text.replace(/\\n/g, '\n');
+        consoleEl.innerHTML += text + '\n';
+        consoleEl.scrollTop = consoleEl.scrollHeight;
+      }
+
+      // 3. SIMULACIÓN DE LA EJECUCIÓN (INTÉRPRETE)
+      async function runMain() {
+        callStack = [{ name: 'main(String[] args)', vars: {} }];
+        await step(2); // main signature
+
+        await step(3);
+        printConsole('--- 1. POTENCIA RECURSIVA ---');
+
+        await step(4);
+        let p1 = await runPotencia(2, 4);
+        await step(4);
+        printConsole('2^4 = ' + p1);
+
+        await step(5);
+        let p2 = await runPotencia(5, 3);
+        await step(5);
+        printConsole('5^3 = ' + p2);
+
+        await step(6);
+        let p3 = await runPotencia(7, 0);
+        await step(6);
+        printConsole('7^0 = ' + p3);
+
+        await step(8);
+        printConsole('\n--- 2. COMPROBAR BINARIO ---');
+
+        await step(9);
+        let b1 = await runEsBinario(1011);
+        await step(9);
+        printConsole('1011 es binario? ' + b1);
+
+        await step(10);
+        let b2 = await runEsBinario(1001);
+        await step(10);
+        printConsole('1001 es binario? ' + b2);
+
+        await step(11);
+        let b3 = await runEsBinario(123);
+        await step(11);
+        printConsole('123 es binario? ' + b3);
+
+        await step(12);
+        let b4 = await runEsBinario(1020);
+        await step(12);
+        printConsole('1020 es binario? ' + b4);
+
+        await step(13); // end main
+        callStack.pop();
+        await step(-1); // clean
+      }
+
+      async function runPotencia(base, exp) {
+        callStack.push({ name: `potencia(base=${base}, exp=${exp})`, vars: { base, exp } });
+        await step(15);
+        await step(16);
+
+        if (exp === 0) {
+          await step(17);
+          callStack.pop();
+          return 1;
+        } else {
+          await step(18); // else
+          await step(19);
+          let subRes = await runPotencia(base, exp - 1);
+
+          // Actualizamos las variables para mostrar el valor devuelto por la recursión
+          callStack[callStack.length - 1].vars.subRes = subRes;
+          await step(19);
+
+          let total = base * subRes;
+          callStack.pop();
+          return total;
+        }
+      }
+
+      async function runEsBinario(n) {
+        callStack.push({ name: `esBinario(n=${n})`, vars: { n } });
+        await step(23);
+        await step(24);
+
+        if (n < 10) {
+          await step(25);
+          let res = n === 0 || n === 1;
+          callStack.pop();
+          return res;
+        }
+
+        await step(28);
+        if (n % 10 === 0 || n % 10 === 1) {
+          await step(29);
+          let subRes = await runEsBinario(Math.floor(n / 10));
+
+          callStack[callStack.length - 1].vars.subRes = subRes;
+          await step(29);
+
+          callStack.pop();
+          return subRes;
+        } else {
+          await step(30);
+          await step(31);
+          callStack.pop();
+          return false;
+        }
+      }
+
+      // 4. CONTROLADORES DE EVENTOS DE LA INTERFAZ
+      const playBtn = document.getElementById('play-btn');
+      const resetBtn = document.getElementById('reset-btn');
+
+      playBtn.addEventListener('click', async () => {
+        if (!isRunning) {
+          // Iniciar de cero
+          document.getElementById('console-output').innerHTML = '';
+          isRunning = true;
+          isPaused = false;
+          stopRequested = false;
+          playBtn.innerText = 'Pausar';
+
+          try {
+            await runMain();
+            playBtn.innerText = 'Re-ejecutar';
+            isRunning = false;
+          } catch (e) {
+            if (e.message !== 'Detenido') console.error(e);
+          }
+        } else {
+          // Alternar Pausa/Reanudar
+          isPaused = !isPaused;
+          playBtn.innerText = isPaused ? 'Reanudar' : 'Pausar';
+        }
+      });
+
+      resetBtn.addEventListener('click', () => {
+        stopRequested = true;
+        isRunning = false;
+        isPaused = false;
+        callStack = [];
+        document.getElementById('console-output').innerHTML = '';
+        document.querySelectorAll('.code-line').forEach((el) => el.classList.remove('active'));
+        renderCallStack();
+        playBtn.innerText = 'Ejecutar / Debug';
+      });
+    </script>
+  </body>
+</html>
