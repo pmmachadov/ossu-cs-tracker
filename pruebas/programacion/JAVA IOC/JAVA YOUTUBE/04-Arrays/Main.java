@@ -10,6 +10,7 @@ public class Main {
 
         banda.agregarMusico(new Musico("James", 9, Instrumento.VOCALISTA));
         banda.agregarMusico(new Musico("Kirk", 8, Instrumento.GUITARRISTA));
+
         banda.agregarMusico(new Musico("Dave", 7, Instrumento.GUITARRISTA));
         banda.agregarMusico(new Musico("Jimi", 10, Instrumento.GUITARRISTA));
 
@@ -114,3 +115,40 @@ class Banda {
         };
     }
 }
+
+// 3.4
+
+// Método obtenerPrioridad (0.5 puntos) Método privado que recibe un Rol y
+// devuelve un int según este orden:
+
+// GUERRERO
+// MAGO
+// ARQUERO
+// SANADOR
+// LADRÓN
+// 3.5
+
+// Método listarFormacion (1 punto) Ordena los aventureros por
+
+// prioridad (de menor a mayor número) usando sort con una expresión lambda, y
+// luego los muestra uno por uno con un Iterator en el formato: - <nombre> (Nv.
+// <nivel>) - <ROL>
+
+// Sección 4:
+
+// Clase Main (2 puntos)
+
+// Crea una clase con el método main que:
+
+// Cree un equipo llamado "Los Legendarios".
+// Añada los siguientes aventureros en este orden:
+
+// Nombre Nivel Rol
+// Thorn 9 GUERRERO
+// Elara 10 MAGO
+// Finn 7 ARQUERO
+// Lyra 8 SANADOR
+// Shadow 6 LADRÓN
+// Brom 5 GUERRERO
+// Zara 7 MAGO
+// Kai 8 ARQUERO
