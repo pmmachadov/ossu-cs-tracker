@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Code Visualizer — Java</title>
+<style>
+:root {
+  --bg: #0d1117;
+  --panel: #161b22;
+  --border: #30363d;
+  --text: #e6edf3;
+  --dim: #8b949e;
+  --blue: #58a6ff;
+  --green: #3fb950;
+  --orange: #d29922;
+  --red: #f85149;
+  --purple: #bc8cff;
+  --cyan: #39d2c0;
+  --pink: #f778ba;
+  --mono: 'Cascadia Code','Consolas','JetBrains Mono','Fira Code',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:var(--mono);font-size:13px;height:100vh;display:flex;flex-direction:column;overflow:hidden}
+
+.tb{display:flex;align-items:center;gap:8px;padding:7px 14px;background:var(--panel);border-bottom:1px solid var(--border);flex-shrink:0;flex-wrap:wrap}
+.tb .badge{font-size:11px;font-weight:700;padding:2px 12px;border-radius:12px;background:linear-gradient(135deg,#1f6feb55,#1f6feb22);color:var(--blue);border:1px solid #1f6feb55}
+.tb button{background:#21262d;border:1px solid var(--border);color:var(--text);padding:5px 14px;border-radius:6px;cursor:pointer;font-family:var(--mono);font-size:12px;transition:all .1s;display:inline-flex;align-items:center;gap:4px}
+.tb button:hover{background:#30363d;border-color:var(--blue)}
+.tb button:active{transform:scale(.95)}
+.tb button.green{background:#238636;border-color:#2ea043;color:#fff}
+.tb button.green:hover{background:#2ea043}
+.tb button.red{background:#da3633;border-color:#f85149;color:#fff}
+.tb button.red:hover{background:#f85149}
+.tb button:disabled{opacity:.3;cursor:not-allowed;transform:none}
+.tb .speed{display:flex;align-items:center;gap:4px;color:var(--dim);font-size:11px}
+.tb .speed input{width:70px;accent-color:var(--blue);cursor:pointer}
+.tb .step-count{margin-left:auto;color:var(--dim);font-size:11px;background:#161b22;padding:2px 10px;border-radius:10px;border:1px solid var(--border)}
+.tb .step-count s{color:var(--blue);text-decoration:none;font-weight:700}
+.tb .khint{font-size:10px;color:var(--dim);background:#21262d;padding:1px 6px;border-radius:3px;border:1px solid var(--border)}
+
+.panes{display:flex;flex:1;overflow:hidden}
+.pane{flex:1;overflow:auto}
+.pane.left{border-right:1px solid var(--border);background:var(--bg)}
+.pane.right{background:var(--panel)}
+.ph{position:sticky;top:0;background:var(--panel);padding:5px 14px;font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:var(--dim);border-bottom:1px solid var(--border);z-index:5;font-weight:600}
+
+.cc{padding:4px 0}
+.cl{display:flex;padding:1px 0;line-height:1.5;min-height:20px;transition:background .06s;border-left:3px solid transparent}
+.cl.cur{background:rgba(88,166,255,.22);border-left-color:var(--blue)}
+.cl .ln{width:44px;text-align:right;padding-right:12px;color:var(--dim);user-select:none;flex-shrink:0;font-size:11px}
+.cl.cur .ln{color:var(--blue);font-weight:700}
+.cl .lc{flex:1;white-space:pre;tab-size:4;overflow:hidden;padding-right:14px}
+
+.kw{color:var(--purple);font-weight:600}
+.ty{color:var(--cyan)}
+.st{color:var(--orange)}
+.nu{color:#79c0ff}
+.cm{color:var(--dim);font-style:italic}
+.fn{color:#d2a8ff}
+.md{color:var(--pink)}
+
+.rpc{display:flex;flex-direction:column;height:100%}
+.var-sec{flex:1;overflow:auto;min-height:35%}
+.out-sec{border-top:1px solid var(--border);flex:0 1 auto;max-height:45%;overflow:auto}
+
+#vt{width:100%;border-collapse:collapse;font-size:11px}
+#vt th{text-align:left;padding:4px 10px;font-size:10px;color:var(--dim);border-bottom:1px solid var(--border);position:sticky;top:0;background:#1a1e26;z-index:2;font-weight:600}
+#vt td{padding:3px 10px;border-bottom:1px solid #1c2128;vertical-align:top;max-width:200px;overflow:hidden;text-overflow:ellipsis;font-size:11px}
+#vt tr.ch td{background:rgba(63,185,80,.15)}
+#vt tr.ch .vv{color:var(--green);font-weight:700}
+.vn{color:#79c0ff}.vv{color:#a5d6ff}.vtc{color:var(--cyan);font-size:10px}
+.ve{color:var(--dim);font-style:italic;text-align:center;padding:24px;display:block}
+
+#ol{padding:3px 10px;font-size:11px;font-family:var(--mono)}
+.oi{padding:2px 3px;border-bottom:1px solid #1c2128;white-space:pre-wrap}
+.oi .olab{color:var(--dim);font-size:10px;margin-right:5px}
+.oi.err{color:var(--red);background:rgba(248,81,73,.08)}
+.oi.inf{color:var(--dim)}
+.oi.prn{color:var(--green)}
+
+.cs{padding:2px 10px;background:#0d1117;border-top:1px solid var(--border);font-size:10px;color:var(--dim);display:flex;gap:4px;align-items:center;flex-wrap:wrap;flex-shrink:0}
+.cs .ci{background:linear-gradient(135deg,#1f6feb33,#1f6feb11);padding:1px 10px;border-radius:4px;color:var(--blue);border:1px solid #1f6feb33}
+.cs .loop{color:var(--orange)}
+
+.sb{padding:3px 14px;background:var(--panel);border-top:1px solid var(--border);font-size:10px;color:var(--dim);display:flex;gap:12px;align-items:center;flex-shrink:0}
+.sd{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:4px;transition:all .3s}
+.sd.run{background:var(--green);box-shadow:0 0 6px var(--green)}
+.sd.pause{background:var(--orange);box-shadow:0 0 6px var(--orange)}
+.sd.stop{background:var(--dim)}
+
+@media(max-width:700px){.panes{flex-direction:column}.pane.left{border-right:none;border-bottom:1px solid var(--border);max-height:45%}}
+</style>
+</head>
+<body>
+
+<div class="tb">
+  <span class="badge">☕ Java</span>
+  <button id="play" class="green" title="Play (P)">▶ Play</button>
+  <button id="pause" title="Pausa" disabled>⏸ Pausa</button>
+  <button id="stop" class="red" title="Stop (S)">⏹ Stop</button>
+  <button id="step" title="Paso a paso (Space)">⏭ Step</button>
+  <span class="speed"><span>🐢</span><input type="range" id="speed" min="50" max="2000" value="400" step="50"><span>🐇</span><span id="spd">400ms</span></span>
+  <span class="step-count">Paso <s id="sn">0</s> / <span id="st">0</span></span>
+  <span class="khint">Espacio → Step</span>
+</div>
+
+<div class="panes">
+  <div class="pane left"><div class="ph">📄 Código fuente — Java</div><div class="cc" id="code"></div></div>
+  <div class="pane right">
+    <div class="rpc">
+      <div class="var-sec"><div class="ph">📊 Variables</div><table id="vt"><thead><tr><th style="width:28%">Variable</th><th style="width:47%">Valor</th><th style="width:25%">Tipo</th></tr></thead><tbody id="vb"></tbody></table></div>
+      <div class="out-sec"><div class="ph">📝 Salida (System.out)</div><div id="ol"></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="cs" id="cstack">Stack:</div>
+<div class="sb">
+  <span><span class="sd stop" id="dot"></span><span id="stat">✅ Listo</span></span>
+  <span>Línea: <s id="lns" style="color:var(--blue)">—</s></span>
+  <span id="desc" style="flex:1;text-align:right;overflow:hidden;text-overflow:ellipsis;white-space:nowrap"></span>
+</div>
+
+<script>
+const JAVA_CODE = [
+'import java.util.Arrays;',
+'import java.util.HashMap;',
+'import java.util.LinkedHashMap;',
+'import java.util.List;',
+'import java.util.Map;',
+'import java.util.stream.Collectors;',
+'',
+'public class Main {',
+'    public static void main(String[] args) {',
+'',
+'        List<Integer> numeros = Arrays.asList(1, 2, 3, 4, 5, 6);',
+'',
+'        int sumaCuadradosPares = numeros.stream()',
+'                .filter(n -> n % 2 == 0)',
+'                .map(n -> n * n)',
+'                .reduce(0, Integer::sum);',
+'',
+'        System.out.println("Suma cuadrados pares: " + sumaCuadradosPares);',
+'',
+'        String texto = "¡Hola, hola! ¿Cómo estás? Estoy bien, muy bien.";',
+'',
+'        HashMap<String, Integer> frecuencias = new HashMap<>();',
+'',
+'        texto = texto.toLowerCase();',
+'',
+'        String[] arr = texto.split("\\\\\\\\W+");',
+'',
+'        for (String str : arr) {',
+'            if (!str.isEmpty()) {',
+'                int conteoActual = frecuencias.getOrDefault(str, 0);',
+'                frecuencias.put(str, conteoActual + 1);',
+'            }',
+'        }',
+'',
+'        System.out.println("\\\\n=== MAPA SIN ORDENAR (HashMap) ===");',
+'        System.out.println(frecuencias);',
+'',
+'        Map<String, Integer> mapaOrdenado = frecuencias.entrySet().stream()',
+'                .sorted((e1, e2) -> e2.getValue().compareTo(e1.getValue()))',
+'                .collect(Collectors.toMap(',
+'                        Map.Entry::getKey,',
+'                        Map.Entry::getValue,',
+'                        (e1, e2) -> e1,',
+'                        LinkedHashMap::new));',
+'',
+'        System.out.println("\\\\n=== MAPA ORDENADO POR FRECUENCIA (LinkedHashMap) ===");',
+'        for (Map.Entry<String, Integer> entrada : mapaOrdenado.entrySet()) {',
+'            System.out.println("Palabra: " + entrada.getKey() + " | Frecuencia: " + entrada.getValue());',
+'        }',
+'    }',
+'}',
+];
+
+function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+
+// ---- STEP BUILDER ----
+function build(codeLines) {
+  const steps = [];
+  let main = false, depr = 0, skipUntil = -1;
+  let loops = [];
+
+  for (let i = 0; i < codeLines.length; i++) {
+    if (i <= skipUntil) continue;
+    const raw = codeLines[i], tr = raw.trim(), ln = i + 1;
+    if (tr === '' || tr.startsWith('//')) continue;
+
+    // Imports
+    if (tr.startsWith('import ')) {
+      steps.push({line:ln, type:'import', text:raw, desc:'Import'});
+      continue;
+    }
+    // Class
+    if (tr.startsWith('public class ') || tr.startsWith('class ')) {
+      steps.push({line:ln, type:'class', text:raw, desc:'Clase'});
+      continue;
+    }
+    // Main
+    if (tr.includes('public static void main')) {
+      steps.push({line:ln, type:'method', text:raw, desc:'main()'});
+      main = true; continue;
+    }
+    if (!main) continue;
+
+    const opens = (tr.match(/\{/g)||[]).length;
+    const closes = (tr.match(/\}/g)||[]).length;
+
+    // FOR
+    const fh = tr.match(/for\s*\((.+)\)\s*\{?/);
+    if (fh) {
+      depr += opens;
+      const hdr = fh[1];
+      const fe = hdr.match(/(.+?)\s+(\w+)\s*:\s*(.+)/);
+      if (fe) {
+        loops.push({depth:depr, var:fe[2], coll:fe[3], bodyStart:steps.length+1, bodyEnd:-1});
+        steps.push({line:ln, type:'for-h', text:raw, desc:'for-each: '+fe[2], forVar:fe[2], collExpr:fe[3], bd:depr});
+      }
+      continue;
+    }
+
+    // Closing braces
+    if (closes > 0) {
+      depr -= closes;
+      while (loops.length > 0 && loops[loops.length-1].depth >= depr) {
+        const lp = loops.pop(); lp.bodyEnd = steps.length - 1;
+      }
+      if (tr === '}' || tr.replace(/;\s*/,'') === '}') continue;
+    }
+
+    // println
+    const pl = tr.match(/System\.out\.println\((.+)\);/);
+    if (pl) {
+      depr += opens - closes;
+      steps.push({line:ln, type:'print', text:raw, expr:pl[1], desc:'println'});
+      continue;
+    }
+
+    // Multi-line decl (no ; at end → stream pipeline)
+    const dcm = tr.match(/^(.+?)\s+(\w+)\s*=\s*(.+)$/);
+    if (dcm && !tr.endsWith(';') && !tr.startsWith('for') && !tr.startsWith('if') && !tr.startsWith('System') && !tr.startsWith('.')) {
+      depr += opens - closes;
+      let fullExpr = dcm[3].trim(), di = i + 1;
+      while (di < codeLines.length) {
+        const nl = codeLines[di].trim();
+        if (!nl || nl.startsWith('//')) { di++; continue; }
+        if (/^(\.\w+|Map\.Entry::|\w+HashMap::|\(e\d,)/.test(nl)) {
+          fullExpr += nl;
+          if (nl.endsWith(');') || nl.endsWith('));') || nl.endsWith('new));')) { skipUntil = di; break; }
+          di++;
+        } else break;
+      }
+      steps.push({line:ln, type:'decl', text:raw, desc:dcm[2]+' = …', var:dcm[2], vtype:dcm[1], expr:fullExpr});
+      continue;
+    }
+
+    // Single-line decl
+    const dc = tr.match(/^(.+?)\s+(\w+)\s*=\s*(.+);\s*$/);
+    if (dc && !tr.startsWith('for') && !tr.startsWith('if') && !tr.startsWith('System') && !tr.startsWith('.')) {
+      depr += opens - closes;
+      steps.push({line:ln, type:'decl', text:raw, desc:dc[2]+' = …', var:dc[2], vtype:dc[1], expr:dc[3]});
+      continue;
+    }
+
+    // Assignment
+    const as = tr.match(/^(\w+)\s*=\s*(.+);\s*$/);
+    if (as && !tr.startsWith('for') && !tr.startsWith('if') && !tr.startsWith('System') && !tr.startsWith('.')) {
+      depr += opens - closes;
+      steps.push({line:ln, type:'assign', text:raw, desc:as[1]+' = …', var:as[1], expr:as[2]});
+      continue;
+    }
+
+    // Method call
+    const mc = tr.match(/^(\w+)\.(\w+)\((.+)\);\s*$/);
+    if (mc && !tr.startsWith('System') && !tr.startsWith('.')) {
+      depr += opens - closes;
+      steps.push({line:ln, type:'call', text:raw, desc:mc[1]+'.'+mc[2]+'(…)', obj:mc[1], method:mc[2], args:mc[3]});
+      continue;
+    }
+
+    // IF
+    const im = tr.match(/if\s*\(([^)]+)\)\s*\{?/);
+    if (im) {
+      depr += opens - closes;
+      steps.push({line:ln, type:'if', text:raw, cond:im[1], desc:'if'});
+      continue;
+    }
+
+    // Stream cont
+    if (tr.startsWith('.')) {
+      depr += opens - closes;
+      const mn = tr.match(/\.(\w+)/)?.[1]||'?';
+      steps.push({line:ln, type:'stream', text:raw, method:mn, desc:'.'+mn});
+      continue;
+    }
+
+    // Collector arg
+    if (tr.startsWith('Map.Entry::') || tr.startsWith('(e1,') || tr.startsWith('LinkedHashMap::')) {
+      depr += opens - closes;
+      steps.push({line:ln, type:'coll-arg', text:raw, desc:'arg'});
+      continue;
+    }
+
+    // Fallback
+    if (tr.length>0 && !tr.startsWith('*') && !tr.startsWith('/*')) {
+      depr += opens - closes;
+      steps.push({line:ln, type:'exec', text:raw, desc:'ejec'});
+    }
+  }
+  return steps;
+}
+
+// ---- SIMULATOR ----
+class Sim {
+  constructor(steps) {
+    this.steps = steps; this.scope = {}; this.output = [];
+    this.idx = -1; this.loops = []; this.done = false; this.changed = null;
+  }
+  reset() {
+    this.scope = {}; this.output = []; this.idx = -1;
+    this.loops = []; this.done = false; this.changed = null;
+  }
+  cur() { return this.idx>=0&&this.idx<this.steps.length ? this.steps[this.idx] : null; }
+  canAdv() {
+    if (this.done) return false;
+    if (this.loops.length>0) { const l = this.loops[0]; if (l.iter+1 < l.items.length) return true; }
+    return this.idx+1 < this.steps.length;
+  }
+
+  eval(expr) {
+    const e = expr.trim();
+    if ((e.startsWith('"')&&e.endsWith('"')) || (e.startsWith("'")&&e.endsWith("'"))) return {val:e.slice(1,-1),type:'String'};
+    if (/^-?\d+$/.test(e)) return {val:parseInt(e,10),type:'int'};
+    if (/^new\s+HashMap\s*<>\s*\(\s*\)$/.test(e)||/^new\s+HashMap\s*\(\s*\)$/.test(e)) return {val:{},type:'HashMap'};
+    if (/^new\s+LinkedHashMap\s*<>\s*\(\s*\)$/.test(e)||/^new\s+LinkedHashMap\s*\(\s*\)$/.test(e)) return {val:{},type:'LinkedHashMap'};
+    let m;
+    m=e.match(/Arrays\.asList\((.+)\)/); if(m){const items=m[1].split(',').map(s=>{const ev=this.eval(s.trim());return ev?ev.val:s.trim()});return{val:items,type:'List'};}
+    m=e.match(/(\w+)\.split\((.+)\)/); if(m){const o=this.scope[m[1]];if(o){const rv=this.eval(m[2]);if(rv){const rs=String(rv.val).replace(/\\\\/g,'\\');return{val:String(o.val).split(new RegExp(rs)),type:'String[]'};}}return{val:[],type:'String[]'};}
+    m=e.match(/(\w+)\.toLowerCase\(\)/); if(m){const o=this.scope[m[1]];return{val:o&&typeof o.val==='string'?o.val.toLowerCase():'',type:'String'};}
+    m=e.match(/(\w+)\.getOrDefault\((.+)\)/); if(m){const mp=this.scope[m[1]];const args=m[2].split(',').map(s=>s.trim());if(mp&&args.length>=2){const k=this.eval(args[0]);const d=this.eval(args[1]);const key=k?String(k.val):args[0];const vv=mp.val[key];return{val:vv!==undefined?vv:(d?d.val:0),type:'int'};}}
+    m=e.match(/(\w+)\.entrySet\(\)\.stream\(\)/); if(m){const mp=this.scope[m[1]];if(mp&&typeof mp.val==='object'){const es=Object.entries(mp.val).map(([k,v])=>({key:k,value:v}));return{val:es,type:'Stream'};}}
+    m=e.match(/(\w+)\.getKey\(\)/); if(m){const o=this.scope[m[1]];return{val:o&&o.val&&o.val.key?o.val.key:'',type:'String'};}
+    m=e.match(/(\w+)\.getValue\(\)/); if(m){const o=this.scope[m[1]];return{val:o&&o.val&&o.val.value!==undefined?o.val.value:0,type:'int'};}
+    if(this.scope[e]!==undefined){const v=this.scope[e];return{val:v.val,type:v.type};}
+    if(e.includes('+')){const ps=e.split('+').map(s=>s.trim());let r='';for(const p of ps){const ev=this.eval(p);r+=ev?String(ev.val):p;}return{val:r,type:'String'};}
+    m=e.match(/(\w+)\s*\+\s*(\d+)/); if(m){const b=this.scope[m[1]];return{val:(b?Number(b.val):0)+parseInt(m[2],10),type:'int'};}
+    return null;
+  }
+
+  advance() {
+    if (this.done) return false;
+    this.changed = null;
+
+    // Loop wrap-around
+    if (this.loops.length > 0) {
+      const l = this.loops[0];
+      if (this.idx >= l.bodyEnd) {
+        l.iter++;
+        if (l.iter < l.items.length) {
+          const val = l.items[l.iter];
+          this.scope[l.var] = {val, type:typeof val==='object'?'Entry':'String'};
+          this.idx = l.bodyStart - 1;
+          this.output.push({type:'info', text:'→ Iter '+(l.iter+1)+'/'+l.items.length+': '+l.var});
+          return true;
+        } else { this.loops.shift(); }
+      }
+    }
+
+    this.idx++;
+    if (this.idx >= this.steps.length) { this.done = true; return false; }
+    const s = this.steps[this.idx];
+    if (!s) { this.done = true; return false; }
+
+    try {
+      switch (s.type) {
+        case 'import': case 'class': case 'method': case 'exec': case 'stream': case 'coll-arg': break;
+        case 'decl': {
+          const ex = s.expr;
+          if (ex.includes('.stream()') && ex.includes('.reduce(')) {
+            const nums = this.scope['numeros'];
+            if (nums && Array.isArray(nums.val)) {
+              const evens = nums.val.filter(n=>n%2===0);
+              const squares = evens.map(n=>n*n);
+              const sum = squares.reduce((a,b)=>a+b,0);
+              this.scope[s.var] = {val:sum, type:'int'}; this.changed = s.var;
+              this.output.push({type:'info', text:'Stream: '+JSON.stringify(nums.val)+' → pares→'+JSON.stringify(evens)+' → ²→'+JSON.stringify(squares)+' → Σ='+sum});
+            } break;
+          }
+          if (ex.includes('.entrySet().stream()') && ex.includes('Collectors.toMap(')) {
+            const f = this.scope['frecuencias'];
+            if (f && typeof f.val === 'object') {
+              const entries = Object.entries(f.val); entries.sort((a,b)=>b[1]-a[1]);
+              const ord = {}; for (const [k,v] of entries) ord[k] = v;
+              this.scope[s.var] = {val:ord, type:'LinkedHashMap'}; this.changed = s.var;
+              this.output.push({type:'info', text:'Ordenado: '+entries.map(e=>e[0]+'→'+e[1]).join(', ')});
+            } break;
+          }
+          if (ex.includes('new HashMap')) { this.scope[s.var] = {val:{}, type:s.vtype||'HashMap'}; this.changed = s.var; break; }
+          const ev = this.eval(ex);
+          if (ev) { this.scope[s.var] = {val:ev.val, type:s.vtype||ev.type}; this.changed = s.var; }
+          break;
+        }
+        case 'assign': {
+          const ev = this.eval(s.expr);
+          if (ev) { this.scope[s.var] = {val:ev.val, type:ev.type}; this.changed = s.var; }
+          break;
+        }
+        case 'call': {
+          const obj = this.scope[s.obj];
+          if (!obj || s.method !== 'put') break;
+          const args = s.args.split(',').map(a=>a.trim());
+          if (args.length>=2) {
+            const k = this.eval(args[0]);
+            let v; const plus = args[1].match(/(\w+)\s*\+\s*(\d+)/);
+            if (plus) { const b = this.scope[plus[1]]; v = (b?Number(b.val):0)+parseInt(plus[2],10); }
+            else { const ev = this.eval(args[1]); v = ev?ev.val:args[1]; }
+            obj.val[String(k?k.val:args[0])] = v;
+            this.changed = s.obj;
+            this.output.push({type:'info', text:'  '+s.obj+'.put('+String(k?k.val:args[0])+','+v+')'});
+          }
+          break;
+        }
+        case 'if': {
+          const negE = s.cond.match(/!(\w+)\.isEmpty\(\)/);
+          if (negE) {
+            const obj = this.scope[negE[1]];
+            const empty = obj && String(obj.val)==='';
+            this.output.push({type:'info', text:'if → '+(empty?'false':'true')});
+          }
+          break;
+        }
+        case 'for-h': {
+          const simple = this.scope[s.collExpr];
+          if (simple && Array.isArray(simple.val)) {
+            const items = simple.val;
+            if (items.length>0) {
+              this.scope[s.forVar] = {val:items[0], type:'String'}; this.changed = s.forVar;
+              let bodyE = this.idx; const fd = s.bd;
+              for (let j=this.idx+1;j<this.steps.length;j++){const ns=this.steps[j];if(ns.bd!==undefined&&ns.bd<=fd){bodyE=j-1;break;}bodyE=j;}
+              this.loops.unshift({var:s.forVar, items, iter:0, bodyStart:this.idx+1, bodyEnd:bodyE});
+              this.output.push({type:'info', text:'for-each: '+s.forVar+' × '+items.length});
+            } break;
+          }
+          const eSM = s.collExpr.match(/(\w+)\.entrySet\(\)/);
+          if (eSM) {
+            const mp = this.scope[eSM[1]];
+            if (mp && typeof mp.val==='object') {
+              const entries = Object.entries(mp.val).map(([k,v])=>({key:k,value:v}));
+              if (entries.length>0) {
+                this.scope[s.forVar] = {val:entries[0], type:'Entry'}; this.changed = s.forVar;
+                let bodyE = this.idx; const fd = s.bd;
+                for (let j=this.idx+1;j<this.steps.length;j++){const ns=this.steps[j];if(ns.bd!==undefined&&ns.bd<=fd){bodyE=j-1;break;}bodyE=j;}
+                this.loops.unshift({var:s.forVar, items:entries, iter:0, bodyStart:this.idx+1, bodyEnd:bodyE});
+                this.output.push({type:'info', text:'for-each: '+s.forVar+' × '+entries.length+' entradas'});
+              }
+            }
+          }
+          break;
+        }
+        case 'print': {
+          const ex = s.expr;
+          if (this.scope[ex] !== undefined) {
+            const v = this.scope[ex];
+            this.output.push({type:'print', text:typeof v.val==='object'?JSON.stringify(v.val):String(v.val)});
+          } else {
+            const ev = this.eval(ex);
+            if (ev) this.output.push({type:'print', text:String(ev.val)});
+            else if (ex.includes('\\\\n')) this.output.push({type:'print', text:ex.replace(/\\\\n/g,'\n').replace(/"/g,'')});
+            else this.output.push({type:'print', text:ex});
+          }
+          break;
+        }
+      }
+    } catch (e) { this.output.push({type:'error', text:'Error: '+e.message}); }
+    return true;
+  }
+}
+
+// ---- UI ----
+let sim, steps, playing=false, paused=false, timer=null;
+
+function hgl(line) {
+  let s = esc(line);
+  // Protect comments first → placeholders so later regex won't touch them
+  const cmts = [];
+  s = s.replace(/(\/\/.*)/g, (m) => { cmts.push(m); return '\x00C'+(cmts.length-1)+'\x00'; });
+  // Highlight everything else
+  s = s.replace(/"([^"]*)"/g,'<span class="st">"$1"</span>');
+  s = s.replace(/\b(\d+)\b/g,'<span class="nu">$1</span>');
+  const kws = ['public','static','void','class','int','String','Integer','List','Map','HashMap','LinkedHashMap','for','if','else','new','return','import','double','boolean','char','float','Arrays','Collectors','Map.Entry'];
+  s = s.replace(new RegExp('\\b('+kws.join('|')+')\\b','g'),'<span class="kw">$1</span>');
+  s = s.replace(/&lt;([\w,\s]+)&gt;/g,'&lt;<span class="ty">$1</span>&gt;');
+  s = s.replace(/\.(\w+)\s*\(/g,'.<span class="fn">$1</span>(');
+  s = s.replace(/(\w+)\s*::\s*(\w+)/g,'<span class="fn">$1</span>::<span class="md">$2</span>');
+  // Restore comments unhighlighted
+  s = s.replace(/\x00C(\d+)\x00/g, (_,i) => '<span class="cm">'+cmts[+i]+'</span>');
+  return s;
+}
+
+function render() {
+  const cur = sim.cur(), ln = cur ? cur.line : -1;
+  document.getElementById('sn').textContent = Math.max(0, sim.idx+1);
+  document.querySelectorAll('.cl').forEach(el=>el.classList.toggle('cur', parseInt(el.dataset.line)===ln));
+  document.getElementById('lns').textContent = ln>0?ln:'—';
+  document.getElementById('desc').textContent = cur?cur.desc:'';
+
+  const st = document.getElementById('stat'), dot = document.getElementById('dot');
+  dot.className = 'sd';
+  if (sim.done) { st.textContent='✅ Completado'; dot.classList.add('stop'); dot.style.background='var(--green)'; dot.style.boxShadow='0 0 6px var(--green)'; }
+  else if (playing&&!paused) { st.textContent='▶ Ejecutando'; dot.classList.add('run'); }
+  else if (paused) { st.textContent='⏸ Pausado'; dot.classList.add('pause'); }
+  else { st.textContent=sim.idx<0?'✅ Listo':'⏹ Detenido'; dot.classList.add('stop'); dot.style.background=''; dot.style.boxShadow=''; }
+
+  const tbody = document.getElementById('vb');
+  const keys = Object.keys(sim.scope).filter(k=>k!=='args');
+  if (keys.length===0) tbody.innerHTML='<tr><td colspan="3"><span class="ve">(sin variables aún)</span></td></tr>';
+  else tbody.innerHTML = keys.map(k=>{const v=sim.scope[k];const ch=k===sim.changed?' class="ch"':'';return `<tr${ch}><td class="vn">${esc(k)}</td><td class="vv">${fmt(v.val)}</td><td class="vtc">${esc(v.type||typeof v.val)}</td></tr>`;}).join('');
+
+  const ol = document.getElementById('ol');
+  if (sim.output.length===0) ol.innerHTML='<div class="oi inf">(sin salida aún)</div>';
+  else { ol.innerHTML = sim.output.map(o=>{const cls=o.type==='error'?'err':o.type==='print'?'prn':'inf';const lab=o.type==='print'?'▶':'•';return `<div class="oi ${cls}"><span class="olab">${lab}</span> ${esc(o.text)}</div>`;}).join(''); ol.scrollTop=ol.scrollHeight; }
+
+  const cs = document.getElementById('cstack'); let extra='';
+  if (sim.loops.length>0) { const l=sim.loops[0]; const item=l.items[l.iter]; extra=` <span class="loop">| Iter ${l.iter+1}/${l.items.length}: ${l.var}="${typeof item==='string'?item:(item?.key||'?')}"</span>`; }
+  cs.innerHTML = '<span style="color:var(--dim)">Stack:</span> <span class="ci">main:'+(ln>0?ln:'—')+'</span>'+extra;
+
+  document.getElementById('play').disabled = sim.done||(playing&&!paused);
+  document.getElementById('pause').disabled = !playing||paused||sim.done;
+  document.getElementById('step').disabled = sim.done;
+  document.getElementById('stop').disabled = sim.idx<0;
+}
+
+function fmt(v) {
+  if (v===null||v===undefined) return '<span style="color:#8b949e">null</span>';
+  if (typeof v==='string') return '<span style="color:#d29922">"'+esc(v)+'"</span>';
+  if (typeof v==='number') return '<span style="color:#79c0ff">'+v+'</span>';
+  if (typeof v==='boolean') return '<span style="color:#bc8cff">'+v+'</span>';
+  if (Array.isArray(v)) return v.length===0?'<span style="color:#8b949e">[]</span>':'<span style="color:#a5d6ff">['+v.map(x=>typeof x==='string'?'"'+esc(x)+'"':esc(String(x))).join(', ')+']</span>';
+  if (typeof v==='object') { const ks=Object.keys(v); return ks.length===0?'<span style="color:#8b949e">{}</span>':'<span style="color:#a5d6ff">{'+ks.map(k=>'<span style="color:#79c0ff">'+esc(k)+'</span>: <span style="color:#d29922">'+esc(String(v[k]))+'</span>').join(', ')+'}</span>'; }
+  return esc(String(v));
+}
+
+function onStep() { if(sim.done)return; if(!sim.canAdv()){if(sim.idx>=steps.length-1){sim.done=true;render();}return;} sim.advance(); render(); }
+function onPlay() { if(playing&&paused){paused=false;loop();render();return;} if(sim.done)return; playing=true;paused=false;loop();render(); }
+function onPause() { paused=true; if(timer){clearTimeout(timer);timer=null;} render(); }
+function onStop() { playing=false;paused=false;if(timer){clearTimeout(timer);timer=null;} sim.reset(); render(); }
+function loop() { if(!playing||paused||sim.done){if(sim.done){playing=false;render();}return;} const spd=parseInt(document.getElementById('speed').value,10); if(sim.canAdv()){sim.advance();render();} if(!sim.done&&sim.canAdv())timer=setTimeout(loop,spd);else{playing=false;render();} }
+
+document.addEventListener('DOMContentLoaded',()=>{
+  const cc=document.getElementById('code');
+  cc.innerHTML = JAVA_CODE.map((l,i)=>`<div class="cl" data-line="${i+1}"><span class="ln">${i+1}</span><span class="lc">${hgl(l)}</span></div>`).join('');
+  steps = build(JAVA_CODE);
+  document.getElementById('st').textContent = steps.length;
+  sim = new Sim(steps);
+  render();
+  document.getElementById('play').addEventListener('click',onPlay);
+  document.getElementById('pause').addEventListener('click',onPause);
+  document.getElementById('stop').addEventListener('click',onStop);
+  document.getElementById('step').addEventListener('click',onStep);
+  document.getElementById('speed').addEventListener('input',function(){document.getElementById('spd').textContent=this.value+'ms'});
+  document.addEventListener('keydown',e=>{if(e.target.tagName==='INPUT')return;if(e.code==='Space'){e.preventDefault();onStep();}if(e.code==='KeyP'&&!e.ctrlKey){e.preventDefault();onPlay();}if(e.code==='KeyS'&&!e.ctrlKey){e.preventDefault();onStop();}});
+});
+</script>
+</body>
+</html>
