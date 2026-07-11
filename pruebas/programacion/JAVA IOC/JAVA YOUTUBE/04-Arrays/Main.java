@@ -4,44 +4,42 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-public class Main {
-    public static void main(String[] args) {
-        Banda banda = new Banda("Metal DAW");
+/* =====================================================================
+   Seccion 1: Enumerado (1 punto)
 
-        banda.agregarMusico(new Musico("James", 9, Instrumento.VOCALISTA));
-        banda.agregarMusico(new Musico("Kirk", 8, Instrumento.GUITARRISTA));
+   Define un tipo enumerado llamado Rol con los valores:
+   GUERRERO, MAGO, ARQUERO, SANADOR, LADRON
+   ===================================================================== */
 
-        banda.agregarMusico(new Musico("Dave", 7, Instrumento.GUITARRISTA));
-        banda.agregarMusico(new Musico("Jimi", 10, Instrumento.GUITARRISTA));
-
-        banda.agregarMusico(new Musico("Flea", 8, Instrumento.BAJISTA));
-        banda.agregarMusico(new Musico("Cliff", 9, Instrumento.BAJISTA));
-
-        banda.agregarMusico(new Musico("Lars", 7, Instrumento.BATERIA));
-        banda.agregarMusico(new Musico("Rick", 6, Instrumento.TECLISTA));
-
-        System.out.println("\n--- FORMACIÓN DE LA BANDA ---");
-        banda.listarFormacion();
-    }
+enum Rol {
+    GUERRERO, MAGO, ARQUERO, SANADOR, LADRON
 }
 
-enum Instrumento {
-    VOCALISTA, GUITARRISTA, BAJISTA, BATERIA, TECLISTA
-}
+/*
+ * =====================================================================
+ * Seccion 2: Clase Aventurero (2 puntos)
+ *
+ * Atributos privados: String nombre, int nivel, Rol rol.
+ * Implementa:
+ * - Constructor que inicialice los tres atributos.
+ * - Getter para rol y getter para nombre.
+ * - toString() con formato: <nombre> (Nv. <nivel>) - <ROL>
+ * =====================================================================
+ */
 
-class Musico {
+class Aventurero {
     private String nombre;
-    private int habilidad;
-    private Instrumento instrumento;
+    private int nivel;
+    private Rol rol;
 
-    public Musico(String nombre, int habilidad, Instrumento instrumento) {
+    public Aventurero(String nombre, int nivel, Rol rol) {
         this.nombre = nombre;
-        this.habilidad = habilidad;
-        this.instrumento = instrumento;
+        this.nivel = nivel;
+        this.rol = rol;
     }
 
-    public Instrumento getInstrumento() {
-        return instrumento;
+    public Rol getRol() {
+        return rol;
     }
 
     public String getNombre() {
@@ -50,105 +48,140 @@ class Musico {
 
     @Override
     public String toString() {
-        return nombre + " (Nv. " + habilidad + ") - " + instrumento;
+        return nombre + " (Nv. " + nivel + ") - " + rol;
     }
 }
 
-class Banda {
+/*
+ * =====================================================================
+ * Seccion 3: Clase Equipo (5 puntos)
+ *
+ * Atributos privados:
+ * - String nombre
+ * - List<Aventurero> aventureros
+ * - Map<Rol, Integer> maximosPorRol
+ * =====================================================================
+ */
+
+class Equipo {
     private String nombre;
-    private List<Musico> musicos;
-    private Map<Instrumento, Integer> maximosPorInstrumento;
+    private List<Aventurero> aventureros;
+    private Map<Rol, Integer> maximosPorRol;
 
-    public Banda(String nombre) {
+    /*
+     * 3.1 Constructor (1 punto)
+     * Inicializa el nombre, la lista vacia y el mapa con los limites:
+     * GUERRERO=1, MAGO=1, ARQUERO=2, SANADOR=1, LADRON=1
+     */
+    public Equipo(String nombre) {
         this.nombre = nombre;
-        this.musicos = new ArrayList<>();
-
-        this.maximosPorInstrumento = new HashMap<>();
-        maximosPorInstrumento.put(Instrumento.VOCALISTA, 1);
-        maximosPorInstrumento.put(Instrumento.GUITARRISTA, 2);
-        maximosPorInstrumento.put(Instrumento.BAJISTA, 1);
-        maximosPorInstrumento.put(Instrumento.BATERIA, 1);
-        maximosPorInstrumento.put(Instrumento.TECLISTA, 1);
+        this.aventureros = new ArrayList<>();
+        this.maximosPorRol = new HashMap<>();
+        maximosPorRol.put(Rol.GUERRERO, 1);
+        maximosPorRol.put(Rol.MAGO, 1);
+        maximosPorRol.put(Rol.ARQUERO, 2);
+        maximosPorRol.put(Rol.SANADOR, 1);
+        maximosPorRol.put(Rol.LADRON, 1);
     }
 
-    public void agregarMusico(Musico m) {
-        int actuales = contarMusicosInstrumento(m.getInstrumento());
-        int maximo = maximosPorInstrumento.get(m.getInstrumento());
-
-        if (actuales >= maximo) {
-            System.out.println("ERROR: No se puede añadir a " + m.getNombre() + ". La banda ya tiene el máximo de "
-                    + m.getInstrumento() + "s.");
-        } else {
-            musicos.add(m);
-            System.out.println("OK: " + m.getNombre() + " se ha unido a la banda.");
-        }
-    }
-
-    private int contarMusicosInstrumento(Instrumento i) {
+    /*
+     * 3.2 Metodo contarAventurerosPorRol (1 punto)
+     * Privado. Recibe un Rol y devuelve cuantos aventureros de ese rol hay.
+     */
+    private int contarAventurerosPorRol(Rol r) {
         int contador = 0;
-        for (Musico m : musicos) {
-            if (m.getInstrumento() == i) {
+        for (Aventurero a : aventureros) {
+            if (a.getRol() == r)
                 contador++;
-            }
         }
         return contador;
     }
 
-    public void listarFormacion() {
-        musicos.sort((m1, m2) -> Integer.compare(
-                obtenerPrioridad(m1.getInstrumento()),
-                obtenerPrioridad(m2.getInstrumento())));
+    /*
+     * 3.3 Metodo agregarAventurero (1.5 puntos)
+     * Anade solo si no se ha alcanzado el maximo para ese rol.
+     * Si se puede: "OK: <nombre> se ha unido al equipo."
+     * Si no:
+     * "ERROR: No se puede anadir a <nombre>. El equipo ya tiene el maximo de <ROL>s."
+     */
+    public void agregarAventurero(Aventurero a) {
+        int actuales = contarAventurerosPorRol(a.getRol());
+        int maximo = maximosPorRol.get(a.getRol());
 
-        Iterator<Musico> iterator = musicos.iterator();
+        if (actuales >= maximo) {
+            System.out.println("ERROR: No se puede anadir a " + a.getNombre()
+                    + ". El equipo ya tiene el maximo de " + a.getRol() + "s.");
+        } else {
+            aventureros.add(a);
+            System.out.println("OK: " + a.getNombre() + " se ha unido al equipo.");
+        }
+    }
+
+    /*
+     * 3.4 Metodo obtenerPrioridad (0.5 puntos)
+     * Privado. Devuelve int segun el orden:
+     * GUERRERO=1, MAGO=2, ARQUERO=3, SANADOR=4, LADRON=5
+     */
+    private int obtenerPrioridad(Rol r) {
+        return switch (r) {
+            case GUERRERO -> 1;
+            case MAGO -> 2;
+            case ARQUERO -> 3;
+            case SANADOR -> 4;
+            case LADRON -> 5;
+        };
+    }
+
+    /*
+     * 3.5 Metodo listarFormacion (1 punto)
+     * Ordena por prioridad con sort (lambda) y muestra con Iterator
+     * en formato: " - <nombre> (Nv. <nivel>) - <ROL>"
+     */
+    public void listarFormacion() {
+        aventureros.sort((a1, a2) -> Integer.compare(
+                obtenerPrioridad(a1.getRol()),
+                obtenerPrioridad(a2.getRol())));
+
+        Iterator<Aventurero> iterator = aventureros.iterator();
         while (iterator.hasNext()) {
             System.out.println(" - " + iterator.next());
         }
     }
-
-    private int obtenerPrioridad(Instrumento i) {
-        return switch (i) {
-            case VOCALISTA -> 1;
-            case GUITARRISTA -> 2;
-            case BAJISTA -> 3;
-            case BATERIA -> 4;
-            case TECLISTA -> 5;
-        };
-    }
 }
 
-// 3.4
+/*
+ * =====================================================================
+ * Seccion 4: Clase Main (2 puntos)
+ *
+ * Crea un equipo "Los Legendarios" y anade estos aventureros:
+ *
+ * Thorn 9 GUERRERO
+ * Elara 10 MAGO
+ * Finn 7 ARQUERO
+ * Lyra 8 SANADOR
+ * Shadow 6 LADRON
+ * Brom 5 GUERRERO (debe dar ERROR)
+ * Zara 7 MAGO (debe dar ERROR)
+ * Kai 8 ARQUERO (debe entrar)
+ *
+ * Finalmente muestra "--- EQUIPO FINAL ---" y la formacion ordenada.
+ * =====================================================================
+ */
 
-// Método obtenerPrioridad (0.5 puntos) Método privado que recibe un Rol y
-// devuelve un int según este orden:
+public class Main {
+    public static void main(String[] args) {
+        Equipo equipo = new Equipo("Los Legendarios");
 
-// GUERRERO
-// MAGO
-// ARQUERO
-// SANADOR
-// LADRÓN
-// 3.5
+        equipo.agregarAventurero(new Aventurero("Thorn", 9, Rol.GUERRERO));
+        equipo.agregarAventurero(new Aventurero("Elara", 10, Rol.MAGO));
+        equipo.agregarAventurero(new Aventurero("Finn", 7, Rol.ARQUERO));
+        equipo.agregarAventurero(new Aventurero("Lyra", 8, Rol.SANADOR));
+        equipo.agregarAventurero(new Aventurero("Shadow", 6, Rol.LADRON));
+        equipo.agregarAventurero(new Aventurero("Brom", 5, Rol.GUERRERO));
+        equipo.agregarAventurero(new Aventurero("Zara", 7, Rol.MAGO));
+        equipo.agregarAventurero(new Aventurero("Kai", 8, Rol.ARQUERO));
 
-// Método listarFormacion (1 punto) Ordena los aventureros por
-
-// prioridad (de menor a mayor número) usando sort con una expresión lambda, y
-// luego los muestra uno por uno con un Iterator en el formato: - <nombre> (Nv.
-// <nivel>) - <ROL>
-
-// Sección 4:
-
-// Clase Main (2 puntos)
-
-// Crea una clase con el método main que:
-
-// Cree un equipo llamado "Los Legendarios".
-// Añada los siguientes aventureros en este orden:
-
-// Nombre Nivel Rol
-// Thorn 9 GUERRERO
-// Elara 10 MAGO
-// Finn 7 ARQUERO
-// Lyra 8 SANADOR
-// Shadow 6 LADRÓN
-// Brom 5 GUERRERO
-// Zara 7 MAGO
-// Kai 8 ARQUERO
+        System.out.println("\n--- EQUIPO FINAL ---");
+        equipo.listarFormacion();
+    }
+}
