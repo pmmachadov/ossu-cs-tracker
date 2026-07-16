@@ -1,15 +1,12 @@
 public class Main {
-
     public static void main(String[] args) {
+        cadena("Hola", 0);
+    }
 
-        int a = 1, b = 2;
-        if (++a > b++) {
-            a++;
-        }
-        for (int i = 0; i < a; i++) {
-            a = i;
-            if (a == i)
-                break;
-        }
+    static void cadena(String cad, int n) {
+        if (n == 3)
+            System.out.println(cad);
+        else
+            cadena(cad + n, n + 1);
     }
 }

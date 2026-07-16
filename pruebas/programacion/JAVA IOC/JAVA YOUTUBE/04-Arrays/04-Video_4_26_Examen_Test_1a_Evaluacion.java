@@ -118,14 +118,14 @@ class Video_4_26_Examen_Test_1a_Evaluacion {
 
             --- PREGUNTA 6: PRE-INCREMENTO + BUCLE ---
             int a = 1, b = 2;
-            if (++a > b++) {   // ++a -> a=2, b++ se evalua despues -> b=2
-                a++;           // a=3
+            if (++a > b++) {
+                a++;
             }
-            for (int i = 0; i < a; i++) {  // a=3 -> 3 iteraciones
-                a = i;                      // i=0 -> a=0, i=1 -> a=1
-                if (a == i) break;          // en i=1: a==i -> break
+            for (int i = 0; i < a; i++) {
+                a = i;
+                if (a == i) break;
             }
-            Resultado: a = 3 (tras salir del for no se modifica mas)
+            Resultado: a = 3
 
 
 
@@ -163,6 +163,29 @@ class Video_4_26_Examen_Test_1a_Evaluacion {
             Resultado: x=10, y=10, z=0
 
             Clave: if(x == y); con punto y coma NO ejecuta la siguiente linea.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             --- PREGUNTA 8: BUCLES ANIDADOS ---
             int a = 0;
