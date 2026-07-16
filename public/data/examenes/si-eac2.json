@@ -1,0 +1,189 @@
+{
+  "id": "examen-si-eac2",
+  "name": "SI - EAC2 (Sistemes Informàtics)",
+  "description": "Preguntes exactes de l'EAC2 de Sistemes Informàtics - U2: Gestión de la información y del sistema operatiu",
+  "subject": "Sistemes Informàtics",
+  "cards": [
+    {
+      "id": "si-eac2-act1",
+      "front": "Particionado de un disco con esquema MBR. Añadid dos discos virtuales nuevos de 10 GB cada uno. Sobre el primer disc, cread una tabla de particiones de tipus MBR y utilizad fdisk per crear cinc particiones de 2 GB cada una.\n\na) Indicad quin tipus de particiones heu utilitzat (primàries, estesa o lògiques) y explicad por qué ha estat necessari utilizar estos tipus de partición.\nb) Describid les limitacions principals del sistema de particionado MBR.\nc) Utilizad lsblk per identificar el disc y totes les particiones creades, mostrant la seva mida y estructura.",
+      "back": "COMANDOS (fdisk):\n1. lsblk (ver discos disponibles)\n2. sudo fdisk /dev/nvme1n1\n3. n → p → 1 → Enter → +2G (partición primaria 1)\n4. n → p → 2 → Enter → +2G (primaria 2)\n5. n → p → 3 → Enter → +2G (primaria 3)\n6. n → e → 4 → Enter → +2G (extendida contenedora)\n7. n → l → 5 → Enter → +2G (lógica dentro de extendida)\n8. n → l → 6 → Enter → +2G (segunda lógica)\n9. w (guardar y salir)\n10. lsblk (verificar)\n\nTIPOS: 3 primarias (1-3) + 1 extendida (4) + 2 lógicas (5-6)\nMBR permite máx 4 primarias. Para más de 4 se usa extendida+lógicas.\n\nLIMITACIONES MBR:\n- Máx 4 primarias\n- Discos hasta 2 TB\n- Sin protección contra corrupción",
+      "tags": [
+        "si",
+        "eac2",
+        "mbr",
+        "particiones",
+        "fdisk"
+      ]
+    },
+    {
+      "id": "si-eac2-act2",
+      "front": "Particionament de un disc amb esquema GPT. Utilizando el segundo disco de 10 GB, cread una tabla de particiones utilizando el esquema GPT amb la herramienta gdisk. Generad cinc particiones de 2 GB cada una. Verificad amb lsblk.",
+      "back": "COMANDOS (gdisk):\n1. lsblk (ver discos)\n2. sudo gdisk /dev/nvme0n1\n3. o (crear nueva tabla GPT)\n4. n → 1 → Enter → +2G\n5. n → 2 → Enter → +2G\n6. n → 3 → Enter → +2G\n7. n → 4 → Enter → +2G\n8. n → 5 → Enter → +2G\n9. w (guardar)\n10. lsblk (verificar)\n\n✅ GPT: hasta 128 primarias directamente, sin necesitar extendida.",
+      "tags": [
+        "si",
+        "eac2",
+        "gpt",
+        "particiones",
+        "gdisk"
+      ]
+    },
+    {
+      "id": "si-eac2-act3",
+      "front": "Modificación de particiones con herramienta gráfica GParted. Utilizad GParted per gestionar el disc particionado amb GPT. Identificad les dues últimes particiones creades y fusioneu-les en una sola. Describid el procediment y indicad la mida final de la nova partición resultant.",
+      "back": "PROCEDIMIENTO GPARTED:\n1. sudo gparted\n2. Seleccionar disco GPT\n3. Click derecho en penúltima partición → Redimensionar/Mover\n4. Ampliar para incluir espacio de la última\n5. Click derecho en última → Eliminar\n6. Aplicar operaciones (✓)\n7. lsblk (verificar)\n\nRESULTADO: partición única de 4 GB",
+      "tags": [
+        "si",
+        "eac2",
+        "gparted",
+        "particiones"
+      ]
+    },
+    {
+      "id": "si-eac2-act4",
+      "front": "Formateo, montaje y configuración de particiones. Sobre el disc particionado amb MBR:\na) Formatead la primera partición amb ext4. Cread /mnt/ioc/ext4 y montadla amb permisos de lectura y escriptura.\nb) Formatead la segundoa partición amb NTFS. Cread /mnt/ioc/ntfs y montadla en mode solo lectura.\nc) Configurad la tercera partición como swap. Activadla amb prioridad.\nd) Configurad el sistema para que la partición 4a es munti automáticamente durant el arranque.",
+      "back": "a) EXT4:\nsudo mkfs.ext4 /dev/nvme1n1p1\nsudo mkdir -p /mnt/ioc/ext4\nsudo mount /dev/nvme1n1p1 /mnt/ioc/ext4\ndf -h (verificar)\n\nb) NTFS (solo lectura):\nsudo mkfs.ntfs /dev/nvme1n1p2\nsudo mkdir -p /mnt/ioc/ntfs\nsudo mount -o ro /dev/nvme1n1p2 /mnt/ioc/ntfs\n\nc) SWAP:\nsudo mkswap /dev/nvme1n1p3\nsudo swapon -p 100 /dev/nvme1n1p3\nswapon --show\n\nd) Montaje automático (/etc/fstab):\n/dev/nvme1n1p1 /mnt/ioc/ext4 ext4 defaults 0 2",
+      "tags": [
+        "si",
+        "eac2",
+        "ext4",
+        "ntfs",
+        "swap",
+        "fstab"
+      ]
+    },
+    {
+      "id": "si-eac2-act5",
+      "front": "Creación de un volumen lógico con LVM. Añadid dos discos virtuales nuevos de 2 GB cada uno. Utilizando LVM, convertidlos en volúmenes físicos, cread un grupo de volúmenes (amb el vuestro nom) y cread un volum lògic de 4 GB. Explicad les etapes principals.",
+      "back": "COMANDOS LVM:\n1. sudo pvcreate /dev/sdb /dev/sdc (PV)\n2. sudo vgcreate machado /dev/sdb /dev/sdc (VG)\n3. sudo lvcreate -L 4G -n datos machado (LV)\n4. sudo mkfs.ext4 /dev/machado/datos\n5. sudo mount /dev/machado/datos /mnt\n\nVERIFICAR:\nsudo pvs → PVs\nsudo vgs → VGs\nsudo lvs → LVs\nlsblk",
+      "tags": [
+        "si",
+        "eac2",
+        "lvm",
+        "volumen-logico"
+      ]
+    },
+    {
+      "id": "si-eac2-act6",
+      "front": "Instalación de software y localización de ejecutables.\na) Instalad gedit amb el gestor de paquetes.\nb) Utilizad una comanda per localitzar l'executable del programa.\nc) Indicad si esperabais encontrar el ejecutable en esta ubicación segundos la estructura estándard de Linux.\nd) Cread un archivo de text amb el nom del vuestro DNI y deseu-lo al directori personal.\ne) Localizad este archivo amb find.",
+      "back": "COMANDOS:\na) sudo apt install gedit\nb) which gedit → /usr/bin/gedit\nc) Sí, /usr/bin es el directorio estándar FHS para ejecutables\nd) echo \"12345678X\" > ~/12345678X.txt\ne) find ~ -name \"12345678X.txt\"",
+      "tags": [
+        "si",
+        "eac2",
+        "apt",
+        "which",
+        "find",
+        "linux"
+      ]
+    },
+    {
+      "id": "si-eac2-act7",
+      "front": "Gestión de discos en Windows 11. Añadid un disc virtual nou de 2 GB. Utilizad la herramienta de gestión de discos per inicialitzar el disc y crear-hi una partición que ocupi tot el espacio. Formatead amb NTFS y asignad una lletra de unidad.",
+      "back": "PASOS WINDOWS 11:\n1. Win+R → diskmgmt.msc\n2. Inicializar disco (MBR o GPT)\n3. Click en 'No asignado' → Nuevo volumen simple\n4. Siguiente → Asignar letra (ej E:) → NTFS → Finalizar\n5. Aparece en Explorador de archivos",
+      "tags": [
+        "si",
+        "eac2",
+        "windows",
+        "discos",
+        "ntfs"
+      ]
+    },
+    {
+      "id": "si-eac2-act8",
+      "front": "Configuración de una copia de seguridad programada. Configurad un sistema de copia de seguridad programada utilizando un dels sistemes operatius disponibles. Explicad la herramienta seleccionada, por qué és adequada, y configurad la copia para que s'executi automáticamente segundos una planificació.",
+      "back": "HERRAMIENTA: rsync + cron (Ubuntu)\n\n1. Crear script backup:\nnano ~/backup.sh\n#!/bin/bash\nrsync -avh --delete /home/ /mnt/backup/\n\n2. chmod +x ~/backup.sh\n\n3. Programar:\ncrontab -e\n0 2 * * * /home/usuario/backup.sh\n(cada día a las 2:00 AM)\n\n4. Verificar: ls /mnt/backup/",
+      "tags": [
+        "si",
+        "eac2",
+        "backup",
+        "rsync",
+        "cron"
+      ]
+    },
+    {
+      "id": "si-eac2-act9",
+      "front": "Gestión de usuarios y permisos en Ubuntu:\na) Cread los grupos biblioteca y trabajador.\nb) Cread un usuari amb el vuestro primer cognom, amb biblioteca como grup principal y trabajador como secundari.\nc) Configurad contraseñas amb longitud mínima de 8 caracteres.\nd) Asignad contraseña.\ne) Cread un document de text amb la data actual generada per comanda.\nf) Configurad el archivo para que sigui propietat de el usuario creat y amb permisos totals per al propietari y cap permís per a la resta.",
+      "back": "COMANDOS:\na) sudo groupadd biblioteca\n   sudo groupadd treballador\n\nb) sudo useradd -g biblioteca -G treballador -m machado\n\nc) /etc/pam.d/common-password → minlen=8\n\nd) sudo passwd machado\n\ne) date > ~/data.txt\n\nf) sudo chown machado:machado data.txt\n   chmod 700 data.txt (rwx------)\n\nVerificar:\nls -la data.txt\ngroups machado",
+      "tags": [
+        "si",
+        "eac2",
+        "usuarios",
+        "grupos",
+        "permisos",
+        "linux"
+      ]
+    },
+    {
+      "id": "si-eac2-act10",
+      "front": "Configuración de red con Netplan en Ubuntu. Configurad la red de la máquina con Ubuntu usando Netplan. Definid una configuración con conectividad a la red. Verificad que s'ha aplicat correctament.",
+      "back": "NETPLAN (/etc/netplan/00-installer-config.yaml):\nnetwork:\n  ethernets:\n    eth0:\n      addresses: [192.168.1.100/24]\n      routes:\n        - to: default\n          via: 192.168.1.1\n      nameservers:\n        addresses: [8.8.8.8, 1.1.1.1]\n  version: 2\n\nAPLICAR:\nsudo netplan apply\n\nVERIFICAR:\nip a\nip route\nping 8.8.8.8\nping google.com",
+      "tags": [
+        "si",
+        "eac2",
+        "netplan",
+        "red",
+        "linux"
+      ]
+    },
+    {
+      "id": "si-eac2-act11",
+      "front": "Instalación y gestiónn de un servidor FTP (vsftpd).\na) Instalad vsftpd, iniciad el servicio y verificad.\nb) Conectaos por FTP desde la máquina física.\nc) Quin PID té el procés del servicio?\nd) Com es pot reiniciar el servicio?\ne) Quin és el archivo principal de configuración?",
+      "back": "COMANDOS:\na) sudo apt install vsftpd\n   sudo systemctl start vsftpd\n   sudo systemctl status vsftpd\n\nb) ftp 192.168.1.100\n   User: machado / Pass: Password123 / Port: 21\n\nc) PID: 12706 (visible en systemctl status)\nd) sudo systemctl restart vsftpd\ne) /etc/vsftpd.conf",
+      "tags": [
+        "si",
+        "eac2",
+        "ftp",
+        "vsftpd",
+        "servidor"
+      ]
+    },
+    {
+      "id": "si-eac2-act12",
+      "front": "Análisis de tráfico de red con Wireshark a Ubuntu. Instalad Wireshark y iniciad una captura. Mentre la captura está activa, feu una conexión FTP. Analizad els paquetes capturats y identificad les credencials utilitzades durant l'autenticació.",
+      "back": "PASOS:\n1. sudo apt install wireshark\n2. sudo wireshark\n3. Seleccionar interfaz → Start\n4. En otra terminal: ftp localhost\n5. En Wireshark filtrar: ftp\n6. Buscar 'Request: USER' (usuario) y 'Request: PASS' (contraseña)\n\n⚠️ FTP = texto plano, credenciales visibles",
+      "tags": [
+        "si",
+        "eac2",
+        "wireshark",
+        "ftp",
+        "seguridad"
+      ]
+    },
+    {
+      "id": "si-eac2-act13",
+      "front": "Análisis de registros del sistema. Acceded a /var/log/syslog y localizad les entrades del reinici del servicio FTP.\na) Quin component és responsable de generar y escriure este archivo?\nb) Quin mecanisme gestiona la rotació dels archivos de log?\nc) En qué circunstancias es produeix la rotació? És la misma per tots els servicios?",
+      "back": "a) rsyslog: servicio de registro del sistema. Escribe en /var/log/syslog.\n\nb) logrotate: rotación automática de logs.\n   Config: /etc/logrotate.conf\n   Por servicio: /etc/logrotate.d/\n\nc) Defecto: weekly, rotate 4, delaycompress\n   NO es igual para todos (cada servicio puede tener daily, monthly, size)\n\nEjemplo líneas reinicio FTP:\n2026-04-04T19:42:11 systemd[1]: Starting vsftpd.service...\n2026-04-04T19:42:11 systemd[1]: Started vsftpd.service.\n\nEjemplo logrotate /var/log/syslog {\n  rotate 4\n  weekly\n  missingok\n  notifempty\n  compress\n  delaycompress\n  sharedscripts\n}",
+      "tags": [
+        "si",
+        "eac2",
+        "syslog",
+        "logrotate",
+        "linux"
+      ]
+    },
+    {
+      "id": "si-eac2-act14",
+      "front": "Configuración de políticas de seguridad en Windows 11:\na) Configurad contraseñas amb requisits de complejidad.\nb) Restringiu inici de sessió a horari laboral.\nc) Bloqueig de compte después de 3 intents fallits.\nExplicad on es configuren y verificad.",
+      "back": "CONFIGURACIÓN: Win+R → secpol.msc\n\na) Directivas de cuenta → Directiva de contraseñas:\n   'Requisitos de complejidad' → Habilitada\n\nb) Usuarios → Propiedades → Horas de inicio de sesión\n   (ej: L-V 9:00-18:00)\n\nc) Directivas de cuenta → Directiva de bloqueo:\n   - Duración: 30 min\n   - Umbral: 3 intentos\n   - Restablecer: 30 min",
+      "tags": [
+        "si",
+        "eac2",
+        "seguridad",
+        "windows",
+        "politicas"
+      ]
+    },
+    {
+      "id": "si-eac2-act15",
+      "front": "Verificación de políticas y registro de eventos en Windows 11. Cread un usuari nou, asignad contraseña. Intenteu iniciar sessió amb contraseña incorrecta. Abrid el Windows Event Viewer y localizad el evento registrado de l'intent fallit.",
+      "back": "PASOS:\n1. Administración de equipos → Usuarios → Nuevo usuario\n2. Asignar contraseña\n3. Cerrar sesión e intentar con contraseña incorrecta\n4. Win+R → eventvwr.msc\n5. Registros de Windows → Seguridad → Event ID 4625\n\nEvento 4625 muestra: usuario, hora, IP del intento fallido",
+      "tags": [
+        "si",
+        "eac2",
+        "event-viewer",
+        "windows",
+        "seguridad"
+      ]
+    }
+  ]
+}

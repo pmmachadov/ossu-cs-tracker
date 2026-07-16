@@ -1,0 +1,254 @@
+{
+  "id": "eloquent-js",
+  "name": "Eloquent JavaScript (4th ed)",
+  "description": "Fundamentos de JavaScript — Marijn Haverbeke",
+  "subject": "Libros",
+  "created": "2026-05-17",
+  "cards": [
+    {
+      "id": "ej-001",
+      "front": "(EJ — Values) ¿Cuáles son los tipos de valores primitivos en JavaScript?",
+      "back": "Los tipos primitivos son:\n- **Numbers**: números (enteros y flotantes)\n- **Strings**: cadenas de texto\n- **Booleans**: `true` / `false`\n- **null** y **undefined**: valores vacíos\n- **Symbols** y **BigInt** (ES6+)\n\nTodo lo demás en JS es un objeto.",
+      "tags": ["ej", "values", "types"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "ej-002",
+      "front": "(EJ — Values) ¿Qué diferencia hay entre null y undefined en JavaScript?",
+      "back": "**null**: representa la ausencia intencional de un valor. Es asignado explícitamente.\n**undefined**: significa que un valor no ha sido asignado todavía. Es el valor por defecto de variables no inicializadas y propiedades inexistentes.\n\nAmbos son valores, pero `null` suele usarse para indicar \"vacío\" de forma voluntaria.",
+      "tags": ["ej", "values", "null", "undefined"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "ej-003",
+      "front": "(EJ — Values) ¿Qué son los operadores de comparación estricta (===) y abstracta (==)?",
+      "back": "**===** (estricta): compara valor Y tipo. No hace coerción de tipos.\n`5 === \"5\"` → `false`\n\n**==** (abstracta): compara valor PERO hace coerción de tipos automática.\n`5 == \"5\"` → `true` (convierte string a número)\n\n**Regla:** usa SIEMPRE `===` a menos que tengas una razón específica para usar `==`.",
+      "tags": ["ej", "operators", "comparison"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "ej-004",
+      "front": "(EJ — Program Structure) ¿Cuál es la diferencia entre let, const y var?",
+      "back": "**let**: variable de bloque (block-scoped). Se puede reasignar.\n**const**: constante de bloque. NO se puede reasignar (pero si es objeto, sus propiedades sí).\n**var**: variable de función (function-scoped). Puede ser redeclarada. **Evitar** en código moderno.\n\n```javascript\nlet x = 1;\nconst y = 2;\nif (true) {\n  let z = 3;  // solo existe aquí\n}\n// z no existe fuera del bloque\n```",
+      "tags": ["ej", "variables", "scope"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "ej-005",
+      "front": "(EJ — Functions) ¿Qué es una función flecha (arrow function) y cómo se diferencia de una función normal?",
+      "back": "Las arrow functions `() => {}` son una sintaxis más corta para funciones:\n\n```javascript\n// Función normal\nfunction suma(a, b) { return a + b; }\n\n// Arrow function\nconst suma = (a, b) => a + b;\n\n// Arrow con cuerpo\nconst doble = x => { return x * 2; };\n```\n\n**Diferencias clave:**\n1. **this**: las arrow functions NO tienen su propio `this` — heredan del contexto padre\n2. **arguments**: no tienen el objeto `arguments`\n3. Sintaxis más concisa (ideal para callbacks)",
+      "tags": ["ej", "functions", "arrow-functions"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ej-006",
+      "front": "(EJ — Functions) ¿Qué es un closure en JavaScript?",
+      "back": "Un **closure** es una función que \"recuerda\" el scope en el que fue creada, incluso después de que ese scope haya terminado.\n\n```javascript\nfunction crearContador() {\n  let count = 0;\n  return function() {\n    count++;\n    return count;\n  };\n}\n\nconst contador = crearContador();\nconsole.log(contador()); // 1\nconsole.log(contador()); // 2\n```\n\nLa función interna mantiene acceso a la variable `count` aunque `crearContador()` ya terminó de ejecutarse.",
+      "tags": ["ej", "functions", "closure", "scope"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "ej-007",
+      "front": "(EJ — Functions) ¿Qué es el call stack (pila de llamadas)?",
+      "back": "El **call stack** es la estructura que JavaScript usa para llevar registro de qué función se está ejecutando y qué funciones la llamaron.\n\nCuando se llama a una función, se apila en el stack. Cuando retorna, se desapila.\n\n```javascript\nfunction a() { return b(); }\nfunction b() { return c(); }\nfunction c() { return \"fin\"; }\n\na(); // Stack: a → b → c → (se desapilan en orden inverso)\n```\n\nSi el stack se llena (ej. recursión infinita), ocurre un **stack overflow**.",
+      "tags": ["ej", "functions", "call-stack"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ej-008",
+      "front": "(EJ — Objects) ¿Cómo se crean y usan objetos en JavaScript?",
+      "back": "Los objetos son colecciones de pares clave-valor:\n\n```javascript\nlet persona = {\n  nombre: \"Ana\",\n  edad: 25,\n  saludar() {\n    console.log(`Hola, soy ${this.nombre}`);\n  }\n};\n\n// Acceder\npersona.nombre    // \"Ana\"\npersona[\"edad\"]  // 25\n\n// Añadir propiedad\npersona.ciudad = \"Madrid\";\n\n// Eliminar propiedad\ndelete persona.edad;\n```\n\nLos objetos son mutables y se pasan por referencia.",
+      "tags": ["ej", "objects", "data-structures"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "ej-009",
+      "front": "(EJ — Objects) ¿Qué es la mutabilidad en JavaScript y cómo afecta a objetos vs primitivos?",
+      "back": "**Primitivos** (numbers, strings, booleans): son **inmutables**. No puedes cambiar su valor, solo crear uno nuevo.\n\n**Objetos** (arrays, objetos, funciones): son **mutables**. Su contenido puede cambiar aunque la referencia sea la misma.\n\n```javascript\nlet a = { valor: 1 };\nlet b = a;        // b apunta al MISMO objeto\nb.valor = 2;\nconsole.log(a.valor); // 2 — ¡se modificó a también!\n\nlet x = \"hola\";\nlet y = x;\ny = \"adiós\";\nconsole.log(x); // \"hola\" — string es inmutable\n```",
+      "tags": ["ej", "objects", "mutability", "references"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ej-010",
+      "front": "(EJ — Arrays) ¿Qué métodos de array deberías conocer?",
+      "back": "```javascript\nconst arr = [1, 2, 3, 4, 5];\n\narr.push(6);          // Añade al final\narr.pop();            // Saca del final\narr.shift();          // Saca del inicio\narr.unshift(0);       // Añade al inicio\n\narr.indexOf(3);       // 2 (posición)\narr.includes(3);      // true\n\narr.slice(1, 3);      // [2, 3] (copia, no muta)\narr.splice(1, 2);     // [2, 3] (elimina, muta)\n\narr.concat([6, 7]);   // [1,2,3,4,5,6,7]\narr.join(\",\");         // \"1,2,3,4,5\"\n```",
+      "tags": ["ej", "arrays", "methods"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "ej-011",
+      "front": "(EJ — Higher-Order) ¿Qué es una función de orden superior?",
+      "back": "Una función que toma otra función como argumento O devuelve una función.\n\n```javascript\n// Ejemplo: filter recibe un callback\nconst numeros = [1, 2, 3, 4, 5];\nconst pares = numeros.filter(n => n % 2 === 0);\n// [2, 4]\n\n// Ejemplo: función que devuelve función\nfunction mayorQue(n) {\n  return m => m > n;\n}\nconst mayorQue10 = mayorQue(10);\nconsole.log(mayorQue10(15)); // true\n```\n\nLos métodos `map`, `filter`, `reduce` son funciones de orden superior.",
+      "tags": ["ej", "higher-order", "functions"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ej-012",
+      "front": "(EJ — Higher-Order) ¿Cómo funcionan map, filter y reduce?",
+      "back": "**map**: transforma cada elemento → nuevo array del mismo tamaño\n**filter**: selecciona elementos que cumplen condición → nuevo array\n**reduce**: acumula los elementos en un solo valor\n\n```javascript\nconst nums = [1, 2, 3, 4, 5];\n\nconst dobles = nums.map(n => n * 2);\n// [2, 4, 6, 8, 10]\n\nconst pares = nums.filter(n => n % 2 === 0);\n// [2, 4]\n\nconst suma = nums.reduce((acc, n) => acc + n, 0);\n// 15\n\n// Se pueden encadenar:\nnums.filter(n => n > 2).map(n => n * 10);\n// [30, 40, 50]\n```",
+      "tags": ["ej", "higher-order", "map", "filter", "reduce"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ej-013",
+      "front": "(EJ — Objects) ¿Qué son las clases y cómo funcionan en JavaScript?",
+      "back": "Las clases son azúcar sintáctico sobre prototypes. Se introdujeron en ES6.\n\n```javascript\nclass Animal {\n  constructor(nombre) {\n    this.nombre = nombre;\n  }\n  hablar() {\n    console.log(`${this.nombre} hace ruido`);\n  }\n}\n\nclass Perro extends Animal {\n  hablar() {\n    console.log(`${this.nombre} dice guau!`);\n  }\n}\n\nconst snoopy = new Perro(\"Snoopy\");\nsnoopy.hablar(); // \"Snoopy dice guau!\"\n```\n\n- `constructor`: se ejecuta al crear instancia\n- `extends`: herencia\n- `super()`: llama al constructor padre",
+      "tags": ["ej", "classes", "oop", "prototypes"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ej-014",
+      "front": "(EJ — Objects) ¿Qué son getters y setters en objetos?",
+      "back": "Propiedades que se comportan como métodos pero se acceden como propiedades:\n\n```javascript\nclass Temperatura {\n  constructor(celsius) {\n    this.celsius = celsius;\n  }\n  get fahrenheit() {\n    return this.celsius * 1.8 + 32;\n  }\n  set fahrenheit(valor) {\n    this.celsius = (valor - 32) / 1.8;\n  }\n}\n\nconst t = new Temperatura(25);\nconsole.log(t.fahrenheit); // 77 (getter)\nt.fahrenheit = 32;           // setter\nconsole.log(t.celsius);    // 0\n```",
+      "tags": ["ej", "classes", "getters", "setters"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ej-015",
+      "front": "(EJ — Errors) ¿Cómo funcionan try/catch en JavaScript?",
+      "back": "Permite manejar errores sin detener la ejecución del programa:\n\n```javascript\ntry {\n  // Código que puede fallar\n  let resultado = JSON.parse(\"texto inválido\");\n} catch (error) {\n  // Se ejecuta si hay error\n  console.log(\"Error:\", error.message);\n} finally {\n  // Se ejecuta SIEMPRE (haya error o no)\n  console.log(\"Bloque finally\");\n}\n```\n\n- `try`: envuelve código riesgoso\n- `catch`: captura el error (objeto Error con .message y .stack)\n- `finally`: siempre se ejecuta, útil para limpiar recursos",
+      "tags": ["ej", "errors", "try-catch"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "ej-016",
+      "front": "(EJ — Regex) ¿Qué es una expresión regular y cómo se usa en JS?",
+      "back": "Patrón para buscar y manipular texto:\n\n```javascript\n// Creación\nconst regex1 = /\\d{3}-\\d{4}/;\nconst regex2 = new RegExp(\"\\\\d{3}-\\\\d{4}\");\n\n// Métodos\nregex1.test(\"123-4567\");  // true\n\"Hola 123-4567\".match(regex1); // [\"123-4567\"]\n\"123-4567\".replace(regex1, \"XXX-XXXX\"); // \"XXX-XXXX\"\n\n// Flags\n/abc/i;  // case-insensitive\n/abc/g;  // global (todas las coincidencias)\n/abc/m;  // multiline\n```",
+      "tags": ["ej", "regex", "regular-expressions"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ej-017",
+      "front": "(EJ — Modules) ¿Qué son los módulos ES6 (import/export)?",
+      "back": "Los módulos permiten organizar el código en archivos separados:\n\n```javascript\n// math.js\nexport function suma(a, b) { return a + b; }\nexport const PI = 3.1416;\nexport default class Calculadora { /* ... */ }\n\n// main.js\nimport Calculadora, { suma, PI } from \"./math.js\";\n```\n\n**Tipos de export:**\n- **Nombrado** (`export function...`): import con `{ nombre }`\n- **Default** (`export default`): import sin llaves\n\n**VS CommonJS (Node):**\n```javascript\n// CommonJS (módulos de Node)\nconst fs = require(\"fs\");\nmodule.exports = miFuncion;\n```",
+      "tags": ["ej", "modules", "import", "export"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ej-018",
+      "front": "(EJ — Async) ¿Qué es una promesa (Promise) en JavaScript?",
+      "back": "Una **Promise** representa un valor que puede estar disponible ahora, en el futuro, o nunca. Tiene 3 estados: pending, fulfilled, rejected.\n\n```javascript\nconst promesa = new Promise((resolve, reject) => {\n  setTimeout(() => {\n    resolve(\"Hecho!\");\n    // o reject(new Error(\"Falló\"));\n  }, 1000);\n});\n\npromesa\n  .then(resultado => console.log(resultado))\n  .catch(error => console.error(error))\n  .finally(() => console.log(\"Terminó\"));\n```\n\nLas promesas evitan el \"callback hell\" y son la base de `async/await`.",
+      "tags": ["ej", "async", "promises", "asynchronous"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "ej-019",
+      "front": "(EJ — Async) ¿Cómo funciona async/await?",
+      "back": "`async/await` es azúcar sintáctico sobre Promises para escribir código asíncrono que parece síncrono:\n\n```javascript\nasync function obtenerDatos() {\n  try {\n    const res = await fetch(\"/api/datos\");\n    const datos = await res.json();\n    return datos;\n  } catch (error) {\n    console.error(\"Error:\", error);\n  }\n}\n\n// async: marca una función como asíncrona (devuelve Promise)\n// await: espera a que una Promise se resuelva (solo dentro de async)\n\n// También funciona con arrow functions:\nconst load = async () => await fetch(\"/api\");\n```",
+      "tags": ["ej", "async", "await", "asynchronous"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "ej-020",
+      "front": "(EJ — DOM) ¿Qué es el DOM (Document Object Model)?",
+      "back": "El **DOM** es una representación en árbol del documento HTML que JavaScript puede manipular.\n\n```javascript\n// Seleccionar elementos\ndocument.getElementById(\"miId\");\ndocument.querySelector(\".clase\");\ndocument.querySelectorAll(\"div p\");\n\n// Manipular\nelement.textContent = \"Nuevo texto\";\nelement.innerHTML = \"<b>HTML</b>\";\nelement.style.color = \"red\";\nelement.classList.add(\"activo\");\n\n// Crear y añadir\nconst div = document.createElement(\"div\");\ndocument.body.appendChild(div);\n\n// Eliminar\nelement.remove();\n```",
+      "tags": ["ej", "dom", "browser"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ej-021",
+      "front": "(EJ — Events) ¿Cómo funcionan los eventos en el navegador?",
+      "back": "Los eventos permiten responder a acciones del usuario:\n\n```javascript\n// addEventListener\nconst btn = document.querySelector(\"button\");\nbtn.addEventListener(\"click\", (event) => {\n  console.log(\"Clickeado!\");\n  console.log(event.target); // elemento que disparó el evento\n});\n\n// Eventos comunes\n// click, dblclick, mouseenter, mouseleave\n// keydown, keyup, keypress\n// submit, change, input, focus, blur\n// scroll, resize, load, DOMContentLoaded\n\n// Prevenir comportamiento por defecto\nevent.preventDefault();\n\n// Detener propagación\nevent.stopPropagation();\n```\n\nLos eventos se **propagan** (burbujean) desde el elemento hacia arriba en el DOM.",
+      "tags": ["ej", "events", "browser", "dom"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ej-022",
+      "front": "(EJ — Canvas) ¿Qué es el elemento <canvas> y cómo se usa?",
+      "back": "Canvas permite dibujar gráficos mediante JavaScript:\n\n```javascript\n// HTML: <canvas id=\"miCanvas\" width=\"500\" height=\"500\"></canvas>\n\nconst canvas = document.getElementById(\"miCanvas\");\nconst ctx = canvas.getContext(\"2d\");\n\nctx.fillStyle = \"red\";\nctx.fillRect(10, 10, 100, 50);  // rectángulo relleno\n\nctx.strokeStyle = \"blue\";\nctx.lineWidth = 3;\nctx.strokeRect(10, 10, 100, 50); // borde\n\nctx.beginPath();\nctx.arc(200, 200, 50, 0, Math.PI * 2);\nctx.fillStyle = \"green\";\nctx.fill();\n\nctx.font = \"20px Georgia\";\nctx.fillText(\"Hola Canvas!\", 50, 50);\n```\n\nCanvas es útil para juegos, gráficos, visualizaciones y edición de imágenes.",
+      "tags": ["ej", "canvas", "graphics", "browser"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ej-023",
+      "front": "(EJ — HTTP) ¿Qué es Fetch API y cómo hacer peticiones HTTP?",
+      "back": "`fetch()` reemplaza a XMLHttpRequest para hacer peticiones HTTP:\n\n```javascript\n// GET\nfetch(\"/api/usuarios\")\n  .then(res => res.json())\n  .then(data => console.log(data));\n\n// POST\nfetch(\"/api/usuarios\", {\n  method: \"POST\",\n  headers: { \"Content-Type\": \"application/json\" },\n  body: JSON.stringify({ nombre: \"Ana\" })\n});\n\n// Manejo de errores\nfetch(\"/api/datos\")\n  .then(res => {\n    if (!res.ok) throw new Error(`HTTP ${res.status}`);\n    return res.json();\n  })\n  .catch(err => console.error(err));\n```\n\n`fetch` devuelve una Promise — puede combinarse con `async/await`.",
+      "tags": ["ej", "http", "fetch", "api"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ej-024",
+      "front": "(EJ — Forms) ¿Cómo manejar formularios en el navegador?",
+      "back": "```javascript\n<form id=\"formulario\">\n  <input type=\"text\" name=\"nombre\" required>\n  <input type=\"email\" name=\"email\">\n  <button type=\"submit\">Enviar</button>\n</form>\n\n<script>\ndocument.getElementById(\"formulario\")\n  .addEventListener(\"submit\", (e) => {\n    e.preventDefault(); // evita recargar la página\n\n    const form = e.target;\n    const datos = new FormData(form);\n    \n    // Acceder a campos individuales\n    console.log(form.nombre.value);\n    \n    // Validación básica\n    if (!form.nombre.value.trim()) {\n      alert(\"El nombre es obligatorio\");\n      return;\n    }\n    \n    // Enviar con fetch\n    fetch(\"/api\", {\n      method: \"POST\",\n      body: new URLSearchParams(new FormData(form))\n    });\n  });\n</script>\n```",
+      "tags": ["ej", "forms", "http", "browser"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ej-025",
+      "front": "(EJ — Node.js) ¿Qué es Node.js y para qué sirve?",
+      "back": "**Node.js** es un entorno de ejecución de JavaScript fuera del navegador, basado en el motor V8 de Chrome.\n\n**Usos principales:**\n- Servidores web (APIs REST)\n- Herramientas de línea de comandos (CLI)\n- Automatización de tareas (build tools)\n- Aplicaciones de tiempo real (WebSockets)\n\n**Características clave:**\n- Sin el objeto `window` o `document` (no hay DOM)\n- Tiene su propio sistema de módulos (CommonJS nativo, ES modules soportados)\n- API de sistema de archivos (`fs`), HTTP (`http`), procesos, etc.\n- Basado en eventos y no bloqueante",
+      "tags": ["ej", "nodejs", "runtime"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ej-026",
+      "front": "(EJ — Node.js) ¿Qué es NPM (Node Package Manager)?",
+      "back": "**NPM** es el gestor de paquetes de Node.js. Permite instalar, compartir y gestionar dependencias.\n\n```bash\n# Inicializar proyecto\nnpm init -y\n\n# Instalar paquete (se añade a package.json)\nnpm install express\n\n# Instalar global\nnpm install -g nodemon\n\n# Ejecutar script definido en package.json\nnpm start\nnpm test\n```\n\n**package.json** contiene metadatos del proyecto y sus dependencias. Las dependencias se guardan en `node_modules/`.",
+      "tags": ["ej", "nodejs", "npm", "packages"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "ej-027",
+      "front": "(EJ — Node.js) ¿Cómo leer y escribir archivos con Node.js?",
+      "back": "```javascript\nconst fs = require(\"fs\");\n\n// Síncrono (bloqueante)\nconst data = fs.readFileSync(\"archivo.txt\", \"utf-8\");\nfs.writeFileSync(\"salida.txt\", data.toUpperCase());\n\n// Asíncrono con callbacks\nfs.readFile(\"archivo.txt\", \"utf-8\", (err, data) => {\n  if (err) throw err;\n  fs.writeFile(\"salida.txt\", data.toUpperCase(), (err) => {\n    if (err) throw err;\n  });\n});\n\n// Asíncrono con promesas (fs.promises)\nconst fsPromises = require(\"fs\").promises;\nasync function leer() {\n  const data = await fsPromises.readFile(\"archivo.txt\", \"utf-8\");\n  await fsPromises.writeFile(\"salida.txt\", data.toUpperCase());\n}\n```",
+      "tags": ["ej", "nodejs", "filesystem", "fs"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ej-028",
+      "front": "(EJ — Node.js) ¿Cómo crear un servidor HTTP básico en Node.js?",
+      "back": "```javascript\nconst http = require(\"http\");\n\nconst server = http.createServer((req, res) => {\n  console.log(req.method, req.url);\n  \n  res.writeHead(200, {\n    \"Content-Type\": \"application/json\"\n  });\n  res.end(JSON.stringify({ mensaje: \"Hola Mundo!\" }));\n});\n\nserver.listen(3000, () => {\n  console.log(\"Servidor en http://localhost:3000\");\n});\n```\n\nO usando Express (más común):\n```javascript\nconst express = require(\"express\");\nconst app = express();\n\napp.get(\"/\", (req, res) => res.json({ mensaje: \"Hola\" }));\napp.listen(3000);\n```",
+      "tags": ["ej", "nodejs", "http", "server"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ej-029",
+      "front": "(EJ — Debug) ¿Qué herramientas de depuración ofrece JavaScript?",
+      "back": "```javascript\n// Console básico\nconsole.log(\"mensaje\");\nconsole.error(\"error\");\nconsole.warn(\"advertencia\");\n\n// Inspección avanzada\nconsole.table([{a:1, b:2}, {a:3, b:4}]);\nconsole.dir(document.body);  // propiedades del objeto\nconsole.trace();             // stack trace\nconsole.time(\"tarea\");\n  // código a medir\nconsole.timeEnd(\"tarea\");   // cuánto tardó\n\n// Debugger\nfunction algo() {\n  debugger;  // pausa la ejecución si DevTools está abierto\n  return 42;\n}\n```\n\nLas DevTools del navegador permiten: breakpoints, watch expressions, call stack, y más.",
+      "tags": ["ej", "debug", "console", "tools"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "ej-030",
+      "front": "(EJ — JSON) ¿Cómo trabajar con JSON en JavaScript?",
+      "back": "JSON (JavaScript Object Notation) es el formato de intercambio de datos más común:\n\n```javascript\n// Objeto JS → String JSON\nconst objeto = { nombre: \"Ana\", edad: 25 };\nconst json = JSON.stringify(objeto);\n// '{\"nombre\":\"Ana\",\"edad\":25}'\n\n// String JSON → Objeto JS\nconst texto = '{\"nombre\":\"Ana\",\"edad\":25}';\nconst datos = JSON.parse(texto);\n// { nombre: \"Ana\", edad: 25 }\n\n// Con formato (pretty print)\nJSON.stringify(objeto, null, 2);\n// {\n//   \"nombre\": \"Ana\",\n//   \"edad\": 25\n// }\n```\n\nLos nombres de propiedades y strings en JSON SIEMPRE van con comillas dobles.",
+      "tags": ["ej", "json", "data"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "ej-031",
+      "front": "(EJ — Recursion) ¿Qué es la recursión y cuándo usarla?",
+      "back": "Una función **recursiva** se llama a sí misma hasta alcanzar un caso base:\n\n```javascript\nfunction factorial(n) {\n  if (n === 0) return 1;  // caso base\n  return n * factorial(n - 1);  // llamada recursiva\n}\n\nfactorial(5); // 120\n\n// Versión iterativa (misma lógica)\nfunction factorialIter(n) {\n  let result = 1;\n  for (let i = n; i > 0; i--) result *= i;\n  return result;\n}\n```\n\n**Cuándo usar:** problemas que pueden dividirse en subproblemas iguales (árboles, grafos, divide y vencerás).\n**Cuidado:** demasiada recursión causa stack overflow.",
+      "tags": ["ej", "recursion", "functions"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ej-032",
+      "front": "(EJ — Objects) ¿Qué es this en JavaScript?",
+      "back": "`this` es una referencia al contexto de ejecución actual. Su valor depende de CÓMO se llama la función, no de dónde se define:\n\n```javascript\n// En un método de objeto → el objeto\nconst obj = {\n  nombre: \"Objeto\",\n  decir() { return this.nombre; }\n};\nobj.decir(); // \"Objeto\"\n\n// En función normal → global/window (strict: undefined)\nfunction normal() { return this; }\nnormal(); // window (o undefined en strict mode)\n\n// Arrow function → contexto padre (NO tiene su propio this)\nconst flecha = () => this;\n\n// Con call/apply → el que pasamos\nobj.decir.call({ nombre: \"Otro\" }); // \"Otro\"\n```",
+      "tags": ["ej", "this", "context", "objects"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "ej-033",
+      "front": "(EJ — HTTP) ¿Qué es el almacenamiento local (localStorage)?",
+      "back": "`localStorage` permite guardar datos en el navegador del usuario:\n\n```javascript\n// Guardar\nlocalStorage.setItem(\"nombre\", \"Ana\");\nlocalStorage.setItem(\"datos\", JSON.stringify({a: 1, b: 2}));\n\n// Leer\nconst nombre = localStorage.getItem(\"nombre\");\nconst datos = JSON.parse(localStorage.getItem(\"datos\"));\n\n// Eliminar\nlocalStorage.removeItem(\"nombre\");\nlocalStorage.clear();  // todo\n\n// SessionStorage (se borra al cerrar pestaña)\nsessionStorage.setItem(\"temp\", \"valor temporal\");\n```\n\n**Límite:** ~5-10 MB por dominio. Solo guarda strings.",
+      "tags": ["ej", "storage", "localStorage", "browser"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "ej-034",
+      "front": "(EJ — Regex) Escribe una regex para validar un email básico",
+      "back": "```javascript\nconst emailRegex = /^\\S+@\\S+\\.\\S+$/;\n\nemailRegex.test(\"user@example.com\");  // true\nemailRegex.test(\"usuario@\");          // false\nemailRegex.test(\"@dominio.com\");      // false\n\n// Explicación:\n// ^      → inicio\n// \\\\S+   → uno o más no-espacios (nombre)\n// @     → arroba literal\n// \\\\S+   → uno o más no-espacios (dominio)\n// \\.    → punto literal\n// \\\\S+   → uno o más no-espacios (TLD)\n// $      → fin\n```",
+      "tags": ["ej", "regex", "validation"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ej-035",
+      "front": "(EJ — Events) ¿Qué es la propagación de eventos (bubbling y capturing)?",
+      "back": "Cuando ocurre un evento en un elemento, este se propaga en tres fases:\n\n1. **Capturing**: desde `window` hasta el elemento objetivo\n2. **Target**: el elemento que disparó el evento\n3. **Bubbling**: desde el elemento objetivo hacia arriba (`window`)\n\n```javascript\n<div id=\"padre\">\n  <button id=\"hijo\">Click</button>\n</div>\n\n// Burbujeo (tercer parámetro = false o omitido)\ndocument.getElementById(\"padre\").addEventListener(\"click\", () => {\n  console.log(\"padre\");  // se ejecuta DESPUÉS del hijo\n});\n\n// Captura (tercer parámetro = true)\ndocument.getElementById(\"padre\").addEventListener(\"click\", () => {\n  console.log(\"padre (captura)\");  // se ejecuta ANTES del hijo\n}, true);\n\n// Detener propagación\ne.stopPropagation();\n```",
+      "tags": ["ej", "events", "bubbling", "capturing", "dom"],
+      "difficulty": "hard"
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Testing
+coverage
+.nyc_output
+
+# Temporary files
+*.tmp
+*.temp
+.cache
+
+# OS files
+Thumbs.db
+
+# Hermes proxy / personal Hermes binaries - do not commit personal agent executables or venvs
+/hermes-proxy/node_modules/
+/hermes-proxy/.env
+/hermes-proxy/*.exe
+/hermes-proxy/*.dll
+/hermes-proxy/*.pdb
+/hermes-proxy/venv/
+/hermes-proxy/.venv/
+/hermes-proxy/*.log
+
+# Local Hermes CLI (user-specific) - ignore any hermes binaries if accidentally placed
+hermes*
+**/hermes*

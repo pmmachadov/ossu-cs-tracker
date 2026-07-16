@@ -1,0 +1,999 @@
+{
+  "id": "tips-web-dev",
+  "name": "99 Tips para Web Development",
+  "description": "99 consejos prácticos de HTML, CSS y JavaScript — Freddy Montes (@fmontes)",
+  "subject": "Libros",
+  "created": "2026-05-17",
+  "cards": [
+    {
+      "id": "twd-001",
+      "front": "(TWD — HTML) Asociar labels e inputs program�ticamente",
+      "back": "El atributo for en el <label> te permite asociar programáticamente el label con su respectivo elemento input.\n<input type=\"checkbox\" name=\"ps5\" id=\"ps5\"> <label for=\"ps5\">áQuieres un PS5?</label>\nBeneficios 1. El usuario puede hacer click en el label para \"activar\" el input esto es bueno porque haces el \"hit area\" más grande. 2. En accesibilidad va a permitir que el screen reader lea el texto del label cuando el input está focus o seleccionado.",
+      "tags": [
+        "twd",
+        "html"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "twd-002",
+      "front": "(TWD — HTML) Enfocar un elemento cuando carga la p�gina",
+      "back": "Es un atributo global que te permite indicarle al navegador cuál elemento debe estar enfocado cuando la página carga.\n<input type=\"text\" autofocus />\nBeneficios 1. Indicar al usuario donde comenzar a realizar la tarea en la página. Por ejemplo en una página de login puedes hacer \"focus\" al input del username. 2. Puedes ahorrarle tiempo al usuario o salvar un click.",
+      "tags": [
+        "twd",
+        "html"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "twd-003",
+      "front": "(TWD — HTML) Pedir al navegador que descargue un archivo",
+      "back": "Se usa en la etiqueta <a> y \"pide\" al usuario que guarde el archivo de la URL en lugar de navegar hasta ella.\n<a href=\"file.pdf\" download>Descargar</a>\nBeneficios 1. Los navegadores modernos pueden leer PDF por lo que al usar el atributo download fuerzas al usuario que descargue el archivo en lugar de abrirlo en el navegador. 2. Permite controlar lo que quieres hacer con el archivo del link.",
+      "tags": [
+        "twd",
+        "html"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "twd-004",
+      "front": "(TWD — HTML) �C�mo hacer tu p�gina web editable?",
+      "back": "Con el atributo contenteditable puedes hacer cualquier elemento de tu página editable. Y puedes escuchar el evento input obtener el valor.\n<p contenteditable=\"true\"> Este contenido es editable\n</p>\n<script type=\"application/javascript\"> document.querySelector('p') .addEventListener('input', (e) => { console.log(e) })\n</script>\nSi necesitas hacer una página completa editable o incluso un elemento en especáfico lo puedes hacer con este atributo y con esto crear una herramienta #nocode",
+      "tags": [
+        "twd",
+        "html"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "twd-005",
+      "front": "(TWD — HTML) �C�mo escribir direcciones correctamente?",
+      "back": "La etiqueta <address> indica que el HTML dentro de ella proporciona informacián de contacto para una persona u organizacián.\n<address> <a href=\"mailto:hi@midominio.com\"> hi@midominio.com </a> <br />\n<a href=\"tel:+1234567890\"> (123) 456-7890\n</a> </address>\nSemántica, es la etiqueta correcta para mostrar una direccián. La especificacián fue actualizada y se puede usar para mostrar una direccián arbitraria y no solo la del autor de la página.",
+      "tags": [
+        "twd",
+        "html"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "twd-006",
+      "front": "(TWD — HTML) Un elemento para mostrar fecha y hora",
+      "back": "La manera correcta de mostrar \"hora\" o \"tiempo\" en una página es usando el elemento <time>.\n<p> Oasis va a celebrar su 25 aniversario <time datetime=\"2021-07-07\">el 7 de julio</time> en el Hyde Park de Londres.\n</p>\n<p> El concierto comienza a las <time datetime=\"20:00\">08:00pm</time>\n</p>\nDebes incluir el atributo datetime para traducir la hora a un formato legible por la máquina, lo que permite obtener mejores resultados en los motores de básqueda o funciones personalizadas como los recordatorios.",
+      "tags": [
+        "twd",
+        "html"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "twd-007",
+      "front": "(TWD — HTML) Crear links para hacer llamadas o enviar SMS o correos",
+      "back": "Si queremos que un usuario nos contacte tenemos que ponársela fácil, para eso podemos crear links para los diferentes mátodos de contacto.\n<a href=\"mailto:email@empresa.com?subject=titulo\"> Enviar un email\n</a>\n<a href=\"tel:+50612312312\"> Llamanos\n</a>\n<a href=\"sms:+50612312312?body=contenido\"> Send us a message\n</a>\nIncluso puedes agregar contenido al correo o al sms como el tátulo o el cuerpo.",
+      "tags": [
+        "twd",
+        "html"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "twd-008",
+      "front": "(TWD — HTML) Agregar \"citas\" a un documento",
+      "back": "Para indicar que un texto pertenece a otro autor se hace una cita con el elemento con <blockquote>. Puedes usar el atributo \"cite\" para pasar el link de la fuente.\n<blockquote cite=\"https://pagina.com/articulo.html\"> <p>Este texto es algo que dijo alguien más.</p>\n</blockquote>\nIndicar semánticamente correcta las citas en un documento.",
+      "tags": [
+        "twd",
+        "html"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "twd-009",
+      "front": "(TWD — HTML) Crear un acorde�n con solo HTML",
+      "back": "Crea un component tipo acordeán en el que la informacián completa es visible solo cuando le dan click y se cambia a un estado \"expandido\". Puedes pasar el texto al estado \"no expandido\" mediante el elemento <summary>.\n<details> <summary>Tátulo</summary> Este es el contenido que se muestra\n</details>\n1. Cero JavaScript. 2. Fácil de hacer los estilos.",
+      "tags": [
+        "twd",
+        "html"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "twd-010",
+      "front": "(TWD — HTML) Especificar el url base de tu p�gina web",
+      "back": "En la etiqueta <base> con el atributo href indicas cuál es el url base para todos los url relativos de tu documento.\n<head> <base href=\"https://ejemplo.com/\">\n</heead> <body>\n<a href=\"prueba.html\">Click aqui</a> </body> <!-Este resuelve a https://ejemplo.com/prueba.html -->\nPuedes controlar al detalle los URL relativos.",
+      "tags": [
+        "twd",
+        "html"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "twd-011",
+      "front": "(TWD — HTML) �C�mo deshabilitar el bot�n derecho?",
+      "back": "Esto es una malásima práctica de accesibilidad y la experiencia de usuario.\n<body oncontextmenu=\"return false\">\nSi estás desarrollando una aplicacián donde necesitas un comportamiento personalizado para el botán derecho puedes usar esta solucián.",
+      "tags": [
+        "twd",
+        "html"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "twd-012",
+      "front": "(TWD — HTML) Usar patrones espec�ficos de validaci�n en elementos <input>",
+      "back": "El atributo de \"pattern\" especifica una expresián regular con la que debe coincidir el valor del input. Por ejemplo: el siguiente input solo puede tener una cadena de texto de 4 a 8 caracteres todos en mináscula para ser válido\n<input type=\"text\" pattern=\"[a-z]{4,8}\" required />\nNo usar JavaScript para validar la entrada de datos de un usuario",
+      "tags": [
+        "twd",
+        "html"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "twd-013",
+      "front": "(TWD — HTML) Invertir los n�meros en una lista",
+      "back": "Las listas ordenadas <ol> por defecto se ordenan de manera descendente, pero puedes cambiar ese orden con el atributo reversed.\n<ol reversed> <li>Primero</li> <li>Segunda</li> <li>Tercero</li>\n</ol>\nPuedes hacer un conteo regresivo fácilmente.",
+      "tags": [
+        "twd",
+        "html"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "twd-014",
+      "front": "(TWD — HTML) Crear un selector con autocomplete con puro HTML",
+      "back": "ál autocomplete es un patrán de diseáo que le facilita al usuario filtrar elementos usando un string de texto para facilitar la seleccián.\n<label> áQuá quieres comer? <input list=\"elementos\" />\n</label> <datalist id=\"elementos\">\n<option>Hamburguesa</option> <option>Pizza</option> <option>Tacos</option> <option>Arepas</option> </datalist>\nMejora la experiencia de usuario cuando tienes selectores con muchásimas opciones, ya que le permites filtrar para seleccionar opciones.",
+      "tags": [
+        "twd",
+        "html"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "twd-015",
+      "front": "(TWD — HTML) �C�mo usar un selector de colores?",
+      "back": "El elemento input es mucho más que solo un campo de texto, puedes tener un selector de colores.\n<input type=\"color\" />\nEsto funciona como un input normal y puedes acceder al valor y escuchar eventos.",
+      "tags": [
+        "twd",
+        "html"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "twd-016",
+      "front": "(TWD — HTML) Cambiando el color del tema del navegador",
+      "back": "Para cambiar los colores del navegador se utiliza la etiqueta <meta> con el atributo theme-color de la siguiente manera:\n<meta name=\"theme-color\" content=\"#4285f4\">\nEsto cambia los colores principales de la interfaz del navegador en dispositivos máviles. Para cuando escribá este libro junio 2021 solo funcionaba en Android, pero ya estaba anunciado el soporte para iOS 15.",
+      "tags": [
+        "twd",
+        "html"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "twd-017",
+      "front": "(TWD — HTML) Cargar im�genes con \"lazy load\"",
+      "back": "Lazy load es una estrategia que se refiere a cargar recursos cuando sea requerido por el usuario, esto nos permite ahorrar recursos. Las imágenes son muy comunes en la web, pero son tambián responsable de problemas de performance, es por esto que es recomendado cargarlas de manera lazy y para eso se utiliza el atributo loading.\n<img src=\"path/a/la/imagen.jpg\" loading=\"lazy\" />\nEste atributo le indica al navegador que solo cargue la imagen cuando está cerca de mostrarse en el viewport.",
+      "tags": [
+        "twd",
+        "html"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "twd-018",
+      "front": "(TWD — HTML) Cargando im�genes para cada media query",
+      "back": "En la web moderna mostrar una imagen ya no es tan simple como usar un img tag con las diferentes resoluciones y pantallas que hay que tomar en cuenta. Para eso se creá el elemento <picture> que junto a <source> te permite cargar diferentes imágenes dependiendo de un media query:\n<picture> <source srcset=\"/path/a/la/imagen-800.jpg\" media=\"(min-width: 800px)\"> <img src=\"/path/a/la/imagen-320.jpg\" />\n</picture>\npicture puede contener cero o varios source y es aquá donde le pasamos la imagen en el atributo srcset y ál media query donde queremos que esta imagen se muestre. Al final le pasamos un img element normal para cuando ningán media query haga match. Esto te va a permitir tener imágenes de diferentes resoluciones y tamaáo para cada tipo de pantalla.",
+      "tags": [
+        "twd",
+        "html"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "twd-019",
+      "front": "(TWD — HTML) Hacer una barra de progreso",
+      "back": "Con el elemento <progress> puedes mostrar un indicador del progreso de una tarea, normalmente en forma de barra de progreso.\n<progress max=\"100\" value=\"70\">70%</progress>\nCon los atributos max defines el máximo valor que puede tener la barra y con el value cuál es el valor actual.",
+      "tags": [
+        "twd",
+        "html"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "twd-020",
+      "front": "(TWD — HTML) �C�mo usar el elemento <dialog>?",
+      "back": "Representa un cuadro de diálogo u otro componente interactivo, como una alerta, un inspector o una subventana. Normalmente este elemento se creaba con etiquetas tradicionales de HTML como div y span, pero al ser tan popular se creá el elemento.\n<dialog open> <h3>Titulo del dialog</h3> <p>Contenido del dialog</p>\n</dialog>\nAl pasarle el atributo open el dialog apareceráa \"abierto\" pero si necesitas abrirse dinámicamente hay que usar JavaScript:\nconst dialog = document.querySelector('dialog'); dialog.showModal();\nEl mátodo showModal muestra el dialog en la pagina.",
+      "tags": [
+        "twd",
+        "html"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "twd-021",
+      "front": "(TWD — HTML) Indicarle al navegador el lenguaje de tu documento",
+      "back": "Con el atributo lang se indica en que idioma está el contenido de un element HTML. Para ponerlo a todo el documento se agrega a la etiqueta html al inicio de la página.\n<html lang=\"en\"> ... </html>\nEs superimportante indicar que lenguaje es tu página web, ya que esto permite a los buscadores mostrar tu página en los resultados de las básquedas del lenguaje correcto, pero además a los lectores de pantallas de leer el documento en el idioma correcto.",
+      "tags": [
+        "twd",
+        "html"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "twd-022",
+      "front": "(TWD — HTML) Indicar lenguaje en una secci�n especifica del documento",
+      "back": "El atributo lang al ser un atributo global se le puede pasar a cualquier elemento en la página.\n<html lang=\"en\"> <body> <p>This is english</p> <p lang=\"es\">Esto es espaáol</p> </body>\n</html>\nAl pasar el atributo a un elemento en particular puedes sobreescribir el lenguaje global e indicar al navegador que el contenido de esa etiqueta es otro lenguaje.",
+      "tags": [
+        "twd",
+        "html"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "twd-023",
+      "front": "(TWD — HTML) Agregar un corrector ortogr�fico a un elemento",
+      "back": "Existe un atributo global llamado spellcheck que define si el elemento puede ser revisado por errores ortográficos.\n<textarea spellcheck=\"true\"> Jere is some text widt some eror\n</textarea> <textarea lang=\"es\" spellcheck=\"true\">\nAki ai un error </textarea>\nLo puedes combinar con el atributo lang y funciona de manera que cuando el usuario se enfoca en el elemento subraya las palabras con errores ortográficos.",
+      "tags": [
+        "twd",
+        "html"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "twd-024",
+      "front": "(TWD — HTML) �C�mo indicar el tipo de archivo que acepta un input file?",
+      "back": "Con el atributo accept podemos indicarle al <input type=\"file\" /> que tipo de archivo puede recibir.\n<!-- Solo imagenes --> <input type=\"file\" accept=\"image/*\" /> <!-- Solo archivos .pdf --> <input type=\"file\" accept=\".pdf\" />\nEl valor que le pasamos al accept es un string separado por comas con un listado de \"unique file type specifier\". Con esto, cuando la ventana de seleccionar archivos del sistema operativo se abra, solo le va a permitir al usuario seleccionar archivos del tipo indicado.",
+      "tags": [
+        "twd",
+        "html"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "twd-025",
+      "front": "(TWD — HTML) �C�mo mostrar el teclado num�rico para ingresar n�mero de tel�fono?",
+      "back": "Para simplificar la tarea del usuario de llenar formularios es mejor mostrar el teclado del teláfono adecuado para cada campo, en el caso del teláfono el teclado numárico.\n<input type=\"tel\" />\nAl pasarle el type=\"tel\" le estás indicando al navegador que el valor que puede tener ese campo es un námero de teláfono por lo cual el teclado que va a mostrar es el más adecuado para ingresar ese tipo de dato.",
+      "tags": [
+        "twd",
+        "html"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "twd-026",
+      "front": "(TWD — HTML) Permitir al usuario escanear tu tarjeta de cr�dito",
+      "back": "Para un usuario meter la informacián de su tarjeta de crádito manualmente es un dolor, por esto los navegadores máviles implementaron la funcionalidad de escanear la tarjeta con la cámara, pero tienes que indicarlo en los campos con el atributo autocomplete.\n<form> <input type=\"text\" autocomplete=\"cc-name\" /> <input type=\"text\" autocomplete=\"cc-number\" /> <input type=\"number\" autocomplete=\"cc-exp-month\" /> <input type=\"number\" autocomplete=\"cc-exp-year\" /> <input type=\"text\" autocomplete=\"cc-csc\">\n</form>\nLos valores son cc-name para el nombre, cc-number para el námero de tarjeta y asá sucesivamente para el resto de informacián. Facilitar al usuario el llenado de un formulario ayuda a mejorar la conversián y cuando es un proceso de pago mucho mejor.",
+      "tags": [
+        "twd",
+        "html"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "twd-027",
+      "front": "(TWD — HTML) �Qu� es el elemento template?",
+      "back": "Es una plantilla que contiene cierto cádigo HTML que se mantiene oculto cuando la página carga y que posteriormente puedes mostrar con JavaScript.\n<template> <h1>Un titulo</h1>\n</template> const temp = document.querySelector('template') const newTemp = temp.content.cloneNode(true); document.body.appendChild(newTemp);\nUsar <template> te ahorra tener que crear todos los elementos con JavaScript.",
+      "tags": [
+        "twd",
+        "html"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "twd-028",
+      "front": "(TWD — HTML) �Qu� es el elemento output?",
+      "back": "Es un elemento contenedor en el que un sitio o una aplicacián puede inyectar los resultados de un cálculo o el resultado de una accián del usuario.\n<form> <input type=\"range\" name=\"b\" value=\"50\" /> + <input type=\"number\" name=\"a\" value=\"10\" /> = <output for=\"a b\">60</output>\n</form>\nUsando el atributo for estamos asociando el resultado de la suma de los elementos a y b al elemento output.",
+      "tags": [
+        "twd",
+        "html"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "twd-029",
+      "front": "(TWD — HTML) Elementos <input> de tipo \"rango\"",
+      "back": "Permiten al usuario especificar un valor establecido entre un mánimo y un máximo.\n<input type=\"range\" min=\"0\" max=\"100\">\nEs presentado mediante un control deslizante (slider) o dial en lugar de un cuadro de texto de tipo numárica.",
+      "tags": [
+        "twd",
+        "html"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "twd-030",
+      "front": "(TWD — HTML) Permitir a un usuario seleccionar m�ltiples archivos",
+      "back": "Con el atributo type=\"file\" le mostramos al usuario un input o elemento para seleccionar archivos, pero de 1 en 1, si queremos que pueda seleccionar más de uno tenemos que agregar otro atributo:\n<input type=\"file\" multiple />\nEl valor del elemento resulta siendo un objeto de tipo FileList.",
+      "tags": [
+        "twd",
+        "html"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "twd-031",
+      "front": "(TWD — HTML) �C�mo reproducir audio?",
+      "back": "El elemento HTML <audio> se utiliza para incrustar contenido sonoro en los documentos.\n<!-- Usando el src --> <audio controls src=\"/path/al/archivo.mp3\">\nNavegador no sporta <code>audio</code>. </audio>\n<!-- Usando el <source> --> <audio controls>\n<source src=\"/path/al/audio.mp3\" type=\"audio/mp3\" /> <source src=\"/path/al/audio.ogg\" type=\"audio/ogg\" /> </audio>\nPuede contener una o varias fuentes de audio, representadas mediante el atributo src o el elemento <source>: el navegador elegirá la más adecuada. El atributo controls permite mostrar los botones del reproductor como play, pause, volumen, etc.",
+      "tags": [
+        "twd",
+        "html"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "twd-032",
+      "front": "(TWD — HTML) �C�mo reproducir video?",
+      "back": "El elemento HTML <video> inserta un reproductor multimedia que permite la reproduccián de vádeo en el documento.\n<video controls width=\"250\"> <source src=\"/path/al/video.webm\" type=\"video/webm\" /> <source src=\"/path/al/video.mp4\" type=\"video/mp4\" /> Lo sentimos, su navegador no admite vádeos.\n</video>\nPuede contener una o varias fuentes de video en el elemento <source>: el navegador elegirá la más adecuada. El atributo controls permite mostrar los botones del reproductor como play, pause, volumen, etc.",
+      "tags": [
+        "twd",
+        "html"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "twd-033",
+      "front": "(TWD — HTML) �C�mo cargar archivos de JavaScript y asegurar el rendimiento?",
+      "back": "Existe dos atributos que son importantes conocer defer y async.\n<script src=\"app.js\" defer></script>\nEl atributo defer le dice al navegador que no espere el archivo JavaScript cuando renderice el HTML. Asá se renderizará primero el DOM y luego se ejecutará el script.\n<script src=\"app.js\" async></script>\nEl atributo async es similar a defer , la ánica diferencia es que async le dice al navegador que cargue y ejecute el script de forma asáncrona mientras se carga la UI. Puedes usar uno u otro dependiendo si necesitas o no que se ejecuten ciertos archivos JavaScript antes de la carga del DOM.",
+      "tags": [
+        "twd",
+        "html"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "twd-034",
+      "front": "(TWD — JavaScript) �Como asignar valores por defecto a las variables?",
+      "back": "Usando el operador lágico \"OR\" con doble pipe || .\n// OK let result; if (value) {\nresult = value } else {\nresult = 'fallback value' } // áMejor! let result = value || 'fallback value'\nCon el operador te ahorras unas láneas de cádigo, pero además queda más conciso.",
+      "tags": [
+        "twd",
+        "javascript"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "twd-035",
+      "front": "(TWD — JavaScript) �C�mo hacer condiciones m�s cortas?",
+      "back": "El operador ternario ? permite ejecutar cádigo basado si una condicián se cumple. Si es como un if pero más conciso.\n// OK let comer;\nif (pizzaToppings.includes('piáa')) { comer = 'NO';\n} else { comer = 'CLARO QUE SI'\n}\n// áMejor! let comer = pizzaToppings.includes('piáa') ?\n'NO' : // los : vienen siendo como el \"else\" 'CLARO QUE SI';\nCádigo más conciso y fácil de leer.",
+      "tags": [
+        "twd",
+        "javascript"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "twd-036",
+      "front": "(TWD — JavaScript) Mostrar m�s informaci�n al depurar",
+      "back": "El console.log está bien, pero con console.trace puedes ver mucha más informacián, por ejemplo el stacktrace de la llamada de la funcián.\nfunction hacerAlgo() { console.trace('Aqui estoy haciendo algo');\n}\nPuedes ver en detalle todo el camino que llevo a la llamada de una funcián, lo que te da más contexto de toda la operacián.",
+      "tags": [
+        "twd",
+        "javascript"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "twd-037",
+      "front": "(TWD — JavaScript) �C�mo saber cuanto tiempo tarda un c�digo en ejecutarse?",
+      "back": "Si quieres ver la performance de tu cádigo una manera simple es ver cuanto tarda en ejecutarse.\nconsole.time('timer-name'); for (let i = 0; i < 10000000; i++) {\n// Hacer algo } console.timeEnd('timer-name');\nLo que no se mide no se mejora, con esto puedes mejorar la velocidad de tus programas de JavaScript.",
+      "tags": [
+        "twd",
+        "javascript"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "twd-038",
+      "front": "(TWD — JavaScript) �C�mo extraer valores de un array con \"destructuraci�n\"?",
+      "back": "La desestructuracián de arreglos permite \"descomprimir\" los valores de un array distintas variables.\n// OK const array = ['Freddy', 'Montes']; const firstName = array[0]; const lastName = array[1]; // áMejor, usando \"Destructuring\"! const array = ['Freddy', 'Montes']; const [firstName, lastName] = array;\nExtraer y crear máltiples variables en la misma lánea.",
+      "tags": [
+        "twd",
+        "javascript"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "twd-039",
+      "front": "(TWD — JavaScript) �C�mo extraer valores de un array con \"destructuraci�n\" de objetos?",
+      "back": "Otra manera de extraer valores de un array es con la sintaxis de objetos.\nconst array = ['Freddy', 'Eduardo', 'Montes', 'Angulo']; const { 0: nombre, 2: apellido } = array; console.log(nombre, apellido); // Freddy Montes\nCon este mátodo puedes extraer elementos de un array y asignarlos a las variables, pero usando enteros para las posiciones, lo que lo hace más legible y mantenible.",
+      "tags": [
+        "twd",
+        "javascript"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "twd-040",
+      "front": "(TWD — JavaScript) �C�mo extraer propiedades de un objeto?",
+      "back": "Al igual que con los array puedes usar destructuracián para extraer propiedades del objeto y asignarlo a variables.\nconst objeto = { nombre: 'Freddy', apellido: 'Montes', web: 'fmontes.com'\n} const {nombre, apellido} = objeto; console.log(nombre); // Freddy console.log(apellido); // Montes\nEs una manera más corta extraer elementos de un objeto.",
+      "tags": [
+        "twd",
+        "javascript"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "twd-041",
+      "front": "(TWD — JavaScript) �C�mo \"destructurar\" elementos de un objeto en variables existentes?",
+      "back": "Si necesitas extraer propiedades de un objeto y guardarlas en variables ya existentes tambián puedes usar destructuracián pero necesitas parántesis.\nconst objeto = { nombre: 'Freddy', apellido: 'Montes', web: 'fmontes.com'\n} let nombre; let apellido; ({ nombre, apellido }) = objeto; console.log(nombre); // Freddy console.log(apellido); // Montes",
+      "tags": [
+        "twd",
+        "javascript"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "twd-042",
+      "front": "(TWD — JavaScript) �C�mo formatear la salida del m�todo JSON.stringify?",
+      "back": "El mátodo JSON.stringify toma un objeto JSON y lo transforma en un string, pero sin formato.\nSi quieres aplicarle un formato tienes que pasar un tercer parámetro de esta manera:\nconst objeto = { nombre: 'Freddy', apellido: 'Montes', web: 'fmontes.com'\n}\nconsole.log(JSON.stringify(objeto)) // \"{\\\"nombre\\\":\\\"Freddy\\\",\\\"apellido\\\":\\\"Montes\\\" ...\nconsole.log(JSON.stringify(objeto, null, 2)) /* \"{\n\\\"nombre\\\": \\\"Freddy\\\", \\\"apellido\\\": \\\"Montes\\\", \\\"web\\\": \\\"fmontes.com\\\" }\" */\nEl resultado es más fácil de leer y perfecto para copiar y pegar.",
+      "tags": [
+        "twd",
+        "javascript"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "twd-043",
+      "front": "(TWD — JavaScript) �C�mo hacer los n�meros grandes m�s legible?",
+      "back": "JavaScript provee un separador de numero _ el underscore se usa para separar námeros muy grandes.\nconst numeroGrande = 1_000_000_000 // 1000000000\nCon este separador haces tu cádigo mucho más legible.",
+      "tags": [
+        "twd",
+        "javascript"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "twd-044",
+      "front": "(TWD — JavaScript) Eliminar elementos duplicados de un array",
+      "back": "Puedes usar el Objeto Set en lugar de tener que hacer lo manualmente.\nconst arrayConDuplicados = [ 'Freddy', 'Montes', 'Freddy', 1, 2, 1, 3, 3\n];\nconst sinDupes = [...new Set(arrayConDuplicados)]\nconsole.log(sinDupes) // 'Freddy', 'Montes', 1, 2, 3\nNo tener que manualmente eliminar los duplicados del array que te tomaráa una funcián medio larga.",
+      "tags": [
+        "twd",
+        "javascript"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "twd-045",
+      "front": "(TWD — JavaScript) �C�mo acceder a los media queries con JavaScript?",
+      "back": "Los media queries son mayormente usados en CSS, pero tambián puedes usarlo en JavaScript y observar si el navegador está dentro o fuera de un media queries especáfico, pero además puedes escuchar eventos.\nlet mql = window.matchMedia('(max-width: 600px)');\nif (mql.matches) { console.log('El viewport es 600px o menos')\n}\nmql.addEventListener('change', probarMediaQuery);\nfunction probarMediaQuery(e) { if (e.matches) { console.log('El viewport es 600px o menos') }\n}\nPuedes ejecutar cádigo JavaScript dependiendo del tamaáo del viewport, por ejemplo podráas inicializar una libreráa que solo necesites en pantallas pequeáas.",
+      "tags": [
+        "twd",
+        "javascript"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "twd-046",
+      "front": "(TWD — JavaScript) �C�mo saber si una funci�n se llam� N cantidad de veces?",
+      "back": "Puedes usar console.count() que es un mátodo que cuenta la cantidad de veces que un cádigo se ejecuta.\nfunction hacerAlgo() { console.count('hacerAlgo se llamá')\n} hacerAlgo(); hacerAlgo(); hacerAlgo(); // \"hacerAlgo se llamá: 1\" // \"hacerAlgo se llamá: 2\" // \"hacerAlgo se llamá: 3\"",
+      "tags": [
+        "twd",
+        "javascript"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "twd-047",
+      "front": "(TWD — JavaScript) �C�mo verificar si una variable tiene el valor que esperamos?",
+      "back": "Si necesitas validar que una variable tenga el valor que esperas normalmente usas un if, pero podráas usar console.assert.\n// Normalmente haces algo como if (!variable) {\nconsole.log('variable no existe') } // Pero puedes hacer console.assert(variable, 'variable no existe')\nEl mátodo assert solo loguea el error cuando la variable tiene un valor falsey.",
+      "tags": [
+        "twd",
+        "javascript"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "twd-048",
+      "front": "(TWD — JavaScript) �C�mo inspeccionar las propiedades y m�todos es un elemento HTML?",
+      "back": "Cuando haces console.log de un elemento HTML solo ves el HTML, pero si quieres ver las propiedades y mátodos debes usar console.dir.\n<p id=\"someElement\">Hola gente</p> const element = document.querySelector('#someElement'); console.log(element) // <p id=\"someElement\">Hola gente</p> console.dir(element); // {accessKey: \"\", align: \"\", ...}",
+      "tags": [
+        "twd",
+        "javascript"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "twd-049",
+      "front": "(TWD — JavaScript) Agregar propiedades con nombres din�micos a objetos",
+      "back": "Cuando necesitas agregar una propiedad a un objeto con un nombre dinámico puedes usar [].\n// OK const dynamic = 'color'; const car = {\nbrand: 'Ford' };\ncar[dynamic] = 'blue';\n// áMejor! // Puedes agrregar propiedades dinamicas usando [] const dynamic = 'color'; const car = {\nbrand: 'Ford', [dynamic]: 'blue' };\nCreas el objeto y asignas la propiedad con nombre dinamico en una sola operacián.",
+      "tags": [
+        "twd",
+        "javascript"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "twd-050",
+      "front": "(TWD — JavaScript) Ejecutar funciones con cortocircuito",
+      "back": "El cortocircuito no es más que ejecutar una funcián si se cumple una condicián.\n// OK if (hungry) {\ngetSomeFruit(); } // áMejor! y muy usado en React hungry && getSomeFruit();\nCádigo más corto y legible. Muy usado para mostrar components de React.",
+      "tags": [
+        "twd",
+        "javascript"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "twd-051",
+      "front": "(TWD — JavaScript) Filtrar valores falsey de un array",
+      "back": "Los valores falsey son aquellos que se consideran false en un contexto de boolean, por ejemplo una condicián. Por ejemplo \"\"|| 0 || NaN || undefined || null .\nconst arr = [ 0, 'Esto', '', undefined, false, 'si', undefined, null, , 'queda', NaN\n]; const filtered = arr.filter(Boolean); console.log(filtered); // [ 'Esto', 'si', 'queda' ]\nBeneficios No necesitas pasar toda una funcián solo el objeto Boolean.",
+      "tags": [
+        "twd",
+        "javascript"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "twd-052",
+      "front": "(TWD — JavaScript) Combinar objetos",
+      "back": "Usando el spread operator para combinar objetos es más directo que el mátodo anterior de Object.assign.\nconst color = { color: 'brown'\n}\nconst height = { height: '7'\n}\nconst firstName = { firstName: 'Freddy'\n}\nconst fullInfo = {...color, ...firstName, ...height};\nconsole.log(fullInfo) // { color: 'brown', height: '7', firstName: 'Freddy' }\nFácil de leer y de entender a primera vista.",
+      "tags": [
+        "twd",
+        "javascript"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "twd-053",
+      "front": "(TWD — JavaScript) Extraer los �ltimos elementos de un array",
+      "back": "Usamos el mátodo slice pasándole valores negativos.\nconst array = [0, 1, 2, 3, 4, 5, 6, 7]; console.log(array.slice(-1)); // [7] console.log(array.slice(-2)); // [6, 7] console.log(array.slice(-3)); // [5, 6, 7]\nUn solo mátodo y al usar námeros negativos hace referencia a \"de adelante a atrás\".",
+      "tags": [
+        "twd",
+        "javascript"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "twd-054",
+      "front": "(TWD — JavaScript) Parsear cualquier valor",
+      "back": "El mátodo JSON.parse hace más de lo que el nombre indica, por ejemplo parsear cualquier valor primitivo.\nJSON.parse('true') // true JSON.parse('false') // false JSON.parse(true) // true JSON.parse(false) // false JSON.parse('100') // 100 JSON.parse('100.20') // 100.20 JSON.parse(100) // 100 JSON.parse(100.20) // 100.20 JSON.parse('some string') // Uncaught SyntaxError\nMenos lágica y mismo resultado.",
+      "tags": [
+        "twd",
+        "javascript"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "twd-055",
+      "front": "(TWD — JavaScript) �C�mo manejar funciones con muchos par�metros?",
+      "back": "Existe una convencián de que cuando tienes que pasar más de 2 parámetros a una funcián es mejor usar un objeto.\n// No hacer esto function hacerAlgo(nombre, apellido, email) {\nconsole.log(nombre, apellido, email) }\n// Mejor hacer function hacerAlgo({ nombre, apellido, email }) {\nconsole.log(nombre, apellido, email) }\nBeneficios: 1. De la primera manera cuando llames a la funcián tienes que recordar el orden de los parámetros. 2. Mientras que pasando un objeto el orden no importa, pero además puedes usar el spread operator para obtener los valores",
+      "tags": [
+        "twd",
+        "javascript"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "twd-056",
+      "front": "(TWD — JavaScript) �C�mo eliminar un elemento sin cambiar el objeto original?",
+      "back": "Tápicamente para eliminar una propiedad de un objeto se usa el keyword delete el problema es que esto muta (cambia) el objeto original y si esta no es tu intencián puedes terminar con bugs difáciles de rastrear. Es mejor usar spread operator.\nconst miObjeto = { nombre: 'Freddy', apellido: 'Montes'\n} // Si quiero eliminar el apellido de este objeto const {apellido, ...nuevoObjeto} = miObjeto; console.log(nuevoObjeto) // { nombre: 'Freddy' }",
+      "tags": [
+        "twd",
+        "javascript"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "twd-057",
+      "front": "(TWD — JavaScript) �C�mo mostrar los elementos de un array de objetos como una tabla en la consola?",
+      "back": "Cuando estás trabajando con un array de objetos y necesitas inspeccionar su contenido, te recomiendo usar console.table\nconst data = [ { nombre: 'Freddy', apellido: 'Montes' }, { nombre: 'Jose', apellido: 'Gonzalez' }, { nombre: 'Jhon', apellido: 'Doe' }\n]\nconsole.table(data);\nUna manera más fácil de ver y analizar tus datos.",
+      "tags": [
+        "twd",
+        "javascript"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "twd-058",
+      "front": "(TWD — JavaScript) �C�mo detener la ejecuci�n de tu c�digo e inspeccionar?",
+      "back": "Detener la ejecucián de tu cádigo es un mátodo de depuracián bien efectivo porque puedes ver las variables, el contexto, el scope. Los puntos donde detienes la ejecucián se les llama \"breakpoints\" y puedes ponerlos en tu cádigo con el statement debugger.\nfunction hacerAlgo(param) { debugger;\nif (param) { // hacer algo\n}\nreturn param * 2; }\nCuando ejecutes este cádigo con el dev tools abierto, el navegador va a detener toda la ejecucián y te muestra la pestaáa para inspeccionar todo lo relacionado con ese cádigo.",
+      "tags": [
+        "twd",
+        "javascript"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "twd-059",
+      "front": "(TWD — JavaScript) �C�mo sumar todos los n�meros de un array?",
+      "back": "Muchas veces tenemos un array de productos y necesitamos sumar todos los precios, en lugar de hacer un for podemos usar el mátodo reduce del array.\nconst precios = [100, 1232, 6453, 234, 2123]; const total = precios.reduce((sub, precio) => {}\nreturn sub + precio; , 0); console.log(total)\nEl mátodo reduce recibe dos parámetros: 1. Una funcián 2. El valor inicial\nLa funcián es donde ocurre la sumatoria, porque esta recibe 2 parámetros, el valor acumulado y el elemento del array por el que está iterando. El valor acumulado es lo que retorna la misma funcián en cada iteracián.",
+      "tags": [
+        "twd",
+        "javascript"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "twd-060",
+      "front": "(TWD — JavaScript) Prevenir que se cambie un objeto",
+      "back": "Mutar objetos en JavaScript puede terminar en bugs dificiles de rastrear. Podemos usar Object.freeze para protegernos.\nconst misDatos = { nombre: 'Freddy'\n}; Object.freeze(misDatos); misDatos.nombre = 'Carlos'; // Error en strict mode console.log(misDatos.nombre); // expected output: Freddy\nAl \"congelar\" el objeto no se puede agregar, editar o eliminar propiedades",
+      "tags": [
+        "twd",
+        "javascript"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "twd-061",
+      "front": "(TWD — JavaScript) Hacer scroll a un elemento espec�fico",
+      "back": "Cuando necesites hacer scroll dinámicamente hasta una parte especifica de la página puedes usar el mátodo scrollIntoView. Le puedes pasar la propiedad behavior: 'smooth' para que el scroll sea animado hasta llegar a la posicián.\nconst scrollAqui = document.querySelector('#aqui'); scrollAqui.scrollIntoView({\nbehavior: 'smooth' })\nEste mátodo funciona para scroll vertical y horizontal.",
+      "tags": [
+        "twd",
+        "javascript"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "twd-062",
+      "front": "(TWD — JavaScript) Iterar un objeto con for...in",
+      "back": "La sentencia for...in itera sobre todas las propiedades enumerables de un objeto. Una vez dentro tienes que acceder al valor usando la notacián de [].\nconst misDatos = { nombre: 'Freddy', apellido: 'Montes', web: 'fmontes.com'\n};\nfor (const property in misDatos) { console.log(`${property}: ${misDatos[property]}`);\n}\n// nombre: Freddy // apellido: Montes // web: fmontes.com\nEste mátodo funciona, pero si quieren algo más funcional, vean el siguiente mátodo.",
+      "tags": [
+        "twd",
+        "javascript"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "twd-063",
+      "front": "(TWD — JavaScript) Iterar un objeto con Object.entries()",
+      "back": "El mátodo Object.entries() retorna una matriz (un array de arrays) de pares de propiedades [key, value].\nconst misDatos = { nombre: 'Freddy', apellido: 'Montes', web: 'fmontes.com'\n}; const matriz = Object.entries(misDatos); console.log(matriz) /* [\n[nombre, Freddy], [apellido, Montes], [web, fmontes.com\"] ] */\nObject.entries(misDatos).forEach(([key, value]) => { console.log(`${key}: ${value}`);\n})\n// nombre: Freddy // apellido: Montes // web: fmontes.com",
+      "tags": [
+        "twd",
+        "javascript"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "twd-064",
+      "front": "(TWD — JavaScript) �C�mo guardar todos los keys de un objeto en un array?",
+      "back": "Para sacar todos los keys de un objeto solo necesitas usar el mátodo del Objeto .keys;\nconst misDatos = { nombre: 'Freddy', apellido: 'Montes', web: 'fmontes.com'\n}; const misDatosKeys = Object.keys(misDatos); console.log(misDatosKeys); // ['nombre', 'apellido', 'web']",
+      "tags": [
+        "twd",
+        "javascript"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "twd-065",
+      "front": "(TWD — JavaScript) �C�mo guardar todos los value de un objeto en un array?",
+      "back": "Para sacar todos los value de un objeto solo necesitas usar el mátodo del Objeto .values()\nconst misDatos = { nombre: 'Freddy', apellido: 'Montes', web: 'fmontes.com'\n}; const misDatosKeys = Object.values(misDatos); console.log(misDatosKeys); // ['Freddy', 'Montes', 'fmontes.com']",
+      "tags": [
+        "twd",
+        "javascript"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "twd-066",
+      "front": "(TWD — JavaScript) �C�mo poner una elemento en fullscreen?",
+      "back": "Con el API Fullscreen del navegador puedes tomar un elemento de la página y mostrarlo en full screen o pantalla completa.\n<div id=\"fullscreen\"></div>\nSolo tenemos que seleccionar el elemento y llamar al mátodo requestFullscreen. Usamos un if para confirmar que el mátodo existe antes de llamarlo y evitar un error.\nlet fullscreen = document.querySelector(\"#fullscreen\"); if (fullscreen.requestFullscreen) {\nfullscreen.requestFullscreen(); }\nTe sirve si estás poniendo un video en full screen o si estás trabajando en un videojuego.",
+      "tags": [
+        "twd",
+        "javascript"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "twd-067",
+      "front": "(TWD — CSS) Centrar elementos en pantalla completa",
+      "back": "Porque siempre vamos a necesitar centrar elementos en una pantalla.\n<div class=\"parent\"> <h1>Mi nombre es Freddy</h1>\n</div> .parent {\nwidth: 100vw; height: 100vh; display: flex; place-content: center; place-items: center; }\nUsar flex nos permite centrar elementos fácilmente.",
+      "tags": [
+        "twd",
+        "css"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "twd-068",
+      "front": "(TWD — CSS) Delimitar texto con puntitos",
+      "back": "En algunos diseáos responsive no puedes hacer saltos de láneas, asá que una solucián es delimitar el texto con \"ellipsis\" que son los ... de \"continuará\".\n<h1>Mi nombre es Freddy</h1> h1 {\nwidth: 400px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis }\nEs una de tantas soluciones para mantener el texto responsive, sin embargo si puedes hacer el salto de lánea es mejor porque no cortas el texto.",
+      "tags": [
+        "twd",
+        "css"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "twd-069",
+      "front": "(TWD — CSS) Agregar estilos al placeholder de los inputs",
+      "back": "El placeholder es el texto que aparece en el control del formulario cuando no tiene ningán valor establecido.\n<!-- Borde verde --> <input type=\"text\" placeholder=\"Ingresa tu nombre\" />\n<!-- Borde azul --> <input type=\"text\"\nplaceholder=\"Ingresa tu apellido\" value=\"Montes\" /> input { border: solid 1px blue; }\ninput:placeholder-shown { border: solid 1px green;\n}\nTe permite personalizar hasta el áltimo nivel los <input> para ajustarlo hasta el más mánimo detalle.",
+      "tags": [
+        "twd",
+        "css"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "twd-070",
+      "front": "(TWD — CSS) Agregar estilos a los inputs en sus estados v�lido e inv�lido",
+      "back": "Cuando usas las validaciones nativas de HTML, como el atributo required luego puedes hacer estilos a los elementos del formulario segán su estado de validez.\n<!-- Rojo --> <input type=\"text\"\nplaceholder=\"Ingresa tu nombre\" required>\n<!-- Verde --> <input type=\"text\"\nplaceholder=\"Ingresa tu apellido\" value=\"Montes\" required>\ninput:valid { border: solid 1px green;\n}\ninput:invalid { border: solid 1px red;\n}\nNo JavaScript, con solo CSS puedes indicar al usuario el estado de los campos del formulario.",
+      "tags": [
+        "twd",
+        "css"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "twd-071",
+      "front": "(TWD — CSS) Aplicar estilos a un elemento solo cuando tenga contenido",
+      "back": "La combinacián de las pseudo clases \"not\" y \"empty\" (cuando no está vacáo) nos permite aplicar estilos a elementos SOLO cuando estos tengas contenido.\n<!-- Se muestra con borde --> <p>Contenido</p> <!-- No se muestra nada ---> <p></p> p:not(:empty) {\nborder: solid 1px; }\nSi necesitas tener un elemento HTML donde agregas y eliminas contenido dinámicamente, esta combinacián te permite ocultarlo/mostrarlo fácilmente.",
+      "tags": [
+        "twd",
+        "css"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "twd-072",
+      "front": "(TWD — CSS) Efecto de libro antiguo con la primera letra del p�rrafo",
+      "back": "Se pueden hacer estilos especáficos para la primera letra de un párrafo con el psudo-selector :first-letter\n<p>Lorem ipsum dolor sit...</p> p:first-letter {\nfont-family: Georgia; font-size: 4rem; line-height: 1; }\nPuedes crear un diseáo inspirado en diagramacián de libros fásicos.",
+      "tags": [
+        "twd",
+        "css"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "twd-073",
+      "front": "(TWD — CSS) Recortar una imagen con CSS",
+      "back": "Si necesitas cambiar la proporcián de la imagen en tu página web, solo usa object-fit.\n<img src=\"/path/a/la/image\" /> img {\nwidth: 200px; height: 200px; object-fit: cover; }\nAunque siempre es mejor recortar con un editor de imagen para ahorrar tamaáo del archivo, puedes usar esta aproximacián para hacerlo solo con css.",
+      "tags": [
+        "twd",
+        "css"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "twd-074",
+      "front": "(TWD — CSS) Agregar gradiente a un texto",
+      "back": "Los gradients son efectos interesantes para resaltar tátulos y textos grandes. Evita usarlo en textos pequeáos porque los va a hacer muy difácil de leer.\nh1 { font-size: 72px; background: -webkit-linear-gradient(#eee, #333); background-clip: text; text-fill-color: transparent;\n} <h1>Hello World</h1>\nEfecto moderno y fácil de implementar.",
+      "tags": [
+        "twd",
+        "css"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "twd-075",
+      "front": "(TWD — CSS) Poner una imagen de fondo a un texto",
+      "back": "Al igual que con texto de gradiente usando background-clip puedes ponerle una imagen de fondo a un texto.\nh1 { background: blue url('path/a/la/imagen'); background-clip: text; color: transparent; font-size: 10rem;\n}\nNada más considera que este efecto se ve bien si el texto es bien grande y una fuente gruesa.",
+      "tags": [
+        "twd",
+        "css"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "twd-076",
+      "front": "(TWD — CSS) �C�mo aplicar filtros a un elemento?",
+      "back": "La propiedad filter aplica efectos gráficos como el desenfoque o el cambio de color a un elemento.\n.element { filter: blur(1rem);\n}\nUno de los usos es esconder informacion sensible o crear un efecto de \"censurado\" sobre una imagen.",
+      "tags": [
+        "twd",
+        "css"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "twd-077",
+      "front": "(TWD — CSS) �C�mo aplicar filtros al background?",
+      "back": "La propiedad filter tambien se puede aplicar al fondo de un elemento usando la propiedad backdrop-filter.\n.element { backdrop-filter: blur(1rem);\n}\nAplicando efectos al fondo puedes crear una superficie para colocar texto sobre una imagen.",
+      "tags": [
+        "twd",
+        "css"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "twd-078",
+      "front": "(TWD — CSS) Hacer una imagen en escala de grises",
+      "back": "Una imagen en escala de grises en tu página web da un efecto de elegancia.\nimg { filter: grayscale(100%);\n}\nPermite darle un efecto elegante a tu página web.",
+      "tags": [
+        "twd",
+        "css"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "twd-079",
+      "front": "(TWD — CSS) Quitar los estilos nativos del navegador",
+      "back": "La propiedad CSS de appearance se utiliza para mostrar un elemento utilizando el estilo nativo de la plataforma.\nselect, input { appearance: none;\n}\nTe permite tener un cuadro en blanco para empezar los estilos desde cero en el elemento deseado.",
+      "tags": [
+        "twd",
+        "css"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "twd-080",
+      "front": "(TWD — CSS) Crear una imagen monocrom�tica",
+      "back": "Una imagen monocromática es como escala de grises pero con un color en particular.\n<div class=\"color\"> <img src=\"/ruta/a/la/image.jpg\">\n</div> .color {\nbackground: #00c2ff; /* el color que le queremos dar a la imagen */ }\n.color img { mix-blend-mode: multiply; filter: grayscale(100%);\n}\nSolo necesitas envolver la imagen con un elemento y aplicarle un background y con la propiedad mix-blend-mode le decimos a la img como queremos que se mezcle con el fondo de color y con el filtro de grayscale para hacer la imagen \"monotono\".",
+      "tags": [
+        "twd",
+        "css"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "twd-081",
+      "front": "(TWD — CSS) Permitir al usuario cambiar el tama�o de un textarea",
+      "back": "Con la propiedad resize le permites al usuario cambiar el tamaáo del textarea para que se le haga más cámodo ingresar informacián.\n<textarea>Hello World</textarea> textarea {\nresize: both; /* Tambián puedes usar 'vertical' y 'horizonta' */ }\nSiempre que puedas darle opciones al usuario de controlar su interfaz hay ganancia.",
+      "tags": [
+        "twd",
+        "css"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "twd-082",
+      "front": "(TWD — CSS) Usar la \"calculadora\" de CSS",
+      "back": "CSS tiene una funcián que se llama calc() y te permite realizar cálculos matemáticos y el resultado usado en cualquier propiedad que necesites námeros.\ndiv { width: calc(100% - 100px); height: calc(100vh - 200px);\n}\nLo mejor de todos es que puedes mezclar unidades y hacer operaciones matemáticas de px con rem o cualquier unidad que necesites.",
+      "tags": [
+        "twd",
+        "css"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "twd-083",
+      "front": "(TWD — CSS) �C�mo aplicar estilos a todos los elementos de la p�gina?",
+      "back": "Cuidado con como usas el selector universal * porque afecta todos los elementos de la página.\n*{ border: solid 1px red;\n}\nEl selector universal * para aplicar estilos a cualquier tipo de elemento en una página web.",
+      "tags": [
+        "twd",
+        "css"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "twd-084",
+      "front": "(TWD — CSS) Cambiar el color de fondo del texto seleccionado",
+      "back": "Para cambiar el color de fondo del texto seleccionado en tu página solo le haces estilos al pseudo-element ::selection\n*::selection { background-color: yellow; color: blue;\n}\nUsamos el selector * para aplicárselo a todos los elementos de la página.",
+      "tags": [
+        "twd",
+        "css"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "twd-085",
+      "front": "(TWD — CSS) Cambiar el color del caret de inserci�n",
+      "back": "El \"caret de insercián\" es ese \"palito que titila\" en los campos de texto donde puedes escribir y a este le puedes cambiar el color.\ninput, textarea { caret-color: red;\n}\nLa propiedad caret-color te permite cambiar el color de los campos de texto de tu formulario.",
+      "tags": [
+        "twd",
+        "css"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "twd-086",
+      "front": "(TWD — CSS) �C�mo ponerle estilos a la barra de scroll?",
+      "back": "El pseudo-element ::-webkit-scrollbar afecta al estilo de la barra de desplazamiento de un elemento. Para nuestro proposito necesitamos hacer estilos para dos: ::-webkit-scrollbar-track: la \"pista\" de la barra de desplazamiento. ::-webkit-scrollbar-thumb: la \"manija\" de desplazamiento arrastrada.\n.elemento::-webkit-scrollbar-track { background-color: red;\n}\n.elemento::-webkit-scrollbar-thumb { border-radius:5px; background-color: yellow;\n}\nEsto, por ahora solo funciona en navegadores basados en webkit, se espera que funcione en todos en un futuro cercano.",
+      "tags": [
+        "twd",
+        "css"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "twd-087",
+      "front": "(TWD — CSS) �C�mo hacerle estilos a los elementos dentro y fuera de rango?",
+      "back": "Algunos inputs tienen \"rangos\" por ejemplo, number y date. Con los pseudo selectores de :in-range y :out-of-range podemos agregar estilos a estos elementos cuando su valor dentro o fuera del rango asignado.\n<!-- En rango --> <input type=\"number\" min=\"0\" max=\"100\" value=\"99\" />\n<!-- Fuera de rango --> <input type=\"number\" min=\"0\" max=\"100\" value=\"200\" />\n<!-- Fuera de rango --> <input type=\"date\" max=\"2019-12-25\" step=\"1\"\nvalue=\"2020-12-25\"> input:in-range {\nborder: solid 1px green; }\ninput:out-of-range { border: solid 1px red;\n}\nEsto funciona muy bien para validar formularios.",
+      "tags": [
+        "twd",
+        "css"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "twd-088",
+      "front": "(TWD — CSS) Escribir CSS que el navegador soporte",
+      "back": "El CSS sigue evolucionando y a veces los navegadores no implementan lo más nuevo rápidamente, es por esto que tenemos que ser cuidadoso cuando escribimos CSS nuevo y para eso podemos usar la regla @supports.\ndiv { display: flex;\n}\n@supports (display: grid) { div { display: grid; }\n}\nEn este caso tenemos flex, pero si el navegador soporta grid entonces usamos grid. @supports se puede usar con cualquier propiedad y valor de CSS.",
+      "tags": [
+        "twd",
+        "css"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "twd-089",
+      "front": "(TWD — CSS) Aplicar estilos cuando la p�gina est� en fullscreen",
+      "back": "Cuando el navegador está en modo pantalla completa, puedes usar pseudo-selector de :fullscreen para hacer estilos a los elementos.\n.content:fullscreen { background-color: #faa;\n}\nPara cambiar la experiencia de usuario cuando está en modo fullscreen funciona bastante bien.",
+      "tags": [
+        "twd",
+        "css"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "twd-090",
+      "front": "(TWD — CSS) Agregar un reflejo al contenido",
+      "back": "La propiedad CSS -webkit-box-reflect permite reflejar el contenido de un elemento en una direccián especáfica. Los valores que acepta son above, below, right, left y además puedes pasarte un segundo valor para el offset.\nh1 { -webkit-box-reflect: below 10px;\n}\nEsto, por ahora solo funciona en navegadores basados en webkit, se espera que funcione en todos en un futuro cercano.",
+      "tags": [
+        "twd",
+        "css"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "twd-091",
+      "front": "(TWD — CSS) Crear un grid de cards responsive sin media queries",
+      "back": "Podemos crear un layout de cards o cajas que sean completamente responsive y que se ajuste a cualquier pantalla sin necesidad de usar media queries.\n<div class=\"cards\"> <div class=\"box\">Box 1</div> <div class=\"box\">Box 2</div> <div class=\"box\">Box 3</div> <div class=\"box\">Box 4</div>\n</div>\n.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); grid-gap: 1rem;\n}\n1. Usamos la funcián de repeat para decirle que se repita N cantidad de veces\n2. auto-fit es para que los elementos hijos se ajuste al espacio que tenga\n3. minmax lo que dice es que la caja va a medir 1fr y mánimo\n200px",
+      "tags": [
+        "twd",
+        "css"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "twd-092",
+      "front": "(TWD — CSS) Aplicar sombra a una imagen png transparente",
+      "back": "Si le agregas box-shadow a una imagen le pone la sombra a la caja, pero si le agregas filter entonces le pone la sombra a la imagen transparente como tal.\n<img src=\"path/to/image.png\" /> img {\nfilter: drop-shadow(5px 5px 5px #222222); }",
+      "tags": [
+        "twd",
+        "css"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "twd-093",
+      "front": "(TWD — CSS) Hacer que el texto rodee una imagen",
+      "back": "La imagen tiene que ser un png transparente y luego solo pasamos la propiedad shape-outside a la que le puedes pasar como valor el url de la imagen png.\n<img src=\"/path/a/la.imagen.png\" width=\"150\" /> Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, quibusdam sequi ipsa libero soluta asperiores a. Ullam quas unde mollitia officia aspernatur natus iste quae dolor ipsum expedita. Sunt, necessitatibus! img {\nfloat: left; width: 150px; margin: 20px; shape-outside: url(\"/path/a/la.imagen.png\"); }\nEste es un efecto inspirado en el diseáo editorial.",
+      "tags": [
+        "twd",
+        "css"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "twd-094",
+      "front": "(TWD — CSS) Prevenir la seleccion de texto",
+      "back": "La propiedad user-select te permite deshabilitar la seleccián de texto en tu página web.\n.no-seleccionar { user-select: none;\n}\nEsto funciona bien cuando estás trabajando con drag and drop y es buena práctica que el usuario no pueda seleccionar el texto.",
+      "tags": [
+        "twd",
+        "css"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "twd-095",
+      "front": "(TWD — CSS) Quitar los eventos de un elemento",
+      "back": "Si necesitas que un elemento no emita eventos puedes usar la propiedad pointer-events.\nbutton { pointer-events: none;\n}\nál <button> no va a emitir ningán evento y por ende no se van a poder \"escuchar\" en JavaScript.",
+      "tags": [
+        "twd",
+        "css"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "twd-096",
+      "front": "(TWD — CSS) �Qu� es :is?",
+      "back": "La funcián de pseudoclase CSS :is() recibe una lista de selectores y selecciona cualquier elemento que este dentro de esa lista.\n:is(header, main, footer) p: { color: red;\n}\nEsto selecciona cualquier p que este dentro de un header, main o footer, es el equivalente de hacer:\nheader p, main p, footer p {\ncolor: red; }",
+      "tags": [
+        "twd",
+        "css"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "twd-097",
+      "front": "(TWD — CSS) �Qu� es :not?",
+      "back": "La pseudoclase CSS :not() representa los elementos que no coinciden con una lista de selectores. Para seleccionar todos los elementos que no sean un <p>\n:not(p) { color: blue;\n}\nO podemos seleccionar todos los <p> que no tengan la clase\n.fancy p:not(.fancy) {\ncolor: green; }\nIncluso podemos concatenar, aqui un ejemplo de como seleccionar todos los elementos dentro del body que no sea div ni span.\nbody :not(div):not(span) { font-weight: bold;\n}",
+      "tags": [
+        "twd",
+        "css"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "twd-098",
+      "front": "(TWD — CSS) �C�mo crear y usar variables?",
+      "back": "Las variables en CSS se llaman oficialmente Custom Properties y son entidades definidas por los autores de CSS que contienen valores especáficos que se reutilizan en todo el documento. Tápicamente se declaran en el nivel más alto del CSS que es el root, aunque tambián se pueden declarar en cualquier clase:\n:root { --main-color: red; --secondary-color: blue;\n}\nY para usarlas se tiene que utilizar la funcián var().\nh1, h2, h3 { color: var(--main-color);\n}\nfooter { color: var(--secondary-color);\n}",
+      "tags": [
+        "twd",
+        "css"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "twd-099",
+      "front": "(TWD — CSS) �Qu� es box-sizing y porque usarla?",
+      "back": "El box-sizing es una propiedad que te permite establecer como se va a calcular el alto y ancho de una caja. Por defecto si una caja mide 100x100px, pero tiene padding de 10px la caja termina midiendo 120x120px para cambiar eso usamos\n*, *:before, *:after {\nbox-sizing: border-box; }\nAsignándole border-box a todos los elementos de la página cuando pongamos un width y height no importa el padding o borde que tenga siempre va a medir lo que le pusimos.",
+      "tags": [
+        "twd",
+        "css"
+      ],
+      "difficulty": "easy"
+    }
+  ]
+}

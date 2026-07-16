@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diagrama de Flujo — CSS</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #0d1117;
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+    padding: 20px;
+  }
+  .card {
+    background: #161b22;
+    border-radius: 12px;
+    padding: 28px 36px 30px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.45);
+    max-width: 780px;
+    width: 100%;
+  }
+  h1 {
+    color: #e6edf3;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 24px;
+    letter-spacing: 0.2px;
+  }
+
+  /* ===== FLUJOGRAMA ===== */
+  .flow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  /* ---- Flecha vertical ---- */
+  .arrow-down {
+    width: 2px; height: 28px;
+    background: #8b949e;
+    position: relative;
+  }
+  .arrow-down::after {
+    content: '';
+    position: absolute; bottom: -1px; left: 50%;
+    transform: translateX(-50%);
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid #8b949e;
+  }
+
+  /* ---- Flecha horizontal wrapper ---- */
+  .arrow-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 32px;
+    position: relative;
+  }
+  .arrow-line {
+    height: 2px; background: #8b949e; position: relative;
+  }
+  .arrow-line::after {
+    content: '';
+    position: absolute; right: -1px; top: 50%;
+    transform: translateY(-50%);
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 6px solid #8b949e;
+  }
+
+  /* ===== NODOS ===== */
+  .node { flex-shrink: 0; }
+
+  /* Inicio — círculo relleno */
+  .inicio {
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    background: #e6edf3;
+    border: 4px solid #e6edf3;
+  }
+
+  /* Fin — círculo doble */
+  .fin {
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    background: transparent;
+    border: 3px solid #e6edf3;
+    position: relative;
+  }
+  .fin::after {
+    content: '';
+    position: absolute;
+    top: 3px; left: 3px;
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    border: 3px solid #e6edf3;
+  }
+
+  /* Actividad — rectángulo redondeado */
+  .actividad {
+    padding: 12px 32px;
+    border-radius: 10px;
+    border: 2px solid #58a6ff;
+    color: #e6edf3;
+    font-size: 15px;
+    font-weight: 500;
+    text-align: center;
+    white-space: nowrap;
+  }
+  .actividad.rechazar { border-color: #f85149; }
+  .actividad.paralela { border-color: #3fb950; }
+
+  /* Decisión — rombo (rotado) */
+  .decision-wrap {
+    width: 120px; height: 90px;
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+  .decision {
+    width: 120px; height: 120px;
+    transform: rotate(45deg);
+    border: 2px solid #d29922;
+    background: #0d1117;
+    border-radius: 6px;
+    position: absolute;
+  }
+  .decision-text {
+    position: relative; z-index: 2;
+    color: #e6edf3;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.3;
+  }
+  .decision-text small { font-weight: 400; font-size: 11px; color: #8b949e; }
+
+  /* Guardas */
+  .guarda {
+    position: absolute;
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    border: 1px dashed;
+    white-space: nowrap;
+  }
+  .guarda.si {
+    color: #58a6ff; border-color: #58a6ff;
+    background: rgba(88,166,255,0.08);
+  }
+  .guarda.no {
+    color: #f85149; border-color: #f85149;
+    background: rgba(248,81,73,0.08);
+  }
+
+  /* Fork / Join */
+  .barra {
+    width: 60px; height: 12px;
+    background: #e6edf3;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .barra span {
+    font-size: 9px; font-weight: 700;
+    color: #0d1117; letter-spacing: 0.5px;
+  }
+
+  /* ===== ROW LAYOUTS ===== */
+  .row-center {
+    display: flex; align-items: center;
+    gap: 20px;
+    position: relative;
+  }
+  .row-split {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    justify-content: center;
+    position: relative;
+  }
+  .row-split-2col {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 60px;
+  }
+  .col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* ---- Flechas personalizadas por fila ---- */
+  .r1 { gap: 16px; }
+  .r1 .arrow-line { width: 40px; }
+
+  .r2 { gap: 16px; }
+  .r2 .arrow-line { width: 30px; }
+
+  /* Decisión → sí / no */
+  .row-split .branch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+  .branch-sup {
+    display: flex; align-items: center;
+    position: relative;
+  }
+  .branch-sup .arrow-line { width: 40px; }
+  .branch-sup .arrow-line::after { border-left-color: #58a6ff; }
+  .branch-sup .arrow-line.red::after { border-left-color: #f85149; }
+  .branch-sup .arrow-line { background: #58a6ff; }
+  .branch-sup .arrow-line.red { background: #f85149; }
+
+  .branch-down {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 4px;
+  }
+  .branch-down .arrow-down { height: 24px; }
+
+  /* Paralelo label */
+  .label-paralelo {
+    font-size: 11px; font-style: italic;
+    color: #3fb950;
+    text-align: center;
+    margin: 4px 0 2px;
+    letter-spacing: 0.3px;
+  }
+
+  /* ---- Leyenda ---- */
+  .leyenda {
+    margin-top: 24px;
+    display: flex; flex-wrap: wrap; gap: 14px 20px;
+    justify-content: center;
+    border-top: 1px solid #21262d;
+    padding-top: 18px;
+  }
+  .leyenda-item {
+    display: flex; align-items: center; gap: 7px;
+    color: #8b949e; font-size: 12px;
+  }
+  .leyenda-item .s {
+    display: inline-block; flex-shrink: 0;
+  }
+  .leyenda-item .s.s-inicio {
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: #e6edf3;
+    border: 2px solid #e6edf3;
+  }
+  .leyenda-item .s.s-fin {
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    border: 2px solid #e6edf3;
+    position: relative;
+  }
+  .leyenda-item .s.s-fin::after {
+    content: ''; position: absolute;
+    top: 1px; left: 1px;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    border: 2px solid #e6edf3;
+  }
+  .leyenda-item .s.s-actividad {
+    width: 14px; height: 10px;
+    border-radius: 3px;
+    border: 2px solid #58a6ff;
+    background: #0d1117;
+  }
+  .leyenda-item .s.s-decision {
+    width: 10px; height: 10px;
+    border: 2px solid #d29922;
+    background: #0d1117;
+    transform: rotate(45deg);
+    margin: 3px;
+  }
+  .leyenda-item .s.s-barra {
+    width: 16px; height: 6px;
+    border-radius: 2px;
+    background: #e6edf3;
+  }
+
+  .nota {
+    margin-top: 12px;
+    color: #484f58; font-size: 11px;
+    text-align: center;
+  }
+  .nota code { color: #8b949e; background: #0d1117; padding: 1px 5px; border-radius: 3px; font-size: 11px; }
+</style>
+</head>
+<body>
+<div class="card">
+  <h1>Diagrama de Flujo — Proceso de Solicitud</h1>
+
+  <!-- === FLUJO === -->
+  <div class="flow">
+
+    <!-- Inicio -->
+    <div class="node inicio"></div>
+    <div class="arrow-down"></div>
+
+    <!-- Solicitar -->
+    <div class="node actividad">Solicitar</div>
+    <div class="arrow-down"></div>
+
+    <!-- Decisión -->
+    <div class="decision-wrap">
+      <div class="decision"></div>
+      <div class="decision-text">¿Aprobado?</div>
+      <!-- Guardas: se colocan en la fila de abajo -->
+    </div>
+
+    <!-- Rama Sí / No -->
+    <div class="arrow-down" style="height:12px;"></div>
+    <div class="row-split">
+      <!-- Rama Sí -->
+      <div class="branch">
+        <div class="branch-sup">
+          <div class="arrow-line" style="width:30px;"></div>
+        </div>
+        <div class="guarda si" style="position:static; margin-bottom:2px;">[Sí]</div>
+        <div class="arrow-down" style="height:8px;"></div>
+        <div class="node actividad">Aprobar</div>
+      </div>
+
+      <!-- Rama No -->
+      <div class="branch">
+        <div class="branch-sup">
+          <div class="arrow-line red" style="width:30px;"></div>
+        </div>
+        <div class="guarda no" style="position:static; margin-bottom:2px;">[No]</div>
+        <div class="arrow-down" style="height:8px;"></div>
+        <div class="node actividad rechazar">Rechazar</div>
+        <div class="arrow-down"></div>
+        <div class="node fin"></div>
+        <div style="color:#8b949e; font-size:10px; margin-top:4px;">Fin</div>
+      </div>
+    </div>
+
+    <!-- Bajar desde Aprobar -->
+    <div class="arrow-down" style="height:14px;"></div>
+
+    <!-- Fork -->
+    <div class="barra"><span>FORK</span></div>
+    <div class="label-paralelo">en paralelo</div>
+
+    <!-- Actividades paralelas -->
+    <div class="row-split-2col">
+      <div class="col">
+        <div class="arrow-down" style="height:6px;"></div>
+        <div class="node actividad paralela">Notificar</div>
+      </div>
+      <div class="col">
+        <div class="arrow-down" style="height:6px;"></div>
+        <div class="node actividad paralela">Registrar</div>
+      </div>
+    </div>
+
+    <!-- Join -->
+    <div class="arrow-down" style="height:4px;"></div>
+    <div class="label-paralelo" style="color:#8b949e; font-size:10px; margin:2px 0;">se unen</div>
+    <div class="barra" style="margin-top:2px;"><span>JOIN</span></div>
+    <div class="arrow-down"></div>
+
+    <!-- Fin -->
+    <div class="node fin"></div>
+    <div style="color:#8b949e; font-size:10px; margin-top:4px;">Fin</div>
+  </div>
+
+  <div class="leyenda">
+    <span class="leyenda-item"><span class="s s-inicio"></span> Inicio</span>
+    <span class="leyenda-item"><span class="s s-fin"></span> Fin</span>
+    <span class="leyenda-item"><span class="s s-actividad"></span> Actividad</span>
+    <span class="leyenda-item"><span class="s s-decision"></span> Decisión</span>
+    <span class="leyenda-item"><span class="s s-barra"></span> Fork / Join</span>
+  </div>
+  <div class="nota">Guardas <code>[Sí]</code> / <code>[No]</code> en las ramas de decisión</div>
+</div>
+</body>
+</html>

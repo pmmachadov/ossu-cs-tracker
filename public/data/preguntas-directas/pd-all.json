@@ -1,0 +1,1427 @@
+{
+  "id": "pd-all",
+  "name": "Preguntas Directas",
+  "description": "Todas las preguntas de práctica con respuestas corregidas.",
+  "subject": "Preguntas Directas",
+  "created": "2026-05-17",
+  "cards": [
+    {
+      "id": "pd-ed-013",
+      "front": "(ED — EAC2 / UML) Describe un diagrama de actividades UML para el flujo de \"solicitar vacaciones\" (empleado solicita → jefe aprueba/rechaza → RRHH registra).\n\n1. ¿Qué elementos tiene?\n2. ¿Dónde usarías fork/join?\n3. ¿Qué son las guardas [condición]?",
+      "back": "**1. Elementos:**\n- Nodo inicio: círculo negro\n- Nodo final: círculo doble\n- Actividades: rectángulos redondeados (\"Solicitar\", \"Aprobar\", \"Registrar\")\n- Decisiones: rombo con guardas [condición] (\"[Aprobado]\", \"[Rechazado]\")\n- Bifurcaciones fork/join: barras negras\n\n**2. Fork/Join:**\n- **Fork** (bifurcación paralela): cuando varias actividades\n  ocurren simultáneamente. Ej: \"Notificar a empleado\" y\n  \"Actualizar calendario\" pueden hacerse en paralelo. (bifurcación paralela): cuando varias actividades ocurren simultáneamente. Ej: \"Notificar a empleado\" y \"Actualizar calendario\" pueden hacerse en paralelo.\n- **Join** (unión): espera a que todos los hilos paralelos terminen.\n\n**3. Guardas [condición]:\nExpresiones booleanas entre corchetes que determinan qué camino tomar\nen una decisión. Ej:  → aprobar,  → rechazar.** Expresiones booleanas entre corchetes que determinan qué camino tomar en una decisión. Ej: `[Saldo > 0]` → aprobar, `[Saldo <= 0]` → rechazar.\n\n**Ejemplo flujo:**\n`(inicio) → Solicitar → [Aprobado?] → (Sí) → Aprobar → [Fork] → (Notificar + Registrar en paralelo) → [Join] → Fin`\n`                              → (No) → Rechazar → Fin`\n\n📊 **[Ver diagrama](/diagrama-flujo.html)** — Abre el diagrama de actividades visual en nueva pestaña.",
+      "tags": [
+        "ed",
+        "uml",
+        "actividades",
+        "diagramas",
+        "fork"
+      ],
+      "difficulty": "medium",
+      "imageUrl": "/diagrama-flujo.html"
+    },
+    {
+      "id": "pd-ed-001",
+      "front": "(ED — EAC2 / UML) En un diagrama de clases UML, ¿qué diferencia hay entre composición (rombo relleno) y agregación (rombo vacío)? Pon un ejemplo de cada una relacionado con un sistema de estación científica.",
+      "back": "**Composición (rombo relleno):** La parte NO puede existir sin el todo. Si el objeto contenedor se elimina, la parte también se elimina.\n\n**Agregación (rombo vacío):** La parte PUEDE existir independientemente del todo. Si el objeto contenedor se elimina, la parte sigue existiendo.\n\n**Ejemplos en sistema de estación científica:**\n- **Composición:** `Asignacion` sin `Cientifico` no tiene sentido. Si eliminas al científico, su asignación al proyecto también desaparece.\n- **Agregación:**  (enum) existe aunque ningún\n  científico la use actualmente. BIOLOGIA, GEOLOGIA, OCEANOGRAFIA\n  siguen existiendo como tipo de dato independientemente de\n  los científicos o proyectos.`Especialidad` (enum) existe aunque ningún científico la use actualmente. BIOLOGIA, GEOLOGIA, OCEANOGRAFIA siguen existiendo como tipo de dato independientemente de los científicos o proyectos.\n- **Agregación (otro):** Un `Proyecto` tiene `Cientifico`s asignados, pero el científico puede existir sin estar asignado a ningún proyecto.",
+      "tags": [
+        "ed",
+        "uml",
+        "composicion",
+        "agregacion",
+        "relaciones"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-ed-002",
+      "front": "(ED — EAC3 / Testing) Calcula la complejidad ciclomática de McCabe del siguiente código:\n\n```java\npublic String clasificarEdad(int edad) {\n    if (edad < 0) {\n        return \"No válida\";\n    }\n    if (edad < 12) {\n        return \"Niño\";\n    }\n    if (edad < 18) {\n        return \"Adolescente\";\n    }\n    if (edad < 65) {\n        return \"Adulto\";\n    }\n    return \"Jubilado\";\n}\n```\n\nUsa las dos fórmulas: CC = condiciones + 1 y CC = aristas - nodos + 2. ¿En qué rango está?",
+      "back": "**CC = 5 — Rango simple (1-10)**\n\n**Fórmula 1 (condiciones + 1):**\n- Hay 4 condiciones (los 4 if)\n- CC = 4 + 1 = 5\n\n**Fórmula 2 (aristas - nodos + 2):**\nEl grafo de flujo tiene:\n- 6 nodos (inicio, 4 decisiones, fin)\n- 9 aristas (caminos entre nodos)\n- CC = 9 - 6 + 2 = 5\n\n**Interpretación:**\n- 1-10: simple\n- 11-20: moderado\n- 21-50: complejo\n- >50: muy complejo",
+      "tags": [
+        "ed",
+        "testing",
+        "mccabe",
+        "complejidad-ciclomatica"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-ed-003",
+      "front": "(DWEC — EAC3 / Proyecto Rocket) En rocket.js tienes las funciones iluminarVentana y apagarVentana con eventos asignados directamente a cada ventana:\n\n```javascript\nfunction iluminarVentana(event) {\n  if (lucesEncendidas) {\n    event.target.classList.add(\"window-hover\");\n  }\n}\n\nventanas.forEach((ventana) => {\n  ventana.addEventListener(\"mouseenter\", iluminarVentana);\n});\n```\n\n¿Qué diferencia hay entre event.target y event.currentTarget? ¿Qué pasaría si el evento estuviera en #engine-zone (el contenedor) en vez de en cada ventana individual?",
+      "back": "**Con evento directo (como en rocket.js):**\n`event.target` y `event.currentTarget` son el MISMO elemento — la ventana concreta que disparó el evento.\n\n**Con delegación (evento en el contenedor padre):**\n- `event.target` → el elemento hijo exacto que recibió el evento (ej. la ventana)\n- `event.currentTarget` → el elemento donde está registrado el listener (ej. #engine-zone)\n\n**Ejemplo en rocket.js con delegación:**\n```javascript\nzonaMotores.addEventListener(\"mouseenter\", function(event) {\n  // event.currentTarget = zonaMotores (el contenedor)\n  // event.target = la ventana concreta que recibió el ratón\n\n  // ✅ CORRECTO: iluminar solo la ventana\n  event.target.classList.add(\"window-hover\");\n\n  // ❌ INCORRECTO: iluminaría todo el contenedor\n  // event.currentTarget.classList.add(\"window-hover\");\n});\n```\n\n**Regla:** en delegación de eventos, usa SIEMPRE `event.target` para identificar al hijo que disparó el evento.",
+      "tags": [
+        "dwec",
+        "eventos",
+        "dom",
+        "target",
+        "currentTarget",
+        "delegacion"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-ed-004",
+      "front": "(SI — EAC3 / Redes) Escribe el archivo Netplan completo para configurar IP estática 192.168.1.100/24 con gateway 192.168.1.1 y DNS 8.8.8.8 / 1.1.1.1 en Ubuntu. Incluye los comandos para aplicar la configuración y verificar conectividad.",
+      "back": "**Archivo /etc/netplan/01-netcfg.yaml:**\n\n```yaml\nnetwork:\n  version: 2\n  renderer: networkd\n  ethernets:\n    eth0:\n      addresses:\n        - 192.168.1.100/24\n      routes:\n        - to: default\n          via: 192.168.1.1\n      nameservers:\n        addresses:\n          - 8.8.8.8\n          - 1.1.1.1\n```\n\n**Comandos:**\n\n```bash\nsudo netplan apply\nip addr show eth0\nip route show default\nping -c 4 192.168.1.1     # Gateway\nping -c 4 8.8.8.8          # DNS externo\nping -c 4 google.com       # Resolución DNS + conectividad\nnslookup google.com        # Verificar DNS\n```",
+      "tags": [
+        "si",
+        "redes",
+        "netplan",
+        "ip-estatica",
+        "ubuntu"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-ed-005",
+      "front": "(DWEC — EAC3 / Proyecto Garage) En el server.js, ruta POST /garage:\n\n```javascript\napp.post(\"/garage\", (req, res) => {\n  const { plate, km } = req.body;\n  if (!plate) {\n    return res.status(400).json({ error: \"La matrícula es obligatoria.\" });\n  }\n  const upperPlate = plate.trim().toUpperCase();\n  const exists = db.vehicles.find((v) => v.plate === upperPlate);\n  if (exists) {\n    return res.status(409).json({ error: \"La matrícula ya existe.\" });\n  }\n  const newVehicle = { id: db.nextId++, plate: upperPlate, km: parseInt(km, 10) || 0 };\n  db.vehicles.push(newVehicle);\n  saveDatabase(db);\n  res.json(newVehicle);\n});\n```\n\n¿Qué significan los códigos 400 y 409? ¿Por qué parseInt(km, 10) || 0? ¿Qué pasaría sin trim().toUpperCase()?",
+      "back": "**1. Códigos HTTP:**\n- **400 Bad Request:** La petición es incorrecta. Falta campo obligatorio (plate).\n- **409 Conflict:** Conflicto con el estado actual. La matrícula ya existe (duplicado).\n\n**2. parseInt(km, 10) || 0:**\n- `parseInt(km, 10)` convierte string a número en base decimal. El radix 10 evita interpretación octal.\n- `|| 0` cortocircuito: si parseInt devuelve NaN (km vacío/undefined), asigna 0 por defecto.\n- Sin esto, km se guardaría como string \"15000\" en vez de número, y valores inválidos romperían la lógica.\n\n**3. trim().toUpperCase():**\n- `trim()` elimina espacios al inicio/final\n- `toUpperCase()` normaliza a mayúsculas\n- Sin esto, \"abc123\" y \"ABC123\" serían matrículas distintas → falsos duplicados.",
+      "tags": [
+        "dwec",
+        "express",
+        "http",
+        "validacion",
+        "garage"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-ed-006",
+      "front": "(SI — EAC2 / Particiones) Tienes un disco de 10 GB en Ubuntu. Usando MBR necesitas crear 5 particiones de 2 GB cada una.\n\n1. ¿Por qué en MBR no puedes crear 5 particiones primarias directamente?\n2. ¿Qué estructura usas (primarias, extendida, lógicas)?\n3. Escribe los comandos de fdisk para crearlas (sin formatear).",
+      "back": "**1. Límite MBR:** La tabla de particiones MBR solo tiene espacio para **4 entradas**\n(64 bytes, 16 bytes por entrada). Máximo 4 primarias\n(o 3 primarias + 1 extendida). MBR solo tiene espacio para **4 entradas** (64 bytes, 16 bytes por entrada). Máximo 4 primarias (o 3 primarias + 1 extendida).\n\n**2. Estructura para 5 particiones:**\n- 3 particiones **primarias** de 2 GB cada una\n- 1 partición **extendida** con el resto (4 GB)\n  - 2 particiones **lógicas** de 2 GB cada una dentro de la extendida\n\n**3. Comandos fdisk (/dev/sdb):**\n```bash\nsudo fdisk /dev/sdb\n```\n| Paso | Comando | Explicación |\n|------|---------|-------------|\n| 1-5 | `n` `p` `1` Enter `+2G` | 1ª primaria |\n| 6-10 | `n` `p` `2` Enter `+2G` | 2ª primaria |\n| 11-15 | `n` `p` `3` Enter `+2G` | 3ª primaria |\n| 16-20 | `n` `e` Enter Enter Enter | Extendida con resto |\n| 21-24 | `n` Enter `+2G` | 1ª lógica |\n| 25-28 | `n` Enter Enter | 2ª lógica (resto) |\n| 29 | `p` | Verificar |\n| 30 | `w` | Escribir |\n\n**Resultado:** `/dev/sdb1`-`/dev/sdb3` (primarias 2G), `/dev/sdb4` (extendida 4G), `/dev/sdb5`-`/dev/sdb6` (lógicas 2G).",
+      "tags": [
+        "si",
+        "particiones",
+        "fdisk",
+        "mbr",
+        "almacenamiento"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-ed-007",
+      "front": "(ED — Proyecto / Spring Boot) Dado este controlador:\n\n```java\n@Controller\npublic class HomeController {\n    @GetMapping(\"/\")\n    public String home(Model model) {\n        model.addAttribute(\"mensaje\", \"Bienvenido\");\n        return \"home\";\n    }\n}\n```\n\n1. ¿Qué diferencia hay entre @Controller y @RestController?\n2. ¿Dónde debe estar home.html?\n3. ¿Cómo se muestra ${mensaje} con Thymeleaf?",
+      "back": "**1. @Controller vs @RestController:**\n- `@Controller`: devuelve nombre de vista (ViewResolver). Para JSON necesita `@ResponseBody`.\n- `@RestController`: `@Controller` + `@ResponseBody`. Todos los métodos devuelven JSON directamente.\n\n**2. Ubicación:** `src/main/resources/templates/home.html`\n\n**3. Thymeleaf:**\n```html\n<h1 th:text=\"${mensaje}\">Texto por defecto</h1>\n<p>[[${mensaje}]]</p> <!-- alternativa inline -->\n```",
+      "tags": [
+        "ed",
+        "spring",
+        "controller",
+        "thymeleaf",
+        "mvc"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-ed-008",
+      "front": "(DWEC — EAC3 / Fetch API) Dada esta función del proyecto Garage:\n\n```javascript\nasync function cargarVehiculos() {\n  try {\n    const res = await fetch(\"/garage\");\n    if (!res.ok) throw new Error(\"Error al cargar\");\n    const vehiculos = await res.json();\n    console.log(vehiculos);\n  } catch (error) {\n    console.error(error);\n  }\n}\n```\n\n1. ¿Por qué async/await en vez de .then()?\n2. ¿Qué hace res.json() y por qué necesita await?\n3. ¿Qué pasa si hay 404/500 y no ponemos if (!res.ok)?\n4. Reescribe con .then().",
+      "back": "**1. async/await vs .then():**\n- Sintaxis más limpia (parece síncrono)\n- try/catch tradicional vs .catch() encadenado\n- Breakpoints naturales en depuración\n- Evita promise chain hell\n\n**2. res.json():**\n- Lee el cuerpo como flujo y lo parsea como JSON\n- Retorna una **Promesa** (lectura asíncrona) → necesita `await`\n\n**3. Sin if (!res.ok):**\n- `fetch` solo lanza error por **fallos de red**, NO por HTTP 4xx/5xx\n- Si el server devuelve 404/500, el código ejecuta `res.json()` y el `catch` no se dispara → error silencioso\n\n**4. Versión con .then():**\n```javascript\nfunction cargarVehiculos() {\n  fetch(\"/garage\")\n    .then(res => {\n      if (!res.ok) throw new Error(\"Error al cargar\");\n      return res.json();\n    })\n    .then(vehiculos => console.log(vehiculos))\n    .catch(error => console.error(error));\n}\n```",
+      "tags": [
+        "dwec",
+        "fetch",
+        "async-await",
+        "api",
+        "promesas"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-ed-009",
+      "front": "(ED — EAC3 / Git) Responde:\n\n1. Escribe los comandos en orden para: iniciar repo, commit inicial en main, crear rama feature/login, hacer cambios y commits en ella, volver a main y fusionar.\n\n2. ¿Qué es un conflicto de merge y cómo se resuelve?\n\n3. ¿Qué representa HEAD?",
+      "back": "**1. Flujo completo:**\n```bash\ngit init\ngit add .\ngit commit -m \"Commit inicial\"\ngit checkout -b feature/login\n# hacer cambios...\ngit add .\ngit commit -m \"Añadir login\"\ngit checkout main\ngit merge feature/login\ngit branch -d feature/login  # opcional\n```\n\n**2. Conflicto de merge:**\nDos ramas modifican la misma línea del mismo archivo.\n\n**Resolución:**\n1. `git status` → ver archivos en conflicto\n2. Editar el archivo: eliminar `<<<<<<< HEAD`, `=======`, `>>>>>>>> feature` y dejar el código correcto\n3. `git add archivo.js`\n4. `git commit -m \"Resolver conflicto\"`\n\n**3. HEAD:**\n- Puntero a la **rama actual** y su **último commit**\n- `HEAD~1` = commit anterior\n- `HEAD` detached = apunta directo a un commit (no a una rama)",
+      "tags": [
+        "ed",
+        "git",
+        "merge",
+        "conflictos",
+        "control-versiones"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-ed-010",
+      "front": "(ED — EAC3 / JUnit 5) Dada la clase Calculadora:\n\n```java\npublic class Calculadora {\n    public int sumar(int a, int b) { return a + b; }\n    public int dividir(int a, int b) {\n        if (b == 0) throw new ArithmeticException(\"No se puede dividir por cero\");\n        return a / b;\n    }\n}\n```\n\nEscribe un test JUnit 5 que:\n1. Use @Test para sumar(2,3) → espere 5\n2. Use @Test para probar que dividir(10,0) lanza ArithmeticException\n3. Use @BeforeEach para crear instancia antes de cada test\n4. ¿Qué anotación se usa para código que corre UNA VEZ antes de todos los tests?",
+      "back": "```java\nimport org.junit.jupiter.api.*;\nimport static org.junit.jupiter.api.Assertions.*;\n\npublic class CalculadoraTest {\n    private Calculadora calculadora;\n\n    @BeforeAll\n    static void initAll() { /* Una vez antes de TODOS los tests - debe ser static */ }\n\n    @BeforeEach\n    void setUp() { calculadora = new Calculadora(); }\n\n    @Test\n    void testSumar() { assertEquals(5, calculadora.sumar(2, 3)); }\n\n    @Test\n    void testDividirPorCero() {\n        assertThrows(ArithmeticException.class, () -> calculadora.dividir(10, 0));\n    }\n}\n```\n\n**Anotaciones JUnit 5:**\n| Anotación | ¿Static? | Cuándo |\n|-----------|----------|--------|\n| @BeforeAll | ✅ | Una vez antes de todos |\n| @AfterAll | ✅ | Una vez después de todos |\n| @BeforeEach | ❌ | Antes de cada test |\n| @AfterEach | ❌ | Después de cada test |\n\n**Aserciones:** `assertEquals`, `assertTrue`, `assertThrows`",
+      "tags": [
+        "ed",
+        "junit",
+        "testing",
+        "tdd",
+        "java"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-ed-011",
+      "front": "(ED — EAC2 / UML) En un diagrama de casos de uso UML:\n\n1. ¿Qué elementos lo componen?\n2. ¿Qué diferencia hay entre **<<include>>** y **<<extend>>**?\n3. Pon un ejemplo de cada relación en un sistema de biblioteca (prestar libro, validar usuario, pagar multa).",
+      "back": "**1. Elementos:** Actor (figura humana), Caso de uso (óvalo con acción), Relaciones (líneas con flechas y estereotipos).\n\n**2. Diferencia:**\n- **<<include>>**: **Obligatorio**. Un caso SIEMPRE incluye otro.\n  La flecha va del caso base al incluido. Ej: \"Hacer préstamo\"\n  incluye siempre \"Validar carné\".\n- **<<extend>>**: **Opcional**. Extensión bajo condición.\n  La flecha va del caso opcional al base. Ej: \"Pagar multa\" →\n  <<extend>> → \"Hacer préstamo\" solo si hay multa pendiente.: **Obligatorio**. Un caso SIEMPRE incluye otro. La flecha va del caso base al incluido. Ej: \"Hacer préstamo\" → <<include>> → \"Validar usuario\" (siempre hay que validar).\n- **<<extend>>**: **Opcional**. Extensión bajo condición. La flecha va del caso opcional al base. Ej: \"Pagar multa\" → <<extend>> → \"Devolver libro\" (solo si hay multa pendiente).\n\n**3. Ejemplos biblioteca:**\n- <<include>>: \"Prestar libro\" incluye \"Validar carnet\" (siempre)\n- <<extend>>: \"Enviar recordatorio\" extiende \"Devolver libro\" (solo si está vencido)",
+      "tags": [
+        "ed",
+        "uml",
+        "casos-de-uso",
+        "include",
+        "extend"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-ed-012",
+      "front": "(ED — EAC2 / UML) Dibuja (describe) un diagrama de secuencia UML para el proceso de \"un usuario solicita un préstamo en una biblioteca\". ¿Qué elementos tiene y qué representa cada uno?",
+      "back": "**Elementos del diagrama de secuencia:**\n1. **Líneas de vida**: líneas verticales punteadas que representan objetos/actores (Usuario, Biblioteca, BD)\n2. **Mensajes**: flechas horizontales numeradas que indican comunicación entre objetos\n3. **Activaciones**: rectángulos sobre la línea de vida que indican cuándo un objeto está procesando\n4. **Retornos**: flechas punteadas que devuelven el control\n\n**Ejemplo préstamo biblioteca:**\n```\nUsuario       Biblioteca        BD\n  |               |              |\n  |--1. solicitar()-->|              |\n  |               |--2. buscarLibro()-->|\n  |               |<--3. libroEncontrado--|\n  |               |--4. registrarPrestamo()-->|\n  |               |<--5. confirmacion--|\n  |<--6. resultado--|\n```",
+      "tags": [
+        "ed",
+        "uml",
+        "secuencia",
+        "diagramas"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-ed-014",
+      "front": "(ED — EAC2 / UML) ¿Qué diferencia hay entre un diagrama de **secuencia** y un diagrama de **comunicación**? ¿Cuándo usarías cada uno?",
+      "back": "**Diagrama de secuencia:**\n- Énfasis en el **orden temporal** de los mensajes\n- Líneas de vida verticales (objetos)\n- Mensajes horizontales numerados por orden\n- Activaciones visibles (rectángulos)\n- Ideal para: mostrar secuencias temporales complejas\n\n**Diagrama de comunicación:**\n- Énfasis en las **relaciones estructurales** entre objetos\n- Objetos como rectángulos conectados con líneas\n- Mensajes numerados indicando orden (1., 2., etc.)\n- Muestra cómo están conectados los objetos\n- Ideal para: mostrar la arquitectura de objetos que colaboran\n\n**¿Cuándo usar cada uno?**\n- **Secuencia**: cuando el tiempo/orden es crítico (procesos de varios pasos)\n- **Comunicación**: cuando quieres ver qué objetos se relacionan con cuáles (vista estructural)",
+      "tags": [
+        "ed",
+        "uml",
+        "secuencia",
+        "comunicacion",
+        "diagramas"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-ed-015",
+      "front": "(ED — EAC2 / UML) Describe un **diagrama de estados** UML para un objeto \"Pedido\" con los estados: Pendiente → Enviado → Entregado, más la posibilidad de Cancelado desde cualquier estado. ¿Qué elementos tiene?",
+      "back": "**Elementos del diagrama de estados:**\n1. **Estado**: rectángulo redondeado con nombre (\"Pendiente\", \"Enviado\")\n2. **Estado inicial**: círculo negro\n3. **Estado final**: círculo doble\n4. **Transición**: flecha etiquetada con el evento que la provoca\n5. **Estado compuesto**: estado que contiene sub-estados\n\n**Ejemplo Pedido:**\n```\n(inicio) → [Pendiente]\n                 |\n                 | evento: procesarPago()\n                 v\n            [Enviado]\n                 |\n                 | evento: confirmarEntrega()\n                 v\n           [Entregado] → (fin)\n\nCancelaciones (desde cualquier estado):\n[Pendiente] --| evento: cancelar() --> [Cancelado] → (fin)\n[Enviado]   --| evento: cancelar() --> [Cancelado] → (fin)\n[Entregado] --| (no se puede cancelar)\n```",
+      "tags": [
+        "ed",
+        "uml",
+        "estados",
+        "diagramas",
+        "transiciones"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-ed-016",
+      "front": "(ED — EAC3 / Testing) Un campo de formulario acepta **edades de 18 a 65 años**. Usando la técnica de **clases de equivalencia y valores límite**:\n\n1. Define las clases de equivalencia válidas e inválidas\n2. ¿Qué valores límite probarías?\n3. ¿Qué tipo de prueba es esta (caja blanca o caja negra)?",
+      "back": "**1. Clases de equivalencia:**\n- **Válida**: 18 ≤ edad ≤ 65\n- **Inválida (menor)**: edad < 18\n- **Inválida (mayor)**: edad > 65\n- **Inválida (no numérica)**: texto, negativo, vacío\n\n**2. Valores límite (boundary testing):**\n- **Mínimo válido**: 18\n- **Máximo válido**: 65\n- **Justo debajo del mínimo**: 17\n- **Justo encima del máximo**: 66\n- **Cero/negativos**: 0, -1\n\n**3. Tipo de prueba:**\nEs **caja negra**. No necesitas conocer la implementación interna; solo pruebas entradas y salidas esperadas basándote en los requisitos del campo.\n\n**Resumen de tipos de prueba:**\n| Tipo | Enfoque |\n|------|---------|\n| Caja blanca | Estructura interna, caminos de ejecución |\n| Caja negra | Entradas/salidas, sin ver código |\n| Regresión | Detectar errores tras cambios |\n| Aceptación | Validación con el cliente en entorno real |",
+      "tags": [
+        "ed",
+        "testing",
+        "caja-negra",
+        "equivalencia",
+        "valores-limite"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-ed-017",
+      "front": "(ED — EAC3 / Refactorización) Dado este código Java:\n\n```java\npublic double calcularPrecioFinal(int cantidad) {\n    double precio = cantidad * 19.99;\n    double impuesto = precio * 0.21;\n    double envio = 0;\n    if (precio < 50) {\n        envio = 4.99;\n    }\n    return precio + impuesto + envio;\n}\n```\n\n¿Qué técnicas de refactorización aplicarías? Nómbralas y muestra el código refactorizado.",
+      "back": "**Técnicas de refactorización:**\n\n1. **Extraer constantes**: reemplazar números mágicos con constantes con nombre\n2. **Extraer método**: separar responsabilidades en métodos más pequeños\n\n**Código refactorizado:**\n```java\npublic class CalculadoraPrecio {\n    private static final double PRECIO_UNITARIO = 19.99;\n    private static final double IVA = 0.21;\n    private static final double UMBRAL_ENVIO_GRATIS = 50;\n    private static final double COSTE_ENVIO = 4.99;\n\n    public double calcularPrecioFinal(int cantidad) {\n        double precio = calcularPrecioBase(cantidad);\n        double impuesto = calcularIVA(precio);\n        double envio = calcularEnvio(precio);\n        return precio + impuesto + envio;\n    }\n\n    private double calcularPrecioBase(int cantidad) {\n        return cantidad * PRECIO_UNITARIO;\n    }\n\n    private double calcularIVA(double precio) {\n        return precio * IVA;\n    }\n\n    private double calcularEnvio(double precio) {\n        return precio < UMBRAL_ENVIO_GRATIS ? COSTE_ENVIO : 0;\n    }\n}\n```\n\n**Regla de oro:** la refactorización NO altera el comportamiento externo.",
+      "tags": [
+        "ed",
+        "refactorizacion",
+        "clean-code",
+        "java"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-ed-018",
+      "front": "(ED — EAC3 / Javadoc) Escribe el comentario Javadoc completo para este método:\n\n```java\npublic double calcularIMC(double peso, double altura)\n```\n\nIncluye @param, @return, @see y @throws. ¿Qué comando genera la documentación HTML?",
+      "back": "```java\n/**\n * Calcula el Índice de Masa Corporal (IMC) a partir del peso y la altura.\n *\n * Fórmula: IMC = peso / (altura * altura)\n *\n * @param peso   Peso en kilogramos (debe ser > 0)\n * @param altura Altura en metros (debe ser > 0)\n * @return El IMC calculado como valor double\n * @throws IllegalArgumentException si peso <= 0 o altura <= 0\n * @see <a href=\"https://www.who.int\">OMS - Clasificación de IMC</a>\n */\npublic double calcularIMC(double peso, double altura) {\n    if (peso <= 0 || altura <= 0) {\n        throw new IllegalArgumentException(\"Peso y altura deben ser positivos\");\n    }\n    return peso / (altura * altura);\n}\n```\n\n**Generar documentación:**\n```bash\njavadoc -d docs Calculadora.java\n```\nEsto crea la carpeta `docs/` con el HTML de la documentación.\n\n**Etiquetas Javadoc principales:**\n| Etiqueta | Uso |\n|----------|-----|\n| @param | Describe un parámetro |\n| @return | Describe el valor de retorno |\n| @throws | Describe una excepción |\n| @see | Referencia a otro método/clase |\n| @author | Autor de la clase |\n| @version | Versión del código |",
+      "tags": [
+        "ed",
+        "javadoc",
+        "documentacion",
+        "java"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-ed-019",
+      "front": "(ED — Proyecto / Swing) En una interfaz Swing para una calculadora:\n\n1. Escribe el código para crear un JButton que al pulsarlo lea un valor de un JTextField, lo convierta a int y lo muestre en un JLabel.\n2. ¿Qué hace setLayout(null)?\n3. ¿Por qué se usa setBounds(x, y, ancho, alto)?",
+      "back": "**1. Código completo:**\n```java\nJTextField campo = new JTextField();\nJButton boton = new JButton(\"Calcular\");\nJLabel resultado = new JLabel(\"0\");\n\nboton.addActionListener(new ActionListener() {\n    public void actionPerformed(ActionEvent e) {\n        try {\n            int valor = Integer.parseInt(campo.getText());\n            resultado.setText(String.valueOf(valor * 2));\n        } catch (NumberFormatException ex) {\n            resultado.setText(\"Error\");\n        }\n    }\n});\n\n// Lambda (Java 8+):\nboton.addActionListener(e -> {\n    int valor = Integer.parseInt(campo.getText());\n    resultado.setText(String.valueOf(valor * 2));\n});\n```\n\n**2. setLayout(null):** Desactiva el gestor de diseño automático. Los componentes se colocan con coordenadas absolutas (píxeles).\n\n**3. setBounds(x, y, ancho, alto):** Define la posición (x, y) y el tamaño (ancho, alto) de un componente cuando NO hay layout manager.",
+      "tags": [
+        "ed",
+        "swing",
+        "java",
+        "gui",
+        "eventos"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-ed-020",
+      "front": "(ED — Proyecto / Maven) ¿Qué es Maven y para qué sirve? Explica:\n\n1. ¿Qué elementos tiene un archivo pom.xml?\n2. ¿Qué son groupId, artifactId y version?\n3. ¿Cómo se añade una dependencia (ej. Spring Boot Starter Web)?",
+      "back": "**Maven:** Herramienta de gestión de dependencias y construcción de proyectos Java.\n\n**1. Estructura del pom.xml:**\n```xml\n<project>\n    <modelVersion>4.0.0</modelVersion>\n    <groupId>com.ioc</groupId>\n    <artifactId>mi-proyecto</artifactId>\n    <version>1.0.0</version>\n\n    <dependencies>\n        <dependency>\n            <groupId>org.springframework.boot</groupId>\n            <artifactId>spring-boot-starter-web</artifactId>\n            <version>3.2.0</version>\n        </dependency>\n    </dependencies>\n</project>\n```\n\n**2. Identificación (GAV):**\n**groupId**: inverso del dominio (ej. com.ioc, org.springframework)\n**artifactId**: nombre del proyecto/módulo\n**version**: versión semántica (1.0.0, 2.1.3, etc.)\n\n**3. Dependencias:** Se declaran dentro de `<dependencies>`. Maven las descarga automáticamente desde Maven Central.\n\n**Comandos básicos:**\n`mvn compile` — compilar\n`mvn package` — empaquetar (JAR/WAR)\n`mvn test` — ejecutar tests\n`mvn clean` — limpiar build",
+      "tags": [
+        "ed",
+        "maven",
+        "java",
+        "dependencias",
+        "build"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-ed-021",
+      "front": "(ED — Proyecto / Java) Explica cómo convertir tipos en Java:\n\n1. ¿Qué hace Integer.parseInt() y Double.parseDouble()?\n2. ¿Qué excepción puede lanzar y cómo se maneja?\n3. Escribe un ejemplo que lea un valor de un JTextField, lo convierta a double, y maneje el error si no es un número válido.",
+      "back": "**1. Conversión de tipos:**\n- `Integer.parseInt(\"25\")` → devuelve `int 25`\n- `Double.parseDouble(\"12.5\")` → devuelve `double 12.5`\n- El argumento SIEMPRE es String (lo que se lee de un JTextField)\n\n**2. Excepción:** `NumberFormatException` (extiende de `IllegalArgumentException`).\n\n**3. Ejemplo completo con manejo de errores:**\n```java\nJTextField campo = new JTextField();\nJLabel resultado = new JLabel();\n\nboton.addActionListener(e -> {\n    try {\n        String texto = campo.getText().trim();\n        if (texto.isEmpty()) {\n            resultado.setText(\"Campo vacío\");\n            return;\n        }\n        double valor = Double.parseDouble(texto);\n        resultado.setText(\"Resultado: \" + (valor * 2));\n    } catch (NumberFormatException ex) {\n        resultado.setText(\"Error: no es un número válido\");\n    }\n});\n```\n\n**Otras conversiones comunes:**\n- `String.valueOf(123)` → int a String\n- `Integer.toString(123)` → int a String\n- `(int) 12.5` → casting: pierde decimales (resultado: 12)",
+      "tags": [
+        "ed",
+        "java",
+        "conversion",
+        "parse",
+        "swing"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-ed-022",
+      "front": "(DWEC — EAC1 / JS) Crea una clase **Producto** en JavaScript (ES2022) con:\n\n1. Propiedad privada **#stock**\n2. Constructor con nombre, precio, stock\n3. Getter **info** que devuelva \"Nombre - X.XX €\"\n4. Método **actualizarStock(cantidad)** que sume/resta al stock\n5. Instancia y prueba la clase",
+      "back": "```javascript\nclass Producto {\n    #stock;  // Propiedad privada\n\n    constructor(nombre, precio, stock) {\n        this.nombre = nombre;\n        this.precio = precio;\n        this.#stock = stock;\n    }\n\n    get info() {\n        return `${this.nombre} - ${this.precio.toFixed(2)} €`;\n    }\n\n    actualizarStock(cantidad) {\n        if (this.#stock + cantidad < 0) {\n            console.log(\"Stock insuficiente\");\n            return;\n        }\n        this.#stock += cantidad;\n    }\n\n    // Getter público para leer el stock privado\n    get stock() {\n        return this.#stock;\n    }\n}\n\n// Instanciar y probar\nconst p = new Producto(\"Cafetera\", 49.99, 10);\nconsole.log(p.info);          // \"Cafetera - 49.99 €\"\nconsole.log(p.stock);         // 10\np.actualizarStock(-3);        // quitar 3\nconsole.log(p.stock);         // 7\n// console.log(p.#stock);     // ERROR: propiedad privada\n```\n\n**Propiedades privadas (#):** Son privadas de verdad (no como _convención). Si intentas acceder desde fuera, lanza SyntaxError.",
+      "tags": [
+        "dwec",
+        "javascript",
+        "clases",
+        "poo",
+        "es2022"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-ed-023",
+      "front": "(DWEC — EAC1 / Módulos ES6) Tienes un archivo `utils.js` con funciones de validación. \n\n1. ¿Cómo exportas e importas funciones en ES6?\n2. ¿Qué diferencia hay entre **export nombrado** y **export default**?\n3. ¿Qué atributo necesita el `<script>` en HTML para usar módulos?\n4. Escribe un ejemplo completo con export e import.",
+      "back": "**1. Sintaxis:**\n```javascript\n// utils.js\nexport function esEmail(valor) { /* ... */ }\nexport const IVA = 0.21;\n\n// main.js\nimport { esEmail, IVA } from './utils.js';\n```\n\n**2. Export nombrado vs default:**\n| Característica | Export nombrado | Export default |\n|---------------|----------------|----------------|\n| Por archivo | Varios | Solo UNO |\n| Import | `{ nombre }` | Sin llaves |\n| Nombre al importar | Debe coincidir | Puede cambiarse |\n\n```javascript\n// utils.js\nexport default function validarDNI(dni) { /* ... */ }\nexport function esEmail(email) { /* ... */ }\n\n// main.js\nimport validarDNI, { esEmail } from './utils.js';\n```\n\n**3. Atributo en HTML:**\n```html\n<script type=\"module\" src=\"main.js\"></script>\n```\nSin `type=\"module\"`, los import/export lanzan error.\n\n**4. Ejemplo completo:**\n```javascript\n// validaciones.js\nexport function esEmail(valor) {\n    return /^\\S+@\\S+\\.\\S+$/.test(valor);\n}\nexport function noVacio(valor) {\n    return valor.trim().length > 0;\n}\n\n// main.js\nimport { esEmail, noVacio } from './validaciones.js';\n\nconst email = prompt(\"Email:\");\nif (esEmail(email)) alert(\"Válido\");\n```",
+      "tags": [
+        "dwec",
+        "javascript",
+        "modulos",
+        "es6",
+        "import-export"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-ed-024",
+      "front": "(DWEC — EAC1 / Arrays) Dado este array de objetos:\n\n```javascript\nconst catalogo = [\n    { titulo: \"El Padrino\", anio: 1972, vista: true },\n    { titulo: \"Inception\", anio: 2010, vista: false },\n    { titulo: \"Matrix\", anio: 1999, vista: true },\n    { titulo: \"Interestelar\", anio: 2014, vista: false },\n];\n```\n\nUsando métodos de array:\n1. Filtra las películas **vistas** con `.filter()`\n2. Ordena por **año descendente** con `.sort()`\n3. Crea una **copia** del array con spread operator\n4. Recorre el array con `.forEach()` mostrando título y año",
+      "back": "```javascript\nconst catalogo = [ /* ... */ ];\n\n// 1. Filtrar vistas\nconst vistas = catalogo.filter(p => p.vista);\nconsole.log(vistas);  // El Padrino, Matrix\n\n// 2. Ordenar por año descendente\nconst ordenado = [...catalogo].sort((a, b) => b.anio - a.anio);\nconsole.log(ordenado);  // Interestelar (2014), Inception (2010), Matrix (1999), El Padrino (1972)\n// ¡OJO! sort() modifica el array original. Por eso usamos spread primero.\n\n// 3. Copia con spread\nconst copia = [...catalogo];  // Array nuevo independiente\n\n// 4. Recorrer con forEach\ncatalogo.forEach(p => {\n    console.log(`${p.titulo} (${p.anio})`);\n});\n\n// BONUS: buscar por título\nconst encontrado = catalogo.find(p => p.titulo === \"Matrix\");\nconsole.log(encontrado);  // { titulo: \"Matrix\", anio: 1999, vista: true }\n\nconst indice = catalogo.findIndex(p => p.titulo === \"Matrix\");\nconsole.log(indice);  // 2\n```",
+      "tags": [
+        "dwec",
+        "javascript",
+        "arrays",
+        "filter",
+        "sort",
+        "spread"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-ed-025",
+      "front": "(DWEC — EAC1 / Regex) Escribe expresiones regulares en JavaScript para validar:\n\n1. **DNI español**: 8 dígitos + 1 letra mayúscula (ej. 12345678Z)\n2. **Email**: formato básico texto@texto.texto\n3. **Código postal**: 5 dígitos\n4. **Teléfono**: 9 dígitos\n\nUsa `.test()` para comprobar cada uno.",
+      "back": "```javascript\n// 1. DNI español\nconst dniRegex = /^\\d{8}[A-Z]$/;\nconsole.log(dniRegex.test(\"12345678Z\"));  // true\nconsole.log(dniRegex.test(\"12345678z\"));  // false (minúscula)\n\n// 2. Email básico\nconst emailRegex = /^\\S+@\\S+\\.\\S+$/;\nconsole.log(emailRegex.test(\"user@example.com\"));  // true\nconsole.log(emailRegex.test(\"usuario@\"));           // false\n\n// 3. Código postal (5 dígitos)\nconst cpRegex = /^\\d{5}$/;\nconsole.log(cpRegex.test(\"08001\"));   // true\nconsole.log(cpRegex.test(\"0800\"));    // false\n\n// 4. Teléfono (9 dígitos)\nconst telfRegex = /^\\d{9}$/;\nconsole.log(telfRegex.test(\"612345678\"));  // true\nconsole.log(telfRegex.test(\"61234567\"));   // false\n```\n\n**Explicación de símbolos regex:**\n| Símbolo | Significado |\n|---------|-------------|\n| `^` | Inicio de cadena |\n| `$` | Fin de cadena |\n| `\\d` | Dígito (0-9) |\n| `{n}` | Exactamente n veces |\n| `\\S` | Cualquier carácter NO espacio |\n| `+` | Una o más veces |\n| `[A-Z]` | Letra mayúscula de la A a la Z |",
+      "tags": [
+        "dwec",
+        "regex",
+        "validacion",
+        "javascript"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-ed-026",
+      "front": "(DWEC — EAC1 / Date) Usando el objeto Date en JavaScript:\n\n1. Crea una fecha para el 15 de mayo de 2000\n2. Obtén el año actual\n3. Calcula la edad de una persona nacida en esa fecha\n4. Muestra la fecha en formato \"DD/MM/YYYY\"",
+      "back": "```javascript\n// 1. Crear fecha: ¡OJO! Los meses van de 0 a 11\nconst fechaNac = new Date(2000, 4, 15);  // 15 de mayo de 2000\n// Mes 4 = mayo (enero es 0, diciembre es 11)\n\n// 2. Año actual\nconst hoy = new Date();\nconst anioActual = hoy.getFullYear();\n\n// 3. Calcular edad\nlet edad = anioActual - fechaNac.getFullYear();\n\n// Ajustar si aún no ha cumplido años este año\nconst mesActual = hoy.getMonth();      // 0-11\nconst diaActual = hoy.getDate();\nif (mesActual < fechaNac.getMonth() ||\n    (mesActual === fechaNac.getMonth() && diaActual < fechaNac.getDate())) {\n    edad--;\n}\nconsole.log(`Edad: ${edad} años`);\n\n// 4. Formatear DD/MM/YYYY\nconst dia = String(fechaNac.getDate()).padStart(2, '0');\nconst mes = String(fechaNac.getMonth() + 1).padStart(2, '0');\nconst anio = fechaNac.getFullYear();\nconsole.log(`${dia}/${mes}/${anio}`);  // \"15/05/2000\"\n```\n\n**Métodos principales de Date:**\n- `getFullYear()`, `getMonth()` (0-11), `getDate()` (1-31)\n- `getHours()`, `getMinutes()`, `getSeconds()`\n- `new Date()` = ahora\n- `new Date(año, mes-1, día)` = fecha específica (mes 0-indexado)",
+      "tags": [
+        "dwec",
+        "javascript",
+        "date",
+        "fechas"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-ed-027",
+      "front": "(DWEC — EAC3 / Eventos) En el proyecto Rocket usas eventos de teclado:\n\n```javascript\ndocument.addEventListener(\"keydown\", (event) => {\n    const tecla = event.key.toUpperCase();\n    switch (tecla) {\n        case \"S\": alternarMotores(); break;\n        case \"L\": alternarLucesCabina(); break;\n    }\n});\n```\n\n1. ¿Qué diferencia hay entre keydown, keyup y keypress?\n2. ¿Qué devuelve event.key? ¿Y event.code?\n3. ¿Por qué se usa .toUpperCase() en la comparación?",
+      "back": "**1. Eventos de teclado:**\n- `keydown`: se dispara al **presionar** la tecla. Se repite si se mantiene pulsada.\n- `keyup`: se dispara al **soltar** la tecla. Solo una vez.\n- `keypress` (deprecado): se disparaba solo para teclas que producen carácter (no para Ctrl, Shift, etc.)\n\n**2. event.key vs event.code:**\n- `event.key`: el **carácter** generado (\"s\", \"S\", \"1\", \"Enter\"). Diferencia mayúsculas/minúsculas.\n- `event.code`: la **posición física** de la tecla (\"KeyS\", \"Digit1\", \"Enter\"), independiente del idioma.\n\n**3. .toUpperCase():**\nNormaliza la tecla a mayúsculas para que la comparación sea\n**case-insensitive**. Sin esto, \"s\" (minúscula) no coincidiría\ncon el case \"S\" del switch. El usuario podría tener Bloq Mayús\nactivado o no. a mayúsculas para que la comparación sea **case-insensitive**. Sin esto, \"s\" (minúscula) no coincidiría con el case \"S\" del switch. El usuario podría tener Bloq Mayús activado o no.\n\n**Ejemplo diferencia key vs code:**\n| Tecla pulsada | event.key | event.code |\n|---------------|-----------|------------|\n| s | \"s\" | \"KeyS\" |\n| S (Mayús+s) | \"S\" | \"KeyS\" |\n| Enter | \"Enter\" | \"Enter\" |\n| 1 | \"1\" | \"Digit1\" |\n| a (teclado QWERTY) | \"a\" | \"KeyA\" |",
+      "tags": [
+        "dwec",
+        "eventos",
+        "teclado",
+        "keydown",
+        "dom"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-ed-028",
+      "front": "(DWEC — EAC3 / Formularios) En un formulario HTML de contacto:\n\n```html\n<form id=\"contacto\">\n    <input type=\"text\" id=\"nombre\" required>\n    <button type=\"submit\">Enviar</button>\n</form>\n```\n\n```javascript\ndocument.getElementById(\"contacto\").addEventListener(\"submit\", (e) => {\n    e.preventDefault();\n    // validar y enviar...\n});\n```\n\n1. ¿Qué hace `e.preventDefault()`?\n2. ¿Qué pasa si NO lo pones?\n3. Además de preventDefault, ¿cómo validarías que el nombre no esté vacío?",
+      "back": "**1. e.preventDefault():**\nCancela el **comportamiento por defecto** del navegador para ese evento. En un formulario, evita que se recargue la página al enviar.\n\n**2. Sin preventDefault():**\n- El formulario se envía de forma tradicional (recarga la página)\n- Se pierde el estado de la aplicación\n- El código JavaScript después del evento no se ejecuta porque la página se recarga\n\n**3. Validación completa:**\n```javascript\ndocument.getElementById(\"contacto\").addEventListener(\"submit\", (e) => {\n    e.preventDefault();\n\n    const nombre = document.getElementById(\"nombre\");\n    const error = document.getElementById(\"error-nombre\");\n\n    // Validar: no vacío y longitud mínima\n    if (!nombre.value.trim()) {\n        error.textContent = \"El nombre es obligatorio\";\n        nombre.focus();\n        return;\n    }\n    if (nombre.value.trim().length < 3) {\n        error.textContent = \"Mínimo 3 caracteres\";\n        nombre.focus();\n        return;\n    }\n\n    // Todo válido → enviar con fetch\n    fetch(\"/api/contacto\", {\n        method: \"POST\",\n        headers: { \"Content-Type\": \"application/json\" },\n        body: JSON.stringify({ nombre: nombre.value.trim() })\n    });\n});\n```",
+      "tags": [
+        "dwec",
+        "formularios",
+        "eventos",
+        "preventDefault",
+        "validacion"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-ed-029",
+      "front": "(DWEC — EAC3 / localStorage) Quieres guardar la preferencia de **modo oscuro** del usuario:\n\n1. ¿Cómo guardas y recuperas datos con localStorage?\n2. ¿Qué tipo de datos soporta localStorage?\n3. Escribe el código para guardar \"dark\" o \"light\" y aplicarlo al cargar la página.\n4. ¿Cuál es el límite de almacenamiento?",
+      "back": "**1. Guardar y recuperar:**\n```javascript\n// Guardar\nlocalStorage.setItem(\"tema\", \"dark\");\n\n// Recuperar\nconst tema = localStorage.getItem(\"tema\");  // \"dark\"\n\n// Eliminar\nlocalStorage.removeItem(\"tema\");\n\n// Limpiar todo\nlocalStorage.clear();\n```\n\n**2. Tipo de datos:**\nlocalStorage solo guarda **strings**. Para guardar objetos/arrays:\n```javascript\nconst config = { tema: \"dark\", fuente: 16 };\nlocalStorage.setItem(\"config\", JSON.stringify(config));\n\nconst recuperado = JSON.parse(localStorage.getItem(\"config\"));\n```\n\n**3. Código completo modo oscuro:**\n```javascript\n// Al cargar la página\ndocument.addEventListener(\"DOMContentLoaded\", () => {\n    const tema = localStorage.getItem(\"tema\") || \"light\";\n    document.body.classList.toggle(\"dark-mode\", tema === \"dark\");\n});\n\n// Botón para cambiar tema\nbotonTema.addEventListener(\"click\", () => {\n    const esOscuro = document.body.classList.toggle(\"dark-mode\");\n    localStorage.setItem(\"tema\", esOscuro ? \"dark\" : \"light\");\n});\n```\n\n**4. Límite:** ~5-10 MB por dominio (depende del navegador).\n\n**Diferencia con sessionStorage:**\n- `localStorage`: persiste aunque se cierre el navegador\n- `sessionStorage`: se borra al cerrar la pestaña/navegador",
+      "tags": [
+        "dwec",
+        "localstorage",
+        "persistencia",
+        "javascript"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-ed-030",
+      "front": "(DWEC — EAC3 / Delegación) Tienes una lista `<ul id=\"lista\">` que se va llenando dinámicamente con `<li>` nuevos. En vez de añadir un event listener a cada `<li>` (incluso a los futuros):\n\n1. ¿Qué es la **delegación de eventos**?\n2. Escribe el código usando delegación para detectar clics en cualquier `<li>` (incluso los que aún no existen).\n3. ¿Qué propiedad del evento usas para saber qué `<li>` se clickeó?",
+      "back": "**1. Delegación de eventos:**\nTécnica que asigna el listener al **elemento PADRE** (o contenedor)\nen vez de a cada hijo. Gracias al **burbujeo (bubbling)**,\nel evento sube por el DOM hasta el padre, donde se detecta\ncon `event.target`.\n\n**2. Código con delegación:**\n```javascript\nconst lista = document.getElementById(\"lista\");\n\n// Un SOLO listener en el contenedor\nlista.addEventListener(\"click\", (event) => {\n    const li = event.target.closest(\"li\");  // asegura que sea un <li>\n    if (!li) return;  // Ignorar clics que no sean en <li>\n\n    console.log(\"Clic en:\", li.textContent);\n    li.classList.toggle(\"seleccionado\");\n});\n\n// Añadir nuevos elementos SIN nuevos listeners\nconst nuevoLi = document.createElement(\"li\");\nnuevoLi.textContent = \"Elemento nuevo\";\nlista.appendChild(nuevoLi);  // ¡Funciona automáticamente!\n```\n\n**3. ¿Qué propiedad usar?**\n- `event.target` → el elemento exacto que recibió el clic\n- `.closest(\"li\")` → busca el `<li>` más cercano hacia arriba (por si el clic fue en un `<span>` dentro del `<li>`)\n\n**Ventajas:**\n- Menos listeners en memoria\n- Funciona para elementos creados **dinámicamente** después de registrar el evento",
+      "tags": [
+        "dwec",
+        "eventos",
+        "delegacion",
+        "dom",
+        "bubbling"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-ed-031",
+      "front": "(SI — EAC2 / Particiones) Repite el ejercicio de crear 5 particiones de 2 GB en un disco de 10 GB, pero ahora usando **GPT** con **gdisk**.\n\n1. ¿Qué ventajas tiene GPT frente a MBR?\n2. ¿Cuántas particiones primarias permite GPT?\n3. Escribe los comandos de gdisk para crearlas.",
+      "back": "**1. Ventajas de GPT frente a MBR:**\n- Soporta discos de más de 2 TB (MBR máximo 2 TB)\n- Hasta 128 particiones primarias (MBR solo 4)\n- Tabla de particiones redundante (copia de seguridad al final del disco)\n- CRC32 para detectar corrupción\n- No necesita partición extendida ni lógicas (todas son primarias)\n\n**2. Número de particiones en GPT:** Hasta **128** particiones primarias. Sin límite real práctico.\n\n**3. Comandos gdisk (/dev/sdb):**\n```bash\nsudo gdisk /dev/sdb\n```\n| Paso | Comando | Explicación |\n|------|---------|-------------|\n| 1 | `o` | Crear nueva tabla GPT vacía |\n| 2 | `Y` | Confirmar |\n| 3-7 | `n` Enter Enter `+2G` `8300` | 1ª partición (Linux filesystem) |\n| 8-12 | `n` Enter Enter `+2G` `8300` | 2ª partición |\n| 13-17 | `n` Enter Enter `+2G` `8300` | 3ª partición |\n| 18-22 | `n` Enter Enter `+2G` `8300` | 4ª partición |\n| 23-27 | `n` Enter Enter Enter `8300` | 5ª (usa el resto del espacio) |\n| 28 | `p` | Verificar |\n| 29 | `w` | Escribir cambios |\n| 30 | `Y` | Confirmar |\n\n**Diferencia clave con fdisk:**\nEn GPT con gdisk NO necesitas extendida. Todas las particiones\nse crean como primarias directamente (hasta 128). extendida. Todas las particiones se crean como primarias con tipo `8300` (Linux filesystem).",
+      "tags": [
+        "si",
+        "particiones",
+        "gpt",
+        "gdisk",
+        "almacenamiento"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-ed-032",
+      "front": "(SI — EAC2 / LVM) Tienes dos discos de 2 GB. Quieres crear un **volumen lógico** de 4 GB usando LVM.\n\n1. Escribe los comandos para: crear volúmenes físicos (PV), grupo de volúmenes (VG) y volumen lógico (LV).\n2. ¿Qué comandos usas para verificar cada nivel?\n3. ¿Qué ventaja tiene LVM frente a particiones tradicionales?",
+      "back": "**1. Comandos LVM:**\n```bash\n# 1. Crear volúmenes físicos (PV) en los dos discos\nsudo pvcreate /dev/sdb /dev/sdc\n\n# 2. Crear grupo de volúmenes (VG) que agrupa ambos PV\nsudo vgcreate mi_vg /dev/sdb /dev/sdc\n\n# 3. Crear volumen lógico (LV) de 4 GB (todo el espacio)\n# Usa todo el espacio: -l 100%FREE\nsudo lvcreate -l 100%FREE -n mi_lv mi_vg\n# O tamaño específico:\nsudo lvcreate -L 4G -n mi_lv mi_vg\n\n# 4. Formatear y montar\nsudo mkfs.ext4 /dev/mi_vg/mi_lv\nsudo mount /dev/mi_vg/mi_lv /mnt/lvm\n```\n\n**2. Verificación:**\n```bash\nsudo pvdisplay     # o pvs (resumido)\nsudo vgdisplay     # o vgs\nsudo lvdisplay     # o lvs\nsudo lsblk         # vista general\n```\n\n**3. Ventajas de LVM:**\n- **Redimensionamiento dinámico**: puedes agrandar/reducir volúmenes sin reiniciar\n- **Agregar discos**: añades un nuevo PV al VG y extiendes el LV\n- **Snapshots**: instantáneas para backups\n- **Migración**: mover datos entre discos sin interrupción\n\n**Limitación tradicional (particiones):** si te quedas sin espacio en `/home`, no puedes agrandarlo fácilmente a menos que sea LVM.",
+      "tags": [
+        "si",
+        "lvm",
+        "almacenamiento",
+        "particiones",
+        "linux"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-ed-033",
+      "front": "(SI — EAC2 / fstab) Tienes tres particiones:\n- `/dev/sdb1` ext4 → montar en `/mnt/datos` con RW\n- `/dev/sdb2` ntfs → montar en `/mnt/windows` con RO\n- `/dev/sdb3` swap → activar con prioridad\n\nEscribe el archivo `/etc/fstab` completo. ¿Qué comando usas para montar todo sin reiniciar?",
+      "back": "**Archivo /etc/fstab:**\n```\n# /etc/fstab: configuración de montaje automático\n\n/dev/sdb1  /mnt/datos    ext4  defaults        0  2\n/dev/sdb2  /mnt/windows  ntfs  ro,uid=1000     0  0\n/dev/sdb3  none          swap  sw,pri=10       0  0\n```\n\n**Explicación de campos (6 columnas):**\n| Campo | Descripción |\n|-------|-------------|\n| 1 | Dispositivo (o UUID) |\n| 2 | Punto de montaje |\n| 3 | Tipo de sistema de archivos |\n| 4 | Opciones de montaje |\n| 5 | dump (0=no backup) |\n| 6 | fsck (0=no check, 1=root, 2=otros) |\n\n**Opciones usadas:**\n- `defaults` = rw, suid, dev, exec, auto, nouser, async\n- `ro` = solo lectura\n- `uid=1000` = propietario (opcional para ntfs)\n- `sw,pri=10` = swap con prioridad 10 (más alto = preferente)\n\n**Montar todo sin reiniciar:**\n```bash\nsudo mount -a\n```\nEsto lee `/etc/fstab` y monta todas las particiones que falten.\n\n**Usar UUID en vez de /dev/sdX (recomendado):**\n```bash\nlsblk -f   # Ver UUIDs\n```\nEn lugar de `/dev/sdb1` usa `UUID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` (los UUID no cambian al añadir/quitar discos).",
+      "tags": [
+        "si",
+        "fstab",
+        "montaje",
+        "particiones",
+        "linux"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-ed-034",
+      "front": "(SI — EAC2 / Backups) Quieres hacer una **copia de seguridad automática** del directorio `/home/usuario/documentos` todos los días a las 2 AM.\n\n1. Escribe el comando `tar` para comprimir el directorio con fecha\n2. Escribe la línea de `crontab` para programarlo diariamente a las 2:00\n3. ¿Qué comando usas para verificar que la tarea se ha añadido?",
+      "back": "**1. Comando tar con fecha:**\n```bash\ntar -czf /backups/documentos_$(date +\\%Y\\%m\\%d).tar.gz /home/usuario/documentos\n```\n- `-c` = crear archivo\n- `-z` = comprimir con gzip\n- `-f` = nombre del archivo de salida\n- `$(date +%Y%m%d)` = fecha actual (ej. 20260517)\n\n**2. Línea de crontab (diario a las 2:00):**\n```bash\n# Editar crontab\ncrontab -e\n\n# Añadir esta línea:\n0 2 * * * tar -czf /backups/documentos_$(date +\\%Y\\%m\\%d).tar.gz /home/usuario/documentos\n```\n\n**Formato de cron:**\n```\nminuto hora día-del-mes mes día-de-semana comando\n  0     2      *          *       *      ...\n```\n- `0 2 * * *` = a las 2:00 todos los días\n- `0 2 * * 0` = domingos a las 2:00\n- `*/30 * * * *` = cada 30 minutos\n- `0 2 1 * *` = día 1 de cada mes a las 2:00\n\n**3. Verificar tareas programadas:**\n```bash\ncrontab -l    # Listar tareas del usuario actual\n```\n\n**En Windows (equivalente):**\n```powershell\n# Tarea programada con robocopy\nschtasks /create /sc daily /tn \"Backup\" /tr \"robocopy C:\\docs D:\\backup /MIR\" /st 02:00\n```",
+      "tags": [
+        "si",
+        "backups",
+        "cron",
+        "tar",
+        "automatizacion"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-ed-035",
+      "front": "(SI — EAC2 / Usuarios) En Ubuntu necesitas:\n\n1. Crear un grupo `biblioteca` y un grupo `treballador`\n2. Crear usuario `jordi` con grupo principal `treballador` y secundario `biblioteca`\n3. Crear un archivo y asignarle permisos `700` (solo el dueño puede leer/escribir/ejecutar)\n4. ¿Qué hace `chmod 755`? ¿Y `chown`?",
+      "back": "**1. Crear grupos:**\n```bash\nsudo groupadd biblioteca\nsudo groupadd treballador\n```\n\n**2. Crear usuario con grupos:**\n```bash\n# -g: grupo principal, -G: grupos secundarios, -m: crear home\nsudo useradd -m -g treballador -G biblioteca jordi\n\n# Establecer contraseña\nsudo passwd jordi\n\n# Configurar caducidad de contraseña (mínimo 7 días, máximo 90)\nsudo chage -m 7 -M 90 jordi\n```\n\n**3. Crear archivo y permisos 700:**\n```bash\ntouch /home/jordi/documento.txt\nchmod 700 /home/jordi/documento.txt\n# 700 = rwx------ (dueño: todo, grupo: nada, otros: nada)\n```\n\n**4. Significado de permisos:**\n| Comando | Dueño | Grupo | Otros |\n|---------|-------|-------|-------|\n| chmod 700 | rwx (7) | --- (0) | --- (0) |\n| chmod 755 | rwx (7) | r-x (5) | r-x (5) |\n| chmod 644 | rw- (6) | r-- (4) | r-- (4) |\n\n- **chmod 755**: dueño puede todo, grupo y otros solo leer y ejecutar (típico para directorios públicos)\n- **chown**: cambia el **propietario** de un archivo\n  ```bash\n  sudo chown jordi:treballador archivo.txt  # Cambia dueño:grupo\n  ```\n\n**Cálculo de permisos:** `r=4`, `w=2`, `x=1`. Suma: `rwx` = 4+2+1 = 7, `r-x` = 4+0+1 = 5, `rw-` = 4+2+0 = 6.",
+      "tags": [
+        "si",
+        "usuarios",
+        "permisos",
+        "chmod",
+        "linux"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-ed-036",
+      "front": "(SI — EAC3 / DNS) Has creado un dominio `eac3.usuario.home` en Windows Server. Necesitas:\n\n1. ¿Qué es un registro **A**? ¿Y **PTR**? ¿Y **CNAME**?\n2. Crea un registro A para `www.eac3.usuario.home` → IP `192.168.1.10`\n3. ¿Cómo creas la zona inversa (PTR) para esa IP?\n4. Escribe el comando PowerShell para crear el registro PTR",
+      "back": "**1. Tipos de registros DNS:**\n| Registro | Función | Ejemplo |\n|----------|---------|--------|\n| **A** | Resuelve nombre → IPv4 | `www.eac3.usuario.home` → `192.168.1.10` |\n| **AAAA** | Resuelve nombre → IPv6 | `www` → `::1` |\n| **PTR** | Resuelve IPv4 → nombre (zona inversa) | `192.168.1.10` → `www.eac3.usuario.home` |\n| **CNAME** | Alias de un nombre a otro | `web` → `www.eac3.usuario.home` |\n\n**2. Crear registro A (GUI o PowerShell):**\n```powershell\n# PowerShell\nAdd-DnsServerResourceRecordA -Name \"www\" -ZoneName \"eac3.usuario.home\" -IPv4Address \"192.168.1.10\"\n```\n\n**3. Zona inversa (PTR):**\nRequiere crear una **zona de búsqueda inversa** para el rango `192.168.1.x` (llamada `1.168.192.in-addr.arpa`).\n\n```powershell\n# Crear zona inversa\nAdd-DnsServerPrimaryZone -NetworkID \"192.168.1.0/24\" -ReplicationScope Domain\n\n# Crear registro PTR (IP 192.168.1.10 → www.eac3.usuario.home)\nAdd-DnsServerResourceRecordPtr -Name \"10\" -ZoneName \"1.168.192.in-addr.arpa` -PtrDomainName \"www.eac3.usuario.home\"\n```\n\n**4. Verificar:**\n```bash\nnslookup 192.168.1.10    # Debe devolver www.eac3.usuario.home\nnslookup www.eac3.usuario.home  # Debe devolver 192.168.1.10\n```",
+      "tags": [
+        "si",
+        "dns",
+        "redes",
+        "windows-server",
+        "active-directory"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-ed-037",
+      "front": "(SI — EAC3 / Active Directory) Has promocionado un Windows Server 2019 como **Controlador de Dominio** con dominio `eac3.usuario.home`. Necesitas:\n\n1. Crear grupos de seguridad **bibliotecari** y **usuari**\n2. Crear usuarios **Martí** y **Jana** y asignarlos a grupos\n3. Crear carpeta compartida `documentacio` con permisos NTFS: bibliotecari=Control Total, usuari=Solo Lectura\n4. ¿Cómo unes un Windows 11 al dominio?",
+      "back": "**1. Crear grupos y usuarios (PowerShell o ADUC):**\n```powershell\n# Grupos\nNew-ADGroup -Name \"bibliotecari\" -GroupScope Global -Path \"CN=Users,DC=eac3,DC=usuario,DC=home\"\nNew-ADGroup -Name \"usuari\" -GroupScope Global -Path \"CN=Users,DC=eac3,DC=usuario,DC=home\"\n\n# Usuarios\nNew-ADUser -Name \"Martí\" -GivenName \"Martí\" -Surname \"Garcia\"\n  -SamAccountName \"marti\" -UserPrincipalName \"marti@eac3.usuarios.local\"\n  -Path \"OU=Usuaris,DC=eac3,DC=usuaris,DC=local\" -GivenName \"Martí\" -Surname \"Garcia\" -SamAccountName \"marti\" -UserPrincipalName \"marti@eac3.usuario.home\" -AccountPassword (ConvertTo-SecureString \"Passw0rd\" -AsPlainText -Force) -Enabled $true\nNew-ADUser -Name \"Jana\" -GivenName \"Jana\" -Surname \"López\"\n  -SamAccountName \"jana\" -UserPrincipalName \"jana@eac3.usuarios.local\"\n  -Path \"OU=Usuaris,DC=eac3,DC=usuaris,DC=local\" -GivenName \"Jana\" -Surname \"López\" -SamAccountName \"jana\" -UserPrincipalName \"jana@eac3.usuario.home\" -AccountPassword (ConvertTo-SecureString \"Passw0rd\" -AsPlainText -Force) -Enabled $true\n\n# Asignar a grupos\nAdd-ADGroupMember -Identity \"bibliotecari\" -Members \"marti\"\nAdd-ADGroupMember -Identity \"usuari\" -Members \"marti\",\"jana\"\n```\n\n**2. Compartir carpeta SMB con permisos:**\n```powershell\n# Crear carpeta\nNew-Item -Path \"C:\\documentacio\" -ItemType Directory\n\n# NTFS: bibliotecari=Control Total, usuari=Solo Lectura\n$acl = Get-Acl \"C:\\documentacio\"\n$acl.SetAccessRuleProtection($true, $false)\n$acl.AddAccessRule((New-Object\n    System.Security.AccessControl.FileSystemAccessRule(\n      \"eac3\bibliotecari\", \"FullControl\",\n      \"ContainerInherit,ObjectInherit\", \"None\", \"Allow\")) System.Security.AccessControl.FileSystemAccessRule(\"eac3\\bibliotecari\",\"FullControl\",\"ContainerInherit,ObjectInherit\",\"None\",\"Allow\")))\n$acl.AddAccessRule((New-Object System.Security.AccessControl.FileSystemAccessRule(\"eac3\\usuari\",\"ReadAndExecute\",\"ContainerInherit,ObjectInherit\",\"None\",\"Allow\")))\nSet-Acl \"C:\\documentacio\" $acl\n\n# Compartir por SMB\nNew-SmbShare -Name \"documentacio\" -Path \"C:\\documentacio\" -FullAccess \"eac3\\bibliotecari\" -ReadAccess \"eac3\\usuari\"\n```\n\n**3. Unir Windows 11 al dominio:**\n1. Configurar DNS del cliente apuntando al servidor (IP del DC)\n2. `Configuración → Sistema → Acerca de → Unir al dominio`\n3. Introducir `eac3.usuario.home` y credenciales de administrador del dominio\n4. Verificar en ADUC: aparece el equipo como `Computers`",
+      "tags": [
+        "si",
+        "active-directory",
+        "dominio",
+        "windows-server",
+        "smb"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "pd-ed-038",
+      "front": "(SI — EAC3 / DHCP) En Windows Server quieres configurar un servidor **DHCP** para que los clientes obtengan IP automáticamente.\n\n1. Instala el rol DHCP y crea un ámbito\n2. Configura: rango `192.168.1.50`-`192.168.1.100`, máscara `255.255.255.0`, gateway `192.168.1.1`, DNS `8.8.8.8`\n3. ¿Cómo haces que el servidor SIEMPRE tenga la misma IP (reserva)?\n4. El cliente no obtiene IP. ¿Qué compruebas?",
+      "back": "**1. Crear ámbito DHCP (PowerShell):**\n```powershell\n# Instalar rol DHCP\nInstall-WindowsFeature -Name DHCP -IncludeManagementTools\n\n# Crear ámbito\nAdd-DhcpServerv4Scope -Name \"Red Local\" -StartRange 192.168.1.50 -EndRange 192.168.1.100 -SubnetMask 255.255.255.0\n\n# Configurar opciones\nSet-DhcpServerv4OptionValue -ScopeId 192.168.1.0 -OptionId 3 -Value 192.168.1.1      # Gateway\nSet-DhcpServerv4OptionValue -ScopeId 192.168.1.0 -OptionId 6 -Value 8.8.8.8           # DNS\n\n# Autorizar servidor DHCP en AD\nAdd-DhcpServerInDC -DnsName \"servidor.eac3.usuario.home\" -IPAddress 192.168.1.10\n```\n\n**2. Reserva para que el servidor tenga IP fija:**\n```powershell\n# Reserva basada en MAC\nAdd-DhcpServerv4Reservation -ScopeId 192.168.1.0 -IPAddress 192.168.1.10 -ClientId \"00-11-22-33-44-55\" -Description \"Servidor\"\n```\n\nTambién puedes configurar IP **estática** directamente en el servidor (Netplan / GUI), independientemente del DHCP.\n\n**3. El cliente no obtiene IP — diagnóstico:**\n1. **Conexión de red** ¿cable conectado? ¿WiFi activado?\n2. **TCP/IP en cliente**: ¿está en \"Obtener IP automáticamente\"?\n3. **Firewall**: ¿puerto UDP 67/68 abiertos?\n4. **Servidor DHCP**: ¿está el servicio corriendo? `Get-Service DHCPServer`\n5. **Autorizado en AD**: ¿el DHCP está autorizado? (`Add-DhcpServerInDC`)\n6. **Renovar**: `ipconfig /release` y `ipconfig /renew` en el cliente\n7. **Ver leases**: `Get-DhcpServerv4Lease -ScopeId 192.168.1.0`",
+      "tags": [
+        "si",
+        "dhcp",
+        "redes",
+        "windows-server",
+        "ip"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-ed-039",
+      "front": "(SI — EAC2 / Redes) Instalas **vsftpd** en Ubuntu y luego usas **Wireshark** para capturar tráfico durante una conexión FTP.\n\n1. Escribe los comandos para instalar e iniciar vsftpd\n2. Identifica el PID y el puerto en escucha\n3. ¿Por qué ves usuario/contraseña en texto plano en Wireshark?\n4. ¿Qué protocolo usarías para transferencia segura?",
+      "back": "**1. Instalar y gestionar vsftpd:**\n```bash\nsudo apt update\nsudo apt install vsftpd -y\nsudo systemctl start vsftpd\nsudo systemctl enable vsftpd   # Iniciar al arranque\n```\n\n**2. Identificar PID y puerto:**\n```bash\nsudo systemctl status vsftpd          # Estado y PID\nsudo ss -tlnp | grep :21             # Puerto 21 LISTEN\nsudo ps aux | grep vsftpd            # Procesos con PID\n\n# Archivo de configuración\ncat /etc/vsftpd.conf\n```\n\n**3. ¿Por qué se ve en texto plano?**\nFTP (File Transfer Protocol) transmite todo **sin cifrar**:\n- Credenciales (usuario + contraseña) en texto plano\n- Datos del archivo también sin cifrar\n- Wireshark filtra con `ftp` o `ftp.request.command` y ves:\n  `USER pablo`\n  `PASS micontraseña`\n\n**4. Alternativas seguras:**\n| Protocolo | Puerto | Cifrado |\n|-----------|--------|---------|\n| **SFTP** (SSH File Transfer) | 22 | Sí (SSH) |\n| **FTPS** (FTP sobre TLS) | 990 | Sí (SSL/TLS) |\n| **SCP** (Secure Copy) | 22 | Sí (SSH) |\n\n```bash\n# Conexión segura con SFTP\nsftp pablo@servidor\n# o con SCP\nscp archivo.zip pablo@servidor:/home/pablo/\n```\n\n**Comando para ver logs del sistema:**\n```bash\nsudo journalctl -u vsftpd                    # Logs de vsftpd\nsudo tail -f /var/log/syslog | grep vsftpd   # Logs en tiempo real\n```",
+      "tags": [
+        "si",
+        "ftp",
+        "vsftpd",
+        "wireshark",
+        "seguridad"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-ed-040",
+      "front": "(SI — EAC3 / nmap) Quieres analizar los puertos abiertos en tu propia máquina Ubuntu:\n\n1. Instala nmap y escanea localhost\n2. ¿Qué diferencia hay entre **TCP SYN scan** (`-sS`) y **TCP Connect scan** (`-sT`)?\n3. Escanea solo el rango de puertos 19-100\n4. ¿Qué puertos esperas ver abiertos (SSH, HTTP, FTP)?",
+      "back": "**1. Instalar y escanear:**\n```bash\nsudo apt install nmap -y\n\n# Escaneo básico de localhost\nnmap localhost\n# o por IP\nnmap 127.0.0.1\n```\n\n**2. Diferencia -sS vs -sT:**\n| Scan | Comando | Flags | Privilegios | Rastro |\n|------|---------|-------|-------------|--------|\n| **SYN scan** | `-sS` | Envía SYN, recibe SYN/ACK (abierto) o RST (cerrado) | Requiere **root** | **No completa** la conexión → sigiloso |\n| **Connect scan** | `-sT` | Completa el handshake TCP completo (SYN→SYN/ACK→ACK) | Cualquier usuario | **Completa** la conexión → detectable |\n\n```bash\n# SYN scan (necesita sudo)\nsudo nmap -sS localhost\n\n# Connect scan (sin sudo)\nnmap -sT localhost\n```\n\n**3. Escanear rango específico:**\n```bash\nnmap -p 19-100 localhost\n# o con SYN scan\nsudo nmap -sS -p 19-100 localhost\n```\n\n**4. Puertos comunes que puedes encontrar:**\n| Puerto | Servicio | Protocolo |\n|--------|----------|-----------|\n| 21 | FTP | TCP |\n| 22 | SSH | TCP |\n| 80 | HTTP | TCP |\n| 443 | HTTPS | TCP |\n\n**Estados de puertos en nmap:**\n- **open**: puerto abierto y aceptando conexiones\n- **closed**: accesible pero ninguna aplicación escucha\n- **filtered**: firewall bloquea el acceso (no se sabe si está abierto o cerrado)",
+      "tags": [
+        "si",
+        "nmap",
+        "redes",
+        "seguridad",
+        "puertos"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-ed-041",
+      "front": "(SI — EAC3 / Scripting) Crea un script **Bash** que:\n\n1. Haga backup de los logs de `/var/log/`\n2. Los comprima con la fecha actual (formato `.tar.gz`)\n3. Guarde el backup en `/backups/logs/`\n4. Elimine backups de más de 7 días\n\nAdemás: ¿Cómo harías lo mismo en **PowerShell** para Windows?",
+      "back": "**Script Bash (backup_logs.sh):**\n```bash\n#!/bin/bash\n\n# Directorios\nORIGEN=\"/var/log\"\nDESTINO=\"/backups/logs\"\nFECHA=$(date +%Y%m%d_%H%M%S)\nARCHIVO=\"logs_$FECHA.tar.gz\"\n\n# Crear directorio si no existe\nmkdir -p \"$DESTINO\"\n\n# Comprimir logs\ntar -czf \"$DESTINO/$ARCHIVO\" \"$ORIGEN\"\n\n# Eliminar backups de más de 7 días\nfind \"$DESTINO\" -name \"*.tar.gz\" -mtime +7 -delete\n\n# Mensaje de confirmación\necho \"Backup creado: $DESTINO/$ARCHIVO\"\necho \"Backups antiguos eliminados\"\n```\n\n**Programar con cron (diario a las 3 AM):**\n```bash\n# Editar crontab\ncrontab -e\n# Añadir:\n0 3 * * * /home/usuario/backup_logs.sh\n```\n\n**Equivalente en PowerShell (Windows):**\n```powershell\n$origen = \"C:\\Windows\\Logs\"\n$destino = \"D:\\backups\\logs\"\n$fecha = Get-Date -Format \"yyyyMMdd_HHmmss\"\n$archivo = \"logs_$fecha.zip\"\n\n# Crear directorio\nNew-Item -ItemType Directory -Path $destino -Force\n\n# Comprimir\nCompress-Archive -Path $origen -DestinationPath \"$destino\\$archivo\"\n\n# Eliminar backups de más de 7 días\nGet-ChildItem $destino -Filter \"*.zip\" | Where-Object { $_.LastWriteTime -lt (Get-Date).AddDays(-7) } | Remove-Item\n\nWrite-Host \"Backup creado: $destino\\$archivo\"\n```\n\n**Programar en Windows (Task Scheduler):**\n```powershell\n$action = New-ScheduledTaskAction -Execute \"PowerShell.exe\" -Argument \"-File C:\\scripts\\backup_logs.ps1\"\n$trigger = New-ScheduledTaskTrigger -Daily -At \"03:00AM\"\nRegister-ScheduledTask -TaskName \"Backup Logs\" -Action $action -Trigger $trigger\n```",
+      "tags": [
+        "si",
+        "scripting",
+        "bash",
+        "powershell",
+        "automatizacion"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-ed-042",
+      "front": "(SI — EAC3 / Firewall) Necesitas configurar el firewall para permitir tráfico SSH y bloquear FTP en Ubuntu.\n\n1. ¿Qué es **ufw**? Escribe los comandos para habilitar SSH y denegar FTP (puerto 21)\n2. ¿Qué comando usarías para ver las reglas activas?\n3. ¿Cómo harías lo mismo con **iptables**?\n4. En Windows Firewall, ¿cómo permites/deniegas un puerto?",
+      "back": "**1. ufw (Uncomplicated Firewall):**\n```bash\n# Habilitar ufw\nsudo ufw enable\n\n# Permitir SSH (puerto 22)\nsudo ufw allow ssh\n# o: sudo ufw allow 22/tcp\n\n# Denegar FTP (puerto 21)\nsudo ufw deny ftp\n# o: sudo ufw deny 21/tcp\n\n# Permitir HTTP y HTTPS\nsudo ufw allow 80/tcp\nsudo ufw allow 443/tcp\n```\n\n**2. Ver reglas activas:**\n```bash\nsudo ufw status verbose\n```\n\n**3. Equivalente con iptables:**\n```bash\n# Política por defecto: DENEGAR entrada\nsudo iptables -P INPUT DROP\n\n# Permitir SSH (loopback primero + SSH)\nsudo iptables -A INPUT -i lo -j ACCEPT\nsudo iptables -A INPUT -p tcp --dport 22 -j ACCEPT\n\n# Denegar FTP explícitamente\nsudo iptables -A INPUT -p tcp --dport 21 -j DROP\n\n# Permitir tráfico establecido (respuestas)\nsudo iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT\n\n# Ver reglas\nsudo iptables -L -n -v\n```\n\n**4. Windows Firewall (PowerShell):**\n```powershell\n# Permitir puerto 22 (SSH)\nNew-NetFirewallRule -DisplayName \"Permitir SSH\" -Direction Inbound -Protocol TCP -LocalPort 22 -Action Allow\n\n# Denegar puerto 21 (FTP)\nNew-NetFirewallRule -DisplayName \"Denegar FTP\" -Direction Inbound -Protocol TCP -LocalPort 21 -Action Block\n\n# Ver reglas\nGet-NetFirewallRule | Where-Object DisplayName -like \"*SSH*\"\n```",
+      "tags": [
+        "si",
+        "firewall",
+        "ufw",
+        "iptables",
+        "seguridad"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-ed-043",
+      "front": "(DWEC — EAC3 / Express) En el server.js del Garage tienes rutas GET, POST, PUT y DELETE. Explica:\n\n1. ¿Qué diferencia hay entre **req.params**, **req.query** y **req.body**?\n2. Para la ruta `PUT /garage/:id`, ¿cómo accedes al `:id` de la URL?\n3. Escribe un ejemplo de cómo sería una ruta GET con query params: `/garage?marca=seat`",
+      "back": "**1. Diferencia entre los objetos de req:**\n- `req.params`: parámetros **de la ruta** (URL dinámica). Ej: `/garage/:id` → `req.params.id`\n- `req.query`: parámetros **query string** (después de `?`). Ej: `/garage?marca=seat` → `req.query.marca`\n- `req.body`: datos del **cuerpo** de la petición (POST/PUT). Requiere `express.json()` middleware.\n\n**2. Acceder a :id en PUT /garage/:id:**\n```javascript\napp.put(\"/garage/:id\", (req, res) => {\n    const id = req.params.id;  // \"3\" (STRING, aunque sea número)\n    // Normalizar:\n    const idNum = parseInt(id, 10);\n});\n```\nNo uses `req.body.id` porque el id va en la URL, no en el body.\n\n**3. Ruta GET con query params:**\n```javascript\n// Petición: GET /garage?marca=seat&kmMin=10000\napp.get(\"/garage\", (req, res) => {\n    const { marca, kmMin } = req.query;\n\n    let resultado = db.vehicles;\n\n    if (marca) {\n        resultado = resultado.filter(v =>\n            v.plate.toLowerCase().includes(marca.toLowerCase())\n        );\n    }\n    if (kmMin) {\n        resultado = resultado.filter(v => v.km >= parseInt(kmMin, 10));\n    }\n\n    res.json(resultado);\n});\n```\n\n**Resumen:**\n| Objeto | Ejemplo URL | Cómo acceder |\n|--------|------------|--------------|\n| params | `/garage/3` | `req.params.id` → `\"3\"` |\n| query | `/garage?marca=seat` | `req.query.marca` → `\"seat\"` |\n| body | POST con JSON `{\"plate\":\"...\"}` | `req.body.plate` |",
+      "tags": [
+        "dwec",
+        "express",
+        "api",
+        "params",
+        "query"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-ed-044",
+      "front": "(DWEC — EAC3 / Express CRUD) En el proyecto Garage, completa la ruta **DELETE /garage/:id**:\n\n```javascript\n// DELETE /garage/:id - Eliminar vehículo\napp.delete(\"/garage/:id\", (req, res) => {\n    const { id } = req.params;\n    const idx = db.vehicles.findIndex(v => v.id === parseInt(id, 10));\n\n    // ¿Qué haces si idx === -1?\n    // ¿Y si el vehículo existe?\n});\n```\n\n1. Completa la lógica para 404 (no encontrado) y 200 (eliminado)\n2. ¿Por qué usamos `findIndex` en vez de `find`?\n3. ¿Qué hace `splice(idx, 1)`?",
+      "back": "**1. Código completo:**\n```javascript\napp.delete(\"/garage/:id\", (req, res) => {\n    const { id } = req.params;\n    const idx = db.vehicles.findIndex(v => v.id === parseInt(id, 10));\n\n    if (idx === -1) {\n        return res.status(404).json({ error: \"Vehículo no encontrado.\" });\n    }\n\n    db.vehicles.splice(idx, 1);  // Eliminar del array\n    saveDatabase(db);\n\n    res.json({ message: \"Vehículo eliminado.\" });\n});\n```\n\n**2. findIndex vs find:**\n- `findIndex()` devuelve el **índice** (número) del elemento, o -1 si no existe → perfecto para `splice()`\n- `find()` devuelve el **elemento** en sí, o undefined → no nos dice en qué posición está\n\n**3. splice(idx, 1):**\n- `splice(posición, cantidadAEliminar)` modifica el array original\n- `splice(idx, 1)` → elimina **1 elemento** en la posición `idx`\n- No confundir con `slice()` que NO modifica el array original\n\n**Códigos HTTP en CRUD:**\n| Operación | Código | Descripción |\n|-----------|--------|-------------|\n| **POST** crear | **201** Created | Recurso creado |\n| **GET** listar | **200** OK | Lista de recursos |\n| **PUT** actualizar | **200** OK | Recurso actualizado |\n| **DELETE** eliminar | **200** OK | Recurso eliminado |\n| Cualquiera | **404** Not Found | Recurso no existe |\n| Cualquiera | **400** Bad Request | Datos inválidos |",
+      "tags": [
+        "dwec",
+        "express",
+        "crud",
+        "api",
+        "rest"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-ed-045",
+      "front": "(DWEC — EAC3 / Express) En el server.js del Garage tienes funciones para leer/escribir la BD:\n\n```javascript\nfunction loadDatabase() {\n    if (fs.existsSync(DB_PATH)) {\n        const data = fs.readFileSync(DB_PATH, \"utf-8\");\n        return JSON.parse(data);\n    }\n    return { vehicles: [], nextId: 1 };\n}\n\nfunction saveDatabase(db) {\n    fs.writeFileSync(DB_PATH, JSON.stringify(db, null, 2), \"utf-8\");\n}\n```\n\n1. ¿Qué hace `fs.existsSync()`?\n2. ¿Por qué se usa `JSON.stringify(db, null, 2)` en vez de solo `JSON.stringify(db)`?\n3. ¿Qué significa el tercer argumento `\"utf-8\"` tanto en read como en write?",
+      "back": "**1. fs.existsSync(DB_PATH):**\nVerifica si el archivo existe en el sistema de archivos.\nSi existe, lo lee y parsea. Si no (primera ejecución),\ndevuelve un array vacío o estructura por defecto. en el sistema de archivos. Si existe, lo lee y parsea. Si no (primera ejecución), devuelve un objeto por defecto con arrays vacíos.\n\n**2. JSON.stringify(db, null, 2):**\n- Primer arg: objeto a serializar\n- Segundo arg (`null`): función de transformación (no se usa)\n- Tercer arg (`2`): **espaciado** para formato legible (indentación de 2 espacios)\n\nSin el `2`, el JSON se escribe en UNA línea:\n```json\n{\"vehicles\":[{\"id\":3,\"plate\":\"9999 ZZZ\",\"km\":25000}],\"nextId\":5}\n```\nCon `, null, 2`: formato legible humano:\n```json\n{\n  \"vehicles\": [\n    {\n      \"id\": 3,\n      \"plate\": \"9999 ZZZ\",\n      \"km\": 25000\n    }\n  ],\n  \"nextId\": 5\n}\n```\n\n**3. \"utf-8\":** Codificación de caracteres. Especifica que el archivo se lee/escribe como texto UTF-8. Sin esto:\n- `readFileSync` devuelve un **Buffer** (binario), no string\n- `writeFileSync` escribe en binario, no texto\n\n**Alternativa sin codificación:**\n```javascript\nconst data = fs.readFileSync(DB_PATH);  // Buffer → toca hacer .toString()\nJSON.parse(data.toString(\"utf-8\"));\n```\n\n**fs métodos comunes:**\n| Método | Función |\n|--------|---------|\n| `readFileSync(path, encoding)` | Leer archivo como string |\n| `writeFileSync(path, data, encoding)` | Escribir archivo |\n| `existsSync(path)` | Verificar si existe |\n| `unlinkSync(path)` | Eliminar archivo |\n| `mkdirSync(path)` | Crear directorio |",
+      "tags": [
+        "dwec",
+        "nodejs",
+        "fs",
+        "json",
+        "express"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-ed-046",
+      "front": "(DWEC — EAC1 / JS Operadores) JavaScript tiene varias formas de asignar valores por defecto. Explica qué hace cada una y pon un ejemplo:\n\n1. **Operador ||** (OR): `const x = valor || \"default\"`\n2. **Operador ??** (Nullish coalescing): `const x = valor ?? \"default\"`\n3. **Operador ternario**: `const x = condicion ? \"si\" : \"no\"`\n4. **Short-circuit &&**: `condicion && ejecutar()`",
+      "back": "**1. Operador `||` (OR):**\nDevuelve el **primer valor truthy**. Si el primero es falsy, devuelve el segundo.\n```javascript\nconst nombre = \"\" || \"Anónimo\";      // \"Anónimo\" (\"\" es falsy)\nconst edad = 0 || 25;                 // 25 (0 es falsy)\nconst usuario = null || \"Invitado\";   // \"Invitado\"\nconsole.log(0 || \"default\");          // \"default\"\n```\n**Problema:** 0, \"\" y false se tratan como \"sin valor\", aunque puedan ser valores válidos.\n\n**2. Operador `??` (Nullish coalescing - ES2020):**\nDevuelve el segundo solo si el primero es **null o undefined** (no para otros falsy).\n```javascript\nconst nombre = \"\" ?? \"Anónimo\";      // \"\" (se queda vacío, es válido)\nconst edad = 0 ?? 25;                 // 0 (es válido)\nconst usuario = null ?? \"Invitado\";   // \"Invitado\"\nconst valor = undefined ?? \"default\"; // \"default\"\n```\n**Diferencia clave:** `??` solo reemplaza null/undefined. `||` reemplaza cualquier falsy.\n\n**3. Operador ternario:**\n```javascript\nconst edad = 18;\nconst mensaje = edad >= 18 ? \"Mayor de edad\" : \"Menor\";\n// Equivalente a:\nlet mensaje2;\nif (edad >= 18) mensaje2 = \"Mayor de edad\";\nelse mensaje2 = \"Menor\";\n```\n\n**4. Short-circuit &&:**\nSolo ejecuta la segunda parte si la primera es **truthy**.\n```javascript\nconst usuarioLogueado = true;\nusuarioLogueado && console.log(\"Bienvenido\");  // Se ejecuta\n\nconst esAdmin = false;\nesAdmin && console.log(\"Panel admin\");         // NO se ejecuta\n\n// Muy usado en React:\n{ errores.length > 0 && <div>Hay errores</div> }\n```",
+      "tags": [
+        "dwec",
+        "javascript",
+        "operadores",
+        "logica"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-ed-047",
+      "front": "(DWEC — EAC1 / JS) Dado este array de números:\n\n```javascript\nconst numeros = [5, 12, 8, 130, 44];\n```\n\n¿Qué devuelve cada uno de estos métodos? Explica qué hace cada uno:\n\n1. `numeros.find(n => n > 10)`\n2. `numeros.filter(n => n > 10)`\n3. `numeros.findIndex(n => n > 10)`\n4. `numeros.some(n => n > 100)`\n5. `numeros.every(n => n > 0)`\n\n¿Cuándo usarías `find` en vez de `filter`?",
+      "back": "**Resultados:**\n```javascript\nconst numeros = [5, 12, 8, 130, 44];\n\nnumeros.find(n => n > 10);       // 12 (PRIMERO que cumple)\nnumeros.filter(n => n > 10);     // [12, 130, 44] (TODOS los que cumplen)\nnumeros.findIndex(n => n > 10);  // 1 (índice del primero)\nnumeros.some(n => n > 100);      // true (¿alguno cumple?)\nnumeros.every(n => n > 0);       // true (¿todos cumplen?)\n```\n\n**Explicación detallada:**\n| Método | Devuelve | Se detiene en | Si no encuentra |\n|--------|----------|---------------|-----------------|\n| `find()` | El **primer elemento** que cumple | En cuanto encuentra uno | `undefined` |\n| `filter()` | **Array** con todos los que cumplen | Recorre todo el array | `[]` vacío |\n| `findIndex()` | Índice del primero | En cuanto encuentra uno | `-1` |\n| `some()` | `true`/`false` | En cuanto encuentra uno | `false` |\n| `every()` | `true`/`false` | En cuanto encuentra un `false` | `true` (si todos pasan) |\n\n**¿Cuándo usar find vs filter?**\n- **find**: buscas un elemento **único** (por ID, DNI, matrícula). Ej: encontrar un vehículo por su id.\n  ```javascript\n  const vehiculo = db.vehicles.find(v => v.id === 3);\n  ```\n- **filter**: buscas **varios elementos** que cumplan una condición. Ej: todas las películas vistas.\n  ```javascript\n  const vistas = catalogo.filter(p => p.vista);\n  ```\n\n**BONUS: map()** — transforma cada elemento:\n```javascript\nnumeros.map(n => n * 2);  // [10, 24, 16, 260, 88]\n```",
+      "tags": [
+        "dwec",
+        "javascript",
+        "arrays",
+        "find",
+        "filter",
+        "some"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-ed-048",
+      "front": "(DWEC — EAC3 / DOM) Explica los métodos modernos del DOM para insertar elementos:\n\n```javascript\nconst padre = document.getElementById(\"lista\");\nconst nuevo = document.createElement(\"li\");\nnuevo.textContent = \"Nuevo\";\nconst referencia = document.querySelector(\"li\");\n```\n\n¿Qué hace cada uno?\n1. `padre.append(nuevo)`\n2. `padre.prepend(nuevo)`\n3. `referencia.before(nuevo)`\n4. `referencia.after(nuevo)`\n5. `nuevo.replaceWith(otro)`\n\n¿Qué ventajas tienen frente a `appendChild` e `insertBefore`?",
+      "back": "**Métodos modernos de inserción:**\n```javascript\nconst padre = document.getElementById(\"lista\");\nconst nuevo = document.createElement(\"li\");\nnuevo.textContent = \"Nuevo\";\nconst referencia = document.querySelector(\"li\");  // primer <li>\n\n// 1. Añade al FINAL como último hijo\npadre.append(nuevo);\n\n// 2. Añade al PRINCIPIO como primer hijo\npadre.prepend(nuevo);\n\n// 3. Inserta ANTES del elemento referencia\nreferencia.before(nuevo);\n\n// 4. Inserta DESPUÉS del elemento referencia\nreferencia.after(nuevo);\n\n// 5. Reemplaza un elemento por otro\nconst otro = document.createElement(\"li\");\notro.textContent = \"Reemplazo\";\nnuevo.replaceWith(otro);\n```\n\n**Ventajas frente a métodos clásicos:**\n| Clásico | Moderno | Ventaja |\n|---------|---------|---------|\n| `appendChild(nuevo)` | `append(nuevo)` | append acepta **strings y múltiples nodos**: `padre.append(nuevo, \"texto\")` |\n| `insertBefore(nuevo, ref)` | `ref.before(nuevo)` | No necesitas el padre. Sintaxis más intuitiva. |\n\n**Métodos clásicos equivalentes:**\n```javascript\n// Clásico: appendChild\npadre.appendChild(nuevo);\n\n// Clásico: insertBefore\npadre.insertBefore(nuevo, padre.firstChild);  // prepend\npadre.insertBefore(nuevo, referencia);          // before\n```\n\n**Otros métodos modernos:**\n- `remove()`: elimina el propio elemento. `elemento.remove()` vs `padre.removeChild(hijo)`\n- `replaceWith()`: reemplaza. vs `padre.replaceChild(nuevo, viejo)`",
+      "tags": [
+        "dwec",
+        "dom",
+        "javascript",
+        "insercion"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "pd-ed-049",
+      "front": "(DWEC — EAC3 / Express) En el proyecto Garage, usas `app.use(express.json())` y `app.use(cors())`:\n\n1. ¿Qué hace `express.json()`?\n2. ¿Qué hace `cors()`? ¿Por qué es necesario?\n3. ¿Qué pasaría si no pusieras `express.json()` y en el POST intentaras leer `req.body.plate`?",
+      "back": "**1. express.json():**\nMiddleware que **parsea el cuerpo** de las peticiones entrantes\ncomo JSON. Convierte el JSON crudo del body en un objeto\nJavaScript accesible desde . de las peticiones entrantes como JSON. Convierte el JSON crudo del body en un objeto JavaScript accesible desde `req.body`.\n\nSin él, `req.body` es `undefined` porque Express no parsea el body por defecto.\n\n```javascript\nconst express = require(\"express\");\nconst app = express();\n\napp.use(express.json());  // HABILITA req.body\n\napp.post(\"/garage\", (req, res) => {\n    console.log(req.body);  // { plate: \"9999 ZZZ\", km: 25000 }\n});\n```\n\n**2. cors() (Cross-Origin Resource Sharing):**\nPermite que un frontend en un **origen diferente** (ej: `http://localhost:5173`) haga peticiones al backend (ej: `http://localhost:3000`).\n\nSin CORS, el navegador bloquea la petición por seguridad (política de mismo origen).\n\n```javascript\nconst cors = require(\"cors\");\napp.use(cors());  // Permite TODOS los orígenes\n\n// Configuración más restrictiva:\napp.use(cors({ origin: \"http://localhost:5173\" }));\n```\n\n**3. Sin express.json():**\n```javascript\n// ❌ Sin express.json()\napp.post(\"/garage\", (req, res) => {\n    console.log(req.body);    // undefined\n    console.log(req.body.plate);  // ERROR: Cannot read property 'plate' of undefined\n});\n\n// El JSON crudo sigue en el flujo, pero no se ha parseado\n// Habría que usar un parser manual o body-parser\n```\n\n**Orden de los middleware:** El orden importa. `app.use(express.json())` debe ir **antes** de las rutas que usen `req.body`.\n\n**Otros middleware comunes:**\n- `express.urlencoded({ extended: true })` — para formularios HTML (no JSON)\n- `express.static(\"public\")` — servir archivos estáticos",
+      "tags": [
+        "dwec",
+        "express",
+        "middleware",
+        "cors",
+        "json"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-ed-050",
+      "front": "(DWEC — EAC3 / Garage Frontend) En el frontend del Garage, haces un fetch POST para añadir un vehículo:\n\n```javascript\nasync function anadirVehiculo(plate, km) {\n    const res = await fetch(\"/garage\", {\n        method: \"POST\",\n        headers: { \"Content-Type\": \"application/json\" },\n        body: JSON.stringify({ plate, km })\n    });\n    return await res.json();\n}\n```\n\n1. ¿Por qué es necesario el header `Content-Type: application/json`?\n2. ¿Qué pasa si no pones `JSON.stringify()` en el body?\n3. ¿Cómo manejarías que el servidor devuelva un error 400 o 409?",
+      "back": "**1. Content-Type: application/json:**\nIndica al servidor que el body está en **formato JSON**.\nSin este header,  no sabe cómo parsear\nel body correctamente. está en **formato JSON**. Sin este header, `express.json()` no sabe cómo parsear el body y `req.body` será `undefined` o un objeto vacío.\n\nOtros Content-Type comunes:\n- `application/x-www-form-urlencoded` — formularios HTML\n- `multipart/form-data` — archivos\n- `text/plain` — texto plano\n\n**2. Sin JSON.stringify():**\n```javascript\n// ❌ INCORRECTO: envía [object Object]\nbody: { plate, km }\n// fetch serializa automáticamente como [object Object] si no es string\n\n// ✅ CORRECTO: envía JSON válido\nbody: JSON.stringify({ plate, km })\n// Resultado: '{\"plate\":\"9999 ZZZ\",\"km\":25000}'\n```\n\n**3. Manejo de errores 400/409:**\n```javascript\nasync function anadirVehiculo(plate, km) {\n    const res = await fetch(\"/garage\", {\n        method: \"POST\",\n        headers: { \"Content-Type\": \"application/json\" },\n        body: JSON.stringify({ plate, km })\n    });\n\n    const data = await res.json();\n\n    if (!res.ok) {\n        // Mostrar error específico\n        if (res.status === 400) {\n            alert(\"Error: \" + data.error);  // \"La matrícula es obligatoria.\"\n        } else if (res.status === 409) {\n            alert(\"Error: \" + data.error);  // \"La matrícula ya existe.\"\n        } else {\n            alert(\"Error inesperado: \" + res.status);\n        }\n        return null;  // Indicar que falló\n    }\n\n    return data;  // Vehículo creado\n}\n\n// Uso\nconst resultado = await anadirVehiculo(\"9999 ZZZ\", 25000);\nif (resultado) {\n    console.log(\"Creado:\", resultado);\n}\n```",
+      "tags": [
+        "dwec",
+        "fetch",
+        "api",
+        "frontend",
+        "errores"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-ed-051",
+      "front": "(ED — EAC3 / Testing) Calcula la complejidad ciclomática de McCabe del siguiente código Java:\n\n```java\npublic String clasificarNota(int nota) {\n    if (nota < 0 || nota > 10) {\n        return \"Nota inválida\";\n    }\n    if (nota < 5) {\n        return \"Suspenso\";\n    } else if (nota < 7) {\n        return \"Aprobado\";\n    } else if (nota < 9) {\n        return \"Notable\";\n    } else {\n        return \"Sobresaliente\";\n    }\n}\n```\n\nUsa las dos fórmulas: **CC = condiciones + 1** y **CC = aristas - nodos + 2**. ¿En qué rango está?",
+      "back": "**CC = 6 — Rango simple (1-10)**\n\n**Fórmula 1 (condiciones + 1):**\n- Primer if tiene **2 condiciones** unidas por `||` (nota < 0, nota > 10) → cada condición cuenta\n- Segundo if: 1 condición (nota < 5)\n- Tercer else if: 1 condición (nota < 7)\n- Cuarto else if: 1 condición (nota < 9)\n- Total condiciones: 2 + 1 + 1 + 1 = **5**\n- CC = 5 + 1 = **6**\n\n**Fórmula 2 (aristas - nodos + 2):**\nEl grafo de flujo tiene:\n- 7 nodos (inicio, 4 decisiones, 2 fin)\n- 11 aristas\n- CC = 11 - 7 + 2 = **6**\n\n**Diferencia con el ejercicio anterior (CC=5):**\nEn el código de `clasificarEdad` cada if tenía solo 1 condición simple. Aquí el primer if tiene **2 condiciones con `||`**, lo que suma +1 a la CC.\n\n**Regla:** Cada condición lógica (&&, ||, case de switch) suma 1 a la complejidad.\n\n**Interpretación:**\n- 1-10: simple\n- 11-20: moderado\n- 21-50: complejo\n- >50: muy complejo",
+      "tags": [
+        "ed",
+        "testing",
+        "mccabe",
+        "complejidad-ciclomatica"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-ed-052",
+      "front": "(DWEC — EAC1 / JSON) ¿Qué diferencia hay entre **parse** y **serialize** (o stringify) en JSON? Pon un ejemplo pequeño de cada uno.",
+      "back": "Son operaciones opuestas:\n\n**Parse** — Convierte un **string JSON** en un **objeto JavaScript**.\n\nEjemplo:\n```javascript\nconst jsonStr = '{\"nombre\":\"Pablo\",\"edad\":25}';\nconst obj = JSON.parse(jsonStr);\nconsole.log(obj.nombre);  // \"Pablo\"\nconsole.log(typeof obj);  // \"object\"\n```\n\n**Serialize (stringify)** — Convierte un **objeto JavaScript** en un **string JSON**.\n\nEjemplo:\n```javascript\nconst obj = { nombre: \"Pablo\", edad: 25 };\nconst jsonStr = JSON.stringify(obj);\nconsole.log(jsonStr);  // '{\"nombre\":\"Pablo\",\"edad\":25}'\nconsole.log(typeof jsonStr);  // \"string\"\n```\n\n**Analogía:**\n- `JSON.parse()` = leer instrucciones (string) y construir los muebles (objeto)\n- `JSON.stringify()` = mirar los muebles armados (objeto) y escribir las instrucciones (string)\n\n**En la vida real de la app Garage:**\n- Al hacer un fetch POST → usas `JSON.stringify()` para convertir el objeto a string antes de enviarlo\n- Al recibir la respuesta del servidor → usas `res.json()` que hace el parse automáticamente\n\n```javascript\n// 🔄 Serialize antes de enviar\nbody: JSON.stringify({ plate: \"9999 ZZZ\", km: 25000 })\n\n// 🔄 Parse al recibir respuesta (res.json() lo hace por ti)\nconst data = await res.json();\n// data ya es un objeto JavaScript\n```",
+      "tags": [
+        "dwec",
+        "json",
+        "parse",
+        "stringify",
+        "conceptos"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "pd-ed-053",
+      "front": "(DWEC — EAC1 / JS) Escribe una función llamada **filtrarPares** que reciba un array de números y devuelva un nuevo array solo con los números pares.\n\nEjemplo de uso:\n```javascript\nconsole.log(filtrarPares([1, 2, 3, 4, 5, 6]));\n// Debería mostrar: [2, 4, 6]\n```",
+      "back": "```javascript\nfunction filtrarPares(numeros) {\n  return numeros.filter(num => num % 2 === 0);\n}\n\n// También funciona con arrow function:\nconst filtrarPares = numeros => numeros.filter(num => num % 2 === 0);\n```\n\n**Explicación:**\n- `filter()` recorre el array y crea uno nuevo con los elementos que cumplan la condición\n- `num % 2 === 0` → el operador módulo devuelve el resto de dividir entre 2. Si es 0, el número es par\n- Se puede escribir como función declarada (`function`) o arrow function (`=>`)",
+      "tags": [
+        "dwec",
+        "js",
+        "arrays",
+        "filter",
+        "funciones"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "pd-ed-054",
+      "front": "(DWEC — EAC1 / JS) Escribe una función llamada **contarCaracter** que reciba un string y un carácter, y devuelva cuántas veces aparece ese carácter en el string (sin distinguir mayúsculas/minúsculas).\n\nEjemplo de uso:\n```javascript\nconsole.log(contarCaracter(\"JavaScript\", \"a\"));\n// Debería mostrar: 2\nconsole.log(contarCaracter(\"Hola Mundo\", \"o\"));\n// Debería mostrar: 2\n```",
+      "back": "```javascript\nfunction contarCaracter(texto, caracter) {\n  const textoLower = texto.toLowerCase();\n  const charLower = caracter.toLowerCase();\n  let contador = 0;\n  for (let i = 0; i < textoLower.length; i++) {\n    if (textoLower[i] === charLower) {\n      contador++;\n    }\n  }\n  return contador;\n}\n\n// Versión más corta con split y filter:\nfunction contarCaracter(texto, caracter) {\n  return texto\n    .toLowerCase()\n    .split('')\n    .filter(c => c === caracter.toLowerCase())\n    .length;\n}\n```\n\n**Explicación:**\n- Convertir ambos a minúsculas con `.toLowerCase()` para que no distinga mayúsculas\n- Versión 1: bucle `for` clásico, cuenta coincidencias\n- Versión 2: convierte a array con `split('')`, filtra y cuenta con `.length`",
+      "tags": [
+        "dwec",
+        "js",
+        "strings",
+        "bucles",
+        "funciones"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "pd-ed-055",
+      "front": "(DWEC — EAC1 / Arrays) Escribe una función llamada **aplanarArray** que reciba un array que puede contener arrays anidados (un solo nivel) y devuelva un array plano con todos los elementos.\n\nEjemplo de uso:\n```javascript\nconsole.log(aplanarArray([1, [2, 3], [4, 5], 6]));\n// Debería mostrar: [1, 2, 3, 4, 5, 6]\n```",
+      "back": "```javascript\nfunction aplanarArray(array) {\n  let resultado = [];\n  for (let i = 0; i < array.length; i++) {\n    if (Array.isArray(array[i])) {\n      // Si es array, concatenamos sus elementos\n      resultado = resultado.concat(array[i]);\n    } else {\n      // Si no, lo añadimos directamente\n      resultado.push(array[i]);\n    }\n  }\n  return resultado;\n}\n\n// Versión con reduce:\nfunction aplanarArray(array) {\n  return array.reduce((acc, elem) => {\n    return acc.concat(Array.isArray(elem) ? elem : [elem]);\n  }, []);\n}\n\n// Versión con flat (ES2019):\nconst aplanarArray = arr => arr.flat();\n```\n\n**Explicación:**\n- `Array.isArray()` comprueba si un valor es un array\n- `.concat()` une arrays sin mutar el original\n- `.flat()` hace esto automáticamente pero solo es ES2019+",
+      "tags": [
+        "dwec",
+        "arrays",
+        "reduce",
+        "funciones"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-ed-056",
+      "front": "(DWEC — EAC3 / Eventos) Escribe una función llamada **crearContador** que reciba un botón (elemento del DOM) y haga que cada vez que se haga clic en él, se incremente y muestre un número empezando desde 0.\n\nEjemplo de uso:\n```html\n<button id=\"miBoton\">Clics: 0</button>\n<script>\n  const btn = document.getElementById('miBoton');\n  crearContador(btn);\n</script>\n```",
+      "back": "```javascript\nfunction crearContador(boton) {\n  let contador = 0;\n  boton.textContent = 'Clics: 0';\n  \n  boton.addEventListener('click', function() {\n    contador++;\n    this.textContent = 'Clics: ' + contador;\n  });\n}\n\n// Versión con arrow function (no usar this):\nfunction crearContador(boton) {\n  let contador = 0;\n  const actualizar = () => {\n    contador++;\n    boton.textContent = 'Clics: ' + contador;\n  };\n  boton.addEventListener('click', actualizar);\n  boton.textContent = 'Clics: 0';\n}\n```\n\n**Explicación:**\n- La variable `contador` se mantiene en un **closure** — la función callback \"recuerda\" su valor entre clics\n- No es variable global, está encapsulada dentro de `crearContador`\n- Con `function` normal, `this` es el elemento del evento\n- Con arrow function, no hay `this` propio, hay que usar la referencia `boton` del closure",
+      "tags": [
+        "dwec",
+        "eventos",
+        "dom",
+        "closure",
+        "funciones"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-ed-057",
+      "front": "(DWEC — EAC3 / DOM) Escribe una función llamada **intercambiarClases** que reciba un elemento del DOM y dos nombres de clase CSS, y las intercambie: si tiene la primera, la quita y pone la segunda, y viceversa.\n\nEjemplo de uso:\n```html\n<div id=\"caja\" class=\"rojo\"></div>\n<script>\n  intercambiarClases(document.getElementById('caja'), 'rojo', 'azul');\n  // Ahora la caja tiene class=\"azul\"\n</script>\n```",
+      "back": "```javascript\nfunction intercambiarClases(elemento, claseA, claseB) {\n  if (elemento.classList.contains(claseA)) {\n    elemento.classList.remove(claseA);\n    elemento.classList.add(claseB);\n  } else if (elemento.classList.contains(claseB)) {\n    elemento.classList.remove(claseB);\n    elemento.classList.add(claseA);\n  } else {\n    // Si no tiene ninguna, ponemos la primera por defecto\n    elemento.classList.add(claseA);\n  }\n}\n\n// Versión más compacta con toggle:\nfunction intercambiarClases(elemento, claseA, claseB) {\n  if (elemento.classList.contains(claseA)) {\n    elemento.classList.replace(claseA, claseB);\n  } else if (elemento.classList.contains(claseB)) {\n    elemento.classList.replace(claseB, claseA);\n  } else {\n    elemento.classList.add(claseA);\n  }\n}\n```\n\n**Explicación:**\n- `classList.contains()` comprueba si una clase existe\n- `classList.remove()` / `add()` quitan y ponen clases\n- `classList.replace()` (método moderno) intercambia directamente\n- El `else` maneja el caso inicial: si no tiene ninguna clase, se asigna la primera",
+      "tags": [
+        "dwec",
+        "dom",
+        "classList",
+        "funciones"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-ed-058",
+      "front": "(DWEC — EAC3 / localStorage) Escribe una función llamada **guardarPreferencia** que reciba una clave y un valor, los guarde en localStorage, y devuelva el valor guardado. Luego escribe otra función **cargarPreferencia** que reciba una clave y devuelva el valor, o `null` si no existe.\n\nEjemplo de uso:\n```javascript\nguardarPreferencia('tema', 'oscuro');\nconsole.log(cargarPreferencia('tema'));  // \"oscuro\"\nconsole.log(cargarPreferencia('inexistente'));  // null\n```",
+      "back": "```javascript\nfunction guardarPreferencia(clave, valor) {\n  try {\n    const valorStr = JSON.stringify(valor);\n    localStorage.setItem(clave, valorStr);\n    return valor;\n  } catch (error) {\n    console.error('Error al guardar:', error);\n    return null;\n  }\n}\n\nfunction cargarPreferencia(clave) {\n  try {\n    const valorStr = localStorage.getItem(clave);\n    if (valorStr === null) return null;\n    return JSON.parse(valorStr);\n  } catch (error) {\n    console.error('Error al cargar:', error);\n    return null;\n  }\n}\n```\n\n**Explicación:**\n- `localStorage` solo guarda strings, por eso usamos `JSON.stringify()` y `JSON.parse()`\n- El `try/catch` maneja errores: localStorage lleno (quota excedida), datos corruptos, etc.\n- `getItem()` devuelve `null` si la clave no existe\n- Con `JSON.stringify()` podemos guardar objetos, arrays, números... no solo strings\n\n```javascript\n// Ejemplo guardando un objeto:\nguardarPreferencia('usuario', { nombre: 'Pablo', edad: 25 });\nconst user = cargarPreferencia('usuario');\nconsole.log(user.nombre);  // \"Pablo\"\n```",
+      "tags": [
+        "dwec",
+        "localstorage",
+        "json",
+        "persistencia",
+        "funciones"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-ed-059",
+      "front": "(DWEC — EAC1 / JS / Testing) Dada la siguiente clase (función constructora) en JavaScript:\n\n```javascript\nfunction Calculadora() {}\n\nCalculadora.prototype.sumar = function(a, b) {\n  return a + b;\n};\n\nCalculadora.prototype.dividir = function(a, b) {\n  return a / b;\n};\n```\n\nEscribe una función **testearCalculadora** que pruebe:\n1. Que `sumar(2, 3)` devuelve 5\n2. Que `sumar(-1, 1)` devuelve 0\n3. Que `dividir(10, 2)` devuelve 5\n4. Que `dividir(5, 0)` devuelve `Infinity` (JavaScript no lanza excepción, simplemente devuelve Infinity)\n\nUsa `console.assert()` o `try/catch` con `console.error()` para mostrar qué tests pasan y cuáles fallan.",
+      "back": "```javascript\nfunction Calculadora() {}\n\nCalculadora.prototype.sumar = function(a, b) {\n  return a + b;\n};\n\nCalculadora.prototype.dividir = function(a, b) {\n  return a / b;\n};\n\n// Versión con clase moderna ES6:\nclass Calculadora {\n  sumar(a, b) { return a + b; }\n  dividir(a, b) { return a / b; }\n}\n\n// --- Tests ---\n\nfunction testearCalculadora() {\n  const calc = new Calculadora();\n  let pasados = 0;\n  let fallados = 0;\n\n  // Helper para ejecutar un test\n  function test(nombre, resultadoEsperado, fn) {\n    try {\n      const resultado = fn();\n      if (resultado === resultadoEsperado) {\n        console.log('✅ PASS - ' + nombre);\n        pasados++;\n      } else {\n        console.error('❌ FAIL - ' + nombre);\n        console.error('   Esperado: ' + resultadoEsperado + ', Obtenido: ' + resultado);\n        fallados++;\n      }\n    } catch (error) {\n      console.error('❌ ERROR - ' + nombre);\n      console.error('   Excepción: ' + error.message);\n      fallados++;\n    }\n  }\n\n  // Test 1: sumar(2, 3) = 5\n  test('sumar(2, 3) = 5', 5, () => calc.sumar(2, 3));\n\n  // Test 2: sumar(-1, 1) = 0\n  test('sumar(-1, 1) = 0', 0, () => calc.sumar(-1, 1));\n\n  // Test 3: dividir(10, 2) = 5\n  test('dividir(10, 2) = 5', 5, () => calc.dividir(10, 2));\n\n  // Test 4: dividir(5, 0) = Infinity\n  test('dividir(5, 0) = Infinity', Infinity, () => calc.dividir(5, 0));\n\n  // Resumen\n  console.log('---');\n  console.log(`Total: ${pasados + fallados} | ✅ ${pasados} | ❌ ${fallados}`);\n}\n\n// Ejecutar\ntestearCalculadora();\n\n// Versión más simple con console.assert:\nfunction testearCalculadoraSimple() {\n  const calc = new Calculadora();\n\n  console.assert(calc.sumar(2, 3) === 5, 'sumar(2, 3) debería ser 5');\n  console.assert(calc.sumar(-1, 1) === 0, 'sumar(-1, 1) debería ser 0');\n  console.assert(calc.dividir(10, 2) === 5, 'dividir(10, 2) debería ser 5');\n  console.assert(calc.dividir(5, 0) === Infinity, 'dividir(5, 0) debería ser Infinity');\n\n  console.log('Tests completados (revisa la consola para ver fallos)');\n}\n```\n\n**Diferencias clave con Java:**\n- **Java:** `5 / 0` lanza `ArithmeticException`. Hay que esperar la excepción con `assertThrows`\n- **JavaScript:** `5 / 0` devuelve `Infinity`. No hay excepción, se comprueba el valor\n- `console.assert()` es el equivalente más directo a `assertEquals()` pero solo muestra error si falla, no interrumpe el flujo\n- El patrón de la función  con helper\n   y contadores es un mini-test-runner casero,\n  similar a Jest pero sin dependencias externas. `testearCalculadora` con helper `test()` y contadores es un mini-test-runner casero, similar a cómo funciona JUnit por debajo",
+      "tags": [
+        "dwec",
+        "js",
+        "testing",
+        "funciones",
+        "calculadora"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-ed-060",
+      "front": "(DWEC — EAC3 / Fetch API) Escribe una función asíncrona llamada **obtenerUsuario** que reciba un ID de usuario, haga un fetch a `https://jsonplaceholder.typicode.com/users/{id}` y devuelva el objeto del usuario. Si la respuesta no es OK (status 200), debe lanzar un error con el mensaje \"Usuario no encontrado\".\n\nEjemplo de uso:\n```javascript\nasync function main() {\n  try {\n    const usuario = await obtenerUsuario(1);\n    console.log(usuario.name);  // \"Leanne Graham\"\n  } catch (error) {\n    console.error(error.message);\n  }\n}\n```",
+      "back": "```javascript\nasync function obtenerUsuario(id) {\n  const respuesta = await fetch(\n    `https://jsonplaceholder.typicode.com/users/${id}`\n  );\n\n  if (!respuesta.ok) {\n    throw new Error('Usuario no encontrado');\n  }\n\n  const datos = await respuesta.json();\n  return datos;\n}\n\n// Versión con manejo de errores de red (sin conexión):\nasync function obtenerUsuario(id) {\n  try {\n    const respuesta = await fetch(\n      `https://jsonplaceholder.typicode.com/users/${id}`\n    );\n\n    if (!respuesta.ok) {\n      throw new Error('Usuario no encontrado');\n    }\n\n    return await respuesta.json();\n  } catch (error) {\n    if (error instanceof TypeError) {\n      throw new Error('Error de red: comprueba tu conexión');\n    }\n    throw error;\n  }\n}\n\n// Uso con .then():\nfunction obtenerUsuario(id) {\n  return fetch(`https://jsonplaceholder.typicode.com/users/${id}`)\n    .then(resp => {\n      if (!resp.ok) throw new Error('Usuario no encontrado');\n      return resp.json();\n    });\n}\n```\n\n**Explicación:**\n- `async/await` hace el código asíncrono más legible\n- `respuesta.ok` es `true` para status 200-299\n- `throw new Error()` rechaza la promesa, quien llame debe capturarlo con `try/catch`\n- `respuesta.json()` también es asíncrono (devuelve una promesa)\n- Error de red (sin conexión) lanza `TypeError`, hay que diferenciarlo del error de HTTP",
+      "tags": [
+        "dwec",
+        "fetch",
+        "api",
+        "async-await",
+        "promesas"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-ed-061",
+      "front": "(DWEC — EAC3 / Express) Escribe una función (middleware) llamada **loggerRutas** que, cada vez que se haga una petición a un servidor Express, imprima en consola:\n```\n[HH:MM:SS] METODO /ruta\n```\nEjemplo de salida:\n```\n[14:30:45] GET /garage\n[14:30:46] POST /garage\n```\nLuego escribe cómo se usa con `app.use()`.",
+      "back": "```javascript\nfunction loggerRutas(req, res, next) {\n  const ahora = new Date();\n  const hora = [\n    ahora.getHours().toString().padStart(2, '0'),\n    ahora.getMinutes().toString().padStart(2, '0'),\n    ahora.getSeconds().toString().padStart(2, '0')\n  ].join(':');\n\n  console.log(`[${hora}] ${req.method} ${req.originalUrl}`);\n\n  next();  // Pasa al siguiente middleware o ruta\n}\n\n// Registrar el middleware antes de las rutas:\nconst express = require('express');\nconst app = express();\n\napp.use(loggerRutas);  // <-- Se ejecuta en CADA petición\n\napp.get('/garage', (req, res) => {\n  res.json({ mensaje: 'Lista de vehículos' });\n});\n```\n\n**Explicación:**\n- Un **middleware** en Express es una función con `(req, res, next)`\n- `req.method` → GET, POST, PUT, DELETE...\n- `req.originalUrl` → la ruta completa solicitada\n- `next()` es crucial: sin él, la petición se queda colgada\n- `.padStart(2, '0')` asegura formato HH:MM:SS con dos dígitos\n- El orden importa: `app.use(loggerRutas)` debe ir **antes** de las rutas para que se ejecute",
+      "tags": [
+        "dwec",
+        "express",
+        "middleware",
+        "logger",
+        "backend"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-ed-062",
+      "front": "(DWEC — EAC1 / JS) Escribe una función llamada **ordenarPalabras** que reciba una frase (string) y devuelva un array con las palabras ordenadas alfabéticamente, ignorando mayúsculas/minúsculas y signos de puntuación.\n\nEjemplo de uso:\n```javascript\nconsole.log(ordenarPalabras(\"Hola, mundo! Esto es una prueba.\"));\n// Debería mostrar: [\"es\", \"Esto\", \"Hola\", \"mundo\", \"prueba\", \"una\"]\n```\n\n**Pista:** Usa `.split()`, `.replace()` con regex, y `.sort()`.",
+      "back": "```javascript\nfunction ordenarPalabras(frase) {\n  // 1. Quitar signos de puntuación (,, !, ., ?)\n  const limpia = frase.replace(/[,.!?;:]/g, '');\n\n  // 2. Dividir en palabras por espacios\n  const palabras = limpia.split(/\\s+/).filter(p => p.length > 0);\n\n  // 3. Ordenar alfabéticamente ignorando mayúsculas\n  palabras.sort((a, b) => {\n    return a.toLowerCase().localeCompare(b.toLowerCase());\n  });\n\n  return palabras;\n}\n```\n\n**Explicación:**\n- `replace(/[,.!?;:]/g, '')` elimina signos de puntuación con regex (la `g` es global)\n- `split(/\\s+/)` divide por uno o más espacios (maneja dobles espacios)\n- `.filter(p => p.length > 0)` elimina strings vacíos por si acaso\n- `sort()` necesita comparador personalizado porque por defecto ordena como strings (UTF-16)\n- `localeCompare()` compara strings según el idioma (ñ, acentos, etc.)\n- Sin `toLowerCase()`, \"Zebra\" iría antes que \"abc\" (por el código ASCII de mayúsculas)",
+      "tags": [
+        "dwec",
+        "js",
+        "strings",
+        "regex",
+        "sort",
+        "funciones"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-ed-063",
+      "front": "(DWEC — EAC1 / JS) Escribe una **calculadora** combinando varias funciones:\n\n1. Crea las funciones `sumar(a, b)`, `restar(a, b)`, `multiplicar(a, b)` y `dividir(a, b)`\n2. Crea una función **calculadora(operacion, a, b)** que reciba el nombre de la operación como string (`\"sumar\"`, `\"restar\"`, etc.) y llame a la función correspondiente. Si la operación no existe, devuelve `\"Operación no válida\"`.\n\nEjemplo de uso:\n```javascript\nconsole.log(calculadora('sumar', 10, 5));       // 15\nconsole.log(calculadora('dividir', 10, 2));     // 5\nconsole.log(calculadora('dividir', 10, 0));     // \"Error: división por cero\"\nconsole.log(calculadora('potencia', 2, 3));     // \"Operación no válida\"\n```",
+      "back": "```javascript\n// 1. Funciones individuales\nfunction sumar(a, b) {\n  return a + b;\n}\n\nfunction restar(a, b) {\n  return a - b;\n}\n\nfunction multiplicar(a, b) {\n  return a * b;\n}\n\nfunction dividir(a, b) {\n  if (b === 0) {\n    return 'Error: división por cero';\n  }\n  return a / b;\n}\n\n// 2. Función calculadora que las une\nfunction calculadora(operacion, a, b) {\n  if (operacion === 'sumar') {\n    return sumar(a, b);\n  } else if (operacion === 'restar') {\n    return restar(a, b);\n  } else if (operacion === 'multiplicar') {\n    return multiplicar(a, b);\n  } else if (operacion === 'dividir') {\n    return dividir(a, b);\n  } else {\n    return 'Operación no válida';\n  }\n}\n\n// Versión con objeto (más elegante):\nconst operaciones = {\n  sumar: (a, b) => a + b,\n  restar: (a, b) => a - b,\n  multiplicar: (a, b) => a * b,\n  dividir: (a, b) => b === 0 ? 'Error: división por cero' : a / b\n};\n\nfunction calculadora(operacion, a, b) {\n  if (operaciones[operacion]) {\n    return operaciones[operacion](a, b);\n  }\n  return 'Operación no válida';\n}\n```\n\n**Explicación:**\n- **Separación de responsabilidades:** cada operación es una función independiente, fácil de probar y mantener\n- **Versión con if/else:** clara y directa, buena para empezar\n- **Versión con objeto:** más elegante y escalable.\n  Para añadir una nueva operación solo hay que agregarla\n  al objeto , sin tocar la lógica de\n  . más elegante y escalable. Para añadir una nueva operación solo hay que agregarla al objeto `operaciones`, sin tocar la lógica de `calculadora()`\n- **Manejo de errores:** `dividir` comprueba si `b === 0` antes de operar\n- **Caso por defecto:** si la operación no está en el objeto, devuelve mensaje de error",
+      "tags": [
+        "dwec",
+        "js",
+        "funciones",
+        "objetos",
+        "modularizacion"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-ed-064",
+      "front": "(DWEC — EAC1 / TypeScript) Escribe la misma calculadora de la card anterior pero ahora en **TypeScript**, añadiendo tipos a todo:\n\n1. Crea las funciones `sumar(a, b)`, `restar(a, b)`, `multiplicar(a, b)` y `dividir(a, b)` con tipos en los parámetros y el retorno\n2. Crea una función **calculadora(operacion, a, b)** que use un tipo `Operacion` (union type: `\"sumar\" | \"restar\" | \"multiplicar\" | \"dividir\"`) y el objeto `operaciones` tipado\n\nEjemplo de uso:\n```typescript\nconsole.log(calculadora('sumar', 10, 5));       // 15\nconsole.log(calculadora('dividir', 10, 0));     // \"Error: división por cero\"\nconsole.log(calculadora('potencia', 2, 3));     // Error de TypeScript en compilación\n```",
+      "back": "```typescript\n// 1. Funciones individuales con tipos\nfunction sumar(a: number, b: number): number {\n  return a + b;\n}\n\nfunction restar(a: number, b: number): number {\n  return a - b;\n}\n\nfunction multiplicar(a: number, b: number): number {\n  return a * b;\n}\n\nfunction dividir(a: number, b: number): number | string {\n  if (b === 0) {\n    return 'Error: división por cero';\n  }\n  return a / b;\n}\n\n// 2. Tipo Operacion (union type)\ntype Operacion = 'sumar' | 'restar' | 'multiplicar' | 'dividir';\n\n// 3. Objeto tipado con Record<>\nconst operaciones: Record<Operacion, (a: number, b: number) => number | string> = {\n  sumar: (a, b) => a + b,\n  restar: (a, b) => a - b,\n  multiplicar: (a, b) => a * b,\n  dividir: (a, b) => b === 0 ? 'Error: división por cero' : a / b,\n};\n\n// 4. Calculadora tipada\nfunction calculadora(operacion: Operacion, a: number, b: number): number | string {\n  return operaciones[operacion](a, b);\n}\n\n// Uso\nconsole.log(calculadora('sumar', 10, 5));       // 15\n// ❌ Error en compilación: 'potencia' no es de tipo Operacion\n// console.log(calculadora('potencia', 2, 3));\n```\n\n**Diferencias con JavaScript:**\n- **`type Operacion`** — union type que restringe los valores posibles. `'potencia'` da error de compilación, no hace falta comprobarlo en runtime\n- **`Record<K, V>`** — tipo para objetos donde todas las claves son del mismo tipo y todos los valores del mismo tipo\n- **`number | string`** — union type en el retorno de `dividir` y `calculadora` porque pueden devolver número o mensaje de error\n- **Parámetros tipados** — `a: number, b: number` evita errores como pasar strings\n- **Ventaja:** el error de operación no válida se detecta en\n  **compilación**, no en ejecución. En JS tenías que devolver\n  \"Operación no válida\" como string; en TS el compilador no\n  te deja escribir . de operación no válida se detecta en **compilación**, no en ejecución. En JS tenías que devolver \"Operación no válida\" como string; en TS el compilador no te deja escribir `'potencia'`",
+      "tags": [
+        "dwec",
+        "typescript",
+        "funciones",
+        "tipos",
+        "union-types"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-ed-065",
+      "front": "(DWEC — EAC3 / Refactorización) Dado este código JavaScript:\n\n```javascript\nfunction calcularPrecioFinal(cantidad) {\n    let precio = cantidad * 19.99;\n    let impuesto = precio * 0.21;\n    let envio = 0;\n    if (precio < 50) {\n        envio = 4.99;\n    }\n    return precio + impuesto + envio;\n}\n```\n\n¿Qué técnicas de refactorización aplicarías? Nómbralas y muestra el código refactorizado.",
+      "back": "**Técnicas de refactorización:**\n\n1. **Extraer constantes**: reemplazar números mágicos con constantes con nombre\n2. **Extraer método/función**: separar responsabilidades en funciones más pequeñas\n\n**Código refactorizado (módulo ES6):**\n```javascript\nconst PRECIO_UNITARIO = 19.99;\nconst IVA = 0.21;\nconst UMBRAL_ENVIO_GRATIS = 50;\nconst COSTE_ENVIO = 4.99;\n\nfunction calcularPrecioBase(cantidad) {\n    return cantidad * PRECIO_UNITARIO;\n}\n\nfunction calcularIVA(precio) {\n    return precio * IVA;\n}\n\nfunction calcularEnvio(precio) {\n    return precio < UMBRAL_ENVIO_GRATIS ? COSTE_ENVIO : 0;\n}\n\nfunction calcularPrecioFinal(cantidad) {\n    const precio = calcularPrecioBase(cantidad);\n    const impuesto = calcularIVA(precio);\n    const envio = calcularEnvio(precio);\n    return precio + impuesto + envio;\n}\n```\n\n**Regla de oro:** la refactorización NO altera el comportamiento externo.\n\n**Explicación:**\n- `const` en vez de `let` para valores que no cambian — más seguro\n- Cada función tiene una única responsabilidad: calcularPrecioBase, calcularIVA, calcularEnvio\n- Si cambia el IVA, solo se modifica una línea\n- Las constantes al inicio del módulo son fáciles de localizar y modificar",
+      "tags": [
+        "dwec",
+        "refactorizacion",
+        "clean-code",
+        "javascript",
+        "constantes"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-ed-066",
+      "front": "(DWEC — EAC3 / Refactorización) Dado este código TypeScript:\n\n```typescript\nfunction calcularPrecioFinal(cantidad: number): number {\n    let precio = cantidad * 19.99;\n    let impuesto = precio * 0.21;\n    let envio = 0;\n    if (precio < 50) {\n        envio = 4.99;\n    }\n    return precio + impuesto + envio;\n}\n```\n\n¿Qué técnicas de refactorización aplicarías? Nómbralas y muestra el código refactorizado prestando atención a los tipos.",
+      "back": "**Técnicas de refactorización:**\n\n1. **Extraer constantes** con `as const` / `readonly`\n2. **Extraer método** separando responsabilidades\n3. **Tipar correctamente** los retornos de cada función\n\n**Código refactorizado:**\n```typescript\nconst PRECIO_UNITARIO = 19.99;\nconst IVA = 0.21;\nconst UMBRAL_ENVIO_GRATIS = 50;\nconst COSTE_ENVIO = 4.99;\n\nfunction calcularPrecioBase(cantidad: number): number {\n    return cantidad * PRECIO_UNITARIO;\n}\n\nfunction calcularIVA(precio: number): number {\n    return precio * IVA;\n}\n\nfunction calcularEnvio(precio: number): number {\n    return precio < UMBRAL_ENVIO_GRATIS ? COSTE_ENVIO : 0;\n}\n\nfunction calcularPrecioFinal(cantidad: number): number {\n    const precio = calcularPrecioBase(cantidad);\n    const impuesto = calcularIVA(precio);\n    const envio = calcularEnvio(precio);\n    return precio + impuesto + envio;\n}\n```\n\n**Regla de oro:** la refactorización NO altera el comportamiento externo.\n\n**Explicación de tipos:**\n- `const` en TS infiere tipos literales (`19.99` es de tipo `19.99`, no `number`)\n- `cantidad: number` — el parámetro de entrada está tipado\n- Cada función devuelve `: number` — TypeScript comprueba que el retorno sea correcto\n- Si alguien pasa `calcularPrecioBase(\"5\")` (string), el compilador da error antes de ejecutar\n- Con `as const` se podrían hacer las constantes inmutables en tiempo de tipo:\n  ```typescript\n  const PRECIO_UNITARIO = 19.99 as const;\n  ```\n- `calcularEnvio` usa `?:` (operador ternario) que siempre devuelve `number` — consistente con el tipo de retorno\n\n**Diferencia con JS:** en JS los errores de tipo solo se ven en ejecución; en TS se ven en compilación.",
+      "tags": [
+        "dwec",
+        "refactorizacion",
+        "clean-code",
+        "typescript",
+        "tipado-estatico"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-si-001",
+      "front": "(SI — EAC1 / Placa base) Identifica los conectores externos de una placa base y su funcion: PS/2 teclado, PS/2 raton, S/PDIF optico, USB, audio 3.5mm, RJ-45, eSATA, FireWire, S/PDIF coaxial.",
+      "back": "A) PS/2 teclado (morado)\nB) PS/2 raton (verde)\nC) S/PDIF optico TOSLINK: audio digital por fibra\nD) USB: perifericos universales\nE) Audio 3.5mm: auriculares, micro, altavoces\nF) RJ-45: Ethernet hasta 10Gbps\nG) eSATA: discos externos\nH) FireWire IEEE 1394: multimedia\nI) S/PDIF coaxial: audio digital por cable RCA",
+      "tags": [
+        "si",
+        "hardware",
+        "placa-base",
+        "conectores",
+        "eac1"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-si-002",
+      "front": "(SI — EAC1 / SSD vs HDD) Compara SSD y HDD: funcionamiento interno, diferencias de velocidad, situacion real donde se note la mejora.",
+      "back": "HDD: platos magneticos giratorios (4200-7200 RPM), cabezal mecanico. Latencia de ms.\nSSD: memoria flash NAND, sin partes moviles. Latencia de us.\n\nSSD es ~1000x mas rapido en acceso aleatorio.\n\nEjemplo real: arranque del SO. SSD: 10-15s. HDD: 45-90s. Tambien en VM, compilacion, muchos archivos pequenos.",
+      "tags": [
+        "si",
+        "hardware",
+        "ssd",
+        "hdd",
+        "almacenamiento",
+        "eac1"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "pd-si-003",
+      "front": "(SI — EAC1 / BIOS+MBR vs UEFI+GPT) PC con dual-boot Windows+Linux, NVMe 2TB, Legacy BIOS + MBR. Solo arranca un SO. Explica:\na) Limitaciones\nb) Diferencias BIOS/MBR vs UEFI/GPT\nc) Procedimiento dual-boot moderno",
+      "back": "a) MBR: max 2TB, 4 particiones primarias. Legacy no aprovecha NVMe.\n\nb) BIOS/MBR: antiguo, limites 2TB/4 particiones.\nUEFI/GPT: >2TB, 128+ particiones, soporta NVMe, arranque EFI.\n\nc) Procedimiento:\n1. Backup\n2. Modo UEFI, desactivar CSM\n3. Disco GPT\n4. Instalar Windows primero en UEFI\n5. Instalar Linux en UEFI, reusar EFI partition\n6. Verificar boot manager",
+      "tags": [
+        "si",
+        "bios",
+        "uefi",
+        "mbr",
+        "gpt",
+        "dual-boot",
+        "eac1"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-si-004",
+      "front": "(SI — EAC1 / PSU y refrigeracion) PC gaming CPU 125W+GPU 350W se reinicia. Fuente 550W, refrigeracion aire, caja compacta.\na) Problema?\nb) Thermal throttling?\nc) Dimensionado correcto?",
+      "back": "a) Ambos: PSU 550W insuficiente (CPU+GPU=475W + resto). Caja compacta + refrigeracion basica causan sobrecalentamiento.\n\nb) Thermal throttling: reduccion de frecuencia ante temperaturas criticas para proteger hardware. Baja el rendimiento notablemente.\n\nc) Fuente 750-850W calidad. Caja con buen flujo. Refrigeracion acorde al TDP. Mantenimiento: limpieza, pasta termica.",
+      "tags": [
+        "si",
+        "hardware",
+        "psu",
+        "refrigeracion",
+        "thermal-throttling",
+        "eac1"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-si-005",
+      "front": "(SI — EAC1 / SRAM vs DRAM) Elegir entre SRAM y DRAM para servidor.\na) Ventajas y desventajas\nb) Frecuencia de refresco\nc) Otros componentes a evaluar",
+      "back": "a) SRAM: rapida, sin refresco, cara, poca capacidad. Uso: cache L1-L3.\nDRAM: mas capacidad, menor coste/GB, necesita refresco. Uso: RAM principal.\n\nb) La frecuencia de refresco en DRAM crea sobrecarga gestionada por hardware. Memoria inestable -> errores.\n\nc) Memoria ECC, canales, controlador, CPU, caches, ancho de banda del bus, equilibrio del sistema.",
+      "tags": [
+        "si",
+        "hardware",
+        "sram",
+        "dram",
+        "memoria",
+        "servidor",
+        "eac1"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "pd-si-006",
+      "front": "(SI — EAC1 / PCIe bottleneck) PC con GPU PCIe 5.0, SSD NVMe 5.0, 2o SSD NVMe 4.0, 10GbE, USB4. Al transferir de SSD2+USB4+red simultaneamente, rendimiento cae.\na) Problema arquitectura CPU-chipset?\nb) Carriles PCIe compartidos?\nc) Optimizacion?",
+      "back": "a) Dispositivos de alto ancho de banda cuelgan del PCH y comparten enlace DMI a CPU. Cuando coinciden transferencias, el enlace se satura.\n\nb) Algunos puertos comparten carriles PCIe. No todos tienen lineas exclusivas a CPU. Ej: ranura x16 -> x8 si otra esta ocupada.\n\nc) Conectar GPU y SSD principal a carriles directos de CPU. Revisar manual de placa. Distribuir USB4 y red. Placa con mas carriles.",
+      "tags": [
+        "si",
+        "hardware",
+        "pcie",
+        "bottleneck",
+        "chipset",
+        "eac1"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "pd-si-007",
+      "front": "(SI — EAC1 / Topologia de red) Diagrama: router conectado a switch, switch a varios equipos + wifi.\na) Router, switch y equipos finales?\nb) Tipo de topologia?",
+      "back": "a) Router: conecta redes distintas, enruta trafico.\nSwitch: conecta equipos en LAN cableada.\nEquipos finales: servidores, PCs, portatiles.\n\nb) Estrella extendida (arbol).\n- Switch como centro de LAN (estrella).\n- Router conecta segmentos: LAN + wifi + otros.\n- Jerarquia: router -> switch -> equipos.",
+      "tags": [
+        "si",
+        "redes",
+        "topologia",
+        "router",
+        "switch",
+        "eac1"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-si-008",
+      "front": "(SI — EAC1 / Ergonomia) Riesgos ergonomicos en puesto informatico y correcciones.",
+      "back": "Posicion correcta:\n1. Pantalla: frente, 50-70cm, borde superior a ojos.\n2. Espalda recta apoyada, cuello sin inclinar.\n3. Codos 90°, munecas neutras.\n4. Silla con apoyo lumbar regulable.\n5. Rato y teclado cerca, misma altura.\n6. Rodillas 90°, espacio bajo mesa.\n7. Pies apoyados.\n\nRiesgos: fatiga cervical, sobrecarga hombros, lumbar, circulatorio.",
+      "tags": [
+        "si",
+        "ergonomia",
+        "prevencion",
+        "riesgos-laborales",
+        "eac1"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-si-009",
+      "front": "(SI — EAC1 / Kernel y SO) Enumera las funciones principales de un SO. Que papel juega el kernel?",
+      "back": "Funciones del SO:\n1. Kernel: orquesta HW-SW. Gestiona CPU, memoria, dispositivos.\n2. Interfaz de usuario (GUI/CLI).\n3. Sistema de ficheros.\n4. Multitarea.\n5. Memoria virtual.\n6. Drivers.\n7. Actualizaciones.\n8. Admin de procesos.\n9. API.",
+      "tags": [
+        "si",
+        "so",
+        "kernel",
+        "sistema-operativo",
+        "eac1"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "pd-si-010",
+      "front": "(SI — EAC2 / Particiones MBR) Particionado con fdisk y MBR. Tipos de particiones. Por que usar extendida si necesitas >4 particiones? Limitaciones de MBR.",
+      "back": "Tipos: primarias (hasta 4), extendida (contenedor, solo 1), logicas (dentro de extendida).\nMBR tabla: 64 bytes = 4 entradas x 16 bytes. Para 5+ particiones: 3 primarias + 1 extendida + N logicas.\n\nLimitaciones MBR:\n- Max 2TB (32 bits)\n- Max 4 primarias\n- Sin redundancia\n- No diferencia BIOS/UEFI",
+      "tags": [
+        "si",
+        "particiones",
+        "mbr",
+        "fdisk",
+        "eac2"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-si-011",
+      "front": "(SI — EAC2 / GPT) Particionado con gdisk y GPT. Ventajas sobre MBR.",
+      "back": "gdisk: version de fdisk para GPT.\n\nVentajas GPT:\n- Discos >2TB (64 bits)\n- 128+ particiones primarias\n- Tabla redundante (copia al final)\n- CRC32 contra corruption\n- Compatible UEFI\n\nProcedimiento:\nsudo gdisk /dev/sdX\no (nueva tabla GPT)\nn (particion, +2G, 8300)\nw (escribir)\nVerificar: lsblk",
+      "tags": [
+        "si",
+        "particiones",
+        "gpt",
+        "gdisk",
+        "eac2"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-si-012",
+      "front": "(SI — EAC2 / Formateo y montaje) Explica:\na) Formatear ext4 y montar en /mnt/ioc/ext4 RW\nb) NTFS y montar solo lectura\nc) Configurar swap",
+      "back": "a) ext4 RW:\nsudo mkfs.ext4 /dev/sdX1\nsudo mkdir -p /mnt/ioc/ext4\nsudo mount /dev/sdX1 /mnt/ioc/ext4\n\nb) NTFS RO:\nsudo mount -t ntfs -o ro /dev/sdX2 /mnt/ioc/ntfs\n\nc) Swap:\nsudo mkswap /dev/sdX3\nsudo swapon /dev/sdX3\n\nPermanente en /etc/fstab:\n/dev/sdX1 /mnt/ioc/ext4 ext4 defaults 0 2\n/dev/sdX3 none swap sw 0 0",
+      "tags": [
+        "si",
+        "formateo",
+        "montaje",
+        "ext4",
+        "ntfs",
+        "swap",
+        "fstab",
+        "eac2"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-si-013",
+      "front": "(SI — EAC2 / RAID 1) Configurar RAID 1 (mirror) con mdadm. Diferencia con RAID 0.",
+      "back": "RAID 1 con mdadm:\nsudo mdadm --create /dev/md0 --level=1 --raid-devices=2 /dev/sdX1 /dev/sdY1\nsudo mkfs.ext4 /dev/md0\nsudo mount /dev/md0 /mnt/raid1\nsudo mdadm --detail --scan | tee -a /etc/mdadm/mdadm.conf\n\nRAID 0 (striping): datos divididos, mas velocidad, SIN redundancia.\nRAID 1 (mirror): datos duplicados, redundancia total.\n\nVerificar: cat /proc/mdstat",
+      "tags": [
+        "si",
+        "raid",
+        "mdadm",
+        "redundancia",
+        "almacenamiento",
+        "eac2"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "pd-si-014",
+      "front": "(SI — EAC2 / LVM) Concepto de LVM. Ventajas sobre particiones tradicionales. Componentes: PV, VG, LV.",
+      "back": "LVM: abstrae espacio fisico en volumenes logicos flexibles.\n\nPV (Physical Volume): disco/particion. pvcreate /dev/sdX1\nVG (Volume Group): pool de PVs. vgcreate mi_vg /dev/sdX1 /dev/sdY1\nLV (Logical Volume): volumen logico. lvcreate -L 10G -n mi_lv mi_vg\n\nVentajas:\n- Redimensionar sin desmontar\n- Agregar discos al pool sin reformatear\n- Snapshots\n- Migrar datos sin interrupcion\n- Volumenes > disco fisico",
+      "tags": [
+        "si",
+        "lvm",
+        "almacenamiento",
+        "pv",
+        "vg",
+        "lv",
+        "eac2"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "pd-si-015",
+      "front": "(SI — EAC2 / Cuotas de disco) Configurar cuotas en Linux. Limites soft, hard, grace period.",
+      "back": "sudo apt install quota\n/etc/fstab: usrquota,grpquota\nsudo mount -o remount /home\nsudo quotacheck -cug /home\nsudo edquota -u usuario\nsudo quotaon /home\n\nVerificar: quota -u usuario | sudo repquota /home\n\nSoft: umbral aviso. Hard: maximo absoluto. Grace: tiempo para bajar del soft.",
+      "tags": [
+        "si",
+        "cuotas",
+        "quota",
+        "almacenamiento",
+        "eac2"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "pd-si-016",
+      "front": "(SI — EAC2 / Systemd) Gestion de servicios con systemctl. Diferencias: start, stop, enable, disable, mask, status. Ubicacion de unidades.",
+      "back": "systemctl start/stop: inmediato, no persiste.\nenable/disable: arranque automatico.\nmask: bloquea totalmente (enlace a /dev/null).\nstatus: PID, logs, active/enabled.\n\nArchivos de unidad:\n/etc/systemd/system/ (admin)\n/lib/systemd/system/ (paquetes)\n/run/systemd/system/ (runtime)\n\nLogs: journalctl -u servicio",
+      "tags": [
+        "si",
+        "systemd",
+        "systemctl",
+        "servicios",
+        "eac2"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-si-017",
+      "front": "(SI — EAC3 / ARP) Direcciones MAC y tabla ARP. ARP dinamico vs estatico. ARP spoofing.",
+      "back": "Ver MAC: ipconfig /all (Win), ip link show (Linux).\nTabla ARP: asocia IP a MAC. arp -a para verla.\nEstados: STALE (obsoleto), REACHABLE (activo).\n\nARP dinamico: automatico, temporal.\nARP estatico: manual, permanente. Evita spoofing.\n\nARP spoofing: atacante envia respuestas ARP falsas asociando su MAC a IP de otro (Man-in-the-Middle). Prevencion: ARP estatico.",
+      "tags": [
+        "si",
+        "redes",
+        "arp",
+        "mac",
+        "seguridad",
+        "eac3"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-si-018",
+      "front": "(SI — EAC3 / Windows Server + AD) Instalar y promover Windows Server 2019 a DC. Que es un forest y un tree en AD?",
+      "back": "Pasos:\n1. Instalar WS2019 en VM.\n2. IP fija + nombre.\n3. Rol AD DS.\n4. Promover: nuevo forest, dominio: eac3.usuario.home.\n5. DSRM password. Reiniciar.\n\nForest: contenedor logico principal. Varios trees.\nTree: conjunto de dominios con namespace contiguo.\n\nVerificar: dcdiag, netdom query fsmo.",
+      "tags": [
+        "si",
+        "windows-server",
+        "active-directory",
+        "dominio",
+        "eac3"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "pd-si-019",
+      "front": "(SI — EAC3 / DNS) Tipos de registros DNS. Zona directa vs inversa. Comandos PowerShell para crear registros A, PTR, CNAME.",
+      "back": "Registros: A (IPv4), AAAA (IPv6), PTR (inversa), CNAME (alias), MX (correo), NS (servidor).\nZona directa: nombre -> IP. Zona inversa: IP -> nombre.\n\nPowerShell:\nAdd-DnsServerResourceRecordA -Name servidor -ZoneName dominio.home -IPv4Address 192.168.1.10\nAdd-DnsServerResourceRecordPtr -Name 10 -ZoneName 1.168.192.in-addr.arpa -PtrDomainName servidor.dominio.home\nAdd-DnsServerResourceRecordCName -Name www -HostNameAlias servidor.dominio.home -ZoneName dominio.home",
+      "tags": [
+        "si",
+        "dns",
+        "registros",
+        "powershell",
+        "eac3"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "pd-si-020",
+      "front": "(SI — EAC3 / AD usuarios y grupos) Crear grupos y usuarios en AD, asignar permisos NTFS: bibliotecario control total, usuario solo lectura.",
+      "back": "Crear grupos (AD Users and Computers): bibliotecario, usuario.\nCrear usuarios: Marti (bibliotecario), Jana (usuario).\n\nPermisos NTFS:\n1. Crear archivo.\n2. Propiedades > Seguridad > Editar.\n3. Anyadir grupo bibliotecario > Control total.\n4. Anyadir grupo usuario > Leer.\n5. Aplicar.\n\nPermiso efectivo: combinacion de NTFS + recurso compartido. Se aplica el mas restrictivo.",
+      "tags": [
+        "si",
+        "active-directory",
+        "usuarios",
+        "grupos",
+        "ntfs",
+        "eac3"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-si-021",
+      "front": "(SI — EAC3 / Unir Windows 11 al dominio) Pasos para unir un cliente W11 a un dominio AD.",
+      "back": "1. IP compatible con red del servidor.\n2. Nombre del equipo.\n3. DNS apuntando al servidor.\n4. Configuracion > Cuentas > Acceso laboral.\n5. Unir a dominio AD local.\n6. Dominio: eac3.usuario.home.\n7. Autenticar con admin del dominio.\n8. Verificar en AD: Computers.\n\nProblemas comunes: DNS mal, firewall (389, 88), fecha/hora desync.",
+      "tags": [
+        "si",
+        "windows-11",
+        "dominio",
+        "active-directory",
+        "eac3"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-si-022",
+      "front": "(SI — EAC3 / Samba) Configurar Samba en Ubuntu para compartir carpetas con Windows. SMB/CIFS. Permisos por grupo.",
+      "back": "sudo apt install samba\nsudo systemctl status smbd\n\n/etc/samba/smb.conf:\n[imagenes]\npath = /srv/samba/imagenes\nguest ok = yes\n\n[documentos]\npath = /srv/samba/documentos\nvalid users = @bibliotecario\n\nPermisos:\nsudo groupadd bibliotecario\nsudo chown -R :bibliotecario /srv/samba/documentos\nsudo chmod 775 /srv/samba/documentos\n\nAcceso desde Windows: \\\\ip-ubuntu\\compartido\n\nSMB/CIFS: protocolo de red para compartir archivos. Samba lo implementa en Linux.",
+      "tags": [
+        "si",
+        "samba",
+        "smb",
+        "compartir",
+        "ubuntu",
+        "eac3"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "pd-si-023",
+      "front": "(SI — EAC3 / SSH y SFTP) Configurar OpenSSH en Ubuntu. Puerto 22. Autenticacion por clave publica vs password. Transferencia SFTP. Seguridad.",
+      "back": "sudo apt install openssh-server\nsudo systemctl status ssh (puerto 22)\n\nConectar: ssh usuario@ip\n\nClave publica:\nssh-keygen -t rsa -b 4096 (cliente)\nssh-copy-id usuario@ip (copiar clave)\nVentaja: mas seguro, sin password cada vez.\n\nSFTP:\nsftp usuario@ip\nget/put archivo\n\nSeguridad:\nPermitRootLogin no en /etc/ssh/sshd_config\nsudo systemctl restart sshd",
+      "tags": [
+        "si",
+        "ssh",
+        "sftp",
+        "remoto",
+        "seguridad",
+        "eac3"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-si-024",
+      "front": "(SI — EAC3 / Correo) Configurar Thunderbird. IMAP vs POP3. Puertos. SSL/TLS vs STARTTLS.",
+      "back": "IMAP: buzones en servidor, sincroniza dispositivos. Puerto: 143 (plain), 993 (SSL).\nPOP3: descarga correos al cliente. Puerto: 110 (plain), 995 (SSL).\nSMTP: envio. Puerto: 25 (plain), 465 (SSL), 587 (STARTTLS).\n\nSSL/TLS: cifra desde el inicio, puerto diferente.\nSTARTTLS: conecta sin cifrar, luego negocia cifrado. Vulnerable a STRIPTLS.\n\nRecomendacion: SSL/TLS directo.",
+      "tags": [
+        "si",
+        "correo",
+        "thunderbird",
+        "imap",
+        "pop3",
+        "smtp",
+        "ssl",
+        "eac3"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-si-025",
+      "front": "(SI — EAC3 / Git) Instalar y usar Git en Ubuntu. Crear repo, add, commit, clone.",
+      "back": "sudo apt install git\ngit config --global user.name nombre\ngit config --global user.email email\n\nmkdir proyecto && cd proyecto\ngit init\necho codigo > programa.c\ngit add .\ngit commit -m Primer commit\ngit clone /ruta/repo /ruta/destino\n\nComandos: git log, git status, git diff",
+      "tags": [
+        "si",
+        "git",
+        "control-versiones",
+        "eac3"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-si-026",
+      "front": "(SI — EAC3 / Man pages) Crear pagina de manual en roff. Secciones minimas: NAME, SYNOPSIS, DESCRIPTION, OPTIONS, FILES, AUTHOR. Instalar y consultar.",
+      "back": "Formato roff:\n.TH PROGRAMA 3 fecha v1.0 Manual\n.SH NAME\nprograma - descripcion\n.SH SYNOPSIS\n.B programa [OPCIONES]\n.SH DESCRIPTION\ntexto\n\nVisualizar: groff -man -Tascii programa.3 | less\n\nInstalar: cp programa.3 /usr/share/man/man3/ ; mandb\nConsultar: man 3 programa\n\nSecciones: 1=comandos, 2=syscalls, 3=liberias, 5=formatos, 8=admin",
+      "tags": [
+        "si",
+        "man-page",
+        "roff",
+        "documentacion",
+        "eac3"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "pd-ed-067",
+      "front": "(ED — EAC2 / Eclipse + WindowBuilder) Crear app de escritorio Java con interfaz grafica usando Eclipse y WindowBuilder. Componentes Swing: JLabel, JTextField, JComboBox, JButton, JTextArea. Eventos.",
+      "back": "WindowBuilder: New > Other > WindowBuilder > Swing Designer > JFrame.\nArrastrar componentes desde la paleta.\n\nComponentes:\nJLabel: texto estatico.\nJTextField: campo editable.\nJComboBox: menu desplegable, addItem(), getSelectedIndex().\nJButton: boton con ActionListener.\nJTextArea: area multilinea (errores/resultados).\n\nEvento:\nboton.addActionListener(e -> { String texto = campo.getText(); });\n\nPropiedades: setEditable(), setToolTipText(), setEnabled(), requestFocus(), selectAll().",
+      "tags": [
+        "ed",
+        "eclipse",
+        "swing",
+        "windowbuilder",
+        "java",
+        "eac2"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-ed-068",
+      "front": "(ED — EAC2 / Spring + Tomcat) Crear app Spring basica en Eclipse con Tomcat. Que es Spring? Formulario HTML a controlador Spring.",
+      "back": "Spring: framework Java para apps web. IoC e inyeccion de dependencias.\n\nConfig:\n1. Tomcat instalado en Eclipse.\n2. Dynamic Web Project.\n3. Anyadir Spring libraries.\n4. Controlador:\n@Controller\npublic class MiControlador {\n    @RequestMapping(/calcular)\n    public ModelAndView calcular(@RequestParam int num) {\n        return new ModelAndView(resultado, resultado, num*5);\n    }\n}\n\nFormulario:\n<form action=/calcular method=get>\n<input type=number name=numero>\n<input type=submit>\n\nVista JSP: ${resultado}",
+      "tags": [
+        "ed",
+        "spring",
+        "eclipse",
+        "tomcat",
+        "java",
+        "eac2"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "pd-ed-069",
+      "front": "(ED — EAC2 / Codeium) Que es Codeium? Instalacion en Eclipse. Ventajas de un asistente IA para programar.",
+      "back": "Codeium: asistente IA para codigo, similar a GitHub Copilot. Plugin gratuito.\n\nInstalacion: Help > Eclipse Marketplace > buscar Codeium > Instalar.\n\nFuncionalidades:\n- Autocompletado contextual.\n- Generacion de codigo desde comentarios.\n- Refactorizacion.\n- Multi-lenguaje.\n\nEjemplo: dos metodos estaticos (contar vocales, reemplazar espacios) generados con ayuda de Codeium.\n\nLimitacion: puede generar codigo incorrecto. Siempre revisar.",
+      "tags": [
+        "ed",
+        "codeium",
+        "ia",
+        "eclipse",
+        "asistente",
+        "eac2"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "pd-dwec-001",
+      "front": "(DWEC — EAC1 / Arquitectura web) Modelo cliente-servidor. Tecnologias cliente vs servidor. JavaScript en cada lado.",
+      "back": "Cliente: HTML (estructura), CSS (presentacion), JavaScript (comportamiento), DOM API.\nServidor: PHP, Python, Java, Node.js, BD.\n\nJavaScript puede ejecutarse en ambos lados: navegador (cliente) y Node.js (servidor).\n\nCapas desarrollo web cliente:\n1. Comportamiento (JS)\n2. Presentacion (CSS)\n3. Estructura (DOM/HTML)\n4. Contenido (texto, imagenes)\n\nRegla: validar siempre en cliente (UX) y servidor (seguridad).",
+      "tags": [
+        "dwec",
+        "arquitectura",
+        "cliente-servidor",
+        "javascript",
+        "eac1"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "pd-dwec-002",
+      "front": "(DWEC — EAC2 / Variables JS) var, let, const. Hoisting. Tipos dinamicos.",
+      "back": "var: ambito funcion, hoisting con undefined, redeclarable.\nlet: ambito bloque, hoisting con TDZ, no redeclarable.\nconst: igual que let, pero no reasignable.\n\nHoisting: declaraciones elevadas al inicio. var=undefined, let/const=TDZ hasta la linea.\n\nTipos dinamicos: variable cambia de tipo en runtime.\nlet x = 42; x = hola; // number -> string\n\nPrimitivos: number, string, boolean, null, undefined, symbol, bigint.\nObjeto: object, array, function.",
+      "tags": [
+        "dwec",
+        "javascript",
+        "variables",
+        "hoisting",
+        "tipos",
+        "eac2"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "pd-dwec-003",
+      "front": "(DWEC — EAC2 / Funciones JS) Funcion declarada vs expresion vs arrow function. Diferencias de this.",
+      "back": "Declarada: function sumar(a,b) { return a+b; }\nHoisting completo. This dinamico.\n\nExpresion: const sumar = function(a,b) { return a+b; };\nSin hoisting.\n\nArrow: const sumar = (a,b) => a+b;\nNo tiene su propio this (hereda del contexto).\nNo tiene arguments. No usable con new.\n\nThis: function -> quien llama. Arrow -> contexto lexico donde se define.\n\nUso tipico: callbacks, array methods (map, filter).",
+      "tags": [
+        "dwec",
+        "javascript",
+        "funciones",
+        "arrow-function",
+        "this",
+        "eac2"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-dwec-004",
+      "front": "(DWEC — EAC2 / Arrays JS) forEach, map, filter, reduce. Que devuelve cada uno? Ejemplos.",
+      "back": "forEach: itera sin devolver nada. [1,2,3].forEach(n => console.log(n))\nmap: transforma, devuelve NUEVO array (mismo tam). [1,2,3].map(n => n*2) // [2,4,6]\nfilter: filtra, devuelve NUEVO array. [1,2,3,4].filter(n => n>2) // [3,4]\nreduce: reduce a un valor. [1,2,3].reduce((a,n) => a+n, 0) // 6\n\nInmutabilidad: no modifican el array original.",
+      "tags": [
+        "dwec",
+        "javascript",
+        "arrays",
+        "map",
+        "filter",
+        "reduce",
+        "foreach",
+        "eac2"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-dwec-005",
+      "front": "(DWEC — EAC2 / Objetos y JSON) Crear objetos en JS. JSON. Conversiones objeto <-> JSON string.",
+      "back": "Notacion literal:\nconst obj = { nombre: Ana, edad: 30 };\n\nJSON: formato texto para intercambio de datos.\n\nConversiones:\nJSON.stringify(obj) // Objeto -> JSON string\nJSON.parse(jsonStr)  // JSON string -> Objeto\n\nDiferencias JSON vs objeto JS:\n- JSON requiere comillas dobles en claves\n- JSON no admite funciones, undefined, NaN\n- stringify omite metodos y undefined",
+      "tags": [
+        "dwec",
+        "javascript",
+        "objetos",
+        "json",
+        "eac2"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-dwec-006",
+      "front": "(DWEC — EAC3 / DOM) Que es el DOM? Metodos para seleccionar, crear, anyadir y eliminar elementos.",
+      "back": "DOM: arbol de nodos HTML que JS puede manipular.\n\nSeleccionar:\ndocument.getElementById(id)\ndocument.querySelector(.clase)\ndocument.querySelectorAll(div)\n\nCrear y anyadir:\nconst div = document.createElement(div);\ndiv.textContent = Hola;\npadre.appendChild(div);\npadre.prepend(div);\n\nEliminar:\nelemento.remove();\npadre.removeChild(hijo);\n\nModificar:\nelemento.setAttribute(src, img.jpg);\nelemento.classList.add/remove/toggle(clase);",
+      "tags": [
+        "dwec",
+        "dom",
+        "javascript",
+        "manipulacion-dom",
+        "eac3"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-dwec-007",
+      "front": "(DWEC — EAC3 / Eventos) addEventListener vs onclick. Propagacion (burbujeo y captura). Detener propagacion. Delegacion de eventos.",
+      "back": "addEventListener: multiples listeners.\nonclick: solo uno (sobrescribe).\n\nPropagacion:\n1. Captura: document -> elemento\n2. Target: elemento objetivo\n3. Burbujeo: elemento -> document\n\nPor defecto eventos en burbujeo.\n\nDelegacion:\npadre.addEventListener(click, e => {\n  if (e.target.tagName === LI) console.log(e.target.textContent);\n});\n\nDetener: e.stopPropagation()\nPrevenir default: e.preventDefault()",
+      "tags": [
+        "dwec",
+        "eventos",
+        "dom",
+        "propagacion",
+        "delegacion",
+        "eac3"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-dwec-008",
+      "front": "(DWEC — EAC3 / Validacion formularios) Eventos para validar. Regex para: email, DNI, fecha dd/mm/aaaa, contrasena segura.",
+      "back": "Eventos: blur (salir), input (escribir), submit (enviar, preventDefault si error).\n\nRegex:\nEmail: /^[w.-]+@[w.-]+.w{2,3}$/\nDNI 8 digitos+letra: /^d{8}[A-Z]$/\nFecha dd/mm/aaaa: /^d{2}/d{2}/d{4}$/\nPass 8+ chars, mayus, minus, digito: /^(?=.*[a-z])(?=.*[A-Z])(?=.*d).{8,}$/\n\nEjemplo:\ninput.addEventListener(blur, function() {\n  if (!regex.test(this.value))\n    error.textContent = Invalido;\n});",
+      "tags": [
+        "dwec",
+        "formularios",
+        "validacion",
+        "regex",
+        "eventos",
+        "eac3"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-dwec-009",
+      "front": "(DWEC — EAC4 / Clases JS) Clases ES6: constructor, metodos, herencia (extends, super). Ejemplo Persona y PersonaCivil.",
+      "back": "Clase:\nclass Persona {\n  constructor(nombre, edad) { this.nombre = nombre; this.edad = edad; }\n  saludar() { return `Hola ${this.nombre}`; }\n}\n\nHerencia:\nclass PersonaCivil extends Persona {\n  constructor(nombre, edad, dni, tlf) {\n    super(nombre, edad);\n    this.dni = dni;\n  }\n  imprimirDatos() {\n    return `${this.nombre} | ${this.dni}`;\n  }\n}\n\nnew PersonaCivil(Ana, 30, 12345678A, 666123456) -> llama a constructor y hereda metodos.",
+      "tags": [
+        "dwec",
+        "oop",
+        "clases",
+        "herencia",
+        "javascript",
+        "eac4"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-dwec-010",
+      "front": "(DWEC — EAC5 / XMLHttpRequest) Peticiones asincronas con XMLHttpRequest. Estados readyState. Manejo de errores.",
+      "back": "const xhr = new XMLHttpRequest();\nxhr.open(GET, url, true);\nxhr.onload = function() {\n  if (xhr.status === 200) {\n    const d = JSON.parse(xhr.responseText);\n  } else console.error(Error, xhr.status);\n};\nxhr.onerror = () => console.error(Error de red);\nxhr.send();\n\nreadyState:\n0=UNSENT -> 1=OPENED -> 2=HEADERS_RECEIVED -> 3=LOADING -> 4=DONE\n\nErrores: codigos HTTP (200 OK, 404, 500), onerror (red), try/catch en JSON.parse.\nAlternativa moderna: fetch().",
+      "tags": [
+        "dwec",
+        "ajax",
+        "xmlhttprequest",
+        "asincrono",
+        "api",
+        "eac5"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-dwec-011",
+      "front": "(DWEC — EAC5 / Fetch y async/await) fetch() y Promesas. then/catch vs async/await.",
+      "back": "fetch(url)\n  .then(r => { if(!r.ok) throw Error(r.status); return r.json(); })\n  .then(d => console.log(d))\n  .catch(e => console.error(e));\n\nasync/await:\nasync function getData() {\n  try {\n    const r = await fetch(url);\n    if (!r.ok) throw Error(r.status);\n    const d = await r.json();\n    console.log(d);\n  } catch(e) { console.error(e); }\n}\n\nPromesas: then (resuelta), catch (rechazada), finally (siempre).\nasync/await: mas legible, parece sincrono. await solo dentro de async.",
+      "tags": [
+        "dwec",
+        "fetch",
+        "promesas",
+        "async-await",
+        "eac5"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pd-dwec-012",
+      "front": "(DWEC — EAC5 / REST API) API RESTful. Metodos HTTP para CRUD. POST con fetch.",
+      "back": "REST: estilo de API web. Recursos + metodos HTTP.\n\nCRUD:\nCreate: POST /usuarios\nRead: GET /usuarios/1\nUpdate: PUT/PATCH /usuarios/1\nDelete: DELETE /usuarios/1\n\nPOST con fetch:\nfetch(url/usuarios, {\n  method: POST,\n  headers: { Content-Type: application/json },\n  body: JSON.stringify({ nombre: Ana })\n}).then(r => r.json()).then(d => console.log(Creado:, d));\n\nCodigos: 201 Created, 400 Bad Request, 404, 500.",
+      "tags": [
+        "dwec",
+        "rest",
+        "api",
+        "crud",
+        "http",
+        "fetch",
+        "eac5"
+      ],
+      "difficulty": "medium"
+    }
+  ]
+}
