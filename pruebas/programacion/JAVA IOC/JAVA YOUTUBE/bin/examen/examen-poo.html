@@ -1,0 +1,3476 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Examen POO Java - Tema 5</title>
+<style>
+  @page { margin: 2cm; }
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', Calibri, Arial, sans-serif;
+    font-size: 11pt;
+    line-height: 1.5;
+    color: #1a1a1a;
+    padding: 0;
+    margin: 0;
+  }
+  .cover {
+    page-break-after: always;
+    text-align: center;
+    padding-top: 6cm;
+  }
+  .cover h1 { font-size: 28pt; color: #1a3a5c; margin-bottom: 0.3cm; }
+  .cover h2 { font-size: 18pt; color: #2c5f8a; font-weight: normal; margin-bottom: 1cm; }
+  .cover .meta { font-size: 12pt; color: #555; margin-top: 2cm; }
+  .cover .line { width: 60%; border-top: 2px solid #1a3a5c; margin: 1cm auto; }
+
+  .video-group {
+    page-break-before: always;
+  }
+  .video-header {
+    background: #1a3a5c;
+    color: white;
+    padding: 12px 16px;
+    border-radius: 6px 6px 0 0;
+    margin-top: 0.5cm;
+  }
+  .video-header h2 { margin: 0; font-size: 14pt; }
+  .video-header .sub { font-size: 10pt; opacity: 0.9; margin-top: 4px; }
+
+  .exercise {
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 0 0 6px 6px;
+    margin-bottom: 0.6cm;
+    page-break-inside: avoid;
+  }
+  .exercise:not(:first-of-type) {
+    border-top: 2px solid #1a3a5c;
+    border-radius: 6px;
+    margin-top: 0.4cm;
+  }
+
+  .question {
+    padding: 14px 16px;
+    border-left: 4px solid #dc3545;
+  }
+  .question h3 { margin: 0 0 8px 0; color: #1a3a5c; font-size: 12pt; }
+  .question h3 .num { color: #dc3545; }
+  .question p { margin: 4px 0; }
+  .question code, .question pre {
+    background: #e9ecef;
+    border-radius: 3px;
+    font-family: 'Cascadia Code', 'Consolas', monospace;
+    font-size: 10pt;
+  }
+  .question pre {
+    padding: 8px 12px;
+    overflow-x: auto;
+    border: 1px solid #ccc;
+    background: #f4f4f4;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+
+  .solution {
+    padding: 14px 16px;
+    border-left: 4px solid #28a745;
+    border-top: 1px dashed #ccc;
+    background: #f0faf0;
+  }
+  .solution h4 { margin: 0 0 8px 0; color: #28a745; font-size: 11pt; }
+  .solution pre {
+    background: #e8f5e9;
+    border-radius: 3px;
+    padding: 8px 12px;
+    font-family: 'Cascadia Code', 'Consolas', monospace;
+    font-size: 10pt;
+    overflow-x: auto;
+    border: 1px solid #c8e6c9;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+  .solution code { background: #e8f5e9; font-size: 10pt; }
+
+  .toc { }
+  .toc h2 { color: #1a3a5c; }
+  .toc ol { columns: 2; }
+  .toc li { margin: 4px 0; }
+</style>
+</head>
+<body>
+
+<!-- ==================== PORTADA ==================== -->
+<div class="cover">
+  <h1>EXAMEN DE PROGRAMACIÓN</h1>
+  <h2>Programación Orientada a Objetos en Java</h2>
+  <div class="line"></div>
+  <p style="font-size:16pt; font-weight:bold; color:#2c5f8a;">TEMA 5 · POO</p>
+  <p style="font-size:13pt;">Curso Java desde 0 · DAM / DAW</p>
+  <div class="line"></div>
+  <div class="meta">
+    <p><strong>Fuente:</strong> Mega Curso JAVA · Aula en la nube</p>
+    <p><strong>27 videos · 54 ejercicios prácticos</strong></p>
+    <p><strong>Incluye soluciones completas</strong></p>
+    <p style="margin-top:1cm; font-style:italic;">"La práctica lleva a la perfección"</p>
+  </div>
+</div>
+
+<!-- ==================== ÍNDICE ==================== -->
+<div class="toc">
+  <h2>Índice de contenidos</h2>
+  <ol style="columns:2; column-gap:1cm;">
+    <li>V-01: Introducción a la POO</li>
+    <li>V-02: Elementos básicos de la POO</li>
+    <li>V-03: Ejemplos orientación a objetos</li>
+    <li>V-04: Características de la POO</li>
+    <li>V-05: Diseño orientado a objetos en UML</li>
+    <li>V-06: Mapas de objetos</li>
+    <li>V-07: Introducción a la POO en Java (sintaxis)</li>
+    <li>V-08: Ejemplo clase Círculo</li>
+    <li>V-09: Ejemplo clase Televisor</li>
+    <li>V-10: Sobrecarga de constructores</li>
+    <li>V-11: Ejercicios OO Televisor</li>
+    <li>V-12: Ejemplo clase Punto</li>
+    <li>V-13: La palabra reservada <code>this</code></li>
+    <li>V-14: <code>static</code> - métodos y variables</li>
+    <li>V-15: Paso por referencia y por valor</li>
+    <li>V-16: Clases inmutables</li>
+    <li>V-17: Arrays de objetos</li>
+    <li>V-18: ArrayList</li>
+    <li>V-19: Ejemplos ArrayList</li>
+    <li>V-20: Clase inmutable con array</li>
+    <li>V-21: Clase inmutable con ArrayList</li>
+    <li>V-22: Ejercicio OO - Clase Empleado</li>
+    <li>V-23: Ejercicios OO - Triángulos</li>
+    <li>V-24: Ejercicio OO - Gráfico 2D</li>
+    <li>V-25: UML - Cuentas bancarias</li>
+    <li>V-26: App Sucursal Bancaria</li>
+    <li>V-27: UML - Agenda</li>
+  </ol>
+</div>
+
+<!-- ================================================================ -->
+<!-- INTRO: Crear clases con atributos y this -->
+<!-- ================================================================ -->
+<div class="video-group">
+<div class="video-header">
+  <h2>Introducción: Creación de clases, atributos y <code>this</code></h2>
+  <div class="sub">Ejercicios preliminares para practicar la sintaxis básica de clases, atributos, constructores y la palabra reservada this</div>
+</div>
+
+<div class="exercise">
+<div class="question">
+<h3><span class="num">Ejercicio 0.1</span> — Clase Libro con atributos y constructor</h3>
+<p>Crea una clase <code>Libro</code> en Java con los siguientes requisitos:</p>
+<ul>
+  <li>Atributos privados: <code>titulo</code> (String), <code>autor</code> (String), <code>precio</code> (double).</li>
+  <li>Constructor que reciba los 3 parámetros y use <code>this</code> para distinguir atributos de parámetros.</li>
+  <li>Getters para los 3 atributos.</li>
+  <li>Setter para <code>precio</code> solamente (con validación: no permitir precios negativos).</li>
+  <li>Método <code>mostrarDatos()</code> que imprima toda la información del libro.</li>
+</ul>
+<p>En el <code>main()</code>, crea dos libros, asígnales sus datos y muéstralos.</p>
+</div>
+<div class="solution">
+<h4>✅ Solución 0.1</h4>
+<pre>
+class Libro {
+    private String titulo;
+    private String autor;
+    private double precio;
+
+    // Constructor con this para diferenciar atributos de parametros
+    Libro(String titulo, String autor, double precio) {
+        this.titulo = titulo;
+        this.autor = autor;
+        this.precio = precio;
+    }
+
+    // Getters
+    String getTitulo() { return titulo; }
+    String getAutor() { return autor; }
+    double getPrecio() { return precio; }
+
+    // Setter solo para precio (con validacion)
+    void setPrecio(double precio) {
+        if (precio >= 0) {
+            this.precio = precio;
+        } else {
+            System.out.println("Error: el precio no puede ser negativo");
+        }
+    }
+
+    void mostrarDatos() {
+        System.out.println("Titulo: " + titulo);
+        System.out.println("Autor: " + autor);
+        System.out.println("Precio: " + precio + " euros");
+        System.out.println("---");
+    }
+
+    public static void main(String[] args) {
+        Libro libro1 = new Libro("Cien anos de soledad",
+            "Gabriel Garcia Marquez", 19.95);
+        Libro libro2 = new Libro("1984", "George Orwell", 14.50);
+
+        libro1.mostrarDatos();
+        libro2.mostrarDatos();
+    }
+}
+</pre>
+</div>
+</div>
+
+<div class="exercise">
+<div class="question">
+<h3><span class="num">Ejercicio 0.2</span> — Clase Estudiante con this() y sobrecarga</h3>
+<p>Crea una clase <code>Estudiante</code> con:</p>
+<ul>
+  <li>Atributos privados: <code>nombre</code> (String), <code>edad</code> (int), <code>curso</code> (String).</li>
+  <li>Dos constructores usando <code>this()</code> para reutilizar:
+    <ul>
+      <li><code>Estudiante(String nombre, int edad, String curso)</code> — asigna todo.</li>
+      <li><code>Estudiante(String nombre, int edad)</code> — llama al primero con curso = "Sin asignar".</li>
+    </ul>
+  </li>
+  <li>Método <code>toString()</code> que devuelva: "Estudiante: [nombre], [edad] anos, curso: [curso]".</li>
+</ul>
+<p>En el <code>main()</code>, crea un estudiante con curso y otro sin curso, y muestra sus datos usando <code>System.out.println(estudiante)</code>.</p>
+</div>
+<div class="solution">
+<h4>✅ Solución 0.2</h4>
+<pre>
+class Estudiante {
+    private String nombre;
+    private int edad;
+    private String curso;
+
+    Estudiante(String nombre, int edad, String curso) {
+        this.nombre = nombre;
+        this.edad = edad;
+        this.curso = curso;
+    }
+
+    // Reutiliza el constructor de 3 parametros con this()
+    Estudiante(String nombre, int edad) {
+        this(nombre, edad, "Sin asignar");
+    }
+
+    public String toString() {
+        return "Estudiante: " + nombre + ", " + edad
+            + " anos, curso: " + curso;
+    }
+
+    public static void main(String[] args) {
+        Estudiante e1 = new Estudiante("Ana Lopez", 20, "1 DAM");
+        Estudiante e2 = new Estudiante("Luis Garcia", 22);
+
+        System.out.println(e1);
+        System.out.println(e2);
+        // Salida:
+        // Estudiante: Ana Lopez, 20 anos, curso: 1 DAM
+        // Estudiante: Luis Garcia, 22 anos, curso: Sin asignar
+    }
+}
+</pre>
+</div>
+</div>
+</div>
+
+<!-- ================================================================ -->
+<!-- VIDEO 01: INTRODUCCIÓN A LA POO -->
+<!-- ================================================================ -->
+<div class="video-group">
+<div class="video-header">
+  <h2>V-01: Introducción a la POO</h2>
+  <div class="sub">Conceptos: objeto, clase, instancia, estado, comportamiento, mensajes</div>
+</div>
+
+<div class="exercise">
+<div class="question">
+<h3><span class="num">Ejercicio 1.1</span> — Identificar elementos POO</h3>
+<p>Dado el siguiente escenario: "Tenemos una aplicación para gestionar una biblioteca. Necesitamos representar libros, cada uno con su título, autor, ISBN, año de publicación, y si está prestado o no. Los libros se pueden prestar, devolver y consultar."</p>
+<p>Identifica y explica en el contexto de este escenario:</p>
+<ol>
+  <li>¿Cuál sería la <strong>clase</strong>?</li>
+  <li>¿Qué son los <strong>atributos</strong>?</li>
+  <li>¿Qué son los <strong>métodos</strong>?</li>
+  <li>¿Qué sería una <strong>instancia</strong>? Pon un ejemplo concreto.</li>
+  <li>¿Qué es el <strong>estado</strong> de un objeto? Pon un ejemplo.</li>
+  <li>¿Qué es un <strong>mensaje</strong> entre objetos? Pon un ejemplo.</li>
+</ol>
+</div>
+<div class="solution">
+<h4>✅ Solución 1.1</h4>
+<ol>
+  <li><strong>Clase:</strong> <code>Libro</code> — el molde o plantilla para crear objetos libro.</li>
+  <li><strong>Atributos:</strong> <code>titulo</code>, <code>autor</code>, <code>isbn</code>, <code>anioPublicacion</code>, <code>prestado</code> (tipo boolean). Definen el estado de cada libro.</li>
+  <li><strong>Métodos:</strong> <code>prestar()</code>, <code>devolver()</code>, <code>consultarDatos()</code>. Definen el comportamiento del libro.</li>
+  <li><strong>Instancia:</strong> Un libro concreto creado a partir de la clase. Ej: <code>Libro miLibro = new Libro("Cien Años de Soledad", "García Márquez", "978-84-376-0494-7", 1967);</code></li>
+  <li><strong>Estado:</strong> El valor actual de todos los atributos de un objeto. Ej: para <code>miLibro</code> el estado podría ser <code>{titulo="Cien Años de Soledad", autor="García Márquez", isbn="978-84-376-0494-7", anioPublicacion=1967, prestado=true}</code></li>
+  <li><strong>Mensaje:</strong> Llamada de un objeto a un método de otro. Ej: <code>biblioteca.prestarLibro(miLibro)</code> — el objeto <code>biblioteca</code> envía un mensaje al método <code>prestarLibro</code>.</li>
+</ol>
+</div>
+</div>
+
+<div class="exercise">
+<div class="question">
+<h3><span class="num">Ejercicio 1.2</span> — Crisis del software y convenciones</h3>
+<p>Responde brevemente:</p>
+<ol>
+  <li>¿Qué problemas surgieron en la llamada "crisis del software" de los años 60-70 que llevaron al desarrollo de la POO?</li>
+  <li>Explica las convenciones de nomenclatura en Java para: clases, variables y métodos.</li>
+  <li>¿Por qué decimos que una clase es un "molde" o "plantilla"? ¿Qué relación tiene con el concepto de "instancia"?</li>
+</ol>
+</div>
+<div class="solution">
+<h4>✅ Solución 1.2</h4>
+<ol>
+  <li><strong>Crisis del software:</strong> Los programas crecían y el paradigma orientado a procedimientos generaba: código difícil de mantener, código poco reutilizable (código duplicado), proyectos fuera de plazo y presupuesto, y software de baja calidad. La POO surgió como solución.</li>
+  <li><strong>Convenciones Java:</strong>
+    <ul>
+      <li><strong>Clases:</strong> PascalCase (primera letra mayúscula). Ej: <code>Persona</code>, <code>CuentaBancaria</code>, <code>Coche</code>.</li>
+      <li><strong>Variables:</strong> camelCase (primera minúscula, siguientes mayúsculas). Ej: <code>nombrePersona</code>, <code>saldoCuenta</code>.</li>
+      <li><strong>Métodos:</strong> camelCase + paréntesis. Ej: <code>obtenerDatos()</code>, <code>cambiarProfesion()</code>.</li>
+    </ul>
+  </li>
+  <li><strong>Clase como molde:</strong> Una clase define la estructura (atributos) y el comportamiento (métodos) que tendrán todos los objetos de ese tipo. Una <strong>instancia</strong> es un objeto concreto creado a partir de ese molde, con valores específicos para sus atributos. Así como un molde de galletas produce muchas galletas, una clase produce muchas instancias, cada una con su propio estado.</li>
+</ol>
+</div>
+</div>
+</div>
+
+<!-- ================================================================ -->
+<!-- VIDEO 02: ELEMENTOS BÁSICOS POO -->
+<!-- ================================================================ -->
+<div class="video-group">
+<div class="video-header">
+  <h2>V-02: Elementos básicos de la POO</h2>
+  <div class="sub">Clase, constructor, métodos de instancia, crear instancias con new</div>
+</div>
+
+<div class="exercise">
+<div class="question">
+<h3><span class="num">Ejercicio 2.1</span> — Diseñar una clase Coche</h3>
+<p>Diseña una clase <code>Coche</code> en Java con:</p>
+<ul>
+  <li>Atributos: <code>marca</code> (String), <code>modelo</code> (String), <code>velocidad</code> (int, velocidad actual en km/h).</li>
+  <li>Un constructor con 3 parámetros que inicialice todos los atributos.</li>
+  <li>Un método de instancia <code>acelerar(int incremento)</code> que aumente la velocidad.</li>
+  <li>Un método de instancia <code>frenar(int decremento)</code> que disminuya la velocidad.</li>
+  <li>Un método <code>mostrarDatos()</code> que imprima los datos del coche.</li>
+</ul>
+<p>Escribe el código Java de la clase completa.</p>
+</div>
+<div class="solution">
+<h4>✅ Solución 2.1</h4>
+<pre>
+class Coche {
+    // Atributos
+    String marca;
+    String modelo;
+    int velocidad;
+
+    // Constructor
+    Coche(String marca, String modelo, int velocidad) {
+        this.marca = marca;
+        this.modelo = modelo;
+        this.velocidad = velocidad;
+    }
+
+    // Métodos de instancia
+    void acelerar(int incremento) {
+        velocidad += incremento;
+    }
+
+    void frenar(int decremento) {
+        velocidad -= decremento;
+        if (velocidad < 0) velocidad = 0;
+    }
+
+    void mostrarDatos() {
+        System.out.println("Marca: " + marca);
+        System.out.println("Modelo: " + modelo);
+        System.out.println("Velocidad: " + velocidad + " km/h");
+    }
+}
+</pre>
+</div>
+</div>
+
+<div class="exercise">
+<div class="question">
+<h3><span class="num">Ejercicio 2.2</span> — UML y creación de objetos</h3>
+<p>Dada la siguiente clase:</p>
+<pre>
+class Alumno {
+    String nombre;
+    int edad;
+    String curso;
+
+    Alumno(String n, int e, String c) {
+        nombre = n;
+        edad = e;
+        curso = c;
+    }
+
+    void mostrarDatos() {
+        System.out.println(nombre + " - " + edad + " años - " + curso);
+    }
+}
+</pre>
+<ol>
+  <li>Dibuja (describe textualmente) el diagrama UML de esta clase (tres secciones: nombre, atributos, métodos).</li>
+  <li>Escribe el código para crear dos instancias de Alumno con tus datos favoritos.</li>
+  <li>Explica qué diferencia hay entre un método de instancia (sin <code>static</code>) y un método de clase (con <code>static</code>). ¿Cómo se llama cada uno?</li>
+</ol>
+</div>
+<div class="solution">
+<h4>✅ Solución 2.2</h4>
+<ol>
+  <li><strong>Diagrama UML (textual):</strong>
+<pre>
++------------------+
+|     Alumno       |
++------------------+
+| - nombre: String |
+| - edad: int      |
+| - curso: String  |
++------------------+
+| + mostrarDatos() |
++------------------+
+</pre>
+  </li>
+  <li><strong>Crear instancias:</strong>
+<pre>
+Alumno a1 = new Alumno("Ana García", 20, "1º DAM");
+Alumno a2 = new Alumno("Carlos López", 22, "2º DAW");
+
+a1.mostrarDatos();  // Ana García - 20 años - 1º DAM
+a2.mostrarDatos();  // Carlos López - 22 años - 2º DAW
+</pre>
+  </li>
+  <li><strong>Método de instancia vs método de clase:</strong>
+    <ul>
+      <li><strong>Método de instancia</strong> (sin <code>static</code>): se llama sobre un objeto concreto (<code>a1.mostrarDatos()</code>). Trabaja con los atributos de esa instancia. Necesita un objeto para ser invocado.</li>
+      <li><strong>Método de clase</strong> (con <code>static</code>): se llama a través de la clase (<code>Alumno.metodo()</code>). No necesita una instancia. No puede acceder directamente a atributos de instancia. Hasta ahora en el curso lo usábamos porque no teníamos objetos.</li>
+    </ul>
+  </li>
+</ol>
+</div>
+</div>
+</div>
+
+<!-- ================================================================ -->
+<!-- VIDEO 03: EJEMPLOS OO -->
+<!-- ================================================================ -->
+<div class="video-group">
+<div class="video-header">
+  <h2>V-03: Ejemplos orientación a objetos</h2>
+  <div class="sub">Atributos, encapsulación, métodos, mensajes, composición, clase CuentaBancaria</div>
+</div>
+
+<div class="exercise">
+<div class="question">
+<h3><span class="num">Ejercicio 3.1</span> — Clase CuentaBancaria con encapsulación</h3>
+<p>Crea una clase <code>CuentaBancaria</code> con:</p>
+<ul>
+  <li>Atributos privados: <code>id</code> (int), <code>saldo</code> (double).</li>
+  <li>Constructor que reciba el id e inicialice saldo a 0.</li>
+  <li>Métodos públicos:
+    <ul>
+      <li><code>ingresar(double cantidad)</code> — solo si cantidad > 0.</li>
+      <li><code>retirar(double cantidad)</code> — solo si hay saldo suficiente y cantidad > 0.</li>
+      <li><code>verSaldo()</code> — muestra el saldo.</li>
+    </ul>
+  </li>
+</ul>
+<p>Escribe la clase completa y un <code>main()</code> que cree una cuenta, ingrese 500€, retire 200€ y muestre el saldo final.</p>
+</div>
+<div class="solution">
+<h4>✅ Solución 3.1</h4>
+<pre>
+class CuentaBancaria {
+    private int id;
+    private double saldo;
+
+    CuentaBancaria(int id) {
+        this.id = id;
+        this.saldo = 0;
+    }
+
+    void ingresar(double cantidad) {
+        if (cantidad > 0) {
+            saldo += cantidad;
+            System.out.println("Ingresados " + cantidad + " €");
+        } else {
+            System.out.println("ERROR: Cantidad no válida");
+        }
+    }
+
+    void retirar(double cantidad) {
+        if (cantidad <= 0) {
+            System.out.println("ERROR: Cantidad no válida");
+        } else if (saldo >= cantidad) {
+            saldo -= cantidad;
+            System.out.println("Retirados " + cantidad + " €");
+        } else {
+            System.out.println("ERROR: Saldo insuficiente");
+        }
+    }
+
+    void verSaldo() {
+        System.out.println("Saldo de cuenta " + id + ": " + saldo + " €");
+    }
+
+    public static void main(String[] args) {
+        CuentaBancaria c = new CuentaBancaria(1);
+        c.ingresar(500);
+        c.retirar(200);
+        c.verSaldo();  // Saldo: 300 €
+    }
+}
+</pre>
+</div>
+</div>
+
+<div class="exercise">
+<div class="question">
+<h3><span class="num">Ejercicio 3.2</span> — Composición de objetos (Persona + Cuenta)</h3>
+<p>Partiendo de la clase <code>Persona</code> (con atributos privados <code>nombre</code>, <code>edad</code>) y la clase <code>CuentaBancaria</code> del ejercicio anterior:</p>
+<ol>
+  <li>Añade a <code>CuentaBancaria</code> un atributo <code>titular</code> de tipo <code>Persona</code>.</li>
+  <li>Crea un método <code>asignarTitular(Persona p)</code>.</li>
+  <li>En el <code>main()</code>, crea una Persona "María", 30 años, créale una cuenta, asigna a María como titular, ingresa 1000€ y muestra los datos completos (titular + saldo).</li>
+</ol>
+<p>¿Qué concepto de la POO estamos aplicando al tener una Persona dentro de CuentaBancaria?</p>
+</div>
+<div class="solution">
+<h4>✅ Solución 3.2</h4>
+<pre>
+class Persona {
+    private String nombre;
+    private int edad;
+
+    Persona(String nombre, int edad) {
+        this.nombre = nombre;
+        this.edad = edad;
+    }
+
+    String getNombre() { return nombre; }
+    int getEdad() { return edad; }
+
+    void mostrarDatos() {
+        System.out.println("  Nombre: " + nombre + ", Edad: " + edad);
+    }
+}
+
+class CuentaBancaria {
+    private int id;
+    private double saldo;
+    private Persona titular;  // COMPOSICIÓN
+
+    CuentaBancaria(int id) {
+        this.id = id;
+        this.saldo = 0;
+    }
+
+    void asignarTitular(Persona p) { this.titular = p; }
+
+    void ingresar(double c) { if (c > 0) { saldo += c; } }
+
+    void mostrarDatos() {
+        System.out.println("Cuenta " + id + ":");
+        if (titular != null) titular.mostrarDatos();
+        System.out.println("  Saldo: " + saldo + " €");
+    }
+
+    public static void main(String[] args) {
+        Persona maria = new Persona("María", 30);
+        CuentaBancaria c = new CuentaBancaria(123);
+        c.asignarTitular(maria);
+        c.ingresar(1000);
+        c.mostrarDatos();
+    }
+}
+</pre>
+<p>Estamos aplicando el concepto de <strong>composición</strong>: una clase (CuentaBancaria) tiene como atributo otra clase (Persona). Esto permite modelar relaciones del mundo real entre objetos.</p>
+</div>
+</div>
+</div>
+
+<!-- ================================================================ -->
+<!-- VIDEO 04: CARACTERÍSTICAS DE LA POO -->
+<!-- ================================================================ -->
+<div class="video-group">
+<div class="video-header">
+  <h2>V-04: Características de la POO</h2>
+  <div class="sub">Abstracción, encapsulamiento, herencia, polimorfismo</div>
+</div>
+
+<div class="exercise">
+<div class="question">
+<h3><span class="num">Ejercicio 4.1</span> — Las 4 características de la POO</h3>
+<p>Explica cada una de las 4 características fundamentales de la POO con tus propias palabras y pon un ejemplo breve de cada una:</p>
+<ol>
+  <li>Abstracción</li>
+  <li>Encapsulamiento</li>
+  <li>Herencia</li>
+  <li>Polimorfismo</li>
+</ol>
+</div>
+<div class="solution">
+<h4>✅ Solución 4.1</h4>
+<ol>
+  <li><strong>Abstracción:</strong> Proceso de extraer las características esenciales de un objeto del mundo real, ignorando los detalles irrelevantes. Ej: para una app de una biblioteca, de un libro nos interesa título, autor, ISBN; no el color de la portada o el grosor.</li>
+  <li><strong>Encapsulamiento:</strong> Ocultar la información interna del objeto (atributos private) y permitir el acceso solo a través de métodos públicos (getters/setters). Ej: <code>private int edad</code> con <code>setEdad()</code> que valida que no sea negativa.</li>
+  <li><strong>Herencia:</strong> Mecanismo por el cual una clase (subclase/hija) hereda atributos y métodos de otra (superclase/padre). Ej: <code>Perro extends Animal</code> — Perro hereda todos los atributos y métodos de Animal y puede añadir los suyos propios.</li>
+  <li><strong>Polimorfismo:</strong> Capacidad de un método de comportarse de forma distinta según la clase del objeto que lo invoca. Ej: el método <code>sonido()</code> en <code>Animal</code> — si lo invoca un <code>Perro</code> hace "Guau", si lo invoca un <code>Gato</code> hace "Miau".</li>
+</ol>
+</div>
+</div>
+
+<div class="exercise">
+<div class="question">
+<h3><span class="num">Ejercicio 4.2</span> — Herencia y polimorfismo en acción</h3>
+<p>Crea una jerarquía de clases donde:</p>
+<ul>
+  <li><code>Empleado</code> (superclase) con atributos <code>nombre</code> y <code>salario</code>, y método <code>trabajar()</code> que muestre "El empleado [nombre] está trabajando".</li>
+  <li><code>Programador</code> (subclase) que hereda de <code>Empleado</code>, añade el atributo <code>lenguaje</code> y sobreescribe <code>trabajar()</code> para que muestre "El programador [nombre] está escribiendo código en [lenguaje]".</li>
+  <li><code>Disenador</code> (subclase) que hereda de <code>Empleado</code>, añade <code>herramienta</code> y sobreescribe <code>trabajar()</code> para mostrar "El diseñador [nombre] está diseñando con [herramienta]".</li>
+</ul>
+<p>Crea un <code>main()</code> que demuestre el polimorfismo.</p>
+</div>
+<div class="solution">
+<h4>✅ Solución 4.2</h4>
+<pre>
+class Empleado {
+    protected String nombre;
+    protected double salario;
+
+    Empleado(String nombre, double salario) {
+        this.nombre = nombre;
+        this.salario = salario;
+    }
+
+    void trabajar() {
+        System.out.println("El empleado " + nombre + " está trabajando");
+    }
+}
+
+class Programador extends Empleado {
+    private String lenguaje;
+
+    Programador(String nombre, double salario, String lenguaje) {
+        super(nombre, salario);
+        this.lenguaje = lenguaje;
+    }
+
+    @Override
+    void trabajar() {
+        System.out.println("El programador " + nombre
+            + " está escribiendo código en " + lenguaje);
+    }
+}
+
+class Disenador extends Empleado {
+    private String herramienta;
+
+    Disenador(String nombre, double salario, String herramienta) {
+        super(nombre, salario);
+        this.herramienta = herramienta;
+    }
+
+    @Override
+    void trabajar() {
+        System.out.println("El diseñador " + nombre
+            + " está diseñando con " + herramienta);
+    }
+}
+
+// Demostración de polimorfismo:
+public static void main(String[] args) {
+    Empleado e1 = new Programador("Ana", 35000, "Java");
+    Empleado e2 = new Disenador("Luis", 32000, "Figma");
+
+    e1.trabajar();  // El programador Ana está escribiendo código en Java
+    e2.trabajar();  // El diseñador Luis está diseñando con Figma
+}
+</pre>
+</div>
+</div>
+</div>
+
+<!-- ================================================================ -->
+<!-- VIDEO 05: DISEÑO UML -->
+<!-- ================================================================ -->
+<div class="video-group">
+<div class="video-header">
+  <h2>V-05: Diseño orientado a objetos en UML</h2>
+  <div class="sub">Diagrama de clases UML, relaciones: asociación, agregación, composición, cardinalidad</div>
+</div>
+
+<div class="exercise">
+<div class="question">
+<h3><span class="num">Ejercicio 5.1</span> — Leer y explicar un diagrama UML</h3>
+<p>Dado el siguiente esquema de relaciones UML:</p>
+<pre>
+  Pedido ── 1 ──&gt; Cliente
+  Pedido &lt;&gt;── * ──&gt; LineaPedido
+  Producto ── 1..* ──&gt; Categoria
+</pre>
+<p>Responde:</p>
+<ol>
+  <li>¿Qué tipo de relación hay entre Pedido y Cliente? Explica la cardinalidad.</li>
+  <li>¿Qué tipo de relación hay entre Pedido y LineaPedido? ¿Por qué se usa composición (rombo negro)?</li>
+  <li>¿Qué significa la cardinalidad 1..* entre Producto y Categoria?</li>
+  <li>¿Qué es la navegabilidad en UML y cómo se representa?</li>
+</ol>
+</div>
+<div class="solution">
+<h4>✅ Solución 5.1</h4>
+<ol>
+  <li><strong>Asociación simple</strong> entre Pedido y Cliente. Cardinalidad: un pedido pertenece a <strong>1</strong> cliente, y un cliente puede tener <strong>*</strong> (muchos) pedidos. La flecha indica navegabilidad de Pedido → Cliente.</li>
+  <li><strong>Composición</strong> (rombo negro en Pedido). Las líneas de pedido son "parte de" un pedido. Si el pedido se elimina, sus líneas también se eliminan. Una línea de pedido no puede existir sin su pedido.</li>
+  <li>Un producto pertenece a <strong>1 o más</strong> categorías (1..*), y una categoría puede tener <strong>*</strong> productos. Es una asociación muchos-a-muchos.</li>
+  <li><strong>Navegabilidad:</strong> indica quién conoce a quién. Se representa con una flecha en el extremo del destino. Si la flecha va de Pedido → Cliente, significa que Pedido tiene una referencia a Cliente, pero no al revés. Sin flecha = bidireccional.</li>
+</ol>
+</div>
+</div>
+
+<div class="exercise">
+<div class="question">
+<h3><span class="num">Ejercicio 5.2</span> — Diseñar UML y código para Universidad</h3>
+<p>Modela con UML textual y escribe el código Java para un sistema universitario donde:</p>
+<ul>
+  <li>Un <strong>Profesor</strong> tiene nombre, email y puede impartir varios <strong>Curso</strong>s (un curso solo lo imparte un profesor).</li>
+  <li>Un <strong>Curso</strong> tiene nombre, código y varios <strong>Estudiante</strong>s.</li>
+  <li>Un <strong>Estudiante</strong> tiene nombre, número de matrícula y puede estar en varios cursos.</li>
+</ul>
+<p>Identifica los tipos de relación y las cardinalidades.</p>
+</div>
+<div class="solution">
+<h4>✅ Solución 5.2</h4>
+<p><strong>Diagrama UML textual:</strong></p>
+<pre>
+  Profesor ── 1 ──&gt; * Curso
+  Curso * ──&gt; * Estudiante
+</pre>
+<ul>
+  <li><strong>Profesor → Curso:</strong> Asociación 1 → *. Un profesor imparte varios cursos; un curso tiene un solo profesor.</li>
+  <li><strong>Curso ↔ Estudiante:</strong> Asociación * → * (bidireccional). Un curso tiene muchos estudiantes; un estudiante puede estar en muchos cursos.</li>
+</ul>
+<pre>
+class Profesor {
+    private String nombre, email;
+    Profesor(String n, String e) { nombre = n; email = e; }
+}
+
+class Curso {
+    private String nombre, codigo;
+    private Profesor profesor;
+    private ArrayList&lt;Estudiante&gt; estudiantes = new ArrayList&lt;&gt;();
+
+    Curso(String n, String c, Profesor p) { nombre = n; codigo = c; profesor = p; }
+    void agregarEstudiante(Estudiante e) { estudiantes.add(e); }
+}
+
+class Estudiante {
+    private String nombre;
+    private int numMatricula;
+    private ArrayList&lt;Curso&gt; cursos = new ArrayList&lt;&gt;();
+
+    Estudiante(String n, int m) { nombre = n; numMatricula = m; }
+    void matricularEn(Curso c) { cursos.add(c); c.agregarEstudiante(this); }
+}
+</pre>
+</div>
+</div>
+</div>
+
+<!-- ================================================================ -->
+<!-- VIDEO 06: MAPAS DE OBJETOS -->
+<!-- ================================================================ -->
+<div class="video-group">
+<div class="video-header">
+  <h2>V-06: Mapas de objetos</h2>
+  <div class="sub">Verificar cardinalidades, enlaces entre objetos, casos válidos e inválidos</div>
+</div>
+
+<div class="exercise">
+<div class="question">
+<h3><span class="num">Ejercicio 6.1</span> — Validar mapa de objetos (Biblioteca)</h3>
+<p>Tenemos las siguientes clases con sus cardinalidades UML:</p>
+<pre>
+  Biblioteca ── * ──&gt; Libro
+  Libro ── 1 ──&gt; Autor
+</pre>
+<p>Determina si estos mapas de objetos son VÁLIDOS o INVÁLIDOS y explica por qué:</p>
+<ol>
+  <li>BibliotecaA → Libro1, Libro2 (AutorA, AutorB) | BibliotecaB → (sin libros) | BibliotecaC → Libro3 (AutorA)</li>
+  <li>BibliotecaA → Libro1, Libro2 | Libro1 → AutorA, AutorB  (un libro con dos autores)</li>
+  <li>BibliotecaA → Libro1 (AutorA) | Libro2 (AutorA) | Libro3 (AutorB) | Libro4 sin flecha a ningún autor</li>
+</ol>
+</div>
+<div class="solution">
+<h4>✅ Solución 6.1</h4>
+<ol>
+  <li><strong>VÁLIDO.</strong> BibliotecaB puede estar sin libros (cardinalidad * permite 0). Cada libro tiene un solo autor (cardinalidad 1).</li>
+  <li><strong>INVÁLIDO.</strong> La cardinalidad Libro → Autor es 1 (un libro pertenece a UN único autor). Libro1 no puede tener dos autores según este diseño.</li>
+  <li><strong>INVÁLIDO.</strong> La cardinalidad Libro → Autor es 1 (obligatorio). Libro4 no tiene flecha a ningún autor, incumpliendo la cardinalidad 1 (debe tener exactamente un autor).</li>
+</ol>
+</div>
+</div>
+
+<div class="exercise">
+<div class="question">
+<h3><span class="num">Ejercicio 6.2</span> — Diseñar mapa de objetos válido</h3>
+<p>Diseña un mapa de objetos VÁLIDO para el siguiente modelo UML:</p>
+<pre>
+  Pedido ── 1 ──&gt; Cliente
+  Pedido ── 1..* ──&gt; Producto
+</pre>
+<p>Es decir: un pedido pertenece a un solo cliente, y un pedido debe tener al menos 1 producto. Los clientes son: Ana, Luis, Eva. Productos: Portátil, Ratón, Teclado.</p>
+<p>Crea un mapa con 3 pedidos que incluya al menos un caso de cliente con múltiples pedidos y que cumpla todas las cardinalidades.</p>
+</div>
+<div class="solution">
+<h4>✅ Solución 6.2</h4>
+<p><strong>Mapa de objetos válido:</strong></p>
+<pre>
+  Pedido1 ──&gt; Cliente: Ana
+  Pedido1 ──&gt; Productos: Portátil, Ratón
+
+  Pedido2 ──&gt; Cliente: Ana        // Ana tiene 2 pedidos
+  Pedido2 ──&gt; Productos: Teclado
+
+  Pedido3 ──&gt; Cliente: Luis
+  Pedido3 ──&gt; Productos: Portátil, Teclado, Ratón
+
+  // Cliente Eva no tiene pedidos (cardinalidad * en Cliente, puede ser 0)
+</pre>
+<p><strong>Validación:</strong></p>
+<ul>
+  <li>Cada pedido tiene exactamente 1 cliente → ✅</li>
+  <li>Cada pedido tiene al menos 1 producto (1..*) → ✅</li>
+  <li>Ana puede tener varios pedidos (* en cliente) → ✅</li>
+  <li>Los productos pueden estar en varios pedidos (cardinalidad * en producto) → ✅</li>
+</ul>
+</div>
+</div>
+</div>
+
+<!-- ================================================================ -->
+<!-- VIDEO 07: INTRODUCCIÓN POO JAVA -->
+<!-- ================================================================ -->
+<div class="video-group">
+<div class="video-header">
+  <h2>V-07: Introducción a la POO en Java (sintaxis)</h2>
+  <div class="sub">Estructura de clase, modificadores de acceso, getters/setters, toString()</div>
+</div>
+
+<div class="exercise">
+<div class="question">
+<h3><span class="num">Ejercicio 7.1</span> — Clase Rectángulo completa</h3>
+<p>Crea una clase <code>Rectangulo</code> en Java con:</p>
+<ul>
+  <li>Atributos privados: <code>base</code> (double), <code>altura</code> (double).</li>
+  <li>Constructor sin parámetros (base=1, altura=1).</li>
+  <li>Constructor con parámetros.</li>
+  <li>Getters y setters (validar que base y altura sean > 0; si no, poner a 1).</li>
+  <li>Método <code>area()</code> que devuelva el área.</li>
+  <li>Método <code>perimetro()</code> que devuelva el perímetro.</li>
+  <li>Método <code>toString()</code> personalizado.</li>
+</ul>
+</div>
+<div class="solution">
+<h4>✅ Solución 7.1</h4>
+<pre>
+class Rectangulo {
+    private double base;
+    private double altura;
+
+    Rectangulo() {
+        this.base = 1;
+        this.altura = 1;
+    }
+
+    Rectangulo(double base, double altura) {
+        setBase(base);
+        setAltura(altura);
+    }
+
+    double getBase() { return base; }
+    double getAltura() { return altura; }
+
+    void setBase(double base) {
+        this.base = (base > 0) ? base : 1;
+    }
+
+    void setAltura(double altura) {
+        this.altura = (altura > 0) ? altura : 1;
+    }
+
+    double area() { return base * altura; }
+
+    double perimetro() { return 2 * (base + altura); }
+
+    public String toString() {
+        return "Rectangulo{base=" + base + ", altura=" + altura
+            + ", area=" + area() + ", perimetro=" + perimetro() + "}";
+    }
+}
+</pre>
+</div>
+</div>
+
+<div class="exercise">
+<div class="question">
+<h3><span class="num">Ejercicio 7.2</span> — Modificadores de acceso</h3>
+<p>Explica cada uno de los modificadores de acceso en Java y completa la tabla:</p>
+<table border="1" cellpadding="6" style="border-collapse:collapse; border:1px solid #999;">
+<tr><th>Modificador</th><th>Misma clase</th><th>Mismo paquete</th><th>Subclase</th><th>Cualquier clase</th></tr>
+<tr><td>public</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td></tr>
+<tr><td>protected</td><td>✅</td><td>✅</td><td>✅</td><td>❌</td></tr>
+<tr><td>(sin modificador)</td><td>✅</td><td>✅</td><td>❌</td><td>❌</td></tr>
+<tr><td>private</td><td>✅</td><td>❌</td><td>❌</td><td>❌</td></tr>
+</table>
+<p>Además, responde: ¿por qué es buena práctica que los atributos sean <code>private</code> y los métodos que los modifican sean <code>public</code>?</p>
+</div>
+<div class="solution">
+<h4>✅ Solución 7.2</h4>
+<p>La tabla está completa y correcta arriba.</p>
+<p><strong>¿Por qué atributos private y métodos public?</strong></p>
+<p>Esto es el principio de <strong>encapsulamiento</strong>. Las razones son:</p>
+<ol>
+  <li><strong>Control:</strong> Podemos validar los valores antes de asignarlos (ej: no permitir edades negativas).</li>
+  <li><strong>Protección:</strong> Evitamos que desde fuera se modifique el estado interno de forma incorrecta.</li>
+  <li><strong>Flexibilidad:</strong> Podemos cambiar la implementación interna sin afectar al código externo.</li>
+  <li><strong>Mantenibilidad:</strong> El código queda más organizado y con responsabilidades claras.</li>
+</ol>
+<p>Ejemplo: si <code>edad</code> fuera público, cualquiera podría hacer <code>persona.edad = -5</code>. Con setter privado, controlamos: <code>setEdad(-5)</code> no permitiría el cambio.</p>
+</div>
+</div>
+</div>
+
+<!-- ================================================================ -->
+<!-- VIDEO 08: EJEMPLO CLASE CÍRCULO -->
+<!-- ================================================================ -->
+<div class="video-group">
+<div class="video-header">
+  <h2>V-08: Ejemplo clase Círculo</h2>
+  <div class="sub">Setter con validación, sobrecarga de constructores, interacción entre instancias</div>
+</div>
+
+<div class="exercise">
+<div class="question">
+<h3><span class="num">Ejercicio 8.1</span> — Círculo con validación en setter</h3>
+<p>Implementa una clase <code>Circulo</code> con:</p>
+<ul>
+  <li>Atributo privado <code>radio</code> (double).</li>
+  <li>Constructor por defecto (radio = 1.0).</li>
+  <li>Constructor con radio (usa el setter para validar).</li>
+  <li>Setter <code>setRadio()</code> que no permita valores negativos (forma 2: si es negativo, no modifica).</li>
+  <li>Getter <code>getRadio()</code>.</li>
+  <li>Método <code>area()</code> y <code>circunferencia()</code>.</li>
+  <li>Método <code>toString()</code>.</li>
+</ul>
+<p>En el <code>main()</code>:</p>
+<ul>
+  <li>Crea un círculo con radio 5, muestra su área.</li>
+  <li>Intenta poner radio -3 (debe conservar el valor anterior).</li>
+  <li>Copia el radio de otro círculo en el primero usando getter/setter.</li>
+</ul>
+</div>
+<div class="solution">
+<h4>✅ Solución 8.1</h4>
+<pre>
+class Circulo {
+    private double radio;
+
+    Circulo() { this.radio = 1.0; }
+
+    Circulo(double radio) { setRadio(radio); }
+
+    double getRadio() { return radio; }
+
+    void setRadio(double radio) {
+        if (radio >= 0) {
+            this.radio = radio;
+        } // Si negativo, no modifica
+    }
+
+    double area() { return Math.PI * radio * radio; }
+
+    double circunferencia() { return 2 * Math.PI * radio; }
+
+    public String toString() {
+        return "Circulo{radio=" + radio + ", area="
+            + String.format("%.2f", area()) + "}";
+    }
+
+    public static void main(String[] args) {
+        Circulo c1 = new Circulo(5);
+        System.out.println("Área: " + c1.area());
+
+        System.out.println("Radio antes: " + c1.getRadio());
+        c1.setRadio(-3);
+        System.out.println("Radio después: " + c1.getRadio() + " (conserva 5)");
+
+        Circulo c2 = new Circulo(10);
+        c1.setRadio(c2.getRadio());  // Copia radio de c2 a c1
+        System.out.println("c1 radio ahora: " + c1.getRadio());
+    }
+}
+</pre>
+</div>
+</div>
+
+<div class="exercise">
+<div class="question">
+<h3><span class="num">Ejercicio 8.2</span> — Comparar círculos</h3>
+<p>Añade a la clase <code>Circulo</code> del ejercicio anterior:</p>
+<ul>
+  <li>Un método <code>esMayorQue(Circulo otro)</code> que devuelva <code>true</code> si el círculo actual tiene un área mayor que el otro.</li>
+  <li>Un método estático <code>comparar(Circulo a, Circulo b)</code> que devuelva el círculo con mayor área.</li>
+</ul>
+<p>En el <code>main()</code>, crea 3 círculos y determina cuál es el mayor.</p>
+</div>
+<div class="solution">
+<h4>✅ Solución 8.2</h4>
+<pre>
+class Circulo {
+    private double radio;
+    // ... (mismos constructores, getters y setters que arriba) ...
+
+    double area() { return Math.PI * radio * radio; }
+
+    boolean esMayorQue(Circulo otro) {
+        return this.area() > otro.area();
+    }
+
+    static Circulo comparar(Circulo a, Circulo b) {
+        return (a.area() > b.area()) ? a : b;
+    }
+
+    public static void main(String[] args) {
+        Circulo c1 = new Circulo(3);
+        Circulo c2 = new Circulo(5);
+        Circulo c3 = new Circulo(4);
+
+        Circulo mayor = Circulo.comparar(Circulo.comparar(c1, c2), c3);
+        System.out.println("El mayor es: " + mayor);
+
+        // También con método de instancia:
+        System.out.println("¿c2 > c1? " + c2.esMayorQue(c1));
+    }
+}
+</pre>
+</div>
+</div>
+</div>
+
+<!-- ================================================================ -->
+<!-- VIDEO 09: EJEMPLO CLASE TELEVISOR -->
+<!-- ================================================================ -->
+<div class="video-group">
+<div class="video-header">
+  <h2>V-09: Ejemplo clase Televisor</h2>
+  <div class="sub">Declarar vs instanciar, valores por defecto, referencias compartidas</div>
+</div>
+
+<div class="exercise">
+<div class="question">
+<h3><span class="num">Ejercicio 9.1</span> — Clase Televisor con volumen</h3>
+<p>Crea una clase <code>Televisor</code> con:</p>
+<ul>
+  <li>Atributo privado <code>canal</code> (int).</li>
+  <li>Constructor que inicialice canal a 1.</li>
+  <li>Métodos <code>subirCanal()</code> y <code>bajarCanal()</code> (incrementan/decrementan en 1).</li>
+  <li>Getter <code>getCanal()</code>.</li>
+</ul>
+<p>Añade además un atributo <code>volumen</code> (int) con sus propios métodos <code>subirVolumen()</code>, <code>bajarVolumen()</code> y <code>getVolumen()</code>. El volumen empieza en 10 y no puede bajar de 0.</p>
+<p>En el <code>main()</code>:</p>
+<ul>
+  <li>Crea un televisor, súbelo 3 canales, baja el volumen 2 veces.</li>
+  <li>Crea otro televisor que apunte al MISMO objeto (referencia compartida).</li>
+  <li>Modifica el canal desde una referencia y muestra cómo cambia en ambas.</li>
+</ul>
+</div>
+<div class="solution">
+<h4>✅ Solución 9.1</h4>
+<pre>
+class Televisor {
+    private int canal;
+    private int volumen;
+
+    Televisor() {
+        this.canal = 1;
+        this.volumen = 10;
+    }
+
+    void subirCanal() { canal++; }
+    void bajarCanal() { canal--; if (canal < 0) canal = 0; }
+    int getCanal() { return canal; }
+
+    void subirVolumen() { volumen++; }
+    void bajarVolumen() { if (volumen > 0) volumen--; }
+    int getVolumen() { return volumen; }
+
+    public static void main(String[] args) {
+        Televisor tv1 = new Televisor();
+        tv1.subirCanal();
+        tv1.subirCanal();
+        tv1.subirCanal();        // canal = 4
+        tv1.bajarVolumen();
+        tv1.bajarVolumen();      // volumen = 8
+
+        System.out.println("Canal: " + tv1.getCanal()
+            + ", Volumen: " + tv1.getVolumen());
+
+        // Referencia compartida
+        Televisor tv2 = tv1;     // Mismo objeto
+        tv2.subirCanal();        // Cambia el objeto compartido
+
+        System.out.println("tv1.canal: " + tv1.getCanal());  // 5
+        System.out.println("tv2.canal: " + tv2.getCanal());  // 5 (mismo)
+    }
+}
+</pre>
+</div>
+</div>
+
+<div class="exercise">
+<div class="question">
+<h3><span class="num">Ejercicio 9.2</span> — Declarar vs instanciar</h3>
+<p>Explica qué ocurre en cada caso y por qué:</p>
+<ol>
+  <li><code>Televisor tv;</code></li>
+  <li><code>tv.subirCanal();</code></li>
+  <li><code>tv = new Televisor();</code></li>
+  <li><code>tv.subirCanal();</code></li>
+</ol>
+<p>¿Qué error ocurriría en el paso 2 y por qué? ¿Qué son los valores por defecto de los tipos primitivos en Java? Haz una tabla.</p>
+</div>
+<div class="solution">
+<h4>✅ Solución 9.2</h4>
+<ol>
+  <li><code>Televisor tv;</code> → Declara una variable de tipo Televisor. Su valor es <code>null</code>. No hay ningún objeto en memoria, solo una referencia vacía.</li>
+  <li><code>tv.subirCanal();</code> → ¡ERROR! <strong>NullPointerException</strong>. Porque tv es null (no apunta a ningún objeto). No se puede llamar a métodos sobre null.</li>
+  <li><code>tv = new Televisor();</code> → Crea un nuevo objeto Televisor en memoria (heap) y asigna su dirección a la variable tv. Ahora tv apunta a un objeto real.</li>
+  <li><code>tv.subirCanal();</code> → Funciona correctamente porque tv ya apunta a un objeto Televisor.</li>
+</ol>
+<p><strong>Valores por defecto de tipos primitivos:</strong></p>
+<table border="1" cellpadding="4" style="border-collapse:collapse;border:1px solid #999;">
+<tr><th>Tipo</th><th>Valor por defecto</th></tr>
+<tr><td>int, long, short, byte</td><td>0</td></tr>
+<tr><td>double, float</td><td>0.0</td></tr>
+<tr><td>boolean</td><td>false</td></tr>
+<tr><td>char</td><td>'\0' (carácter nulo)</td></tr>
+<tr><td>Objetos (String, etc.)</td><td>null</td></tr>
+</table>
+</div>
+</div>
+</div>
+
+<!-- ================================================================ -->
+<!-- VIDEO 10: SOBRECARGA DE CONSTRUCTORES -->
+<!-- ================================================================ -->
+<div class="video-group">
+<div class="video-header">
+  <h2>V-10: Sobrecarga de constructores</h2>
+  <div class="sub">Sobrecarga, setter con validación (canales 1-99), reutilizar setter en constructor, circular vs saturación</div>
+</div>
+
+<div class="exercise">
+<div class="question">
+<h3><span class="num">Ejercicio 10.1</span> — Televisor con límites y saturación</h3>
+<p>Crea una clase <code>Televisor</code> con:</p>
+<ul>
+  <li>Atributo privado <code>canal</code> (int).</li>
+  <li>Constructor por defecto (canal = 1).</li>
+  <li>Constructor con parámetro <code>Televisor(int canal)</code> que reutilice el setter.</li>
+  <li>Setter <code>setCanal(int valor)</code> que valide: canales válidos entre 1 y 99. Si el valor está fuera, aplica <strong>saturación</strong> (se queda en el límite).</li>
+  <li>Getter <code>getCanal()</code>.</li>
+  <li>Métodos <code>subirCanal()</code> y <code>bajarCanal()</code> que usen el setter.</li>
+</ul>
+<p>En el <code>main()</code>, demuestra que:</p>
+<ul>
+  <li>Crear <code>new Televisor(150)</code> pone canal a 99.</li>
+  <li>Crear <code>new Televisor(0)</code> pone canal a 1.</li>
+  <li>Si estamos en 99 y subimos, nos quedamos en 99.</li>
+  <li>Si estamos en 1 y bajamos, nos quedamos en 1.</li>
+</ul>
+</div>
+<div class="solution">
+<h4>✅ Solución 10.1</h4>
+<pre>
+class Televisor {
+    private int canal;
+
+    Televisor() { this.canal = 1; }
+
+    Televisor(int canal) { setCanal(canal); }
+
+    void setCanal(int valor) {
+        if (valor < 1) {
+            this.canal = 1;
+        } else if (valor > 99) {
+            this.canal = 99;
+        } else {
+            this.canal = valor;
+        }
+    }
+
+    int getCanal() { return canal; }
+
+    void subirCanal() { setCanal(canal + 1); }
+    void bajarCanal() { setCanal(canal - 1); }
+
+    public static void main(String[] args) {
+        Televisor t1 = new Televisor(150);
+        System.out.println(t1.getCanal());  // 99
+
+        Televisor t2 = new Televisor(0);
+        System.out.println(t2.getCanal());  // 1
+
+        t1.setCanal(99);
+        t1.subirCanal();
+        System.out.println(t1.getCanal());  // 99 (saturación)
+
+        t2.setCanal(1);
+        t2.bajarCanal();
+        System.out.println(t2.getCanal());  // 1 (saturación)
+    }
+}
+</pre>
+</div>
+</div>
+
+<div class="exercise">
+<div class="question">
+<h3><span class="num">Ejercicio 10.2</span> — Saturación vs Circular</h3>
+<p>Explica la diferencia entre las dos estrategias de manejo de límites. Después, modifica la clase <code>Televisor</code> del ejercicio anterior para que el canal use estrategia <strong>circular</strong>:</p>
+<ul>
+  <li>Si canal = 99 y subimos → canal = 1</li>
+  <li>Si canal = 1 y bajamos → canal = 99</li>
+</ul>
+<p>¿Qué ventajas tiene cada estrategia? ¿En qué contexto usarías cada una?</p>
+</div>
+<div class="solution">
+<h4>✅ Solución 10.2</h4>
+<p><strong>Diferencias:</strong></p>
+<ul>
+  <li><strong>Saturación:</strong> Al llegar al límite, el valor se queda ahí. No puede pasar del máximo ni del mínimo. Ej: volumen 0-15, si estás en 15 y subes, sigue en 15.</li>
+  <li><strong>Circular:</strong> Al llegar al límite, "da la vuelta". Ej: canales 1-99, si estás en 99 y subes, vuelve a 1.</li>
+</ul>
+<p><strong>Setter circular:</strong></p>
+<pre>
+void setCanal(int valor) {
+    if (valor > 99) {
+        this.canal = 1;
+    } else if (valor < 1) {
+        this.canal = 99;
+    } else {
+        this.canal = valor;
+    }
+}
+</pre>
+<p><strong>¿Cuándo usar cada una?</strong></p>
+<ul>
+  <li><strong>Saturación:</strong> Para características que tienen un mínimo y máximo absolutos que no tiene sentido "dar la vuelta" (volumen, temperatura, brillo).</li>
+  <li><strong>Circular:</strong> Para valores que forman un ciclo (canales de TV, días de la semana, meses del año, opciones de menú).</li>
+</ul>
+</div>
+</div>
+</div>
+
+<!-- ================================================================ -->
+<!-- VIDEO 11: EJERCICIOS OO TELEVISOR -->
+<!-- ================================================================ -->
+<div class="video-group">
+<div class="video-header">
+  <h2>V-11: Ejercicios OO Televisor</h2>
+  <div class="sub">Múltiples atributos, cada uno con diferentes límites y estrategias (circular/saturación)</div>
+</div>
+
+<div class="exercise">
+<div class="question">
+<h3><span class="num">Ejercicio 11.1</span> — Televisor con canal, volumen y color</h3>
+<p>Crea una clase <code>Televisor</code> con tres atributos privados:</p>
+<ul>
+  <li><code>canal</code>: 0 a 10, estrategia <strong>circular</strong> (10+1=0, 0-1=10)</li>
+  <li><code>volumen</code>: 0 a 15, estrategia <strong>saturación</strong> (se queda en límite)</li>
+  <li><code>color</code>: 1 a 7, estrategia <strong>saturación</strong></li>
+</ul>
+<p>Valores iniciales: canal=1, volumen=5, color=7.</p>
+<p>Todos los setters deben mostrar el valor tras cada cambio.</p>
+</div>
+<div class="solution">
+<h4>✅ Solución 11.1</h4>
+<pre>
+class Televisor {
+    private int canal, volumen, color;
+
+    Televisor() { canal = 1; volumen = 5; color = 7; }
+
+    void setCanal(int v) {
+        if (v > 10)     canal = 0;
+        else if (v < 0) canal = 10;
+        else            canal = v;
+        System.out.println("Canal: " + canal);
+    }
+
+    void setVolumen(int v) {
+        if (v > 15)     volumen = 15;
+        else if (v < 0) volumen = 0;
+        else            volumen = v;
+        System.out.println("Volumen: " + volumen);
+    }
+
+    void setColor(int v) {
+        if (v > 7)      color = 7;
+        else if (v < 1) color = 1;
+        else            color = v;
+        System.out.println("Color: " + color);
+    }
+
+    void subirCanal()   { setCanal(canal + 1); }
+    void bajarCanal()   { setCanal(canal - 1); }
+    void subirVolumen() { setVolumen(volumen + 1); }
+    void bajarVolumen() { setVolumen(volumen - 1); }
+    void subirColor()   { setColor(color + 1); }
+    void bajarColor()   { setColor(color - 1); }
+
+    public static void main(String[] args) {
+        Televisor tv = new Televisor();
+        tv.setCanal(10);   // Canal: 10
+        tv.subirCanal();   // Canal: 0  (circular)
+        tv.bajarCanal();   // Canal: 10 (circular)
+
+        tv.setVolumen(15); // Volumen: 15
+        tv.subirVolumen(); // Volumen: 15 (saturación)
+    }
+}
+</pre>
+</div>
+</div>
+
+<div class="exercise">
+<div class="question">
+<h3><span class="num">Ejercicio 11.2</span> — Método mostrarDatos()</h3>
+<p>Añade a la clase <code>Televisor</code> anterior un método <code>mostrarDatos(String nombre)</code> que muestre:</p>
+<pre>
+TV [nombre]:
+  Canal actual = X
+  Volumen = Y
+  Color = Z
+</pre>
+<p>Crea dos televisores (tv1 y tv2). A tv1 súbele el canal 3 veces y baja el volumen 2 veces. A tv2 pon el color a 3 y súbele el volumen al máximo. Muestra los datos finales de ambos.</p>
+</div>
+<div class="solution">
+<h4>✅ Solución 11.2</h4>
+<pre>
+class Televisor {
+    private int canal, volumen, color;
+
+    Televisor() { canal = 1; volumen = 5; color = 7; }
+
+    // ... setters igual que ejercicio anterior ...
+
+    void mostrarDatos(String nombre) {
+        System.out.println("TV " + nombre + ":");
+        System.out.println("  Canal actual = " + canal);
+        System.out.println("  Volumen = " + volumen);
+        System.out.println("  Color = " + color);
+    }
+
+    public static void main(String[] args) {
+        Televisor tv1 = new Televisor();
+        Televisor tv2 = new Televisor();
+
+        tv1.subirCanal();   // canal 2
+        tv1.subirCanal();   // canal 3
+        tv1.subirCanal();   // canal 4
+        tv1.bajarVolumen(); // volumen 4
+        tv1.bajarVolumen(); // volumen 3
+
+        tv2.setColor(3);    // color 3
+        tv2.setVolumen(15); // volumen 15
+        tv2.subirVolumen(); // volumen 15 (máximo)
+
+        System.out.println();
+        tv1.mostrarDatos("tv1");
+        tv2.mostrarDatos("tv2");
+    }
+}
+</pre>
+<p>Salida esperada:</p>
+<pre>
+TV tv1:
+  Canal actual = 4
+  Volumen = 3
+  Color = 7
+TV tv2:
+  Canal actual = 1
+  Volumen = 15
+  Color = 3
+</pre>
+</div>
+</div>
+</div>
+
+<!-- ================================================================ -->
+<!-- VIDEO 12: EJEMPLO CLASE PUNTO -->
+<!-- ================================================================ -->
+<div class="video-group">
+<div class="video-header">
+  <h2>V-12: Ejemplo clase Punto</h2>
+  <div class="sub">Constructor por defecto, sobrecarga de métodos, métodos privados, variables locales</div>
+</div>
+
+<div class="exercise">
+<div class="question">
+<h3><span class="num">Ejercicio 12.1</span> — Clase Punto con distancia</h3>
+<p>Crea una clase <code>Punto</code> con:</p>
+<ul>
+  <li>Atributos públicos <code>x</code> e <code>y</code> (int).</li>
+  <li>Constructor con dos parámetros.</li>
+  <li>Un método privado <code>mostrarCoordenadas()</code> que muestre "x = X, y = Y".</li>
+  <li>Un método público sobrecargado <code>mostrarDatos(String titulo)</code> que muestre el título, llame al método privado y muestre la distancia al centro.</li>
+  <li>Método <code>distanciaAlCentro()</code> que devuelva la distancia euclídea desde (0,0) usando <code>Math.sqrt(x² + y²)</code>, <strong>sin</strong> variable local innecesaria.</li>
+</ul>
+<p>Explica por qué es mejor práctica evitar la variable local en el método de distancia.</p>
+</div>
+<div class="solution">
+<h4>✅ Solución 12.1</h4>
+<pre>
+class Punto {
+    int x, y;
+
+    Punto(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    private void mostrarCoordenadas() {
+        System.out.println("  x = " + x + ", y = " + y);
+    }
+
+    void mostrarDatos(String titulo) {
+        System.out.println("  " + titulo);
+        mostrarCoordenadas();
+        System.out.println("  Distancia al centro: " + distanciaAlCentro());
+        System.out.println("  ---");
+    }
+
+    double distanciaAlCentro() {
+        return Math.sqrt(x * x + y * y);  // Sin variable local
+    }
+
+    public static void main(String[] args) {
+        Punto p = new Punto(3, 4);
+        p.mostrarDatos("Mi punto:");
+        // Muestra: distancia al centro = 5.0
+    }
+}
+</pre>
+<p><strong>¿Por qué evitar la variable local?</strong></p>
+<p>Forma PEOR: <code>double z = Math.sqrt(x*x + y*y); return z;</code></p>
+<p>La forma MEJOR (<code>return Math.sqrt(x*x + y*y)</code>) es más eficiente porque no reserva memoria para una variable temporal que solo se usa una vez. El código es más conciso, más legible y evita una asignación innecesaria.</p>
+</div>
+</div>
+
+<div class="exercise">
+<div class="question">
+<h3><span class="num">Ejercicio 12.2</span> — Constructor por defecto</h3>
+<p>Si declaramos un constructor con parámetros en una clase, ¿qué ocurre con el constructor por defecto (sin parámetros)?</p>
+<p>Crea una clase <code>Punto</code> que:</p>
+<ul>
+  <li>Tenga solo el constructor <code>Punto(int x, int y)</code>.</li>
+  <li>Intenta crear un punto con <code>new Punto()</code>. ¿Qué ocurre?</li>
+  <li>¿Cómo solucionarías esto para que se pueda crear un Punto sin parámetros (x=0, y=0)?</li>
+</ul>
+</div>
+<div class="solution">
+<h4>✅ Solución 12.2</h4>
+<p><strong>¿Qué ocurre con el constructor por defecto?</strong></p>
+<p>Si declaramos ALGÚN constructor en la clase, el constructor por defecto (sin parámetros, que Java proporciona automáticamente) <strong>desaparece</strong>. Si intentamos hacer <code>new Punto()</code> cuando solo hay un constructor con parámetros, obtendremos un <strong>error de compilación</strong>.</p>
+<p><strong>Solución:</strong> declarar explícitamente el constructor sin parámetros:</p>
+<pre>
+class Punto {
+    int x, y;
+
+    Punto() {          // Constructor por defecto explícito
+        this.x = 0;
+        this.y = 0;
+    }
+
+    Punto(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    // ...
+}
+
+// Ahora ambos funcionan:
+Punto p1 = new Punto();     // (0,0)
+Punto p2 = new Punto(3,4);  // (3,4)
+</pre>
+<p><strong>Alternativa con this():</strong></p>
+<pre>
+Punto() {
+    this(0, 0);  // Reutiliza el constructor con parámetros
+}
+</pre>
+</div>
+</div>
+</div>
+
+<!-- ================================================================ -->
+<!-- VIDEO 13: THIS -->
+<!-- ================================================================ -->
+<div class="video-group">
+<div class="video-header">
+  <h2>V-13: La palabra reservada <code>this</code></h2>
+  <div class="sub">this.atributo, this() entre constructores, pasar this como parámetro</div>
+</div>
+
+<div class="exercise">
+<div class="question">
+<h3><span class="num">Ejercicio 13.1</span> — this en constructores y setters</h3>
+<p>Crea una clase <code>Producto</code> con:</p>
+<ul>
+  <li>Atributos privados: <code>codigo</code> (int), <code>nombre</code> (String), <code>precio</code> (double).</li>
+  <li>Constructor con todos los parámetros (usa <code>this</code> para diferenciar atributos de parámetros).</li>
+  <li>Constructor que solo recibe código y nombre (precio = 0.0). Debe llamar al constructor de 3 parámetros usando <code>this(codigo, nombre, 0.0)</code>.</li>
+  <li>Setters que usen <code>this</code>.</li>
+  <li>Método <code>toString()</code> generado.</li>
+</ul>
+<p>En el <code>main()</code>, crea un producto con 3 parámetros y otro con 2, y muéstralos.</p>
+</div>
+<div class="solution">
+<h4>✅ Solución 13.1</h4>
+<pre>
+class Producto {
+    private int codigo;
+    private String nombre;
+    private double precio;
+
+    Producto(int codigo, String nombre, double precio) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.precio = precio;
+    }
+
+    Producto(int codigo, String nombre) {
+        this(codigo, nombre, 0.0);  // this() para reutilizar
+    }
+
+    void setCodigo(int codigo) { this.codigo = codigo; }
+    void setNombre(String nombre) { this.nombre = nombre; }
+    void setPrecio(double precio) { this.precio = precio; }
+
+    public String toString() {
+        return "Producto{" + "codigo=" + codigo
+            + ", nombre='" + nombre + '\''
+            + ", precio=" + precio + '}';
+    }
+
+    public static void main(String[] args) {
+        Producto p1 = new Producto(101, "Portátil", 899.99);
+        Producto p2 = new Producto(102, "Ratón");
+
+        System.out.println(p1);
+        System.out.println(p2);
+    }
+}
+</pre>
+</div>
+</div>
+
+<div class="exercise">
+<div class="question">
+<h3><span class="num">Ejercicio 13.2</span> — this() entre constructores (regla importante)</h3>
+<p>Explica la regla fundamental sobre la llamada <code>this()</code> dentro de un constructor. ¿Qué ocurre si no se cumple?</p>
+<p>Después, crea una clase <code>Persona</code> con:</p>
+<ul>
+  <li>Atributos: <code>nombre</code>, <code>edad</code>, <code>email</code>.</li>
+  <li>Tres constructores que se reutilicen entre sí con <code>this()</code>:
+    <ul>
+      <li><code>Persona(String nombre, int edad, String email)</code></li>
+      <li><code>Persona(String nombre, int edad)</code> → email = "sin-email@pendiente.com"</li>
+      <li><code>Persona(String nombre)</code> → edad = 0, email = sin especificar</li>
+    </ul>
+  </li>
+</ul>
+</div>
+<div class="solution">
+<h4>✅ Solución 13.2</h4>
+<p><strong>Regla fundamental:</strong> <code>this()</code> debe ser la <strong>primera instrucción</strong> del constructor. Si no, el compilador da error. Esto garantiza que la cadena de constructores se ejecute en orden antes de cualquier otra inicialización.</p>
+<pre>
+class Persona {
+    private String nombre;
+    private int edad;
+    private String email;
+
+    Persona(String nombre, int edad, String email) {
+        this.nombre = nombre;
+        this.edad = edad;
+        this.email = email;
+    }
+
+    Persona(String nombre, int edad) {
+        this(nombre, edad, "sin-email@pendiente.com");
+    }
+
+    Persona(String nombre) {
+        this(nombre, 0, "sin-especificar@pendiente.com");
+    }
+
+    public String toString() {
+        return nombre + " (" + edad + " años) - " + email;
+    }
+
+    public static void main(String[] args) {
+        Persona p1 = new Persona("Ana", 25, "ana@email.com");
+        Persona p2 = new Persona("Luis", 30);
+        Persona p3 = new Persona("Eva");
+
+        System.out.println(p1);
+        System.out.println(p2);
+        System.out.println(p3);
+    }
+}
+</pre>
+</div>
+</div>
+</div>
+
+<!-- ================================================================ -->
+<!-- VIDEO 14: STATIC -->
+<!-- ================================================================ -->
+<div class="video-group">
+<div class="video-header">
+  <h2>V-14: <code>static</code> — métodos y variables de clase</h2>
+  <div class="sub">Atributos estáticos, métodos estáticos, constantes static final, contador de instancias</div>
+</div>
+
+<div class="exercise">
+<div class="question">
+<h3><span class="num">Ejercicio 14.1</span> — Contador de instancias con static</h3>
+<p>Crea una clase <code>Usuario</code> que:</p>
+<ul>
+  <li>Tenga un atributo estático <code>contador</code> que cuente cuántas instancias se han creado.</li>
+  <li>Atributos de instancia: <code>nombre</code> (String), <code>email</code> (String).</li>
+  <li>En el constructor, incrementar el contador.</li>
+  <li>Un método estático <code>getTotalUsuarios()</code> que devuelva el total.</li>
+</ul>
+<p>En el <code>main()</code>, crea 5 usuarios y muestra el total. ¿Puede un método estático acceder a <code>nombre</code> o <code>email</code>? ¿Por qué?</p>
+</div>
+<div class="solution">
+<h4>✅ Solución 14.1</h4>
+<pre>
+class Usuario {
+    private static int contador = 0;  // Atributo de clase
+
+    private String nombre;
+    private String email;
+
+    Usuario(String nombre, String email) {
+        this.nombre = nombre;
+        this.email = email;
+        contador++;  // Incrementa cada vez que se crea un usuario
+    }
+
+    static int getTotalUsuarios() {
+        return contador;  // Solo accede a atributo estático
+    }
+
+    public static void main(String[] args) {
+        new Usuario("Ana", "ana@mail.com");
+        new Usuario("Luis", "luis@mail.com");
+        new Usuario("Eva", "eva@mail.com");
+        new Usuario("Carlos", "carlos@mail.com");
+        new Usuario("Sofía", "sofia@mail.com");
+
+        System.out.println("Total usuarios: "
+            + Usuario.getTotalUsuarios());  // 5
+    }
+}
+
+// ¿Puede getTotalUsuarios() acceder a nombre o email?
+// NO. Un método estático NO puede acceder a atributos de instancia
+// (no estáticos) porque no sabe a qué instancia pertenecen.
+// El método estático pertenece a la CLASE, no a ninguna instancia.
+</pre>
+</div>
+</div>
+
+<div class="exercise">
+<div class="question">
+<h3><span class="num">Ejercicio 14.2</span> — Constantes static final</h3>
+<p>Crea una clase <code>Configuracion</code> con las siguientes constantes estáticas:</p>
+<ul>
+  <li><code>VERSION</code> (String): "1.0.0"</li>
+  <li><code>MAX_USUARIOS</code> (int): 1000</li>
+  <li><code>IVA</code> (double): 0.21</li>
+  <li><code>NOMBRE_APP</code> (String): "MiApp"</li>
+</ul>
+<p>También un método estático <code>mostrarConfig()</code> que las muestre.</p>
+<p>En el <code>main()</code>:</p>
+<ul>
+  <li>Accede a las constantes sin crear ninguna instancia.</li>
+  <li>Calcula el precio con IVA de un producto de 50€ usando <code>Configuracion.IVA</code>.</li>
+  <li>¿Por qué se usa <code>static final</code> para constantes? ¿Qué convención de nomenclatura se sigue?</li>
+</ul>
+</div>
+<div class="solution">
+<h4>✅ Solución 14.2</h4>
+<pre>
+class Configuracion {
+    public static final String VERSION = "1.0.0";
+    public static final int MAX_USUARIOS = 1000;
+    public static final double IVA = 0.21;
+    public static final String NOMBRE_APP = "MiApp";
+
+    static void mostrarConfig() {
+        System.out.println(NOMBRE_APP + " v" + VERSION);
+        System.out.println("Máx usuarios: " + MAX_USUARIOS);
+        System.out.println("IVA: " + (IVA * 100) + "%");
+    }
+
+    public static void main(String[] args) {
+        // Sin crear instancia:
+        Configuracion.mostrarConfig();
+
+        double precioBase = 50.0;
+        double precioFinal = precioBase * (1 + Configuracion.IVA);
+        System.out.println("Precio con IVA: " + precioFinal + " €");
+    }
+}
+</pre>
+<p><strong>¿Por qué static final?</strong></p>
+<ul>
+  <li><code>static</code> → la constante pertenece a la clase, no a las instancias. No necesitamos crear objetos para acceder a ella.</li>
+  <li><code>final</code> → el valor no puede modificarse una vez asignado. Garantiza que sea constante.</li>
+  <li><strong>Convención:</strong> nombres en MAYÚSCULAS con guiones bajos: <code>MAX_USUARIOS</code>, <code>PRECIO_BASE</code>.</li>
+</ul>
+</div>
+</div>
+</div>
+
+<!-- ================================================================ -->
+<!-- VIDEO 15: PASO POR REFERENCIA Y POR VALOR -->
+<!-- ================================================================ -->
+<div class="video-group">
+<div class="video-header">
+  <h2>V-15: Paso por referencia y por valor</h2>
+  <div class="sub">Primitivos (copia del valor), objetos (copia de la referencia), String (inmutable)</div>
+</div>
+
+<div class="exercise">
+<div class="question">
+<h3><span class="num">Ejercicio 15.1</span> — Primitivos vs Objetos</h3>
+<p>Dado el siguiente código, indica qué se imprime y explica por qué:</p>
+<pre>
+class Numeros {
+    int valor;
+    Numeros(int v) { valor = v; }
+}
+
+public class Test {
+    static void modificar(int a) { a = 100; }
+    static void modificar(Numeros n) { n.valor = 100; }
+    static void reasignar(Numeros n) { n = new Numeros(500); }
+
+    public static void main(String[] args) {
+        int x = 10;
+        modificar(x);
+        System.out.println("x = " + x);
+
+        Numeros num = new Numeros(10);
+        modificar(num);
+        System.out.println("num.valor = " + num.valor);
+
+        reasignar(num);
+        System.out.println("num.valor despues de reasignar = " + num.valor);
+    }
+}
+</pre>
+</div>
+<div class="solution">
+<h4>✅ Solución 15.1</h4>
+<p><strong>Salida:</strong></p>
+<pre>
+x = 10                      // Primitivo: se pasa copia, NO se modifica
+num.valor = 100             // Objeto: se pasa referencia, SI se modifica
+num.valor despues de reasignar = 100  // Reasignar n = new... NO afecta
+</pre>
+<p><strong>Explicación detallada:</strong></p>
+<ol>
+  <li><code>modificar(int a)</code>: Recibe una <strong>copia</strong> de x. Modificar la copia no afecta al original. x sigue siendo 10.</li>
+  <li><code>modificar(Numeros n)</code>: Recibe una <strong>copia de la referencia</strong> al objeto. Aunque la referencia es copia, apunta al MISMO objeto. Al hacer <code>n.valor = 100</code>, modificamos el objeto original.</li>
+  <li><code>reasignar(Numeros n)</code>: Recibe la copia de la referencia. Hacer <code>n = new Numeros(500)</code> hace que la referencia local apunte a un NUEVO objeto, pero la referencia original (<code>num</code>) sigue apuntando al objeto anterior. La reasignación no afecta al original.</li>
+</ol>
+<p><strong>Regla de oro:</strong> En Java, todo se pasa por valor. Pero el "valor" de un objeto es su referencia. Por eso podemos modificar el objeto pero no reasignarlo.</p>
+</div>
+</div>
+
+<div class="exercise">
+<div class="question">
+<h3><span class="num">Ejercicio 15.2</span> — String: caso especial</h3>
+<p>Crea un método que reciba un String y lo modifique. Demuestra que el String original NO cambia. Explica por qué los Strings se comportan "como si fueran primitivos" a pesar de ser objetos.</p>
+<p>Después, haz lo mismo con un <code>StringBuilder</code> (que es mutable) y demuestra que SÍ se modifica.</p>
+</div>
+<div class="solution">
+<h4>✅ Solución 15.2</h4>
+<pre>
+class TestString {
+    static void modificarString(String s) {
+        s = s + " - modificado";  // Crea NUEVO objeto String
+    }
+
+    static void modificarStringBuilder(StringBuilder sb) {
+        sb.append(" - modificado");  // Modifica el MISMO objeto
+    }
+
+    public static void main(String[] args) {
+        String texto = "Hola";
+        modificarString(texto);
+        System.out.println("String: " + texto);  // "Hola" (NO cambia)
+
+        StringBuilder sb = new StringBuilder("Hola");
+        modificarStringBuilder(sb);
+        System.out.println("StringBuilder: " + sb);  // "Hola - modificado" (SÍ cambia)
+    }
+}
+</pre>
+<p><strong>Explicación:</strong> String es un objeto INMUTABLE. Una vez creado, su valor no puede cambiar. Al hacer <code>s = s + " - modificado"</code>:</p>
+<ol>
+  <li>Se crea un NUEVO objeto String con el texto concatenado.</li>
+  <li>La referencia local <code>s</code> apunta al nuevo String.</li>
+  <li>La referencia original (<code>texto</code>) sigue apuntando al String original.</li>
+</ol>
+<p><strong>StringBuilder</strong> es mutable (<code>append()</code> modifica el mismo objeto). Por eso el cambio SÍ se refleja fuera del método. Esto demuestra que el comportamiento de "no modificar" no es porque se pase por valor, sino porque String es inmutable.</p>
+</div>
+</div>
+</div>
+
+<!-- ================================================================ -->
+<!-- VIDEO 16: CLASES INMUTABLES -->
+<!-- ================================================================ -->
+<div class="video-group">
+<div class="video-header">
+  <h2>V-16: Clases inmutables</h2>
+  <div class="sub">Clase final, atributos private final, sin setters, copias en constructor y getter, String Pool</div>
+</div>
+
+<div class="exercise">
+<div class="question">
+<h3><span class="num">Ejercicio 16.1</span> — Crear clase inmutable</h3>
+<p>Crea una clase inmutable <code>PersonaInmutable</code> que cumpla todos los requisitos:</p>
+<ul>
+  <li>Clase declarada como <code>final</code>.</li>
+  <li>Atributos: <code>nombre</code> (String), <code>edad</code> (int), <code>direccion</code> (String).</li>
+  <li>Todos los atributos <code>private final</code>.</li>
+  <li>Sin setters.</li>
+  <li>Constructor que inicialice todos los atributos.</li>
+  <li>Getters para todos los atributos.</li>
+  <li>Método <code>toString()</code>.</li>
+</ul>
+<p>Demuestra en el <code>main()</code> que no se puede modificar su estado después de creada.</p>
+</div>
+<div class="solution">
+<h4>✅ Solución 16.1</h4>
+<pre>
+public final class PersonaInmutable {
+    private final String nombre;
+    private final int edad;
+    private final String direccion;
+
+    public PersonaInmutable(String nombre, int edad, String direccion) {
+        this.nombre = nombre;
+        this.edad = edad;
+        this.direccion = direccion;
+    }
+
+    public String getNombre() { return nombre; }
+    public int getEdad() { return edad; }
+    public String getDireccion() { return direccion; }
+
+    @Override
+    public String toString() {
+        return nombre + " (" + edad + " años) - " + direccion;
+    }
+
+    public static void main(String[] args) {
+        PersonaInmutable p = new PersonaInmutable("Ana", 25, "Calle Mayor 10");
+        System.out.println(p);
+
+        // No hay setters - no se puede modificar:
+        // p.setNombre("Otro");     // ERROR: no existe
+        // p.nombre = "Otro";       // ERROR: es private
+        // p.edad = 30;             // ERROR: es final + private
+
+        // Para cambiar algo, habría que crear un nuevo objeto:
+        PersonaInmutable p2 = new PersonaInmutable("Ana", 26, "Calle Mayor 10");
+    }
+}
+</pre>
+</div>
+</div>
+
+<div class="exercise">
+<div class="question">
+<h3><span class="num">Ejercicio 16.2</span> — String Pool y comparación</h3>
+<p>Explica qué es el String Pool en Java y por qué existe. Después, determina qué imprime este código y explica cada caso:</p>
+<pre>
+String a = "Java";
+String b = "Java";
+String c = new String("Java");
+
+System.out.println(a == b);
+System.out.println(a == c);
+System.out.println(a.equals(c));
+
+String d = "Hola " + "Mundo";
+String e = "Hola Mundo";
+System.out.println(d == e);
+</pre>
+</div>
+<div class="solution">
+<h4>✅ Solución 16.2</h4>
+<p><strong>String Pool:</strong> Es un área especial de memoria (dentro del Heap) donde Java almacena los literales String. Cuando se crea un String con comillas dobles (<code>"Java"</code>), Java verifica si ya existe en el pool. Si existe, reutiliza la misma referencia, ahorrando memoria. Esto es posible porque String es inmutable (si no lo fuera, cambiar un String afectaría a todas las referencias compartidas).</p>
+<p><strong>Salida del código:</strong></p>
+<pre>
+true   // a y b son literales iguales -> misma referencia en String Pool
+false  // c es new String() -> nuevo objeto en heap (referencia distinta)
+true   // equals() compara CONTENIDO, no referencia
+true   // El compilador concatena "Hola " + "Mundo" en tiempo de compilación
+       // generando "Hola Mundo", que ya está en el pool
+</pre>
+<p><strong>Lección:</strong> Siempre usar <code>.equals()</code> para comparar Strings, no <code>==</code>. El operador <code>==</code> compara referencias (direcciones de memoria), no contenido textual.</p>
+</div>
+</div>
+</div>
+
+<!-- ================================================================ -->
+<!-- VIDEO 17: ARRAYS DE OBJETOS -->
+<!-- ================================================================ -->
+<div class="video-group">
+<div class="video-header">
+  <h2>V-17: Arrays de objetos</h2>
+  <div class="sub">Array de referencias, null en cada posición, inicialización con bucle, referencias compartidas</div>
+</div>
+
+<div class="exercise">
+<div class="question">
+<h3><span class="num">Ejercicio 17.1</span> — Array de objetos Persona</h3>
+<p>Crea una clase <code>Persona</code> (con <code>nombre</code> y <code>edad</code>).</p>
+<p>En el <code>main()</code>:</p>
+<ul>
+  <li>Crea un array de 5 personas.</li>
+  <li>Rellénalo con personas de nombres "Persona1...Persona5" y edades aleatorias entre 18 y 65.</li>
+  <li>Recorre el array con un bucle for-each y muestra los datos.</li>
+  <li>Encuentra y muestra la persona más joven.</li>
+</ul>
+</div>
+<div class="solution">
+<h4>✅ Solución 17.1</h4>
+<pre>
+import java.util.Random;
+
+class Persona {
+    String nombre;
+    int edad;
+
+    Persona(String nombre, int edad) {
+        this.nombre = nombre;
+        this.edad = edad;
+    }
+
+    public String toString() {
+        return nombre + " (" + edad + " años)";
+    }
+}
+
+class TestPersonas {
+    public static void main(String[] args) {
+        Random rnd = new Random();
+        Persona[] personas = new Persona[5];
+
+        // Inicializar con bucle
+        for (int i = 0; i < personas.length; i++) {
+            String nom = "Persona" + (i + 1);
+            int edad = 18 + rnd.nextInt(48);  // 18..65
+            personas[i] = new Persona(nom, edad);
+        }
+
+        // Mostrar con for-each
+        for (Persona p : personas) {
+            System.out.println(p);
+        }
+
+        // Encontrar la más joven
+        Persona masJoven = personas[0];
+        for (Persona p : personas) {
+            if (p.edad < masJoven.edad) {
+                masJoven = p;
+            }
+        }
+        System.out.println("\nPersona más joven: " + masJoven);
+    }
+}
+</pre>
+</div>
+</div>
+
+<div class="exercise">
+<div class="question">
+<h3><span class="num">Ejercicio 17.2</span> — Referencias compartidas en array</h3>
+<p>Explica qué ocurre cuando se asigna la MISMA referencia a varias posiciones de un array. Ilústralo con un ejemplo donde:</p>
+<ul>
+  <li>Crear un array de 3 posiciones.</li>
+  <li>Crear un único objeto <code>Punto(10, 20)</code>.</li>
+  <li>Asignar ese mismo objeto a las 3 posiciones del array.</li>
+  <li>Modificar el punto original (<code>punto.setX(999)</code>).</li>
+  <li>Mostrar todas las posiciones del array.</li>
+</ul>
+<p>¿Qué ocurre y por qué?</p>
+</div>
+<div class="solution">
+<h4>✅ Solución 17.2</h4>
+<pre>
+class Punto {
+    int x, y;
+    Punto(int x, int y) { this.x = x; this.y = y; }
+    void setX(int x) { this.x = x; }
+    public String toString() { return "(" + x + "," + y + ")"; }
+
+    public static void main(String[] args) {
+        Punto[] puntos = new Punto[3];
+        Punto unico = new Punto(10, 20);
+
+        // Misma referencia en las 3 posiciones
+        for (int i = 0; i < puntos.length; i++) {
+            puntos[i] = unico;
+        }
+
+        System.out.println("Antes de modificar:");
+        for (Punto p : puntos) System.out.println(p);  // (10,20) x3
+
+        unico.setX(999);
+
+        System.out.println("Después de modificar:");
+        for (Punto p : puntos) System.out.println(p);  // (999,20) x3
+    }
+}
+</pre>
+<p><strong>¿Qué ocurre?</strong> Todas las posiciones del array cambian. Porque todas apuntan al <strong>mismo objeto</strong> en memoria. Modificar el objeto desde cualquier referencia afecta a todas las demás.</p>
+<p><strong>Analogía:</strong> Es como tener 3 direcciones de una misma casa. Si alguien pinta la casa de azul, las 3 direcciones apuntan a la misma casa azul. No hay 3 casas iguales, hay 1 casa y 3 formas de referirse a ella.</p>
+<p><strong>Importante:</strong> No es lo mismo que:</p>
+<pre>
+for (int i = 0; i < puntos.length; i++) {
+    puntos[i] = new Punto(10, 20);  // 3 objetos DISTINTOS
+}
+</pre>
+</div>
+</div>
+</div>
+
+<!-- ================================================================ -->
+<!-- VIDEO 18: ARRAYLIST -->
+<!-- ================================================================ -->
+<div class="video-group">
+<div class="video-header">
+  <h2>V-18: ArrayList</h2>
+  <div class="sub">Colección dinámica, métodos principales, clases envoltorio, for vs for-each</div>
+</div>
+
+<div class="exercise">
+<div class="question">
+<h3><span class="num">Ejercicio 18.1</span> — ArrayList de String con métodos básicos</h3>
+<p>Crea un programa que:</p>
+<ul>
+  <li>Cree un <code>ArrayList&lt;String&gt;</code> de nombres de frutas.</li>
+  <li>Añada: "Manzana", "Plátano", "Naranja", "Fresa", "Kiwi".</li>
+  <li>Inserta "Mango" en la posición 2.</li>
+  <li>Elimina "Plátano".</li>
+  <li>Modifica "Kiwi" por "Cereza".</li>
+  <li>Muestra la lista después de cada operación.</li>
+  <li>Muestra si contiene "Fresa" y en qué posición está.</li>
+  <li>Recórrela con un for-each y con un for clásico.</li>
+</ul>
+</div>
+<div class="solution">
+<h4>✅ Solución 18.1</h4>
+<pre>
+import java.util.ArrayList;
+
+class Frutas {
+    public static void main(String[] args) {
+        ArrayList<String> frutas = new ArrayList<>();
+
+        frutas.add("Manzana");
+        frutas.add("Plátano");
+        frutas.add("Naranja");
+        frutas.add("Fresa");
+        frutas.add("Kiwi");
+        System.out.println("Inicial: " + frutas);
+
+        frutas.add(2, "Mango");
+        System.out.println("Insertar Mango en 2: " + frutas);
+
+        frutas.remove("Plátano");
+        System.out.println("Eliminar Plátano: " + frutas);
+
+        frutas.set(frutas.indexOf("Kiwi"), "Cereza");
+        System.out.println("Kiwi -> Cereza: " + frutas);
+
+        System.out.println("¿Contiene Fresa? " + frutas.contains("Fresa"));
+        System.out.println("Posición de Fresa: " + frutas.indexOf("Fresa"));
+
+        System.out.println("\nFor-each:");
+        for (String f : frutas) System.out.println("  " + f);
+
+        System.out.println("\nFor clásico:");
+        for (int i = 0; i < frutas.size(); i++) {
+            System.out.println("  [" + i + "] " + frutas.get(i));
+        }
+    }
+}
+</pre>
+</div>
+</div>
+
+<div class="exercise">
+<div class="question">
+<h3><span class="num">Ejercicio 18.2</span> — ArrayList con objetos propios + clases envoltorio</h3>
+<p>Crea una clase <code>Alumno</code> con <code>nombre</code> (String) y <code>nota</code> (double).</p>
+<p>En el <code>main()</code>:</p>
+<ul>
+  <li>Crea un <code>ArrayList&lt;Alumno&gt;</code> y añade 4 alumnos con sus notas.</li>
+  <li>Calcula la nota media de la clase.</li>
+  <li>Encuentra al alumno con la nota más alta.</li>
+  <li>Elimina a los alumnos con nota menor que 5.</li>
+</ul>
+<p>Además, crea un <code>ArrayList&lt;Integer&gt;</code> con las notas e
+  indica por qué usamos <code>Integer</code> y no <code>int</code>.</p>
+</div>
+<div class="solution">
+<h4>✅ Solución 18.2</h4>
+<pre>
+import java.util.ArrayList;
+
+class Alumno {
+    String nombre;
+    double nota;
+
+    Alumno(String n, double nota) { this.nombre = n; this.nota = nota; }
+    public String toString() { return nombre + " (" + nota + ")"; }
+}
+
+class GestionAlumnos {
+    public static void main(String[] args) {
+        ArrayList<Alumno> alumnos = new ArrayList<>();
+        alumnos.add(new Alumno("Ana", 8.5));
+        alumnos.add(new Alumno("Luis", 4.0));
+        alumnos.add(new Alumno("Eva", 9.2));
+        alumnos.add(new Alumno("Carlos", 3.5));
+
+        // Nota media
+        double suma = 0;
+        for (Alumno a : alumnos) suma += a.nota;
+        double media = suma / alumnos.size();
+        System.out.println("Nota media: " + media);
+
+        // Nota más alta
+        Alumno mejor = alumnos.get(0);
+        for (Alumno a : alumnos) {
+            if (a.nota > mejor.nota) mejor = a;
+        }
+        System.out.println("Mejor alumno: " + mejor);
+
+        // Eliminar suspensos (nota < 5)
+        // ¡Cuidado! Al eliminar, ajustar índice
+        for (int i = alumnos.size() - 1; i >= 0; i--) {
+            if (alumnos.get(i).nota < 5) {
+                alumnos.remove(i);
+            }
+        }
+        System.out.println("Aprobados: " + alumnos);
+    }
+}
+</pre>
+<p><strong>¿Por qué Integer y no int?</strong> <code>ArrayList</code> solo puede almacenar objetos, no tipos primitivos. <code>Integer</code> es la <strong>clase envoltorio (wrapper)</strong> de <code>int</code>. Java proporciona autoboxing/unboxing automático, pero internamente la lista guarda objetos. Wrappers: <code>Integer</code> (int), <code>Double</code> (double), <code>Boolean</code> (boolean), <code>Character</code> (char).</p>
+</div>
+</div>
+</div>
+
+<!-- ================================================================ -->
+<!-- VIDEO 19: EJEMPLOS ARRAYLIST -->
+<!-- ================================================================ -->
+<div class="video-group">
+<div class="video-header">
+  <h2>V-19: Ejemplos ArrayList</h2>
+  <div class="sub">toString(), remove por referencia vs contenido, for-each + remove, ConcurrentModificationException</div>
+</div>
+
+<div class="exercise">
+<div class="question">
+<h3><span class="num">Ejercicio 19.1</span> — El problema de remove() con objetos nuevos</h3>
+<p>Crea una clase <code>Libro</code> con <code>titulo</code> y <code>autor</code>. Añade 3 libros a un ArrayList. Intenta borrar uno de ellos creando un nuevo objeto <code>new Libro("...", "...")</code> con los mismos datos usando <code>lista.remove()</code> directamente. ¿Funciona? Explica por qué.</p>
+<p>Crea un método auxiliar que sí permita borrar por contenido (comparando atributos) y demuestra que funciona.</p>
+</div>
+<div class="solution">
+<h4>✅ Solución 19.1</h4>
+<pre>
+import java.util.ArrayList;
+
+class Libro {
+    String titulo, autor;
+    Libro(String t, String a) { titulo = t; autor = a; }
+    public String toString() { return titulo + " - " + autor; }
+}
+
+class TestLibros {
+    // Método auxiliar para borrar por contenido
+    static void borrarLibro(ArrayList<Libro> lista, String titulo, String autor) {
+        for (Libro l : lista) {
+            if (l.titulo.equals(titulo) && l.autor.equals(autor)) {
+                lista.remove(l);
+                return;  // Importante: salir para evitar ConcurrentModificationException
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        ArrayList<Libro> libros = new ArrayList<>();
+        libros.add(new Libro("1984", "Orwell"));
+        libros.add(new Libro("Cien Años", "García Márquez"));
+        libros.add(new Libro("El Quijote", "Cervantes"));
+
+        // Intentar borrar con new (mismos datos, distinta instancia)
+        boolean ok = libros.remove(new Libro("1984", "Orwell"));
+        System.out.println("remove(new) funciona? " + ok);
+        System.out.println("Lista: " + libros);  // No se borró
+
+        // Borrar con método auxiliar (compara atributos)
+        borrarLibro(libros, "1984", "Orwell");
+        System.out.println("Después de borrarLibro: " + libros);  // Se borró
+    }
+}
+</pre>
+<p><strong>Explicación:</strong> <code>remove(objeto)</code> de ArrayList usa el método <code>equals()</code> para comparar. Si no sobreescribimos <code>equals()</code> en nuestra clase (que veremos en el Tema 6), usa el de <code>Object</code>, que compara <strong>referencias</strong>. Dos objetos creados con <code>new</code> son instancias distintas, aunque tengan los mismos datos. Por eso <code>remove(new Libro(...))</code> no encuentra el objeto.</p>
+</div>
+</div>
+
+<div class="exercise">
+<div class="question">
+<h3><span class="num">Ejercicio 19.2</span> — toString() y ConcurrentModificationException</h3>
+<p>Crea un ArrayList de objetos <code>Punto</code> (con <code>x</code>, <code>y</code> y <code>nombre</code>) y demuestra:</p>
+<ol>
+  <li>Si sobreescribimos <code>toString()</code> en Punto, al imprimir la lista se usa automáticamente.</li>
+  <li>¿Qué es <code>ConcurrentModificationException</code>? ¿Cuándo ocurre?</li>
+  <li>Crea un ejemplo donde ocurra esta excepción y explica cómo solucionarlo.</li>
+</ol>
+</div>
+<div class="solution">
+<h4>✅ Solución 19.2</h4>
+<pre>
+import java.util.ArrayList;
+
+class Punto {
+    int x, y;
+    String nombre;
+    Punto(int x, int y, String n) { this.x = x; this.y = y; nombre = n; }
+
+    public String toString() { return nombre + "(" + x + "," + y + ")"; }
+}
+
+class TestConcurrentMod {
+    public static void main(String[] args) {
+        ArrayList<Punto> puntos = new ArrayList<>();
+        puntos.add(new Punto(1, 2, "p1"));
+        puntos.add(new Punto(3, 4, "p2"));
+        puntos.add(new Punto(5, 6, "p3"));
+
+        // toString() se llama automáticamente:
+        System.out.println("Lista: " + puntos);
+        // Salida: [p1(1,2), p2(3,4), p3(5,6)]
+
+        // ESTO lanza ConcurrentModificationException:
+        // for (Punto p : puntos) {
+        //     if (p.x == 3) puntos.remove(p);  // ¡EXCEPCIÓN!
+        // }
+
+        // Solución 1: for clásico con índices
+        for (int i = 0; i < puntos.size(); i++) {
+            if (puntos.get(i).x == 3) {
+                puntos.remove(i);
+                i--;  // Ajustar índice
+            }
+        }
+
+        // Solución 2: método auxiliar con return
+        // Recorrer copia
+        ArrayList<Punto> aBorrar = new ArrayList<>();
+        for (Punto p : puntos) {
+            if (p.x == 5) aBorrar.add(p);
+        }
+        puntos.removeAll(aBorrar);
+
+        System.out.println("Lista final: " + puntos);
+    }
+}
+</pre>
+<p><strong>ConcurrentModificationException:</strong> Ocurre cuando intentamos modificar una colección (añadir/eliminar) mientras la recorremos con un iterador (como el for-each). El iterador detecta que la colección ha cambiado y lanza la excepción para evitar comportamientos inconsistentes.</p>
+<p><strong>Soluciones:</strong></p>
+<ol>
+  <li>Usar un bucle for clásico con índices (controlando el índice al eliminar).</li>
+  <li>Usar <code>Iterator.remove()</code> (método seguro del propio iterador).</li>
+  <li>Recolectar los elementos a eliminar en otra lista y usar <code>removeAll()</code> después.</li>
+</ol>
+</div>
+</div>
+</div>
+
+<!-- ================================================================ -->
+<!-- VIDEO 20: CLASE INMUTABLE CON ARRAY -->
+<!-- ================================================================ -->
+<div class="video-group">
+<div class="video-header">
+  <h2>V-20: Clase inmutable con Array</h2>
+  <div class="sub">Shallow copy vs deep copy, objetos mutables vs inmutables en arrays</div>
+</div>
+
+<div class="exercise">
+<div class="question">
+<h3><span class="num">Ejercicio 20.1</span> — Deep copy vs Shallow copy</h3>
+<p>Explica la diferencia entre <strong>shallow copy</strong> (copia superficial) y <strong>deep copy</strong> (copia en profundidad) cuando se trabaja con arrays de objetos. ¿Cuándo es suficiente cada una?</p>
+<p>Implementa un método <code>copiarPuntos</code> que haga una deep copy de un array de objetos <code>Punto</code> (mutables, con getters y setters).</p>
+</div>
+<div class="solution">
+<h4>✅ Solución 20.1</h4>
+<p><strong>Shallow copy:</strong> Copia solo las referencias del array. El nuevo array apunta a los <strong>mismos objetos</strong>. Si modificamos un objeto desde el array original, también se modifica en el copiado (y viceversa). Se hace con <code>clone()</code> o <code>Arrays.copyOf()</code>.</p>
+<p><strong>Deep copy:</strong> Crea un <strong>nuevo array</strong> y <strong>nuevos objetos</strong> para cada posición. Los arrays original y copiado son completamente independientes.</p>
+<p><strong>¿Cuándo usar cada una?</strong></p>
+<ul>
+  <li><strong>Shallow copy suficiente:</strong> Cuando los elementos del array son inmutables (no tienen setters), como String, Integer, o clases inmutables propias.</li>
+  <li><strong>Deep copy necesaria:</strong> Cuando los elementos son mutables (tienen setters). Así evitamos que se modifique el estado interno desde fuera.</li>
+</ul>
+<pre>
+class Punto {
+    private int x, y;
+    Punto(int x, int y) { this.x = x; this.y = y; }
+    void setX(int x) { this.x = x; }
+    int getX() { return x; }
+    int getY() { return y; }
+}
+
+// Deep copy de array de Puntos:
+static Punto[] copiaProfunda(Punto[] original) {
+    Punto[] copia = new Punto[original.length];
+    for (int i = 0; i < original.length; i++) {
+        copia[i] = new Punto(original[i].getX(), original[i].getY());
+    }
+    return copia;
+}
+</pre>
+</div>
+</div>
+
+<div class="exercise">
+<div class="question">
+<h3><span class="num">Ejercicio 20.2</span> — Clase inmutable con array (deep copy)</h3>
+<p>Crea una clase inmutable <code>Poligono</code> que contenga un array de objetos <code>Punto</code> (mutables):</p>
+<ul>
+  <li>Clase <code>final</code>.</li>
+  <li>Atributo <code>private final Punto[] vertices</code>.</li>
+  <li>Constructor que recibe un array y hace <strong>deep copy</strong>.</li>
+  <li>Getter que devuelve una <strong>deep copy</strong> del array.</li>
+  <li>Demuestra que aunque se modifique el array original o el devuelto por el getter, el estado interno no cambia.</li>
+</ul>
+</div>
+<div class="solution">
+<h4>✅ Solución 20.2</h4>
+<pre>
+import java.util.Arrays;
+
+final class Poligono {
+    private final Punto[] vertices;
+
+    Poligono(Punto[] original) {
+        this.vertices = copiaProfunda(original);  // Deep copy en constructor
+    }
+
+    Punto[] getVertices() {
+        return copiaProfunda(this.vertices);  // Deep copy en getter
+    }
+
+    private static Punto[] copiaProfunda(Punto[] original) {
+        Punto[] copia = new Punto[original.length];
+        for (int i = 0; i < original.length; i++) {
+            copia[i] = new Punto(original[i].getX(), original[i].getY());
+        }
+        return copia;
+    }
+
+    void mostrar() {
+        System.out.println("Vértices: " + Arrays.toString(vertices));
+    }
+
+    public static void main(String[] args) {
+        Punto[] original = { new Punto(0,0), new Punto(1,0), new Punto(1,1) };
+        Poligono poli = new Poligono(original);
+
+        // Modificar original
+        original[0].setX(999);
+        poli.mostrar();  // Sigue siendo (0,0) - no afectó
+
+        // Modificar a través del getter
+        Punto[] get = poli.getVertices();
+        get[1].setX(777);
+        poli.mostrar();  // Sigue siendo (1,0) - no afectó
+
+        System.out.println("¡Totalmente inmutable!");
+    }
+}
+</pre>
+</div>
+</div>
+</div>
+
+<!-- ================================================================ -->
+<!-- VIDEO 21: CLASE INMUTABLE CON ARRAYLIST -->
+<!-- ================================================================ -->
+<div class="video-group">
+<div class="video-header">
+  <h2>V-21: Clase inmutable con ArrayList</h2>
+  <div class="sub">ArrayList en clases inmutables, shallow copy, deep copy, errores comunes</div>
+</div>
+
+<div class="exercise">
+<div class="question">
+<h3><span class="num">Ejercicio 21.1</span> — Los 3 errores comunes con ArrayList en clases inmutables</h3>
+<p>Enumera y explica los 3 errores más comunes al implementar clases inmutables con ArrayList. Para cada uno:</p>
+<ol>
+  <li>Describe el error.</li>
+  <li>Muestra código incorrecto.</li>
+  <li>Muestra la corrección.</li>
+</ol>
+</div>
+<div class="solution">
+<h4>✅ Solución 21.1</h4>
+<p><strong>Error 1: Guardar la misma referencia en el constructor</strong></p>
+<pre>
+// MAL: guarda la misma referencia que el parámetro
+ObjetoInmutable(ArrayList<Punto> original) {
+    this.lista = original;  // ❌ Cualquier modificación externa afecta
+}
+
+// BIEN: crea una copia
+ObjetoInmutable(ArrayList<Punto> original) {
+    this.lista = new ArrayList<>(original);  // ✅ (shallow) o deep copy
+}
+</pre>
+
+<p><strong>Error 2: Devolver la referencia interna en el getter</strong></p>
+<pre>
+// MAL: expone la lista interna
+ArrayList<Punto> getLista() {
+    return this.lista;  // ❌ Quien recibe puede modificar la lista interna
+}
+
+// BIEN: devuelve una copia
+ArrayList<Punto> getLista() {
+    return new ArrayList<>(this.lista);  // ✅
+}
+</pre>
+
+<p><strong>Error 3: Con elementos mutables, solo shallow copy</strong></p>
+<pre>
+// MAL: shallow copy comparte los objetos internos
+this.lista = new ArrayList<>(original);  // ❌ Si Punto tiene setters, se modifica
+
+// BIEN: deep copy (crear nuevos objetos)
+this.lista = new ArrayList<>();
+for (Punto p : original) {
+    this.lista.add(new Punto(p.getX(), p.getY()));  // ✅
+}
+</pre>
+</div>
+</div>
+
+<div class="exercise">
+<div class="question">
+<h3><span class="num">Ejercicio 21.2</span> — Clase inmutable con ArrayList y deep copy</h3>
+<p>Crea una clase inmutable <code>GrupoAlumnos</code> que:</p>
+<ul>
+  <li>Contenga un <code>ArrayList&lt;Alumno&gt;</code> (Alumno tiene nombre y edad, con setters).</li>
+  <li>Use deep copy tanto en el constructor como en el getter.</li>
+  <li>Tenga un método <code>getTamano()</code> que devuelva el número de alumnos.</li>
+</ul>
+<p>Demuestra que es realmente inmutable: modifica el ArrayList original y
+  el devuelto por el getter, y comprueba que el interno no cambia.</p>
+</div>
+<div class="solution">
+<h4>✅ Solución 21.2</h4>
+<pre>
+import java.util.ArrayList;
+
+class Alumno {
+    private String nombre;
+    private int edad;
+    Alumno(String n, int e) { nombre = n; edad = e; }
+    void setNombre(String n) { this.nombre = n; }
+    String getNombre() { return nombre; }
+    int getEdad() { return edad; }
+    public String toString() { return nombre + "(" + edad + ")"; }
+}
+
+final class GrupoAlumnos {
+    private final ArrayList<Alumno> alumnos;
+
+    GrupoAlumnos(ArrayList<Alumno> original) {
+        this.alumnos = copiaProfunda(original);
+    }
+
+    ArrayList<Alumno> getAlumnos() {
+        return copiaProfunda(this.alumnos);
+    }
+
+    int getTamano() { return alumnos.size(); }
+
+    private static ArrayList<Alumno> copiaProfunda(ArrayList<Alumno> original) {
+        ArrayList<Alumno> copia = new ArrayList<>();
+        for (Alumno a : original) {
+            copia.add(new Alumno(a.getNombre(), a.getEdad()));
+        }
+        return copia;
+    }
+
+    void mostrar() { System.out.println("Grupo: " + alumnos); }
+
+    public static void main(String[] args) {
+        ArrayList<Alumno> original = new ArrayList<>();
+        original.add(new Alumno("Ana", 20));
+        original.add(new Alumno("Luis", 22));
+
+        GrupoAlumnos grupo = new GrupoAlumnos(original);
+
+        // Modificar original
+        original.get(0).setNombre("MODIFICADO");
+        grupo.mostrar();  // Ana(20) - no cambió
+
+        // Modificar vía getter
+        grupo.getAlumnos().add(new Alumno("Extra", 99));
+        System.out.println("Tamaño interno: " + grupo.getTamano());  // 2
+    }
+}
+</pre>
+</div>
+</div>
+</div>
+
+<!-- ================================================================ -->
+<!-- VIDEO 22: EJERCICIO OO - CLASE EMPLEADO -->
+<!-- ================================================================ -->
+<div class="video-group">
+<div class="video-header">
+  <h2>V-22: Ejercicio OO - Clase Empleado</h2>
+  <div class="sub">Constructores, getters/setters con validación, método subirSalario(), clasificación por permanencia</div>
+</div>
+
+<div class="exercise">
+<div class="question">
+<h3><span class="num">Ejercicio 22.1</span> — Clase Empleado completa</h3>
+<p>Implementa una clase <code>Empleado</code> con:</p>
+<ul>
+  <li>Atributos privados: <code>nombre</code>, <code>permanencia</code> (int, años), <code>salario</code> (double).</li>
+  <li>Constructor vacío y constructor con parámetros (que reutilice los setters).</li>
+  <li>Setters con validación: permanencia negativa → 0; salario negativo → 0.</li>
+  <li>Método <code>mostrarClasificacion()</code>:
+    <ul>
+      <li>Permanencia ≥ 18 → Senior</li>
+      <li>Permanencia &gt; 3 y &lt; 18 → Intermedio</li>
+      <li>Permanencia ≤ 3 → Principiante</li>
+    </ul>
+  </li>
+  <li>Método <code>subirSalario(double porcentaje)</code> que incremente usando el setter.</li>
+</ul>
+<p>En el <code>main()</code>, crea 3 empleados con distintas permanencias y súbeles el salario.</p>
+</div>
+<div class="solution">
+<h4>✅ Solución 22.1</h4>
+<pre>
+class Empleado {
+    private String nombre;
+    private int permanencia;
+    private double salario;
+
+    Empleado() {}
+
+    Empleado(String nombre, int permanencia, double salario) {
+        this.nombre = nombre;
+        setPermanencia(permanencia);
+        setSalario(salario);
+    }
+
+    void setPermanencia(int p) { this.permanencia = (p < 0) ? 0 : p; }
+    void setSalario(double s) { this.salario = (s < 0) ? 0 : s; }
+    String getNombre() { return nombre; }
+    int getPermanencia() { return permanencia; }
+    double getSalario() { return salario; }
+
+    void mostrarClasificacion() {
+        String tipo;
+        if (permanencia >= 18)      tipo = "Senior";
+        else if (permanencia > 3)   tipo = "Intermedio";
+        else                        tipo = "Principiante";
+        System.out.println(nombre + " es " + tipo);
+    }
+
+    void subirSalario(double porcentaje) {
+        double incremento = salario * porcentaje / 100;
+        setSalario(salario + incremento);
+        System.out.println(nombre + " nuevo salario: " + salario + " €");
+    }
+
+    void mostrarDatos() {
+        System.out.println(nombre + " | " + permanencia + " años | " + salario + " €");
+    }
+
+    public static void main(String[] args) {
+        Empleado e1 = new Empleado("Ana", 20, 3000);  // Senior
+        Empleado e2 = new Empleado("Luis", 5, 1800);  // Intermedio
+        Empleado e3 = new Empleado("Eva", 1, 1000);   // Principiante
+
+        e1.mostrarClasificacion();
+        e2.mostrarClasificacion();
+        e3.mostrarClasificacion();
+
+        e1.subirSalario(10);  // +10%
+        e2.subirSalario(15);
+        e3.subirSalario(20);
+    }
+}
+</pre>
+</div>
+</div>
+
+<div class="exercise">
+<div class="question">
+<h3><span class="num">Ejercicio 22.2</span> — Validación con reutilización de setters</h3>
+<p>Explica por qué es una buena práctica que los constructores llamen a los setters en lugar de asignar directamente los atributos.</p>
+<p>Demuestra tu respuesta con un ejemplo: crea un empleado con permanencia = -3. ¿Qué valor tendrá realmente? ¿Y si el constructor asignara directamente sin validar?</p>
+</div>
+<div class="solution">
+<h4>✅ Solución 22.2</h4>
+<p><strong>¿Por qué reutilizar setters en el constructor?</strong></p>
+<ol>
+  <li><strong>Consistencia:</strong> La validación se aplica SIEMPRE, tanto al crear como al modificar.</li>
+  <li><strong>Mantenibilidad:</strong> Si cambia la regla de validación, solo hay que cambiarla en un sitio (el setter), no en el constructor y en cada setter.</li>
+  <li><strong>Evita duplicación de código:</strong> No repetimos la misma lógica de validación.</li>
+</ol>
+<pre>
+class Empleado {
+    private int permanencia;
+
+    // Setter con validación
+    void setPermanencia(int p) {
+        if (p < 0) {
+            this.permanencia = 0;
+        } else {
+            this.permanencia = p;
+        }
+    }
+
+    // Constructor que REUTILIZA el setter
+    Empleado(String nombre, int permanencia, double salario) {
+        this.nombre = nombre;
+        setPermanencia(permanencia);  // Usa la validación del setter
+        // ...
+    }
+
+    public static void main(String[] args) {
+        // Con setter en constructor:
+        Empleado e = new Empleado("Test", -3, 1000);
+        System.out.println(e.getPermanencia());  // 0 (validado)
+
+        // Si el constructor hiciera: this.permanencia = permanencia;
+        // (sin setter), permanencia sería -3, un valor inválido.
+    }
+}
+</pre>
+<p><strong>Si el constructor asignara directamente</strong> <code>this.permanencia = permanencia</code>, el valor -3 se asignaría sin validación, y el empleado tendría una permanencia negativa, lo cual no tiene sentido en el mundo real.</p>
+</div>
+</div>
+</div>
+
+<!-- ================================================================ -->
+<!-- VIDEO 23: EJERCICIOS OO - TRIÁNGULOS -->
+<!-- ================================================================ -->
+<div class="video-group">
+<div class="video-header">
+  <h2>V-23: Ejercicios OO - Triángulos</h2>
+  <div class="sub">Puntos, distancia euclídea, Heron, tipos de triángulo, varargs</div>
+</div>
+
+<div class="exercise">
+<div class="question">
+<h3><span class="num">Ejercicio 23.1</span> — Puntos distintos y varargs</h3>
+<p>Crea una clase <code>Punto</code> (con <code>x</code>, <code>y</code>) e implementa:</p>
+<ol>
+  <li>Un método estático <code>distintos(Punto p1, Punto p2)</code> que devuelva true si están en distinta posición.</li>
+  <li>Un método estático <code>distintos(Punto... puntos)</code> con varargs que devuelva true si todos los puntos son distintos entre sí.</li>
+  <li>Un método estático <code>distancia(Punto p1, Punto p2)</code> que devuelva la distancia.</li>
+</ol>
+<p>Demuestra su uso en un <code>main()</code>.</p>
+</div>
+<div class="solution">
+<h4>✅ Solución 23.1</h4>
+<pre>
+class Punto {
+    private int x, y;
+    Punto(int x, int y) { this.x = x; this.y = y; }
+    int getX() { return x; }
+    int getY() { return y; }
+    public String toString() { return "(" + x + "," + y + ")"; }
+
+    // Dos puntos distintos
+    static boolean distintos(Punto p1, Punto p2) {
+        return p1.x != p2.x || p1.y != p2.y;
+    }
+
+    // N puntos distintos (varargs)
+    static boolean distintos(Punto... puntos) {
+        for (int i = 0; i < puntos.length; i++) {
+            for (int j = i + 1; j < puntos.length; j++) {
+                if (puntos[i].x == puntos[j].x && puntos[i].y == puntos[j].y) {
+                    return false;  // Dos iguales encontrados
+                }
+            }
+        }
+        return true;
+    }
+
+    // Distancia euclídea
+    static double distancia(Punto p1, Punto p2) {
+        return Math.sqrt(Math.pow(p1.x - p2.x, 2) + Math.pow(p1.y - p2.y, 2));
+    }
+
+    public static void main(String[] args) {
+        Punto a = new Punto(0, 0);
+        Punto b = new Punto(1, 0);
+        Punto c = new Punto(0, 0);  // Igual que a
+
+        System.out.println("a != b: " + distintos(a, b));  // true
+        System.out.println("a != c: " + distintos(a, c));  // false
+        System.out.println("a,b distintos: " + distintos(a, b)); // true
+        System.out.println("a,b,c distintos: " + distintos(a, b, c)); // false
+        System.out.println("Distancia (0,0)-(1,0): " + distancia(a, b)); // 1.0
+    }
+}
+</pre>
+</div>
+</div>
+
+<div class="exercise">
+<div class="question">
+<h3><span class="num">Ejercicio 23.2</span> — Área del triángulo con Herón</h3>
+<p>Usando la clase <code>Punto</code> del ejercicio anterior, implementa un método:</p>
+<pre>
+static void areaTriangulo(Punto p1, Punto p2, Punto p3)
+</pre>
+<p>Que calcule y muestre:</p>
+<ul>
+  <li>El tipo de triángulo: Equilátero, Isósceles o Escaleno.</li>
+  <li>El área usando la fórmula de <strong>Herón</strong>.</li>
+  <li>Si los puntos no forman un triángulo (área = 0), debe mostrar un error.</li>
+</ul>
+<p><strong>Fórmula de Herón:</strong> s = (a + b + c) / 2; Área = √(s(s-a)(s-b)(s-c))</p>
+<p>Prueba con: (0,0), (1,0), (0,1) → isósceles, área 0.5 y (0,0), (1,1), (2,2) → error.</p>
+</div>
+<div class="solution">
+<h4>✅ Solución 23.2</h4>
+<pre>
+class TrianguloUtils {
+    // Determina tipo de triángulo por sus lados
+    static String obtenerTipo(double a, double b, double c) {
+        if (a == b && b == c) return "Equilátero";
+        if (a != b && b != c && a != c) return "Escaleno";
+        return "Isósceles";
+    }
+
+    static void areaTriangulo(Punto p1, Punto p2, Punto p3) {
+        // Verificar que los 3 puntos sean distintos
+        if (!Punto.distintos(p1, p2, p3)) {
+            System.out.println("Error: puntos repetidos");
+            return;
+        }
+
+        // Calcular lados
+        double a = Punto.distancia(p1, p2);
+        double b = Punto.distancia(p2, p3);
+        double c = Punto.distancia(p3, p1);
+
+        // Semiperímetro
+        double s = (a + b + c) / 2;
+
+        // Herón
+        double area = Math.sqrt(s * (s - a) * (s - b) * (s - c));
+
+        if (area == 0) {
+            System.out.println("Error: no forman triángulo (colineales)");
+            return;
+        }
+
+        String tipo = obtenerTipo(a, b, c);
+        System.out.println("Triángulo " + tipo + " | Área: "
+            + String.format("%.2f", area));
+    }
+
+    public static void main(String[] args) {
+        Punto p1 = new Punto(0, 0);
+        Punto p2 = new Punto(1, 0);
+        Punto p3 = new Punto(0, 1);
+
+        areaTriangulo(p1, p2, p3);  // Isósceles, 0.50
+
+        Punto p4 = new Punto(2, 2);
+        areaTriangulo(p1, p2, p4);  // Error
+    }
+}
+</pre>
+</div>
+</div>
+</div>
+
+<!-- ================================================================ -->
+<!-- VIDEO 24: EJERCICIO OO - GRÁFICO 2D -->
+<!-- ================================================================ -->
+<div class="video-group">
+<div class="video-header">
+  <h2>V-24: Ejercicio OO - Gráfico 2D</h2>
+  <div class="sub">ArrayList con restricciones, validación, agregar/eliminar puntos con reglas</div>
+</div>
+
+<div class="exercise">
+<div class="question">
+<h3><span class="num">Ejercicio 24.1</span> — Gráfico 2D con validación</h3>
+<p>Crea una clase <code>GraficoLineas2D</code> que almacene un <code>ArrayList&lt;Punto&gt;</code> y cumpla:</p>
+<ul>
+  <li>x ≥ 0 e y ≥ 0 (coordenadas positivas).</li>
+  <li>Ningún punto repetido (mismas coordenadas).</li>
+  <li>Al avanzar, x debe ser ≥ que la x anterior (no decreciente).</li>
+</ul>
+<p>Implementa: <code>agregarPunto(Punto p)</code>, <code>eliminarPunto()</code> (último),
+  <code>mostrarGrafico()</code> y <code>setPuntos(ArrayList&lt;Punto&gt; lista)</code> con validación.</p>
+</div>
+<div class="solution">
+<h4>✅ Solución 24.1</h4>
+<pre>
+import java.util.ArrayList;
+
+class Punto { int x, y; String nombre;
+    Punto(int x, int y, String n) { this.x = x; this.y = y; nombre = n; }
+    int getX() { return x; }  int getY() { return y; }
+    public String toString() { return nombre; }
+}
+
+class GraficoLineas2D {
+    private ArrayList<Punto> puntos;
+
+    GraficoLineas2D() { this.puntos = new ArrayList<>(); }
+    GraficoLineas2D(ArrayList<Punto> l) { this(); setPuntos(l); }
+
+    private boolean esPositivo(Punto p) { return p.getX() >= 0 && p.getY() >= 0; }
+
+    void agregarPunto(Punto p) {
+        if (puntos.isEmpty()) { puntos.add(p); return; }
+        Punto ult = puntos.get(puntos.size() - 1);
+        if (esPositivo(p) && !(p.getX() == ult.getX() && p.getY() == ult.getY())
+            && p.getX() >= ult.getX()) {
+            puntos.add(p);
+        } else {
+            System.out.println("ERROR: punto " + p + " inválido");
+        }
+    }
+
+    void eliminarPunto() {
+        if (!puntos.isEmpty()) puntos.remove(puntos.size() - 1);
+    }
+
+    void setPuntos(ArrayList<Punto> l) {
+        if (validarPuntos(l)) this.puntos = new ArrayList<>(l);
+        else System.out.println("ERROR: lista inválida");
+    }
+
+    private boolean validarPuntos(ArrayList<Punto> l) {
+        if (l.isEmpty()) return true;
+        if (!esPositivo(l.get(0))) return false;
+        for (int i = 1; i < l.size(); i++) {
+            Punto act = l.get(i), ant = l.get(i - 1);
+            if (!esPositivo(act) || (act.getX() == ant.getX() && act.getY() == ant.getY())
+                || act.getX() < ant.getX()) return false;
+        }
+        return true;
+    }
+
+    void mostrarGrafico() {
+        for (Punto p : puntos) System.out.println("  " + p);
+    }
+}
+</pre>
+</div>
+</div>
+
+<div class="exercise">
+<div class="question">
+<h3><span class="num">Ejercicio 24.2</span> — this() entre constructores (reutilización)</h3>
+<p>En la clase <code>GraficoLineas2D</code> del ejercicio anterior:</p>
+<ol>
+  <li>El constructor con parámetros llama a <code>this()</code> (constructor vacío) como primera instrucción. Explica por qué es útil.</li>
+  <li>¿Qué ventajas tiene la versión de validación lineal (v2) frente a la anidada (v1)?</li>
+  <li>Crea un <code>main()</code> que añada puntos válidos e inválidos (x negativa, x menor que la anterior, repetido) y demuestre que el gráfico los rechaza.</li>
+</ol>
+</div>
+<div class="solution">
+<h4>✅ Solución 24.2</h4>
+<pre>
+class TestGrafico {
+    public static void main(String[] args) {
+        GraficoLineas2D g = new GraficoLineas2D();
+
+        // Válidos
+        g.agregarPunto(new Punto(0, 0, "A"));
+        g.agregarPunto(new Punto(2, 3, "B"));
+        g.agregarPunto(new Punto(3, 1, "C"));
+
+        // Inválidos
+        g.agregarPunto(new Punto(-1, 5, "X"));  // x negativa
+        g.agregarPunto(new Punto(1, 2, "Y"));   // x (1) < última x (3)
+        g.agregarPunto(new Punto(3, 1, "Z"));   // repetido con C
+
+        g.mostrarGrafico();  // Solo A, B, C
+    }
+}
+</pre>
+<p><strong>1. ¿Por qué <code>this()</code> en el constructor con parámetros?</strong></p>
+<p>Permite inicializar la lista vacía en un único lugar (el constructor vacío) y luego aplicar la validación. Si en el futuro cambia la inicialización, solo se modifica un constructor.</p>
+<p><strong>2. Validación lineal (v2) vs anidada (v1):</strong></p>
+<ul>
+  <li><strong>V1 (anidada):</strong> Muchos if-else anidados, difícil de leer y mantener.</li>
+  <li><strong>V2 (lineal/recomendada):</strong> Casos base al inicio (lista vacía, primer punto), luego un bucle claro con condiciones independientes. Más legible y fácil de depurar.</li>
+</ul>
+</div>
+</div>
+</div>
+
+<!-- ================================================================ -->
+<!-- VIDEO 25: UML - CUENTAS BANCARIAS -->
+<!-- ================================================================ -->
+<div class="video-group">
+<div class="video-header">
+  <h2>V-25: UML - Cuentas bancarias</h2>
+  <div class="sub">UML a código, clase interna privada, LocalDate, composición Cuenta → Movimiento</div>
+</div>
+
+<div class="exercise">
+<div class="question">
+<h3><span class="num">Ejercicio 25.1</span> — De UML a código: Cliente + Cuenta + Movimiento</h3>
+<p>Implementa en Java el siguiente diagrama UML:</p>
+<pre>
+  Cliente
+  --------
+  - nombre: String
+  - apellidos: String
+  - direccion: String
+  - localidad: String
+  - fechaNacimiento: LocalDate
+  --------
+  + nombreCompleto(): String
+  + direccionCompleta(): String
+
+  Cuenta — 1 → Cliente
+  Cuenta <>— * → Movimiento  (composición, clase interna privada)
+  --------
+  - numeroCuenta: int
+  - saldo: double
+  - titular: Cliente
+  - movimientos: ArrayList&lt;Movimiento&gt;
+  --------
+  + ingresar(double): void
+  + retirar(double): void
+  + verDatos(): void
+</pre>
+<p>La clase <code>Movimiento</code> debe ser una clase interna privada con fechaHora (LocalDateTime), importe, tipo (INGRESO/RETIRO) y saldoFinal.</p>
+</div>
+<div class="solution">
+<h4>✅ Solución 25.1</h4>
+<pre>
+import java.time.*;
+import java.time.format.*;
+import java.util.ArrayList;
+
+class Cliente {
+    private String nombre, apellidos, direccion, localidad;
+    private LocalDate fechaNacimiento;
+
+    Cliente(String n, String a, String d, String l, LocalDate fn) {
+        nombre = n; apellidos = a; direccion = d; localidad = l; fechaNacimiento = fn;
+    }
+
+    String nombreCompleto() { return nombre + " " + apellidos; }
+    String direccionCompleta() { return direccion + ", " + localidad; }
+}
+
+class Cuenta {
+    private int numeroCuenta;
+    private double saldo;
+    private Cliente titular;
+    private ArrayList<Movimiento> movimientos = new ArrayList<>();
+
+    Cuenta(int nc, double s, Cliente t) { numeroCuenta = nc; saldo = s; titular = t; }
+
+    void ingresar(double cantidad) {
+        if (cantidad <= 0) return;
+        saldo += cantidad;
+        movimientos.add(new Movimiento(LocalDateTime.now(), cantidad, (byte)0));
+    }
+
+    void retirar(double cantidad) {
+        if (cantidad <= 0 || cantidad > saldo) return;
+        saldo -= cantidad;
+        movimientos.add(new Movimiento(LocalDateTime.now(), cantidad, (byte)1));
+    }
+
+    void verDatos() {
+        System.out.println("Cuenta " + numeroCuenta + " | "
+            + titular.nombreCompleto() + " | Saldo: " + saldo + " €");
+        for (Movimiento m : movimientos) System.out.println("  " + m);
+    }
+
+    private class Movimiento {
+        static final byte INGRESO = 0, RETIRO = 1;
+        LocalDateTime fechaHora;
+        double importe, saldoFinal;
+        byte tipo;
+
+        Movimiento(LocalDateTime fh, double imp, byte t) {
+            fechaHora = fh; importe = imp; tipo = t;
+            saldoFinal = saldo;  // Accede al saldo de Cuenta
+        }
+
+        public String toString() {
+            String tipoStr = (tipo == INGRESO) ? "INGRESO" : "RETIRO";
+            return tipoStr + " | " + fechaHora.format(
+                DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM))
+                + " | " + importe + " € | Saldo: " + saldoFinal + " €";
+        }
+    }
+}
+</pre>
+</div>
+</div>
+
+<div class="exercise">
+<div class="question">
+<h3><span class="num">Ejercicio 25.2</span> — Clase interna privada y composición</h3>
+<p>Responde y demuestra:</p>
+<ol>
+  <li>¿Por qué <code>Movimiento</code> es una clase <strong>interna privada</strong> dentro de Cuenta? ¿Qué ventajas tiene?</li>
+  <li>¿Cómo accede <code>Movimiento</code> al saldo de <code>Cuenta</code>? ¿Qué línea de la solución del ejercicio 25.1 lo demuestra?</li>
+  <li>¿Qué relación UML hay entre Cuenta y Movimiento? ¿Qué implica?</li>
+  <li>Crea un <code>main()</code> que cree un cliente, una cuenta, haga 2 ingresos y 1 retiro, y muestre los datos completos.</li>
+</ol>
+</div>
+<div class="solution">
+<h4>✅ Solución 25.2</h4>
+<ol>
+  <li><strong>Clase interna privada:</strong>
+    <ul>
+      <li>Privada → solo Cuenta puede crear Movimientos. Garantiza la composición.</li>
+      <li>Interna → puede acceder a los atributos de Cuenta (como <code>saldo</code>) sin necesidad de getters.</li>
+      <li>Organización: el código está encapsulado donde se usa.</li>
+    </ul>
+  </li>
+  <li><strong>Acceso al saldo:</strong> Línea <code>this.saldoFinal = saldo;</code> en el constructor de Movimiento. Como Movimiento es una clase interna, puede acceder directamente al atributo <code>saldo</code> de la instancia de Cuenta que la contiene (sin necesidad de <code>getSaldo()</code>).</li>
+  <li><strong>Relación UML:</strong> <strong>Composición</strong> (rombo negro). Cuenta contiene Movimientos. Si la Cuenta se elimina, sus Movimientos también. Un Movimiento no existe sin su Cuenta.</li>
+</ol>
+<pre>
+public static void main(String[] args) {
+    Cliente pepe = new Cliente("Pepe", "Martínez", "Calle 123",
+        "Valencia", LocalDate.of(1990, 5, 15));
+
+    Cuenta c = new Cuenta(1001, 500, pepe);
+    c.ingresar(200);
+    c.ingresar(150);
+    c.retirar(100);
+    c.verDatos();
+}
+/*
+Salida esperada (fechas variables):
+Cuenta 1001 | Pepe Martínez | Saldo: 750.0 €
+  INGRESO | ... | 200.0 € | Saldo: 700.0 €
+  INGRESO | ... | 150.0 € | Saldo: 850.0 €
+  RETIRO | ... | 100.0 € | Saldo: 750.0 €
+*/
+</pre>
+</div>
+</div>
+</div>
+
+<!-- ================================================================ -->
+<!-- VIDEO 26: APP SUCURSAL BANCARIA -->
+<!-- ================================================================ -->
+<div class="video-group">
+<div class="video-header">
+  <h2>V-26: App Sucursal Bancaria</h2>
+  <div class="sub">Aplicación con menú, Scanner, ArrayList de clientes y cuentas, flujo completo</div>
+</div>
+
+<div class="exercise">
+<div class="question">
+<h3><span class="num">Ejercicio 26.1</span> — Menú principal de la aplicación</h3>
+<p>Diseña el menú principal de una aplicación bancaria con las siguientes opciones:</p>
+<pre>
+========================================
+  SUCURSAL BANCARIA - MENÚ PRINCIPAL
+========================================
+  1. Crear cliente
+  2. Crear cuenta
+  3. Mantenimiento de cuenta
+  4. Salir
+========================================
+</pre>
+<p>Implementa las opciones 1 y 2 con <code>Scanner</code>:</p>
+<ul>
+  <li>Opción 1: pide nombre, apellidos, dirección, ciudad, fecha de nacimiento y añade el cliente a un ArrayList.</li>
+  <li>Opción 2: muestra los clientes existentes, pide el nombre, busca al cliente y crea una cuenta con saldo inicial 0.</li>
+</ul>
+<p>No se pueden crear cuentas sin clientes.</p>
+</div>
+<div class="solution">
+<h4>✅ Solución 26.1</h4>
+<pre>
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+class AppBancaria {
+    static Scanner sc = new Scanner(System.in);
+    static ArrayList<Cliente> clientes = new ArrayList<>();
+    static ArrayList<Cuenta> cuentas = new ArrayList<>();
+    static int contCuentas = 1;
+
+    static void crearCliente() {
+        System.out.print("Nombre: "); String n = sc.nextLine();
+        System.out.print("Apellidos: "); String a = sc.nextLine();
+        System.out.print("Dirección: "); String d = sc.nextLine();
+        System.out.print("Ciudad: "); String c = sc.nextLine();
+        System.out.print("Fecha nacimiento (aaaa-MM-dd): ");
+        LocalDate fn = LocalDate.parse(sc.nextLine());
+
+        clientes.add(new Cliente(n, a, d, c, fn));
+        System.out.println("Cliente creado: " + n + " " + a);
+    }
+
+    static void crearCuenta() {
+        if (clientes.isEmpty()) {
+            System.out.println("ERROR: no hay clientes");
+            return;
+        }
+        System.out.println("Clientes disponibles:");
+        for (Cliente cl : clientes)
+            System.out.println("  " + cl.nombreCompleto());
+
+        System.out.print("Nombre del cliente: ");
+        String nom = sc.nextLine();
+        Cliente encontrado = null;
+        for (Cliente cl : clientes) {
+            if (cl.nombreCompleto().equalsIgnoreCase(nom)) {
+                encontrado = cl; break;
+            }
+        }
+        if (encontrado == null) {
+            System.out.println("ERROR: cliente no encontrado");
+            return;
+        }
+        cuentas.add(new Cuenta(contCuentas++, 0, encontrado));
+        System.out.println("Cuenta creada para " + nom);
+    }
+
+    static void mostrarMenu() {
+        int op;
+        do {
+            System.out.println("\n=== SUCURSAL BANCARIA ===");
+            System.out.println("1. Crear cliente  2. Crear cuenta");
+            System.out.println("3. Mantenimiento  4. Salir");
+            System.out.print("Opción: ");
+            op = Integer.parseInt(sc.nextLine());
+            switch (op) {
+                case 1: crearCliente(); break;
+                case 2: crearCuenta(); break;
+                case 3: System.out.println("(pendiente)"); break;
+            }
+        } while (op != 4);
+    }
+
+    public static void main(String[] args) { mostrarMenu(); }
+}
+</pre>
+</div>
+</div>
+
+<div class="exercise">
+<div class="question">
+<h3><span class="num">Ejercicio 26.2</span> — Mantenimiento de cuenta (submenú)</h3>
+<p>Implementa la opción 3 (Mantenimiento de cuenta) del menú:</p>
+<ul>
+  <li>Muestra las cuentas disponibles (número y titular).</li>
+  <li>Pide el número de cuenta.</li>
+  <li>Si existe, muestra el submenú:
+    <pre>
+    1. Ingresar dinero
+    2. Retirar dinero
+    3. Ver datos
+    4. Volver al menú principal
+    </pre>
+  </li>
+  <li>Las opciones 1 y 2 piden la cantidad y llaman a los métodos de Cuenta.</li>
+  <li>La opción 3 muestra los datos completos de la cuenta.</li>
+</ul>
+</div>
+<div class="solution">
+<h4>✅ Solución 26.2</h4>
+<pre>
+static Cuenta cuentaActiva = null;
+
+static void mantenimiento() {
+    if (cuentas.isEmpty()) {
+        System.out.println("ERROR: no hay cuentas");
+        return;
+    }
+    System.out.println("Cuentas disponibles:");
+    for (Cuenta c : cuentas)
+        System.out.println("  " + c.getNumeroCuenta()
+            + " - " + c.getTitular().nombreCompleto());
+    System.out.print("Nº de cuenta: ");
+    int num = Integer.parseInt(sc.nextLine());
+
+    cuentaActiva = null;
+    for (Cuenta c : cuentas) {
+        if (c.getNumeroCuenta() == num) { cuentaActiva = c; break; }
+    }
+    if (cuentaActiva == null) {
+        System.out.println("ERROR: cuenta no existe");
+        return;
+    }
+
+    int op;
+    do {
+        System.out.println("\n--- CUENTA " + num + " ---");
+        System.out.println("1. Ingresar  2. Retirar");
+        System.out.println("3. Ver datos  4. Volver");
+        System.out.print("Opción: ");
+        op = Integer.parseInt(sc.nextLine());
+        switch (op) {
+            case 1:
+                System.out.print("Cantidad: ");
+                cuentaActiva.ingresar(Double.parseDouble(sc.nextLine()));
+                break;
+            case 2:
+                System.out.print("Cantidad: ");
+                cuentaActiva.retirar(Double.parseDouble(sc.nextLine()));
+                break;
+            case 3: cuentaActiva.verDatos(); break;
+        }
+    } while (op != 4);
+}
+
+// En el switch del menú principal, opción 3:
+// case 3: mantenimiento(); break;
+</pre>
+<p><strong>Flujo completo de la aplicación:</strong></p>
+<ol>
+  <li>Crear clientes (opción 1).</li>
+  <li>Crear cuentas asignando a clientes (opción 2).</li>
+  <li>Seleccionar cuenta (opción 3) → submenú con ingresar/retirar/ver datos.</li>
+  <li>Volver al menú principal (opción 4 en submenú).</li>
+  <li>Salir (opción 4 en menú principal).</li>
+</ol>
+</div>
+</div>
+</div>
+
+<!-- ================================================================ -->
+<!-- VIDEO 27: UML - AGENDA -->
+<!-- ================================================================ -->
+<div class="video-group">
+<div class="video-header">
+  <h2>V-27: UML - Agenda</h2>
+  <div class="sub">Agenda → Pagina → Cita, array fijo de 365 páginas, redondeo de minutos a múltiplos de 5</div>
+</div>
+
+<div class="exercise">
+<div class="question">
+<h3><span class="num">Ejercicio 27.1</span> — Clase Cita con redondeo de minutos</h3>
+<p>Implementa una clase <code>Cita</code> con:</p>
+<ul>
+  <li>Atributos: <code>hora</code> (0-23), <code>minutos</code> (redondeado a múltiplo de 5), <code>titulo</code>, <code>texto</code>.</li>
+  <li>Setter <code>setMinutos(int m)</code> que redondee:
+    <ul>
+      <li>Si el resto de dividir entre 5 es ≤ 2 → redondea hacia abajo.</li>
+      <li>Si el resto es &gt; 2 → redondea hacia arriba.</li>
+      <li>Ej: 14→15, 21→20, 59→0 (y suma 1 a hora si hora &lt; 23).</li>
+    </ul>
+  </li>
+  <li>Setter <code>setHora(int h)</code> que valide 0-23 (si no, pone 0).</li>
+  <li>Método <code>toString()</code> con formato "(HH:mm) [Título] texto".</li>
+</ul>
+</div>
+<div class="solution">
+<h4>✅ Solución 27.1</h4>
+<pre>
+class Cita {
+    private int hora, minutos;
+    private String titulo, texto;
+
+    Cita(int hora, int minutos, String titulo, String texto) {
+        setHora(hora);
+        setMinutos(minutos);
+        this.titulo = titulo;
+        this.texto = texto;
+    }
+
+    void setHora(int h) { this.hora = (h >= 0 && h <= 23) ? h : 0; }
+    int getHora() { return hora; }
+    int getMinutos() { return minutos; }
+
+    void setMinutos(int m) {
+        if (m < 0 || m >= 60) { this.minutos = 0; return; }
+        int mod = m % 5;
+        if (mod == 0) this.minutos = m;
+        else if (mod <= 2) this.minutos = m - mod;
+        else {
+            this.minutos = m + (5 - mod);
+            if (this.minutos >= 60) this.minutos = 55;
+        }
+    }
+
+    public String toString() {
+        return String.format("(%02d:%02d) [%s] %s", hora, minutos, titulo, texto);
+    }
+
+    public static void main(String[] args) {
+        Cita c = new Cita(11, 21, "Reunión", "Java");
+        System.out.println(c);  // (11:20) [Reunión] Java (21→20, resto 1)
+
+        Cita c2 = new Cita(11, 14, "Clase", "POO");
+        System.out.println(c2); // (11:15) [Clase] POO (14→15, resto 4)
+    }
+}
+</pre>
+</div>
+</div>
+
+<div class="exercise">
+<div class="question">
+<h3><span class="num">Ejercicio 27.2</span> — Agenda completa con 365 páginas</h3>
+<p>Implementa las clases <code>Pagina</code> y <code>Agenda</code>:</p>
+<ul>
+  <li><code>Pagina</code> tiene día, mes y un <code>ArrayList&lt;Cita&gt;</code>. Métodos: <code>agregarCita()</code> (comprobar que no exista otra en el mismo horario), <code>buscarCita()</code>, <code>borrarCita()</code>, <code>verCitas()</code>.</li>
+  <li><code>Agenda</code> tiene un array fijo de 365 <code>Pagina</code>, un año y una página abierta. El constructor genera las 365 páginas usando un array <code>DIAS_MES</code> con los días de cada mes.</li>
+  <li>Método <code>abrirPagina(int dia, int mes)</code>.</li>
+</ul>
+<p>En el <code>main()</code>, crea una agenda de 2025, abre la página del 15 de marzo, añade 2 citas y muéstralas.</p>
+</div>
+<div class="solution">
+<h4>✅ Solución 27.2</h4>
+<pre>
+import java.util.ArrayList;
+
+class Pagina {
+    private int dia, mes;
+    private ArrayList<Cita> citas = new ArrayList<>();
+    Pagina(int d, int m) { dia = d; mes = m; }
+    int getDia() { return dia; } int getMes() { return mes; }
+
+    Cita buscarCita(int h, int m) {
+        for (Cita c : citas)
+            if (c.getHora() == h && c.getMinutos() == m) return c;
+        return null;
+    }
+
+    boolean agregarCita(int h, int m, String t, String tx) {
+        Cita c = new Cita(h, m, t, tx);
+        if (buscarCita(c.getHora(), c.getMinutos()) != null) return false;
+        citas.add(c); return true;
+    }
+
+    void verCitas() {
+        String[] meses = {"Enero","Febrero","Marzo","Abril","Mayo","Junio",
+                          "Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"};
+        System.out.println("Citas del " + dia + " de " + meses[mes-1]);
+        for (Cita c : citas) System.out.println("  " + c);
+    }
+}
+
+class Agenda {
+    private static final int[] DIAS_MES = {31,28,31,30,31,30,31,31,30,31,30,31};
+    private int ano;
+    private Pagina[] paginas = new Pagina[365];
+    private Pagina abierta;
+
+    Agenda(int ano) {
+        this.ano = ano;
+        int d = 1, m = 1;
+        for (int i = 0; i < paginas.length; i++) {
+            paginas[i] = new Pagina(d, m);
+            d++;
+            if (d > DIAS_MES[m-1]) { d = 1; m++; }
+        }
+        this.abierta = paginas[0];
+    }
+
+    void abrirPagina(int d, int m) {
+        for (Pagina p : paginas) {
+            if (p.getDia() == d && p.getMes() == m) {
+                abierta = p;
+                System.out.println("Abierta: " + d + "/" + m + "/" + ano);
+                return;
+            }
+        }
+        System.out.println("Fecha no válida");
+    }
+    Pagina getAbierta() { return abierta; }
+
+    public static void main(String[] args) {
+        Agenda a = new Agenda(2025);
+        a.abrirPagina(15, 3);
+        a.getAbierta().agregarCita(10, 0, "Curso Java", "Herencia y polimorfismo");
+        a.getAbierta().agregarCita(12, 30, "Comida", "Con el equipo");
+        a.getAbierta().verCitas();
+    }
+}
+</pre>
+<p><strong>Estructura UML:</strong> Agenda (1) → Pagina (365, array fijo) → Cita (*, ArrayList). La Agenda compone a las Páginas (composición: si la agenda se destruye, las páginas también). Las Páginas agregan Citas (agregación: una cita podría existir sin página, aunque aquí están fuertemente ligadas).</p>
+</div>
+</div>
+</div>
+
+<!-- ==================== FINAL ==================== -->
+<div style="page-break-before:always; text-align:center; padding-top:5cm;">
+  <h1 style="color:#1a3a5c;">¡Fin del examen!</h1>
+  <p style="font-size:14pt; color:#555;">54 ejercicios prácticos de Programación Orientada a Objetos en Java</p>
+  <p style="font-size:12pt; margin-top:1cm;">Repasa los conceptos, practica con el código y</p>
+  <p style="font-size:12pt;">¡convierte estos ejercicios en tu mejor herramienta de estudio!</p>
+  <div style="width:60%; border-top:2px solid #1a3a5c; margin:1cm auto;"></div>
+  <p style="font-size:10pt; color:#888;">Curso JAVA desde 0 · Aula en la nube · Tema 5: POO</p>
+</div>
+
+</body>
+</html>
