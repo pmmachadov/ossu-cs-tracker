@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Examen Programación DAW - Estilo IOC</title>
+<style>
+  @page { margin: 2.5cm 2cm; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Calibri', 'Segoe UI', Arial, sans-serif;
+    font-size: 11.5pt;
+    line-height: 1.4;
+    color: #222;
+    max-width: 210mm;
+    margin: 0 auto;
+    padding: 2.5cm 2cm;
+    background: #fff;
+  }
+
+  /* --- PORTADA --- */
+  .portada { text-align: center; margin-bottom: 2em; }
+  .portada h1 {
+    font-size: 22pt; color: #1a478a; margin-bottom: 0.3em;
+    letter-spacing: 0.5px;
+  }
+  .portada h2 {
+    font-size: 13pt; color: #555; font-weight: 400; margin-bottom: 0.8em;
+  }
+  .portada .sub {
+    font-size: 10pt; color: #888; margin-bottom: 1.5em;
+  }
+
+  /* --- TABLA INFORMATIVA --- */
+  .info-table {
+    width: 100%; border-collapse: collapse; margin: 1.2em 0 1.8em;
+  }
+  .info-table td {
+    border: 1px solid #ccc; padding: 6px 12px; font-size: 11pt;
+  }
+  .info-table td:first-child {
+    font-weight: 600; background: #eef3fa; width: 30%;
+  }
+
+  /* --- TÍTULOS --- */
+  h2 {
+    font-size: 15pt; color: #1a478a; margin: 1.2em 0 0.3em;
+    border-bottom: 2px solid #1a478a; padding-bottom: 3px;
+  }
+  h3 {
+    font-size: 12.5pt; color: #1a478a; margin: 1em 0 0.3em;
+  }
+
+  /* --- PREGUNTAS --- */
+  .question {
+    margin: 1em 0 0.2em;
+  }
+  .question .num {
+    font-weight: 700; font-size: 11.5pt;
+  }
+  .question .pts {
+    font-size: 10pt; color: #888; font-style: italic;
+  }
+
+  /* --- CÓDIGO --- */
+  pre {
+    background: #f5f7fa; border: 1px solid #dde2e9; border-radius: 4px;
+    padding: 10px 14px; margin: 6px 0 8px 0.8cm;
+    font-family: 'Consolas', 'Cascadia Code', 'Courier New', monospace;
+    font-size: 9.5pt; line-height: 1.35; color: #333;
+    overflow-x: auto; white-space: pre;
+  }
+
+  /* --- OPCIONES (a) b) c) d)) --- */
+  .options { margin: 4px 0 10px 1.2cm; }
+  .options .opt { margin: 2px 0; font-size: 11pt; }
+
+  /* --- LISTAS --- */
+  ul, ol { margin: 6px 0 10px 1.5cm; }
+  li { margin: 3px 0; }
+
+  /* --- RESPUESTAS --- */
+  .answer {
+    margin: 4px 0 12px 1.2cm;
+    padding: 6px 12px;
+    background: #f0f7f0;
+    border-left: 4px solid #2e7d32;
+    border-radius: 3px;
+    font-size: 11pt;
+    color: #1b5e20;
+  }
+  .answer strong { color: #1b5e20; }
+
+  /* --- SEPARADOR --- */
+  .page-break { page-break-before: always; }
+
+  /* --- ESPACIO RESPUESTAS --- */
+  .answer-space { margin: 2.5em 0; }
+  .answer-line {
+    border: none; border-bottom: 1px dashed #bbb;
+    margin: 1.2em 0; height: 2.8em;
+  }
+
+  @media print {
+    body { padding: 0; }
+    .no-print { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- PORTADA -->
+<!-- ============================================================ -->
+<div class="portada">
+  <h1>EXAMEN DE PROGRAMACIÓN – 1º DAW</h1>
+  <h2>Estilo IOC (Institut Obert de Catalunya)</h2>
+  <p class="sub">
+    Basado en los contenidos del repositorio:<br>
+    Retos IOC 1-6 + Curso YouTube "Aula en la nube" – MEGA Curso JAVA [DAM-DAW]
+  </p>
+</div>
+
+<table class="info-table">
+  <tr><td>Asignatura</td><td>Programación (PRG)</td></tr>
+  <tr><td>Duración</td><td>2 horas</td></tr>
+  <tr><td>Curso</td><td>1º Desarrollo de Aplicaciones Web (DAW)</td></tr>
+  <tr><td>Puntuación total</td><td>16 puntos (mínimo 8 para aprobar)</td></tr>
+</table>
+
+<!-- ============================================================ -->
+<!-- PARTE 1 -->
+<!-- ============================================================ -->
+<h2>Parte 1: Opción múltiple y Verdadero/Falso</h2>
+<p style="font-style:italic; color:#888; margin-bottom:0.6em;">(4 puntos — 0.5 cada pregunta)</p>
+
+<div class="question">
+  <span class="num">1.1.</span> Dado el código:
+</div>
+<pre>int a = 5;
+double b = 2.0;
+System.out.println(a / b);</pre>
+<div class="options">
+  <div class="opt">a) 2</div>
+  <div class="opt">b) 2.0</div>
+  <div class="opt">c) 2.5</div>
+  <div class="opt">d) Error de compilación</div>
+</div>
+<div class="answer"><strong>Respuesta:</strong> c) 2.5 — Al mezclar <code>int</code> con <code>double</code>, Java promociona a <code>double</code> y el resultado es 2.5.</div>
+
+<div class="question">
+  <span class="num">1.2.</span> ¿Cuál de estos bucles ejecuta el cuerpo <strong>al menos una vez</strong>?
+</div>
+<div class="options">
+  <div class="opt">a) <code>while (cond) { }</code></div>
+  <div class="opt">b) <code>for (int i=0; i&lt;n; i++) { }</code></div>
+  <div class="opt">c) <code>do { } while (cond);</code></div>
+  <div class="opt">d) Todos ejecutan el cuerpo al menos una vez</div>
+</div>
+<div class="answer"><strong>Respuesta:</strong> c) <code>do-while</code> — Evalúa la condición al final, por lo que el cuerpo se ejecuta al menos 1 vez.</div>
+
+<div class="question">
+  <span class="num">1.3.</span> Indica si es <strong>Verdadero</strong> o <strong>Falso</strong>:
+</div>
+<pre>String a = "Hola";
+String b = "Hola";
+System.out.println(a == b);</pre>
+<div class="options">
+  <div class="opt">Imprime <code>true</code> <strong>siempre</strong> en cualquier ejecución.</div>
+</div>
+<div class="answer"><strong>Respuesta:</strong> <strong>Falso</strong> — <code>==</code> compara referencias, no contenido. Con literales <code>"Hola"</code> Java reúsa el String pool dando a menudo <code>true</code>, pero no es una garantía universal (p.ej. con <code>new String("Hola")</code> sería <code>false</code>). Para Strings debe usarse <code>.equals()</code>.</div>
+
+<div class="question">
+  <span class="num">1.4.</span> Dado:
+</div>
+<pre>int[] nums = {3, 7, 2, 9, 5};
+Arrays.sort(nums);
+System.out.println(Arrays.binarySearch(nums, 7));</pre>
+<div class="options">
+  <div class="opt">a) 3</div>
+  <div class="opt">b) 4</div>
+  <div class="opt">c) 7</div>
+  <div class="opt">d) 1</div>
+</div>
+<div class="answer"><strong>Respuesta:</strong> a) 3 — <code>Arrays.sort(nums)</code> ordena a {1, 2, 3, 5, 7}, y <code>binarySearch</code> encuentra el 7 en el índice 3.</div>
+
+<div class="question">
+  <span class="num">1.5.</span> ¿Cuál de estas <strong>NO</strong> es una convención válida de nombre de variable en Java?
+</div>
+<div class="options">
+  <div class="opt">a) <code>$importe</code></div>
+  <div class="opt">b) <code>_contador</code></div>
+  <div class="opt">c) <code>2daOpcion</code></div>
+  <div class="opt">d) <code>totalIVA</code></div>
+</div>
+<div class="answer"><strong>Respuesta:</strong> c) <code>2daOpcion</code> — Los nombres de variable NO pueden empezar con dígito.</div>
+
+<div class="question">
+  <span class="num">1.6.</span> <strong>V/F:</strong> En Java, cuando se pasa un array a un método, se pasa por valor la referencia, por lo que modificar elementos dentro del método modifica el array original.
+</div>
+<div class="answer"><strong>Respuesta:</strong> <strong>Verdadero</strong> — En Java todo se pasa por valor, pero las referencias a objetos (arrays incluidos) copian la dirección. Al modificar elementos a través de esa referencia se modifica el objeto original.</div>
+
+<div class="question">
+  <span class="num">1.7.</span> ¿Qué permite la palabra clave <code>abstract</code> en una clase?
+</div>
+<div class="options">
+  <div class="opt">a) Crear objetos directamente de esa clase</div>
+  <div class="opt">b) Definir métodos sin implementación que las subclases deben implementar</div>
+  <div class="opt">c) Acelerar la compilación</div>
+  <div class="opt">d) Hacer que todos sus métodos sean <code>private</code></div>
+</div>
+<div class="answer"><strong>Respuesta:</strong> b) Definir métodos sin implementación que las subclases deben implementar. Las clases abstractas no pueden instanciarse directamente.</div>
+
+<div class="question">
+  <span class="num">1.8.</span> Dado:
+</div>
+<pre>Random r = new Random(42);
+System.out.println(r.nextInt(10));</pre>
+<div class="options">
+  <div class="opt">a) Cada ejecución imprime un número diferente</div>
+  <div class="opt">b) Siempre imprime el mismo número porque la semilla es fija</div>
+  <div class="opt">c) Lanza excepción porque falta <code>import java.util.Random</code></div>
+  <div class="opt">d) Imprime 42</div>
+</div>
+<div class="answer"><strong>Respuesta:</strong> b) Siempre imprime el mismo número. <code>new Random(42)</code> usa una semilla fija, por lo que la secuencia de números aleatorios es determinista y siempre igual.</div>
+
+<!-- ============================================================ -->
+<!-- PARTE 2 -->
+<!-- ============================================================ -->
+<div class="page-break"></div>
+<h2>Parte 2: Análisis y depuración</h2>
+<p style="font-style:italic; color:#888; margin-bottom:0.6em;">(3 puntos)</p>
+
+<div class="question">
+  <span class="num">2.1.</span> El siguiente código tiene <strong>3 errores</strong>. Encuéntralos y explica por qué fallan.
+  <span class="pts">(1.5 ptos)</span>
+</div>
+<pre>public class GestionNotas {
+    public static void main(String[] args) {
+        float[] notas;
+        notas = {4.5f, 7.2f, 3.8f, 9.1f, 6.0f};
+        
+        for (int i = 0; i &lt;= notas.length; i++) {
+            if (notas[i] &gt;= 5)
+                System.out.println("Aprobado");
+            else
+                System.out.println("Suspenso");
+        }
+        
+        System.out.println("Media: " + calcularMedia(notas[]));
+    }
+    
+    static float calcularMedia(float[] n) {
+        float suma = 0;
+        for (int i = 0; i &lt; n.length; i++)
+            suma = suma + n[i];
+        return suma;
+    }
+}</pre>
+
+<div class="question">
+  <span class="num">2.2.</span> Analiza y di qué imprime este programa.
+  <span class="pts">(1.5 ptos)</span>
+</div>
+<pre>public class Misterio {
+    public static void main(String[] args) {
+        int x = 10;
+        int[] arr = {3, 7, 2, 8, 1};
+        
+        for (int i = 0; i &lt; arr.length - 1; i++) {
+            for (int j = i + 1; j &lt; arr.length; j++) {
+                if (arr[i] &gt; arr[j]) {
+                    int temp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = temp;
+                }
+            }
+        }
+        
+        System.out.println(Arrays.toString(arr));
+        System.out.println(buscar(arr, 7));
+    }
+    
+    static int buscar(int[] a, int valor) {
+        int izq = 0, der = a.length - 1;
+        while (izq &lt;= der) {
+            int medio = (izq + der) / 2;
+            if (a[medio] == valor) return medio;
+            if (a[medio] &lt; valor) izq = medio + 1;
+            else der = medio - 1;
+        }
+        return -1;
+    }
+}</pre>
+<div class="answer"><strong>Respuesta 2.1 — Errores:</strong><br>
+1. <code>notas = {4.5f, ...}</code> → La inicialización con llaves solo vale en la declaración. Debe ser <code>float[] notas = {4.5f, ...};</code> o bien <code>notas = new float[]{4.5f, ...};</code><br>
+2. <code>i &lt;= notas.length</code> → Desbordamiento: el último índice válido es <code>length-1</code>. Debe ser <code>i &lt; notas.length</code>.<br>
+3. <code>calcularMedia(notas[])</code> → No se pasan los corchetes al invocar. Debe ser <code>calcularMedia(notas)</code>.<br>
+Además, el método <code>calcularMedia</code> no divide entre el número de elementos (falta <code>return suma / n.length;</code>).</div>
+
+<div class="answer"><strong>Respuesta 2.2 — Traza:</strong><br>
+El método de ordenación es una <strong>burbuja</strong> que ordena ascendentemente: {1, 2, 3, 7, 8}.<br>
+<code>buscar</code> implementa <strong>búsqueda binaria</strong> sobre el array ordenado. El 7 está en el índice 3.<br>
+Salida:<br>
+<code>[1, 2, 3, 7, 8]</code><br>
+<code>3</code></div>
+
+<!-- ============================================================ -->
+<!-- PARTE 3 -->
+<!-- ============================================================ -->
+<div class="page-break"></div>
+<h2>Parte 3: Ejercicios de programación</h2>
+<p style="font-style:italic; color:#888; margin-bottom:0.6em;">(8 puntos)</p>
+
+<h3>3.1 Arrays y métodos <span class="pts">(2 ptos)</span></h3>
+<p>Escribe un programa completo que:</p>
+<ul>
+  <li>Pida por teclado 8 números enteros y los guarde en un array.</li>
+  <li>Implemente un método <code>static int contarPares(int[] arr)</code> que devuelva cuántos números pares contiene.</li>
+  <li>Implemente un método <code>static int[] invertir(int[] arr)</code> que devuelva un nuevo array con los elementos en orden inverso.</li>
+  <li>Muestre el resultado de ambos métodos.</li>
+</ul>
+
+<div class="answer"><strong>Solución 3.1:</strong>
+<pre>import java.util.Scanner;
+public class ArrayUtils {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int[] numeros = new int[8];
+        System.out.println("Introduce 8 números:");
+        for (int i = 0; i &lt; numeros.length; i++) {
+            System.out.print("Nº " + (i + 1) + ": ");
+            numeros[i] = sc.nextInt();
+        }
+        System.out.println("Pares: " + contarPares(numeros));
+        int[] inv = invertir(numeros);
+        System.out.print("Invertido: ");
+        for (int n : inv) System.out.print(n + " ");
+        sc.close();
+    }
+    static int contarPares(int[] arr) {
+        int c = 0;
+        for (int v : arr) if (v % 2 == 0) c++;
+        return c;
+    }
+    static int[] invertir(int[] arr) {
+        int[] r = new int[arr.length];
+        for (int i = 0; i &lt; arr.length; i++)
+            r[i] = arr[arr.length - 1 - i];
+        return r;
+    }
+}</pre></div>
+
+<h3>3.2 Programación Orientada a Objetos <span class="pts">(2.5 ptos)</span></h3>
+<p>Diseña las clases para gestionar una <strong>Biblioteca digital</strong>:</p>
+<ul>
+  <li><strong>Clase <code>Libro</code></strong>: atributos privados <code>titulo</code> (String), <code>autor</code> (String), <code>anyoPublicacion</code> (int), <code>prestado</code> (boolean).
+    <ul>
+      <li>Constructor con todos los parámetros.</li>
+      <li>Métodos getters y setters.</li>
+      <li>Método <code>prestar()</code> que marque como prestado si no lo está.</li>
+      <li>Método <code>devolver()</code> que marque como disponible.</li>
+      <li>Método <code>toString()</code> que muestre la información del libro.</li>
+    </ul>
+  </li>
+  <li><strong>Clase <code>Biblioteca</code></strong>: atributo <code>libros</code> (ArrayList&lt;Libro&gt;).
+    <ul>
+      <li>Método <code>agregarLibro(Libro l)</code>.</li>
+      <li>Método <code>listarDisponibles()</code> que muestre solo los libros no prestados.</li>
+      <li>Método <code>buscarPorAutor(String autor)</code> que devuelva los libros de ese autor.</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="answer"><strong>Solución 3.2:</strong>
+<pre>import java.util.ArrayList;
+class Libro {
+    private String titulo, autor;
+    private int anyoPublicacion;
+    private boolean prestado;
+    public Libro(String titulo, String autor, int anyo) {
+        this.titulo = titulo; this.autor = autor;
+        this.anyoPublicacion = anyo; this.prestado = false;
+    }
+    public String getTitulo() { return titulo; }
+    public String getAutor() { return autor; }
+    public int getAnyo() { return anyoPublicacion; }
+    public boolean isPrestado() { return prestado; }
+    public void setTitulo(String t) { titulo = t; }
+    public void setAutor(String a) { autor = a; }
+    public void prestar() { if (!prestado) prestado = true; }
+    public void devolver() { prestado = false; }
+    public String toString() {
+        return titulo + " (" + autor + ", " + anyoPublicacion + ") "
+               + (prestado ? "[PRESTADO]" : "[DISPONIBLE]");
+    }
+}
+class Biblioteca {
+    private ArrayList&lt;Libro&gt; libros = new ArrayList&lt;&gt;();
+    public void agregarLibro(Libro l) { libros.add(l); }
+    public void listarDisponibles() {
+        for (Libro l : libros)
+            if (!l.isPrestado()) System.out.println(l);
+    }
+    public ArrayList&lt;Libro&gt; buscarPorAutor(String autor) {
+        ArrayList&lt;Libro&gt; res = new ArrayList&lt;&gt;();
+        for (Libro l : libros)
+            if (l.getAutor().equalsIgnoreCase(autor)) res.add(l);
+        return res;
+    }
+}</pre></div>
+
+<h3>3.3 Ficheros <span class="pts">(2 ptos)</span></h3>
+<p>Escribe un programa que:</p>
+<ul>
+  <li>Lea un archivo de texto llamado <code>alumnos.txt</code> donde cada línea tiene el formato: <code>nombre nota1 nota2 nota3</code>.<br>Ejemplo: <code>Ana 7.5 8.0 6.5</code></li>
+  <li>Para cada alumno, calcule la media de sus notas.</li>
+  <li>Escriba en un nuevo archivo <code>resultados.txt</code> el nombre y la media, con el formato: <code>Ana: 7.33</code></li>
+  <li>Gestione correctamente las excepciones con <code>try-with-resources</code>.</li>
+</ul>
+
+<div class="answer"><strong>Solución 3.3:</strong>
+<pre>import java.io.*;
+import java.util.Scanner;
+public class GestionNotas {
+    public static void main(String[] args) {
+        try (Scanner sc = new Scanner(new File("alumnos.txt"));
+             PrintWriter pw = new PrintWriter("resultados.txt")) {
+            while (sc.hasNextLine()) {
+                String linea = sc.nextLine().trim();
+                if (linea.isEmpty()) continue;
+                String[] partes = linea.split(" ");
+                String nombre = partes[0];
+                double suma = 0;
+                int count = 0;
+                for (int i = 1; i &lt; partes.length; i++) {
+                    suma += Double.parseDouble(partes[i]);
+                    count++;
+                }
+                double media = suma / count;
+                pw.printf("%s: %.2f%n", nombre, media);
+            }
+            System.out.println("Archivo resultados.txt generado.");
+        } catch (FileNotFoundException e) {
+            System.out.println("Error: no se encuentra alumnos.txt");
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+}</pre></div>
+
+<h3>3.4 Herencia y polimorfismo <span class="pts">(1.5 ptos)</span></h3>
+<p>Implementa:</p>
+<ul>
+  <li>Una clase abstracta <code>Figura</code> con un método abstracto <code>double area()</code> y un método <code>void mostrar()</code> que imprima el área.</li>
+  <li>Una clase <code>Circulo</code> que herede de <code>Figura</code> con atributo <code>radio</code>.</li>
+  <li>Una clase <code>Rectangulo</code> que herede de <code>Figura</code> con atributos <code>ancho</code> y <code>alto</code>.</li>
+  <li>Un programa principal que cree un array de 3 figuras (mezcla de círculos y rectángulos) y muestre sus áreas usando polimorfismo.</li>
+</ul>
+
+<div class="answer"><strong>Solución 3.4:</strong>
+<pre>abstract class Figura {
+    abstract double area();
+    void mostrar() {
+        System.out.println("Área: " + area());
+    }
+}
+class Circulo extends Figura {
+    private double radio;
+    public Circulo(double radio) { this.radio = radio; }
+    double area() { return Math.PI * radio * radio; }
+}
+class Rectangulo extends Figura {
+    private double ancho, alto;
+    public Rectangulo(double ancho, double alto) {
+        this.ancho = ancho; this.alto = alto;
+    }
+    double area() { return ancho * alto; }
+}
+public class MainFiguras {
+    public static void main(String[] args) {
+        Figura[] figuras = {
+            new Circulo(5),
+            new Rectangulo(4, 6),
+            new Circulo(3)
+        };
+        for (Figura f : figuras) f.mostrar();
+    }
+}</pre></div>
+
+<!-- ============================================================ -->
+<!-- PARTE 4 -->
+<!-- ============================================================ -->
+<h2>Parte 4: Pregunta teórica</h2>
+<p style="font-style:italic; color:#888; margin-bottom:0.6em;">(1 punto)</p>
+
+<div class="question">
+  <span class="num">4.1.</span> Explica la diferencia entre:
+  <span class="pts">(1 pto)</span>
+</div>
+<ul>
+  <li><code>while</code> y <code>do-while</code></li>
+  <li><code>ArrayList</code> y array tradicional (<code>int[]</code>)</li>
+  <li><code>==</code> y <code>.equals()</code> al comparar Strings</li>
+  <li><code>public</code>, <code>private</code> y <code>protected</code></li>
+</ul>
+
+<div class="answer"><strong>Respuesta 4.1:</strong><br>
+<strong>while vs do-while:</strong> <code>while</code> evalúa la condición al inicio (0 o más iteraciones); <code>do-while</code> la evalúa al final (1 o más iteraciones).<br><br>
+<strong>ArrayList vs array:</strong> <code>ArrayList</code> es dinámico (crece solo), tiene métodos útiles (add, remove, get) y trabaja con objetos. Los arrays tienen tamaño fijo y pueden almacenar tipos primitivos.<br><br>
+<strong>== vs .equals() en Strings:</strong> <code>==</code> compara referencias (direcciones de memoria); <code>.equals()</code> compara el contenido textual de los Strings.<br><br>
+<strong>public, private, protected:</strong> <code>public</code> accesible desde cualquier clase; <code>private</code> solo desde la misma clase; <code>protected</code> accesible desde el mismo paquete y subclases.</div>
+
+<!-- ============================================================ -->
+<!-- ESPACIO PARA RESPUESTAS -->
+<!-- ============================================================ -->
+<div class="page-break"></div>
+<h2>Espacio para respuestas</h2>
+<p style="font-style:italic; color:#999;">(Páginas adicionales para desarrollar las soluciones)</p>
+
+<div class="answer-space">
+  <div class="answer-line"></div>
+  <div class="answer-line"></div>
+  <div class="answer-line"></div>
+  <div class="answer-line"></div>
+  <div class="answer-line"></div>
+  <div class="answer-line"></div>
+  <div class="answer-line"></div>
+  <div class="answer-line"></div>
+  <div class="answer-line"></div>
+  <div class="answer-line"></div>
+</div>
+
+<p style="text-align:center; color:#aaa; font-size:9pt; margin-top:3em;">
+  — Fin del examen —
+</p>
+
+</body>
+</html>

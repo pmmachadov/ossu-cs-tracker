@@ -13,96 +13,95 @@ class Video_5_11_EjerciciosOOTelevisor {
     // -------------------------------------------------------------
     // RESUMEN para el examen (CHULETA)
     // -------------------------------------------------------------
-    public static final String RESUMEN =
-        """
-        ====================================================================
-          RESUMEN RAPIDO - EJERCICIOS OO TELEVISOR (TEMA 5 - V11)
-        ====================================================================
+    public static final String RESUMEN = """
+            ====================================================================
+              RESUMEN RAPIDO - EJERCICIOS OO TELEVISOR (TEMA 5 - V11)
+            ====================================================================
 
-        --- PARTE 1: ANHADIR VOLUMEN ---
-        - Nuevo atributo: private int volumen;
-        - Constructor: volumen = 5 (por defecto)
-        - Canales validos: 1 a 99
-        - Volumen valido: 0 a 99
-        - Los setters SOLO modifican si el valor es valido.
-        - Cada vez que se modifica canal/volumen, se muestra el valor.
+            --- PARTE 1: AÑADIR VOLUMEN ---
+            - Nuevo atributo: private int volumen;
+            - Constructor: volumen = 5 (por defecto)
+            - Canales validos: 1 a 99
+            - Volumen valido: 0 a 99
+            - Los setters SOLO modifican si el valor es valido.
+            - Cada vez que se modifica canal/volumen, se muestra el valor.
 
-        --- SETTER SIN REINICIO (solo si es valido) ---
-        void setCanal(int valorCanal) {
-            if (valorCanal > 0 && valorCanal < 100) {
-                canal = valorCanal;
-            }
-            System.out.println("Canal: " + canal);
-        }
-
-        void setVolumen(int valorVolumen) {
-            if (valorVolumen >= 0 && valorVolumen < 100) {
-                volumen = valorVolumen;
-            }
-            System.out.println("Volumen: " + volumen);
-        }
-
-        --- PARTE 2: ANHADIR COLOR + CAMBIAR LIMITES ---
-        - Nuevo atributo: private int color;
-        - Constructor: color = 7 (por defecto)
-
-        NUEVOS LIMITES DEL EJERCICIO:
-        - Canal: 0 a 10, con REINICIO CIRCULAR
-          * Si canal=10 y subimos -> canal=0
-          * Si canal=0 y bajamos -> canal=10
-
-        - Color: 1 a 7, con SATURACION
-          * Si color=7 y subimos -> color=7 (se queda)
-          * Si color=1 y bajamos -> color=1 (se queda)
-
-        - Volumen: 0 a 15, con SATURACION
-          * Si volumen=15 y subimos -> volumen=15
-          * Si volumen=0 y bajamos -> volumen=0
-
-        --- DIFERENCIA CIRCULAR vs SATURACION ---
-        CIRCULAR: al llegar al limite superior, vuelve al inferior.
-          if (valor > 10) canal = 0;
-          else if (valor < 0) canal = 10;
-
-        SATURACION: al llegar al limite, se queda ahi.
-          if (valor > 7) color = 7;
-          else if (valor < 1) color = 1;
-
-        --- METODO mostrarDatos() ---
-        Para depuracion, se crea un metodo que muestra todo el estado:
-          void mostrarDatos(String nombre) {
-              System.out.println("TV " + nombre + ":");
-              System.out.println("  Canal actual = " + canal);
-              System.out.println("  Volumen = " + volumen);
-              System.out.println("  Color = " + color);
-          }
-
-        --- ESTRUCTURA FINAL DE LA CLASE ---
-        class Televisor {
-            private int canal, volumen, color;
-
-            Televisor() {
-                canal = 1; volumen = 5; color = 7;
+            --- SETTER SIN REINICIO (solo si es valido) ---
+            void setCanal(int valorCanal) {
+                if (valorCanal > 0 && valorCanal < 100) {
+                    canal = valorCanal;
+                }
+                System.out.println("Canal: " + canal);
             }
 
-            // Setters con validacion
-            void setCanal(int v) { ... }   // circular 0-10
-            void setVolumen(int v) { ... } // saturacion 0-15
-            void setColor(int v) { ... }   // saturacion 1-7
+            void setVolumen(int valorVolumen) {
+                if (valorVolumen >= 0 && valorVolumen < 100) {
+                    volumen = valorVolumen;
+                }
+                System.out.println("Volumen: " + volumen);
+            }
 
-            // Subir/Bajar usando setters
-            void subirCanal()   { setCanal(canal + 1); }
-            void bajarCanal()   { setCanal(canal - 1); }
-            void subirVolumen() { setVolumen(volumen + 1); }
-            void bajarVolumen() { setVolumen(volumen - 1); }
-            void subirColor()   { setColor(color + 1); }
-            void bajarColor()   { setColor(color - 1); }
+            --- PARTE 2: ANHADIR COLOR + CAMBIAR LIMITES ---
+            - Nuevo atributo: private int color;
+            - Constructor: color = 7 (por defecto)
 
-            void mostrarDatos(String nombre) { ... }
-        }
+            NUEVOS LIMITES DEL EJERCICIO:
+            - Canal: 0 a 10, con REINICIO CIRCULAR
+              * Si canal=10 y subimos -> canal=0
+              * Si canal=0 y bajamos -> canal=10
 
-        ====================================================================
-        """;
+            - Color: 1 a 7, con SATURACION
+              * Si color=7 y subimos -> color=7 (se queda)
+              * Si color=1 y bajamos -> color=1 (se queda)
+
+            - Volumen: 0 a 15, con SATURACION
+              * Si volumen=15 y subimos -> volumen=15
+              * Si volumen=0 y bajamos -> volumen=0
+
+            --- DIFERENCIA CIRCULAR vs SATURACION ---
+            CIRCULAR: al llegar al limite superior, vuelve al inferior.
+              if (valor > 10) canal = 0;
+              else if (valor < 0) canal = 10;
+
+            SATURACION: al llegar al limite, se queda ahi.
+              if (valor > 7) color = 7;
+              else if (valor < 1) color = 1;
+
+            --- METODO mostrarDatos() ---
+            Para depuracion, se crea un metodo que muestra todo el estado:
+              void mostrarDatos(String nombre) {
+                  System.out.println("TV " + nombre + ":");
+                  System.out.println("  Canal actual = " + canal);
+                  System.out.println("  Volumen = " + volumen);
+                  System.out.println("  Color = " + color);
+              }
+
+            --- ESTRUCTURA FINAL DE LA CLASE ---
+            class Televisor {
+                private int canal, volumen, color;
+
+                Televisor() {
+                    canal = 1; volumen = 5; color = 7;
+                }
+
+                // Setters con validacion
+                void setCanal(int v) { ... }   // circular 0-10
+                void setVolumen(int v) { ... } // saturacion 0-15
+                void setColor(int v) { ... }   // saturacion 1-7
+
+                // Subir/Bajar usando setters
+                void subirCanal()   { setCanal(canal + 1); }
+                void bajarCanal()   { setCanal(canal - 1); }
+                void subirVolumen() { setVolumen(volumen + 1); }
+                void bajarVolumen() { setVolumen(volumen - 1); }
+                void subirColor()   { setColor(color + 1); }
+                void bajarColor()   { setColor(color - 1); }
+
+                void mostrarDatos(String nombre) { ... }
+            }
+
+            ====================================================================
+            """;
 
     // ================================================================
     // CLASE TELEVISOR (version final con canal, volumen y color)
@@ -158,12 +157,29 @@ class Video_5_11_EjerciciosOOTelevisor {
         }
 
         // ---- SUBIR/BAJAR ----
-        void subirCanal()   { setCanal(canal + 1); }
-        void bajarCanal()   { setCanal(canal - 1); }
-        void subirVolumen() { setVolumen(volumen + 1); }
-        void bajarVolumen() { setVolumen(volumen - 1); }
-        void subirColor()   { setColor(color + 1); }
-        void bajarColor()   { setColor(color - 1); }
+        void subirCanal() {
+            setCanal(canal + 1);
+        }
+
+        void bajarCanal() {
+            setCanal(canal - 1);
+        }
+
+        void subirVolumen() {
+            setVolumen(volumen + 1);
+        }
+
+        void bajarVolumen() {
+            setVolumen(volumen - 1);
+        }
+
+        void subirColor() {
+            setColor(color + 1);
+        }
+
+        void bajarColor() {
+            setColor(color - 1);
+        }
 
         // ---- MOSTRAR DATOS ----
         void mostrarDatos(String nombre) {
@@ -174,9 +190,17 @@ class Video_5_11_EjerciciosOOTelevisor {
         }
 
         // Getters (para comprobaciones)
-        int getCanal()   { return canal; }
-        int getVolumen() { return volumen; }
-        int getColor()   { return color; }
+        int getCanal() {
+            return canal;
+        }
+
+        int getVolumen() {
+            return volumen;
+        }
+
+        int getColor() {
+            return color;
+        }
     }
 
     // ================================================================
