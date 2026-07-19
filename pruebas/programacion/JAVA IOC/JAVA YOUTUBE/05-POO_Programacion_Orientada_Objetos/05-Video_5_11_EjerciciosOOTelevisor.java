@@ -41,6 +41,14 @@ class Video_5_11_EjerciciosOOTelevisor {
                 System.out.println("Volumen: " + volumen);
             }
 
+
+
+
+
+
+
+
+
             --- PARTE 2: ANHADIR COLOR + CAMBIAR LIMITES ---
             - Nuevo atributo: private int color;
             - Constructor: color = 7 (por defecto)
@@ -57,6 +65,18 @@ class Video_5_11_EjerciciosOOTelevisor {
             - Volumen: 0 a 15, con SATURACION
               * Si volumen=15 y subimos -> volumen=15
               * Si volumen=0 y bajamos -> volumen=0
+
+
+
+
+
+
+
+
+
+
+
+
 
             --- DIFERENCIA CIRCULAR vs SATURACION ---
             CIRCULAR: al llegar al limite superior, vuelve al inferior.
@@ -75,6 +95,15 @@ class Video_5_11_EjerciciosOOTelevisor {
                   System.out.println("  Volumen = " + volumen);
                   System.out.println("  Color = " + color);
               }
+
+
+
+
+
+
+
+
+
 
             --- ESTRUCTURA FINAL DE LA CLASE ---
             class Televisor {
