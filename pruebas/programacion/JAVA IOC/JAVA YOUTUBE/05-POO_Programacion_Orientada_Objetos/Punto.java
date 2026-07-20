@@ -1,35 +1,32 @@
-public class Punto {
+class Punto {
+    private double x;
+    private double y;
 
-    public int x;
-    public int y;
-    String nombre;
-
-    public Punto(int a) {
-        x = a;
-        y = a;
-        nombre = "Constructor con 1 parametro";
+    public Punto(double x) {
+        this.x = x;
+        this.y = 0;
     }
 
-    public Punto(int a, int b) {
-        x = a;
-        y = b;
-        nombre = "Constructor con 2 parametros";
-
-    }
-
-    public Punto() {
-        x = 0;
-        y = 0;
+    public Punto(double x, double y) {
+        this.x = x;
+        this.y = y;
     }
 
     public double calcularDistanciaCentro() {
-        return Math.sqrt(x * x + y * y);
+        double z;
+        z = Math.sqrt((x * x) + (y * y));
+        return z;
     }
 
-    public void mostrarDatos() {
-        System.out.println(x);
-        System.out.println(y);
-        System.out.println(nombre);
+    private void mostrarDatos() {
+        System.out.println("X=" + x);
+        System.out.println("Y=" + y);
+        System.out.println("La distancia respecto al centro es: " + calcularDistanciaCentro());
+        System.out.println("-----------------------------");
+    }
 
+    public void mostrarDatos(String s) {
+        System.out.println(s);
+        mostrarDatos();
     }
 }
