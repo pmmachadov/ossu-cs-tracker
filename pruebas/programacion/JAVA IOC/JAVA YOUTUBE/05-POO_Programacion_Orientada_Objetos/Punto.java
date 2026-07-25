@@ -1,32 +1,18 @@
-class Punto {
-    private double x;
-    private double y;
+public class Punto {
+    public int x;
+    public int y;
 
-    public Punto(double x) {
-        this.x = x;
-        this.y = 0;
+    public Punto(int n) {
+        this.x = n;
+        this.y = n;
     }
 
-    public Punto(double x, double y) {
-        this.x = x;
-        this.y = y;
+    public Punto(int a, int b) {
+        this.x = a;
+        this.y = b;
     }
 
     public double calcularDistanciaCentro() {
-        double z;
-        z = Math.sqrt((x * x) + (y * y));
-        return z;
-    }
-
-    private void mostrarDatos() {
-        System.out.println("X=" + x);
-        System.out.println("Y=" + y);
-        System.out.println("La distancia respecto al centro es: " + calcularDistanciaCentro());
-        System.out.println("-----------------------------");
-    }
-
-    public void mostrarDatos(String s) {
-        System.out.println(s);
-        mostrarDatos();
+        return Math.sqrt(x * x + y * y);
     }
 }
