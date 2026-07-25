@@ -1,0 +1,16 @@
+{
+    "java.project.sourcePaths": [
+        "",
+        "01-Introduccion_Programacion",
+        "02-Introduccion_Java",
+        "03-Metodos",
+        "04-Arrays",
+        "05-POO_Programacion_Orientada_Objetos",
+        "06-Herencia_Excepciones",
+        "07-Estructuras_Datos_Colecciones",
+        "08-Ficheros_BD",
+        "09-Swing_Interfaces_Graficas",
+        "10-Maven_JavaFX"
+    ],
+    "java.project.outputPath": "bin"
+}

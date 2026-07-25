@@ -15,4 +15,8 @@ public class Punto {
     public double calcularDistanciaCentro() {
         return Math.sqrt(x * x + y * y);
     }
+
+    public void mostrarDatos() {
+        System.out.println("Punto(" + x + ", " + y + ")");
+    }
 }

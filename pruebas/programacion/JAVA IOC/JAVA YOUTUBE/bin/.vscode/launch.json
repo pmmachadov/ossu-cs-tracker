@@ -3,10 +3,10 @@
     "configurations": [
         {
             "type": "java",
-            "name": "Run Main",
+            "name": "Run PruebaVariables (raíz)",
             "request": "launch",
-            "mainClass": "Main",
-            "projectName": "java-youtube",
+            "mainClass": "PruebaVariables",
+            "projectName": "java-youtube-practice",
             "noDelegation": false,
             "args": ""
         }

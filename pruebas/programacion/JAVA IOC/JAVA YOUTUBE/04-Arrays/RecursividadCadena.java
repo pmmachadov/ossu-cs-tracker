@@ -1,4 +1,4 @@
-public class Main {
+public class RecursividadCadena {
     public static void main(String[] args) {
         cadena("Hola", 0);
     }
