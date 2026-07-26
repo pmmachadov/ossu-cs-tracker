@@ -2,53 +2,51 @@ import java.util.Scanner;
 
 public class Practica {
 
+    static int[] numeros = new int[8];
+
     public static void main(String[] args) {
+        pideNumeros();
+        int cantidadPares = contarPares();
+        int[] invertido = invertirNumeros();
+        salidaNumerosPares(cantidadPares);
+        salidaArrayInvertido(invertido);
+    }
 
+    public static void pideNumeros() {
         Scanner sc = new Scanner(System.in);
-        int[] numeros = new int[8];
-
-        mensajeBienvenida();
+        System.out.println("Introduce 8 numeros enteros:");
         for (int i = 0; i < numeros.length; i++) {
-            pedirNumero(i + 1);
             numeros[i] = sc.nextInt();
         }
-
-        mostrarPares(contarPares(numeros));
-        int[] inv = invertir(numeros);
-        mostrarInvertido(inv);
-        sc.close();
     }
 
-    static int contarPares(int[] arr) {
-        int c = 0;
-        for (int v : arr)
-            if (v % 2 == 0)
-                c++;
-        return c;
+    public static int contarPares() {
+        int contador = 0;
+        for (int i : numeros) {
+            if (i % 2 == 0) {
+                contador++;
+            }
+        }
+        return contador;
     }
 
-    static int[] invertir(int[] arr) {
-        int[] r = new int[arr.length];
-        for (int i = 0; i < arr.length; i++)
-            r[i] = arr[arr.length - 1 - i];
-        return r;
+    public static int[] invertirNumeros() {
+        int[] num = new int[numeros.length];
+        for (int i = 0; i < num.length; i++) {
+            num[i] = numeros[numeros.length - 1 - i];
+        }
+        return num;
     }
 
-    static void mensajeBienvenida() {
-        System.out.println("Introduce 8 números:");
+    public static void salidaNumerosPares(int contador) {
+        System.out.println("Existen " + contador + " numeros pares.");
     }
 
-    static void pedirNumero(int orden) {
-        System.out.print("Nº " + orden + ": ");
-    }
-
-    static void mostrarPares(int cantidad) {
-        System.out.println("Pares: " + cantidad);
-    }
-
-    static void mostrarInvertido(int[] arr) {
-        System.out.print("Invertido: ");
-        for (int n : arr)
+    public static void salidaArrayInvertido(int[] num) {
+        System.out.print("Array invertido: ");
+        for (int n : num) {
             System.out.print(n + " ");
+        }
+        System.out.println();
     }
 }
