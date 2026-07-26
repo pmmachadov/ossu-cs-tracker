@@ -12,14 +12,17 @@ public class Practica {
         salidaArrayInvertido(invertido);
     }
 
+    // Entrada: Pide 8 números enteros por teclado y los almacena en un array.
     public static void pideNumeros() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Introduce 8 numeros enteros:");
         for (int i = 0; i < numeros.length; i++) {
             numeros[i] = sc.nextInt();
         }
+        sc.close();
     }
 
+    // contarPares: Recorre el array y devuelve la cantidad de números pares.
     public static int contarPares() {
         int contador = 0;
         for (int i : numeros) {
@@ -30,6 +33,7 @@ public class Practica {
         return contador;
     }
 
+    // invertir: Crea un nuevo array con los elementos en orden inverso al original.
     public static int[] invertirNumeros() {
         int[] num = new int[numeros.length];
         for (int i = 0; i < num.length; i++) {
@@ -38,6 +42,7 @@ public class Practica {
         return num;
     }
 
+    // Salida: Muestra el número de pares y el array invertido.
     public static void salidaNumerosPares(int contador) {
         System.out.println("Existen " + contador + " numeros pares.");
     }
