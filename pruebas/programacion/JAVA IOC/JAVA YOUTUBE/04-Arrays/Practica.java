@@ -2,9 +2,7 @@ import java.util.Scanner;
 
 public class Practica {
 
-
     public static void main(String[] args) {
-
 
         Scanner sc = new Scanner(System.in);
         int[] numeros = new int[8];
@@ -15,21 +13,21 @@ public class Practica {
             numeros[i] = sc.nextInt();
         }
 
-
         System.out.println("Pares: " + contarPares(numeros));
         int[] inv = invertir(numeros);
         System.out.print("Invertido: ");
-        for (int n : inv) System.out.print(n + " ");
+        for (int n : inv)
+            System.out.print(n + " ");
         sc.close();
     }
 
-
     static int contarPares(int[] arr) {
         int c = 0;
-        for (int v : arr) if (v % 2 == 0) c++;
+        for (int v : arr)
+            if (v % 2 == 0)
+                c++;
         return c;
     }
-
 
     static int[] invertir(int[] arr) {
         int[] r = new int[arr.length];
