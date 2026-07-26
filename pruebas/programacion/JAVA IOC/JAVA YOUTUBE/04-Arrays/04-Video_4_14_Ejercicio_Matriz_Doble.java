@@ -1,4 +1,4 @@
-﻿class Video_4_14_Ejercicio_Matriz_Doble {
+class Video_4_14_Ejercicio_Matriz_Doble {
     static final char LINEA_VERTICAL = '\u2551';
     static final char LINEA_HORIZONTAL = '\u2550';
     static final char ESQUINA_SUP_IZQ = '\u2554';

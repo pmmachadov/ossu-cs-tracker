@@ -1,4 +1,4 @@
-﻿class Video_4_08_Ejercicio_Matrices {
+class Video_4_08_Ejercicio_Matrices {
 
     // -------------------------------------------------------------
     // Datos del video y la playlist

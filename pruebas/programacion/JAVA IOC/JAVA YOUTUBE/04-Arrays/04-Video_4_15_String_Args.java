@@ -1,4 +1,4 @@
-﻿class Video_4_15_String_Args {
+class Video_4_15_String_Args {
 
     // -------------------------------------------------------------
     // Datos del video y la playlist

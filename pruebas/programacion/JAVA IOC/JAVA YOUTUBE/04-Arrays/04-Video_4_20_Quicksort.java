@@ -1,4 +1,4 @@
-﻿class Video_4_20_Quicksort {
+class Video_4_20_Quicksort {
 
     // -------------------------------------------------------------
     // Datos del video y la playlist

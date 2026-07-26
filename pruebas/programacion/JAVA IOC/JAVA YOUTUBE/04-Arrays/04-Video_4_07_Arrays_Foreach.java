@@ -1,4 +1,4 @@
-﻿class Video_4_07_Arrays_Foreach {
+class Video_4_07_Arrays_Foreach {
 
     // -------------------------------------------------------------
     // Datos del video y la playlist

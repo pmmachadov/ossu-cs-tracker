@@ -1,4 +1,4 @@
-﻿class Video_4_12_Ejercicio_Arrays_Bordes {
+class Video_4_12_Ejercicio_Arrays_Bordes {
 
     // -------------------------------------------------------------
     // Constantes Unicode para bordes

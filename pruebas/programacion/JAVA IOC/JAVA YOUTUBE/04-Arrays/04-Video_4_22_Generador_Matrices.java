@@ -1,4 +1,4 @@
-﻿class Video_4_22_Generador_Matrices {
+class Video_4_22_Generador_Matrices {
 
     // -------------------------------------------------------------
     // Datos del video y la playlist

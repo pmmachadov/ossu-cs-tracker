@@ -1,4 +1,4 @@
-﻿class Video_4_16_Varargs {
+class Video_4_16_Varargs {
 
     // -------------------------------------------------------------
     // Datos del video y la playlist

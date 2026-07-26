@@ -1,4 +1,4 @@
-﻿class Video_4_23_Ejercicio_Matrices_Maximos {
+class Video_4_23_Ejercicio_Matrices_Maximos {
 
     // -------------------------------------------------------------
     // Datos del video y la playlist

@@ -1,4 +1,4 @@
-﻿class Video_4_19_Ordenar_Burbuja {
+class Video_4_19_Ordenar_Burbuja {
 
     // -------------------------------------------------------------
     // Datos del video y la playlist

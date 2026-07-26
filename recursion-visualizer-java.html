@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recursión en Java — Visualizador de Memoria Stack</title>
+<style>
+  /* ===== RESET & BASE ===== */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: #0d1117;
+    color: #e6edf3;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 32px;
+  }
+  .container {
+    max-width: 1600px;
+    width: 100%;
+    background: #161b22;
+    border-radius: 16px;
+    border: 1px solid #30363d;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0,0,0,.5);
+  }
+
+  /* ===== REDUCED MOTION ===== */\n  @media (prefers-reduced-motion: reduce) {\n    *, *::before, *::after {\n      animation-duration: 0.001ms !important;\n      animation-iteration-count: 1 !important;\n      transition-duration: 0.001ms !important;\n    }\n  }\n\n  /* ===== HEADER ===== */
+  .header {
+    background: #161b22;
+    border-bottom: 1px solid #21262d;
+    padding: 28px 40px;
+    border-bottom: 1px solid #30363d;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .header-icon {
+    font-size: 38px;
+    line-height: 1;
+  }
+  .header h1 {
+    font-size: 26px;
+    font-weight: 600;
+    color: #58a6ff;
+  }
+  .header .subtitle {
+    font-size: 15px;
+    color: #8b949e;
+    margin-left: auto;
+    font-family: 'Cascadia Code', 'Fira Code', 'Consolas', monospace;
+  }
+
+  /* ===== CODE BAR ===== */
+  .code-bar {
+    background: #0d1117;
+    padding: 14px 40px;
+    border-bottom: 1px solid #21262d;
+    font-family: 'Cascadia Code', 'Fira Code', 'Consolas', monospace;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .code-bar .keyword { color: #ff7b72; }
+  .code-bar .type { color: #79c0ff; }
+  .code-bar .method { color: #d2a8ff; }
+  .code-bar .number { color: #a5d6ff; }
+  .code-bar .comment { color: #8b949e; font-style: italic; }
+  .code-bar .highlight-line {
+    background: rgba(88,166,255,.15);
+    padding: 2px 8px;
+    border-radius: 4px;
+    border-left: 3px solid #58a6ff;
+  }
+  .code-bar .line-num {
+    color: #484f58;
+    user-select: none;
+    min-width: 18px;
+    display: inline-block;
+  }
+
+  /* ===== MAIN LAYOUT ===== */
+  .main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+  @media (max-width: 860px) {
+    .main { grid-template-columns: 1fr; }
+  }
+
+  /* ===== STACK PANEL (LEFT) ===== */
+  .stack-panel {
+    padding: 32px;
+    border-right: 1px solid #21262d;
+    min-height: 640px;
+    display: flex;
+    flex-direction: column;
+  }
+  .stack-panel h2 {
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: .8px;
+    color: #8b949e;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .stack-panel h2 .badge {
+    font-size: 13px;
+    background: #1f6feb33;
+    color: #58a6ff;
+    padding: 2px 10px;
+    border-radius: 12px;
+    text-transform: none;
+    letter-spacing: 0;
+  }
+  .stack-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column-reverse; /* grow upward from bottom */
+    gap: 8px;
+    padding: 12px;
+    background: #0d1117;
+    border-radius: 12px;
+    border: 1px solid #21262d;
+    min-height: 420px;
+    position: relative;
+    overflow: hidden;
+  }
+  .stack-empty-msg {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #484f58;
+    font-size: 16px;
+    gap: 8px;
+    pointer-events: none;
+    transition: opacity .3s;
+  }
+  .stack-empty-msg.hidden { opacity: 0; }
+
+  /* Individual stack frame */
+  .stack-frame {
+    background: #1c2333;
+    border: 1px solid #30363d;
+    border-radius: 10px;
+    padding: 14px 20px;
+    transition: all .35s cubic-bezier(.4,0,.2,1);
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .stack-frame::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: #30363d;
+    border-radius: 4px 0 0 4px;
+    transition: background .3s;
+  }
+  .stack-frame.active {
+    border-color: #58a6ff;
+    background: #1c2541;
+    box-shadow: 0 0 24px rgba(88,166,255,.15);
+  }
+  .stack-frame.active::before { background: #58a6ff; }
+  .stack-frame.returning {
+    border-color: #3fb950;
+    background: #1a2e1f;
+  }
+  .stack-frame.returning::before { background: #3fb950; }
+  .stack-frame.pop {
+    animation: framePop .4s ease-in forwards;
+  }
+  @keyframes framePop {
+    0% { transform: scaleY(1); opacity: 1; max-height: 200px; margin-bottom: 6px; }
+    100% { transform: scaleY(0); opacity: 0; max-height: 0; margin-bottom: 0; padding: 0 20px; border-width: 0; }
+  }
+  @keyframes framePush {
+    0% { transform: scaleY(0); opacity: 0; max-height: 0; padding: 0 20px; margin-bottom: -8px; }
+    100% { transform: scaleY(1); opacity: 1; max-height: 200px; padding: 14px 20px; margin-bottom: 0; }
+  }
+  .stack-frame.push {
+    animation: framePush .4s ease-out forwards;
+  }
+
+  .frame-method {
+    font-family: 'Cascadia Code', 'Fira Code', 'Consolas', monospace;
+    font-size: 15px;
+    font-weight: 600;
+    color: #d2a8ff;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 6px;
+  }
+  .frame-method .frame-status {
+    font-size: 11px;
+    font-weight: 400;
+    padding: 2px 10px;
+    border-radius: 10px;
+    text-transform: uppercase;
+    letter-spacing: .4px;
+  }
+  .frame-status.status-active {
+    background: #1f6feb33;
+    color: #58a6ff;
+  }
+  .frame-status.status-waiting {
+    background: #d2992233;
+    color: #d29922;
+  }
+  .frame-status.status-done {
+    background: #3fb95033;
+    color: #3fb950;
+  }
+  .frame-vars {
+    font-family: 'Cascadia Code', 'Fira Code', 'Consolas', monospace;
+    font-size: 14px;
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .frame-var {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .frame-var .label {
+    color: #8b949e;
+  }
+  .frame-var .value {
+    color: #a5d6ff;
+    font-weight: 600;
+  }
+  .frame-var .value.changed {
+    color: #ffa657;
+    animation: pulseVal .4s ease;
+  }
+  @keyframes pulseVal {
+    0%,100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+  }
+  .frame-return {
+    font-family: 'Cascadia Code', 'Fira Code', 'Consolas', monospace;
+    font-size: 13px;
+    color: #3fb950;
+    border-top: 1px dashed #21262d;
+    padding-top: 8px;
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .frame-return .arrow {
+    font-size: 16px;
+  }
+  .frame-addr {
+    font-family: 'Cascadia Code', 'Fira Code', 'Consolas', monospace;
+    font-size: 11px;
+    color: #484f58;
+    text-align: right;
+    margin-top: 4px;
+  }
+
+  /* Operand stack — mini-stack dentro del frame */
+  .operand-stack {
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px dashed #21262d;
+  }
+  .operand-stack .os-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    color: #484f58;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .operand-stack .os-container {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    min-height: 28px;
+    align-items: center;
+  }
+  .operand-stack .os-val {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #1f6feb22;
+    border: 1px solid #1f6feb55;
+    color: #79c0ff;
+    font-family: 'Cascadia Code', 'Fira Code', 'Consolas', monospace;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 2px 10px;
+    border-radius: 6px;
+    animation: osPush .3s ease-out;
+  }
+  .operand-stack .os-val.pop {
+    animation: osPop .3s ease-in forwards;
+  }
+  @keyframes osPush {
+    0% { transform: translateY(-12px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+  }
+  @keyframes osPop {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(.6); opacity: 0; }
+  }
+  .operand-stack .os-empty {
+    color: #30363d;
+    font-size: 11px;
+    font-style: italic;
+  }
+
+  /* ===== INFO PANEL (RIGHT) ===== */
+  .info-panel {
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .step-counter {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .step-counter .step-text {
+    font-size: 15px;
+    color: #8b949e;
+  }
+  .step-counter .step-text strong {
+    color: #e6edf3;
+  }
+  .step-progress {
+    flex: 1;
+    min-width: 80px;
+    height: 4px;
+    background: #21262d;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .step-progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #58a6ff, #79c0ff);
+    border-radius: 4px;
+    transition: width .3s ease;
+    width: 0%;
+  }
+
+  /* Description card */
+  .desc-card {
+    background: #0d1117;
+    border: 1px solid #21262d;
+    border-radius: 10px;
+    padding: 20px;
+    min-height: 140px;
+  }
+  .desc-card .desc-icon {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  .desc-card .desc-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #e6edf3;
+    margin-bottom: 8px;
+  }
+  .desc-card .desc-body {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #c9d1d9;
+  }
+  .desc-card .desc-body code {
+    font-family: 'Cascadia Code', 'Fira Code', 'Consolas', monospace;
+    background: #161b22;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #ffa657;
+  }
+  .desc-card .desc-body .highlight {
+    color: #58a6ff;
+    font-weight: 500;
+  }
+
+  /* Memory detail boxes */
+  .memory-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .mem-box {
+    background: #0d1117;
+    border: 1px solid #21262d;
+    border-radius: 10px;
+    padding: 14px 16px;
+  }
+  .mem-box .mem-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .6px;
+    color: #484f58;
+    margin-bottom: 6px;
+  }
+  .mem-box .mem-value {
+    font-family: 'Cascadia Code', 'Fira Code', 'Consolas', monospace;
+    font-size: 18px;
+    color: #e6edf3;
+  }
+  .mem-box .mem-value .highlight-num {
+    color: #a5d6ff;
+    font-weight: 600;
+  }
+
+  /* Controls */
+  .controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .controls button {
+    background: #21262d;
+    border: 1px solid #30363d;
+    color: #c9d1d9;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all .2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: inherit;
+  }
+  .controls button:hover:not(:disabled) {
+    background: #30363d;
+    border-color: #58a6ff;
+    color: #e6edf3;
+  }
+  .controls button:disabled {
+    opacity: .35;
+    cursor: not-allowed;
+  }
+  .controls button.primary {
+    background: #1f6feb33;
+    border-color: #1f6feb66;
+    color: #58a6ff;
+  }
+  .controls button.primary:hover:not(:disabled) {
+    background: #1f6feb55;
+  }
+  .controls .control-group {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .controls .sep {
+    width: 1px;
+    height: 34px;
+    background: #21262d;
+    margin: 0 4px;
+  }
+  .speed-control {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: auto;
+  }
+  .speed-control label {
+    font-size: 13px;
+    color: #8b949e;
+  }
+  .speed-control input[type=range] {
+    width: 80px;
+    accent-color: #58a6ff;
+    height: 4px;
+  }
+
+  /* Legend */
+  .legend {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding: 10px 0;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: #8b949e;
+  }
+  .legend-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 4px;
+  }
+  .legend-dot.active { background: #58a6ff; }
+  .legend-dot.waiting { background: #d29922; }
+  .legend-dot.returning { background: #3fb950; }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    border-top: 1px solid #21262d;
+    padding: 14px 40px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 13px;
+    color: #484f58;
+    flex-wrap: wrap;
+  }
+  .footer .highlight-badge {
+    font-family: 'Cascadia Code', 'Fira Code', 'Consolas', monospace;
+    background: #1f6feb22;
+    color: #58a6ff;
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <div class="header">
+    <span class="header-icon">🧠</span>
+    <h1>Visualizador de Recursión en Java</h1>
+    <span class="subtitle">Memoria Stack · factorial(n)</span>
+  </div>
+
+  <!-- Code bar -->
+  <div class="code-bar" id="codeBar">
+    <span class="line-num" id="lineNum">1</span>
+    <span id="codeText">
+      <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span>
+      <span class="method">factorial</span>(<span class="type">int</span> n) { ... }
+    </span>
+  </div>
+
+  <!-- Main -->
+  <div class="main">
+    <!-- Stack Panel -->
+    <div class="stack-panel">
+      <h2>
+        ⬜ JVM Stack (Pila de llamadas)
+        <span class="badge" id="stackDepthBadge">0 frames</span>
+      </h2>
+      <div class="stack-container" id="stackContainer">
+        <div class="stack-empty-msg" id="emptyMsg">📭 La pila está vacía</div>
+      </div>
+      <div class="legend">
+        <span class="legend-item"><span class="legend-dot active"></span> Activo</span>
+        <span class="legend-item"><span class="legend-dot waiting"></span> En espera</span>
+        <span class="legend-item"><span class="legend-dot returning"></span> Retornado</span>
+      </div>
+    </div>
+
+    <!-- Info Panel -->
+    <div class="info-panel">
+      <div class="step-counter">
+        <span class="step-text">Paso <strong id="stepCurrent">0</strong> / <span id="stepTotal">0</span></span>
+        <div class="step-progress"><div class="step-progress-bar" id="progressBar"></div></div>
+      </div>
+
+      <div class="desc-card" id="descCard">
+        <div class="desc-icon" id="descIcon">▶️</div>
+        <div class="desc-title" id="descTitle">Preparando...</div>
+        <div class="desc-body" id="descBody">Presiona "Paso a paso" para comenzar.</div>
+      </div>
+
+      <div class="memory-details">
+        <div class="mem-box">
+          <div class="mem-label">📏 Profundidad stack</div>
+          <div class="mem-value" id="memDepth"><span class="highlight-num">0</span></div>
+        </div>
+        <div class="mem-box">
+          <div class="mem-label">🔄 Valor retornado</div>
+          <div class="mem-value" id="memReturn"><span style="color:#8b949e">—</span></div>
+        </div>
+      </div>
+
+      <div class="controls">
+        <div class="control-group">
+          <button id="btnFirst" title="Ir al inicio">⏮</button>
+          <button id="btnPrev" title="Paso anterior">◀</button>
+          <button id="btnPlay" class="primary" title="Reproducir automáticamente">▶ Reproducir</button>
+          <button id="btnNext" title="Paso siguiente">▶</button>
+          <button id="btnLast" title="Ir al final">⏭</button>
+        </div>
+        <div class="sep"></div>
+        <button id="btnReset" title="Reiniciar">⟲</button>
+        <div class="speed-control">
+          <label>🐢</label>
+          <input type="range" id="speedRange" min="200" max="2000" value="900" step="100">
+          <label>🐇</label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <span>🧱 Cada frame = una invocación a <span class="highlight-badge">factorial()</span></span>
+    <span>↓ Apilar (push) · ↑ Desapilar (pop) · ✅ Retorno</span>
+    <span>📦 <strong>Pila de operandos</strong> = valores intermedios dentro del frame</span>
+  </div>
+</div>
+
+<script>
+(function(){
+  'use strict';
+
+  // ============================================================
+  //  STEP DATA — What happens in Java memory during recursion
+  // ============================================================
+  // Each step:
+  //   descIcon, descTitle, descBody  → description card
+  //   stack  → array of frame objects (bottom = first pushed)
+  //   codeLine  → which source line is highlighted
+  //   highlightFrame  → index of active/returning frame or null
+
+  const STEPS = [];
+
+  // Helper: build a frame object
+  function frame(n, status, returnVal, addr, operandStack) {
+    return { n, status, returnVal: returnVal ?? null, addr: addr ?? null, operandStack: operandStack ?? null };
+  }
+
+  // --- Step 0: Initial ---
+  STEPS.push({
+    descIcon: '▶️',
+    descTitle: 'Inicio — llamada a factorial(3)',
+    descBody: `Imaginemos que ejecutamos <code>int resultado = factorial(3);</code> desde el método <code>main</code>. La JVM prepara un nuevo <strong>stack frame</strong> en la pila de llamadas (JVM Stack).`,
+    codeLine: 0,
+    stack: [],
+    highlightFrame: null
+  });
+
+  // --- Step 1: Push factorial(3) ---
+  STEPS.push({
+    descIcon: '⬇️',
+    descTitle: 'Apilar frame: factorial(3)',
+    descBody: `Se crea un nuevo <strong>stack frame</strong> para <code>factorial(3)</code>. La JVM reserva espacio para:<br>
+    • <span class="highlight">Parámetro:</span> <code>n = 3</code><br>
+    • <span class="highlight">Dirección de retorno:</span> hacia <code>main</code><br>
+    • <span class="highlight">Variables locales</span> (ninguna aún)<br><br>
+    El <strong>Stack Pointer (SP)</strong> apunta a este nuevo frame.`,
+    codeLine: 1,
+    stack: [frame(3, 'active')],
+    highlightFrame: 0
+  });
+
+  // --- Step 2: Check base case ---
+  STEPS.push({
+    descIcon: '🔍',
+    descTitle: 'Evaluar condición: n == 0?',
+    descBody: `La CPU evalúa la primera línea del método:<br>
+    <code>if (n == 0) return 1;</code><br><br>
+    Como <code>n = 3</code>, la condición es <span class="highlight">falsa</span>. No se alcanza el caso base; hay que seguir recursivamente.`,
+    codeLine: 2,
+    stack: [frame(3, 'active')],
+    highlightFrame: 0
+  });
+
+  // --- Step 3: Recursive call factorial(2) ---
+  STEPS.push({
+    descIcon: '🔄',
+    descTitle: 'Llamada recursiva: factorial(2)',
+    descBody: `Se ejecuta <code>return n * factorial(n - 1)</code>, es decir:<br>
+    <code>return 3 * factorial(2)</code><br><br>
+    El frame actual <span class="highlight">pasa a estado "en espera"</span> porque necesita el resultado de la llamada interna.<br>
+    La JVM <strong>apila</strong> un nuevo frame para <code>factorial(2)</code>.`,
+    codeLine: 3,
+    stack: [frame(3, 'waiting'), frame(2, 'active')],
+    highlightFrame: 1
+  });
+
+  // --- Step 4: Check base case factorial(2) ---
+  STEPS.push({
+    descIcon: '🔍',
+    descTitle: 'Evaluar condición: n == 0? (n=2)',
+    descBody: `En el nuevo frame: <code>if (n == 0) return 1;</code><br>
+    <code>n = 2 ≠ 0</code> → <span class="highlight">falso</span>.<br>
+    Seguimos profundizando.`,
+    codeLine: 2,
+    stack: [frame(3, 'waiting'), frame(2, 'active')],
+    highlightFrame: 1
+  });
+
+  // --- Step 5: Call factorial(1) ---
+  STEPS.push({
+    descIcon: '🔄',
+    descTitle: 'Llamada recursiva: factorial(1)',
+    descBody: `Se ejecuta <code>return n * factorial(n - 1)</code>:<br>
+    <code>return 2 * factorial(1)</code><br><br>
+    El frame de <code>factorial(2)</code> <span class="highlight">pasa a espera</span>.<br>
+    Se apila un nuevo frame para <code>factorial(1)</code>.`,
+    codeLine: 3,
+    stack: [frame(3, 'waiting'), frame(2, 'waiting'), frame(1, 'active')],
+    highlightFrame: 2
+  });
+
+  // --- Step 6: Check base case factorial(1) ---
+  STEPS.push({
+    descIcon: '🔍',
+    descTitle: 'Evaluar condición: n == 0? (n=1)',
+    descBody: `<code>if (n == 0) return 1;</code><br>
+    <code>n = 1 ≠ 0</code> → <span class="highlight">falso</span>.<br>
+    Aún no hemos llegado al caso base.`,
+    codeLine: 2,
+    stack: [frame(3, 'waiting'), frame(2, 'waiting'), frame(1, 'active')],
+    highlightFrame: 2
+  });
+
+  // --- Step 7: Call factorial(0) ---
+  STEPS.push({
+    descIcon: '🔄',
+    descTitle: 'Llamada recursiva: factorial(0)',
+    descBody: `<code>return 1 * factorial(0)</code><br><br>
+    El frame de <code>factorial(1)</code> <span class="highlight">pasa a espera</span>.<br>
+    Se apila <code>factorial(0)</code>. Este será el último nivel.`,
+    codeLine: 3,
+    stack: [frame(3, 'waiting'), frame(2, 'waiting'), frame(1, 'waiting'), frame(0, 'active')],
+    highlightFrame: 3
+  });
+
+  // --- Step 8: Base case reached! ---
+  STEPS.push({
+    descIcon: '✅',
+    descTitle: '¡Caso base alcanzado! n = 0',
+    descBody: `<code>if (n == 0) return 1;</code><br>
+    <code>n = 0</code> → condición <span class="highlight">verdadera</span> 🎉<br><br>
+    <strong>¡Aquí se detiene la recursión!</strong><br>
+    El método retorna <code>1</code> inmediatamente, sin hacer más llamadas. Esta es la <strong>condición de terminación</strong>.<br><br>
+    <em>📥 Pila de operandos: se apila el valor <code>1</code> como resultado.</em>`,
+    codeLine: 4,
+    stack: [frame(3, 'waiting'), frame(2, 'waiting'), frame(1, 'waiting'), frame(0, 'active', 1, null, [1])],
+    highlightFrame: 3
+  });
+
+  // --- Step 9: Pop factorial(0) ---
+  STEPS.push({
+    descIcon: '⬆️',
+    descTitle: 'Desapilar: factorial(0) → return 1',
+    descBody: `El frame de <code>factorial(0)</code> <strong>se desapila</strong> (pop) y libera su memoria.<br><br>
+    El valor <code>1</code> se pasa al frame inferior (<code>factorial(1)</code>) como resultado de la llamada interna.<br>
+    Ahora el frame de <code>factorial(1)</code> se <span class="highlight">reactiva</span> para continuar.`,
+    codeLine: 5,
+    stack: [frame(3, 'waiting'), frame(2, 'waiting'), frame(1, 'active')],
+    highlightFrame: 2,
+    returningIndex: 3  // animation hint: frame at index 3 is being popped
+  });
+
+  // --- Step 10: factorial(1) computes ---
+  STEPS.push({
+    descIcon: '🧮',
+    descTitle: 'factorial(1): 1 * 1 = 1',
+    descBody: `El frame de <code>factorial(1)</code> recibe el resultado <code>1</code> de la llamada interna.<br>
+    Calcula: <code>return n * resultadoAnterior</code> → <code>return 1 * 1 = 1</code><br><br>
+    <strong>Operación en la pila de operandos (dentro del frame):</strong><br>
+    1. <span class="highlight">Apila</span> <code>n = 1</code> → operand stack: <code>[1]</code><br>
+    2. <span class="highlight">Apila</span> resultado llamada <code>1</code> → operand stack: <code>[1, 1]</code><br>
+    3. <span class="highlight">Multiplica</span> (desapila dos, apila resultado) → operand stack: <code>[1]</code><br>
+    <em>Cada operación aritmética usa la pila de operandos del frame.</em>`,
+    codeLine: 5,
+    stack: [frame(3, 'waiting'), frame(2, 'waiting'), frame(1, 'active', 1, null, [1])],
+    highlightFrame: 2
+  });
+
+  // --- Step 11: Pop factorial(1) ---
+  STEPS.push({
+    descIcon: '⬆️',
+    descTitle: 'Desapilar: factorial(1) → return 1',
+    descBody: `El frame de <code>factorial(1)</code> <strong>se desapila</strong>.<br>
+    Retorna <code>1</code> al frame de <code>factorial(2)</code>.<br><br>
+    La memoria ocupada por este frame se libera automáticamente.`,
+    codeLine: 5,
+    stack: [frame(3, 'waiting'), frame(2, 'active')],
+    highlightFrame: 1,
+    returningIndex: 2
+  });
+
+  // --- Step 12: factorial(2) computes ---
+  STEPS.push({
+    descIcon: '🧮',
+    descTitle: 'factorial(2): 2 * 1 = 2',
+    descBody: `<code>factorial(2)</code> recibe <code>1</code>.<br>
+    Calcula: <code>return 2 * 1 = 2</code><br><br>
+    <strong>Pila de operandos:</strong><br>
+    1. <span class="highlight">Apila</span> <code>n = 2</code> → <code>[2]</code><br>
+    2. <span class="highlight">Apila</span> resultado <code>1</code> → <code>[2, 1]</code><br>
+    3. Multiplica → <code>[2]</code><br><br>
+    El resultado parcial se va <span class="highlight">propagando hacia arriba</span>.<br>
+    La pila se va reduciendo.`,
+    codeLine: 5,
+    stack: [frame(3, 'waiting'), frame(2, 'active', 2, null, [2])],
+    highlightFrame: 1
+  });
+
+  // --- Step 13: Pop factorial(2) ---
+  STEPS.push({
+    descIcon: '⬆️',
+    descTitle: 'Desapilar: factorial(2) → return 2',
+    descBody: `Frame de <code>factorial(2)</code> se desapila.<br>
+    Retorna <code>2</code> a <code>factorial(3)</code>.`,
+    codeLine: 5,
+    stack: [frame(3, 'active')],
+    highlightFrame: 0,
+    returningIndex: 1
+  });
+
+  // --- Step 14: factorial(3) computes ---
+  STEPS.push({
+    descIcon: '🧮',
+    descTitle: 'factorial(3): 3 * 2 = 6',
+    descBody: `El frame original de <code>factorial(3)</code> recibe <code>2</code>.<br>
+    Calcula: <code>return 3 * 2 = 6</code><br><br>
+    <strong>Pila de operandos:</strong><br>
+    1. <span class="highlight">Apila</span> <code>n = 3</code> → <code>[3]</code><br>
+    2. <span class="highlight">Apila</span> resultado <code>2</code> → <code>[3, 2]</code><br>
+    3. Multiplica → <code>[6]</code><br><br>
+    <strong>¡La pila vuelve a tener solo un frame!</strong><br>
+    Este es el valor final que retorna a <code>main</code>.`,
+    codeLine: 5,
+    stack: [frame(3, 'active', 6, null, [6])],
+    highlightFrame: 0
+  });
+
+  // --- Step 15: Final ---
+  STEPS.push({
+    descIcon: '🏁',
+    descTitle: '¡Recursión completa! Resultado = 6',
+    descBody: `El frame de <code>factorial(3)</code> retorna <code>6</code> al método <code>main</code> y <strong>se desapila</strong>.<br><br>
+    La pila de llamadas queda vacía.<br><br>
+    <strong>Resumen:</strong><br>
+    • Se apilaron <span class="highlight">4 frames</span> en total.<br>
+    • La profundidad máxima fue <span class="highlight">4</span> (desde main hasta factorial(0)).<br>
+    • Cada frame ocupó memoria para el parámetro <code>n</code>, la dirección de retorno y su <strong>pila de operandos</strong>.<br>
+    • Dentro de cada frame, la <strong>pila de operandos</strong> almacena valores intermedios (como <code>n</code> y resultados parciales) durante la evaluación de expresiones.<br>
+    • Al llegar al caso base, los frames se desapilaron en <strong>orden inverso</strong> (LIFO).<br>
+    • El resultado final es <code>3 * 2 * 1 * 1 = 6</code> ✅`,
+    codeLine: 6,
+    stack: [],
+    highlightFrame: null
+  });
+
+  const TOTAL = STEPS.length;
+
+  // ============================================================
+  //  STATE
+  // ============================================================
+  let currentStep = 0;
+  let isPlaying = false;
+  let playTimer = null;
+  let animFrame = null;
+
+  // ============================================================
+  //  DOM REFS
+  // ============================================================
+  const container = document.getElementById('stackContainer');
+  const emptyMsg = document.getElementById('emptyMsg');
+  const depthBadge = document.getElementById('stackDepthBadge');
+
+  const stepCurrent = document.getElementById('stepCurrent');
+  const stepTotal = document.getElementById('stepTotal');
+  const progressBar = document.getElementById('progressBar');
+
+  const descIcon = document.getElementById('descIcon');
+  const descTitle = document.getElementById('descTitle');
+  const descBody = document.getElementById('descBody');
+
+  const memDepth = document.getElementById('memDepth');
+  const memReturn = document.getElementById('memReturn');
+
+  const codeText = document.getElementById('codeText');
+  const lineNum = document.getElementById('lineNum');
+
+  const btnFirst = document.getElementById('btnFirst');
+  const btnPrev = document.getElementById('btnPrev');
+  const btnPlay = document.getElementById('btnPlay');
+  const btnNext = document.getElementById('btnNext');
+  const btnLast = document.getElementById('btnLast');
+  const btnReset = document.getElementById('btnReset');
+  const speedRange = document.getElementById('speedRange');
+
+  // Java source lines for the code bar
+  const CODE_LINES = [
+    `<span class="comment">// int resultado = factorial(3);  (desde main)</span>`,
+    `<span class="keyword">public static</span> <span class="type">int</span> <span class="method">factorial</span>(<span class="type">int</span> n) {`,
+    `  <span class="keyword">if</span> (n == 0) <span class="keyword">return</span> <span class="number">1</span>;  <span class="comment">// ¿caso base?</span>`,
+    `  <span class="keyword">return</span> n * <span class="method">factorial</span>(n - <span class="number">1</span>);  <span class="comment">// llamada recursiva</span>`,
+    `  <span class="comment">// n == 0 → return 1  ✅ <span class="keyword">CASO BASE</span></span>`,
+    `  <span class="comment">// ↑ retorno propagado al frame superior</span>`,
+    `<span class="comment">// resultado final recibido en main ✅</span>`
+  ];
+
+  // ============================================================
+  //  RENDER
+  // ============================================================
+  function render() {
+    const step = STEPS[currentStep];
+
+    // --- Update counters ---
+    stepCurrent.textContent = currentStep;
+    stepTotal.textContent = TOTAL - 1;
+    progressBar.style.width = `${(currentStep / (TOTAL - 1)) * 100}%`;
+
+    // --- Update description card ---
+    descIcon.textContent = step.descIcon;
+    descTitle.textContent = step.descTitle;
+    descBody.innerHTML = step.descBody;
+
+    // --- Update code line highlight ---
+    const lineIdx = step.codeLine;
+    if (lineIdx >= 0 && lineIdx < CODE_LINES.length) {
+      codeText.innerHTML = CODE_LINES[lineIdx];
+      lineNum.textContent = lineIdx + 1;
+    }
+
+    // --- Memory details ---
+    memDepth.innerHTML = `<span class="highlight-num">${step.stack.length}</span>`;
+
+    // Find any return value at the top active frame
+    const activeFrame = step.highlightFrame !== null ? step.stack[step.highlightFrame] : null;
+    if (activeFrame && activeFrame.returnVal !== null) {
+      memReturn.innerHTML = `<span style="color:#3fb950;font-weight:600;">${activeFrame.returnVal}</span>`;
+    } else {
+      memReturn.innerHTML = `<span style="color:#8b949e;">—</span>`;
+    }
+
+    // Depth badge
+    depthBadge.textContent = `${step.stack.length} frame${step.stack.length !== 1 ? 's' : ''}`;
+
+    // --- Render stack frames ---
+    // Clear, keeping empty msg
+    const frames = container.querySelectorAll('.stack-frame');
+    frames.forEach(f => f.remove());
+
+    emptyMsg.classList.toggle('hidden', step.stack.length > 0);
+
+    step.stack.forEach((f, idx) => {
+      const el = document.createElement('div');
+      el.className = 'stack-frame';
+
+      // Determine visual state
+      const isHighlighted = (step.highlightFrame === idx);
+      const isReturning = step.returningIndex === idx;
+
+      if (isReturning) {
+        el.classList.add('pop');
+      } else if (isHighlighted) {
+        if (f.returnVal !== null && f.status === 'active') {
+          el.classList.add('returning');
+        } else {
+          el.classList.add('active');
+        }
+      } else if (f.status === 'waiting') {
+        // default styling via status class
+      }
+
+      // Animate push for newly appeared frames (heuristic: if idx >= previous stack length)
+      // We handle this with a CSS class addition after mount
+      const statusLabel = f.status === 'active' ? 'ACTIVO' : f.status === 'waiting' ? 'ESPERA' : 'DONE';
+      const statusClass = f.status === 'active' ? 'status-active' : f.status === 'waiting' ? 'status-waiting' : 'status-done';
+
+      // Determine address display
+      const addrDisplay = f.addr || `0x${(0x7FFE_0000 - idx * 0x20).toString(16).toUpperCase()}`;
+
+      el.innerHTML = `
+        <div class="frame-method">
+          factorial(${f.n}) <span class="frame-status ${statusClass}">${statusLabel}</span>
+        </div>
+        <div class="frame-vars">
+          <span class="frame-var"><span class="label">n =</span> <span class="value">${f.n}</span></span>
+          ${f.returnVal !== null ? `<span class="frame-var"><span class="label">→ return =</span> <span class="value changed">${f.returnVal}</span></span>` : ''}
+        </div>
+        ${f.status === 'waiting' ? `<div class="frame-return"><span class="arrow">⏳</span> Esperando resultado de factorial(${f.n - 1})...</div>` : ''}
+        ${f.status === 'active' && f.returnVal !== null ? `<div class="frame-return"><span class="arrow">⬆️</span> Retornando <strong>${f.returnVal}</strong> al frame superior</div>` : ''}
+        ${f.operandStack && (isHighlighted || f.status === 'active') ? `
+        <div class="operand-stack">
+          <div class="os-label">📦 Pila de operandos</div>
+          <div class="os-container">
+            ${f.operandStack.length === 0 ? '<span class="os-empty">(vacía)</span>' :
+              f.operandStack.map(v => `<span class="os-val">${v}</span>`).join('')}
+          </div>
+        </div>` : ''}
+        <div class="frame-addr">${addrDisplay}</div>
+      `;
+
+      // Insert at bottom (since container is flex-direction: column-reverse)
+      // Actually, with column-reverse, the first child appears at the bottom
+      // So we append in order and the oldest (index 0) appears at bottom
+      container.appendChild(el);
+
+      // Animate push if this frame wasn't in the previous step
+      // Simple approach: always add push class if it's a newly added frame
+      // We'll let the CSS handle it via the class
+      if (step.stack.length > 0) {
+        // We add a small delay to trigger the animation properly
+        // Not perfect but works visually
+      }
+    });
+
+    // Apply push animation to newly added frames (diff with previous step)
+    if (currentStep > 0) {
+      const prev = STEPS[currentStep - 1];
+      if (step.stack.length > prev.stack.length) {
+        // New frames were added — apply push animation to them
+        const newCount = step.stack.length - prev.stack.length;
+        const allFrameEls = container.querySelectorAll('.stack-frame');
+        for (let i = 0; i < newCount && i < allFrameEls.length; i++) {
+          allFrameEls[allFrameEls.length - 1 - i].classList.add('push');
+        }
+      }
+    }
+
+    // Update buttons
+    btnFirst.disabled = currentStep === 0;
+    btnPrev.disabled = currentStep === 0;
+    btnNext.disabled = currentStep === TOTAL - 1;
+    btnLast.disabled = currentStep === TOTAL - 1;
+
+    btnPlay.textContent = isPlaying ? '⏸ Pausar' : '▶ Reproducir';
+  }
+
+  // ============================================================
+  //  NAVIGATION
+  // ============================================================
+  function goToStep(n) {
+    if (n < 0 || n >= TOTAL) return;
+    currentStep = n;
+    render();
+  }
+
+  function nextStep() {
+    if (currentStep < TOTAL - 1) {
+      goToStep(currentStep + 1);
+    } else {
+      stopPlay();
+    }
+  }
+
+  function prevStep() {
+    if (currentStep > 0) {
+      goToStep(currentStep - 1);
+    }
+  }
+
+  function firstStep() { goToStep(0); }
+  function lastStep() { goToStep(TOTAL - 1); }
+
+  function resetAll() {
+    stopPlay();
+    goToStep(0);
+  }
+
+  // ============================================================
+  //  PLAYBACK
+  // ============================================================
+  function startPlay() {
+    if (currentStep >= TOTAL - 1) goToStep(0);
+    isPlaying = true;
+    btnPlay.textContent = '⏸ Pausar';
+    tick();
+  }
+
+  function stopPlay() {
+    isPlaying = false;
+    if (playTimer) { clearTimeout(playTimer); playTimer = null; }
+    btnPlay.textContent = '▶ Reproducir';
+  }
+
+  function tick() {
+    if (!isPlaying) return;
+    if (currentStep >= TOTAL - 1) {
+      stopPlay();
+      return;
+    }
+    nextStep();
+    const speed = parseInt(speedRange.value, 10);
+    playTimer = setTimeout(tick, speed);
+  }
+
+  function togglePlay() {
+    if (isPlaying) {
+      stopPlay();
+    } else {
+      startPlay();
+    }
+  }
+
+  // ============================================================
+  //  KEYBOARD
+  // ============================================================
+  document.addEventListener('keydown', (e) => {
+    if (e.target.tagName === 'INPUT') return;
+    switch (e.key) {
+      case 'ArrowRight': e.preventDefault(); if (isPlaying) stopPlay(); nextStep(); break;
+      case 'ArrowLeft': e.preventDefault(); if (isPlaying) stopPlay(); prevStep(); break;
+      case ' ': e.preventDefault(); togglePlay(); break;
+      case 'Home': e.preventDefault(); firstStep(); break;
+      case 'End': e.preventDefault(); lastStep(); break;
+    }
+  });
+
+  // ============================================================
+  //  EVENTS
+  // ============================================================
+  btnFirst.addEventListener('click', firstStep);
+  btnPrev.addEventListener('click', () => { if (isPlaying) stopPlay(); prevStep(); });
+  btnPlay.addEventListener('click', togglePlay);
+  btnNext.addEventListener('click', () => { if (isPlaying) stopPlay(); nextStep(); });
+  btnLast.addEventListener('click', lastStep);
+  btnReset.addEventListener('click', resetAll);
+
+  // When speed changes while playing, it takes effect on next tick
+
+  // ============================================================
+  //  INIT
+  // ============================================================
+  render();
+
+})();
+</script>
+</body>
+</html>

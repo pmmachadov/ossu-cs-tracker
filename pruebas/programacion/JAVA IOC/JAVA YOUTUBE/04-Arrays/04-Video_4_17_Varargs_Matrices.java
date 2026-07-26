@@ -1,4 +1,4 @@
-﻿class Video_4_17_Varargs_Matrices {
+class Video_4_17_Varargs_Matrices {
 
     // -------------------------------------------------------------
     // Constantes Unicode para bordes

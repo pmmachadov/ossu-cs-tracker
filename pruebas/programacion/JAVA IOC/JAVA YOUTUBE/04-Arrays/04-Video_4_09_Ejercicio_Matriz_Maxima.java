@@ -1,4 +1,4 @@
-﻿class Video_4_09_Ejercicio_Matriz_Maxima {
+class Video_4_09_Ejercicio_Matriz_Maxima {
 
     // -------------------------------------------------------------
     // Datos del video y la playlist
