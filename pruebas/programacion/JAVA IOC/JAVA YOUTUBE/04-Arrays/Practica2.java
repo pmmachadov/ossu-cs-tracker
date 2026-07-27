@@ -8,7 +8,7 @@ public class Practica2 {
 
         pideNumeros();
         int catidadPares = contarPares();
-        int[] numInvertidos = intertirNumeros();
+        int[] numInvertidos = invertirNumeros();
         salidaNumerosPares(catidadPares);
         salidaArrayInvertido(numInvertidos);
     }
@@ -39,7 +39,7 @@ public class Practica2 {
 
     // invertir: Crea un nuevo array con los elementos en orden inverso al original.
 
-    public static int[] intertirNumeros() {
+    public static int[] invertirNumeros() {
         int[] n = new int[numeros.length];
         for (int i = 0; i < n.length; i++) {
             n[i] = numeros[numeros.length - 1 - i];
