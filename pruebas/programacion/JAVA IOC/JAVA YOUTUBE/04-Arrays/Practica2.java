@@ -1,61 +1,158 @@
-import java.util.Scanner;
+/*
+ * Práctica 1: Biblioteca digital
+ *
+ * Clases diseñadas para gestionar una biblioteca con libros.
+ * Se incluye la clase Libro y la clase Biblioteca.
+ */
 
-public class Practica2 {
+import java.util.ArrayList;
 
-    static int[] numeros = new int[8];
+/**
+ * Clase que representa un libro con sus atributos y operaciones básicas.
+ */
+class Libro {
+    // Atributos privados según especificación
+    private String titulo; // Título del libro
+    private String autor; // Autor del libro
+    private int anyoPublicacion; // Año de publicación
+    private boolean prestado; // Estado de préstamo (true = prestado, false = disponible)
 
-    public static void main(String[] args) {
-        pideNumeros();
-        int cantidadPares = contarPares();
-        int[] numInvertidos = invertirNumeros();
-        salidaNumerosPares(cantidadPares);
-        salidaArrayInvertido(numInvertidos);
+    /**
+     * Constructor con todos los parámetros.
+     * Inicializa el libro con el título, autor y año dados.
+     * Por defecto, el libro se crea como no prestado.
+     *
+     * @param titulo Título del libro
+     * @param autor  Autor del libro
+     * @param anyo   Año de publicación
+     */
+    public Libro(String titulo, String autor, int anyo) {
+        this.titulo = titulo;
+        this.autor = autor;
+        this.anyoPublicacion = anyo;
+        this.prestado = false; // Inicialmente disponible
     }
 
-    // Entrada: Pide 8 números enteros por teclado y los almacena en un array.
-    public static void pideNumeros() {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Elige 8 números:");
-        for (int i = 0; i < numeros.length; i++) {
-            System.out.print("Número " + (i + 1) + ": ");
-            numeros[i] = sc.nextInt();
+    // Getters y setters según se requieren
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public String getAutor() {
+        return autor;
+    }
+
+    public int getAnyo() {
+        return anyoPublicacion;
+    }
+
+    public boolean isPrestado() {
+        return prestado;
+    }
+
+    public void setTitulo(String t) {
+        titulo = t;
+    }
+
+    public void setAutor(String a) {
+        autor = a;
+    }
+
+    /**
+     * Método prestar(): marca el libro como prestado si no lo está.
+     * Si ya está prestado, no hace nada (no se cambia el estado).
+     */
+    public void prestar() {
+        if (!prestado) {
+            prestado = true;
         }
-        sc.close();
     }
 
-    // contarPares: Recorre el array y devuelve la cantidad de números pares.
-    public static int contarPares() {
-        int contador = 0;
-        for (int i : numeros) {
-            if (i % 2 == 0) { // Corregido: verifica si el número es par
-                contador++;
-            }
-        }
-        return contador;
+    /**
+     * Método devolver(): marca el libro como disponible (no prestado).
+     */
+    public void devolver() {
+        prestado = false;
     }
 
-    // invertir: Crea un nuevo array con los elementos en orden inverso al original.
-    public static int[] invertirNumeros() {
-
-        int[] n = new int[numeros.length];
-
-        for (int i = 0; i < n.length; i++) {
-            n[i] = numeros[numeros.length - 1 - i];
-        }
-        return n;
-    }
-
-    // Salida: Muestra el número de pares
-    public static void salidaNumerosPares(int contador) {
-        System.out.println("Existen " + contador + " números pares.");
-    }
-
-    // Salida: Array invertido
-    public static void salidaArrayInvertido(int[] array) {
-        System.out.print("Array invertido: ");
-        for (int i : array) {
-            System.out.print(i + " ");
-        }
-        System.out.println();
+    /**
+     * Representación textual del libro.
+     * Muestra el título, autor, año y estado (PRESTADO o DISPONIBLE).
+     *
+     * @return Cadena con la información del libro
+     */
+    @Override
+    public String toString() {
+        return titulo + " (" + autor + ", " + anyoPublicacion + ") "
+                + (prestado ? "[PRESTADO]" : "[DISPONIBLE]");
     }
 }
+
+/**
+ * Clase que gestiona una colección de libros.
+ * Permite agregar, listar disponibles y buscar por autor.
+ */
+class Biblioteca {
+    // Atributo: lista de libros
+    private ArrayList<Libro> libros = new ArrayList<>();
+
+    /**
+     * Agrega un libro a la biblioteca.
+     *
+     * @param l Libro a agregar
+     */
+    public void agregarLibro(Libro l) {
+        libros.add(l);
+    }
+
+    /**
+     * Lista por consola todos los libros que no están prestados.
+     * Utiliza el toString() de cada libro para mostrar su información.
+     */
+    public void listarDisponibles() {
+        for (Libro l : libros) {
+            if (!l.isPrestado()) {
+                System.out.println(l);
+            }
+        }
+    }
+
+    /**
+     * Busca libros cuyo autor coincida (sin distinción de mayúsculas/minúsculas).
+     *
+     * @param autor Nombre del autor a buscar
+     * @return ArrayList con los libros encontrados (puede estar vacío)
+     */
+    public ArrayList<Libro> buscarPorAutor(String autor) {
+        ArrayList<Libro> res = new ArrayList<>();
+        for (Libro l : libros) {
+            if (l.getAutor().equalsIgnoreCase(autor)) {
+                res.add(l);
+            }
+        }
+        return res;
+    }
+}
+
+// Nota: Para probar las clases se puede crear una clase main en Practica1
+// (descomentar el bloque inferior) o ejecutar pruebas unitarias.
+/*
+ * public class Practica1 {
+ * public static void main(String[] args) {
+ * // Ejemplo de uso
+ * Biblioteca biblio = new Biblioteca();
+ * Libro l1 = new Libro("Cien años de soledad", "Gabriel García Márquez", 1967);
+ * Libro l2 = new Libro("El Quijote", "Miguel de Cervantes", 1605);
+ * biblio.agregarLibro(l1);
+ * biblio.agregarLibro(l2);
+ * l1.prestar(); // Prestamos el primer libro
+ * System.out.println("Libros disponibles:");
+ * biblio.listarDisponibles(); // Solo mostrará El Quijote
+ * System.out.println("Búsqueda por autor 'garcía márquez':");
+ * for (Libro l : biblio.buscarPorAutor("Gabriel García Márquez")) {
+ * System.out.println(l);
+ * }
+ * }
+ * }
+ */
