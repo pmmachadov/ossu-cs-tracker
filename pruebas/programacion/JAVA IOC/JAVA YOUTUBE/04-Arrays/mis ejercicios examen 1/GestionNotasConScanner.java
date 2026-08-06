@@ -48,47 +48,67 @@ public class GestionNotasConScanner {
     }
 }
 
-// INICIO
+// INICIO INTENTAR
 
-// ABRIR archivo"alumnos.txt" para lectura (br)
-// ABRIR archivo "resultados.txt" para escritura (pw)
+// ABRIR archivo"alumnos.txt"
+// para lectura
+// como entrada
 
-// MIENTRAS haya una línea en "alumnos.txt" HACER LEER línea
+// ABRIR archivo"resultados.txt"
+// para escritura
+// como salida
 
-// ELIMINAR espacios al inicio y final de la línea
+// MIENTRAS exista
+// una línea
+// siguiente en
+// entrada HACER
+// LEER línea
+// de entrada
+// ELIMINAR espacios
+// en blanco
+// alrededor
 
-// SI la línea está vacía ENTONCES CONTINUAR con la siguiente línea
+// SI
+// la línea
+// está vacía
 
+// ENTONCES
+// CONTINUAR (saltar al siguiente ciclo)
 // FIN SI
 
-// DIVIDIR la línea en partes usando espacios → tokens
+// CREAR un lector auxiliar para la línea
+// INTENTAR
+// LEER el nombre desde el lector auxiliar
 
-// TOMAR la primera parte como nombre
+// suma ← 0.0
+// contador ← 0
 
-// INICIALIZAR suma = 0 y contador = 0
-
-// MIENTRAS queden tokens HACER
-// CONVERTIR el siguiente token a número decimal
-// SUMAR ese número a suma
-// INCREMENTAR contador en 1
+// MIENTRAS el lector auxiliar tenga un siguiente número real HACER
+// valor ← LEER siguiente número real
+// suma ← suma + valor
+// contador ← contador + 1
 // FIN MIENTRAS
 
-// CALCULAR media = suma / contador
+// SI contador > 0 ENTONCES
+// media ← suma / contador
+// SINO
+// media ← 0.0
+// FIN SI
 
-// ESCRIBIR en "resultados.txt": nombre + ": " + media (con 2 decimmales)
-
+// ESCRIBIR en salida: nombre, ":", media formateada con 2 decimales, salto de
+// línea
+// FINALMENTE
+// CERRAR el lector auxiliar
+// FIN INTENTAR
 // FIN MIENTRAS
 
-// MOSTRAR mensaje: "Archivo resultados.txt generado."
+// MOSTRAR "Archivo resultados.txt generado correctamente."
 
-// CERRAR automáticamente ambos archivos
-
-// EXCEPCIÓN si "alumnos.txt" no existe:
-// MOSTRAR: "Error: no se encuentra alumnos.txt"
-
-// EXCEPCIÓN si hay error de lectura/escritura:
-// MOSTRAR: "Error de lectura/escritura: [mensaje del error]"
-
-// EXCEPCIÓN si una nota no es un número válido:
-// MOSTRAR: "Error: formato incorrecto en las notas"
+// ATRAPAR excepción de tipo FileNotFoundException
+// MOSTRAR "Error: no se encuentra el archivo alumnos.txt"
+// ATRAPAR excepción de tipo IOException
+// MOSTRAR "Error de lectura/escritura: " seguido del mensaje de la excepción
+// ATRAPAR excepción de tipo NumberFormatException
+// MOSTRAR "Error: formato incorrecto en las notas"
+// FIN INTENTAR
 // FIN
