@@ -37,3 +37,44 @@ public class GestionNotas {
         }
     }
 }
+
+// INICIO
+
+// ABRIR archivo"alumnos.txt" para lectura (br)
+// ABRIR archivo "resultados.txt" para escritura (pw)
+
+// MIENTRAS haya una línea en "alumnos.txt" HACER
+// LEER línea
+// ELIMINAR espacios al inicio y final de la línea
+// SI la línea está vacía ENTONCES
+// CONTINUAR con la siguiente línea
+// FIN SI
+
+// DIVIDIR la línea en partes usando espacios → tokens
+// TOMAR la primera parte como nombre
+
+// INICIALIZAR suma = 0 y contador = 0
+
+// MIENTRAS queden tokens HACER
+// CONVERTIR el siguiente token a número decimal
+// SUMAR ese número a suma
+// INCREMENTAR contador en 1
+// FIN MIENTRAS
+
+// CALCULAR media = suma / contador
+// ESCRIBIR en "resultados.txt": nombre + ": " + media (con 2 decimmales)
+// FIN MIENTRAS
+
+// MOSTRAR mensaje: "Archivo resultados.txt generado."
+
+// CERRAR automáticamente ambos archivos
+
+// EXCEPCIÓN si "alumnos.txt" no existe:
+// MOSTRAR: "Error: no se encuentra alumnos.txt"
+
+// EXCEPCIÓN si hay error de lectura/escritura:
+// MOSTRAR: "Error de lectura/escritura: [mensaje del error]"
+
+// EXCEPCIÓN si una nota no es un número válido:
+// MOSTRAR: "Error: formato incorrecto en las notas"
+// FIN
