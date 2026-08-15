@@ -1,18 +1,18 @@
 public class Practica1 {
 
     public static void main(String[] args) {
-        int resultado = contarVocales("Hola Mundo, Vamos a contar vocales");
-        System.out.println("Total de vocales: " + resultado);
+        imprimirTriangulo(5);
     }
 
-    public static int contarVocales(String texto) {
+    public static void imprimirTriangulo(int filas) {
 
-        for (int i = 0; i < texto.length(); i++) {
-            char letra = texto.charAt(i);
+        for (int i = 1; i <= filas; i++) {
 
+            for (int j = 1; j <= i; j++) {
+                System.out.print(j + " ");
+            }
+
+            System.out.println();
         }
-
-        return 0;
     }
-
 }
