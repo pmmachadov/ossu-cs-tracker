@@ -126,10 +126,21 @@ const renderCardContent = (text, cardImageUrl) => {
   const elements = [];
   let codeBlock = null;
   let codeLines = [];
+  // La primera línea con contenido tras una cabecera "Parte N:" es la pregunta
+  let pendingQuestion = false;
 
   // Procesa una línea de texto como párrafo individual
   const processLine = (line, keyIdx) => {
     if (!line.trim()) return;
+
+    const trimmed = line.trim();
+    const isSection = /^Parte\s+\d+:\s*[A-ZÁÉÍÓÚÑ]/.test(trimmed);
+    const isQuestion = pendingQuestion;
+    if (isSection) {
+      pendingQuestion = true;
+    } else if (isQuestion) {
+      pendingQuestion = false;
+    }
 
     // Procesa enlaces markdown [texto](url) ANTES de dividir por paréntesis
     const mdLinkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
@@ -148,7 +159,12 @@ const renderCardContent = (text, cardImageUrl) => {
     }
 
     const isSubtitle = /^(?:[¿¡]?[A-ZÁÉÍÓÚÑ]|\d+\.\s*)[A-Za-zÁÉÍÓÚÑáéíóúñ0-9 (),./@]{0,70}[:?]$/.test(line.trim());
-    const pClassName = isSubtitle ? "card-text-paragraph card-subtitle" : "card-text-paragraph";
+    let pClassName = "card-text-paragraph";
+    if (isQuestion) {
+      pClassName += " card-question";
+    } else if (isSection || isSubtitle) {
+      pClassName += " card-subtitle";
+    }
 
     // Si hay enlaces markdown, usa el nuevo pipeline
     if (linkParts.some((p) => typeof p === "object")) {

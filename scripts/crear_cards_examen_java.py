@@ -48,10 +48,9 @@ def looks_like_code(text):
 
 def build_front(exam_no, ex, sec, q):
     parts = [f"({ex['subtitulo']})"]
-    parts.append(f"{sec['titulo']} ({sec['puntos']})")
+    # Sin puntuación: los puntos delatan la respuesta y no aportan al estudio
+    parts.append(sec["titulo"])
     enun = q.get("enunciado", "").strip()
-    if q.get("puntos"):
-        enun = f"{enun}  ({q['puntos']})"
     parts.append(enun)
     if q.get("code"):
         parts.append("```java\n" + q["code"].rstrip() + "\n```")

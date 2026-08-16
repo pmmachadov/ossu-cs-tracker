@@ -183,7 +183,7 @@
   position: relative;
   transform-style: preserve-3d;
   cursor: pointer;
-  transition: transform 0.6s ease;
+  transition: transform 3.6s ease;
   display: flex;
 }
 
@@ -443,6 +443,15 @@
 /* Subtitulos en color diferente */
 .card-subtitle {
   color: #60a5fa;
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin-top: 20px;
+  margin-bottom: 4px;
+}
+
+/* La pregunta (enunciado) de las tarjetas de examen, en color propio */
+.card-question {
+  color: #ffd479;
   font-size: 1.35rem;
   font-weight: 600;
   margin-top: 20px;

@@ -70,7 +70,9 @@ export function DeckCard({
         )}
         {hasDueCards && (
           <div className="due-badge-inline">
-            <span>{stats.due} pendientes</span>
+            <span>
+              {stats.due} de {stats.total} pendientes
+            </span>
           </div>
         )}
         <div className="deck-card-header">
@@ -97,6 +99,13 @@ export function DeckCard({
 
         {/* Stats Row */}
         <div className="deck-stats-row">
+          <div className="deck-stat" title="Total de tarjetas del mazo">
+            <div className="stat-icon-small icon-total">{Icons.cards}</div>
+            <div className="stat-info">
+              <span className="stat-number">{stats.total}</span>
+              <span className="stat-text">total</span>
+            </div>
+          </div>
           <div className="deck-stat" title="Nuevas">
             <div className="stat-icon-small icon-new">{Icons.newCard}</div>
             <div className="stat-info">
@@ -104,20 +113,11 @@ export function DeckCard({
               <span className="stat-text">nuevas</span>
             </div>
           </div>
-          <div className="deck-stat" title="Aprendiendo">
-            <div className="stat-icon-small icon-learning">
-              {Icons.learning}
-            </div>
-            <div className="stat-info">
-              <span className="stat-number">{stats.learning}</span>
-              <span className="stat-text">aprendiendo</span>
-            </div>
-          </div>
-          <div className="deck-stat" title="Para repasar">
+          <div className="deck-stat" title="Aprendidas">
             <div className="stat-icon-small icon-review">{Icons.review}</div>
             <div className="stat-info">
-              <span className="stat-number">{stats.due}</span>
-              <span className="stat-text">repasar</span>
+              <span className="stat-number">{stats.aprendido}</span>
+              <span className="stat-text">aprendidas</span>
             </div>
           </div>
         </div>
