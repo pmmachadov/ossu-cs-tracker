@@ -183,7 +183,7 @@
   position: relative;
   transform-style: preserve-3d;
   cursor: pointer;
-  transition: transform 3.6s ease;
+  transition: transform 0.8s ease;
   display: flex;
 }
 
