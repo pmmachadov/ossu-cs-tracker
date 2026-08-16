@@ -1,0 +1,6 @@
+Marcadores eliminados en pase 2: 0
+RESTO: ex-java-12-04 | 'como datos, no como parte del SQL, por mucho que contengan comillas o puntos y coma.'
+RESTO: ex-java-14-11 | 'atches() en lugar de find() (o anclar la regex con ^...$). Además, el punto en \\.com está bien escapado, pero el dominio puede incluir más nivele'
+RESTO: ex-java-19-13 | 'método log(String) que imprima con marca de tiempo, y úsalo desde dos puntos del programa. \nRESPUESTA / SOLUCIÓN\n\n```java\nimport java.time.LocalTi'
+Restantes tras pase 2: 3
+JSON guardado OK
