@@ -1181,6 +1181,7 @@ def render_docx(exam, out_path):
     def info_table(rows):
         t = doc.add_table(rows=len(rows), cols=2)
         t.style = "Table Grid"
+        t.autofit = True
         for i, (k, v) in enumerate(rows):
             c0 = t.rows[i].cells[0]
             c1 = t.rows[i].cells[1]
@@ -1215,6 +1216,17 @@ def render_docx(exam, out_path):
         if color:
             r.font.color.rgb = color
         return p
+
+    def shade(p, fill="E8F5E9"):
+        """Fondo verde claro para resaltar el bloque de respuesta."""
+        from docx.oxml import OxmlElement
+        from docx.oxml.ns import qn
+        pPr = p._p.get_or_add_pPr()
+        shd = OxmlElement("w:shd")
+        shd.set(qn("w:val"), "clear")
+        shd.set(qn("w:color"), "auto")
+        shd.set(qn("w:fill"), fill)
+        pPr.append(shd)
 
     # --- Portada ---
     h1(exam["titulo"])
@@ -1252,19 +1264,19 @@ def render_docx(exam, out_path):
                     add_par(o, indent=1.2)
 
             if q.get("respuesta"):
-                if isinstance(q["respuesta"], str):
-                    resp = [q["respuesta"]]
-                else:
-                    resp = q["respuesta"]
-                add_par("", indent=1.0)
-                add_par("RESPUESTA / SOLUCIÓN", indent=1.0, bold_prefix="", )
+                resp = q["respuesta"] if isinstance(q["respuesta"], list) else [q["respuesta"]]
                 p = doc.add_paragraph()
                 p.paragraph_format.left_indent = Cm(1.0)
                 r = p.add_run("RESPUESTA / SOLUCIÓN")
                 r.bold = True
                 r.font.color.rgb = VERDE
+                shade(p)
                 for l in resp:
-                    add_par(l, indent=1.2, color=VERDE)
+                    p2 = doc.add_paragraph()
+                    p2.paragraph_format.left_indent = Cm(1.2)
+                    r2 = p2.add_run(l)
+                    r2.font.color.rgb = VERDE
+                    shade(p2)
             doc.add_paragraph()
 
     doc.add_page_break()
@@ -1296,10 +1308,50 @@ def find_font(name):
 
 
 class PDFExam:
-    def __init__(self, exam):
+    def __init__(self, exam, dark=False):
         from fpdf import FPDF
+
+        class _PDF(FPDF):
+            """FPDF que rellena el fondo de cada página (necesario en modo oscuro)."""
+
+            def __init__(self, bg):
+                super().__init__("P", "mm", "A4")
+                self.bg = bg
+
+            def header(self):
+                self.set_fill_color(*self.bg)
+                self.rect(0, 0, 210, 297, "F")
+
         self.exam = exam
-        self.pdf = FPDF("P", "mm", "A4")
+        self.dark = dark
+        # Paleta de colores: clara (por defecto) u oscura
+        if dark:
+            self.c_bg = (24, 26, 33)
+            self.c_text = (226, 230, 240)
+            self.c_title = (129, 178, 255)
+            self.c_sub = (170, 175, 190)
+            self.c_muted = (150, 155, 170)
+            self.c_code = (206, 212, 226)
+            self.c_code_bg = (38, 42, 54)
+            self.c_table = (40, 44, 58)
+            self.c_green = (122, 208, 144)
+            self.c_green_bg = (26, 42, 30)
+            self.c_line = (95, 100, 115)
+            self.c_pink = (255, 182, 193)
+        else:
+            self.c_bg = (255, 255, 255)
+            self.c_text = (0, 0, 0)
+            self.c_title = (26, 71, 138)
+            self.c_sub = (85, 85, 85)
+            self.c_muted = (140, 140, 140)
+            self.c_code = (50, 50, 50)
+            self.c_code_bg = (245, 247, 250)
+            self.c_table = (238, 243, 250)
+            self.c_green = (27, 94, 32)
+            self.c_green_bg = (232, 245, 233)
+            self.c_line = (180, 180, 180)
+            self.c_pink = (255, 182, 193)
+        self.pdf = _PDF(self.c_bg)
         self.pdf.set_auto_page_break(auto=True, margin=15)
         self.page_w = 210
         self.margin = 20
@@ -1318,24 +1370,43 @@ class PDFExam:
         if self.pdf.get_y() + h > 287:
             self.pdf.add_page()
 
-    def para(self, text, size=11, style="", color=(0, 0, 0), h=5.5, indent=0.0):
+    def para(self, text, size=11, style="", color=None, h=5.5, indent=0.0):
         w = self.content_w - indent * 10
         self.check_page(10)
         x = self.margin + indent * 10
         self.pdf.set_xy(x, self.pdf.get_y())
         self.pdf.set_font("Ar", style, size)
-        self.pdf.set_text_color(*color)
+        self.pdf.set_text_color(*(color if color is not None else self.c_text))
         self.pdf.multi_cell(w, h, text, align="L")
         self.pdf.ln(1.5)
+
+    def separador(self):
+        """Línea horizontal rosa pastel para separar ejercicios."""
+        p = self.pdf
+        y = p.get_y() + 22  # al menos 4 líneas (5.5 mm c/u) antes de la línea
+        if y + 8 > 280:
+            p.ln(8)
+            return
+        p.set_draw_color(*self.c_pink)
+        p.set_line_width(0.6)
+        p.line(self.margin, y, self.page_w - self.margin, y)
+        # Rombo decorativo central
+        cx = self.page_w / 2
+        d = 1.1
+        p.line(cx - d, y, cx, y - d)
+        p.line(cx, y - d, cx + d, y)
+        p.line(cx + d, y, cx, y + d)
+        p.line(cx, y + d, cx - d, y)
+        p.set_y(y + 7)
 
     def code(self, code):
         self.check_page(12)
         self.pdf.set_font("Cou", "", 9)
-        self.pdf.set_text_color(50, 50, 50)
+        self.pdf.set_text_color(*self.c_code)
         lines = code.split("\n")
-        # Fondo claro
+        # Fondo del bloque de código
         y0 = self.pdf.get_y()
-        self.pdf.set_fill_color(245, 247, 250)
+        self.pdf.set_fill_color(*self.c_code_bg)
         lh = 4.5
         h = lh * len(lines) + 2
         if self.pdf.get_y() + h > 287:
@@ -1347,13 +1418,43 @@ class PDFExam:
             self.pdf.cell(self.content_w - 8, lh, line)
         self.pdf.set_y(y0 + h + 1)
 
+    def respuesta(self, lines, title="RESPUESTA / SOLUCIÓN"):
+        """Bloque de respuesta con recuadro verde de fondo para diferenciarlo."""
+        p = self.pdf
+        lh = 5.5
+        pad = 2
+
+        def n_lines(text, size, style, w):
+            p.set_font("Ar", style, size)
+            return len(p.multi_cell(w, lh, text, dry_run=True, output="LINES"))
+
+        t_w = self.content_w - 10  # indent 1.0
+        r_w = self.content_w - 12  # indent 1.2
+        h_title = n_lines(title, 11, "B", t_w) * lh
+        h_resp = sum(n_lines(l, 10.5, "", r_w) for l in lines) * lh
+        total = pad * 2 + h_title + 1.5 + h_resp
+
+        # Si no cabe en la página, saltar antes para que el recuadro no se parta
+        if p.get_y() + total > 282:
+            p.add_page()
+
+        y0 = p.get_y()
+        p.set_draw_color(*self.c_green)
+        p.set_fill_color(*self.c_green_bg)
+        p.rect(self.margin, y0, self.content_w, total, style="DF")
+        p.set_y(y0 + pad)
+        self.para(title, size=11, style="B", color=self.c_green, indent=1.0)
+        for l in lines:
+            self.para(l, size=10.5, color=self.c_green, indent=1.2)
+        p.set_y(y0 + total)
+
     def title(self, text, size=20):
         self.pdf.add_page()
-        self.pdf.set_text_color(26, 71, 138)
+        self.pdf.set_text_color(*self.c_title)
         self.pdf.set_font("Ar", "B", size)
         self.pdf.set_xy(self.margin, self.pdf.get_y())
         self.pdf.multi_cell(self.content_w, 8, text, align="C")
-        self.pdf.set_text_color(0, 0, 0)
+        self.pdf.set_text_color(*self.c_text)
 
     def build(self, out_path):
         ex = self.exam
@@ -1362,17 +1463,20 @@ class PDFExam:
         # --- Portada ---
         p.add_page()
         p.set_font("Ar", "B", 20)
-        p.set_text_color(26, 71, 138)
+        p.set_text_color(*self.c_title)
+        p.set_x(self.margin)
         p.multi_cell(self.content_w, 9, ex["titulo"], align="C")
         p.set_font("Ar", "", 13)
-        p.set_text_color(85, 85, 85)
+        p.set_text_color(*self.c_sub)
+        p.set_x(self.margin)
         p.ln(2)
         p.multi_cell(self.content_w, 7, ex["subtitulo"], align="C")
         p.set_font("Ar", "I", 10)
-        p.set_text_color(140, 140, 140)
+        p.set_text_color(*self.c_muted)
+        p.set_x(self.margin)
         p.ln(3)
         p.multi_cell(self.content_w, 5.5, "\n".join(ex["temas"]), align="C")
-        p.set_text_color(0, 0, 0)
+        p.set_text_color(*self.c_text)
         p.ln(6)
 
         # Tabla informativa
@@ -1385,7 +1489,7 @@ class PDFExam:
         p.set_font("Ar", "", 10)
         for k, v in rows:
             y = p.get_y()
-            p.set_fill_color(238, 243, 250)
+            p.set_fill_color(*self.c_table)
             p.rect(self.margin, y, 60, 8, "F")
             p.set_xy(self.margin + 2, y + 1)
             p.set_font("Ar", "B", 10)
@@ -1400,19 +1504,31 @@ class PDFExam:
         for idx, sec in enumerate(seq):
             p.add_page()
             p.set_font("Ar", "B", 15)
-            p.set_text_color(26, 71, 138)
+            p.set_text_color(*self.c_title)
+            p.set_x(self.margin)
             p.multi_cell(self.content_w, 7, sec["titulo"])
             p.set_font("Ar", "I", 10)
-            p.set_text_color(140, 140, 140)
+            p.set_text_color(*self.c_muted)
+            p.set_x(self.margin)
             p.multi_cell(self.content_w, 5, sec["puntos"])
-            p.set_text_color(0, 0, 0)
+            p.set_text_color(*self.c_text)
             p.ln(2)
 
-            for q in sec["preguntas"]:
+            for num, q in enumerate(sec["preguntas"], start=1):
                 enun = q.get("enunciado", "")
                 if "puntos" in q:
                     enun = f"{enun}   ({q['puntos']})"
-                self.para(enun, size=11, style="B", indent=0.5)
+                # Número del ejercicio en rosa pastel + enunciado en negrita
+                self.check_page(10)
+                x0 = self.margin + 5  # indent 0.5
+                self.pdf.set_xy(x0, self.pdf.get_y())
+                self.pdf.set_font("Ar", "B", 11)
+                self.pdf.set_text_color(*self.c_pink)
+                self.pdf.cell(12, 5.5, f"{num}.")
+                self.pdf.set_text_color(*self.c_text)
+                self.pdf.set_xy(x0 + 12, self.pdf.get_y())
+                self.pdf.multi_cell(self.content_w - 17, 5.5, enun, align="L")
+                self.pdf.ln(1.5)
 
                 if q.get("code"):
                     self.code(q["code"])
@@ -1422,24 +1538,24 @@ class PDFExam:
                         self.para(o, size=11, indent=1.2)
 
                 if q.get("respuesta"):
-                    self.para("RESPUESTA / SOLUCIÓN", size=11, style="B", color=(27, 94, 32), indent=1.0)
                     resp = q["respuesta"] if isinstance(q["respuesta"], list) else [q["respuesta"]]
-                    for l in resp:
-                        self.para(l, size=10.5, color=(27, 94, 32), indent=1.2)
-                p.ln(1)
+                    self.respuesta(resp)
+                self.separador()
 
         # --- Plantilla de respuestas ---
         p.add_page()
         p.set_font("Ar", "B", 15)
-        p.set_text_color(26, 71, 138)
+        p.set_text_color(*self.c_title)
+        p.set_x(self.margin)
         p.multi_cell(self.content_w, 7, "Plantilla de respuestas")
         p.set_font("Ar", "I", 10)
-        p.set_text_color(150, 150, 150)
+        p.set_text_color(*self.c_muted)
+        p.set_x(self.margin)
         p.multi_cell(self.content_w, 5, "(Páginas en blanco para desarrollar las soluciones)")
-        p.set_text_color(0, 0, 0)
+        p.set_text_color(*self.c_text)
         p.ln(3)
         for _ in range(14):
-            p.set_draw_color(180, 180, 180)
+            p.set_draw_color(*self.c_line)
             p.set_xy(self.margin, p.get_y())
             p.line(self.margin, p.get_y(), self.page_w - self.margin, p.get_y())
             p.ln(14)
@@ -1457,8 +1573,10 @@ def main():
     args = sys.argv[1:] if len(sys.argv) > 1 else ["docx", "pdf"]
     want_docx = "docx" in args
     want_pdf = "pdf" in args
+    dark = "dark" in args or "oscuro" in args
 
     print(f"Directorios con fuentes disponibles: {bool(find_font('arial.ttf'))}")
+    print("Modo PDF:", "OSCURO" if dark else "claro")
 
     for i, ex in enumerate(EXAMENES, start=1):
         nombre = f"Examen_{i}_Java_{ex['subtitulo'].split('·')[-1].strip().replace(' ','_')}"
@@ -1477,7 +1595,7 @@ def main():
         if want_pdf:
             path = base + ".pdf"
             try:
-                PDFExam(ex).build(path)
+                PDFExam(ex, dark=dark).build(path)
                 print("   PDF  OK:", os.path.basename(path))
             except Exception as e:
                 import traceback

@@ -74,6 +74,7 @@ def render_docx(exam, out_path):
     def info_table(rows):
         t = doc.add_table(rows=len(rows), cols=2)
         t.style = "Table Grid"
+        t.autofit = True
         for i, (k, v) in enumerate(rows):
             c0 = t.rows[i].cells[0]
             c1 = t.rows[i].cells[1]
@@ -105,6 +106,17 @@ def render_docx(exam, out_path):
         if color:
             r.font.color.rgb = color
         return p
+
+    def shade(p, fill="E8F5E9"):
+        """Fondo verde claro para resaltar el bloque de respuesta."""
+        from docx.oxml import OxmlElement
+        from docx.oxml.ns import qn
+        pPr = p._p.get_or_add_pPr()
+        shd = OxmlElement("w:shd")
+        shd.set(qn("w:val"), "clear")
+        shd.set(qn("w:color"), "auto")
+        shd.set(qn("w:fill"), fill)
+        pPr.append(shd)
 
     # --- Portada ---
     h1(exam["titulo"])
@@ -143,9 +155,18 @@ def render_docx(exam, out_path):
 
             if q.get("respuesta"):
                 resp = q["respuesta"] if isinstance(q["respuesta"], list) else [q["respuesta"]]
-                add_par("RESPUESTA / SOLUCIÓN", indent=1.0, bold=True, color=VERDE)
+                p = doc.add_paragraph()
+                p.paragraph_format.left_indent = Cm(1.0)
+                r = p.add_run("RESPUESTA / SOLUCIÓN")
+                r.bold = True
+                r.font.color.rgb = VERDE
+                shade(p)
                 for l in resp:
-                    add_par(l, indent=1.2, color=VERDE)
+                    p2 = doc.add_paragraph()
+                    p2.paragraph_format.left_indent = Cm(1.2)
+                    r2 = p2.add_run(l)
+                    r2.font.color.rgb = VERDE
+                    shade(p2)
             doc.add_paragraph()
 
     doc.add_page_break()
@@ -1460,8 +1481,10 @@ def main():
     args = sys.argv[1:] if len(sys.argv) > 1 else ["docx", "pdf"]
     want_docx = "docx" in args
     want_pdf = "pdf" in args
+    dark = "dark" in args or "oscuro" in args
 
     print("Fuente Unicode disponible:", bool(find_font("arial.ttf")))
+    print("Modo PDF:", "OSCURO" if dark else "claro")
 
     for i, ex in enumerate(EXAMENES, start=6):
         nombre = f"Examen_{i}_Java_{ex['subtitulo'].split('·')[-1].strip().replace(' ','_')}"
@@ -1483,7 +1506,7 @@ def main():
         if want_pdf:
             path = base + ".pdf"
             try:
-                PDFExam(ex).build(path)
+                PDFExam(ex, dark=dark).build(path)
                 print("   PDF  OK:", os.path.basename(path))
             except Exception as e:
                 import traceback
