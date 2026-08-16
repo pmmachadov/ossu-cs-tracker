@@ -7,6 +7,7 @@ import {
   getSubjectColor,
 } from "./deckHelpers";
 import {
+  ExamenJavaFolder,
   PreguntasDirectasFolder,
   SubjectFolder,
   PracticasFolder,
@@ -46,7 +47,7 @@ export function DeckList({
   const [showExtras, setShowExtras] = useState(false);
   const [showPruebas, setShowPruebas] = useState(false);
   const [showPracticas, setShowPracticas] = useState(false);
-  const [showExamenes, setShowExamenes] = useState(false);
+  const [showExamenes, setShowExamenes] = useState(true); // abierto por defecto para ver el área Examen
   const [showPreguntasDirectas, setShowPreguntasDirectas] = useState(false);
   const [showLibros, setShowLibros] = useState(false);
   const [showMateriasSalvadas, setShowMateriasSalvadas] = useState(false);
@@ -145,8 +146,12 @@ export function DeckList({
       ? decks
       : decks.filter((d) => d.subject === filterSubject);
 
+  const examenJavaDeck = filteredDecks.find((d) => d.id === "examen-java");
   const examenDecks = filteredDecks.filter(
-    (d) => d.id?.startsWith("examen-") && d.subject !== "Materias salvadas",
+    (d) =>
+      d.id?.startsWith("examen-") &&
+      d.id !== "examen-java" &&
+      d.subject !== "Materias salvadas",
   );
   const pruebaDecks = filteredDecks.filter(
     (d) =>
@@ -321,6 +326,8 @@ export function DeckList({
           })}
         </div>
       )}
+
+      <ExamenJavaFolder deck={examenJavaDeck} {...folderProps} />
 
       <PreguntasDirectasFolder
         decks={preguntasDirectasDecks}

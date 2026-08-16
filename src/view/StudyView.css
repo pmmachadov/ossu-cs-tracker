@@ -87,14 +87,14 @@
 
 .card-progress-track {
   flex: 1;
-  height: 16px;
+  height: 14px;
   background: #000000;
-  border-radius: 4px;
+  border-radius: 999px;
   position: relative;
   cursor: grab;
   user-select: none;
   -webkit-user-select: none;
-  overflow: hidden;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.05);
 }
 
 .card-progress-track:active {
@@ -103,10 +103,29 @@
 
 .card-progress-fill {
   height: 100%;
-  background: var(--text-secondary);
-  border-radius: 4px;
-  transition: width 0.3s ease;
+  background:
+    linear-gradient(105deg, transparent, rgba(255, 255, 255, 0.22) 45%, transparent 55%) no-repeat,
+    linear-gradient(90deg,
+      var(--pb-accent, #4285F4),
+      color-mix(in srgb, var(--pb-accent, #4285F4) 45%, #000000));
+  background-size: 60% 100%, 100% 100%;
+  background-position: -160% 0, 0 0;
+  border-radius: 999px;
+  transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
+  box-shadow: 0 0 10px color-mix(in srgb, var(--pb-accent, #4285F4) 55%, transparent);
+  animation: progress-shine 2.4s ease-in-out infinite;
+}
+
+/* Reflejo sutil que recorre el relleno mientras avanzas */
+@keyframes progress-shine {
+  0% {
+    background-position: -160% 0, 0 0;
+  }
+  55%,
+  100% {
+    background-position: 260% 0, 0 0;
+  }
 }
 
 .card-progress-thumb {
@@ -116,9 +135,30 @@
   transform: translateY(-50%);
   width: 20px;
   height: 20px;
-  background: var(--text-primary);
+  background: linear-gradient(135deg, #ffffff, color-mix(in srgb, var(--pb-accent, #4285F4) 70%, #ffffff));
   border-radius: 50%;
-  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 0 0 4px color-mix(in srgb, var(--pb-accent, #4285F4) 18%, transparent),
+    0 0 12px color-mix(in srgb, var(--pb-accent, #4285F4) 60%, transparent);
+}
+
+.card-progress-count {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  padding: 4px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card-progress-fill,
+  .card-progress-wrapper::before {
+    animation: none;
+  }
 }
 
 /* Flashcard 3D Flip */
@@ -949,7 +989,7 @@
     height: 16px;
     right: -6px;
   }
-
+}
 
 /* Moviles pequenos (iPhone SE, Galaxy S8) */
 @media (max-width: 375px) {
@@ -1173,6 +1213,211 @@
   }
   .card-image {
     max-height: 200px;
+  }
+}
+
+/* Cartel de felicitación al volver a la primera tarjeta (repaso de aprendidas) */
+.congrats-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.72);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: fadeIn 0.25s ease;
+}
+
+.congrats-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 32px 28px;
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+  box-shadow: var(--shadow-lg);
+  animation: slideUp 0.3s ease;
+}
+
+.congrats-icon {
+  font-size: 3rem;
+  margin-bottom: 12px;
+}
+
+.congrats-card h2 {
+  margin: 0 0 8px;
+  font-size: 1.35rem;
+}
+
+.congrats-card p {
+  margin: 0 0 22px;
+  color: var(--text-secondary);
+}
+
+/* Opción múltiple / V-F interactivos: elegir y ver correcta en verde, resto en rojo */
+.mc-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 18px;
+  width: 100%;
+}
+
+.mc-option {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  text-align: left;
+  padding: 14px 16px;
+  background: linear-gradient(180deg, #262626, #1d1d1d);
+  border: 1px solid #333333;
+  border-radius: 14px;
+  color: var(--text-primary);
+  font-size: 1.05rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.mc-option:hover:not(:disabled) {
+  border-color: color-mix(in srgb, var(--pb-accent, #4285F4) 60%, transparent);
+  transform: translateY(-2px);
+  box-shadow:
+    0 6px 18px -6px color-mix(in srgb, var(--pb-accent, #4285F4) 45%, transparent);
+}
+
+.mc-option:disabled {
+  cursor: default;
+}
+
+.mc-letter {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--pb-accent, #4285F4) 80%, #ffffff),
+    var(--pb-accent, #4285F4)
+  );
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.95rem;
+  line-height: 1;
+  box-shadow: 0 2px 6px -2px color-mix(in srgb, var(--pb-accent, #4285F4) 70%, transparent);
+}
+
+.mc-text {
+  flex: 1;
+  line-height: 1.5;
+}
+
+.mc-option.correct {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(129, 199, 132, 0.18), rgba(129, 199, 132, 0.08));
+  border-color: #81C784;
+  box-shadow:
+    0 0 0 1px rgba(129, 199, 132, 0.4),
+    0 4px 16px -6px rgba(129, 199, 132, 0.45);
+}
+
+/* Reflejo: banda de luz que recorre la respuesta correcta cada 3 s */
+.mc-option.correct::after {
+  content: "";
+  position: absolute;
+  top: -10%;
+  bottom: -10%;
+  left: -45%;
+  width: 35%;
+  background: linear-gradient(105deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.18) 45%,
+    rgba(165, 214, 167, 0.12) 55%,
+    transparent 100%);
+  transform: skewX(-18deg);
+  animation: mc-shine 3s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes mc-shine {
+  0% {
+    left: -45%;
+  }
+  100% {
+    left: 115%;
+  }
+}
+
+.mc-option.correct .mc-letter {
+  background: linear-gradient(135deg, #A5D6A7, #66BB6A);
+  color: #ffffff;
+}
+
+.mc-option.correct .mc-text {
+  color: #A5D6A7;
+  font-weight: 600;
+}
+
+.mc-option.wrong {
+  background: linear-gradient(180deg, rgba(229, 115, 115, 0.16), rgba(229, 115, 115, 0.07));
+  border-color: #E57373;
+  box-shadow: 0 0 0 1px rgba(229, 115, 115, 0.35);
+}
+
+.mc-option.wrong .mc-letter {
+  background: linear-gradient(135deg, #EF9A9A, #EF5350);
+  color: #ffffff;
+}
+
+.mc-option.wrong .mc-text {
+  color: #EF9A9A;
+}
+
+.mc-icon {
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.mc-option.correct .mc-icon {
+  background: #66BB6A;
+  color: #ffffff;
+}
+
+.mc-option.wrong .mc-icon {
+  background: #EF5350;
+  color: #ffffff;
+}
+
+/* Respuesta revelada bajo las opciones tras elegir */
+.mc-answer {
+  margin-top: 18px;
+  padding: 16px 18px;
+  border: 1px solid var(--border-color);
+  border-left: 4px solid var(--pb-accent, #4285F4);
+  border-radius: 14px;
+  background: var(--bg-tertiary);
+  animation: fadeIn 0.25s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mc-option.correct::after {
+    animation: none;
   }
 }
 

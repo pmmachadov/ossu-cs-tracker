@@ -23,14 +23,36 @@ from generar_examenes import PDFExam, find_font, CURSO, ASIGNATURA, DURACION
 # 2) el código se inserta tal cual, python-docx escapa el XML por sí mismo).
 # ---------------------------------------------------------------------------
 
-def render_docx(exam, out_path):
+def render_docx(exam, out_path, dark=False):
     from docx import Document
-    from docx.shared import Pt, Cm, RGBColor
+    from docx.shared import Pt, Cm, Mm, RGBColor
     from docx.enum.text import WD_ALIGN_PARAGRAPH
 
     doc = Document()
 
+    # Paleta: clara u oscura (mismos colores que el PDF)
+    if dark:
+        PAL = dict(bg="181A21", text="E2E6F0", title="81B2FF", sub="AAAFBE",
+                   muted="969BAA", code="CED4E2", code_bg="262A36", table="282C3A",
+                   green="7AD090", green_bg="1A2A1E", line="5F6473", pink="FFB6C1")
+        # Fondo de página oscuro
+        from docx.oxml import OxmlElement
+        from docx.oxml.ns import qn
+        bg = OxmlElement("w:background")
+        bg.set(qn("w:color"), PAL["bg"])
+        doc.settings.element.append(bg)
+    else:
+        PAL = dict(bg="FFFFFF", text="000000", title="1A478A", sub="555555",
+                   muted="8C8C8C", code="323232", code_bg="F5F7FA", table="EEF3FA",
+                   green="1B5E20", green_bg="E8F5E9", line="B4B4B4", pink="FFB6C1")
+
+    def C(h):
+        return RGBColor.from_string(h)
+
     for section in doc.sections:
+        # Misma página A4 que el PDF
+        section.page_width = Mm(210)
+        section.page_height = Mm(297)
         section.top_margin = Cm(2.2)
         section.bottom_margin = Cm(2.0)
         section.left_margin = Cm(2.0)
@@ -40,9 +62,13 @@ def render_docx(exam, out_path):
     normal = styles["Normal"]
     normal.font.name = "Calibri"
     normal.font.size = Pt(11)
+    normal.font.color.rgb = C(PAL["text"])
 
-    AZUL = RGBColor(0x1A, 0x47, 0x8A)
-    VERDE = RGBColor(0x1B, 0x5E, 0x20)
+    AZUL = C(PAL["title"])
+    VERDE = C(PAL["green"])
+    ROSA = C(PAL["pink"])
+    MUTED = C(PAL["muted"])
+    SUB = C(PAL["sub"])
 
     def h1(text):
         p = doc.add_paragraph()
@@ -59,7 +85,7 @@ def render_docx(exam, out_path):
         r = p.add_run(text)
         r.bold = False
         r.font.size = Pt(12)
-        r.font.color.rgb = RGBColor(0x55, 0x55, 0x55)
+        r.font.color.rgb = SUB
         return p
 
     def section_title(text):
@@ -70,6 +96,21 @@ def render_docx(exam, out_path):
         r.font.color.rgb = AZUL
         p.paragraph_format.space_before = Pt(14)
         return p
+
+    def table_borders(t, color):
+        """Color de todos los bordes de una tabla."""
+        from docx.oxml import OxmlElement
+        from docx.oxml.ns import qn
+        tblPr = t._tbl.tblPr
+        borders = OxmlElement("w:tblBorders")
+        for edge in ("top", "left", "bottom", "right", "insideH", "insideV"):
+            el = OxmlElement(f"w:{edge}")
+            el.set(qn("w:val"), "single")
+            el.set(qn("w:sz"), "4")
+            el.set(qn("w:space"), "0")
+            el.set(qn("w:color"), color)
+            borders.append(el)
+        tblPr.append(borders)
 
     def info_table(rows):
         t = doc.add_table(rows=len(rows), cols=2)
@@ -83,15 +124,21 @@ def render_docx(exam, out_path):
             for p in c0.paragraphs:
                 for r in p.runs:
                     r.bold = True
+            shade_cell(c0, PAL["table"])  # azul como en el PDF
+        table_borders(t, PAL["line"])
         return t
 
     def add_code(code):
         for line in code.split("\n"):
             p = doc.add_paragraph()
             p.paragraph_format.left_indent = Cm(0.8)
+            p.paragraph_format.space_before = Pt(0)
+            p.paragraph_format.space_after = Pt(0)
             r = p.add_run(line)
             r.font.name = "Consolas"
             r.font.size = Pt(9.5)
+            r.font.color.rgb = C(PAL["code"])
+            shade(p, PAL["code_bg"])  # fondo como el recuadro del PDF
         sp = doc.add_paragraph()
         sp.paragraph_format.space_after = Pt(4)
         sp.add_run("").font.size = Pt(2)
@@ -108,7 +155,7 @@ def render_docx(exam, out_path):
         return p
 
     def shade(p, fill="E8F5E9"):
-        """Fondo verde claro para resaltar el bloque de respuesta."""
+        """Sombreado de fondo para un párrafo (igual que el PDF)."""
         from docx.oxml import OxmlElement
         from docx.oxml.ns import qn
         pPr = p._p.get_or_add_pPr()
@@ -118,10 +165,63 @@ def render_docx(exam, out_path):
         shd.set(qn("w:fill"), fill)
         pPr.append(shd)
 
+    def shade_cell(cell, fill):
+        """Fondo de una celda de tabla."""
+        from docx.oxml import OxmlElement
+        from docx.oxml.ns import qn
+        tcPr = cell._tc.get_or_add_tcPr()
+        shd = OxmlElement("w:shd")
+        shd.set(qn("w:val"), "clear")
+        shd.set(qn("w:color"), "auto")
+        shd.set(qn("w:fill"), fill)
+        tcPr.append(shd)
+
+    def cell_border(cell, color, sz=8):
+        """Borde completo de celda (sz en octavos de punto)."""
+        from docx.oxml import OxmlElement
+        from docx.oxml.ns import qn
+        tcPr = cell._tc.get_or_add_tcPr()
+        borders = OxmlElement("w:tcBorders")
+        for edge in ("top", "left", "bottom", "right"):
+            el = OxmlElement(f"w:{edge}")
+            el.set(qn("w:val"), "single")
+            el.set(qn("w:sz"), str(sz))
+            el.set(qn("w:space"), "0")
+            el.set(qn("w:color"), color)
+            borders.append(el)
+        tcPr.append(borders)
+
+    def cell_margins(cell, top=80, left=120, bottom=80, right=120):
+        """Márgenes internos de una celda (en veinteavos de punto)."""
+        from docx.oxml import OxmlElement
+        from docx.oxml.ns import qn
+        tcPr = cell._tc.get_or_add_tcPr()
+        mar = OxmlElement("w:tcMar")
+        for edge, w in (("top", top), ("left", left), ("bottom", bottom), ("right", right)):
+            el = OxmlElement(f"w:{edge}")
+            el.set(qn("w:w"), str(w))
+            el.set(qn("w:type"), "dxa")
+            mar.append(el)
+        tcPr.append(mar)
+
+    def p_border_bottom(p, color, sz=6):
+        """Línea horizontal inferior en un párrafo (separadores del PDF)."""
+        from docx.oxml import OxmlElement
+        from docx.oxml.ns import qn
+        pPr = p._p.get_or_add_pPr()
+        pbdr = OxmlElement("w:pBdr")
+        bottom = OxmlElement("w:bottom")
+        bottom.set(qn("w:val"), "single")
+        bottom.set(qn("w:sz"), str(sz))
+        bottom.set(qn("w:space"), "1")
+        bottom.set(qn("w:color"), color)
+        pbdr.append(bottom)
+        pPr.append(pbdr)
+
     # --- Portada ---
     h1(exam["titulo"])
     h2(exam["subtitulo"])
-    add_par(" ".join(exam["temas"]), indent=0.0, italic=True, color=RGBColor(0x88, 0x88, 0x88))
+    add_par(" ".join(exam["temas"]), indent=0.0, italic=True, color=MUTED)
     doc.add_paragraph()
 
     info_rows = [
@@ -138,13 +238,22 @@ def render_docx(exam, out_path):
         if i > 0:
             doc.add_page_break()
         section_title(sec["titulo"])
-        add_par(sec["puntos"], indent=0.0, italic=True, color=RGBColor(0x88, 0x88, 0x88))
+        add_par(sec["puntos"], indent=0.0, italic=True, color=MUTED)
 
-        for q in sec["preguntas"]:
+        for num, q in enumerate(sec["preguntas"], start=1):
+            # Enunciado: número en rosa pastel + texto en negrita (igual que el PDF)
             enun = q.get("enunciado", "")
             if "puntos" in q:
                 enun = f"{enun}  ({q['puntos']})"
-            add_par(enun, indent=0.5, bold=True)
+            p_q = doc.add_paragraph()
+            p_q.paragraph_format.left_indent = Cm(0.5)
+            rn = p_q.add_run(f"{num}. ")
+            rn.bold = True
+            rn.font.size = Pt(11)
+            rn.font.color.rgb = ROSA
+            re_ = p_q.add_run(enun)
+            re_.bold = True
+            re_.font.size = Pt(11)
 
             if q.get("code"):
                 add_code(q["code"])
@@ -154,26 +263,37 @@ def render_docx(exam, out_path):
                     add_par(o, indent=1.2)
 
             if q.get("respuesta"):
+                for _ in range(6):
+                    doc.add_paragraph()
                 resp = q["respuesta"] if isinstance(q["respuesta"], list) else [q["respuesta"]]
-                p = doc.add_paragraph()
-                p.paragraph_format.left_indent = Cm(1.0)
-                r = p.add_run("RESPUESTA / SOLUCIÓN")
+                # Recuadro verde con borde (igual que el bloque del PDF)
+                t = doc.add_table(rows=1, cols=1)
+                t.autofit = True
+                cell = t.rows[0].cells[0]
+                shade_cell(cell, PAL["green_bg"])
+                cell_border(cell, PAL["green"], sz=8)
+                cell_margins(cell)
+                p0 = cell.paragraphs[0]
+                r = p0.add_run("RESPUESTA / SOLUCIÓN")
                 r.bold = True
                 r.font.color.rgb = VERDE
-                shade(p)
                 for l in resp:
-                    p2 = doc.add_paragraph()
-                    p2.paragraph_format.left_indent = Cm(1.2)
+                    p2 = cell.add_paragraph()
                     r2 = p2.add_run(l)
                     r2.font.color.rgb = VERDE
-                    shade(p2)
-            doc.add_paragraph()
+            # Línea separadora rosa pastel (igual que el PDF)
+            sep = doc.add_paragraph()
+            sep.paragraph_format.space_before = Pt(14)
+            sep.paragraph_format.space_after = Pt(4)
+            p_border_bottom(sep, "FFB6C1", sz=6)
 
     doc.add_page_break()
     section_title("Plantilla de respuestas")
-    add_par("(Páginas en blanco para desarrollar las soluciones)", italic=True, color=RGBColor(0x99, 0x99, 0x99))
-    for _ in range(12):
-        add_par("______________________________________________________________________", indent=0.5)
+    add_par("(Páginas en blanco para desarrollar las soluciones)", italic=True, color=MUTED)
+    for _ in range(14):
+        p = doc.add_paragraph()
+        p.paragraph_format.space_after = Pt(10)
+        p_border_bottom(p, PAL["line"], sz=6)
 
     doc.save(out_path)
     return out_path
@@ -759,13 +879,13 @@ System.out.println(m.put("a", 2));""",
                 },
                 {
                     "tipo": "test",
-                    "enunciado": "Al recorrer un ArrayList con for-each y llamar a remove() dentro del bucle se lanza...",
+                    "enunciado": "Al recorrer un ArrayList con for-each y llamar a remove() dentro del bucle se lanza una excepción. ¿Cuál?",
                     "opciones": ["a) NullPointerException", "b) ConcurrentModificationException", "c) IndexOutOfBoundsException", "d) No lanza ninguna excepción"],
                     "respuesta": "b) ConcurrentModificationException — El iterador del for-each detecta que la lista se modificó y falla; hay que usar Iterator y su método remove().",
                 },
                 {
                     "tipo": "test",
-                    "enunciado": "Para que una clase tenga un orden natural y pueda usarse en TreeSet o Collections.sort() debe implementar...",
+                    "enunciado": "Para que una clase tenga un orden natural y pueda usarse en TreeSet o Collections.sort() debe implementar una interfaz. ¿Cuál?",
                     "opciones": ["a) Comparator con compare()", "b) Comparable con compareTo()", "c) Iterator con hasNext()", "d) Serializable"],
                     "respuesta": "b) Comparable con compareTo() — El orden natural se define implementando Comparable; Comparator permite definir órdenes alternativos sin tocar la clase.",
                 },
@@ -986,7 +1106,7 @@ EXAMENES.append({
                 },
                 {
                     "tipo": "test",
-                    "enunciado": "Con try-with-resources (try (BufferedReader br = ...) { ... }), al terminar el bloque...",
+                    "enunciado": "Con try-with-resources (try (BufferedReader br = ...) { ... }), al terminar el bloque, ¿qué ocurre con br?",
                     "opciones": ["a) hay que cerrar br manualmente", "b) br se cierra automáticamente", "c) br se borra del disco", "d) se lanza IOException siempre"],
                     "respuesta": "b) br se cierra automáticamente — try-with-resources cierra todos los recursos declarados entre paréntesis al finalizar el bloque, incluso si hay una excepción.",
                 },
@@ -1003,7 +1123,7 @@ EXAMENES.append({
                 },
                 {
                     "tipo": "test",
-                    "enunciado": "El método read() de FileInputStream devuelve...",
+                    "enunciado": "El método read() de FileInputStream devuelve un valor. ¿Cuál?",
                     "opciones": ["a) un char", "b) un int con el byte leído (o -1 si es fin de fichero)", "c) un boolean", "d) un String con la línea"],
                     "respuesta": "b) un int con el byte leído (o -1 si es fin de fichero) — Por eso el bucle típico de copia es while ((b = in.read()) != -1).",
                 },
@@ -1257,7 +1377,7 @@ System.out.println(o.orElse("vacio"));""",
                 },
                 {
                     "tipo": "test",
-                    "enunciado": "La referencia a método String::length equivale a la lambda...",
+                    "enunciado": "La referencia a método String::length equivale a la lambda de una expresión. ¿Cuál?",
                     "opciones": ["a) () -> String.length()", "b) s -> s.length()", "c) s -> String.length(s)", "d) String -> length"],
                     "respuesta": "b) s -> s.length() — Una method reference sobre un parámetro de instancia equivale a invocar el método sobre ese parámetro.",
                 },
@@ -1498,7 +1618,7 @@ def main():
         if want_docx:
             path = base + ".docx"
             try:
-                render_docx(ex, path)
+                render_docx(ex, path, dark=dark)
                 print("   DOCX OK:", os.path.basename(path))
             except Exception as e:
                 print("   DOCX ERROR:", e)

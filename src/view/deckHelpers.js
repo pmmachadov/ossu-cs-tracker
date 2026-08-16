@@ -12,6 +12,7 @@ export const EXAM_SUBJECTS = [
   "Sistemes Informàtics",
   "Entornos de Desarrollo",
   "Preguntas Directas",
+  "Examen",
 ];
 
 export const isExamSubject = (subject) => EXAM_SUBJECTS.includes(subject);

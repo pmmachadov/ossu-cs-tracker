@@ -4,7 +4,7 @@
  * Cross-platform (Node.js), reemplaza al antiguo fix-css-vars.ps1 de PowerShell
  *
  * Uso: node scripts/fix-css-vars.js
- * Se ejecuta automáticamente tras `npm run build`
+ * Se ejecuta automáticamente tras `pnpm run build`
  */
 
 import { readFileSync, writeFileSync, readdirSync, existsSync } from 'fs';
@@ -41,7 +41,7 @@ const __dirname = fileURLToPath(new URL('.', import.meta.url));
 const distDir = join(__dirname, '..', 'dist');
 
 if (!existsSync(distDir)) {
-  console.error('Directorio dist/ no encontrado. Ejecuta "npm run build" primero.');
+  console.error('Directorio dist/ no encontrado. Ejecuta "pnpm run build" primero.');
   process.exit(1);
 }
 

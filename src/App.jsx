@@ -58,6 +58,7 @@ function App() {
           "/data/examenes/ed-eac2.json",
           "/data/examenes/ed-eac3.json",
           "/data/examenes/si-comandos.json",
+          "/data/examenes/examen-java.json",
           "/data/preguntas-directas/pd-all.json",
           "/data/preguntas-directas/materias salvadas/pd-dwec.json",
           "/data/java.json",

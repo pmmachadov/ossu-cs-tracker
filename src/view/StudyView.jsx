@@ -1,13 +1,99 @@
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useCallback, useRef, useMemo } from "react";
 import { DIFFICULTY } from "../model/Deck";
-import { NEW_CARDS_PER_SESSION } from "../config";
 
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { CardContent, codeTheme, extractCodeHint } from "./CardContent";
+import { getSubjectColor } from "./deckHelpers";
 import { SessionComplete } from "./SessionComplete";
 import { EmptyStudyView } from "./EmptyStudyView";
 
 import "./StudyView.css";
+
+// --- Opción múltiple / Verdadero-Falso interactivos ---
+const MC_OPTION_RE = /^([a-hA-H])\s*[\)\.]\s*(.+)$/;
+
+function stripCodeBlocks(text) {
+  return (text || "").replace(/```[\s\S]*?```/g, "\n");
+}
+
+function analyzeMultipleChoice(front, back) {
+  // Solo cards con opciones tipo "a) ...", "b) ..." en el frente.
+  // Se recorren las líneas ORIGINALES (con su código) y solo se ignoran
+  // las opciones que estén dentro de un bloque ```...```.
+  const frontLines = (front || "").split("\n");
+  const matches = [];
+  let inCode = false;
+  frontLines.forEach((line, i) => {
+    if (/^```/.test(line.trim())) {
+      inCode = !inCode;
+      return;
+    }
+    if (inCode) return;
+    const m = line.trim().match(MC_OPTION_RE);
+    if (m) matches.push({ index: i, letter: m[1].toLowerCase(), text: m[2].trim() });
+  });
+  if (matches.length < 2) return null;
+
+  // La respuesta correcta es la primera opción del dorso (p. ej. "c) 3.5 — ...")
+  let correctLetter = null;
+  for (const line of stripCodeBlocks(back).split("\n")) {
+    const m = line.trim().match(MC_OPTION_RE);
+    if (m) {
+      correctLetter = m[1].toLowerCase();
+      break;
+    }
+  }
+  if (!correctLetter) return null;
+
+  return {
+    options: matches.map((m) => ({
+      letter: m.letter,
+      text: m.text,
+      badge: m.letter,
+    })),
+    correctLetter,
+    before: frontLines.slice(0, matches[0].index).join("\n").trim(),
+    after: frontLines.slice(matches[matches.length - 1].index + 1).join("\n").trim(),
+  };
+}
+
+function analyzeAnswerOptions(front, back) {
+  // 1) Opción múltiple (a, b, c, d...)
+  const mc = analyzeMultipleChoice(front, back);
+  if (mc) return mc;
+
+  // 2) Verdadero / Falso: alguna de las primeras líneas del dorso
+  //    empieza por "Verdadero" o "Falso" (las backs llevan prefijo
+  //    "RESPUESTA / SOLUCIÓN" u otras cabeceras)
+  const backLines = stripCodeBlocks(back)
+    .split("\n")
+    .map((l) => l.trim())
+    .filter(Boolean);
+  let vf = null;
+  for (const line of backLines.slice(0, 4)) {
+    const lower = line.toLowerCase();
+    if (/^verdadero\b/.test(lower)) {
+      vf = "V";
+      break;
+    }
+    if (/^falso\b/.test(lower)) {
+      vf = "F";
+      break;
+    }
+  }
+  if (vf) {
+    return {
+      options: [
+        { letter: "V", text: "Verdadero", badge: "V" },
+        { letter: "F", text: "Falso", badge: "F" },
+      ],
+      correctLetter: vf,
+      before: front,
+      after: "",
+    };
+  }
+  return null;
+}
 
 export function StudyView({ deck, onBack, onUpdateDeck }) {
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
@@ -21,6 +107,11 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
     easy: 0,
   });
   const [showComplete, setShowComplete] = useState(false);
+  const [learnedIds, setLearnedIds] = useState([]); // marcadas "Aprendido" en esta sesión
+  const [inReviewPass, setInReviewPass] = useState(false);
+  const [showCongrats, setShowCongrats] = useState(false);
+  const [sessionTotal, setSessionTotal] = useState(0);
+  const [mcSelection, setMcSelection] = useState(null); // opción elegida en cards de opción múltiple
 
   // Drag-to-scroll para la fila de puntos
   const dotsContainerRef = useRef(null);
@@ -102,11 +193,13 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
     setFlipRotation(0);
   };
 
-  // Preparar tarjetas para estudio (solo las pendientes, sin duplicados)
+  // Preparar tarjetas para estudio: TODAS las del mazo (pendientes, en
+  // aprendizaje y nuevas), sin límite, para pasar siempre por todas y no
+  // repetir siempre las mismas. Sin duplicados: se usa un Map con el id.
   useEffect(() => {
     const dueCards = deck.getDueCards();
     const learningCards = deck.getLearningCards();
-    const newCards = deck.getNewCards().slice(0, NEW_CARDS_PER_SESSION);
+    const newCards = deck.getNewCards(); // todas las nuevas, sin límite
 
     // Evitar duplicados: una carta puede estar en dueCards (isDue=true)
     // y también en learningCards (status=relearning). Usamos un Map
@@ -119,13 +212,30 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
     setCurrentCardIndex(0);
     setIsFlipped(false);
     setShowComplete(false);
+    setLearnedIds([]);
+    setInReviewPass(false);
+    setShowCongrats(false);
+    setSessionTotal(studyCards.length);
   }, [deck]);
 
   const currentCard = cards[currentCardIndex];
   const progress =
     cards.length > 0 ? (currentCardIndex / cards.length) * 100 : 0;
 
+  // Análisis de opciones de la tarjeta actual (opción múltiple o V/F; null si no aplica)
+  const mc = useMemo(
+    () =>
+      currentCard
+        ? analyzeAnswerOptions(currentCard.front, currentCard.back)
+        : null,
+    [currentCard],
+  );
+
+  // Color del mazo para la barra de progreso (p. ej. violeta en Examen Java)
+  const subjectColor = getSubjectColor(deck.subject);
+
   const handleFlip = () => {
+    if (mc) return; // en opción múltiple / V-F la respuesta aparece bajo las opciones
     setIsFlipped(!isFlipped);
     setFlipRotation((prev) => prev + 180);
   };
@@ -135,7 +245,7 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
       if (!currentCard) return;
 
       // Actualizar tarjeta
-      const result = currentCard.review(difficulty);
+      currentCard.review(difficulty);
 
       // Registrar evaluación en log permanente
       deck.logCardReview(currentCard.id, difficulty);
@@ -151,22 +261,55 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
       deck.recordReview(difficulty);
       onUpdateDeck(deck);
 
-      // Siguiente tarjeta
-      if (currentCardIndex < cards.length - 1) {
+      // Tarjetas marcadas como aprendidas en esta sesión (vuelven a aparecer)
+      const nextLearned =
+        difficulty === DIFFICULTY.APRENDIDO && !inReviewPass
+          ? learnedIds.includes(currentCard.id)
+            ? learnedIds
+            : [...learnedIds, currentCard.id]
+          : learnedIds;
+      setLearnedIds(nextLearned);
+
+      const isLast = currentCardIndex >= cards.length - 1;
+
+      if (!isLast) {
         setCurrentCardIndex((prev) => prev + 1);
         setIsFlipped(false);
         setFlipRotation(0);
+      } else if (!inReviewPass && nextLearned.length > 0) {
+        // Al terminar la última tarjeta, vuelven a aparecer las aprendidas:
+        // se vuelve a la primera de la lista de repaso y se muestra el cartel
+        setSessionTotal(cards.length);
+        setCards(cards.filter((c) => nextLearned.includes(c.id)));
+        setCurrentCardIndex(0);
+        setInReviewPass(true);
+        setIsFlipped(false);
+        setFlipRotation(0);
+        setShowCongrats(true);
       } else {
         setShowComplete(true);
       }
     },
-    [currentCard, currentCardIndex, cards.length, deck, onUpdateDeck],
+    [
+      currentCard,
+      currentCardIndex,
+      cards,
+      deck,
+      onUpdateDeck,
+      inReviewPass,
+      learnedIds,
+    ],
   );
 
   // Scroll al inicio cuando cambia la tarjeta
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [currentCardIndex]);
+
+  // Nueva tarjeta => reiniciar selección de opción múltiple
+  useEffect(() => {
+    setMcSelection(null);
+  }, [currentCard?.id]);
 
   // Registrar visualización de tarjeta en el log permanente
   useEffect(() => {
@@ -195,8 +338,8 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
 
       if (e.code === "Space") {
         e.preventDefault();
-        handleFlip();
-      } else if (isFlipped) {
+        if (!mc) handleFlip();
+      } else if (isFlipped || (mc && mcSelection !== null)) {
         switch (e.key) {
           case "1":
             handleRate(DIFFICULTY.PROCESANDO);
@@ -210,7 +353,7 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [isFlipped, handleFlip, handleRate, showComplete]);
+  }, [isFlipped, handleFlip, handleRate, showComplete, mc, mcSelection]);
 
   if (cards.length === 0) {
     return (
@@ -257,7 +400,10 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
       </div>
 
       {/* Card Progress Bar */}
-      <div className="card-progress-wrapper">
+      <div
+        className="card-progress-wrapper"
+        style={{ "--pb-accent": subjectColor.accent }}
+      >
         <div
           ref={dotsContainerRef}
           className="card-progress-track"
@@ -282,6 +428,9 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
             <div className="card-progress-thumb" />
           </div>
         </div>
+        <div className="card-progress-count">
+          {currentCardIndex + 1}/{cards.length}
+        </div>
       </div>
 
       <div className="flashcard-container">
@@ -294,10 +443,83 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
           <div className="flashcard-inner">
             <div className="flashcard-front">
               <div className="card-content">
-                <CardContent text={currentCard.front} cardImageUrl={currentCard.imageUrl} codeTheme={codeTheme} />
+                {mc ? (
+                  <>
+                    {mc.before && (
+                      <CardContent
+                        text={mc.before}
+                        cardImageUrl={currentCard.imageUrl}
+                        codeTheme={codeTheme}
+                      />
+                    )}
+                    <div
+                      className="mc-options"
+                      style={{ "--pb-accent": subjectColor.accent }}
+                    >
+                      {mc.options.map((opt) => {
+                        const revealed = mcSelection !== null;
+                        const isCorrect = opt.letter === mc.correctLetter;
+                        return (
+                          <button
+                            key={opt.letter}
+                            className={`mc-option ${
+                              revealed ? (isCorrect ? "correct" : "wrong") : ""
+                            }`}
+                            disabled={revealed}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              if (mcSelection === null) setMcSelection(opt.letter);
+                            }}
+                          >
+                            <span className="mc-letter">{opt.badge}</span>
+                            <span className="mc-text">
+                              {opt.text.split(/`([^`]+)`/g).map((part, i) =>
+                                i % 2 === 1 ? (
+                                  <code key={i} className="inline-code">
+                                    {part}
+                                  </code>
+                                ) : part ? (
+                                  <span key={i}>{part}</span>
+                                ) : null,
+                              )}
+                            </span>
+                            {revealed && (
+                              <span className="mc-icon">
+                                {isCorrect ? "✓" : "✗"}
+                              </span>
+                            )}
+                          </button>
+                        );
+                      })}
+                    </div>
+                    {mc.after && (
+                      <CardContent
+                        text={mc.after}
+                        cardImageUrl={currentCard.imageUrl}
+                        codeTheme={codeTheme}
+                      />
+                    )}
+                    {/* Respuesta bajo las opciones tras elegir (sin voltear) */}
+                    {mcSelection !== null && (
+                      <div className="mc-answer">
+                        <CardContent
+                          text={currentCard.back}
+                          cardImageUrl={currentCard.imageUrl}
+                          codeTheme={codeTheme}
+                        />
+                      </div>
+                    )}
+                  </>
+                ) : (
+                  <CardContent
+                    text={currentCard.front}
+                    cardImageUrl={currentCard.imageUrl}
+                    codeTheme={codeTheme}
+                  />
+                )}
                 {(() => {
                   const hint = extractCodeHint(currentCard.back);
-                  if (!hint) return null;
+                  if (!hint || mc) return null; // en opciones la respuesta sale bajo ellas
                   return (
                     <div className="card-code-hint">
                       <span className="hint-label">Ejemplo relacionado</span>
@@ -334,7 +556,7 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
         </div>
       </div>
 
-      {isFlipped ? (
+      {(isFlipped || (mc && mcSelection !== null)) ? (
         <div className="rating-buttons">
           <button
             className="rating-btn hard"
@@ -351,6 +573,35 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
         </div>
       ) : (
         <div style={{ height: "60px" }}></div>
+      )}
+
+      {/* Cartel de felicitación al volver a la primera tarjeta */}
+      {showCongrats && (
+        <div
+          className="congrats-overlay"
+          onClick={() => setShowCongrats(false)}
+        >
+          <div
+            className="congrats-card"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="congrats-icon">🎉</div>
+            <h2>
+              ¡Felicidades, has completado las {sessionTotal}{" "}
+              tarjeta{sessionTotal !== 1 ? "s" : ""}!
+            </h2>
+            <p>
+              Ahora repasarás las {cards.length} que marcaste como{" "}
+              aprendidas.
+            </p>
+            <button
+              className="btn btn-primary"
+              onClick={() => setShowCongrats(false)}
+            >
+              Aceptar
+            </button>
+          </div>
+        </div>
       )}
     </div>
   );

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Icons } from "./Icons";
 import {
   isExamDeck,
@@ -5,6 +6,62 @@ import {
   getSubjectColor,
 } from "./deckHelpers";
 import { DeckCard } from "./DeckCard";
+
+export function ExamenJavaFolder({
+  deck,
+  doneMap,
+  onToggleDone,
+  onStudyDeck,
+  onStatsDeck,
+  onEditDeck,
+  onOpenResetModal,
+}) {
+  // Área propia de "Examen Java", abierta por defecto y con el tema animado
+  const [show, setShow] = useState(true);
+  if (!deck) return null;
+
+  const total = deck.cards.length;
+  const studied = deck.cards.filter((c) => c.status !== "new").length;
+  const sectionProgress = total === 0 ? 0 : Math.round((studied / total) * 100);
+  const progClass = sectionProgress === 0 ? "progress-0"
+    : sectionProgress === 100 ? "progress-done"
+    : sectionProgress <= 33 ? "progress-start"
+    : sectionProgress <= 66 ? "progress-mid"
+    : "progress-high";
+
+  return (
+    <div className={`examenes-section section-progress ${progClass}`} data-progress={sectionProgress}>
+      <button
+        className="examenes-toggle examen-java-area"
+        onClick={() => setShow(!show)}
+        aria-expanded={show}
+      >
+        <span className="examenes-icon">📋</span>
+        <span className="examenes-label">Examen Java</span>
+        <span className="examenes-count">{total} tarjetas</span>
+        <span className={`examenes-chevron ${show ? "open" : ""}`}>
+          {show ? Icons.chevronUp : Icons.chevronDown}
+        </span>
+      </button>
+
+      {show && (
+        <div className="decks-grid examenes-grid animate-fade-in">
+          <DeckCard
+            key={deck.id}
+            deck={deck}
+            doneMap={doneMap}
+            onToggleDone={onToggleDone}
+            theme="theme-examen"
+            onStudyDeck={onStudyDeck}
+            onStatsDeck={onStatsDeck}
+            onEditDeck={onEditDeck}
+            onOpenResetModal={onOpenResetModal}
+          />
+        </div>
+      )}
+    </div>
+  );
+}
 
 export function PreguntasDirectasFolder({
   decks,

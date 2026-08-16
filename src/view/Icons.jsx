@@ -152,6 +152,7 @@ export const SubjectIcons = {
   "Lenguajes de Marcas": "🏷️",
   "Desarrollo Web en Entorno Cliente": "🌐",
   Practicas: "📝",
+  Examen: "📋",
   default: "📚",
 };
 
@@ -191,6 +192,11 @@ export const SubjectColors = {
     accent: "#34A853",
     bg: "rgba(52, 168, 83, 0.08)",
     badge: "#34A853",
+  },
+  Examen: {
+    accent: "#7C6CF0",
+    bg: "rgba(124, 108, 240, 0.08)",
+    badge: "#7C6CF0",
   },
   default: {
     accent: "#9AA0A6",
