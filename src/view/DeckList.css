@@ -287,6 +287,11 @@
   align-items: stretch;
 }
 
+/* Separación entre el rectángulo Examen Java y su card */
+.examenes-grid {
+  margin-top: 20px;
+}
+
 /* Deck Card */
 .deck-card {
   background: var(--bg-secondary);

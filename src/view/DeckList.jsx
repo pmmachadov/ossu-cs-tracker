@@ -190,6 +190,7 @@ export function DeckList({
   );
   const extraDecks = filteredDecks.filter(
     (d) =>
+      d.id !== "examen-java" &&
       !MAIN_SUBJECTS.includes(d.subject) &&
       !pruebaDecks.includes(d) &&
       !practicaDecks.includes(d) &&
