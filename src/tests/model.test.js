@@ -318,6 +318,20 @@ describe('Deck', () => {
     });
   });
 
+  describe('getPendingCards', () => {
+    it('returns only cards not yet learned (status !== "aprendido")', () => {
+      const c1 = deck.addCard('F1', 'B1');
+      const c2 = deck.addCard('F2', 'B2');
+      const c3 = deck.addCard('F3', 'B3');
+      c1.status = 'new';
+      c2.status = 'procesando';
+      c3.status = 'aprendido';
+      const pending = deck.getPendingCards();
+      expect(pending).toHaveLength(2);
+      expect(pending.map(c => c.id).sort()).toEqual([c1.id, c2.id].sort());
+    });
+  });
+
   describe('getStats', () => {
     it('returns correct counts for all categories', () => {
       const c1 = deck.addCard('F1', 'B1');
@@ -334,7 +348,10 @@ describe('Deck', () => {
       expect(stats.total).toBe(3);
       expect(stats.new).toBe(1);
       expect(stats.procesando).toBe(1);
-      expect(stats.due).toBe(1);
+      // Pendientes = no aprendidas: aunque la aprendida tenga nextReview pasado,
+      // ya no cuenta como pendiente (no reaparece hasta completar/resetear)
+      expect(stats.due).toBe(2);
+      expect(stats.pendientes).toBe(2);
       expect(stats.aprendido).toBe(1);
     });
 

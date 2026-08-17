@@ -127,17 +127,26 @@ export class Deck {
     );
   }
 
+  /** Tarjetas pendientes: todas las que aún no están "aprendido".
+   *  Las aprendidas NO vuelven a aparecer en la cola diaria hasta
+   *  que el mazo se complete entero o se reinicie el progreso. */
+  getPendingCards() {
+    return this.cards.filter((card) => card.status !== "aprendido");
+  }
+
   getStats() {
     const newCards = this.getNewCards().length;
     const procesando = this.cards.filter((c) => c.status === "procesando").length;
-    const due = this.getDueCards().length;
     const aprendido = this.cards.filter((c) => c.status === "aprendido").length;
+    // Pendientes = aún no aprendidas (las aprendidas no reaparecen)
+    const pendientes = this.cards.length - aprendido;
 
     return {
       total: this.cards.length,
       new: newCards,
       procesando: procesando,
-      due: due,
+      due: pendientes,
+      pendientes: pendientes,
       aprendido: aprendido,
       mastery:
         this.cards.length > 0

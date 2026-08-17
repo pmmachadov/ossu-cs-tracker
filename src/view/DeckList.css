@@ -477,6 +477,28 @@
   }
 }
 
+/* Ciclo de color de la barra de progreso de los mazos de examen:
+   morado -> verde -> amarillo -> morado, sin importar el % de progreso.
+   Cada color se mantiene ~4s y el cambio es paulatino (fade de 1s):
+   15s = 4s morado + 1s fade + 4s verde + 1s fade + 4s amarillo + 1s fade */
+@keyframes deck-progress-fill-cycle {
+  0%,
+  26.67% {
+    background-color: #7C6CF0;
+  }
+  33.33%,
+  60% {
+    background-color: #22c55e;
+  }
+  66.67%,
+  93.33% {
+    background-color: #facc15;
+  }
+  100% {
+    background-color: #7C6CF0;
+  }
+}
+
 
 /* Stats Row */
 .deck-stats-row {
@@ -2121,6 +2143,9 @@
   .progress-fill::after {
     animation: none;
   }
+  .deck-card.theme-examen .progress-fill {
+    animation: none;
+  }
 }
 
 .deck-card.theme-examen.has-due {
@@ -2130,6 +2155,8 @@
 
 .deck-card.theme-examen .progress-fill {
   background: #7C6CF0;
+  /* Ciclo de color fijo: morado -> verde -> amarillo -> morado, sin importar el % */
+  animation: deck-progress-fill-cycle 15s ease-in-out infinite;
 }
 
 .deck-card.theme-examen .btn-study {

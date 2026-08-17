@@ -135,7 +135,7 @@ export function StatsView({ deck, onBack, onResetProgress }) {
       studied,
       mastery,
       streak,
-      dueToday: cards.filter(c => c.isDue()).length
+      dueToday: cards.filter(c => c.status !== 'aprendido').length
     }
   }, [deck])
 

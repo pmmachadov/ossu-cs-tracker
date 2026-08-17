@@ -107,10 +107,6 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
     easy: 0,
   });
   const [showComplete, setShowComplete] = useState(false);
-  const [learnedIds, setLearnedIds] = useState([]); // marcadas "Aprendido" en esta sesión
-  const [inReviewPass, setInReviewPass] = useState(false);
-  const [showCongrats, setShowCongrats] = useState(false);
-  const [sessionTotal, setSessionTotal] = useState(0);
   const [mcSelection, setMcSelection] = useState(null); // opción elegida en cards de opción múltiple
 
   // Drag-to-scroll para la fila de puntos
@@ -193,29 +189,15 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
     setFlipRotation(0);
   };
 
-  // Preparar tarjetas para estudio: TODAS las del mazo (pendientes, en
-  // aprendizaje y nuevas), sin límite, para pasar siempre por todas y no
-  // repetir siempre las mismas. Sin duplicados: se usa un Map con el id.
+  // Preparar tarjetas para estudio: SOLO las no aprendidas (nuevas +
+  // en procesamiento). Las marcadas como "aprendido" NO vuelven a
+  // aparecer en la cola diaria hasta completar el mazo o resetear.
   useEffect(() => {
-    const dueCards = deck.getDueCards();
-    const learningCards = deck.getLearningCards();
-    const newCards = deck.getNewCards(); // todas las nuevas, sin límite
-
-    // Evitar duplicados: una carta puede estar en dueCards (isDue=true)
-    // y también en learningCards (status=relearning). Usamos un Map
-    // para que el primer origen (dueCards) tenga prioridad.
-    const studyCards = [...new Map(
-      [...dueCards, ...learningCards, ...newCards]
-        .map(c => [c.id, c])
-    ).values()];
+    const studyCards = deck.getPendingCards();
     setCards(studyCards);
     setCurrentCardIndex(0);
     setIsFlipped(false);
     setShowComplete(false);
-    setLearnedIds([]);
-    setInReviewPass(false);
-    setShowCongrats(false);
-    setSessionTotal(studyCards.length);
   }, [deck]);
 
   const currentCard = cards[currentCardIndex];
@@ -261,31 +243,12 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
       deck.recordReview(difficulty);
       onUpdateDeck(deck);
 
-      // Tarjetas marcadas como aprendidas en esta sesión (vuelven a aparecer)
-      const nextLearned =
-        difficulty === DIFFICULTY.APRENDIDO && !inReviewPass
-          ? learnedIds.includes(currentCard.id)
-            ? learnedIds
-            : [...learnedIds, currentCard.id]
-          : learnedIds;
-      setLearnedIds(nextLearned);
-
       const isLast = currentCardIndex >= cards.length - 1;
 
       if (!isLast) {
         setCurrentCardIndex((prev) => prev + 1);
         setIsFlipped(false);
         setFlipRotation(0);
-      } else if (!inReviewPass && nextLearned.length > 0) {
-        // Al terminar la última tarjeta, vuelven a aparecer las aprendidas:
-        // se vuelve a la primera de la lista de repaso y se muestra el cartel
-        setSessionTotal(cards.length);
-        setCards(cards.filter((c) => nextLearned.includes(c.id)));
-        setCurrentCardIndex(0);
-        setInReviewPass(true);
-        setIsFlipped(false);
-        setFlipRotation(0);
-        setShowCongrats(true);
       } else {
         setShowComplete(true);
       }
@@ -296,8 +259,6 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
       cards,
       deck,
       onUpdateDeck,
-      inReviewPass,
-      learnedIds,
     ],
   );
 
@@ -573,35 +534,6 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
         </div>
       ) : (
         <div style={{ height: "60px" }}></div>
-      )}
-
-      {/* Cartel de felicitación al volver a la primera tarjeta */}
-      {showCongrats && (
-        <div
-          className="congrats-overlay"
-          onClick={() => setShowCongrats(false)}
-        >
-          <div
-            className="congrats-card"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="congrats-icon">🎉</div>
-            <h2>
-              ¡Felicidades, has completado las {sessionTotal}{" "}
-              tarjeta{sessionTotal !== 1 ? "s" : ""}!
-            </h2>
-            <p>
-              Ahora repasarás las {cards.length} que marcaste como{" "}
-              aprendidas.
-            </p>
-            <button
-              className="btn btn-primary"
-              onClick={() => setShowCongrats(false)}
-            >
-              Aceptar
-            </button>
-          </div>
-        </div>
       )}
     </div>
   );
