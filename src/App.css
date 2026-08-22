@@ -98,7 +98,7 @@ html, body {
 .nav-btn.active {
   background: var(--accent-primary);
   border-color: var(--accent-primary);
-  color: white;
+  color: #141414;
 }
 
 .app-main {
@@ -168,7 +168,7 @@ html, body {
 
 .btn-primary {
   background: var(--accent-primary);
-  color: white;
+  color: #141414;
 }
 
 .btn-primary:hover:not(:disabled) {
@@ -188,7 +188,7 @@ html, body {
 
 .btn-danger {
   background: var(--accent-danger);
-  color: white;
+  color: #141414;
 }
 
 .btn-danger:hover:not(:disabled) {
@@ -197,27 +197,27 @@ html, body {
 
 .btn-success {
   background: var(--accent-success);
-  color: white;
+  color: #141414;
 }
 
 .btn-again {
   background: var(--accent-danger);
-  color: white;
+  color: #141414;
 }
 
 .btn-hard {
-  background: #b45309;
-  color: white;
+  background: #ff6d01;
+  color: #141414;
 }
 
 .btn-good {
   background: var(--accent-success);
-  color: white;
+  color: #141414;
 }
 
 .btn-easy {
   background: var(--accent-primary);
-  color: white;
+  color: #141414;
 }
 
 .btn-sm {

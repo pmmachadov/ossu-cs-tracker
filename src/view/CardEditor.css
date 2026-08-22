@@ -176,7 +176,7 @@
 
 .status-badge.new {
   background: var(--accent-primary);
-  color: white;
+  color: #141414;
 }
 
 .status-badge.learning,
@@ -187,7 +187,7 @@
 
 .status-badge.review {
   background: var(--accent-success);
-  color: white;
+  color: #141414;
 }
 
 .repetition-count {

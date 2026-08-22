@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { Icons } from "./Icons";
 import { isExamDeck, getSubjectIcon, getSubjectColor } from "./deckHelpers";
 
@@ -17,6 +18,25 @@ export function DeckCard({
   const subjectColor = getSubjectColor(deck.subject);
   const hasDueCards = stats.due > 0;
   const themeClass = theme || (isExtra ? "theme-blue" : "");
+
+  // Estrellas que cruzan la barra de progreso (solo tema examen): varias a la
+  // vez, cada una con tamaño, altura, opacidad, velocidad y trayectoria
+  // distintos (3 trayectorias distintas repartidas en bucle). left inicial
+  // aleatorio: si la animación está desactivada quedan repartidas y visibles.
+  const stars = useMemo(() => {
+    if (themeClass !== "theme-examen") return [];
+    const anims = ["star-drift-a", "star-drift-b", "star-drift-c"];
+    return Array.from({ length: 10 }, (_, i) => ({
+      id: i,
+      size: 10 + Math.random() * 14,
+      top: 8 + Math.random() * 72,
+      left: 5 + Math.random() * 85,
+      opacity: 0.7 + Math.random() * 0.3,
+      duration: 4.5 + Math.random() * 5.5,
+      delay: -(Math.random() * 10),
+      anim: anims[i % anims.length],
+    }));
+  }, [deck.id, themeClass]);
 
   const status = doneMap[deck.id];
   const isProgress = status === "progress";
@@ -94,6 +114,26 @@ export function DeckCard({
               className="progress-fill"
               style={{ width: `${stats.mastery}%` }}
             />
+            {stars.length > 0 && (
+              <div className="stars-layer" aria-hidden="true">
+                {stars.map((s) => (
+                  <span
+                    key={s.id}
+                    className="drift-star"
+                    style={{
+                      width: `${s.size}px`,
+                      height: `${s.size}px`,
+                      top: `${s.top}%`,
+                      left: `${s.left}%`,
+                      opacity: s.opacity,
+                      animationDuration: `${s.duration}s`,
+                      animationDelay: `${s.delay}s`,
+                      animationName: s.anim,
+                    }}
+                  />
+                ))}
+              </div>
+            )}
           </div>
         </div>
 

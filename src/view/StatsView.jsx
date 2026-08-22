@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import { 
   PieChart, Pie, Cell, BarChart, Bar, XAxis, YAxis, 
   CartesianGrid, Tooltip, ResponsiveContainer, AreaChart, Area, LineChart, Line
@@ -6,9 +6,9 @@ import {
 import './StatsView.css'
 
 const COLORS = {
-  new: '#8b5cf6',        // Violeta
-  procesando: '#f59e0b', // Ámbar
-  aprendido: '#22c55e',  // Verde
+  new: '#ea4335',        // Violeta
+  procesando: '#fbbc04', // Ámbar
+  aprendido: '#34a853',  // Verde
 }
 
 // Iconos SVG
@@ -86,10 +86,12 @@ const Icons = {
 
 const CustomTooltip = ({ active, payload, label }) => {
   if (active && payload && payload.length) {
+    const items = payload.filter((p) => !p.payload?.isShadow)
+    if (items.length === 0) return null
     return (
       <div className="custom-tooltip">
         <p className="tooltip-label">{label}</p>
-        {payload.map((entry, index) => (
+        {items.map((entry, index) => (
           <p key={index} className="tooltip-value" style={{ color: entry.color }}>
             {entry.name}: {entry.value}
           </p>
@@ -102,6 +104,33 @@ const CustomTooltip = ({ active, payload, label }) => {
 
 export function StatsView({ deck, onBack, onResetProgress }) {
   const [showResetConfirm, setShowResetConfirm] = useState(false)
+  // Borrado en 3 etapas: 1 = ¿seguro?, 2 = segunda comprobación, 3 = espera final
+  const [resetStage, setResetStage] = useState(1)
+  const [countdown, setCountdown] = useState(10)
+  const [canDelete, setCanDelete] = useState(false)
+
+  // Etapa 3: cuenta atrás de 10s antes de activar el botón de borrado
+  useEffect(() => {
+    if (resetStage !== 3) return
+    setCountdown(10)
+    setCanDelete(false)
+    const interval = setInterval(() => {
+      setCountdown((c) => {
+        if (c <= 1) {
+          clearInterval(interval)
+          setCanDelete(true)
+          return 0
+        }
+        return c - 1
+      })
+    }, 1000)
+    return () => clearInterval(interval)
+  }, [resetStage])
+
+  const closeReset = () => {
+    setShowResetConfirm(false)
+    setResetStage(1)
+  }
   const [timeRange, setTimeRange] = useState('week')
   const [progressRange, setProgressRange] = useState('all')
 
@@ -219,6 +248,7 @@ export function StatsView({ deck, onBack, onResetProgress }) {
   const handleReset = () => {
     onResetProgress(deck.id)
     setShowResetConfirm(false)
+    setResetStage(1)
   }
 
   return (
@@ -250,6 +280,13 @@ export function StatsView({ deck, onBack, onResetProgress }) {
         <div className="stat-card stat-mastery">
           <div className="stat-icon-bg">
             <svg viewBox="0 0 36 36" className="circular-chart">
+              <defs>
+                {/* Gradiente del anillo de Dominio: azul -> verde (Google pastel) */}
+                <linearGradient id="domGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#4285F4" />
+                  <stop offset="100%" stopColor="#34A853" />
+                </linearGradient>
+              </defs>
               <path className="circle-bg"
                 d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
               />
@@ -312,6 +349,29 @@ export function StatsView({ deck, onBack, onResetProgress }) {
           <div className="chart-container">
             <ResponsiveContainer width="100%" height={260}>
               <PieChart>
+                <defs>
+                  {/* Sectores con color liso (sin brillo blanco) */}
+                  {pieData.map((entry, index) => (
+                    <radialGradient key={`pie3d-${index}`} id={`pie3d-${index}`} cx="50%" cy="35%" r="80%">
+                      <stop offset="0%" stopColor={entry.color} />
+                      <stop offset="100%" stopColor={entry.color} />
+                    </radialGradient>
+                  ))}
+                </defs>
+                {/* Grosor 3D: anillo base desplazado que actúa como sombra del donut */}
+                <Pie
+                  data={pieData.map((d) => ({ ...d, isShadow: true }))}
+                  cx="50%"
+                  cy="56%"
+                  innerRadius={65}
+                  outerRadius={100}
+                  paddingAngle={3}
+                  dataKey="value"
+                  stroke="none"
+                  fill="rgba(0, 0, 0, 0.5)"
+                  isAnimationActive={false}
+                  pointerEvents="none"
+                />
                 <Pie
                   data={pieData}
                   cx="50%"
@@ -319,15 +379,17 @@ export function StatsView({ deck, onBack, onResetProgress }) {
                   innerRadius={65}
                   outerRadius={100}
                   paddingAngle={3}
+                  cornerRadius={6}
                   dataKey="value"
-                  stroke="none"
+                  stroke="#0c0c0f"
+                  strokeWidth={2}
                   isAnimationActive={true}
                   animationDuration={1200}
                   animationBegin={0}
                   animationEasing="ease-out"
                 >
                   {pieData.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={entry.color} />
+                    <Cell key={`cell-${index}`} fill={`url(#pie3d-${index})`} />
                   ))}
                 </Pie>
                 <Tooltip content={<CustomTooltip />} />
@@ -369,8 +431,8 @@ export function StatsView({ deck, onBack, onResetProgress }) {
               <AreaChart data={activityData} margin={{ top: 10, right: 10, left: -10, bottom: 0 }}>
                 <defs>
                   <linearGradient id="colorStudied" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#8b5cf6" stopOpacity={0.4}/>
-                    <stop offset="95%" stopColor="#8b5cf6" stopOpacity={0}/>
+                    <stop offset="5%" stopColor="#ea4335" stopOpacity={0.7}/>
+                    <stop offset="95%" stopColor="#ea4335" stopOpacity={0}/>
                   </linearGradient>
                 </defs>
                 <CartesianGrid strokeDasharray="3 3" stroke="#1f1f1f" vertical={false} />
@@ -392,8 +454,8 @@ export function StatsView({ deck, onBack, onResetProgress }) {
                 <Area 
                   type="monotone" 
                   dataKey="studied" 
-                  stroke="#8b5cf6" 
-                  strokeWidth={3}
+                  stroke="#ea4335" 
+                  strokeWidth={3.5}
                   fillOpacity={1} 
                   fill="url(#colorStudied)" 
                   name="Tarjetas estudiadas"
@@ -436,11 +498,11 @@ export function StatsView({ deck, onBack, onResetProgress }) {
                 <AreaChart data={progressOverTime} margin={{ top: 10, right: 10, left: -10, bottom: 0 }}>
                   <defs>
                     <linearGradient id="colorAprendiendo" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="#4285F4" stopOpacity={0.35}/>
+                      <stop offset="5%" stopColor="#4285F4" stopOpacity={0.7}/>
                       <stop offset="95%" stopColor="#4285F4" stopOpacity={0}/>
                     </linearGradient>
                     <linearGradient id="colorAprendida" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="#EA4335" stopOpacity={0.35}/>
+                      <stop offset="5%" stopColor="#EA4335" stopOpacity={0.7}/>
                       <stop offset="95%" stopColor="#EA4335" stopOpacity={0}/>
                     </linearGradient>
                   </defs>
@@ -465,7 +527,7 @@ export function StatsView({ deck, onBack, onResetProgress }) {
                     dataKey="procesando"
                     stackId="1"
                     stroke="#4285F4"
-                    strokeWidth={2}
+                    strokeWidth={2.5}
                     fillOpacity={1}
                     fill="url(#colorAprendiendo)"
                     name="Procesando"
@@ -478,7 +540,7 @@ export function StatsView({ deck, onBack, onResetProgress }) {
                     dataKey="aprendido"
                     stackId="1"
                     stroke="#EA4335"
-                    strokeWidth={2}
+                    strokeWidth={2.5}
                     fillOpacity={1}
                     fill="url(#colorAprendida)"
                     name="Aprendido"
@@ -515,6 +577,17 @@ export function StatsView({ deck, onBack, onResetProgress }) {
           <div className="chart-container">
             <ResponsiveContainer width="100%" height={220}>
               <BarChart data={difficultyData} layout="vertical" margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
+                <defs>
+                  {/* Gradientes de relieve 3D por barra: brillante arriba, oscuro abajo */}
+                  {difficultyData.map((entry, index) => (
+                    <linearGradient key={`bar3d-${index}`} id={`bar3d-${index}`} x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stopColor="#ffffff" stopOpacity={0.3} />
+                      <stop offset="30%" stopColor={entry.color} />
+                      <stop offset="70%" stopColor={entry.color} />
+                      <stop offset="100%" stopColor="#000000" stopOpacity={0.6} />
+                    </linearGradient>
+                  ))}
+                </defs>
                 <CartesianGrid strokeDasharray="3 3" stroke="#1f1f1f" horizontal={false} />
                 <XAxis type="number" stroke="#6e7681" fontSize={11} tickLine={false} axisLine={false} />
                 <YAxis 
@@ -526,7 +599,7 @@ export function StatsView({ deck, onBack, onResetProgress }) {
                   tickLine={false}
                   axisLine={false}
                 />
-                <Tooltip content={<CustomTooltip />} />
+                <Tooltip content={<CustomTooltip />} cursor={false} />
                 <Bar dataKey="count" radius={[0, 6, 6, 0]} barSize={28}
                   isAnimationActive={true}
                   animationDuration={1000}
@@ -534,7 +607,7 @@ export function StatsView({ deck, onBack, onResetProgress }) {
                   animationEasing="ease-out"
                 >
                   {difficultyData.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={entry.color} />
+                    <Cell key={`cell-${index}`} fill={`url(#bar3d-${index})`} />
                   ))}
                 </Bar>
               </BarChart>
@@ -609,30 +682,86 @@ export function StatsView({ deck, onBack, onResetProgress }) {
         </div>
       </div>
 
-      {/* Modal de confirmación */}
+      {/* Modal de confirmación — 3 etapas de comprobación */}
       {showResetConfirm && (
-        <div className="modal-overlay" onClick={() => setShowResetConfirm(false)}>
+        <div className="modal-overlay" onClick={closeReset}>
           <div className="modal modal-confirm" onClick={e => e.stopPropagation()}>
             <div className="confirm-icon-wrap">
               <div className="confirm-icon">{Icons.warning}</div>
             </div>
-            <h3>¿Borrar progreso?</h3>
-            <p>
-              Esto reiniciará <strong>todas las tarjetas</strong> de este mazo a estado "nuevo". 
-              Se perderá todo el historial de estudio.
-            </p>
-            <div className="confirm-alert">
-              <span>⚠️</span>
-              <span>Esta acción no se puede deshacer</span>
-            </div>
-            <div className="modal-actions">
-              <button className="btn btn-secondary" onClick={() => setShowResetConfirm(false)}>
-                Cancelar
-              </button>
-              <button className="btn btn-danger" onClick={handleReset}>
-                Sí, borrar progreso
-              </button>
-            </div>
+
+            {resetStage === 1 && (
+              <>
+                <h3>¿Borrar progreso?</h3>
+                <p>
+                  Esto reiniciará <strong>todas las tarjetas</strong> de este mazo a estado "nuevo". 
+                  Se perderá todo el historial de estudio.
+                </p>
+                <div className="confirm-alert">
+                  <span>⚠️</span>
+                  <span>Esta acción no se puede deshacer</span>
+                </div>
+                <div className="modal-actions">
+                  <button className="btn btn-secondary" onClick={closeReset}>
+                    Cancelar
+                  </button>
+                  <button className="btn btn-primary" onClick={() => setResetStage(2)}>
+                    Continuar
+                  </button>
+                </div>
+              </>
+            )}
+
+            {resetStage === 2 && (
+              <>
+                <h3>Segunda comprobación</h3>
+                <p>
+                  Vas a perder <strong>{stats.studied} tarjetas estudiadas</strong> y{" "}
+                  {stats.procesando} en proceso. Esta acción es irreversible.
+                </p>
+                <div className="confirm-alert">
+                  <span>⚠️</span>
+                  <span>No podrás recuperar los datos</span>
+                </div>
+                <div className="modal-actions">
+                  <button className="btn btn-secondary" onClick={closeReset}>
+                    Cancelar
+                  </button>
+                  <button className="btn btn-warning" onClick={() => setResetStage(3)}>
+                    Sí, estoy seguro
+                  </button>
+                </div>
+              </>
+            )}
+
+            {resetStage === 3 && (
+              <>
+                <h3>Confirmación final</h3>
+                <p>El botón de borrado se activará cuando termine la espera.</p>
+                <div className="countdown-wrap">
+                  <div className={`countdown-circle ${canDelete ? "ready" : ""}`}>
+                    {canDelete ? "✓" : countdown}
+                  </div>
+                  <span className="countdown-label">
+                    {canDelete
+                      ? "Listo para borrar"
+                      : "Espera para activar el borrado..."}
+                  </span>
+                </div>
+                <div className="modal-actions">
+                  <button className="btn btn-secondary" onClick={closeReset}>
+                    Cancelar
+                  </button>
+                  <button
+                    className="btn btn-danger"
+                    onClick={handleReset}
+                    disabled={!canDelete}
+                  >
+                    {canDelete ? "Borrar definitivamente" : `Activa en ${countdown}s`}
+                  </button>
+                </div>
+              </>
+            )}
           </div>
         </div>
       )}

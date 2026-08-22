@@ -1,14 +1,16 @@
+import { useState } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { shadesOfPurple } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
+import createElement from "react-syntax-highlighter/dist/esm/create-element";
 import { YouTubeEmbed } from "./YouTubeEmbed";
 
-// Tema personalizado: mismo que shadesOfPurple pero con comentarios en celeste
+// Tema personalizado: estilo VSCode Dark+ (vibrante) con comentarios en verde pastel claro
 export const codeTheme = {
-  ...shadesOfPurple,
-  'comment': { color: '#7ec8e3', fontStyle: 'italic' },
-  'prolog': { color: '#7ec8e3' },
-  'doctype': { color: '#7ec8e3' },
-  'cdata': { color: '#7ec8e3' },
+  ...vscDarkPlus,
+  'comment': { color: '#34A853', fontStyle: 'italic' },
+  'prolog': { color: '#34A853' },
+  'doctype': { color: '#34A853' },
+  'cdata': { color: '#34A853' },
 };
 
 const normalizeText = (text) => {
@@ -39,6 +41,69 @@ export const extractCodeHint = (backText) => {
     return { code: inlineMatch[1], lang: "javascript" };
   }
   return null;
+};
+
+// Hash simple para identificar el bloque de código (clave de persistencia)
+const simpleHash = (str) => {
+  let h = 5381;
+  for (let i = 0; i < str.length; i++) h = ((h << 5) + h + str.charCodeAt(i)) >>> 0;
+  return h.toString(36);
+};
+
+// Checkbox "¿Lo entiendo?" — bonito, a la derecha de la línea, persistente
+const CheckItem = ({ storageKey }) => {
+  const [checked, setChecked] = useState(() => {
+    try {
+      return localStorage.getItem(storageKey) === "1";
+    } catch {
+      return false;
+    }
+  });
+  return (
+    <label
+      className="code-check"
+      title={checked ? "Entendido ✓" : "Marca si lo entiendes"}
+    >
+      <input
+        type="checkbox"
+        checked={checked}
+        onChange={(e) => {
+          setChecked(e.target.checked);
+          try {
+            localStorage.setItem(storageKey, e.target.checked ? "1" : "0");
+          } catch {
+            // localStorage no disponible: solo estado en memoria
+          }
+        }}
+      />
+      <span className="code-check-box">{checked ? "✓" : ""}</span>
+    </label>
+  );
+};
+
+// Renderer de código: añade un checkbox a la derecha de cada línea con // ✅
+const codeRenderer = (rows, blockHash) => {
+  return rows.map((row, i) => {
+    const lineText = (row.children || [])
+      .map((t) => (t.children == null ? "" : t.children))
+      .join("");
+    if (!lineText.includes("// ✅")) {
+      return createElement({
+        node: row,
+        styles: codeTheme,
+        useInlineStyles: true,
+        key: `l-${i}`,
+      });
+    }
+    return (
+      <div key={`lc-${i}`} className="code-line-check">
+        <div className="code-line-text">
+          {createElement({ node: row, styles: codeTheme, useInlineStyles: true })}
+        </div>
+        <CheckItem storageKey={`ankicards.check.${blockHash}.${i}`} />
+      </div>
+    );
+  });
 };
 
 // Renderiza código inline con estilo VSCode
@@ -357,6 +422,11 @@ const renderCardContent = (text, cardImageUrl) => {
             padding: "16px 20px",
           }}
           wrapLongLines={true}
+          renderer={
+            code.split("\n").some((l) => l.includes("// ✅"))
+              ? (rows) => codeRenderer(rows, simpleHash(code))
+              : undefined
+          }
         >
           {code}
         </SyntaxHighlighter>

@@ -53,7 +53,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: #141414;
 }
 
 .title-icon svg {
@@ -146,13 +146,13 @@
 .circle-bg {
   fill: none;
   stroke: var(--bg-tertiary);
-  stroke-width: 3;
+  stroke-width: 5;
 }
 
 .circle {
   fill: none;
-  stroke: url(#gradient);
-  stroke-width: 3;
+  stroke: url(#domGradient);
+  stroke-width: 5;
   stroke-linecap: round;
   transform: rotate(-90deg);
   transform-origin: 50% 50%;
@@ -201,8 +201,8 @@
 }
 
 .icon-purple { background: rgba(66, 133, 244, 0.15); color: #66A3FF; }
-.icon-green { background: rgba(52, 168, 83, 0.15); color: #81C995; }
-.icon-orange { background: rgba(251, 188, 4, 0.15); color: #FDD835; }
+.icon-green { background: rgba(52, 168, 83, 0.15); color: #2E7D32; }
+.icon-orange { background: rgba(251, 188, 4, 0.15); color: #FBBC04; }
 .icon-red { background: rgba(234, 67, 53, 0.15); color: #F28B82; }
 
 .stat-content {
@@ -314,7 +314,7 @@
 
 .range-btn.active {
   background: var(--accent-primary);
-  color: white;
+  color: #141414;
   box-shadow: var(--shadow-sm);
 }
 
@@ -484,7 +484,7 @@
 }
 
 .retention-fill-modern.success {
-  background: linear-gradient(90deg, var(--accent-success), #81C995);
+  background: linear-gradient(90deg, var(--accent-success), #2E7D32);
 }
 
 /* Stats Detail */
@@ -520,7 +520,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: #141414;
   font-size: 0.7rem;
   font-weight: 700;
 }
@@ -825,4 +825,223 @@
   .modal {
     padding: 20px 16px;
   }
+}
+
+/* ===== 3D en la vista de estadísticas ===== */
+
+/* Título con relieve */
+.stats-title h2 {
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.55);
+}
+
+/* Icono del título: ficha con bisel */
+.title-icon {
+  border: 1px solid #4d4d58;
+  border-top-color: #5a5a66;
+  border-bottom-color: #1a1a1f;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Tarjetas de estadísticas: placa con bisel */
+.stat-card {
+  background: linear-gradient(180deg, #222229 0%, #17171c 55%, #101014 100%);
+  border: 1px solid #2f2f37;
+  border-top-color: #45454f;
+  border-bottom-color: #0c0c0f;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.09),
+    0 6px 16px rgba(0, 0, 0, 0.5);
+}
+
+.stat-card:hover {
+  transform: none;
+  border-color: #45454f;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    0 10px 24px rgba(0, 0, 0, 0.55);
+}
+
+/* Tarjeta Dominio: conserva su halo azul pero con volumen */
+.stat-mastery {
+  background: linear-gradient(135deg, rgba(66, 133, 244, 0.18) 0%, #17171c 60%, #101014 100%);
+}
+
+/* Cajas de gráficos: placa con bisel */
+.chart-card {
+  background: linear-gradient(180deg, #202027 0%, #16161b 55%, #0f0f13 100%);
+  border: 1px solid #2f2f37;
+  border-top-color: #43434d;
+  border-bottom-color: #0c0c0f;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.09),
+    0 6px 16px rgba(0, 0, 0, 0.5);
+}
+
+/* Botones de rango (7 días / 30 días / Todo): 3D presionable */
+.range-btn {
+  box-shadow:
+    0 3px 0 rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.07);
+}
+.range-btn:active {
+  transform: translateY(2px);
+  box-shadow:
+    0 1px 0 rgba(0, 0, 0, 0.6),
+    inset 0 2px 5px rgba(0, 0, 0, 0.45);
+}
+.range-btn.active {
+  box-shadow:
+    0 3px 0 rgba(120, 100, 220, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+.range-btn.active:active {
+  transform: translateY(2px);
+  box-shadow:
+    0 1px 0 rgba(120, 100, 220, 0.55),
+    inset 0 3px 7px rgba(0, 0, 0, 0.3);
+}
+
+/* Fichas de detalle (iconos de colores): relieve */
+.detail-icon {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.25),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.35),
+    0 3px 6px rgba(0, 0, 0, 0.4);
+}
+
+/* Botón Volver: azul claro liso con bisel 3D */
+.btn-back {
+  background: #66A3FF !important;
+  color: #141414 !important;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-bottom-color: rgba(26, 80, 160, 0.6);
+  box-shadow:
+    0 3px 0 rgba(26, 80, 160, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+.btn-back:hover {
+  filter: brightness(1.08);
+}
+.btn-back:active {
+  transform: translateY(2px);
+  box-shadow:
+    0 1px 0 rgba(26, 80, 160, 0.6),
+    inset 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Botón Borrar progreso: transparente; al hover se enciende en rojo Google */
+.btn-reset {
+  background: rgba(255, 255, 255, 0.03) !important;
+  color: #8b949e !important;
+  border: 1px solid rgba(139, 148, 158, 0.3) !important;
+  box-shadow: none !important;
+}
+.btn-reset:hover {
+  background: #EA4335 !important;
+  color: #ffffff !important;
+  border-color: #EA4335 !important;
+  filter: none;
+  box-shadow:
+    0 3px 0 rgba(160, 25, 20, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+.btn-reset:active {
+  transform: translateY(2px);
+  box-shadow:
+    0 1px 0 rgba(160, 25, 20, 0.6),
+    inset 0 3px 8px rgba(0, 0, 0, 0.35);
+}
+
+/* ===== 3D en los propios gráficos ===== */
+
+/* Anillo de Dominio: sombra que lo levanta del fondo */
+.circle {
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.5));
+}
+
+/* Sectores del gráfico circular (Distribución): profundidad marcada */
+.recharts-pie-sector path {
+  filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.6)) drop-shadow(0 0 3px rgba(255, 255, 255, 0.12));
+}
+
+/* Barras (Respuestas por dificultad): se levantan del fondo */
+.recharts-bar-rectangle path {
+  filter: drop-shadow(0 6px 8px rgba(0, 0, 0, 0.55));
+}
+
+/* Áreas del gráfico de progreso: láminas con sombra propia */
+.recharts-area-area {
+  filter: drop-shadow(0 10px 10px rgba(0, 0, 0, 0.5));
+}
+.recharts-area-curve {
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 7px rgba(255, 255, 255, 0.3));
+}
+
+/* Barras de progreso internas (dificultad y retención): relieve cilíndrico */
+.difficulty-fill,
+.retention-fill-modern {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* ===== Borrado en 3 etapas: contador de 6s ===== */
+.countdown-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin: 18px 0;
+}
+
+.countdown-circle {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.9rem;
+  font-weight: 800;
+  color: #FBBC04;
+  border: 3px solid rgba(251, 188, 4, 0.55);
+  background: rgba(251, 188, 4, 0.08);
+  box-shadow:
+    inset 0 2px 6px rgba(0, 0, 0, 0.4),
+    0 0 14px rgba(251, 188, 4, 0.15);
+  animation: countdown-pulse 1s ease-in-out infinite;
+}
+
+.countdown-circle.ready {
+  color: #34A853;
+  border-color: #34A853;
+  background: rgba(52, 168, 83, 0.12);
+  box-shadow: 0 0 16px rgba(52, 168, 83, 0.4);
+  animation: none;
+}
+
+@keyframes countdown-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.07);
+  }
+}
+
+.countdown-label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* Botón de borrado deshabilitado mientras cuenta la espera */
+.btn-danger:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+  filter: grayscale(0.6);
 }
