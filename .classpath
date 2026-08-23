@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<classpath>
-	<classpathentry kind="src" path="pruebas/programacion/JAVA IOC/JAVA YOUTUBE/04-Arrays"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry excluding="pruebas/programacion/JAVA IOC/JAVA YOUTUBE/04-Arrays/" kind="src" path=""/>
-	<classpathentry kind="output" path="bin"/>
-</classpath>

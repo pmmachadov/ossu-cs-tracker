@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry excluding="MainAventureros_Resuelto.java|.github/|.kun-canvas/|.kun-design/|.kunsdd/|.vscode/|bin/|dist/|examenes DAW/|examenes_grado_superior/|IOC/|libros/|node_modules/|out/|out_revision/|practicas/|pruebas/|public/|scripts/|src/|YOUTUBE/" kind="src" path=""/>
+	<classpathentry kind="output" path="out"/>
+</classpath>
