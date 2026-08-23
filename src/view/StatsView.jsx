@@ -194,12 +194,45 @@ export function StatsView({ deck, onBack, onResetProgress }) {
     })
   }, [deck, timeRange])
 
-  // Progreso de procesando → aprendido a lo largo del tiempo (basado en viewLog)
+  // Progreso de procesando → aprendido a lo largo del tiempo (basado en viewLog;
+  // si no hay viewLog, se reconstruye con las fechas de última revisión de las tarjetas)
   const progressOverTime = useMemo(() => {
     const days = progressRange === 'week' ? 7 : progressRange === 'month' ? 30 : 90
     const viewLog = deck.viewLog || []
     
-    if (viewLog.length === 0) return []
+    if (viewLog.length === 0) {
+      // Fallback: usar lastReviewed de cada tarjeta (sin historial previo)
+      const cards = deck.cards || []
+      if (!cards.some(card => card.lastReviewed)) return []
+      return Array.from({ length: days }, (_, i) => {
+        const date = new Date()
+        date.setDate(date.getDate() - (days - 1 - i))
+        const dayStr = date.toDateString()
+
+        let procesando = 0
+        let aprendido = 0
+        cards.forEach(card => {
+          if (card.lastReviewed && new Date(card.lastReviewed).toDateString() === dayStr) {
+            if (card.status === 'aprendido') {
+              aprendido++
+            } else if (card.status === 'procesando') {
+              procesando++
+            }
+          }
+        })
+
+        return {
+          date: date.toLocaleDateString('es', {
+            weekday: days <= 7 ? 'short' : undefined,
+            day: 'numeric',
+            month: days > 7 ? 'short' : undefined,
+            year: days > 60 ? '2-digit' : undefined,
+          }),
+          procesando,
+          aprendido,
+        }
+      })
+    }
     
     return Array.from({ length: days }, (_, i) => {
       const date = new Date()

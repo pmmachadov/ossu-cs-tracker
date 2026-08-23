@@ -69,6 +69,10 @@ function App() {
               if (savedDeck.studyStats) {
                 deck.studyStats = savedDeck.studyStats;
               }
+              // Restaurar registro de visualizaciones (datos del gráfico de progreso)
+              if (savedDeck.viewLog) {
+                deck.viewLog = savedDeck.viewLog;
+              }
             }
           });
         }

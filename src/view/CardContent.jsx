@@ -63,6 +63,7 @@ const CheckItem = ({ storageKey }) => {
     <label
       className="code-check"
       title={checked ? "Entendido ✓" : "Marca si lo entiendes"}
+      onClick={(e) => e.stopPropagation()}
     >
       <input
         type="checkbox"
@@ -95,7 +96,14 @@ const nodeText = (node) => {
 const codeRenderer = ({ rows, stylesheet, useInlineStyles }, blockHash) => {
   return rows.map((row, i) => {
     const lineText = (row.children || []).map(nodeText).join("");
-    if (!lineText.includes("// ✅")) {
+    // Checkbox en líneas marcadas: ✅ (tick), ❌ (cross) o que mencionen "error"
+    const isMarkedLine =
+      lineText.includes("✅") ||
+      lineText.includes("❌") ||
+      /\berror\b/i.test(lineText);
+    // Línea con error: se resalta en rojo (solo las que llevan ❌)
+    const isErrorLine = lineText.includes("❌");
+    if (!isMarkedLine) {
       return createElement({
         node: row,
         stylesheet,
@@ -104,7 +112,10 @@ const codeRenderer = ({ rows, stylesheet, useInlineStyles }, blockHash) => {
       });
     }
     return (
-      <div key={`lc-${i}`} className="code-line-check">
+      <div
+        key={`lc-${i}`}
+        className={`code-line-check${isErrorLine ? " code-line-error" : ""}`}
+      >
         <div className="code-line-text">
           {createElement({ node: row, stylesheet, useInlineStyles })}
         </div>
@@ -195,6 +206,9 @@ const renderCardContent = (text, cardImageUrl) => {
   if (!text) return null;
 
   const normalized = normalizeText(text);
+  // Tarjeta de "encontrar el error": muestra números de línea en los bloques
+  // de código (para no equivocarse de línea) — "errores" en plural o ❌.
+  const isErrorCard = /\berrores\b/i.test(normalized) || normalized.includes("❌");
   const lines = normalized.split("\n");
   const elements = [];
   let codeBlock = null;
@@ -430,8 +444,11 @@ const renderCardContent = (text, cardImageUrl) => {
             padding: "16px 20px",
           }}
           wrapLongLines={true}
+          showLineNumbers={isErrorCard && lang !== "text"}
           renderer={
-            code.split("\n").some((l) => l.includes("// ✅"))
+            code.split("\n").some(
+              (l) => l.includes("✅") || l.includes("❌") || /\berror\b/i.test(l),
+            )
               ? (rendererArgs) => codeRenderer(rendererArgs, simpleHash(code))
               : undefined
           }

@@ -1,3 +1,6 @@
+// Configurar entorno React para act() en tests (React 19 + jsdom)
+globalThis.IS_REACT_ACT_ENVIRONMENT = true;
+
 // Mock localStorage for jsdom
 if (typeof localStorage === 'undefined') {
   globalThis.localStorage = {
