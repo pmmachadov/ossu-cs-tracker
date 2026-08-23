@@ -1,4 +1,4 @@
-/**
+﻿/**
  * =============================================================================
  * TodoJunto.java - TODOS los ejercicios Java del repositorio en un solo archivo
  * =============================================================================
@@ -27,7 +27,7 @@ import java.awt.event.*;
 public class TodoJunto {
 
     // =========================================================================
-    // MAIN - Elige qué ejercicios ejecutar
+    // MAIN - Elige quÃ© ejercicios ejecutar
     // =========================================================================
     public static void main(String[] args) throws Exception {
         System.out.println("=== TODOJUNTO.JAVA ===\n");
@@ -74,7 +74,7 @@ public class TodoJunto {
         // Reto3_CalculaDiferencia.main(args);
         // Reto4_MostrarDiferencia.main(args);
 
-        // --- RETOS 5 (Métodos) ---
+        // --- RETOS 5 (MÃ©todos) ---
         // Reto1_CompararArraysReales.main(args);
         // Reto2_RegistroNotas.main(args);
         // Reto3_RegistroTemperaturasU5.main(args);
@@ -95,13 +95,13 @@ public class TodoJunto {
         // Semaforo.main(args);
         // BuqueInvestigacion.main(args);
 
-        // --- YOUTUBE: Tema 2 (Introducción) ---
+        // --- YOUTUBE: Tema 2 (IntroducciÃ³n) ---
         // YT_MathFunciones.main(args);
         // YT_EjerciciosIniciacion.main(args);
         // YT_EjerciciosStrings.main(args);
         // YT_EjerciciosFiguras.main(args);
 
-        // --- YOUTUBE: Tema 3 (Métodos) ---
+        // --- YOUTUBE: Tema 3 (MÃ©todos) ---
         // YT_EjerciciosMetodos.main(args);
         // YT_EjerciciosRecursividad.main(args);
 
@@ -138,13 +138,13 @@ public class TodoJunto {
     }
 
     // =========================================================================
-    // RETOS 1 (Tema 2 - Introducción a Java)
+    // RETOS 1 (Tema 2 - IntroducciÃ³n a Java)
     // =========================================================================
     static class Reto1_HolaMon {
-        public static void main(String[] args) { System.out.println("Hola, món!"); }
+        public static void main(String[] args) { System.out.println("Hola, mÃ³n!"); }
     }
     static class Reto2_AdiosMundo {
-        public static void main(String[] args) { System.out.println("¡Adiós, mundo!"); }
+        public static void main(String[] args) { System.out.println("Â¡AdiÃ³s, mundo!"); }
     }
     static class Reto3_EvaluarExpressionsLiterals {
         public static void main(String[] args) {
@@ -199,14 +199,14 @@ public class TodoJunto {
     }
 
     // =========================================================================
-    // RETOS 2 (Estructuras de selección y bucles)
+    // RETOS 2 (Estructuras de selecciÃ³n y bucles)
     // =========================================================================
     static class Reto1_Penalitzacio {
         public static void main(String[] args) {
             Scanner sc = new Scanner(System.in);
             System.out.print("Precio: "); float p = sc.nextFloat();
-            if (p < 30) { p += 2; System.out.println("Penalización +2€"); }
-            System.out.println("Total: " + p + "€"); sc.close();
+            if (p < 30) { p += 2; System.out.println("PenalizaciÃ³n +2â‚¬"); }
+            System.out.println("Total: " + p + "â‚¬"); sc.close();
         }
     }
     static class Reto2_DosSecretos {
@@ -236,7 +236,7 @@ public class TodoJunto {
                 float p = sc.nextFloat();
                 if (p > 0) System.out.println("OK: " + p);
                 else System.out.println("Negativo");
-            } else System.out.println("No válido"); sc.close();
+            } else System.out.println("No vÃ¡lido"); sc.close();
         }
     }
     static class Reto5_TaulaMultiplicarWhile {
@@ -269,13 +269,13 @@ public class TodoJunto {
             Scanner sc = new Scanner(System.in); int m;
             do { System.out.print("Mes (1-12): "); m = sc.nextInt(); } while (m < 1 || m > 12);
             String[] d = {"","31","28","31","30","31","30","31","31","30","31","30","31"};
-            System.out.println("Días: " + d[m]); sc.close();
+            System.out.println("DÃ­as: " + d[m]); sc.close();
         }
     }
     static class Reto9_SumarMultiplesTresFor {
         public static void main(String[] args) {
             Scanner sc = new Scanner(System.in);
-            System.out.print("Límite: "); int lim = sc.nextInt(); int s = 0;
+            System.out.print("LÃ­mite: "); int lim = sc.nextInt(); int s = 0;
             for (int i = 0; i <= lim; i += 3) s += i;
             System.out.println("Suma: " + s); sc.close();
         }
@@ -381,13 +381,13 @@ public class TodoJunto {
     }
 
     // =========================================================================
-    // RETOS 4 (Programación modular)
+    // RETOS 4 (ProgramaciÃ³n modular)
     // =========================================================================
     static class Reto1_OrdenarDescendentVariable {
         private int[] arr; private Scanner sc = new Scanner(System.in);
         public static void main(String[] args) { new Reto1_OrdenarDescendentVariable().inicio(); }
         void inicio() {
-            System.out.print("Tamaño: "); arr = new int[sc.nextInt()];
+            System.out.print("TamaÃ±o: "); arr = new int[sc.nextInt()];
             for (int i = 0; i < arr.length; i++) { System.out.print("Valor " + (i+1) + ": "); arr[i] = sc.nextInt(); }
             Arrays.sort(arr); System.out.println("Ordenado: " + Arrays.toString(arr));
             int mayor = arr[arr.length-1];
@@ -442,7 +442,7 @@ public class TodoJunto {
     }
 
     // =========================================================================
-    // RETOS 5 (Métodos, packages)
+    // RETOS 5 (MÃ©todos, packages)
     // =========================================================================
     static class Reto1_CompararArraysReales {
         static double media(double[] a) { double s = 0; for (double v : a) s += v; return s / a.length; }
@@ -585,28 +585,28 @@ public class TodoJunto {
         static final String R="\u001B[31m", G="\u001B[32m", Y="\u001B[33m", B="\u001B[1m", X="\u001B[0m";
         public static void main(String[] args) throws InterruptedException {
             while (true) {
-                for (int c = 30; c > 0; c--) { clr(); print(G+"●", "AVANZAR", c, 30); }
-                for (int c = 3; c > 0; c--) { clr(); print(Y+"●", "PRECAUCION", c, 3); }
-                for (int c = 30; c > 0; c--) { clr(); print(R+"●", "DETENERSE", c, 30); }
+                for (int c = 30; c > 0; c--) { clr(); print(G+"â—", "AVANZAR", c, 30); }
+                for (int c = 3; c > 0; c--) { clr(); print(Y+"â—", "PRECAUCION", c, 3); }
+                for (int c = 30; c > 0; c--) { clr(); print(R+"â—", "DETENERSE", c, 30); }
             }
         }
         static void clr() { System.out.print("\033[H\033[2J"); System.out.flush(); }
         static void print(String luz, String msg, int t, int max) {
-            System.out.println(B+"=== SEMAFORO ==="+X+"\n   ┌───────┐\n   │   "+luz+"   │ "+msg+"\n   └───────┘\nTiempo: "+t+"s");
+            System.out.println(B+"=== SEMAFORO ==="+X+"\n   â”Œâ”€â”€â”€â”€â”€â”€â”€â”\n   â”‚   "+luz+"   â”‚ "+msg+"\n   â””â”€â”€â”€â”€â”€â”€â”€â”˜\nTiempo: "+t+"s");
             try { Thread.sleep(1000); } catch (Exception e) {}
         }
     }
     static class BuqueInvestigacion {
-        static class Expedicion { String d; int dd; Expedicion(String d, int dd) { this.d=d; this.dd=dd; } public String toString() { return d+" ("+dd+" días)"; } }
+        static class Expedicion { String d; int dd; Expedicion(String d, int dd) { this.d=d; this.dd=dd; } public String toString() { return d+" ("+dd+" dÃ­as)"; } }
         public static void main(String[] args) {
             java.util.List<Expedicion> ex = new java.util.ArrayList<>();
-            ex.add(new Expedicion("Antártida",90)); ex.add(new Expedicion("Pacífico",45)); ex.add(new Expedicion("Caribe",30));
+            ex.add(new Expedicion("AntÃ¡rtida",90)); ex.add(new Expedicion("PacÃ­fico",45)); ex.add(new Expedicion("Caribe",30));
             for (Expedicion e : ex) System.out.println(e);
         }
     }
 
     // =========================================================================
-    // YOUTUBE - Tema 2: Introducción
+    // YOUTUBE - Tema 2: IntroducciÃ³n
     // =========================================================================
     static class YT_MathFunciones {
         public static void main(String[] args) {
@@ -664,19 +664,19 @@ public class TodoJunto {
     static class YT_EjerciciosFiguras {
         public static void main(String[] args) {
             int base = 10, altura = 5;
-            System.out.println("Rectángulo:");
+            System.out.println("RectÃ¡ngulo:");
             for (int i = 0; i < altura; i++) { for (int j = 0; j < base; j++) System.out.print("* "); System.out.println(); }
-            System.out.println("\nRectángulo hueco:");
+            System.out.println("\nRectÃ¡ngulo hueco:");
             for (int i = 0; i < altura; i++) {
                 for (int j = 0; j < base; j++)
                     System.out.print((i==0||i==altura-1||j==0||j==base-1) ? "* " : "  ");
                 System.out.println();
             }
             int altT = 5;
-            System.out.println("\nTriángulo rectángulo:");
+            System.out.println("\nTriÃ¡ngulo rectÃ¡ngulo:");
             for (int i = 0; i < altT; i++) { for (int j = 0; j <= i; j++) System.out.print("* "); System.out.println(); }
             int altE = 5, baseE = altE*2-1;
-            System.out.println("\nTriángulo equilátero:");
+            System.out.println("\nTriÃ¡ngulo equilÃ¡tero:");
             for (int i = 0; i < altE; i++) {
                 int centro = baseE/2;
                 for (int j = 0; j < baseE; j++)
@@ -687,7 +687,7 @@ public class TodoJunto {
     }
 
     // =========================================================================
-    // YOUTUBE - Tema 3: Métodos
+    // YOUTUBE - Tema 3: MÃ©todos
     // =========================================================================
     static class YT_EjerciciosMetodos {
         static void saludar(String n) { System.out.println("Hola " + n + ", que tal estas?"); }
@@ -836,12 +836,12 @@ public class TodoJunto {
     }
     static class YT_MatricesBordes {
         public static void main(String[] args) {
-            System.out.println("YT_MatricesBordes: ver Bordes.java para implementación completa");
+            System.out.println("YT_MatricesBordes: ver Bordes.java para implementaciÃ³n completa");
         }
     }
     static class YT_MatrizDoble {
         public static void main(String[] args) {
-            // Dos matrices lado a lado - implementación en Bordes.java
+            // Dos matrices lado a lado - implementaciÃ³n en Bordes.java
             System.out.println("YT_MatrizDoble: ver Bordes.java");
         }
     }
@@ -882,7 +882,7 @@ public class TodoJunto {
             for (int i = n-1; i >= 1; i--) { for (int j = 1; j <= i; j++) System.out.print(j); System.out.println(); }
         }
         static String ej2(String s) {
-            return s.replace('a','4').replace('A','4').replace('á','4').replace('Á','4')
+            return s.replace('a','4').replace('A','4').replace('Ã¡','4').replace('Ã','4')
                     .replace('e','3').replace('E','3').replace('i','1').replace('I','1')
                     .replace('o','0').replace('O','0');
         }
@@ -899,9 +899,9 @@ public class TodoJunto {
             return true;
         }
         public static void main(String[] args) {
-            System.out.println("Ej1: n=5 -> ver figura numérica");
+            System.out.println("Ej1: n=5 -> ver figura numÃ©rica");
             ej1(5);
-            System.out.println("Ej2: " + ej2("Hola Ángel"));
+            System.out.println("Ej2: " + ej2("Hola Ãngel"));
             System.out.println("Ej3: " + Arrays.toString(ej3(new int[]{1,2,2,3,1,4,5,4})));
             System.out.println("Ej4 777 es octal? " + ej4(777));
         }
@@ -934,7 +934,7 @@ public class TodoJunto {
             void setSalario(double s) { salario = Math.max(s, 0); }
             String clasificacion() { return permanencia >= 18 ? "Senior" : permanencia > 3 ? "Intermedio" : "Principiante"; }
             void subirSalario(double pct) { setSalario(salario + salario * pct / 100); }
-            void mostrar() { System.out.println(nombre+" - "+clasificacion()+" - "+salario+"€"); }
+            void mostrar() { System.out.println(nombre+" - "+clasificacion()+" - "+salario+"â‚¬"); }
         }
         public static void main(String[] args) {
             Empleado e = new Empleado("Ana", 5, 2000);
@@ -943,7 +943,7 @@ public class TodoJunto {
     }
 
     // =========================================================================
-    // YOUTUBE - Tema 6: Herencia (Triángulo)
+    // YOUTUBE - Tema 6: Herencia (TriÃ¡ngulo)
     // =========================================================================
     static class YT_Triangulo {
         abstract static class Figura2D { abstract double area(); }
@@ -957,12 +957,12 @@ public class TodoJunto {
                 double l1 = Math.round(a.distancia(b)*1000)/1000.0;
                 double l2 = Math.round(b.distancia(c)*1000)/1000.0;
                 double l3 = Math.round(c.distancia(a)*1000)/1000.0;
-                return area() <= 0 ? "No triángulo" : (l1==l2&&l2==l3 ? "Equilátero" : (l1==l2||l2==l3||l1==l3 ? "Isósceles" : "Escaleno"));
+                return area() <= 0 ? "No triÃ¡ngulo" : (l1==l2&&l2==l3 ? "EquilÃ¡tero" : (l1==l2||l2==l3||l1==l3 ? "IsÃ³sceles" : "Escaleno"));
             }
         }
         public static void main(String[] args) {
             Triangulo t = new Triangulo(new Punto2D(0,0), new Punto2D(3,0), new Punto2D(0,4));
-            System.out.println("Tipo: " + t.tipo() + " Area: " + t.area() + " Perímetro: " + t.perimetro());
+            System.out.println("Tipo: " + t.tipo() + " Area: " + t.area() + " PerÃ­metro: " + t.perimetro());
         }
     }
 
@@ -977,7 +977,7 @@ public class TodoJunto {
             System.out.println("Antes: " + alumnos.size() + " alumnos");
             Iterator<Alumno> it = alumnos.iterator();
             while (it.hasNext()) { if (it.next().getEdad() < 18) it.remove(); }
-            System.out.println("Después (edad>=18): " + alumnos.size() + " alumnos");
+            System.out.println("DespuÃ©s (edad>=18): " + alumnos.size() + " alumnos");
         }
     }
 
@@ -1006,7 +1006,7 @@ public class TodoJunto {
             return c;
         }
         public static void main(String[] args) throws Exception {
-            System.out.println("YT_EjerciciosFicheros: usa los métodos estáticos");
+            System.out.println("YT_EjerciciosFicheros: usa los mÃ©todos estÃ¡ticos");
             System.out.println("listarExtension(ruta, ext)");
             System.out.println("crearArchivos(ruta, n)");
             System.out.println("contarPalabra(archivo, palabra)");
@@ -1024,10 +1024,11 @@ public class TodoJunto {
             JButton btn = new JButton("Sumar");
             btn.addActionListener(e -> {
                 try { res.setText("= " + (Integer.parseInt(c1.getText())+Integer.parseInt(c2.getText()))); }
-                catch (Exception ex) { JOptionPane.showMessageDialog(frame, "Enteros válidos", "Error", JOptionPane.ERROR_MESSAGE); }
+                catch (Exception ex) { JOptionPane.showMessageDialog(frame, "Enteros vÃ¡lidos", "Error", JOptionPane.ERROR_MESSAGE); }
             });
             frame.add(new JLabel("Num1:")); frame.add(c1); frame.add(new JLabel("Num2:")); frame.add(c2); frame.add(btn); frame.add(res);
             frame.setVisible(true);
         }
     }
 }
+

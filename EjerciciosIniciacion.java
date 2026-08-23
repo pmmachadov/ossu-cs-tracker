@@ -1,4 +1,4 @@
-public class EjerciciosIniciacion {
+﻿public class EjerciciosIniciacion {
     public static void main(String[] args) {
         int[] array = {1, 2, 3, 4, 1, 1, 0};
         ejercicio1(array, 1);
@@ -37,3 +37,4 @@ public class EjerciciosIniciacion {
             "El valor " + n + " aparece " + contador + (contador == 1 ? " vez" : " veces") + " en el Array.");
     }
 }
+

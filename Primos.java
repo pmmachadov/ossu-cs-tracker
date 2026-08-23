@@ -12,11 +12,11 @@
     }
 
     public static void main(String[] args) {
-        int encontrados = 0, n = 2;
-        while (encontrados < 10) {
+        int numerosPrimos = 0, n = 2;
+        while (numerosPrimos < 10) {
             if (esPrimo(n)) {
                 System.out.println(n);
-                encontrados++;
+                numerosPrimos++;
             }
             n++;
         }

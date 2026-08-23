@@ -1,4 +1,4 @@
-public class Main {
+﻿public class Main {
     static boolean esPrimo(int n) {
         if (n < 2) {
             return false;
@@ -22,3 +22,4 @@ public class Main {
         }
     }
 }
+
