@@ -82,23 +82,31 @@ const CheckItem = ({ storageKey }) => {
 };
 
 // Renderer de código: añade un checkbox a la derecha de cada línea con // ✅
-const codeRenderer = (rows, blockHash) => {
+// Nota: react-syntax-highlighter >= 16 invoca el renderer como
+// renderer({ rows, stylesheet, useInlineStyles }), no con las filas sueltas.
+// El árbol de filas usa nodos { type: 'text', value } dentro de los elementos.
+const nodeText = (node) => {
+  if (node == null) return "";
+  if (node.type === "text") return node.value || "";
+  if (Array.isArray(node.children)) return node.children.map(nodeText).join("");
+  return "";
+};
+
+const codeRenderer = ({ rows, stylesheet, useInlineStyles }, blockHash) => {
   return rows.map((row, i) => {
-    const lineText = (row.children || [])
-      .map((t) => (t.children == null ? "" : t.children))
-      .join("");
+    const lineText = (row.children || []).map(nodeText).join("");
     if (!lineText.includes("// ✅")) {
       return createElement({
         node: row,
-        styles: codeTheme,
-        useInlineStyles: true,
+        stylesheet,
+        useInlineStyles,
         key: `l-${i}`,
       });
     }
     return (
       <div key={`lc-${i}`} className="code-line-check">
         <div className="code-line-text">
-          {createElement({ node: row, styles: codeTheme, useInlineStyles: true })}
+          {createElement({ node: row, stylesheet, useInlineStyles })}
         </div>
         <CheckItem storageKey={`ankicards.check.${blockHash}.${i}`} />
       </div>
@@ -424,7 +432,7 @@ const renderCardContent = (text, cardImageUrl) => {
           wrapLongLines={true}
           renderer={
             code.split("\n").some((l) => l.includes("// ✅"))
-              ? (rows) => codeRenderer(rows, simpleHash(code))
+              ? (rendererArgs) => codeRenderer(rendererArgs, simpleHash(code))
               : undefined
           }
         >

@@ -1,4 +1,4 @@
-﻿import { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import "./DeckList.css";
 import { Icons } from "./Icons";
 import {
@@ -281,15 +281,6 @@ export function DeckList({
             <span className="btn-icon">{Icons.plus}</span>
             <span>Nuevo Mazo</span>
           </button>
-          <a
-            href="/diagrama-uml.html"
-            target="_blank"
-            className="btn btn-secondary btn-diagrama"
-            title="Diagrama UML de clases"
-          >
-            <span className="btn-icon">{Icons.diagrama}</span>
-            <span>UML</span>
-          </a>
         </div>
       </div>
 

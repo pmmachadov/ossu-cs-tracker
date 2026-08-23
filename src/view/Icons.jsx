@@ -111,17 +111,6 @@ export const Icons = {
       <line x1="12" y1="17" x2="12" y2="21" />
     </svg>
   ),
-  diagrama: (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <rect x="3" y="3" width="7" height="7" />
-      <rect x="14" y="3" width="7" height="7" />
-      <rect x="3" y="14" width="7" height="7" />
-      <rect x="14" y="14" width="7" height="7" />
-      <line x1="10" y1="6.5" x2="14" y2="6.5" />
-      <line x1="6.5" y1="10" x2="6.5" y2="14" />
-      <line x1="17.5" y1="10" x2="17.5" y2="14" />
-    </svg>
-  ),
   warning: (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />

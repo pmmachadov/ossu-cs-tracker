@@ -207,30 +207,6 @@
   gap: 8px;
 }
 
-.btn-diagrama {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 20px !important;
-  font-size: 0.9375rem !important;
-  font-weight: 600;
-  border-radius: 9999px !important;
-  background: rgba(52, 168, 83, 0.1) !important;
-  border: 1px solid rgba(52, 168, 83, 0.3) !important;
-  color: #34A853 !important;
-  box-shadow: none !important;
-  text-decoration: none;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.btn-diagrama:hover {
-  background: rgba(52, 168, 83, 0.2) !important;
-  border-color: #34A853 !important;
-  color: #34A853 !important;
-  transform: none !important;
-}
-
 .btn-icon {
   width: 16px;
   height: 16px;
