@@ -395,6 +395,7 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
       </div>
 
       <div className="flashcard-container">
+        <span className="card-number-badge">{currentCardIndex + 1}</span>
         <div
           key={currentCardIndex}
           className="flashcard"
