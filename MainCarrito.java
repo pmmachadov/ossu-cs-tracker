@@ -1,10 +1,11 @@
 ﻿import java.util.Scanner;
 
-public class ArraysUtils2 {
+public class MainCarrito {
 
     public static void main(String[] args) {
+
         Scanner sc = new Scanner(System.in);
-        System.out.println("Elige 8 numeros:");
+        System.out.println("Elige 8 numeros");
         int[] numeros = new int[8];
 
         for (int i = 0; i < numeros.length; i++) {
@@ -16,8 +17,9 @@ public class ArraysUtils2 {
         System.out.println("Mayor: " + mayor(numeros));
         System.out.println("Menor: " + menor(numeros));
 
-        int[] alReves = invertir(numeros);
-        System.out.print("Invertido: ");
+        int[] alReves = invertir();
+
+        System.out.print("Invertido");
         for (int v : alReves) {
             System.out.print(v + " ");
         }
@@ -35,9 +37,6 @@ public class ArraysUtils2 {
     }
 
     static int mayor(int[] numeros) {
-        if (numeros == null || numeros.length == 0) {
-            throw new IllegalArgumentException("El arreglo no puede estar vacío");
-        }
         int mayor = numeros[0];
         for (int valor : numeros) {
             if (valor > mayor) {
@@ -48,14 +47,12 @@ public class ArraysUtils2 {
     }
 
     static int menor(int[] numeros) {
-        if (numeros == null || numeros.length == 0) {
-            throw new IllegalArgumentException("El arreglo no puede estar vacío");
-        }
         int menor = numeros[0];
         for (int valor : numeros) {
             if (valor < menor) {
                 menor = valor;
             }
+
         }
         return menor;
     }
