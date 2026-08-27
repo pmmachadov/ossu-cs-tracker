@@ -21,7 +21,7 @@ function App() {
         const savedDecks = DataStore.loadDecks();
         
         const deckFiles = [
-          // Solo el mazo Examen Java (el resto se eliminó)
+          // Mazo Examen Java (los 20 exámenes de Grado Superior)
           "/data/examenes/examen-java.json",
         ];
 

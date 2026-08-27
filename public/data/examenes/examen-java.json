@@ -3491,6 +3491,347 @@
         "examen-20"
       ],
       "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-21-01",
+      "front": "(Conceptos · Fundamentos de Java)\n\nParte 1: Conceptos básicos\n\n¿Qué es Java?\n\na) Un lenguaje interpretado que se ejecuta directamente en el navegador\n\nb) Un lenguaje compilado a bytecode que se ejecuta en la JVM (Máquina Virtual de Java)\n\nc) Un lenguaje de consulta de bases de datos\n\nd) Un lenguaje de marcado para páginas web",
+      "back": "RESPUESTA / SOLUCIÓN\n\n**b) Un lenguaje compilado a bytecode que se ejecuta en la JVM.**\n\n- Java se **compila** a *bytecode* (archivos `.class`) y ese bytecode se ejecuta en la **JVM** (Java Virtual Machine), lo que lo hace multiplataforma: \"escríbelo una vez, ejecútalo en cualquier sitio\".\n- Es un lenguaje **orientado a objetos**, de **tipado estático** (hay que declarar el tipo de cada variable).\n- A diferencia de JavaScript (que se ejecuta en el navegador del cliente), Java suele ejecutarse en servidores o en la máquina local.",
+      "tags": [
+        "java",
+        "examen",
+        "conceptos"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "ex-java-21-02",
+      "front": "(Conceptos · Fundamentos de Java)\n\nParte 1: Conceptos básicos\n\n¿Cuál es la estructura mínima de un programa Java?\n\na) Solo una función main suelta\n\nb) Una clase que contiene el método main\n\nc) Un archivo HTML con etiqueta <script>\n\nd) Una función llamada principal()",
+      "back": "RESPUESTA / SOLUCIÓN\n\n**b) Una clase que contiene el método main.**\n\n```java\npublic class Hola {\n    public static void main(String[] args) {\n        System.out.println(\"¡Hola Mundo!\");\n    }\n}\n```\n\n- El punto de entrada es **`public static void main(String[] args)`**.\n- El nombre del archivo debe coincidir con el nombre de la clase pública (`Hola.java`).\n- En Java **no** hay funciones sueltas: todo vive dentro de clases.",
+      "tags": [
+        "java",
+        "examen",
+        "conceptos"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "ex-java-21-03",
+      "front": "(Conceptos · Fundamentos de Java)\n\nParte 1: Conceptos básicos\n\n¿Cómo se compila y se ejecuta un programa Java desde la terminal?\n\na) java Hola.java y luego javac Hola\n\nb) javac Hola.java (compila) y java Hola (ejecuta)\n\nc) java run Hola.java\n\nd) compile Hola.java",
+      "back": "RESPUESTA / SOLUCIÓN\n\n**b) `javac Hola.java` compila y `java Hola` ejecuta.**\n\n```bash\njavac Hola.java   # compila → genera Hola.class (bytecode)\njava Hola         # ejecuta el bytecode en la JVM\n```\n\n- **`javac`** (Java Compiler) genera el archivo `.class` con bytecode.\n- **`java`** arranca la JVM y ejecuta el método `main` de la clase indicada (sin extensión `.class`).",
+      "tags": [
+        "java",
+        "examen",
+        "conceptos"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "ex-java-21-04",
+      "front": "(Conceptos · Fundamentos de Java)\n\nParte 1: Conceptos básicos\n\n¿Cómo se escriben los comentarios en Java?",
+      "back": "RESPUESTA / SOLUCIÓN\n\nHay **tres formas**:\n\n```java\n// Comentario de una sola línea\n\n/*\n  Comentario de varias líneas\n*/\n\n/** Comentario Javadoc: documenta clases y métodos */\npublic class Ejemplo { }\n```\n\n- **`//`** → comentario de una línea.\n- **`/* ... */`** → comentario de varias líneas.\n- **`/** ... */`** → Javadoc, genera documentación automática.\n\nLos comentarios no interfieren con la ejecución; el compilador los ignora.",
+      "tags": [
+        "java",
+        "examen",
+        "conceptos"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "ex-java-21-05",
+      "front": "(Conceptos · Fundamentos de Java)\n\nParte 1: Conceptos básicos\n\n¿Cómo se declara e inicializa una variable en Java?\n\na) var x = 5;\n\nb) int x = 5;\n\nc) x = 5;\n\nd) declare int x;",
+      "back": "RESPUESTA / SOLUCIÓN\n\n**b) `int x = 5;` — en Java se declara el TIPO antes del nombre.**\n\n```java\nint numero = 5;          // tipo + nombre + valor\ndouble precio = 5.5;\nString nombre = \"Ana\";\nboolean esMayor = true;\n\nint a, b, c;             // varias declaraciones\na = b = c = 2;           // asignación en cascada\n```\n\n💡 Java es de **tipado estático**: cada variable tiene un tipo fijo y no puede cambiar al asignar otro tipo (a diferencia de JavaScript con `var`).",
+      "tags": [
+        "java",
+        "examen",
+        "conceptos"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "ex-java-21-06",
+      "front": "(Conceptos · Fundamentos de Java)\n\nParte 1: Conceptos básicos\n\n¿Qué significa que Java sea de tipado estático?",
+      "back": "RESPUESTA / SOLUCIÓN\n\nQue **cada variable tiene un tipo fijo declarado** y no puede contener valores de otro tipo sin conversión:\n\n```java\nint dato = 42;\ndato = \"Hola\";   // ❌ ERROR de compilación: String no cabe en int\n```\n\n- En JavaScript el tipo se adapta al valor (tipado dinámico).\n- En Java hay que convertir explícitamente: `String s = String.valueOf(42);` o `int n = Integer.parseInt(\"42\");`.\n\nVentaja: muchos errores se detectan **en compilación**, antes de ejecutar.",
+      "tags": [
+        "java",
+        "examen",
+        "conceptos"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "ex-java-21-07",
+      "front": "(Conceptos · Fundamentos de Java)\n\nParte 1: Conceptos básicos\n\n¿Cuáles son los tipos primitivos más usados en Java y qué guardan?",
+      "back": "RESPUESTA / SOLUCIÓN\n\n| Tipo | Guarda | Ejemplo |\n|------|--------|---------|\n| `int` | número entero | `int n = 5;` |\n| `double` | número decimal | `double p = 5.5;` |\n| `boolean` | verdadero/falso | `boolean b = true;` |\n| `char` | un solo carácter | `char c = 'A';` |\n| `long` | entero grande | `long l = 3000000000L;` |\n| `float` | decimal (menor precisión) | `float f = 1.5f;` |\n\nAdemás está **`String`**, que **no es primitivo**: es una clase (tipo de referencia).\n\n💡 Los primitivos guardan el **valor** directamente; los objetos (como `String`) guardan una **referencia**.",
+      "tags": [
+        "java",
+        "examen",
+        "conceptos"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "ex-java-21-08",
+      "front": "(Conceptos · Fundamentos de Java)\n\nParte 1: Conceptos básicos\n\n¿Cómo se comprueba el tipo de un objeto en Java?\n\na) typeof(obj)\n\nb) obj instanceof Clase\n\nc) obj.getClass().name()\n\nd) type(obj)",
+      "back": "RESPUESTA / SOLUCIÓN\n\n**b) `obj instanceof Clase`** (y también `obj.getClass()` para el tipo exacto):\n\n```java\nObject obj = \"texto\";\nif (obj instanceof String) {          // true\n    System.out.println(\"Es un String\");\n}\n\nSystem.out.println(obj.getClass());   // class java.lang.String\n```\n\n- **`instanceof`** comprueba si el objeto es de una clase (o subclase/implementación).\n- **`getClass()`** devuelve la clase exacta en tiempo de ejecución.\n- Para saber si una variable de referencia está vacía se usa `obj == null`.",
+      "tags": [
+        "java",
+        "examen",
+        "conceptos"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "ex-java-21-09",
+      "front": "(Conceptos · Fundamentos de Java)\n\nParte 1: Conceptos básicos\n\n¿Cómo se escriben caracteres especiales dentro de un String en Java?",
+      "back": "RESPUESTA / SOLUCIÓN\n\nCon el carácter de escape **`\\`**:\n\n```java\nString t1 = \"Dijo: \"hola\"\";      // comillas dentro de comillas\nString t2 = \"It's fine\";          // apóstrofo normal, sin escape\nchar c = ''';                    // carácter comilla simple\n\nString salto = \"Línea1\\nLínea2\"; // salto de línea\nString tab = \"A\\tB\";             // tabulación\n```\n\n💡 En Java los Strings se delimitan con **comillas dobles** (`\"`), y los `char` con **comillas simples** (`'`). El apóstrofo no requiere escape dentro de un String.",
+      "tags": [
+        "java",
+        "examen",
+        "conceptos"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-21-10",
+      "front": "(Conceptos · Fundamentos de Java)\n\nParte 2: Operadores\n\n¿Cuáles son los operadores aritméticos de Java y qué devuelve `%`?",
+      "back": "RESPUESTA / SOLUCIÓN\n\n| Operador | Símbolo | Ejemplo |\n|----------|---------|---------|\n| Suma | `+` | `3 + 2` → 5 |\n| Resta | `-` | `5 - 2` → 3 |\n| Multiplicación | `*` | `3 * 2` → 6 |\n| División | `/` | `10 / 3` → 3 (enteros) |\n| Módulo (resto) | `%` | `5 % 2` → 1 |\n\n```java\nint a = 10 / 3;      // 3  (división entera: trunca)\ndouble b = 10.0 / 3; // 3.333... (si hay double, es decimal)\nint resto = 5 % 2;   // 1\n```\n\n⚠️ **Ojo**: en Java, `int / int` siempre da `int` (trunca decimales). Para obtener decimales, al menos un operando debe ser `double` (o usar cast: `(double) 10 / 3`).",
+      "tags": [
+        "java",
+        "examen",
+        "conceptos"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "ex-java-21-11",
+      "front": "(Conceptos · Fundamentos de Java)\n\nParte 2: Operadores\n\n¿Para qué sirven los operadores de asignación compuestos como `+=`?",
+      "back": "RESPUESTA / SOLUCIÓN\n\nPara **simplificar** `variable = variable + algo`:\n\n```java\nint numero = 3;\nnumero = numero + 5;   // 8\n// equivale a:\nnumero += 5;           // 8\n```\n\nFunciona con todos: `+=`, `-=`, `*=`, `/=`, `%=`.\n\nTambién con String (concatenación):\n\n```java\nString texto = \"Hola \";\ntexto += \"tu\";        // « Hola tu »\n```\n\n💡 También existen los incrementos `++` y `--`: `i++` (usa y luego suma) vs `++i` (suma y luego usa).",
+      "tags": [
+        "java",
+        "examen",
+        "conceptos"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "ex-java-21-12",
+      "front": "(Conceptos · Fundamentos de Java)\n\nParte 2: Operadores\n\n¿Qué es la concatenación de Strings y con qué operador se hace?",
+      "back": "RESPUESTA / SOLUCIÓN\n\nEs **unir cadenas**, con el operador **`+`**:\n\n```java\nString hola = \"Hola\";\nString nombre = \"tu\";\nString resultado = hola + nombre;\nSystem.out.println(resultado);   // « Holatu » (sin espacio)\n\n// Con espacio:\nString resultado2 = hola + \" \" + nombre;   // « Hola tu »\n```\n\nSe puede concatenar String con números:\n\n```java\nString texto = \"Un nombre: \";\nint numero = 42;\nSystem.out.println(texto + numero);   // « Un nombre: 42 »\n```\n\n💡 En Java el `+` con Strings **siempre concatena** (convierte el número a texto), no suma. Para sumar números, ambos deben ser numéricos.",
+      "tags": [
+        "java",
+        "examen",
+        "conceptos"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "ex-java-21-13",
+      "front": "(Conceptos · Fundamentos de Java)\n\nParte 2: Entrada por teclado\n\n¿Cómo se lee texto y números del teclado en Java?\n\na) prompt(\"Texto\")\n\nb) Scanner con System.in\n\nc) readLine() global\n\nd) input()",
+      "back": "RESPUESTA / SOLUCIÓN\n\n**b) Con la clase `Scanner` y `System.in`:**\n\n```java\nimport java.util.Scanner;\n\npublic class Ejemplo {\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n\n        System.out.print(\"Introduce tu nombre: \");\n        String nombre = sc.nextLine();     // lee una línea de texto\n\n        System.out.print(\"Introduce tu edad: \");\n        int edad = sc.nextInt();           // lee un número entero\n\n        System.out.println(\"Hola \" + nombre + \", tienes \" + edad + \" años\");\n    }\n}\n```\n\n⚠️ `nextLine()` devuelve **String** (texto); `nextInt()`, `nextDouble()` devuelven números. Todo lo leído del teclado empieza siendo texto.",
+      "tags": [
+        "java",
+        "examen",
+        "conceptos"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "ex-java-21-14",
+      "front": "(Conceptos · Fundamentos de Java)\n\nParte 2: Entrada por teclado\n\n¿Cómo se convierte un String a número en Java?",
+      "back": "RESPUESTA / SOLUCIÓN\n\nCon las clases envoltorio (**wrappers**):\n\n```java\nString texto = \"1313\";\nint numero = Integer.parseInt(texto);   // → 1313 (int)\ndouble decimal = Double.parseDouble(\"5.5\");  // → 5.5\n\n// Ejemplo con Scanner: sumar dos números introducidos por el usuario\nScanner sc = new Scanner(System.in);\nint a = Integer.parseInt(sc.nextLine());\nint b = Integer.parseInt(sc.nextLine());\nSystem.out.println(a + b);              // suma real, no concatenación\n```\n\n💡 **`Integer.parseInt()`** y **`Double.parseDouble()`** convierten String → número. Si el texto no es un número válido, lanzan `NumberFormatException`.",
+      "tags": [
+        "java",
+        "examen",
+        "conceptos"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-21-15",
+      "front": "(Conceptos · Fundamentos de Java)\n\nParte 2: Conversión de tipos\n\n¿Cómo se convierte un número a String en Java?",
+      "back": "RESPUESTA / SOLUCIÓN\n\nCon **`String.valueOf()`** o concatenando con una cadena vacía:\n\n```java\nint numero1 = 4, numero2 = 2;\n\nString a = String.valueOf(numero1);   // « 4 »\nString b = numero2 + \"\";              // « 2 » (concatena con vacío)\nString c = numero1 + \" \" + numero2;   // « 4 2 »\n\n// También sirve para otros tipos:\nString d = String.valueOf(5.5);       // « 5.5 »\nString e = String.valueOf(true);      // « true »\n```\n\n💡 Un número se convierte automáticamente a String al concatenarlo con `+`. `String.valueOf()` es la forma explícita y recomendada.",
+      "tags": [
+        "java",
+        "examen",
+        "conceptos"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-21-16",
+      "front": "(Conceptos · Fundamentos de Java)\n\nParte 3: Condiciones\n\n¿Cuáles son los operadores de comparación de Java y qué devuelven?",
+      "back": "RESPUESTA / SOLUCIÓN\n\nDevuelven un **booleano** (`true` o `false`):\n\n| Operador | Significado |\n|----------|-------------|\n| `==` | Igual a (valores primitivos / referencias) |\n| `!=` | Diferente a |\n| `>` | Mayor que |\n| `>=` | Mayor o igual que |\n| `<` | Menor que |\n| `<=` | Menor o igual que |\n\n```java\nint a = 2, b = 2, c = 4;\nSystem.out.println(a == b);   // true\nSystem.out.println(a == c);   // false\nSystem.out.println(a < c);    // true\n```\n\n⚠️ Para comparar **contenido** de objetos (String, arrays, etc.) NO se usa `==`, sino **`.equals()`** (ver siguiente card).",
+      "tags": [
+        "java",
+        "examen",
+        "conceptos"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "ex-java-21-17",
+      "front": "(Conceptos · Fundamentos de Java)\n\nParte 3: Condiciones\n\n¿Cuál es la diferencia entre `==` y `.equals()` al comparar Strings?",
+      "back": "RESPUESTA / SOLUCIÓN\n\n- **`==`** compara **referencias** (si apuntan al mismo objeto en memoria).\n- **`.equals()`** compara el **contenido** (si el texto es igual).\n\n```java\nString a = new String(\"hola\");\nString b = new String(\"hola\");\n\nSystem.out.println(a == b);      // false — objetos distintos\nSystem.out.println(a.equals(b)); // true — mismo contenido\n```\n\n⚠️ Regla práctica: con Strings (y cualquier objeto) usa **`.equals()`**. El `==` solo es correcto con primitivos (`int`, `double`, `boolean`, `char`) o cuando quieres comparar referencias (por ejemplo, `obj == null`).",
+      "tags": [
+        "java",
+        "examen",
+        "conceptos"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-21-18",
+      "front": "(Conceptos · Fundamentos de Java)\n\nParte 3: Condiciones\n\n¿Cuáles son los operadores lógicos de Java y cómo funcionan?",
+      "back": "RESPUESTA / SOLUCIÓN\n\nSon **tres**:\n\n| Operador | Tipo | Utilización |\n|----------|------|-------------|\n| `&&` | Y (AND) | `v1 && v2` |\n| `||` | O (OR) | `v1 || v2` |\n| `!` | NO (NOT) | `!v` |\n\n- **AND** (`&&`): `true` solo si **todos** son verdaderos.\n- **OR** (`||`): `true` si **al menos uno** es verdadero.\n- **NOT** (`!`): invierte el valor.\n\n```java\nSystem.out.println(true && true);    // true\nSystem.out.println(true && false);   // false\nSystem.out.println(true || false);   // true\nboolean r = false;\nr = !r;                              // true\n```\n\n💡 En Java los operandos deben ser **booleanos**: `if (1)` NO compila (a diferencia de JavaScript).",
+      "tags": [
+        "java",
+        "examen",
+        "conceptos"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "ex-java-21-19",
+      "front": "(Conceptos · Fundamentos de Java)\n\nParte 3: Condiciones\n\nEscribe la estructura `if / else` en Java",
+      "back": "RESPUESTA / SOLUCIÓN\n\n```java\nif (condición) {\n    // código si la condición es true\n} else {\n    // código si la condición es false\n}\n```\n\nEjemplo real:\n\n```java\nScanner sc = new Scanner(System.in);\nSystem.out.print(\"¿Eres mayor de 18? (si/no): \");\nString respuesta = sc.nextLine();\n\nif (respuesta.equals(\"si\")) {\n    System.out.println(\"Bienvenido\");\n} else {\n    System.out.println(\"Acceso denegado\");\n}\n```\n\nLas condiciones pueden combinar comparaciones y lógicos:\n\n```java\nif (edad >= 18 && dni != null) {\n    System.out.println(\"Puede votar\");\n}\n```\n\n💡 Nota: para leer un sí/no se suele usar `nextLine()` y comparar con `.equals()`.",
+      "tags": [
+        "java",
+        "examen",
+        "conceptos"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "ex-java-21-20",
+      "front": "(Conceptos · Fundamentos de Java)\n\nParte 3: Condiciones\n\n¿Cómo se pide confirmación sí/no en una aplicación Java de consola?",
+      "back": "RESPUESTA / SOLUCIÓN\n\nCon **Scanner** leyendo el teclado y comparando con `.equals()`:\n\n```java\nimport java.util.Scanner;\n\nScanner sc = new Scanner(System.in);\nSystem.out.print(\"¿Desea continuar? (s/n): \");\nString opcion = sc.nextLine();\n\nif (opcion.equalsIgnoreCase(\"s\")) {\n    System.out.println(\"Continuamos\");\n} else {\n    System.out.println(\"Operación cancelada\");\n}\n```\n\n💡 **`.equalsIgnoreCase()`** compara sin distinguir mayúsculas/minúsculas, así \"S\" y \"s\" valen igual.\n\n(En interfaces gráficas Swing se usaría `JOptionPane.showConfirmDialog(...)`, que devuelve `JOptionPane.YES_OPTION` / `NO_OPTION`.)",
+      "tags": [
+        "java",
+        "examen",
+        "conceptos"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "ex-java-21-21",
+      "front": "(Conceptos · Fundamentos de Java)\n\nParte 3: Condiciones\n\n¿Cómo se encadenan varias condiciones con `else if`?",
+      "back": "RESPUESTA / SOLUCIÓN\n\nPara probar condiciones en orden: si la primera falla, prueba la siguiente, y si ninguna se cumple actúa `else`:\n\n```java\nint nota = sc.nextInt();\n\nif (nota >= 9) {\n    System.out.println(\"Sobresaliente\");\n} else if (nota >= 7) {\n    System.out.println(\"Notable\");\n} else if (nota >= 5) {\n    System.out.println(\"Aprobado\");\n} else {\n    System.out.println(\"Suspenso\");\n}\n```\n\n💡 `else if` se puede repetir todas las veces que quieras, siempre detrás de un `if`. Java evalúa en orden y se detiene en el primer `true`.",
+      "tags": [
+        "java",
+        "examen",
+        "conceptos"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "ex-java-21-22",
+      "front": "(Conceptos · Fundamentos de Java)\n\nParte 3: Condiciones\n\n¿Cuándo conviene usar `switch` y cómo se escribe?",
+      "back": "RESPUESTA / SOLUCIÓN\n\nCuando hay que comparar **una variable contra muchos valores**, `switch` es más organizado que una cadena larga de `else if`:\n\n```java\nint cajon = sc.nextInt();\n\nswitch (cajon) {\n    case 1:\n        System.out.println(\"Herramientas de dibujo\");\n        break;\n    case 2:\n        System.out.println(\"Hardware: cables\");\n        break;\n    case 3:\n        System.out.println(\"Cajón cerrado\");\n        break;\n    case 4:\n        System.out.println(\"Ropa\");\n        break;\n    default:\n        System.out.println(\"No existe ese cajón\");\n}\n```\n\n- `case` define cada valor a comparar (números, `char`, `String` desde Java 7).\n- `break` **rompe el switch** y evita ejecutar el resto (¡sin él hay \"fall-through\"!).\n- `default` es opcional: se ejecuta si ningún case coincide.",
+      "tags": [
+        "java",
+        "examen",
+        "conceptos"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-21-23",
+      "front": "(Conceptos · Fundamentos de Java)\n\nParte 3: Condiciones\n\n⚠️ ¿Qué pasa si olvidas `break` en un `switch`?",
+      "back": "RESPUESTA / SOLUCIÓN\n\nSe ejecuta **todo el código desde el `case` elegido en adelante** (comportamiento *fall-through*):\n\n```java\nint cajon = 2;\nswitch (cajon) {\n    case 1:\n        System.out.println(\"Uno\");\n    case 2:\n        System.out.println(\"Dos\");     // ← se ejecuta\n    case 3:\n        System.out.println(\"Tres\");    // ← también\n    default:\n        System.out.println(\"Fin\");     // ← y también\n}\n```\n\nEn la mayoría de los casos es un **error**: cada `case` debe terminar con **`break;`** (o `return;`). Raramente el fall-through es intencional.",
+      "tags": [
+        "java",
+        "examen",
+        "conceptos"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-21-24",
+      "front": "(Conceptos · Fundamentos de Java)\n\nParte 3: Condiciones\n\n⚠️ ¿Qué tipos acepta `switch` en Java?",
+      "back": "RESPUESTA / SOLUCIÓN\n\n`switch` acepta:\n\n- **`int`** (y `char`, `byte`, `short`, `long`)\n- **`String`** (desde Java 7)\n- **Enums** (muy común)\n\n```java\nString dia = \"LUNES\";\nswitch (dia) {\n    case \"LUNES\":\n        System.out.println(\"Inicio de semana\");\n        break;\n    case \"VIERNES\":\n        System.out.println(\"Casi finde\");\n        break;\n    default:\n        System.out.println(\"Otro día\");\n}\n```\n\n⚠️ Con `String`, `switch` compara con **`.equals()`** (contenido), no con `==`. Y **no acepta** `double`/otros decimales — para eso se usa `if/else if`.",
+      "tags": [
+        "java",
+        "examen",
+        "conceptos"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "ex-java-21-25",
+      "front": "(Conceptos · Fundamentos de Java)\n\nParte 3: Condiciones\n\n¿Cómo se escribe una condición ternaria y qué devuelve?",
+      "back": "RESPUESTA / SOLUCIÓN\n\nEs un `if/else` compacto que **devuelve un valor**:\n\n```java\ntipo variable = condición ? valorSiTrue : valorSiFalse;\n```\n\nEjemplo:\n\n```java\nboolean adulto = sc.nextBoolean();\nString categoria = adulto ? \"18+\" : \"-18\";\nSystem.out.println(\"Su categoría: \" + categoria);\n```\n\nEquivale a:\n\n```java\nString categoria;\nif (adulto) {\n    categoria = \"18+\";\n} else {\n    categoria = \"-18\";\n}\n```\n\n💡 Es muy útil para **asignaciones simples** en una línea. Úsalo con moderación: menos legible que `if/else` cuando la lógica es compleja.",
+      "tags": [
+        "java",
+        "examen",
+        "conceptos"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-21-26",
+      "front": "(Conceptos · Fundamentos de Java)\n\nParte 3: Condiciones\n\n¿Cómo se comprueba si una variable de referencia está vacía en Java?\n\na) if (variable) — se evalúa como false si está vacía\n\nb) if (variable == null)\n\nc) if (variable.isEmpty())\n\nd) if (!variable)",
+      "back": "RESPUESTA / SOLUCIÓN\n\n**b) `if (variable == null)`** — y para Strings vacíos, `\".equals()`` o `isEmpty()`:\n\n```java\nString nombre = null;              // sin referencia\nif (nombre == null) {\n    System.out.println(\"No hay nombre\");\n}\n\nString texto = \"\";\nif (texto.isEmpty()) {             // cadena vacía\n    System.out.println(\"Está vacío\");\n}\nif (texto == null || texto.isEmpty()) {   // ambas comprobaciones\n    System.out.println(\"Nulo o vacío\");\n}\n```\n\n⚠️ A diferencia de JavaScript, en Java **no hay valores \"falsy\"**: las condiciones deben ser `boolean` puras. `if (variable)` no compila si variable no es booleana. Un String \"0\" o \" \" **es** true en una condición booleana real.",
+      "tags": [
+        "java",
+        "examen",
+        "conceptos"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-21-27",
+      "front": "(Conceptos · Fundamentos de Java)\n\nParte 4: Bucles\n\nEscribe el bucle `while` en Java",
+      "back": "RESPUESTA / SOLUCIÓN\n\nRepite un bloque **mientras la condición sea verdadera** (se evalúa antes de cada iteración):\n\n```java\nint i = 0;\nwhile (i < 5) {\n    System.out.println(\"Vuelta \" + i);\n    i++;\n}\n```\n\n⚠️ Si la condición nunca se cumple, el bloque **no se ejecuta ninguna vez**. Cuida el incremento para no crear un bucle infinito.",
+      "tags": [
+        "java",
+        "examen",
+        "conceptos"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "ex-java-21-28",
+      "front": "(Conceptos · Fundamentos de Java)\n\nParte 4: Bucles\n\n¿En qué se diferencia `do...while` de `while`?",
+      "back": "RESPUESTA / SOLUCIÓN\n\nEl bucle **`do...while`** ejecuta el bloque **al menos una vez**, porque evalúa la condición **al final**:\n\n```java\nint i = 0;\ndo {\n    System.out.println(\"Se ejecuta aunque sea una vez\");\n    i++;\n} while (i < 5);\n```\n\nEn cambio, `while` evalúa la condición **antes**, así que puede no ejecutarse nunca si la condición es falsa desde el principio.\n\n💡 Uso típico: menús que deben mostrarse al menos una vez (por ejemplo, repetir hasta que el usuario escriba \"salir\").",
+      "tags": [
+        "java",
+        "examen",
+        "conceptos"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "ex-java-21-29",
+      "front": "(Conceptos · Fundamentos de Java)\n\nParte 4: Bucles\n\nEscribe el bucle `for` y explica sus tres bloques",
+      "back": "RESPUESTA / SOLUCIÓN\n\n```java\nfor (inicio; condición; incremento) {\n    // bloque a repetir\n}\n```\n\nLos tres bloques **no se ejecutan a la vez**:\n\n1. **Inicio**: justo antes de comenzar el bucle (una sola vez).\n2. **Condición**: antes de cada iteración — si es falsa, se sale.\n3. **Incremento**: después de cada ciclo.\n\n```java\nfor (int i = 0; i < 10; i++) {\n    System.out.println(i);\n}\n```\n\n💡 El `for` es el bucle más usado en Java, sobre todo para **recorrer arrays**:\n\n```java\nint[] nums = {10, 20, 30};\nfor (int i = 0; i < nums.length; i++) {\n    System.out.println(nums[i]);\n}\n```",
+      "tags": [
+        "java",
+        "examen",
+        "conceptos"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-21-30",
+      "front": "(Conceptos · Fundamentos de Java)\n\nParte 4: Bucles\n\n¿Para qué sirven `break` y `continue` en los bucles?",
+      "back": "RESPUESTA / SOLUCIÓN\n\n- **`break`**: **sale del bucle** inmediatamente.\n- **`continue`**: **salta a la siguiente iteración** (ignora el resto del bloque actual).\n\n```java\nfor (int i = 0; i < 10; i++) {\n    if (i == 3) continue;   // se salta el 3\n    if (i == 7) break;      // termina en el 7\n    System.out.println(i);  // 0,1,2,4,5,6\n}\n```\n\n⚠️ `break` también se usa en `switch`. En bucles anidados, `break` solo rompe el bucle **más interno**.",
+      "tags": [
+        "java",
+        "examen",
+        "conceptos"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-21-31",
+      "front": "(Conceptos · Fundamentos de Java)\n\nParte 4: Bucles\n\n¿Dónde vive la variable declarada en la cabecera de un `for`?",
+      "back": "RESPUESTA / SOLUCIÓN\n\n**Solo dentro del bucle** (ámbito de bloque): al terminar, deja de existir.\n\n```java\nfor (int i = 0; i < 10; i++) {\n    System.out.println(i);\n}\nSystem.out.println(i);   // ❌ ERROR: 'i' no existe fuera del bucle\n```\n\n- A diferencia de JavaScript (`var` \"se escapa\" del bucle), en Java la variable de `for` tiene **ámbito de bloque**.\n- Si necesitas el valor tras el bucle, declárala antes:\n\n```java\nint i;\nfor (i = 0; i < 10; i++) { }\nSystem.out.println(i);   // ✅ 10\n```",
+      "tags": [
+        "java",
+        "examen",
+        "conceptos"
+      ],
+      "difficulty": "hard"
     }
   ]
 }
