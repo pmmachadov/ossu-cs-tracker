@@ -35,9 +35,10 @@ function analyzeMultipleChoice(front, back) {
   });
   if (matches.length < 2) return null;
 
-  // La respuesta correcta es la primera opción del dorso (p. ej. "c) 3.5 — ...")
+  // La respuesta correcta es la primera opción del dorso (p. ej. "a) ...", "✓ **a) ...**", "a) ...")
   let correctLetter = null;
-  for (const line of stripCodeBlocks(back).split("\n")) {
+  const backClean = stripCodeBlocks(back).replace(/[*_~`✓]/g, "");
+  for (const line of backClean.split("\n")) {
     const m = line.trim().match(MC_OPTION_RE);
     if (m) {
       correctLetter = m[1].toLowerCase();
@@ -431,7 +432,7 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
           transition={{ duration: 0.25, ease: "easeOut" }}
           className="flashcard"
           onClick={handleFlip}
-          style={{ transform: `rotateY(${flipRotation}deg)` }}
+          style={flipRotation ? { transform: `rotateY(${flipRotation}deg)`, transformStyle: 'preserve-3d', transition: 'transform 0.8s ease' } : undefined}
         >
           <div className="flashcard-inner">
             <div className="flashcard-front">
@@ -497,24 +498,24 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
                         codeTheme={codeTheme}
                       />
                     )}
-                    {/* Respuesta bajo las opciones tras elegir (sin voltear) */}
-                    <AnimatePresence>
-                      {mcSelection !== null && (
-                        <motion.div
-                          className="mc-answer"
-                          initial={{ opacity: 0, y: 12, height: 0 }}
-                          animate={{ opacity: 1, y: 0, height: "auto" }}
-                          exit={{ opacity: 0, height: 0 }}
-                          transition={{ duration: 0.28, ease: "easeOut" }}
-                        >
+                    {/* Respuesta revelada bajo las opciones tras elegir */}
+                    {mcSelection !== null && (
+                      <div className="mc-answer-card">
+                        <div className="mc-answer-header">
+                          <span className="mc-answer-badge">
+                            {mcSelection === mc.correctLetter ? "✓ Correcto" : "✗ Incorrecto"}
+                          </span>
+                          <span className="mc-answer-title">Solución y Explicación</span>
+                        </div>
+                        <div className="mc-answer-body">
                           <CardContent
                             text={currentCard.back}
                             cardImageUrl={currentCard.imageUrl}
                             codeTheme={codeTheme}
                           />
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
+                        </div>
+                      </div>
+                    )}
                   </>
                 ) : (
                   <CardContent
