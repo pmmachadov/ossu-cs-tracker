@@ -331,7 +331,7 @@
 }
 .paren-round { color: #FF6D01; background: rgba(255,109,1,0.06); }
 .paren-square { color: #4285F4; background: rgba(66,133,244,0.06); }
-.paren-curly { color: #EA4335; background: rgba(234,67,53,0.06); }
+.paren-curly { color: #34D399; background: rgba(16, 185, 129, 0.08); }
 .paren-angle { color: #34A853; background: rgba(52,168,83,0.06); }
 
 /* YouTube: thumbnail -> iframe al click */
@@ -675,7 +675,7 @@
 }
 
 .code-block-wrapper .token.regex {
-  color: #ea4335 !important;
+  color: #2DD4BF !important;
 }
 
 .code-block-wrapper .token.boolean {
@@ -1429,18 +1429,18 @@
 }
 
 .mc-option.wrong {
-  background: linear-gradient(180deg, rgba(234, 67, 53, 0.16), rgba(234, 67, 53, 0.07));
-  border-color: #EA4335;
-  box-shadow: 0 0 0 1px rgba(234, 67, 53, 0.35);
+  background: linear-gradient(180deg, rgba(185, 28, 28, 0.14), rgba(185, 28, 28, 0.05));
+  border-color: #991B1B;
+  box-shadow: 0 0 0 1px rgba(185, 28, 28, 0.3);
 }
 
 .mc-option.wrong .mc-letter {
-  background: linear-gradient(135deg, #EF9A9A, #EA4335);
+  background: linear-gradient(135deg, #F87171, #B91C1C);
   color: #141414;
 }
 
 .mc-option.wrong .mc-text {
-  color: #EF9A9A;
+  color: #FCA5A5;
 }
 
 .mc-icon {
@@ -1462,7 +1462,7 @@
 }
 
 .mc-option.wrong .mc-icon {
-  background: #EA4335;
+  background: #991B1B;
   color: #141414;
 }
 

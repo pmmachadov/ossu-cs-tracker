@@ -163,9 +163,9 @@ export const SubjectColors = {
     badge: "#34A853",
   },
   "Bases de Datos": {
-    accent: "#EA4335",
-    bg: "rgba(234, 67, 53, 0.08)",
-    badge: "#EA4335",
+    accent: "#10B981",
+    bg: "rgba(16, 185, 129, 0.08)",
+    badge: "#10B981",
   },
   Programacion: {
     accent: "#1A73E8",
@@ -173,9 +173,9 @@ export const SubjectColors = {
     badge: "#1A73E8",
   },
   "Lenguajes de Marcas": {
-    accent: "#FF6D01",
-    bg: "rgba(255, 109, 1, 0.08)",
-    badge: "#FF6D01",
+    accent: "#0D9488",
+    bg: "rgba(13, 148, 136, 0.08)",
+    badge: "#0D9488",
   },
   Practicas: {
     accent: "#34A853",
