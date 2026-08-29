@@ -73,7 +73,7 @@
 }
 
 .section-progress.progress-start {
-  background: linear-gradient(135deg, rgba(234, 67, 53, 0.04) 0%, transparent 80%);
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.04) 0%, transparent 80%);
 }
 
 .section-progress.progress-mid {
@@ -273,7 +273,7 @@
   align-items: stretch;
 }
 
-/* SeparaciÃƒÂ³n entre el rectÃƒÂ¡ngulo Examen Java y su card */
+/* SeparaciÃƒÆ’Ã‚Â³n entre el rectÃƒÆ’Ã‚Â¡ngulo Examen Java y su card */
 .examenes-grid {
   margin-top: 20px;
 }
@@ -468,10 +468,10 @@
 
 /* Ciclo de color de la barra de progreso de los mazos de examen.
    Cada capa se mueve a su propia velocidad:
-   - relieve 3D: quieto (tamaÃƒÂ±o 100%)
-   - arcoÃƒÂ­ris: 0% -> 150% (1 perÃƒÂ­odo exacto, sin cortes)
-   - estrellas del fondo: 0% -> 300% (el DOBLE de rÃƒÂ¡pido: las estrellas
-     "viajan" por el arcoÃƒÂ­ris mientras los colores cambian) */
+   - relieve 3D: quieto (tamaÃƒÆ’Ã‚Â±o 100%)
+   - arcoÃƒÆ’Ã‚Â­ris: 0% -> 150% (1 perÃƒÆ’Ã‚Â­odo exacto, sin cortes)
+   - estrellas del fondo: 0% -> 300% (el DOBLE de rÃƒÆ’Ã‚Â¡pido: las estrellas
+     "viajan" por el arcoÃƒÆ’Ã‚Â­ris mientras los colores cambian) */
 @keyframes deck-progress-fill-cycle {
   0% {
     background-position: 0% 50%, 0% 50%, 0% 50%;
@@ -825,7 +825,7 @@
 }
 
 .modal-reset .modal-list li::before {
-  content: 'Ã¢Å“â€¢';
+  content: 'ÃƒÂ¢Ã…â€œÃ¢â‚¬Â¢';
   position: absolute;
   left: 0;
   color: #10B981;
@@ -848,8 +848,8 @@
 }
 
 .modal-reset .modal-danger-box {
-  background: rgba(234, 67, 53, 0.1);
-  border: 1px solid rgba(234, 67, 53, 0.3);
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.3);
   border-radius: 8px;
   padding: 12px;
   margin-top: 16px;
@@ -868,7 +868,7 @@
 }
 
 .modal-reset .danger-icon {
-  background: rgba(234, 67, 53, 0.15) !important;
+  background: rgba(16, 185, 129, 0.15) !important;
   color: #F28B82 !important;
 }
 
@@ -1118,7 +1118,7 @@
   }
 }
 
-/* MÃƒÂ³viles pequeÃƒÂ±os (iPhone SE, Galaxy S8) */
+/* MÃƒÆ’Ã‚Â³viles pequeÃƒÆ’Ã‚Â±os (iPhone SE, Galaxy S8) */
 @media (max-width: 375px) {
   .deck-stats {
     grid-template-columns: 1fr;
@@ -1155,7 +1155,7 @@
   }
 }
 
-/* MÃƒÂ³viles muy pequeÃƒÂ±os (iPhone 5, antiguos) */
+/* MÃƒÆ’Ã‚Â³viles muy pequeÃƒÆ’Ã‚Â±os (iPhone 5, antiguos) */
 @media (max-width: 320px) {
   .app-main {
     padding: 12px;
@@ -1196,7 +1196,7 @@
 }
 
 
-/* Clear Data Section - BotÃƒÂ³n para borrar todos los datos */
+/* Clear Data Section - BotÃƒÆ’Ã‚Â³n para borrar todos los datos */
 .clear-data-section {
   display: flex;
   flex-direction: column;
@@ -1227,8 +1227,8 @@
 
 .btn-clear-data:hover {
   opacity: 1;
-  background: rgba(234, 67, 53, 0.1);
-  border-color: rgba(234, 67, 53, 0.4);
+  background: rgba(16, 185, 129, 0.1);
+  border-color: rgba(16, 185, 129, 0.4);
   color: #F28B82;
 }
 
@@ -1365,7 +1365,7 @@
   margin-top: 20px;
 }
 
-/* Modal Clear Data - Estilos especÃƒÂ­ficos */
+/* Modal Clear Data - Estilos especÃƒÆ’Ã‚Â­ficos */
 .modal-clear {
   max-width: 480px;
 }
@@ -1384,7 +1384,7 @@
 }
 
 .modal-clear .modal-list li::before {
-  content: 'Ã¢â‚¬Â¢';
+  content: 'ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢';
   position: absolute;
   left: 8px;
   color: var(--text-muted);
@@ -1751,7 +1751,7 @@
   margin-top: 20px;
 }
 
-/* ExÃƒÂ¡menes Section */
+/* ExÃƒÆ’Ã‚Â¡menes Section */
 .examenes-section {
   margin-top: 32px;
   border-top: 1px solid var(--border-color);
@@ -1770,13 +1770,13 @@
   width: 100%;
   padding: 16px 20px;
   background: linear-gradient(120deg,
-    rgba(234, 67, 53, 0.16),
-    rgba(234, 67, 53, 0.04) 35%,
-    rgba(234, 67, 53, 0.12) 70%,
-    rgba(234, 67, 53, 0.16));
+    rgba(16, 185, 129, 0.16),
+    rgba(16, 185, 129, 0.04) 35%,
+    rgba(16, 185, 129, 0.12) 70%,
+    rgba(16, 185, 129, 0.16));
   background-size: 250% 250%;
   animation: exam-area-drift 16s ease-in-out infinite alternate;
-  border: 1px solid rgba(234, 67, 53, 0.35);
+  border: 1px solid rgba(16, 185, 129, 0.35);
   border-radius: 16px;
   color: var(--text-primary);
   font-size: 1rem;
@@ -1786,17 +1786,17 @@
 }
 
 .examenes-toggle:hover {
-  border-color: rgba(234, 67, 53, 0.65);
+  border-color: rgba(16, 185, 129, 0.65);
   background: linear-gradient(120deg,
-    rgba(234, 67, 53, 0.24),
-    rgba(234, 67, 53, 0.08) 35%,
-    rgba(234, 67, 53, 0.18) 70%,
-    rgba(234, 67, 53, 0.24));
+    rgba(16, 185, 129, 0.24),
+    rgba(16, 185, 129, 0.08) 35%,
+    rgba(16, 185, 129, 0.18) 70%,
+    rgba(16, 185, 129, 0.24));
   background-size: 250% 250%;
   animation: exam-area-drift 16s ease-in-out infinite alternate;
 }
 
-/* Reflejo eliminado por peticiÃƒÂ³n del usuario (banda de luz que barrÃƒÂ­a el rectÃƒÂ¡ngulo) */
+/* Reflejo eliminado por peticiÃƒÆ’Ã‚Â³n del usuario (banda de luz que barrÃƒÆ’Ã‚Â­a el rectÃƒÆ’Ã‚Â¡ngulo) */
 .examen-java-area {
   position: relative;
   overflow: hidden;
@@ -1866,9 +1866,9 @@
   padding: 12px 16px;
   margin-bottom: 16px;
   background: linear-gradient(120deg,
-    rgba(234, 67, 53, 0.12),
-    rgba(234, 67, 53, 0.03) 40%,
-    rgba(234, 67, 53, 0.10));
+    rgba(16, 185, 129, 0.12),
+    rgba(16, 185, 129, 0.03) 40%,
+    rgba(16, 185, 129, 0.10));
   background-size: 220% 220%;
   animation: exam-area-drift 18s ease-in-out infinite alternate;
   border-radius: 12px;
@@ -1941,8 +1941,8 @@
   gap: 12px;
   width: 100%;
   padding: 16px 20px;
-  background: linear-gradient(135deg, rgba(234, 67, 53, 0.08), var(--bg-secondary));
-  border: 1px solid rgba(234, 67, 53, 0.3);
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), var(--bg-secondary));
+  border: 1px solid rgba(16, 185, 129, 0.3);
   border-radius: 16px;
   color: var(--text-primary);
   font-size: 1rem;
@@ -1952,8 +1952,8 @@
 }
 
 .pd-toggle:hover {
-  border-color: rgba(234, 67, 53, 0.6);
-  background: linear-gradient(135deg, rgba(234, 67, 53, 0.15), var(--bg-tertiary));
+  border-color: rgba(16, 185, 129, 0.6);
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), var(--bg-tertiary));
 }
 
 .pd-icon {
@@ -2064,7 +2064,7 @@
 }
 
 /* Theme Examen (Java): violeta sobrio con gradiente en movimiento lento,
-   diferente al resto de temas (que son estÃƒÂ¡ticos) */
+   diferente al resto de temas (que son estÃƒÆ’Ã‚Â¡ticos) */
 @keyframes exam-area-drift {
   0% {
     background-position: 0% 50%;
@@ -2075,8 +2075,8 @@
 }
 
 .deck-card.theme-examen {
-  /* Card mÃƒÂ¡s clara: base gris claro + velos de lavanda pastel mÃƒÂ¡s intensos.
-     La barra de progreso (negra) queda igual y ahora contrasta mÃƒÂ¡s */
+  /* Card mÃƒÆ’Ã‚Â¡s clara: base gris claro + velos de lavanda pastel mÃƒÆ’Ã‚Â¡s intensos.
+     La barra de progreso (negra) queda igual y ahora contrasta mÃƒÆ’Ã‚Â¡s */
   background:
     radial-gradient(130% 130% at 0% 0%, rgba(124, 108, 240, 0.30), transparent 55%),
     radial-gradient(130% 130% at 100% 100%, rgba(124, 108, 240, 0.20), transparent 55%),
@@ -2097,7 +2097,7 @@
 /* ===== 3D REAL en TODOS los elementos de la card del tema examen ===== */
 
 /* Card: placa elevada con bisel (borde claro arriba, oscuro abajo) y
-   volumen; al pasar el ratÃƒÂ³n se inclina levemente en perspectiva */
+   volumen; al pasar el ratÃƒÆ’Ã‚Â³n se inclina levemente en perspectiva */
 .deck-card.theme-examen {
   border: 1px solid #3a3a42;
   border-top-color: #4d4d58;
@@ -2136,7 +2136,7 @@
     0 4px 10px rgba(0, 0, 0, 0.5);
 }
 
-/* Badge "Ã°Å¸â€œËœ Examen" y "pendientes": sombra de texto profunda */
+/* Badge "ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‹Å“ Examen" y "pendientes": sombra de texto profunda */
 .deck-card.theme-examen .exam-badge,
 .deck-card.theme-examen .due-badge-inline {
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
@@ -2150,7 +2150,7 @@
     0 4px 12px rgba(0, 0, 0, 0.55);
 }
 
-/* TÃƒÂ­tulo, descripciÃƒÂ³n y porcentaje: relieve de texto */
+/* TÃƒÆ’Ã‚Â­tulo, descripciÃƒÆ’Ã‚Â³n y porcentaje: relieve de texto */
 .deck-card.theme-examen .deck-name {
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8), 0 3px 6px rgba(0, 0, 0, 0.4);
 }
@@ -2161,7 +2161,7 @@
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
 }
 
-/* Cajas de estadÃƒÂ­sticas: tarjetas con bisel */
+/* Cajas de estadÃƒÆ’Ã‚Â­sticas: tarjetas con bisel */
 .deck-card.theme-examen .deck-stat {
   background: linear-gradient(180deg, #26262d 0%, #1a1a1f 55%, #111115 100%);
   border: 1px solid #2f2f37;
@@ -2172,7 +2172,7 @@
     0 5px 12px rgba(0, 0, 0, 0.5);
 }
 
-/* Iconos de estadÃƒÂ­sticas: fichas brillantes */
+/* Iconos de estadÃƒÆ’Ã‚Â­sticas: fichas brillantes */
 .deck-card.theme-examen .stat-icon-small {
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.25),
@@ -2180,7 +2180,7 @@
     0 3px 7px rgba(0, 0, 0, 0.45);
 }
 
-/* BotÃƒÂ³n Estudiar: botÃƒÂ³n 3D con bisel, se hunde al pulsar */
+/* BotÃƒÆ’Ã‚Â³n Estudiar: botÃƒÆ’Ã‚Â³n 3D con bisel, se hunde al pulsar */
 .deck-card.theme-examen .btn-study {
   border: 1px solid rgba(255, 255, 255, 0.35);
   border-bottom-color: rgba(90, 70, 160, 0.65);
@@ -2252,13 +2252,13 @@
   box-shadow: 0 0 0 1px #7C6CF0;
 }
 
-/* Barra mÃƒÂ¡s alta y redondeada solo en el tema examen.
+/* Barra mÃƒÆ’Ã‚Â¡s alta y redondeada solo en el tema examen.
    Efecto 3D: carril hundido (bisel iluminado arriba, sombra interior) y la
    barra elevada del fondo de la card */
 .deck-card.theme-examen .progress-bar {
   height: 44px;
   border-radius: 8px;
-  /* Negro con volumen: mÃƒÂ¡s hundido arriba, luz tenue reflejada abajo */
+  /* Negro con volumen: mÃƒÆ’Ã‚Â¡s hundido arriba, luz tenue reflejada abajo */
   background: linear-gradient(180deg, #0b0b0d 0%, #050506 45%, #111114 100%);
   border: 1px solid #3a3a3f;
   border-top-color: #56565c;
@@ -2272,7 +2272,7 @@
     0 6px 16px rgba(0, 0, 0, 0.6);
 }
 
-/* Reflejo que recorre la parte vacÃƒÂ­a (gris oscuro) de la barra.
+/* Reflejo que recorre la parte vacÃƒÆ’Ã‚Â­a (gris oscuro) de la barra.
    Solo se ve donde el relleno no cubre: el fill es opaco y va por encima */
 .deck-card.theme-examen .progress-bar::after {
   content: "";
@@ -2291,10 +2291,10 @@
 .deck-card.theme-examen .progress-fill {
   /* Colores VIVOS de Google: rojo -> azul -> verde -> amarillo -> rojo.
      Paradas intermedias (mezclas 50/50) + background-size 300% => transiciones sutiles.
-     La 2Ã‚Âª capa (SVG de estrellitas) se desliza junto al gradiente; el bucle 0%->150% es
-     exacto (1 perÃƒÂ­odo), asÃƒÂ­ que el movimiento es continuo y sin cortes. */
+     La 2Ãƒâ€šÃ‚Âª capa (SVG de estrellitas) se desliza junto al gradiente; el bucle 0%->150% es
+     exacto (1 perÃƒÆ’Ã‚Â­odo), asÃƒÆ’Ã‚Â­ que el movimiento es continuo y sin cortes. */
   background-image:
-    /* Capa de relieve 3D: luz arriba, sombra abajo Ã¢â‚¬â€ el relleno parece un bloque sÃƒÂ³lido */
+    /* Capa de relieve 3D: luz arriba, sombra abajo ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â el relleno parece un bloque sÃƒÆ’Ã‚Â³lido */
     linear-gradient(180deg,
       rgba(255, 255, 255, 0.32) 0%,
       rgba(255, 255, 255, 0.10) 35%,
@@ -2323,7 +2323,7 @@
 }
 
 /* Estrellas que cruzan la barra del tema examen: varias a la vez, cada una con
-   su tamaÃƒÂ±o, altura, velocidad y trayectoria (React las genera con valores
+   su tamaÃƒÆ’Ã‚Â±o, altura, velocidad y trayectoria (React las genera con valores
    aleatorios por deck; 3 trayectorias distintas se reparten en bucle) */
 .stars-layer {
   position: absolute;
@@ -2363,7 +2363,7 @@
   }
 }
 
-/* Trayectoria B: mÃƒÂ¡s baja, parpadea y va a contrarritmo */
+/* Trayectoria B: mÃƒÆ’Ã‚Â¡s baja, parpadea y va a contrarritmo */
 @keyframes star-drift-b {
   0% {
     left: -12%;
@@ -2387,7 +2387,7 @@
   }
 }
 
-/* Trayectoria C: frena un momento en el centro y continÃƒÂºa */
+/* Trayectoria C: frena un momento en el centro y continÃƒÆ’Ã‚Âºa */
 @keyframes star-drift-c {
   0% {
     left: -10%;
@@ -2411,7 +2411,7 @@
 }
 
 /* Reflejo blanco muy atenuado en el tema examen: con tonos pastel, el brillo
-   original (0.28) lavaba los colores y hacÃƒÂ­a la barra parecer blanca */
+   original (0.28) lavaba los colores y hacÃƒÆ’Ã‚Â­a la barra parecer blanca */
 .deck-card.theme-examen .progress-fill::after {
   background: linear-gradient(105deg,
     transparent 30%,
@@ -2469,7 +2469,7 @@
   }
 }
 
-/* MÃƒÂ¡s Section (wrapper for Libros + Materias salvadas) */
+/* MÃƒÆ’Ã‚Â¡s Section (wrapper for Libros + Materias salvadas) */
 .mas-section {
   margin-top: 20px;
 }
