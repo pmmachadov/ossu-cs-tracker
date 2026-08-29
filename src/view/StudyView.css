@@ -7,44 +7,91 @@
   z-index: 1;
 }
 
-.study-header {
+/* Botón Volver con borde de gradiente Google animado y centro oscuro */
+.btn-back-inline {
+  position: relative;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin-bottom: 24px;
-}
-
-.study-header .btn-back {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 12px 20px;
-  font-size: 0.9375rem;
-  font-weight: 600;
-  background: var(--bg-tertiary);
-  border: 1px solid var(--border-color);
-  color: var(--text-primary);
-  border-radius: 10px;
+  gap: 8px;
+  padding: 8px 22px;
+  margin-right: 16px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #f5f5f7;
+  border-radius: 999px;
   cursor: pointer;
-  transition: all 0.2s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+  border: 2px solid transparent;
+  background:
+    linear-gradient(#121216, #121216) padding-box,
+    linear-gradient(
+      125deg,
+      #4285f4 0%,
+      #ea4335 25%,
+      #fbbc05 50%,
+      #34a853 75%,
+      #4285f4 100%
+    ) border-box;
+  background-size: 100% 100%, 300% 300%;
+  animation: googleBorderFlow 5s ease-in-out infinite;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.study-header .btn-back:hover {
-  background: var(--bg-elevated);
-  border-color: var(--accent-primary);
+.btn-back-inline:hover {
+  transform: translateX(-3px) scale(1.03);
+  background:
+    linear-gradient(#18181f, #18181f) padding-box,
+    linear-gradient(
+      125deg,
+      #4285f4 0%,
+      #ea4335 25%,
+      #fbbc05 50%,
+      #34a853 75%,
+      #4285f4 100%
+    ) border-box;
+  background-size: 100% 100%, 300% 300%;
+  color: #ffffff;
+  box-shadow:
+    0 4px 18px rgba(66, 133, 244, 0.4),
+    0 0 12px rgba(234, 67, 53, 0.3);
 }
 
-.study-info {
-  text-align: center;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+@keyframes googleBorderFlow {
+  0% {
+    background-position: 0% 0%, 0% 50%;
+  }
+  50% {
+    background-position: 0% 0%, 100% 50%;
+  }
+  100% {
+    background-position: 0% 0%, 0% 50%;
+  }
 }
 
-.study-info h2 {
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin-bottom: 4px;
+@keyframes multiColorBorder {
+  0% {
+    background-position: 0% 0%, 0% 50%;
+  }
+  50% {
+    background-position: 0% 0%, 100% 50%;
+  }
+  100% {
+    background-position: 0% 0%, 0% 50%;
+  }
+}
+
+@keyframes multiColorSpectral {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 /* Card Progress Bar - Look vitrificado Apple */
@@ -89,7 +136,7 @@
 
 .card-progress-track {
   flex: 1;
-  height: 26px;
+  height: 34px;
   background:
     repeating-linear-gradient(
       90deg,
@@ -109,88 +156,199 @@
     inset 0 3px 8px rgba(0,0,0,0.9),
     inset 0 -1px 2px rgba(255,255,255,0.06),
     0 4px 16px rgba(0,0,0,0.4);
+  overflow: visible;
 }
 
 .card-progress-track:active {
   cursor: grabbing;
 }
 
+/* Capa de estrellas dinámicas flotantes (Pasan por debajo del botón/indicador) */
+.card-progress-track .stars-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  border-radius: inherit;
+  z-index: 2;
+}
+
+.card-progress-track .drift-star {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  z-index: 2;
+  animation: study-star-drift var(--drift-duration, 6s) linear infinite;
+}
+
+.card-progress-track .drift-star svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.95)) drop-shadow(0 0 8px rgba(255, 255, 255, 0.6));
+  animation: study-star-spin var(--rotate-duration, 2.5s) linear infinite;
+  animation-direction: var(--rotate-dir, normal);
+}
+
+@keyframes study-star-drift {
+  0% { left: -25px; }
+  100% { left: 105%; }
+}
+
+@keyframes study-star-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 .card-progress-fill {
   height: 100%;
-  background:
-    linear-gradient(105deg, transparent, rgba(255,255,255,0.45) 45%, transparent 55%) no-repeat,
-    linear-gradient(
-      90deg,
-      #0071e3 0%,
-      #5e5ce6 20%,
-      #bf5af2 40%,
-      #ff2d55 60%,
-      #ff9f0a 75%,
-      #64d2ff 88%,
-      #30d158 100%
-    );
-  background-size: 60% 100%, 250% 100%;
-  background-position: -180% 0, 0 0;
+  background: linear-gradient(
+    90deg,
+    rgba(66, 133, 244, 0.32),
+    rgba(234, 67, 53, 0.32),
+    rgba(251, 188, 5, 0.32),
+    rgba(52, 168, 83, 0.32),
+    rgba(66, 133, 244, 0.32)
+  );
+  background-size: 300% 100%;
   border-radius: 999px;
   position: relative;
+  z-index: 3;
   transition: width 0.5s cubic-bezier(0.34, 1.25, 0.4, 1);
   box-shadow:
-    0 0 22px rgba(94, 92, 230, 0.45),
-    inset 0 2px 4px rgba(255,255,255,0.4),
-    inset 0 -2px 4px rgba(0,0,0,0.3);
-  animation: 
-    progress-shine 2.2s ease-in-out infinite,
-    progress-bar-flow 8s ease-in-out infinite alternate,
-    progress-hue-cycle 12s linear infinite;
+    0 0 14px rgba(66, 133, 244, 0.18),
+    inset 0 1px 2px rgba(255, 255, 255, 0.25),
+    inset 0 -1px 2px rgba(0, 0, 0, 0.15);
+  animation: googleProgressFlow 6s ease-in-out infinite;
 }
 
-/* Animación continua de degradado y tono de color */
-@keyframes progress-bar-flow {
+@keyframes googleProgressFlow {
   0% {
-    background-position: -180% 0, 0% 50%;
+    background-position: 0% 50%;
   }
   50% {
-    background-position: 50% 0, 100% 50%;
+    background-position: 100% 50%;
   }
   100% {
-    background-position: 260% 0, 0% 50%;
+    background-position: 0% 50%;
   }
 }
 
-@keyframes progress-hue-cycle {
-  0% {
-    filter: hue-rotate(0deg);
-  }
-  100% {
-    filter: hue-rotate(360deg);
-  }
-}
-
-/* Reflejo que recorre el relleno mientras avanzas */
-@keyframes progress-shine {
-  0% {
-    background-position: -180% 0, var(--bg-pos, 0% 0);
-  }
-  55%,
-  100% {
-    background-position: 260% 0, var(--bg-pos, 0% 0);
-  }
-}
-
-.card-progress-thumb {
+/* Nuevo Cabezal Indicador Dinámico: Cometa / Prisma de Energía (Superpuesto encima) */
+.card-progress-thumb-head {
   position: absolute;
-  right: -13px;
+  right: -16px;
   top: 50%;
   transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: grab;
+  user-select: none;
+}
+
+.card-progress-thumb-head:active {
+  cursor: grabbing;
+}
+
+/* Halo de energía exterior sutil con los 4 colores de Google */
+.thumb-head-halo {
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    rgba(66, 133, 244, 0.75),
+    rgba(234, 67, 53, 0.75),
+    rgba(251, 188, 5, 0.75),
+    rgba(52, 168, 83, 0.75),
+    rgba(66, 133, 244, 0.75)
+  );
+  filter: blur(4px);
+  animation:
+    googleHaloSpin 5s linear infinite,
+    googleHaloPulse 2s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes googleHaloSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes googleHaloPulse {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1.12);
+    opacity: 1;
+  }
+}
+
+/* Núcleo de cristal geométrico tipo Prisma / Diamante */
+.thumb-head-core {
   width: 28px;
   height: 28px;
-  border-radius: 50%;
-  background:
-    radial-gradient(circle at 32% 28%, #ffffff, #64d2ff 45%, #30d158 80%, #0d0d0f);
+  border-radius: 9px;
+  background: linear-gradient(
+    135deg,
+    #ffffff 0%,
+    #e8e8ed 30%,
+    #a2a2aa 65%,
+    #3a3a3c 100%
+  );
+  border: 1.5px solid rgba(255, 255, 255, 0.85);
   box-shadow:
-    0 0 0 4px rgba(48, 209, 88, 0.25),
-    0 0 22px rgba(48, 209, 88, 0.8),
-    inset 0 -2px 3px rgba(0,0,0,0.3);
+    0 4px 14px rgba(0, 0, 0, 0.9),
+    0 0 16px rgba(255, 255, 255, 0.6),
+    inset 0 1px 3px rgba(255, 255, 255, 0.9),
+    inset -1px -2px 3px rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.card-progress-thumb-head:hover .thumb-head-core {
+  transform: scale(1.12) rotate(45deg);
+}
+
+/* Icono estelar de energía en el centro */
+.thumb-head-icon {
+  width: 15px;
+  height: 15px;
+  color: #1a1a1c;
+  filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.8));
+  animation: headStarSpin 6s linear infinite;
+}
+
+@keyframes headPulse {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1.3);
+    opacity: 0.95;
+  }
+}
+
+@keyframes headStarSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .card-progress-count {

@@ -354,29 +354,7 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
 
   return (
     <div className="study-view animate-fade-in">
-      <div className="study-header">
-        <button className="btn btn-back" onClick={onBack}>
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            style={{ width: "20px", height: "20px" }}
-          >
-            <line x1="19" y1="12" x2="5" y2="12" />
-            <polyline points="12 19 5 12 12 5" />
-          </svg>
-          <span>Volver</span>
-        </button>
-        <div className="study-info">
-          <h2>{deck.name}</h2>
-        </div>
-        <div></div>
-      </div>
-
-      {/* Card Progress Bar */}
+      {/* Barra de progreso integrada con botón Volver */}
       <div
         className="card-progress-wrapper"
         style={{
@@ -385,6 +363,22 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
           "--progress-ratio": progressPct / 100,
         }}
       >
+        <button className="btn-back-inline" onClick={onBack} title="Volver al menú">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            style={{ width: "18px", height: "18px" }}
+          >
+            <line x1="19" y1="12" x2="5" y2="12" />
+            <polyline points="12 19 5 12 12 5" />
+          </svg>
+          <span>Volver</span>
+        </button>
+
         <div
           ref={dotsContainerRef}
           className="card-progress-track"
@@ -397,19 +391,55 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
         >
+          {/* Capa de estrellas dinámicas flotantes */}
+          <div className="stars-layer" aria-hidden="true">
+            <span className="drift-star" style={{ "--drift-duration": "5.5s", "--rotate-duration": "2.2s", "--rotate-dir": "normal", top: "18%", width: "13px", height: "13px", animationDelay: "0s" }}>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4h7.6l-6.2 4.5 2.4 7.4-6.2-4.5-6.2 4.5 2.4-7.4-6.2-4.5h7.6z"/></svg>
+            </span>
+            <span className="drift-star" style={{ "--drift-duration": "8s", "--rotate-duration": "3.2s", "--rotate-dir": "reverse", top: "54%", width: "10px", height: "10px", animationDelay: "-2.5s" }}>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4h7.6l-6.2 4.5 2.4 7.4-6.2-4.5-6.2 4.5 2.4-7.4-6.2-4.5h7.6z"/></svg>
+            </span>
+            <span className="drift-star" style={{ "--drift-duration": "4.8s", "--rotate-duration": "1.6s", "--rotate-dir": "normal", top: "32%", width: "15px", height: "15px", animationDelay: "-1.2s" }}>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4h7.6l-6.2 4.5 2.4 7.4-6.2-4.5-6.2 4.5 2.4-7.4-6.2-4.5h7.6z"/></svg>
+            </span>
+            <span className="drift-star" style={{ "--drift-duration": "7s", "--rotate-duration": "2.6s", "--rotate-dir": "reverse", top: "66%", width: "11px", height: "11px", animationDelay: "-4.5s" }}>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4h7.6l-6.2 4.5 2.4 7.4-6.2-4.5-6.2 4.5 2.4-7.4-6.2-4.5h7.6z"/></svg>
+            </span>
+            <span className="drift-star" style={{ "--drift-duration": "6.2s", "--rotate-duration": "2.8s", "--rotate-dir": "normal", top: "25%", width: "9px", height: "9px", animationDelay: "-3.8s" }}>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4h7.6l-6.2 4.5 2.4 7.4-6.2-4.5-6.2 4.5 2.4-7.4-6.2-4.5h7.6z"/></svg>
+            </span>
+            <span className="drift-star" style={{ "--drift-duration": "5.2s", "--rotate-duration": "1.9s", "--rotate-dir": "reverse", top: "48%", width: "14px", height: "14px", animationDelay: "-0.8s" }}>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4h7.6l-6.2 4.5 2.4 7.4-6.2-4.5-6.2 4.5 2.4-7.4-6.2-4.5h7.6z"/></svg>
+            </span>
+            <span className="drift-star" style={{ "--drift-duration": "7.8s", "--rotate-duration": "3s", "--rotate-dir": "normal", top: "15%", width: "11px", height: "11px", animationDelay: "-5.2s" }}>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4h7.6l-6.2 4.5 2.4 7.4-6.2-4.5-6.2 4.5 2.4-7.4-6.2-4.5h7.6z"/></svg>
+            </span>
+            <span className="drift-star" style={{ "--drift-duration": "6.6s", "--rotate-duration": "2.4s", "--rotate-dir": "reverse", top: "60%", width: "12px", height: "12px", animationDelay: "-2.1s" }}>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4h7.6l-6.2 4.5 2.4 7.4-6.2-4.5-6.2 4.5 2.4-7.4-6.2-4.5h7.6z"/></svg>
+            </span>
+            <span className="drift-star" style={{ "--drift-duration": "4.5s", "--rotate-duration": "1.5s", "--rotate-dir": "normal", top: "40%", width: "8px", height: "8px", animationDelay: "-3.2s" }}>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4h7.6l-6.2 4.5 2.4 7.4-6.2-4.5-6.2 4.5 2.4-7.4-6.2-4.5h7.6z"/></svg>
+            </span>
+          </div>
+
           <div
             className="card-progress-fill"
             style={{ width: `${progressPct}%` }}
           >
-            <div className="card-progress-thumb" />
+            {/* Cabezal indicador dinámico estilo Cometa / Flecha Cyber */}
+            <div className="card-progress-thumb-head" title="Posición actual">
+              <span className="thumb-head-halo" />
+              <div className="thumb-head-core">
+                <svg viewBox="0 0 24 24" fill="currentColor" className="thumb-head-icon">
+                  <path d="M12 2l3 7h7l-5.5 4.5 2 7.5-6.5-5-6.5 5 2-7.5-5.5-4.5h7z" />
+                </svg>
+              </div>
+            </div>
           </div>
         </div>
         <div className="card-progress-count">
           <span className="card-progress-pos">
-            {currentCardIndex + 1}/{cards.length}
-          </span>
-          <span className="card-progress-pct">
-            {Math.round(progressPct)}%
+            {currentCardIndex + 1} / {cards.length}
           </span>
         </div>
       </div>
