@@ -21,7 +21,7 @@ function App() {
         const savedDecks = DataStore.loadDecks();
         
         const deckFiles = [
-          // Mazo Examen Java (los 20 exÃ¡menes de Grado Superior)
+          // Mazo Examen Java (los 20 exÃƒÂ¡menes de Grado Superior)
           "/data/examenes/examen-java.json",
         ];
 
@@ -64,12 +64,12 @@ function App() {
                   card.status = savedCard.status;
                 }
               });
-              // Restaurar estadÃ­sticas del mazo
+              // Restaurar estadÃƒÂ­sticas del mazo
               deck.lastStudied = savedDeck.lastStudied;
               if (savedDeck.studyStats) {
                 deck.studyStats = savedDeck.studyStats;
               }
-              // Restaurar registro de visualizaciones (datos del grÃ¡fico de progreso)
+              // Restaurar registro de visualizaciones (datos del grÃƒÂ¡fico de progreso)
               if (savedDeck.viewLog) {
                 deck.viewLog = savedDeck.viewLog;
               }
@@ -148,7 +148,7 @@ function App() {
   const handleClearAllData = async () => {
     // Limpiar localStorage
     DataStore.clearAll();
-    // Recargar la pÃ¡gina para recrear los mazos desde cero
+    // Recargar la pÃƒÂ¡gina para recrear los mazos desde cero
     window.location.reload();
   };
 
@@ -163,11 +163,7 @@ function App() {
 
   return (
     <div className="app">
-      <div className="ambient-background" aria-hidden="true">
-        <div className="ambient-orb orb-1"></div>
-        <div className="ambient-orb orb-2"></div>
-        <div className="ambient-orb orb-3"></div>
-      </div>
+      
       <main className="app-main">
         {currentView === "decks" && (
           <DeckList

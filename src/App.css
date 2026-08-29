@@ -30,54 +30,13 @@ html, body {
   background: #000000;
 }
 
-/* === APPLE AMBIENT SUBTLE BACKDROP === */
-.ambient-background {
-  position: fixed;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.ambient-orb {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(140px);
-  opacity: 0.22;
-}
-
-.orb-1 {
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(48, 209, 88, 0.28) 0%, transparent 70%);
-  top: -80px;
-  right: -50px;
-}
-
-.orb-2 {
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(10, 132, 255, 0.18) 0%, transparent 70%);
-  bottom: -100px;
-  left: -80px;
-}
-
-.orb-3 {
-  width: 450px;
-  height: 450px;
-  background: radial-gradient(circle, rgba(94, 92, 230, 0.14) 0%, transparent 70%);
-  top: 40%;
-  left: 30%;
-}
-
 /* === APP LAYOUT === */
 .app {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   position: relative;
-  background: #000000;
-  z-index: 1;
+  background: #000000 !important;
 }
 
 .app-main {
