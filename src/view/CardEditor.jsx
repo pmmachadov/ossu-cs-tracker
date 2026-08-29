@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { motion, AnimatePresence } from 'motion/react'
 import './CardEditor.css'
 
 export function CardEditor({ deck, onBack, onUpdateDeck }) {
@@ -111,81 +112,97 @@ export function CardEditor({ deck, onBack, onUpdateDeck }) {
         />
       </div>
 
-      {(showAddForm || editingCard) && (
-        <div className="card-form-container">
-          <h3>{editingCard ? 'Editar tarjeta' : 'Nueva tarjeta'}</h3>
-          <form onSubmit={editingCard ? handleUpdateCard : handleAddCard}>
-            <div className="form-row">
-              <div className="form-group">
-                <label>Frente (Pregunta)</label>
-                <textarea
-                  className="textarea"
-                  value={front}
-                  onChange={e => setFront(e.target.value)}
-                  placeholder="Escribe la pregunta..."
-                  rows={3}
-                  autoFocus
-                />
-              </div>
-              <div className="form-group">
-                <label>Reverso (Respuesta)</label>
-                <textarea
-                  className="textarea"
-                  value={back}
-                  onChange={e => setBack(e.target.value)}
-                  placeholder="Escribe la respuesta..."
-                  rows={3}
-                />
-              </div>
-            </div>
-            <div className="form-group">
-              <label>Etiquetas (separadas por coma)</label>
-              <input
-                type="text"
-                className="input"
-                value={tags}
-                onChange={e => setTags(e.target.value)}
-                placeholder="ej: hardware, cpu, conceptos-basicos"
-              />
-            </div>
-            <div className="form-group">
-              <label>Imagen (URL de internet)</label>
-              <input
-                type="text"
-                className="input"
-                value={imageUrl}
-                onChange={e => setImageUrl(e.target.value)}
-                placeholder="https://ejemplo.com/imagen.png"
-              />
-              {imageUrl.trim() && (
-                <div className="image-url-preview">
-                  <img
-                    src={imageUrl.trim()}
-                    alt="Vista previa"
-                    onError={(e) => { e.target.style.display = 'none' }}
+      <AnimatePresence>
+        {(showAddForm || editingCard) && (
+          <motion.div
+            className="card-form-container"
+            initial={{ opacity: 0, height: 0, y: -10 }}
+            animate={{ opacity: 1, height: "auto", y: 0 }}
+            exit={{ opacity: 0, height: 0, y: -10 }}
+            transition={{ duration: 0.25, ease: "easeOut" }}
+            style={{ overflow: "hidden" }}
+          >
+            <h3>{editingCard ? 'Editar tarjeta' : 'Nueva tarjeta'}</h3>
+            <form onSubmit={editingCard ? handleUpdateCard : handleAddCard}>
+              <div className="form-row">
+                <div className="form-group">
+                  <label>Frente (Pregunta)</label>
+                  <textarea
+                    className="textarea"
+                    value={front}
+                    onChange={e => setFront(e.target.value)}
+                    placeholder="Escribe la pregunta..."
+                    rows={3}
+                    autoFocus
                   />
                 </div>
-              )}
-            </div>
-            <div className="form-actions">
-              <button type="button" className="btn btn-secondary" onClick={handleCancel}>
-                Cancelar
-              </button>
-              <button 
-                type="submit" 
-                className="btn btn-primary"
-                disabled={!front.trim() || !back.trim()}
-              >
-                {editingCard ? 'Guardar cambios' : 'Añadir tarjeta'}
-              </button>
-            </div>
-          </form>
-        </div>
-      )}
+                <div className="form-group">
+                  <label>Reverso (Respuesta)</label>
+                  <textarea
+                    className="textarea"
+                    value={back}
+                    onChange={e => setBack(e.target.value)}
+                    placeholder="Escribe la respuesta..."
+                    rows={3}
+                  />
+                </div>
+              </div>
+              <div className="form-group">
+                <label>Etiquetas (separadas por coma)</label>
+                <input
+                  type="text"
+                  className="input"
+                  value={tags}
+                  onChange={e => setTags(e.target.value)}
+                  placeholder="ej: hardware, cpu, conceptos-basicos"
+                />
+              </div>
+              <div className="form-group">
+                <label>Imagen (URL de internet)</label>
+                <input
+                  type="text"
+                  className="input"
+                  value={imageUrl}
+                  onChange={e => setImageUrl(e.target.value)}
+                  placeholder="https://ejemplo.com/imagen.png"
+                />
+                {imageUrl.trim() && (
+                  <div className="image-url-preview">
+                    <img
+                      src={imageUrl.trim()}
+                      alt="Vista previa"
+                      onError={(e) => { e.target.style.display = 'none' }}
+                    />
+                  </div>
+                )}
+              </div>
+              <div className="form-actions">
+                <button type="button" className="btn btn-secondary" onClick={handleCancel}>
+                  Cancelar
+                </button>
+                <button 
+                  type="submit" 
+                  className="btn btn-primary"
+                  disabled={!front.trim() || !back.trim()}
+                >
+                  {editingCard ? 'Guardar cambios' : 'Añadir tarjeta'}
+                </button>
+              </div>
+            </form>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <div className="cards-list">
         {filteredCards.map((card, index) => (
-          <div key={card.id} className="card-item">
+          <motion.div
+            key={card.id}
+            layout
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.2 }}
+            className="card-item"
+          >
             <div className="card-item-number">#{index + 1}</div>
             <div className="card-item-content">
               <div className="card-item-front">
@@ -232,7 +249,7 @@ export function CardEditor({ deck, onBack, onUpdateDeck }) {
                 Eliminar
               </button>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
 

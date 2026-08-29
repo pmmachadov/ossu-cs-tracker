@@ -1,4 +1,5 @@
 import { useState, useMemo, useEffect } from 'react'
+import { motion, AnimatePresence } from 'motion/react'
 import { 
   PieChart, Pie, Cell, BarChart, Bar, XAxis, YAxis, 
   CartesianGrid, Tooltip, ResponsiveContainer, AreaChart, Area, LineChart, Line
@@ -310,7 +311,13 @@ export function StatsView({ deck, onBack, onResetProgress }) {
 
       {/* Resumen */}
       <div className="stats-overview">
-        <div className="stat-card stat-mastery">
+        <motion.div 
+          className="stat-card stat-mastery"
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.25, delay: 0.05 }}
+          whileHover={{ y: -3 }}
+        >
           <div className="stat-icon-bg">
             <svg viewBox="0 0 36 36" className="circular-chart">
               <defs>
@@ -334,39 +341,63 @@ export function StatsView({ deck, onBack, onResetProgress }) {
             <span className="stat-label">Dominio</span>
             <span className="stat-sublabel">{stats.aprendido} de {stats.total} tarjetas</span>
           </div>
-        </div>
+        </motion.div>
         
-        <div className="stat-card stat-total">
+        <motion.div 
+          className="stat-card stat-total"
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.25, delay: 0.1 }}
+          whileHover={{ y: -3 }}
+        >
           <div className="stat-icon-wrap icon-purple">{Icons.cards}</div>
           <div className="stat-content">
             <span className="stat-value">{stats.total}</span>
             <span className="stat-label">Total tarjetas</span>
           </div>
-        </div>
+        </motion.div>
         
-        <div className="stat-card stat-studied">
+        <motion.div 
+          className="stat-card stat-studied"
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.25, delay: 0.15 }}
+          whileHover={{ y: -3 }}
+        >
           <div className="stat-icon-wrap icon-green">{Icons.check}</div>
           <div className="stat-content">
             <span className="stat-value">{stats.studied}</span>
             <span className="stat-label">Estudiadas</span>
           </div>
-        </div>
+        </motion.div>
         
-        <div className="stat-card stat-due">
+        <motion.div 
+          className="stat-card stat-due"
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.25, delay: 0.2 }}
+          whileHover={{ y: -3 }}
+        >
           <div className="stat-icon-wrap icon-orange">{Icons.clock}</div>
           <div className="stat-content">
             <span className="stat-value">{stats.dueToday}</span>
             <span className="stat-label">Pendientes hoy</span>
           </div>
-        </div>
+        </motion.div>
         
-        <div className="stat-card stat-streak">
+        <motion.div 
+          className="stat-card stat-streak"
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.25, delay: 0.25 }}
+          whileHover={{ y: -3 }}
+        >
           <div className="stat-icon-wrap icon-red">{Icons.flame}</div>
           <div className="stat-content">
             <span className="stat-value">{stats.streak}</span>
             <span className="stat-label">Racha (días)</span>
           </div>
-        </div>
+        </motion.div>
       </div>
 
       {/* Gráficos */}
@@ -716,88 +747,104 @@ export function StatsView({ deck, onBack, onResetProgress }) {
       </div>
 
       {/* Modal de confirmación — 3 etapas de comprobación */}
-      {showResetConfirm && (
-        <div className="modal-overlay" onClick={closeReset}>
-          <div className="modal modal-confirm" onClick={e => e.stopPropagation()}>
-            <div className="confirm-icon-wrap">
-              <div className="confirm-icon">{Icons.warning}</div>
-            </div>
+      <AnimatePresence>
+        {showResetConfirm && (
+          <motion.div 
+            className="modal-overlay" 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            onClick={closeReset}
+          >
+            <motion.div 
+              className="modal modal-confirm" 
+              initial={{ scale: 0.94, opacity: 0, y: 10 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.94, opacity: 0, y: 10 }}
+              transition={{ duration: 0.22, ease: "easeOut" }}
+              onClick={e => e.stopPropagation()}
+            >
+              <div className="confirm-icon-wrap">
+                <div className="confirm-icon">{Icons.warning}</div>
+              </div>
 
-            {resetStage === 1 && (
-              <>
-                <h3>¿Borrar progreso?</h3>
-                <p>
-                  Esto reiniciará <strong>todas las tarjetas</strong> de este mazo a estado "nuevo". 
-                  Se perderá todo el historial de estudio.
-                </p>
-                <div className="confirm-alert">
-                  <span>⚠️</span>
-                  <span>Esta acción no se puede deshacer</span>
-                </div>
-                <div className="modal-actions">
-                  <button className="btn btn-secondary" onClick={closeReset}>
-                    Cancelar
-                  </button>
-                  <button className="btn btn-primary" onClick={() => setResetStage(2)}>
-                    Continuar
-                  </button>
-                </div>
-              </>
-            )}
-
-            {resetStage === 2 && (
-              <>
-                <h3>Segunda comprobación</h3>
-                <p>
-                  Vas a perder <strong>{stats.studied} tarjetas estudiadas</strong> y{" "}
-                  {stats.procesando} en proceso. Esta acción es irreversible.
-                </p>
-                <div className="confirm-alert">
-                  <span>⚠️</span>
-                  <span>No podrás recuperar los datos</span>
-                </div>
-                <div className="modal-actions">
-                  <button className="btn btn-secondary" onClick={closeReset}>
-                    Cancelar
-                  </button>
-                  <button className="btn btn-warning" onClick={() => setResetStage(3)}>
-                    Sí, estoy seguro
-                  </button>
-                </div>
-              </>
-            )}
-
-            {resetStage === 3 && (
-              <>
-                <h3>Confirmación final</h3>
-                <p>El botón de borrado se activará cuando termine la espera.</p>
-                <div className="countdown-wrap">
-                  <div className={`countdown-circle ${canDelete ? "ready" : ""}`}>
-                    {canDelete ? "✓" : countdown}
+              {resetStage === 1 && (
+                <>
+                  <h3>¿Borrar progreso?</h3>
+                  <p>
+                    Esto reiniciará <strong>todas las tarjetas</strong> de este mazo a estado "nuevo". 
+                    Se perderá todo el historial de estudio.
+                  </p>
+                  <div className="confirm-alert">
+                    <span>⚠️</span>
+                    <span>Esta acción no se puede deshacer</span>
                   </div>
-                  <span className="countdown-label">
-                    {canDelete
-                      ? "Listo para borrar"
-                      : "Espera para activar el borrado..."}
-                  </span>
-                </div>
-                <div className="modal-actions">
-                  <button className="btn btn-secondary" onClick={closeReset}>
-                    Cancelar
-                  </button>
-                  <button
-                    className="btn btn-danger"
-                    onClick={handleReset}
-                    disabled={!canDelete}
-                  >
-                    {canDelete ? "Borrar definitivamente" : `Activa en ${countdown}s`}
-                  </button>
-                </div>
-              </>
-            )}
-          </div>
-        </div>
-      )}
+                  <div className="modal-actions">
+                    <button className="btn btn-secondary" onClick={closeReset}>
+                      Cancelar
+                    </button>
+                    <button className="btn btn-primary" onClick={() => setResetStage(2)}>
+                      Continuar
+                    </button>
+                  </div>
+                </>
+              )}
+
+              {resetStage === 2 && (
+                <>
+                  <h3>Segunda comprobación</h3>
+                  <p>
+                    Vas a perder <strong>{stats.studied} tarjetas estudiadas</strong> y{" "}
+                    {stats.procesando} en proceso. Esta acción es irreversible.
+                  </p>
+                  <div className="confirm-alert">
+                    <span>⚠️</span>
+                    <span>No podrás recuperar los datos</span>
+                  </div>
+                  <div className="modal-actions">
+                    <button className="btn btn-secondary" onClick={closeReset}>
+                      Cancelar
+                    </button>
+                    <button className="btn btn-warning" onClick={() => setResetStage(3)}>
+                      Sí, estoy seguro
+                    </button>
+                  </div>
+                </>
+              )}
+
+              {resetStage === 3 && (
+                <>
+                  <h3>Confirmación final</h3>
+                  <p>El botón de borrado se activará cuando termine la espera.</p>
+                  <div className="countdown-wrap">
+                    <div className={`countdown-circle ${canDelete ? "ready" : ""}`}>
+                      {canDelete ? "✓" : countdown}
+                    </div>
+                    <span className="countdown-label">
+                      {canDelete
+                        ? "Listo para borrar"
+                        : "Espera para activar el borrado..."}
+                    </span>
+                  </div>
+                  <div className="modal-actions">
+                    <button className="btn btn-secondary" onClick={closeReset}>
+                      Cancelar
+                    </button>
+                    <button
+                      className="btn btn-danger"
+                      onClick={handleReset}
+                      disabled={!canDelete}
+                    >
+                      {canDelete ? "Borrar definitivamente" : `Activa en ${countdown}s`}
+                    </button>
+                  </div>
+                </>
+              )}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   )
 }

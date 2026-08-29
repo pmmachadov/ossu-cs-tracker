@@ -1,4 +1,5 @@
 import { useMemo } from "react";
+import { motion } from "motion/react";
 import { Icons } from "./Icons";
 import { isExamDeck, getSubjectIcon, getSubjectColor } from "./deckHelpers";
 
@@ -49,8 +50,12 @@ export function DeckCard({
   const isDone = status === true;
 
   return (
-    <div
+    <motion.div
       key={deck.id}
+      layout
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.25, ease: "easeOut" }}
       className={`deck-card ${hasDueCards ? "has-due" : ""} ${themeClass} ${
         isDone ? "done" : isProgress ? "in-progress" : ""
       }`}
@@ -170,36 +175,44 @@ export function DeckCard({
 
         {/* Actions */}
         <div className="deck-actions">
-          <button
+          <motion.button
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.97 }}
             className="btn btn-primary btn-study"
             onClick={() => onStudyDeck(deck)}
           >
             <span className="btn-icon">{Icons.study}</span>
             <span>Estudiar</span>
-          </button>
-          <button
+          </motion.button>
+          <motion.button
+            whileHover={{ scale: 1.08 }}
+            whileTap={{ scale: 0.92 }}
             className="btn btn-icon-only btn-stats"
             onClick={() => onStatsDeck(deck)}
-            title="Ver estadÃƒÂ­sticas"
+            title="Ver estadísticas"
           >
             {Icons.stats}
-          </button>
-          <button
+          </motion.button>
+          <motion.button
+            whileHover={{ scale: 1.08 }}
+            whileTap={{ scale: 0.92 }}
             className="btn btn-icon-only btn-edit"
             onClick={() => onEditDeck(deck)}
             title="Editar mazo"
           >
             {Icons.edit}
-          </button>
-          <button
+          </motion.button>
+          <motion.button
+            whileHover={{ scale: 1.08 }}
+            whileTap={{ scale: 0.92 }}
             className="btn btn-icon-only btn-reset"
             onClick={() => onOpenResetModal(deck)}
             title="Reiniciar progreso"
           >
             {Icons.reset}
-          </button>
+          </motion.button>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

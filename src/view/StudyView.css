@@ -47,21 +47,25 @@
   margin-bottom: 4px;
 }
 
-/* Card Progress Dots - Minimalista y sobrio */
+/* Card Progress Bar - Look vitrificado Apple */
 .card-progress-wrapper {
   position: relative;
   isolation: isolate;
   display: flex;
   align-items: center;
-  gap: 16px;
-  margin-bottom: 24px;
-  padding: 16px 24px;
-  background: var(--glass-bg-card);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
-  border: 1px solid var(--glass-border);
-  border-radius: 24px;
-  box-shadow: var(--glass-shadow);
+  gap: 20px;
+  margin-bottom: 28px;
+  padding: 18px 26px;
+  background:
+    linear-gradient(165deg, rgba(255,255,255,0.07), rgba(255,255,255,0.02)),
+    var(--glass-bg-card);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 22px;
+  box-shadow:
+    0 12px 44px -14px rgba(0,0,0,0.75),
+    inset 0 1px 0 rgba(255,255,255,0.10);
   max-width: 100%;
   width: 100%;
   margin-left: auto;
@@ -74,10 +78,8 @@
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: #000000;
   border-radius: inherit;
-  opacity: 0;
-  animation: breathe-wrapper 14s ease-in-out infinite;
+  background: linear-gradient(120deg, rgba(255,255,255,0.05), transparent 40%);
   pointer-events: none;
 }
 
@@ -86,21 +88,28 @@
   z-index: 1;
 }
 
-@keyframes breathe-wrapper {
-  0%, 100% { opacity: 0; }
-  50% { opacity: 0.9; }
-}
-
 .card-progress-track {
   flex: 1;
-  height: 14px;
-  background: #000000;
+  height: 26px;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent 0,
+      transparent calc(100% / var(--card-count, 1) * 0.50),
+      rgba(255,255,255,0.08) calc(100% / var(--card-count, 1) * 0.50),
+      rgba(255,255,255,0.08) calc(100% / var(--card-count, 1) * 0.53)
+    ),
+    #08080c;
   border-radius: 999px;
   position: relative;
   cursor: grab;
   user-select: none;
   -webkit-user-select: none;
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow:
+    inset 0 3px 8px rgba(0,0,0,0.9),
+    inset 0 -1px 2px rgba(255,255,255,0.06),
+    0 4px 16px rgba(0,0,0,0.4);
 }
 
 .card-progress-track:active {
@@ -110,60 +119,117 @@
 .card-progress-fill {
   height: 100%;
   background:
-    linear-gradient(105deg, transparent, rgba(255, 255, 255, 0.22) 45%, transparent 55%) no-repeat,
-    linear-gradient(90deg,
-      var(--pb-accent, #4285F4),
-      color-mix(in srgb, var(--pb-accent, #4285F4) 45%, #000000));
-  background-size: 60% 100%, 100% 100%;
-  background-position: -160% 0, 0 0;
+    linear-gradient(105deg, transparent, rgba(255,255,255,0.45) 45%, transparent 55%) no-repeat,
+    linear-gradient(
+      90deg,
+      #0071e3 0%,
+      #5e5ce6 20%,
+      #bf5af2 40%,
+      #ff2d55 60%,
+      #ff9f0a 75%,
+      #64d2ff 88%,
+      #30d158 100%
+    );
+  background-size: 60% 100%, 250% 100%;
+  background-position: -180% 0, 0 0;
   border-radius: 999px;
-  transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
-  box-shadow: 0 0 10px color-mix(in srgb, var(--pb-accent, #4285F4) 55%, transparent);
-  animation: progress-shine 2.4s ease-in-out infinite;
+  transition: width 0.5s cubic-bezier(0.34, 1.25, 0.4, 1);
+  box-shadow:
+    0 0 22px rgba(94, 92, 230, 0.45),
+    inset 0 2px 4px rgba(255,255,255,0.4),
+    inset 0 -2px 4px rgba(0,0,0,0.3);
+  animation: 
+    progress-shine 2.2s ease-in-out infinite,
+    progress-bar-flow 8s ease-in-out infinite alternate,
+    progress-hue-cycle 12s linear infinite;
 }
 
-/* Reflejo sutil que recorre el relleno mientras avanzas */
+/* Animación continua de degradado y tono de color */
+@keyframes progress-bar-flow {
+  0% {
+    background-position: -180% 0, 0% 50%;
+  }
+  50% {
+    background-position: 50% 0, 100% 50%;
+  }
+  100% {
+    background-position: 260% 0, 0% 50%;
+  }
+}
+
+@keyframes progress-hue-cycle {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+
+/* Reflejo que recorre el relleno mientras avanzas */
 @keyframes progress-shine {
   0% {
-    background-position: -160% 0, 0 0;
+    background-position: -180% 0, var(--bg-pos, 0% 0);
   }
   55%,
   100% {
-    background-position: 260% 0, 0 0;
+    background-position: 260% 0, var(--bg-pos, 0% 0);
   }
 }
 
 .card-progress-thumb {
   position: absolute;
-  right: -8px;
+  right: -13px;
   top: 50%;
   transform: translateY(-50%);
-  width: 20px;
-  height: 20px;
-  background: linear-gradient(135deg, #ffffff, color-mix(in srgb, var(--pb-accent, #4285F4) 70%, #ffffff));
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
+  background:
+    radial-gradient(circle at 32% 28%, #ffffff, #64d2ff 45%, #30d158 80%, #0d0d0f);
   box-shadow:
-    0 0 0 4px color-mix(in srgb, var(--pb-accent, #4285F4) 18%, transparent),
-    0 0 12px color-mix(in srgb, var(--pb-accent, #4285F4) 60%, transparent);
+    0 0 0 4px rgba(48, 209, 88, 0.25),
+    0 0 22px rgba(48, 209, 88, 0.8),
+    inset 0 -2px 3px rgba(0,0,0,0.3);
 }
 
 .card-progress-count {
-  font-size: 1.15rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+  background: linear-gradient(180deg, rgba(255,255,255,0.09), rgba(255,255,255,0.02));
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 999px;
+  padding: 6px 14px 6px 18px;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.10),
+    0 4px 16px rgba(0,0,0,0.30);
+}
+
+.card-progress-pos {
+  font-size: 1.05rem;
   font-weight: 700;
   color: var(--text-primary);
-  background: var(--bg-tertiary);
-  border: 1px solid var(--border-color);
-  padding: 6px 16px;
-  border-radius: 999px;
-  white-space: nowrap;
   font-variant-numeric: tabular-nums;
   letter-spacing: 0.02em;
 }
 
+.card-progress-pct {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--pb-accent, #4285F4);
+  background: color-mix(in srgb, var(--pb-accent, #4285F4) 16%, transparent);
+  border: 1px solid color-mix(in srgb, var(--pb-accent, #4285F4) 40%, transparent);
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-variant-numeric: tabular-nums;
+  transition: all 0.3s ease;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .card-progress-fill,
-  .card-progress-wrapper::before {
+  .card-progress-fill {
     animation: none;
   }
 }

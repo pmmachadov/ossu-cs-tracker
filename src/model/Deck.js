@@ -246,7 +246,24 @@ export class Deck {
     });
   }
 
+  /** Limitar el tamaño de los registros volátiles para que localStorage
+   *  nunca se desborde (la gráfica solo usa los últimos 90 días). */
+  pruneLogs(maxViewDays = 120, maxHistoryDays = 90) {
+    const viewCut = Date.now() - maxViewDays * 24 * 60 * 60 * 1000;
+    const histCut = Date.now() - maxHistoryDays * 24 * 60 * 60 * 1000;
+    if (Array.isArray(this.viewLog)) {
+      this.viewLog = this.viewLog.filter((e) => e.timestamp >= viewCut);
+    }
+    if (this.studyStats && Array.isArray(this.studyStats.studyHistory)) {
+      this.studyStats.studyHistory = this.studyStats.studyHistory.filter(
+        (h) => h.date >= histCut,
+      );
+    }
+  }
+
   toJSON() {
+    // Evitar que los logs crezcan sin límite antes de persistir
+    this.pruneLogs();
     return {
       id: this.id,
       name: this.name,
@@ -289,7 +306,9 @@ export class Deck {
     deck.viewLog = data.viewLog || [];
     deck.cards = data.cards.map((c) => {
       const card = new Card(c.id, c.front, c.back, c.tags, c.imageUrl || '');
-      Object.assign(card, c);
+      // Restaurar el resto de campos SIN tocar 'id' (es de solo lectura).
+      const { id, ...rest } = c;
+      Object.assign(card, rest);
       return card;
     });
     return deck;

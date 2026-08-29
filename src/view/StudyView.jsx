@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback, useRef, useMemo } from "react";
+import { motion, AnimatePresence } from "motion/react";
 import { DIFFICULTY } from "../model/Deck";
 
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
@@ -201,8 +202,8 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
   }, [deck]);
 
   const currentCard = cards[currentCardIndex];
-  const progress =
-    cards.length > 0 ? (currentCardIndex / cards.length) * 100 : 0;
+  const progressPct =
+    cards.length > 1 ? (currentCardIndex / (cards.length - 1)) * 100 : 100;
 
   // Análisis de opciones de la tarjeta actual (opción múltiple o V/F; null si no aplica)
   const mc = useMemo(
@@ -363,11 +364,16 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
       {/* Card Progress Bar */}
       <div
         className="card-progress-wrapper"
-        style={{ "--pb-accent": subjectColor.accent }}
+        style={{
+          "--pb-accent": subjectColor.accent,
+          "--progress-pct": `${progressPct}%`,
+          "--progress-ratio": progressPct / 100,
+        }}
       >
         <div
           ref={dotsContainerRef}
           className="card-progress-track"
+          style={{ "--card-count": cards.length }}
           onMouseDown={handleMouseDown}
           onMouseMove={handleMouseMove}
           onMouseUp={handleMouseUp}
@@ -378,26 +384,37 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
         >
           <div
             className="card-progress-fill"
-            style={{
-              width: `${
-                cards.length > 1
-                  ? (currentCardIndex / (cards.length - 1)) * 100
-                  : 100
-              }%`,
-            }}
+            style={{ width: `${progressPct}%` }}
           >
             <div className="card-progress-thumb" />
           </div>
         </div>
         <div className="card-progress-count">
-          {currentCardIndex + 1}/{cards.length}
+          <span className="card-progress-pos">
+            {currentCardIndex + 1}/{cards.length}
+          </span>
+          <span className="card-progress-pct">
+            {Math.round(progressPct)}%
+          </span>
         </div>
       </div>
 
       <div className="flashcard-container">
-        <span className="card-number-badge">{currentCardIndex + 1}</span>
-        <div
+        <motion.span
+          key={`badge-${currentCardIndex}`}
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.2 }}
+          className="card-number-badge"
+        >
+          {currentCardIndex + 1}
+        </motion.span>
+
+        <motion.div
           key={currentCardIndex}
+          initial={{ opacity: 0, x: 20, scale: 0.98 }}
+          animate={{ opacity: 1, x: 0, scale: 1 }}
+          transition={{ duration: 0.25, ease: "easeOut" }}
           className="flashcard"
           onClick={handleFlip}
           style={{ transform: `rotateY(${flipRotation}deg)` }}
@@ -418,12 +435,17 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
                       className="mc-options"
                       style={{ "--pb-accent": subjectColor.accent }}
                     >
-                      {mc.options.map((opt) => {
+                      {mc.options.map((opt, optIndex) => {
                         const revealed = mcSelection !== null;
                         const isCorrect = opt.letter === mc.correctLetter;
                         return (
-                          <button
+                          <motion.button
                             key={opt.letter}
+                            initial={{ opacity: 0, y: 8 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.2, delay: optIndex * 0.04 }}
+                            whileHover={!revealed ? { scale: 1.01, x: 2 } : {}}
+                            whileTap={!revealed ? { scale: 0.99 } : {}}
                             className={`mc-option ${
                               revealed ? (isCorrect ? "correct" : "wrong") : ""
                             }`}
@@ -450,7 +472,7 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
                                 {isCorrect ? "✓" : "✗"}
                               </span>
                             )}
-                          </button>
+                          </motion.button>
                         );
                       })}
                     </div>
@@ -462,15 +484,23 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
                       />
                     )}
                     {/* Respuesta bajo las opciones tras elegir (sin voltear) */}
-                    {mcSelection !== null && (
-                      <div className="mc-answer">
-                        <CardContent
-                          text={currentCard.back}
-                          cardImageUrl={currentCard.imageUrl}
-                          codeTheme={codeTheme}
-                        />
-                      </div>
-                    )}
+                    <AnimatePresence>
+                      {mcSelection !== null && (
+                        <motion.div
+                          className="mc-answer"
+                          initial={{ opacity: 0, y: 12, height: 0 }}
+                          animate={{ opacity: 1, y: 0, height: "auto" }}
+                          exit={{ opacity: 0, height: 0 }}
+                          transition={{ duration: 0.28, ease: "easeOut" }}
+                        >
+                          <CardContent
+                            text={currentCard.back}
+                            cardImageUrl={currentCard.imageUrl}
+                            codeTheme={codeTheme}
+                          />
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </>
                 ) : (
                   <CardContent
@@ -515,27 +545,39 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
 
-      {(isFlipped || (mc && mcSelection !== null)) ? (
-        <div className="rating-buttons">
-          <button
-            className="rating-btn hard"
-            onClick={() => handleRate(DIFFICULTY.PROCESANDO)}
+      <AnimatePresence>
+        {(isFlipped || (mc && mcSelection !== null)) ? (
+          <motion.div
+            className="rating-buttons"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 16 }}
+            transition={{ duration: 0.22, ease: "easeOut" }}
           >
-            Otra vez
-          </button>
-          <button
-            className="rating-btn good"
-            onClick={() => handleRate(DIFFICULTY.APRENDIDO)}
-          >
-            Aprendido
-          </button>
-        </div>
-      ) : (
-        <div style={{ height: "60px" }}></div>
-      )}
+            <motion.button
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+              className="rating-btn hard"
+              onClick={() => handleRate(DIFFICULTY.PROCESANDO)}
+            >
+              Otra vez
+            </motion.button>
+            <motion.button
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+              className="rating-btn good"
+              onClick={() => handleRate(DIFFICULTY.APRENDIDO)}
+            >
+              Aprendido
+            </motion.button>
+          </motion.div>
+        ) : (
+          <div style={{ height: "60px" }}></div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

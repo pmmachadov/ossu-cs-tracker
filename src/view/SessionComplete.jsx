@@ -1,3 +1,5 @@
+import { motion } from "motion/react";
+
 export function SessionComplete({ sessionStats, onBack }) {
   const total =
     sessionStats.again +
@@ -9,27 +11,54 @@ export function SessionComplete({ sessionStats, onBack }) {
   );
 
   return (
-    <div className="study-view animate-fade-in">
-      <div className="complete-view">
-        <div className="complete-icon">🎊</div>
+    <div className="study-view">
+      <motion.div 
+        className="complete-view"
+        initial={{ opacity: 0, scale: 0.9, y: 20 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        transition={{ duration: 0.35, ease: "easeOut" }}
+      >
+        <motion.div 
+          className="complete-icon"
+          initial={{ scale: 0, rotate: -20 }}
+          animate={{ scale: 1, rotate: 0 }}
+          transition={{ type: "spring", stiffness: 260, damping: 20, delay: 0.1 }}
+        >
+          🎊
+        </motion.div>
         <h2>¡Sesion completada!</h2>
         <p className="complete-subtitle">Has estudiado {total} tarjetas</p>
 
         <div className="session-stats">
-          <div className="session-stat good">
+          <motion.div 
+            className="session-stat good"
+            initial={{ opacity: 0, x: -10 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.2 }}
+          >
             <span className="session-stat-value">{sessionStats.good}</span>
             <span className="session-stat-label">Procesando</span>
-          </div>
-          <div className="session-stat easy">
+          </motion.div>
+          <motion.div 
+            className="session-stat easy"
+            initial={{ opacity: 0, x: 10 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.25 }}
+          >
             <span className="session-stat-value">{sessionStats.easy}</span>
             <span className="session-stat-label">Aprendido</span>
-          </div>
+          </motion.div>
         </div>
 
-        <div className="accuracy-display">
+        <motion.div 
+          className="accuracy-display"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+        >
           <div className="accuracy-value">{accuracy}%</div>
           <div className="accuracy-label">Precisión</div>
-        </div>
+        </motion.div>
 
         <div className="complete-actions">
           <button className="btn btn-secondary" onClick={onBack}>
@@ -42,7 +71,7 @@ export function SessionComplete({ sessionStats, onBack }) {
             Estudiar de nuevo
           </button>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }

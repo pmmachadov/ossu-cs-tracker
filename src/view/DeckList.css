@@ -7,16 +7,31 @@
 }
 
 /* Apple Hero Header */
-.deck-header {
+/* Apple Hero Header Compact & Unified */
+.deck-hero-compact {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-card);
+  padding: 24px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow: var(--glass-shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-top-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
-  padding: 12px 0 20px 0;
-  border-bottom: 1px solid var(--glass-border);
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
-.deck-header-left {
+.hero-title-group {
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -47,7 +62,7 @@
 }
 
 .deck-header-title {
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   font-weight: 700;
   letter-spacing: -0.035em;
   color: #f5f5f7;
@@ -56,47 +71,107 @@
 }
 
 .deck-header-subtitle {
-  font-size: 0.95rem;
+  font-size: 0.925rem;
   color: var(--text-secondary);
   letter-spacing: -0.01em;
   margin: 0;
 }
 
-.deck-header-actions .btn-create-deck {
-  padding: 12px 24px;
+.hero-actions-group .btn-create-deck {
+  padding: 10px 22px;
   font-size: 0.9375rem;
   box-shadow: 0 4px 16px rgba(0, 113, 227, 0.35);
 }
 
-/* Apple Stats Bento Row */
-.deck-stats-bento {
+/* Stats Row inside the same unified card */
+.hero-stats-row {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr auto 1fr auto 1.4fr;
+  align-items: center;
   gap: 16px;
+  padding: 14px 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 14px;
 }
 
-.bento-card {
-  background: var(--glass-bg);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
-  border: 1px solid var(--glass-border);
-  border-radius: var(--radius-card);
-  padding: 20px 24px;
+.stat-compact-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.stat-compact-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.stat-compact-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.stat-compact-info {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  gap: 14px;
-  box-shadow: var(--glass-shadow);
-  transition: var(--transition);
-  position: relative;
+  gap: 2px;
+  flex: 1;
+}
+
+.stat-compact-val {
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: #f5f5f7;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-compact-lbl {
+  font-size: 0.775rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.stat-compact-divider {
+  width: 1px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.stat-compact-progress .stat-compact-val-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.stat-compact-progress .bento-mini-bar {
+  flex: 1;
+  height: 7px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-pill);
   overflow: hidden;
 }
 
-.bento-card:hover {
-  background: var(--glass-bg-hover);
-  border-color: var(--glass-border-hover);
-  transform: translateY(-2px);
-  box-shadow: var(--glass-shadow-hover);
+.stat-compact-progress .bento-mini-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #0071e3, #30d158);
+  border-radius: var(--radius-pill);
+  transition: width 0.5s ease;
+}
+
+@media (max-width: 860px) {
+  .hero-stats-row {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .stat-compact-divider {
+    display: none;
+  }
 }
 
 .bento-card-header {
@@ -281,6 +356,22 @@
   box-shadow: var(--glass-shadow-hover);
 }
 
+/* Examen Java Toggle Button Compacto y con letra más pequeña */
+.examenes-toggle.examen-java-area {
+  padding: 10px 16px;
+  font-size: 0.875rem;
+  border-radius: 12px;
+}
+
+.examenes-toggle.examen-java-area .examenes-icon {
+  font-size: 1rem;
+}
+
+.examenes-toggle.examen-java-area .examenes-count {
+  font-size: 0.75rem;
+  padding: 2px 8px;
+}
+
 .examenes-icon {
   font-size: 1.2rem;
   display: flex;
@@ -336,14 +427,72 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  transition: var(--transition);
 }
 
 .deck-card:hover {
-  background: var(--glass-bg-hover);
-  border-color: var(--glass-border-hover);
-  transform: translateY(-3px);
-  box-shadow: var(--glass-shadow-hover);
+  /* Sin efectos de movimiento en hover */
+}
+
+/* Examen Java Card: Diseño balanceado, limpio y espacioso */
+.deck-card.theme-examen .deck-card-content {
+  padding: 24px 28px;
+  gap: 16px;
+}
+
+.deck-card.theme-examen .deck-card-header {
+  margin-bottom: 4px;
+}
+
+.deck-card.theme-examen .deck-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.deck-card.theme-examen .deck-description {
+  font-size: 0.875rem;
+  line-height: 1.45;
+  margin-bottom: 6px;
+}
+
+.deck-card.theme-examen .deck-card-meta {
+  margin-bottom: 0;
+  gap: 8px;
+}
+
+.deck-card.theme-examen .deck-progress {
+  margin-bottom: 4px;
+}
+
+.deck-card.theme-examen .progress-bar {
+  height: 34px;
+}
+
+.deck-card.theme-examen .deck-stats-row {
+  padding: 10px 14px;
+  margin-bottom: 6px;
+  gap: 12px;
+}
+
+.deck-card.theme-examen .stat-number {
+  font-size: 1.15rem;
+}
+
+.deck-card.theme-examen .stat-text {
+  font-size: 0.75rem;
+}
+
+.deck-card.theme-examen .deck-actions {
+  margin-top: 6px;
+  gap: 10px;
+}
+
+.deck-card.theme-examen .deck-actions .btn-study {
+  height: 42px;
+  font-size: 0.9375rem;
+}
+
+.deck-card.theme-examen .deck-actions .btn-icon-only {
+  height: 42px;
 }
 
 .deck-card-content {
@@ -442,7 +591,7 @@
 }
 
 .progress-bar {
-  height: 38px;
+  height: 44px;
   background: rgba(12, 12, 16, 0.85);
   backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.14);
@@ -460,20 +609,41 @@
   background: linear-gradient(
     90deg,
     #0071e3 0%,
-    #30d158 25%,
-    #64d2ff 50%,
-    #bf5af2 75%,
-    #ff9f0a 100%
+    #5e5ce6 20%,
+    #bf5af2 45%,
+    #64d2ff 70%,
+    #30d158 100%
   );
-  background-size: 300% 100%;
+  background-size: 250% 100%;
   animation:
-    progress-color-shift 12s ease-in-out infinite alternate,
-    progress-hue-rotate 18s linear infinite;
+    progress-color-shift 10s ease-in-out infinite alternate,
+    progress-hue-rotate 16s linear infinite;
   border-radius: var(--radius-pill);
   transition: width 0.6s cubic-bezier(0.25, 1, 0.5, 1);
   position: relative;
   z-index: 1;
-  box-shadow: 0 0 16px rgba(48, 209, 88, 0.25);
+  box-shadow: 0 0 20px rgba(48, 209, 88, 0.4), inset 0 2px 4px rgba(255, 255, 255, 0.35);
+}
+
+@keyframes progress-color-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes progress-hue-rotate {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
 }
 
 
@@ -661,6 +831,58 @@
   background: var(--glass-bg-hover);
   color: #f5f5f7;
   border-color: var(--glass-border-hover);
+}
+
+/* Copias de seguridad */
+.backup-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.btn-backup,
+.btn-restore {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.09), rgba(255,255,255,0.02));
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  color: var(--text-primary);
+  border: 1px solid rgba(255,255,255,0.12);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 4px 14px rgba(0,0,0,0.3);
+}
+
+.btn-backup .btn-icon,
+.btn-restore .btn-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.btn-backup {
+  color: var(--apple-green, #30d158);
+}
+
+.btn-restore {
+  color: var(--apple-blue, #0071e3);
+}
+
+.btn-backup:hover {
+  background: rgba(48, 209, 88, 0.15);
+  border-color: rgba(48, 209, 88, 0.5);
+}
+
+.btn-restore:hover {
+  background: rgba(0, 122, 255, 0.16);
+  border-color: rgba(0, 122, 255, 0.5);
 }
 
 .clear-data-hint {

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { motion, AnimatePresence } from "motion/react";
 import { Icons } from "./Icons";
 import {
   isExamDeck,
@@ -43,21 +44,31 @@ export function ExamenJavaFolder({
         </span>
       </button>
 
-      {show && (
-        <div className="decks-grid examenes-grid animate-fade-in">
-          <DeckCard
-            key={deck.id}
-            deck={deck}
-            doneMap={doneMap}
-            onToggleDone={onToggleDone}
-            theme="theme-examen"
-            onStudyDeck={onStudyDeck}
-            onStatsDeck={onStatsDeck}
-            onEditDeck={onEditDeck}
-            onOpenResetModal={onOpenResetModal}
-          />
-        </div>
-      )}
+      <AnimatePresence initial={false}>
+        {show && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+            style={{ overflow: "hidden" }}
+          >
+            <div className="decks-grid examenes-grid">
+              <DeckCard
+                key={deck.id}
+                deck={deck}
+                doneMap={doneMap}
+                onToggleDone={onToggleDone}
+                theme="theme-examen"
+                onStudyDeck={onStudyDeck}
+                onStatsDeck={onStatsDeck}
+                onEditDeck={onEditDeck}
+                onOpenResetModal={onOpenResetModal}
+              />
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
@@ -99,23 +110,33 @@ export function PreguntasDirectasFolder({
         </span>
       </button>
 
-      {show && (
-        <div className="decks-grid pd-grid animate-fade-in">
-          {decks.map((d) => (
-            <DeckCard
-              key={d.id}
-              deck={d}
-              doneMap={doneMap}
-              onToggleDone={onToggleDone}
-              theme="theme-pd"
-              onStudyDeck={onStudyDeck}
-              onStatsDeck={onStatsDeck}
-              onEditDeck={onEditDeck}
-              onOpenResetModal={onOpenResetModal}
-            />
-          ))}
-        </div>
-      )}
+      <AnimatePresence initial={false}>
+        {show && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+            style={{ overflow: "hidden" }}
+          >
+            <div className="decks-grid pd-grid">
+              {decks.map((d) => (
+                <DeckCard
+                  key={d.id}
+                  deck={d}
+                  doneMap={doneMap}
+                  onToggleDone={onToggleDone}
+                  theme="theme-pd"
+                  onStudyDeck={onStudyDeck}
+                  onStatsDeck={onStatsDeck}
+                  onEditDeck={onEditDeck}
+                  onOpenResetModal={onOpenResetModal}
+                />
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
@@ -160,22 +181,32 @@ export function SubjectFolder({
         </span>
       </button>
 
-      {show && (
-        <div className="decks-grid subject-grid animate-fade-in">
-          {decks.map((d) => (
-            <DeckCard
-              key={d.id}
-              deck={d}
-              doneMap={doneMap}
-              onToggleDone={onToggleDone}
-              onStudyDeck={onStudyDeck}
-              onStatsDeck={onStatsDeck}
-              onEditDeck={onEditDeck}
-              onOpenResetModal={onOpenResetModal}
-            />
-          ))}
-        </div>
-      )}
+      <AnimatePresence initial={false}>
+        {show && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+            style={{ overflow: "hidden" }}
+          >
+            <div className="decks-grid subject-grid">
+              {decks.map((d) => (
+                <DeckCard
+                  key={d.id}
+                  deck={d}
+                  doneMap={doneMap}
+                  onToggleDone={onToggleDone}
+                  onStudyDeck={onStudyDeck}
+                  onStatsDeck={onStatsDeck}
+                  onEditDeck={onEditDeck}
+                  onOpenResetModal={onOpenResetModal}
+                />
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
@@ -217,23 +248,33 @@ export function PracticasFolder({
         </span>
       </button>
 
-      {show && (
-        <div className="decks-grid practicas-grid animate-fade-in">
-          {decks.map((d) => (
-            <DeckCard
-              key={d.id}
-              deck={d}
-              doneMap={doneMap}
-              onToggleDone={onToggleDone}
-              theme="theme-green"
-              onStudyDeck={onStudyDeck}
-              onStatsDeck={onStatsDeck}
-              onEditDeck={onEditDeck}
-              onOpenResetModal={onOpenResetModal}
-            />
-          ))}
-        </div>
-      )}
+      <AnimatePresence initial={false}>
+        {show && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+            style={{ overflow: "hidden" }}
+          >
+            <div className="decks-grid practicas-grid">
+              {decks.map((d) => (
+                <DeckCard
+                  key={d.id}
+                  deck={d}
+                  doneMap={doneMap}
+                  onToggleDone={onToggleDone}
+                  theme="theme-green"
+                  onStudyDeck={onStudyDeck}
+                  onStatsDeck={onStatsDeck}
+                  onEditDeck={onEditDeck}
+                  onOpenResetModal={onOpenResetModal}
+                />
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
@@ -281,40 +322,50 @@ export function ExamenesFolder({
         </span>
       </button>
 
-      {show && (
-        <div className="examenes-content animate-fade-in">
-          {subjects.map((subj) => {
-            const subjectDecks = groups[subj] || [];
-            const icon = getSubjectIcon(subj);
-            return (
-              <div key={subj} className="examenes-subject-group">
-                <div className="examenes-subject-header">
-                  <span className="examenes-subject-icon">{icon}</span>
-                  <span className="examenes-subject-title">{subj}</span>
-                  <span className="examenes-subject-count">
-                    {subjectDecks.length}
-                  </span>
-                </div>
-                <div className="decks-grid examenes-subgrid">
-                  {subjectDecks.map((d) => (
-                    <DeckCard
-                      key={d.id}
-                      deck={d}
-                      doneMap={doneMap}
-                      onToggleDone={onToggleDone}
-                      theme="theme-green"
-                      onStudyDeck={onStudyDeck}
-                      onStatsDeck={onStatsDeck}
-                      onEditDeck={onEditDeck}
-                      onOpenResetModal={onOpenResetModal}
-                    />
-                  ))}
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      )}
+      <AnimatePresence initial={false}>
+        {show && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+            style={{ overflow: "hidden" }}
+          >
+            <div className="examenes-content">
+              {subjects.map((subj) => {
+                const subjectDecks = groups[subj] || [];
+                const icon = getSubjectIcon(subj);
+                return (
+                  <div key={subj} className="examenes-subject-group">
+                    <div className="examenes-subject-header">
+                      <span className="examenes-subject-icon">{icon}</span>
+                      <span className="examenes-subject-title">{subj}</span>
+                      <span className="examenes-subject-count">
+                        {subjectDecks.length}
+                      </span>
+                    </div>
+                    <div className="decks-grid examenes-subgrid">
+                      {subjectDecks.map((d) => (
+                        <DeckCard
+                          key={d.id}
+                          deck={d}
+                          doneMap={doneMap}
+                          onToggleDone={onToggleDone}
+                          theme="theme-green"
+                          onStudyDeck={onStudyDeck}
+                          onStatsDeck={onStatsDeck}
+                          onEditDeck={onEditDeck}
+                          onOpenResetModal={onOpenResetModal}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
@@ -362,40 +413,50 @@ export function PruebasFolder({
         </span>
       </button>
 
-      {show && (
-        <div className="pruebas-content animate-fade-in">
-          {subjects.map((subj) => {
-            const subjectDecks = groups[subj] || [];
-            const icon = getSubjectIcon(subj);
-            return (
-              <div key={subj} className="pruebas-subject-group">
-                <div className="pruebas-subject-header">
-                  <span className="pruebas-subject-icon">{icon}</span>
-                  <span className="pruebas-subject-title">{subj}</span>
-                  <span className="pruebas-subject-count">
-                    {subjectDecks.length}
-                  </span>
-                </div>
-                <div className="decks-grid pruebas-subgrid">
-                  {subjectDecks.map((d) => (
-                    <DeckCard
-                      key={d.id}
-                      deck={d}
-                      doneMap={doneMap}
-                      onToggleDone={onToggleDone}
-                      theme="theme-prueba"
-                      onStudyDeck={onStudyDeck}
-                      onStatsDeck={onStatsDeck}
-                      onEditDeck={onEditDeck}
-                      onOpenResetModal={onOpenResetModal}
-                    />
-                  ))}
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      )}
+      <AnimatePresence initial={false}>
+        {show && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+            style={{ overflow: "hidden" }}
+          >
+            <div className="pruebas-content">
+              {subjects.map((subj) => {
+                const subjectDecks = groups[subj] || [];
+                const icon = getSubjectIcon(subj);
+                return (
+                  <div key={subj} className="pruebas-subject-group">
+                    <div className="pruebas-subject-header">
+                      <span className="pruebas-subject-icon">{icon}</span>
+                      <span className="pruebas-subject-title">{subj}</span>
+                      <span className="pruebas-subject-count">
+                        {subjectDecks.length}
+                      </span>
+                    </div>
+                    <div className="decks-grid pruebas-subgrid">
+                      {subjectDecks.map((d) => (
+                        <DeckCard
+                          key={d.id}
+                          deck={d}
+                          doneMap={doneMap}
+                          onToggleDone={onToggleDone}
+                          theme="theme-prueba"
+                          onStudyDeck={onStudyDeck}
+                          onStatsDeck={onStatsDeck}
+                          onEditDeck={onEditDeck}
+                          onOpenResetModal={onOpenResetModal}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
@@ -448,34 +509,44 @@ export function MasFolder({
         </span>
       </button>
 
-      {showMas && (
-        <div className="mas-content animate-fade-in">
-          <LibrosFolder
-            decks={librosDecks}
-            show={showLibros}
-            onToggle={onToggleLibros}
-            doneMap={doneMap}
-            onToggleDone={onToggleDone}
-            onStudyDeck={onStudyDeck}
-            onStatsDeck={onStatsDeck}
-            onEditDeck={onEditDeck}
-            onOpenResetModal={onOpenResetModal}
-            sectionProgress={librosProgress}
-          />
-          <MateriasSalvadasFolder
-            decks={materiasSalvadasDecks}
-            show={showMateriasSalvadas}
-            onToggle={onToggleMateriasSalvadas}
-            doneMap={doneMap}
-            onToggleDone={onToggleDone}
-            onStudyDeck={onStudyDeck}
-            onStatsDeck={onStatsDeck}
-            onEditDeck={onEditDeck}
-            onOpenResetModal={onOpenResetModal}
-            sectionProgress={materiasSalvadasProgress}
-          />
-        </div>
-      )}
+      <AnimatePresence initial={false}>
+        {showMas && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+            style={{ overflow: "hidden" }}
+          >
+            <div className="mas-content">
+              <LibrosFolder
+                decks={librosDecks}
+                show={showLibros}
+                onToggle={onToggleLibros}
+                doneMap={doneMap}
+                onToggleDone={onToggleDone}
+                onStudyDeck={onStudyDeck}
+                onStatsDeck={onStatsDeck}
+                onEditDeck={onEditDeck}
+                onOpenResetModal={onOpenResetModal}
+                sectionProgress={librosProgress}
+              />
+              <MateriasSalvadasFolder
+                decks={materiasSalvadasDecks}
+                show={showMateriasSalvadas}
+                onToggle={onToggleMateriasSalvadas}
+                doneMap={doneMap}
+                onToggleDone={onToggleDone}
+                onStudyDeck={onStudyDeck}
+                onStatsDeck={onStatsDeck}
+                onEditDeck={onEditDeck}
+                onOpenResetModal={onOpenResetModal}
+                sectionProgress={materiasSalvadasProgress}
+              />
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
@@ -520,23 +591,33 @@ function LibrosFolder({
         </span>
       </button>
 
-      {show && (
-        <div className="decks-grid pd-grid animate-fade-in">
-          {decks.map((d) => (
-            <DeckCard
-              key={d.id}
-              deck={d}
-              doneMap={doneMap}
-              onToggleDone={onToggleDone}
-              isExtra={true}
-              onStudyDeck={onStudyDeck}
-              onStatsDeck={onStatsDeck}
-              onEditDeck={onEditDeck}
-              onOpenResetModal={onOpenResetModal}
-            />
-          ))}
-        </div>
-      )}
+      <AnimatePresence initial={false}>
+        {show && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+            style={{ overflow: "hidden" }}
+          >
+            <div className="decks-grid pd-grid">
+              {decks.map((d) => (
+                <DeckCard
+                  key={d.id}
+                  deck={d}
+                  doneMap={doneMap}
+                  onToggleDone={onToggleDone}
+                  isExtra={true}
+                  onStudyDeck={onStudyDeck}
+                  onStatsDeck={onStatsDeck}
+                  onEditDeck={onEditDeck}
+                  onOpenResetModal={onOpenResetModal}
+                />
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
@@ -581,23 +662,33 @@ function MateriasSalvadasFolder({
         </span>
       </button>
 
-      {show && (
-        <div className="decks-grid pd-grid animate-fade-in">
-          {decks.map((d) => (
-            <DeckCard
-              key={d.id}
-              deck={d}
-              doneMap={doneMap}
-              onToggleDone={onToggleDone}
-              theme="theme-salvadas"
-              onStudyDeck={onStudyDeck}
-              onStatsDeck={onStatsDeck}
-              onEditDeck={onEditDeck}
-              onOpenResetModal={onOpenResetModal}
-            />
-          ))}
-        </div>
-      )}
+      <AnimatePresence initial={false}>
+        {show && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+            style={{ overflow: "hidden" }}
+          >
+            <div className="decks-grid pd-grid">
+              {decks.map((d) => (
+                <DeckCard
+                  key={d.id}
+                  deck={d}
+                  doneMap={doneMap}
+                  onToggleDone={onToggleDone}
+                  theme="theme-salvadas"
+                  onStudyDeck={onStudyDeck}
+                  onStatsDeck={onStatsDeck}
+                  onEditDeck={onEditDeck}
+                  onOpenResetModal={onOpenResetModal}
+                />
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
@@ -639,23 +730,33 @@ export function ExtrasFolder({
         </span>
       </button>
 
-      {show && (
-        <div className="decks-grid extras-grid animate-fade-in">
-          {decks.map((d) => (
-            <DeckCard
-              key={d.id}
-              deck={d}
-              doneMap={doneMap}
-              onToggleDone={onToggleDone}
-              isExtra={true}
-              onStudyDeck={onStudyDeck}
-              onStatsDeck={onStatsDeck}
-              onEditDeck={onEditDeck}
-              onOpenResetModal={onOpenResetModal}
-            />
-          ))}
-        </div>
-      )}
+      <AnimatePresence initial={false}>
+        {show && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+            style={{ overflow: "hidden" }}
+          >
+            <div className="decks-grid extras-grid">
+              {decks.map((d) => (
+                <DeckCard
+                  key={d.id}
+                  deck={d}
+                  doneMap={doneMap}
+                  onToggleDone={onToggleDone}
+                  isExtra={true}
+                  onStudyDeck={onStudyDeck}
+                  onStatsDeck={onStatsDeck}
+                  onEditDeck={onEditDeck}
+                  onOpenResetModal={onOpenResetModal}
+                />
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

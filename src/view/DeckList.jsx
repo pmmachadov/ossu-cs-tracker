@@ -17,24 +17,21 @@ import {
   ExtrasFolder,
 } from "./SectionFolders";
 import {
-  CreateDeckModal,
   ResetProgressModal,
   ClearAllDataModal,
 } from "./DeckModals";
 
 export function DeckList({
   decks,
-  onCreateDeck,
   onDeleteDeck,
   onStudyDeck,
   onEditDeck,
   onStatsDeck,
   onResetDeck,
   onClearAllData,
+  onBackup,
+  onRestoreBackup,
 }) {
-  const [showCreateModal, setShowCreateModal] = useState(false);
-  const [newDeckName, setNewDeckName] = useState("");
-  const [newDeckDesc, setNewDeckDesc] = useState("");
   const [filterSubject, setFilterSubject] = useState("all");
 
   const [showResetModal, setShowResetModal] = useState(false);
@@ -82,16 +79,6 @@ export function DeckList({
       else delete next[deckId];
       return next;
     });
-  };
-
-  const handleCreate = (e) => {
-    e.preventDefault();
-    if (newDeckName.trim()) {
-      onCreateDeck(newDeckName.trim(), newDeckDesc.trim());
-      setNewDeckName("");
-      setNewDeckDesc("");
-      setShowCreateModal(false);
-    }
   };
 
   const openResetModal = (deck) => {
@@ -237,79 +224,60 @@ export function DeckList({
 
   return (
     <div className="deck-list animate-fade-in">
-      {/* Apple Hero Header */}
-      <header className="deck-header">
-        <div className="deck-header-left">
-          <div className="deck-header-badge">
-            <span className="badge-dot"></span>
-            <span>Panel de Estudio</span>
-          </div>
-          <h1 className="deck-header-title">Mis Materias</h1>
-          <p className="deck-header-subtitle">
-            Selecciona un mazo para comenzar tu sesión de repaso
-          </p>
-        </div>
-        <div className="deck-header-actions">
-          <button
-            className="btn btn-primary btn-create-deck"
-            onClick={() => setShowCreateModal(true)}
-          >
-            <span className="btn-icon">{Icons.plus}</span>
-            <span>Nuevo Mazo</span>
-          </button>
-        </div>
-      </header>
-
-      {/* Apple Stats Bento Row */}
-      <section className="deck-stats-bento" aria-label="Estadísticas generales">
-        <div className="bento-card bento-decks">
-          <div className="bento-card-header">
-            <div className="bento-icon-wrapper bento-icon-blue">
-              {Icons.folder}
+      {/* Header & Stats unificados en un único cuadro compacto */}
+      <section className="deck-hero-compact">
+        <div className="hero-top-row">
+          <div className="hero-title-group">
+            <div className="deck-header-badge">
+              <span className="badge-dot"></span>
+              <span>Panel de Estudio</span>
             </div>
-            <span className="bento-pill">Total</span>
-          </div>
-          <div className="bento-card-body">
-            <span className="bento-number">{decks.length}</span>
-            <span className="bento-label">Mazos Activos</span>
+            <h1 className="deck-header-title">Mis Materias</h1>
+            <p className="deck-header-subtitle">
+              Selecciona un mazo para comenzar tu sesión de repaso
+            </p>
           </div>
         </div>
 
-        <div className="bento-card bento-cards">
-          <div className="bento-card-header">
-            <div className="bento-icon-wrapper bento-icon-purple">
-              {Icons.cards}
+        <div className="hero-stats-row">
+          <div className="stat-compact-item">
+            <div className="stat-compact-icon bento-icon-blue">{Icons.folder}</div>
+            <div className="stat-compact-info">
+              <div className="stat-compact-val">{decks.length}</div>
+              <div className="stat-compact-lbl">Mazos Activos</div>
             </div>
-            <span className="bento-pill">Tarjetas</span>
           </div>
-          <div className="bento-card-body">
-            <span className="bento-number">{totalCards}</span>
-            <span className="bento-label">{totalStudied} repasadas</span>
-          </div>
-        </div>
 
-        <div className="bento-card bento-progress">
-          <div className="bento-card-header">
-            <div className="bento-icon-wrapper bento-icon-green">
-              {Icons.target}
+          <div className="stat-compact-divider" />
+
+          <div className="stat-compact-item">
+            <div className="stat-compact-icon bento-icon-purple">{Icons.cards}</div>
+            <div className="stat-compact-info">
+              <div className="stat-compact-val">{totalCards}</div>
+              <div className="stat-compact-lbl">{totalStudied} repasadas</div>
             </div>
-            <span className="bento-pill">Dominio</span>
           </div>
-          <div className="bento-card-body">
-            <div className="bento-progress-row">
-              <span className="bento-number">
-                {Math.round((totalStudied / (totalCards || 1)) * 100) || 0}%
-              </span>
-              <div className="bento-mini-bar">
-                <div
-                  className="bento-mini-fill"
-                  style={{
-                    width: `${Math.round((totalStudied / (totalCards || 1)) * 100) || 0}%`,
-                  }}
-                />
+
+          <div className="stat-compact-divider" />
+
+          <div className="stat-compact-item stat-compact-progress">
+            <div className="stat-compact-icon bento-icon-green">{Icons.target}</div>
+            <div className="stat-compact-info">
+              <div className="stat-compact-val-row">
+                <span className="stat-compact-val">
+                  {Math.round((totalStudied / (totalCards || 1)) * 100) || 0}%
+                </span>
+                <div className="bento-mini-bar">
+                  <div
+                    className="bento-mini-fill"
+                    style={{
+                      width: `${Math.round((totalStudied / (totalCards || 1)) * 100) || 0}%`,
+                    }}
+                  />
+                </div>
               </div>
+              <div className="stat-compact-lbl">Progreso global</div>
             </div>
-            <span className="bento-label">Progreso global</span>
           </div>
         </div>
       </section>
@@ -452,6 +420,24 @@ export function DeckList({
       )}
 
       <div className="clear-data-section">
+        <div className="backup-actions">
+          <button
+            className="btn btn-backup"
+            onClick={onBackup}
+            title="Descargar una copia de seguridad con todo tu progreso"
+          >
+            <span className="btn-icon">{Icons.download}</span>
+            <span>Guardar copia de seguridad</span>
+          </button>
+          <button
+            className="btn btn-restore"
+            onClick={onRestoreBackup}
+            title="Restaurar el progreso desde un archivo de copia"
+          >
+            <span className="btn-icon">{Icons.upload}</span>
+            <span>Restaurar copia</span>
+          </button>
+        </div>
         <button
           className="btn btn-clear-data"
           onClick={() => setShowClearModal(true)}
@@ -461,19 +447,10 @@ export function DeckList({
           <span>Borrar todos los datos</span>
         </button>
         <p className="clear-data-hint">
-          Elimina todo el progreso y restaura los mazos originales
+          Elimina todo el progreso y restaura los mazos originales. Antes de
+          borrar, descarga una copia de seguridad.
         </p>
       </div>
-
-      <CreateDeckModal
-        show={showCreateModal}
-        onClose={() => setShowCreateModal(false)}
-        newDeckName={newDeckName}
-        setNewDeckName={setNewDeckName}
-        newDeckDesc={newDeckDesc}
-        setNewDeckDesc={setNewDeckDesc}
-        onCreate={handleCreate}
-      />
 
       <ResetProgressModal
         show={showResetModal}

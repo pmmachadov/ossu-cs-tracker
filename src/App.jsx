@@ -1,4 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import toast from "react-hot-toast";
+import { motion, AnimatePresence } from "motion/react";
 import { DeckList } from "./view/DeckList";
 import { StudyView } from "./view/StudyView";
 import { CardEditor } from "./view/CardEditor";
@@ -12,6 +14,7 @@ function App() {
   const [currentView, setCurrentView] = useState("decks"); // decks, study, edit, stats
   const [selectedDeck, setSelectedDeck] = useState(null);
   const [loading, setLoading] = useState(true);
+  const backupInputRef = useRef(null);
 
   // Cargar mazos al iniciar, preservando progreso guardado
   useEffect(() => {
@@ -90,10 +93,21 @@ function App() {
     loadData();
   }, []);
 
-  // Guardar mazos cuando cambian
+  // Guardar mazos cuando cambian (con aviso si el guardado se degrada o falla)
   useEffect(() => {
     if (!loading) {
-      DataStore.saveDecks(decks);
+      const result = DataStore.saveDecks(decks);
+      if (result && !result.ok) {
+        toast.error(
+          "⚠️ No se pudo guardar el progreso. El almacenamiento está lleno. Descarga una copia de seguridad.",
+          { duration: 6000 },
+        );
+      } else if (result && result.degraded) {
+        toast(
+          "ℹ️ Almacenamiento casi lleno: el progreso se guardó, pero se recortó el historial de la gráfica.",
+          { duration: 5000 },
+        );
+      }
     }
   }, [decks, loading]);
 
@@ -152,6 +166,30 @@ function App() {
     window.location.reload();
   };
 
+  // --- Copias de seguridad (protección frente a borrado del localStorage) ---
+  const handleBackup = () => {
+    const stamp = new Date().toISOString().slice(0, 10);
+    DataStore.downloadBackup(decks, `anki-cards-backup-${stamp}.json`);
+    toast.success("Copia de seguridad descargada ✅");
+  };
+
+  const handleRestoreBackup = (file) => {
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const imported = DataStore.importFromJSON(e.target.result);
+      if (!imported) {
+        toast.error("El archivo no es una copia de seguridad válida.");
+        return;
+      }
+      setDecks(imported);
+      setSelectedDeck(null);
+      setCurrentView("decks");
+      toast.success("Copia restaurada correctamente ✅");
+    };
+    reader.readAsText(file);
+  };
+
   if (loading) {
     return (
       <div className="app-loading">
@@ -163,44 +201,89 @@ function App() {
 
   return (
     <div className="app">
+      <input
+        ref={backupInputRef}
+        type="file"
+        accept="application/json,.json"
+        style={{ display: "none" }}
+        onChange={(e) => {
+          handleRestoreBackup(e.target.files && e.target.files[0]);
+          e.target.value = "";
+        }}
+      />
       
       <main className="app-main">
-        {currentView === "decks" && (
-          <DeckList
-            decks={decks}
-            onCreateDeck={handleCreateDeck}
-            onDeleteDeck={handleDeleteDeck}
-            onStudyDeck={handleStudyDeck}
-            onEditDeck={handleEditDeck}
-            onStatsDeck={handleStatsDeck}
-            onResetDeck={handleResetProgress}
-            onClearAllData={handleClearAllData}
-          />
-        )}
+        <AnimatePresence mode="wait">
+          {currentView === "decks" && (
+            <motion.div
+              key="decks"
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -15 }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
+            >
+              <DeckList
+                decks={decks}
+                onDeleteDeck={handleDeleteDeck}
+                onStudyDeck={handleStudyDeck}
+                onEditDeck={handleEditDeck}
+                onStatsDeck={handleStatsDeck}
+                onResetDeck={handleResetProgress}
+                onClearAllData={handleClearAllData}
+                onBackup={handleBackup}
+                onRestoreBackup={() => backupInputRef.current?.click()}
+              />
+            </motion.div>
+          )}
 
-        {currentView === "study" && selectedDeck && (
-          <StudyView
-            deck={selectedDeck}
-            onBack={handleBack}
-            onUpdateDeck={handleUpdateDeck}
-          />
-        )}
+          {currentView === "study" && selectedDeck && (
+            <motion.div
+              key={`study-${selectedDeck.id}`}
+              initial={{ opacity: 0, scale: 0.98, y: 15 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.98, y: -15 }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
+            >
+              <StudyView
+                deck={selectedDeck}
+                onBack={handleBack}
+                onUpdateDeck={handleUpdateDeck}
+              />
+            </motion.div>
+          )}
 
-        {currentView === "edit" && selectedDeck && (
-          <CardEditor
-            deck={selectedDeck}
-            onBack={handleBack}
-            onUpdateDeck={handleUpdateDeck}
-          />
-        )}
+          {currentView === "edit" && selectedDeck && (
+            <motion.div
+              key={`edit-${selectedDeck.id}`}
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -15 }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
+            >
+              <CardEditor
+                deck={selectedDeck}
+                onBack={handleBack}
+                onUpdateDeck={handleUpdateDeck}
+              />
+            </motion.div>
+          )}
 
-        {currentView === "stats" && selectedDeck && (
-          <StatsView
-            deck={selectedDeck}
-            onBack={handleBack}
-            onResetProgress={handleResetProgress}
-          />
-        )}
+          {currentView === "stats" && selectedDeck && (
+            <motion.div
+              key={`stats-${selectedDeck.id}`}
+              initial={{ opacity: 0, scale: 0.98, y: 15 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.98, y: -15 }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
+            >
+              <StatsView
+                deck={selectedDeck}
+                onBack={handleBack}
+                onResetProgress={handleResetProgress}
+              />
+            </motion.div>
+          )}
+        </AnimatePresence>
       </main>
     </div>
   );
