@@ -339,7 +339,7 @@ EXAMENES.append({
                     "tipo": "test",
                     "enunciado": "Con el método Fibonacci clásico (fib(0)=0, fib(1)=1, fib(n)=fib(n-1)+fib(n-2)), ¿cuánto vale fib(6)?",
                     "opciones": ["a) 5", "b) 6", "c) 8", "d) 13"],
-                    "respuesta": "c) 8 — La sucesión es 0, 1, 1, 2, 3, 5, 8; por tanto fib(6) = 8.",
+                    "respuesta": "c) 8 — La sucesión es: fib(0)=0, fib(1)=1, fib(2)=1, fib(3)=2, fib(4)=3, fib(5)=5, fib(6)=8.\\n\\n```java\\npublic static int fib(int n) {\\n    if (n <= 0) return 0;\\n    if (n == 1) return 1;\\n    return fib(n - 1) + fib(n - 2);\\n}\\n```\\n\\n**Desglose paso a paso:**\\n- fib(0) = 0 (caso base)\\n- fib(1) = 1 (caso base)\\n- fib(2) = fib(1) + fib(0) = 1 + 0 = 1\\n- fib(3) = fib(2) + fib(1) = 1 + 1 = 2\\n- fib(4) = fib(3) + fib(2) = 2 + 1 = 3\\n- fib(5) = fib(4) + fib(3) = 3 + 2 = 5\\n- fib(6) = fib(5) + fib(4) = 5 + 3 = 8",
                 },
                 {
                     "tipo": "vf",

@@ -558,7 +558,7 @@
     {
       "id": "ex-java-06-01",
       "front": "(Examen 6 · Recursividad y algoritmos recursivos)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nDado el siguiente método recursivo, ¿qué devuelve fact(4)?\n\n```java\nstatic int fact(int n) {\n    if (n <= 1) {\n        return 1;\n    }\n    return n * fact(n - 1);\n}\n```\n\na) 12\n\nb) 24\n\nc) 4\n\nd) 120",
-      "back": "RESPUESTA / SOLUCIÓN\n\n**b) 24** — El método calcula el factorial de un número ($4! = 4 \\times 3 \\times 2 \\times 1 = 24$).\n\n🔍 **Paso a paso de la recursión:**\n1. **`fact(4)`** ejecuta `4 * fact(3)` (espera el resultado de fact(3))\n2. **`fact(3)`** ejecuta `3 * fact(2)` (espera fact(2))\n3. **`fact(2)`** ejecuta `2 * fact(1)` (espera fact(1))\n4. **`fact(1)`** entra en el caso base `if (n <= 1)` y devuelve **`1`**.\n\n🔄 **Desenrollado (resolución hacia arriba):**\n• `fact(2) = 2 * 1 = 2`\n• `fact(3) = 3 * 2 = 6`\n• `fact(4) = 4 * 6 =` **`24`**\n\n❌ **¿Por qué las demás opciones son incorrectas?**\n• **a) 12**: Error común al sumar o multiplicar solo $4 \\times 3$.\n• **c) 4**: Sería el valor de entrada $n$, no el factorial.\n• **d) 120**: Es el resultado de `fact(5)` ($5! = 120$), no de `fact(4)`.",
+      "back": "RESPUESTA / SOLUCIÓN\n\n**b) 24** — El método calcula el factorial de 4 (4 * 3 * 2 * 1 = 24).\n\n### 📋 Tabla paso a paso de la ejecución:\n\n| Paso | Llamada | n <= 1? | Operación que espera | Valor que devuelve |\n| :--- | :--- | :--- | :--- | :--- |\n| **1** | `fact(4)` | No (4 > 1) | 4 * fact(3) | 4 * 6 = **24** |\n| **2** | `fact(3)` | No (3 > 1) | 3 * fact(2) | 3 * 2 = **6** |\n| **3** | `fact(2)` | No (2 > 1) | 2 * fact(1) | 2 * 1 = **2** |\n| **4** | `fact(1)` | **Sí (1 <= 1)** | *(Caso base)* | **1** |\n\n💡 **Explicación sencilla:**\n1. El programa va **bajando** en llamadas: `fact(4)` ➔ `fact(3)` ➔ `fact(2)` ➔ `fact(1)`.\n2. Al llegar a `fact(1)`, se detiene la bajada porque entra en el `if (n <= 1)` y devuelve `1`.\n3. Ahora va **subiendo y multiplicando los resultados acumulados**:\n   - `fact(2) = 2 * 1 = 2`\n   - `fact(3) = 3 * 2 = 6`\n   - `fact(4) = 4 * 6 = 24`",
       "tags": [
         "java",
         "examen",
@@ -569,7 +569,7 @@
     {
       "id": "ex-java-06-02",
       "front": "(Examen 6 · Recursividad y algoritmos recursivos)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nCon el método Fibonacci clásico (fib(0)=0, fib(1)=1, fib(n)=fib(n-1)+fib(n-2)), ¿cuánto vale fib(6)?\n\na) 5\n\nb) 6\n\nc) 8\n\nd) 13",
-      "back": "RESPUESTA / SOLUCIÓN\n\nc) 8 — La sucesión es 0, 1, 1, 2, 3, 5, 8; por tanto fib(6) = 8.",
+      "back": "RESPUESTA / SOLUCIÓN\n\nc) 8 — La sucesión es: fib(0)=0, fib(1)=1, fib(2)=1, fib(3)=2, fib(4)=3, fib(5)=5, fib(6)=8.\n\n```java\npublic static int fib(int n) {\n    if (n <= 0) return 0;\n    if (n == 1) return 1;\n    return fib(n - 1) + fib(n - 2);\n}\n```\n\n**Desglose paso a paso:**\n- `fib(0) = 0` (caso base)\n- `fib(1) = 1` (caso base)\n- `fib(2) = fib(1) + fib(0) = 1 + 0 = 1`\n- `fib(3) = fib(2) + fib(1) = 1 + 1 = 2`\n- `fib(4) = fib(3) + fib(2) = 2 + 1 = 3`\n- `fib(5) = fib(4) + fib(3) = 3 + 2 = 5`\n- `fib(6) = fib(5) + fib(4) = 5 + 3 = 8`",
       "tags": [
         "java",
         "examen",

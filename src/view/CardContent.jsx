@@ -484,11 +484,65 @@ const renderCardContent = (text, cardImageUrl) => {
   };
 
   let prevLineWasBlank = false;
+  let tableLines = [];
+
+  const flushTable = (keySuffix) => {
+    if (tableLines.length === 0) return;
+    const linesToProcess = [...tableLines];
+    tableLines = [];
+
+    // Parse rows: ignore separator lines like |---|---|
+    const rows = linesToProcess
+      .map((l) => l.trim())
+      .filter((l) => !/^\|?\s*[-:]+[-| :]*\|?$/.test(l))
+      .map((l) => {
+        // Strip leading and trailing pipe
+        let clean = l;
+        if (clean.startsWith("|")) clean = clean.slice(1);
+        if (clean.endsWith("|")) clean = clean.slice(0, -1);
+        return clean.split("|").map((c) => c.trim());
+      });
+
+    if (rows.length === 0) return;
+    const headerRow = rows[0];
+    const bodyRows = rows.slice(1);
+
+    elements.push(
+      <div key={`table-wrapper-${keySuffix}`} className="card-table-container" style={{ overflowX: 'auto', margin: '14px 0' }}>
+        <table className="card-table" style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.95rem', textAlign: 'left', background: 'rgba(0,0,0,0.5)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: '8px', overflow: 'hidden' }}>
+          <thead>
+            <tr style={{ background: 'rgba(255,255,255,0.06)', borderBottom: '1px solid rgba(255,255,255,0.15)' }}>
+              {headerRow.map((cell, ci) => (
+                <th key={`th-${ci}`} style={{ padding: '10px 14px', color: '#5ac8fa', fontWeight: 600 }}>
+                  {renderTextWithParens(cell, `th-txt-${ci}`)}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {bodyRows.map((row, ri) => (
+              <tr key={`tr-${ri}`} style={{ borderBottom: ri < bodyRows.length - 1 ? '1px solid rgba(255,255,255,0.08)' : 'none', background: ri % 2 === 1 ? 'rgba(255,255,255,0.02)' : 'transparent' }}>
+                {row.map((cell, ci) => (
+                  <td key={`td-${ri}-${ci}`} style={{ padding: '10px 14px', color: '#e6edf3' }}>
+                    {cell.includes('`')
+                      ? cell.split(/`([^`]+)`/g).map((part, pi) => pi % 2 === 1 ? renderInlineCode(part, `td-code-${ri}-${ci}-${pi}`) : renderTextWithParens(part, `td-txt-${ri}-${ci}-${pi}`))
+                      : renderTextWithParens(cell, `td-txt-${ri}-${ci}`)}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    );
+  };
+
   lines.forEach((line, index) => {
     const trimmed = line.trim();
     const codeBlockStart = line.match(/^```(\w+)?$/);
     const codeBlockEnd = trimmed === "```";
     const isBlank = !trimmed;
+    const isTableRow = /^\|.+\|$/.test(trimmed);
 
     // Si estamos recolectando resumen de un mermaid…
     if (pendingMermaid && !isBlank && !codeBlockStart) {
@@ -501,6 +555,14 @@ const renderCardContent = (text, cardImageUrl) => {
       pendingMermaid.summaryLines.push(line);
       prevLineWasBlank = false;
       return;
+    }
+
+    if (isTableRow && !codeBlock) {
+      tableLines.push(line);
+      prevLineWasBlank = false;
+      return;
+    } else if (tableLines.length > 0) {
+      flushTable(index);
     }
 
     prevLineWasBlank = isBlank;
@@ -516,6 +578,7 @@ const renderCardContent = (text, cardImageUrl) => {
     }
   });
 
+  flushTable("final");
   flushCode("final");
   flushMermaid("final");
 

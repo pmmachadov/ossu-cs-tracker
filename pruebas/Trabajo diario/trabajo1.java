@@ -1,56 +1,27 @@
-import java.util.Scanner;
-
 public class trabajo1 {
+
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        int[] nums = new int[8];
-
-        for (int indice = 0; indice < nums.length; indice++) {
-            nums[indice] = scanner.nextInt();
-        }
-
-        System.out.println("Pares: " + contarPares(nums));
-        System.out.println("Mayor: " + mayor(nums) + " Menor: " + menor(nums));
-
-        int[] invertidos = invertir(nums);
-        System.out.println("Invertido: " + java.util.Arrays.toString(invertidos));
+        int n = 6;
+        int resultado = fib(n);
+        System.out.println("fib(" + n + ") = " + resultado);
     }
 
-    static int contarPares(int[] numeros) {
-        int contadorPares = 0;
-        for (int valor : numeros) {
-            if (valor % 2 == 0) {
-                contadorPares++;
-            }
+    public static int fib(int n) {
+        if (n <= 0) {
+            return 0;
         }
-        return contadorPares;
-    }
-
-    static int mayor(int[] numeros) {
-        int maximo = numeros[0];
-        for (int valor : numeros) {
-            if (valor > maximo) {
-                maximo = valor;
-            }
+        if (n == 1) {
+            return 1;
         }
-        return maximo;
-    }
-
-    static int menor(int[] numeros) {
-        int minimo = numeros[0];
-        for (int valor : numeros) {
-            if (valor < minimo) {
-                minimo = valor;
-            }
-        }
-        return minimo;
-    }
-
-    static int[] invertir(int[] numeros) {
-        int[] invertido = new int[numeros.length];
-        for (int indice = 0; indice < numeros.length; indice++) {
-            invertido[indice] = numeros[numeros.length - 1 - indice];
-        }
-        return invertido;
+        
+        // Marco en espera del primer sumando
+        int fib1 = fib(n - 1);
+        
+        // Marco en espera del segundo sumando
+        int fib2 = fib(n - 2);
+        
+        // Suma de retornos antes de desapilar
+        int total = fib1 + fib2;
+        return total;
     }
 }

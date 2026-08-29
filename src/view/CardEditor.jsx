@@ -149,7 +149,7 @@ export function CardEditor({ deck, onBack, onUpdateDeck }) {
                     value={front}
                     onChange={e => setFront(e.target.value)}
                     placeholder="Escribe la pregunta..."
-                    rows={3}
+                    rows={8}
                     autoFocus
                   />
                 </div>
@@ -160,7 +160,7 @@ export function CardEditor({ deck, onBack, onUpdateDeck }) {
                     value={back}
                     onChange={e => setBack(e.target.value)}
                     placeholder="Escribe la respuesta..."
-                    rows={3}
+                    rows={8}
                   />
                 </div>
               </div>
