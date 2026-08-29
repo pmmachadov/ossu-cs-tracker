@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { Icons } from "./Icons";
 import { isExamDeck, getSubjectIcon, getSubjectColor } from "./deckHelpers";
 
@@ -17,6 +18,18 @@ export function DeckCard({
   const subjectColor = getSubjectColor(deck.subject);
   const hasDueCards = stats.due > 0;
   const themeClass = theme || (isExtra ? "theme-blue" : "");
+
+  // Estrellas en la barra de progreso que rotan a diferentes velocidades
+  const stars = useMemo(() => {
+    return [
+      { id: 1, size: 8, top: 12, opacity: 0.9, drift: 6.5, rotate: 1.8, dir: "normal", delay: -1.2 },
+      { id: 2, size: 6, top: 28, opacity: 0.75, drift: 8.5, rotate: 4.2, dir: "reverse", delay: -3.8 },
+      { id: 3, size: 9, top: 15, opacity: 0.95, drift: 5.5, rotate: 2.6, dir: "normal", delay: -2.1 },
+      { id: 4, size: 7, top: 32, opacity: 0.8, drift: 9.0, rotate: 3.5, dir: "reverse", delay: -4.5 },
+      { id: 5, size: 5, top: 20, opacity: 0.7, drift: 10.5, rotate: 5.8, dir: "normal", delay: -0.8 },
+      { id: 6, size: 7, top: 10, opacity: 0.85, drift: 7.8, rotate: 2.1, dir: "reverse", delay: -5.2 },
+    ];
+  }, [deck.id]);
 
   const status = doneMap[deck.id];
   const isProgress = status === "progress";
@@ -92,6 +105,28 @@ export function DeckCard({
               className="progress-fill"
               style={{ width: `${stats.mastery}%` }}
             />
+            <div className="stars-layer" aria-hidden="true">
+              {stars.map((s) => (
+                <span
+                  key={s.id}
+                  className="drift-star"
+                  style={{
+                    width: `${s.size}px`,
+                    height: `${s.size}px`,
+                    top: `${s.top}%`,
+                    opacity: s.opacity,
+                    "--drift-duration": `${s.driftDuration || s.drift}s`,
+                    "--rotate-duration": `${s.rotateDuration || s.rotate}s`,
+                    "--rotate-dir": s.dir,
+                    animationDelay: `${s.delay}s`,
+                  }}
+                >
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                  </svg>
+                </span>
+              ))}
+            </div>
           </div>
         </div>
 
