@@ -5,6 +5,7 @@ import { DIFFICULTY } from "../model/Deck";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { CardContent, codeTheme, extractCodeHint } from "./CardContent";
 import { getSubjectColor } from "./deckHelpers";
+import { useBorderSpeed } from "./useBorderSpeed";
 import { SessionComplete } from "./SessionComplete";
 import { EmptyStudyView } from "./EmptyStudyView";
 
@@ -117,6 +118,9 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
   const startX = useRef(0);
   const startCardIndex = useRef(0);
   const dragMoved = useRef(false);
+
+  // Velocidad lineal de los colores del borde según su longitud real
+  const borderSpeed = useBorderSpeed();
 
   const handleMouseDown = (e) => {
     if (!dotsContainerRef.current || cards.length === 0) return;
@@ -383,7 +387,10 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
         </button>
 
         <div
-          ref={dotsContainerRef}
+          ref={(el) => {
+            dotsContainerRef.current = el;
+            borderSpeed("track")(el);
+          }}
           className="card-progress-track"
           style={{ "--card-count": cards.length }}
           onMouseDown={handleMouseDown}
@@ -394,36 +401,7 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
         >
-          {/* Capa de estrellas dinámicas flotantes */}
-          <div className="stars-layer" aria-hidden="true">
-            <span className="drift-star" style={{ "--drift-duration": "5.5s", "--rotate-duration": "2.2s", "--rotate-dir": "normal", top: "18%", width: "13px", height: "13px", animationDelay: "0s" }}>
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4h7.6l-6.2 4.5 2.4 7.4-6.2-4.5-6.2 4.5 2.4-7.4-6.2-4.5h7.6z"/></svg>
-            </span>
-            <span className="drift-star" style={{ "--drift-duration": "8s", "--rotate-duration": "3.2s", "--rotate-dir": "reverse", top: "54%", width: "10px", height: "10px", animationDelay: "-2.5s" }}>
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4h7.6l-6.2 4.5 2.4 7.4-6.2-4.5-6.2 4.5 2.4-7.4-6.2-4.5h7.6z"/></svg>
-            </span>
-            <span className="drift-star" style={{ "--drift-duration": "4.8s", "--rotate-duration": "1.6s", "--rotate-dir": "normal", top: "32%", width: "15px", height: "15px", animationDelay: "-1.2s" }}>
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4h7.6l-6.2 4.5 2.4 7.4-6.2-4.5-6.2 4.5 2.4-7.4-6.2-4.5h7.6z"/></svg>
-            </span>
-            <span className="drift-star" style={{ "--drift-duration": "7s", "--rotate-duration": "2.6s", "--rotate-dir": "reverse", top: "66%", width: "11px", height: "11px", animationDelay: "-4.5s" }}>
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4h7.6l-6.2 4.5 2.4 7.4-6.2-4.5-6.2 4.5 2.4-7.4-6.2-4.5h7.6z"/></svg>
-            </span>
-            <span className="drift-star" style={{ "--drift-duration": "6.2s", "--rotate-duration": "2.8s", "--rotate-dir": "normal", top: "25%", width: "9px", height: "9px", animationDelay: "-3.8s" }}>
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4h7.6l-6.2 4.5 2.4 7.4-6.2-4.5-6.2 4.5 2.4-7.4-6.2-4.5h7.6z"/></svg>
-            </span>
-            <span className="drift-star" style={{ "--drift-duration": "5.2s", "--rotate-duration": "1.9s", "--rotate-dir": "reverse", top: "48%", width: "14px", height: "14px", animationDelay: "-0.8s" }}>
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4h7.6l-6.2 4.5 2.4 7.4-6.2-4.5-6.2 4.5 2.4-7.4-6.2-4.5h7.6z"/></svg>
-            </span>
-            <span className="drift-star" style={{ "--drift-duration": "7.8s", "--rotate-duration": "3s", "--rotate-dir": "normal", top: "15%", width: "11px", height: "11px", animationDelay: "-5.2s" }}>
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4h7.6l-6.2 4.5 2.4 7.4-6.2-4.5-6.2 4.5 2.4-7.4-6.2-4.5h7.6z"/></svg>
-            </span>
-            <span className="drift-star" style={{ "--drift-duration": "6.6s", "--rotate-duration": "2.4s", "--rotate-dir": "reverse", top: "60%", width: "12px", height: "12px", animationDelay: "-2.1s" }}>
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4h7.6l-6.2 4.5 2.4 7.4-6.2-4.5-6.2 4.5 2.4-7.4-6.2-4.5h7.6z"/></svg>
-            </span>
-            <span className="drift-star" style={{ "--drift-duration": "4.5s", "--rotate-duration": "1.5s", "--rotate-dir": "normal", top: "40%", width: "8px", height: "8px", animationDelay: "-3.2s" }}>
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4h7.6l-6.2 4.5 2.4 7.4-6.2-4.5-6.2 4.5 2.4-7.4-6.2-4.5h7.6z"/></svg>
-            </span>
-          </div>
+          {/* (Estrellas flotantes eliminadas de la barra de progreso) */}
 
           <div
             className="card-progress-fill"

@@ -125,12 +125,27 @@
   z-index: 1;
 }
 
-/* Carril de progreso con resplandor luminoso */
+/* Carril de progreso con borde de colores Google girando (igual que el relleno) */
 .card-progress-track {
   flex: 1;
   height: 44px;
-  background: #000000;
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  border: 1px solid transparent;
+  background:
+    linear-gradient(#000000, #000000) padding-box,
+    conic-gradient(
+      from var(--border-angle),
+      #4285f4 0%,
+      #ea4335 10%,
+      #fbbc05 20%,
+      #34a853 30%,
+      #000000 40%,
+      #000000 60%,
+      #4285f4 100%
+    ) border-box;
+  animation:
+    rotateClockwiseGoogle var(--rotate-duration, 6s) linear infinite,
+    googleFadePulseBar 10s ease-in-out infinite;
+  animation-delay: var(--bar-delay, 0s);
   border-radius: 999px;
   position: relative;
   cursor: grab;
@@ -147,41 +162,20 @@
   cursor: grabbing;
 }
 
-/* Capa de estrellas dinámicas flotantes */
-.card-progress-track .stars-layer {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  overflow: hidden;
-  border-radius: inherit;
-  z-index: 2;
+/* (Estrellas de la barra de progreso eliminadas) */
+
+/* Pulso: los colores del borde se desvanecen hasta casi desaparecer y vuelven */
+@keyframes googleFadePulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.15; }
 }
 
-.card-progress-track .drift-star {
-  position: absolute;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: #ffffff;
-  pointer-events: none;
-  animation: study-star-drift var(--drift-duration, 6s) linear infinite;
-}
-
-.card-progress-track .drift-star svg {
-  width: 100%;
-  height: 100%;
-  animation: study-star-spin var(--rotate-duration, 2.5s) linear infinite;
-  animation-direction: var(--rotate-dir, normal);
-}
-
-@keyframes study-star-drift {
-  0% { left: -25px; }
-  100% { left: 105%; }
-}
-
-@keyframes study-star-spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+/* Pulso de las barras de progreso: encendidas el 90% del tiempo,
+   solo se apagan brevemente al final del ciclo. */
+@keyframes googleFadePulseBar {
+  0%, 90% { opacity: 1; }
+  97% { opacity: 0.15; }
+  100% { opacity: 1; }
 }
 
 /* Relleno de progreso: aumenta con las tarjetas aprendidas, con borde de colores
@@ -199,12 +193,12 @@
       #fbbc05 20%,
       #34a853 30%,
       #000000 40%,
-      #000000 85%,
+      #000000 60%,
       #4285f4 100%
     ) border-box;
   animation:
-    rotateClockwiseGoogle 5s linear infinite,
-    googleFadePulse 7s ease-in-out infinite;
+    rotateClockwiseGoogle var(--rotate-duration, 6s) linear infinite,
+    googleFadePulseBar 10s ease-in-out infinite;
   border-radius: 999px;
   position: relative;
   z-index: 3;
@@ -1506,53 +1500,17 @@
   line-height: 1.5;
 }
 
-/* ===== RESPUESTA CORRECTA: Fondo negro puro #000000 con borde giratorio de colores
-   Google que se desvanece y vuelve (pulso), manteniendo el texto siempre visible ===== */
+/* ===== RESPUESTA CORRECTA: verde estática, sin movimientos ni colores giratorios ===== */
 .mc-option.correct {
   position: relative;
   overflow: hidden;
-  border: 2px solid transparent !important;
-  background: #000000 !important;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5) !important;
+  border: 2px solid #34A853 !important;
+  background: rgba(52, 168, 83, 0.18) !important;
+  box-shadow:
+    0 0 16px rgba(52, 168, 83, 0.35),
+    inset 0 0 20px rgba(52, 168, 83, 0.08) !important;
   transform: none !important;
-}
-
-/* Anillo de colores Google: gira 5s y late (desvanece y vuelve) en 4s */
-.mc-option.correct::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  border: 2px solid transparent;
-  background:
-    linear-gradient(#000000, #000000) padding-box,
-    conic-gradient(
-      from var(--border-angle),
-      #4285f4 0%,
-      #ea4335 10%,
-      #fbbc05 20%,
-      #34a853 30%,
-      #000000 40%,
-      #000000 85%,
-      #4285f4 100%
-    ) border-box;
-  animation:
-    rotateClockwiseGoogle 5s linear infinite,
-    googleFadePulse 7s ease-in-out infinite;
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* El contenido (letra, texto, icono) queda por encima del anillo y no parpadea */
-.mc-option.correct > * {
-  position: relative;
-  z-index: 1;
-}
-
-/* Pulso: los colores del borde se desvanecen hasta casi desaparecer y vuelven */
-@keyframes googleFadePulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.15; }
+  animation: none !important;
 }
 
 .mc-option.correct .mc-letter {
@@ -1567,6 +1525,10 @@
   color: #81c995 !important;
   font-weight: 600 !important;
   text-shadow: none !important;
+}
+
+.mc-option.correct .mc-icon {
+  color: #34A853 !important;
 }
 
 /* ===== RESPUESTA INCORRECTA: estática, fondo negro con borde rojo sutil ===== */
@@ -1702,7 +1664,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .mc-option.correct::after {
+  .card-progress-fill {
     animation: none;
   }
 }

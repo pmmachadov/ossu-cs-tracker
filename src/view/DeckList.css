@@ -604,8 +604,23 @@
 
 .progress-bar {
   height: 44px;
-  background: #000000;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid transparent;
+  background:
+    linear-gradient(#000000, #000000) padding-box,
+    conic-gradient(
+      from var(--border-angle),
+      #4285f4 0%,
+      #ea4335 10%,
+      #fbbc05 20%,
+      #34a853 30%,
+      #000000 40%,
+      #000000 60%,
+      #4285f4 100%
+    ) border-box;
+  animation:
+    rotateClockwiseGoogle var(--rotate-duration, 4s) linear infinite,
+    googleFadePulseBar 9s ease-in-out infinite;
+  animation-delay: var(--bar-delay, 0s);
   border-radius: var(--radius-pill);
   overflow: visible;
   position: relative;
@@ -627,12 +642,13 @@
       #fbbc05 20%,
       #34a853 30%,
       #000000 40%,
-      #000000 85%,
+      #000000 60%,
       #4285f4 100%
     ) border-box;
   animation:
-    rotateClockwiseGoogle 5s linear infinite,
-    googleFadePulse 7s ease-in-out infinite;
+    rotateClockwiseGoogle var(--rotate-duration, 4s) linear infinite,
+    googleFadePulseBar 9s ease-in-out infinite;
+  animation-delay: var(--bar-delay, 0s);
   border-radius: var(--radius-pill);
   transition: width 0.6s cubic-bezier(0.25, 1, 0.5, 1);
   position: relative;
@@ -642,41 +658,7 @@
     inset 0 1px 2px rgba(255, 255, 255, 0.15);
 }
 
-.stars-layer {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  overflow: hidden;
-  border-radius: inherit;
-  z-index: 2;
-}
-
-.drift-star {
-  position: absolute;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: #ffffff;
-  z-index: 2;
-  animation: star-drift-bar var(--drift-duration, 8s) linear infinite;
-}
-
-.drift-star svg {
-  width: 100%;
-  height: 100%;
-  animation: star-spin-bar var(--rotate-duration, 3s) linear infinite;
-  animation-direction: var(--rotate-dir, normal);
-}
-
-@keyframes star-drift-bar {
-  0% { left: -30px; }
-  100% { left: 105%; }
-}
-
-@keyframes star-spin-bar {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
+/* (Estrellas de la barra de progreso eliminadas) */
 
 /* Glass Stats Row (Limpio y bien distribuido sin iconos) */
 .deck-stats-row {
@@ -732,7 +714,9 @@
   width: 100%;
 }
 
-/* Botón Estudiar idéntico al botón Volver (borde girando en sentido horario con colores Google y fondo negro #000000) */
+/* Botón Estudiar idéntico a la barra de progreso: borde girando en sentido
+   horario con colores Google + pulso (late y vuelve), fondo negro #000000.
+   El borde vive en un ::after para que el texto no parpadee. */
 .deck-actions .btn-study {
   flex: 2.2;
   min-width: 0;
@@ -749,6 +733,17 @@
   cursor: pointer;
   white-space: nowrap;
   border: 2px solid transparent;
+  background: #000000;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.deck-actions .btn-study::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 2px solid transparent;
   background:
     linear-gradient(#000000, #000000) padding-box,
     conic-gradient(
@@ -758,27 +753,25 @@
       #fbbc05 20%,
       #34a853 30%,
       #000000 40%,
-      #000000 85%,
+      #000000 60%,
       #4285f4 100%
     ) border-box;
-  animation: rotateClockwiseGoogle 5s linear infinite;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  animation:
+    rotateClockwiseGoogle var(--rotate-duration, 5s) linear infinite,
+    googleFadePulse 8.5s ease-in-out infinite;
+  animation-delay: var(--btn-delay, 0s);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* El contenido (icono + texto) queda por encima del anillo y no parpadea */
+.deck-actions .btn-study > * {
+  position: relative;
+  z-index: 1;
 }
 
 .deck-actions .btn-study:hover {
-  background:
-    linear-gradient(#0a0a0d, #0a0a0d) padding-box,
-    conic-gradient(
-      from var(--border-angle),
-      #4285f4 0%,
-      #ea4335 10%,
-      #fbbc05 20%,
-      #34a853 30%,
-      #000000 40%,
-      #000000 85%,
-      #4285f4 100%
-    ) border-box;
+  background: #0a0a0d;
   color: #ffffff;
   box-shadow:
     0 4px 18px rgba(66, 133, 244, 0.45),
