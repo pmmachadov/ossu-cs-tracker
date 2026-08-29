@@ -557,8 +557,8 @@
     },
     {
       "id": "ex-java-06-01",
-      "front": "(Examen 6 · Recursividad y algoritmos recursivos)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nDado el siguiente método recursivo, ¿qué devuelve fact(4)?\n\n```java\nstatic int fact(int n) {\n if (n <= 1) {\n     return 1;\n }\n return n * fact(n - 1);\n}\n```\n\na) 12\n\nb) 24\n\nc) 4\n\nd) 120",
-      "back": "RESPUESTA / SOLUCIÓN\n\nb) 24 — fact(4) = 4·fact(3) = 4·3·fact(2) = 4·3·2·fact(1) = 4·3·2·1 = 24. El caso base (n <= 1) detiene la recursión.",
+      "front": "(Examen 6 · Recursividad y algoritmos recursivos)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nDado el siguiente método recursivo, ¿qué devuelve fact(4)?\n\n```java\nstatic int fact(int n) {\n    if (n <= 1) {\n        return 1;\n    }\n    return n * fact(n - 1);\n}\n```\n\na) 12\n\nb) 24\n\nc) 4\n\nd) 120",
+      "back": "RESPUESTA / SOLUCIÓN\n\n**b) 24** — El método calcula el factorial de un número ($4! = 4 \\times 3 \\times 2 \\times 1 = 24$).\n\n🔍 **Paso a paso de la recursión:**\n1. **`fact(4)`** ejecuta `4 * fact(3)` (espera el resultado de fact(3))\n2. **`fact(3)`** ejecuta `3 * fact(2)` (espera fact(2))\n3. **`fact(2)`** ejecuta `2 * fact(1)` (espera fact(1))\n4. **`fact(1)`** entra en el caso base `if (n <= 1)` y devuelve **`1`**.\n\n🔄 **Desenrollado (resolución hacia arriba):**\n• `fact(2) = 2 * 1 = 2`\n• `fact(3) = 3 * 2 = 6`\n• `fact(4) = 4 * 6 =` **`24`**\n\n❌ **¿Por qué las demás opciones son incorrectas?**\n• **a) 12**: Error común al sumar o multiplicar solo $4 \\times 3$.\n• **c) 4**: Sería el valor de entrada $n$, no el factorial.\n• **d) 120**: Es el resultado de `fact(5)` ($5! = 120$), no de `fact(4)`.",
       "tags": [
         "java",
         "examen",
