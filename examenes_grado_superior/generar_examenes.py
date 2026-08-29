@@ -754,7 +754,7 @@ EXAMENES.append({
                     "opciones": ["a) Solo puede tener métodos abstractos (hasta Java 8 también default/static)",
                                   "b) Puede ser instanciada con new", "c) Solo puede heredar de una interfaz",
                                   "d) No puede tener constantes"],
-                    "respuesta": "a) Una interfaz declara métodos abstractos (y desde Java 8 métodos default/static) que las clases que la implementan deben completar. No se puede instanciar con new.",
+                    "respuesta": "a) Una interfaz declara métodos abstractos (y desde Java 8 métodos default/static) que las clases que la implementan deben completar. No se puede instanciar con new.\n\n💡 **¿Qué es un método abstracto?** Es un método que solo tiene su firma o cabecera (nombre, parámetros y tipo de retorno) pero **no tiene cuerpo ni código** ({ ... }); termina con punto y coma (;). La clase que implementa la interfaz está obligada a programar su funcionamiento.",
                 },
                 {
                     "tipo": "test",

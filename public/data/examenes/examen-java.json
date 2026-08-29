@@ -382,7 +382,7 @@
     {
       "id": "ex-java-04-05",
       "front": "(Examen 4 · Herencia, polimorfismo, interfaces y clases abstractas)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nUna interfaz en Java:\n\na) Solo puede tener métodos abstractos (hasta Java 8 también default/static)\n\nb) Puede ser instanciada con new\n\nc) Solo puede heredar de una interfaz\n\nd) No puede tener constantes",
-      "back": "RESPUESTA / SOLUCIÓN\n\na) Una interfaz declara métodos abstractos (y desde Java 8 métodos default/static) que las clases que la implementan deben completar. No se puede instanciar con new.",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) Una interfaz declara métodos abstractos (y desde Java 8 métodos default/static) que las clases que la implementan deben completar. No se puede instanciar con new.\n\n💡 **¿Qué es un método abstracto?** Es un método que solo tiene su firma o cabecera (nombre, parámetros y tipo de retorno) pero **no tiene cuerpo ni código** ({ ... }); termina con punto y coma (;). La clase que implementa la interfaz está obligada a programar su funcionamiento.",
       "tags": [
         "java",
         "examen",
