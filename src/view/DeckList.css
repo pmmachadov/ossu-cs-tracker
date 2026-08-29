@@ -315,20 +315,52 @@
 }
 
 .progress-bar {
-  height: 8px;
-  background: #242426;
+  height: 28px;
+  background: rgba(18, 18, 22, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: var(--radius-pill);
   overflow: hidden;
   position: relative;
+  box-shadow:
+    inset 0 3px 6px rgba(0, 0, 0, 0.8),
+    inset 0 -1px 2px rgba(255, 255, 255, 0.05),
+    0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .progress-fill {
   height: 100%;
-  background: var(--apple-blue);
+  background: linear-gradient(90deg, #0071e3 0%, #30d158 50%, #64d2ff 100%);
+  background-size: 200% 100%;
+  animation: gradient-flow 10s ease infinite alternate;
   border-radius: var(--radius-pill);
-  transition: width 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: width 0.5s cubic-bezier(0.25, 1, 0.5, 1);
   position: relative;
   z-index: 1;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.3),
+    0 0 16px rgba(48, 209, 88, 0.3);
+}
+
+.progress-fill::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.22) 50%,
+    transparent 80%);
+  animation: fill-shimmer 5s ease-in-out infinite;
+}
+
+@keyframes gradient-flow {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+@keyframes fill-shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
 }
 
 .stars-layer {
@@ -346,19 +378,19 @@
   align-items: center;
   justify-content: center;
   color: #ffffff;
-  animation: star-drift-bar var(--drift-duration, 7s) linear infinite;
+  animation: star-drift-bar var(--drift-duration, 8s) linear infinite;
 }
 
 .drift-star svg {
   width: 100%;
   height: 100%;
-  filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.8));
+  filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.9));
   animation: star-spin-bar var(--rotate-duration, 3s) linear infinite;
   animation-direction: var(--rotate-dir, normal);
 }
 
 @keyframes star-drift-bar {
-  0% { left: -15px; }
+  0% { left: -30px; }
   100% { left: 105%; }
 }
 

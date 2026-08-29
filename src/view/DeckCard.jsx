@@ -19,15 +19,15 @@ export function DeckCard({
   const hasDueCards = stats.due > 0;
   const themeClass = theme || (isExtra ? "theme-blue" : "");
 
-  // Estrellas en la barra de progreso que rotan a diferentes velocidades
+  // Estrellas brillantes que cruzan y rotan a distintas velocidades
   const stars = useMemo(() => {
     return [
-      { id: 1, size: 8, top: 12, opacity: 0.9, drift: 6.5, rotate: 1.8, dir: "normal", delay: -1.2 },
-      { id: 2, size: 6, top: 28, opacity: 0.75, drift: 8.5, rotate: 4.2, dir: "reverse", delay: -3.8 },
-      { id: 3, size: 9, top: 15, opacity: 0.95, drift: 5.5, rotate: 2.6, dir: "normal", delay: -2.1 },
-      { id: 4, size: 7, top: 32, opacity: 0.8, drift: 9.0, rotate: 3.5, dir: "reverse", delay: -4.5 },
-      { id: 5, size: 5, top: 20, opacity: 0.7, drift: 10.5, rotate: 5.8, dir: "normal", delay: -0.8 },
-      { id: 6, size: 7, top: 10, opacity: 0.85, drift: 7.8, rotate: 2.1, dir: "reverse", delay: -5.2 },
+      { id: 1, size: 13, top: 25, opacity: 0.95, drift: 7.0, rotate: 2.0, dir: "normal", delay: -1.0 },
+      { id: 2, size: 9, top: 40, opacity: 0.8, drift: 9.5, rotate: 4.5, dir: "reverse", delay: -3.5 },
+      { id: 3, size: 15, top: 20, opacity: 1.0, drift: 6.0, rotate: 1.5, dir: "normal", delay: -2.2 },
+      { id: 4, size: 11, top: 35, opacity: 0.85, drift: 10.0, rotate: 3.5, dir: "reverse", delay: -4.8 },
+      { id: 5, size: 8, top: 22, opacity: 0.75, drift: 11.5, rotate: 5.5, dir: "normal", delay: -0.5 },
+      { id: 6, size: 12, top: 30, opacity: 0.9, drift: 8.0, rotate: 2.5, dir: "reverse", delay: -5.8 },
     ];
   }, [deck.id]);
 
@@ -94,7 +94,7 @@ export function DeckCard({
           <p className="deck-description">{deck.description}</p>
         )}
 
-        {/* Progress Bar */}
+        {/* Progress Bar con encanto y mayor altura */}
         <div className="deck-progress">
           <div className="progress-info">
             <span className="progress-label">Progreso</span>
@@ -103,7 +103,7 @@ export function DeckCard({
           <div className="progress-bar">
             <div
               className="progress-fill"
-              style={{ width: `${stats.mastery}%` }}
+              style={{ width: `${Math.max(stats.mastery, 0)}%` }}
             />
             <div className="stars-layer" aria-hidden="true">
               {stars.map((s) => (
@@ -115,8 +115,8 @@ export function DeckCard({
                     height: `${s.size}px`,
                     top: `${s.top}%`,
                     opacity: s.opacity,
-                    "--drift-duration": `${s.driftDuration || s.drift}s`,
-                    "--rotate-duration": `${s.rotateDuration || s.rotate}s`,
+                    "--drift-duration": `${s.drift}s`,
+                    "--rotate-duration": `${s.rotate}s`,
                     "--rotate-dir": s.dir,
                     animationDelay: `${s.delay}s`,
                   }}
