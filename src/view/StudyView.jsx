@@ -203,6 +203,9 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
   }, [deck]);
 
   const currentCard = cards[currentCardIndex];
+  // Porcentaje real de dominio del mazo (idéntico a la página principal)
+  const deckStats = deck ? deck.getStats() : { aprendido: 0, total: cards.length, mastery: 0 };
+  const masteryPct = deckStats.mastery;
   const progressPct =
     cards.length > 1 ? (currentCardIndex / (cards.length - 1)) * 100 : 100;
 
@@ -424,12 +427,15 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
 
           <div
             className="card-progress-fill"
-            style={{ width: `${progressPct}%` }}
+            style={{ width: `${Math.max(masteryPct, 0)}%` }}
           />
         </div>
-        <div className="card-progress-count">
+        <div className="card-progress-count" title="Progreso del mazo">
           <span className="card-progress-pos">
-            {currentCardIndex + 1} / {cards.length}
+            {deckStats.aprendido} / {deckStats.total}
+          </span>
+          <span className="card-progress-pct">
+            {masteryPct}%
           </span>
         </div>
       </div>
