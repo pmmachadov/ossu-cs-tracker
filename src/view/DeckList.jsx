@@ -47,7 +47,7 @@ export function DeckList({
   const [showExtras, setShowExtras] = useState(false);
   const [showPruebas, setShowPruebas] = useState(false);
   const [showPracticas, setShowPracticas] = useState(false);
-  const [showExamenes, setShowExamenes] = useState(true); // abierto por defecto para ver el ÃƒÆ’Ã‚Â¡rea Examen
+  const [showExamenes, setShowExamenes] = useState(true); // abierto por defecto para ver el ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡rea Examen
   const [showPreguntasDirectas, setShowPreguntasDirectas] = useState(false);
   const [showLibros, setShowLibros] = useState(false);
   const [showMateriasSalvadas, setShowMateriasSalvadas] = useState(false);
@@ -159,7 +159,7 @@ export function DeckList({
       d.subject !== "Materias salvadas",
   );
   const examenGroups = examenDecks.reduce((acc, deck) => {
-    const subject = deck.subject || "ExÃƒÆ’Ã‚Â¡menes";
+    const subject = deck.subject || "ExÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡menes";
     if (!acc[subject]) acc[subject] = [];
     acc[subject].push(deck);
     return acc;
@@ -279,7 +279,7 @@ export function DeckList({
             className={`filter-pill ${filterSubject === "all" ? "active" : ""}`}
             onClick={() => setFilterSubject("all")}
           >
-            ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã…Â¡ Todos
+            ✨ Todos
           </button>
           {uniqueSubjects.map((subject) => {
             const color = getSubjectColor(subject);

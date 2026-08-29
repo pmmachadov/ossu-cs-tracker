@@ -16,7 +16,6 @@ export function ExamenJavaFolder({
   onEditDeck,
   onOpenResetModal,
 }) {
-  // Área propia de "Examen Java", abierta por defecto y con el tema animado
   const [show, setShow] = useState(true);
   if (!deck) return null;
 
@@ -36,7 +35,7 @@ export function ExamenJavaFolder({
         onClick={() => setShow(!show)}
         aria-expanded={show}
       >
-        <span className="examenes-icon">📋</span>
+        <span className="examenes-icon">📝</span>
         <span className="examenes-label">Examen Java</span>
         <span className="examenes-count">{total} tarjetas</span>
         <span className={`examenes-chevron ${show ? "open" : ""}`}>
@@ -90,9 +89,8 @@ export function PreguntasDirectasFolder({
         onClick={onToggle}
         aria-expanded={show}
       >
-        <span className="pd-icon">🎯</span>
+        <span className="pd-icon">⚡</span>
         <span className="pd-label">Preguntas Directas</span>
-        <span className="exam-folder-dot" title="Materia de examen"></span>
         <span className="pd-count">
           {decks.length} mazo{decks.length !== 1 ? "s" : ""}
         </span>
@@ -109,7 +107,7 @@ export function PreguntasDirectasFolder({
               deck={d}
               doneMap={doneMap}
               onToggleDone={onToggleDone}
-              theme="theme-green"
+              theme="theme-pd"
               onStudyDeck={onStudyDeck}
               onStatsDeck={onStatsDeck}
               onEditDeck={onEditDeck}
@@ -145,132 +143,37 @@ export function SubjectFolder({
     : sectionProgress <= 66 ? "progress-mid"
     : "progress-high";
 
-  const subjectColor = color || { accent: "#5f6368", bg: "rgba(95, 99, 104, 0.08)" };
-
   return (
-    <div
-      className={`materias-section section-progress ${progClass}`}
-      data-progress={sectionProgress}
-      style={{
-        borderLeft: `3px solid ${subjectColor.accent}`,
-      }}
-    >
+    <div className={`subject-section section-progress ${progClass}`} data-progress={sectionProgress}>
       <button
-        className="materias-toggle"
+        className="subject-toggle"
         onClick={onToggle}
         aria-expanded={show}
       >
-        <span className="materias-icon">{icon || "📁"}</span>
-        <span className="materias-label">{subject}</span>
-        <span className="materias-count">
+        <span className="subject-icon">{icon}</span>
+        <span className="subject-label">{subject}</span>
+        <span className="subject-count">
           {decks.length} mazo{decks.length !== 1 ? "s" : ""}
         </span>
-        <span className={`materias-chevron ${show ? "open" : ""}`}>
+        <span className={`subject-chevron ${show ? "open" : ""}`}>
           {show ? Icons.chevronUp : Icons.chevronDown}
         </span>
       </button>
 
       {show && (
-        <div className="decks-grid materias-subgrid animate-fade-in">
+        <div className="decks-grid subject-grid animate-fade-in">
           {decks.map((d) => (
             <DeckCard
               key={d.id}
               deck={d}
               doneMap={doneMap}
               onToggleDone={onToggleDone}
-              theme="theme-green"
               onStudyDeck={onStudyDeck}
               onStatsDeck={onStatsDeck}
               onEditDeck={onEditDeck}
               onOpenResetModal={onOpenResetModal}
             />
           ))}
-        </div>
-      )}
-    </div>
-  );
-}
-
-export function MateriasFolder({
-  groups,
-  show,
-  onToggle,
-  doneMap,
-  onToggleDone,
-  onStudyDeck,
-  onStatsDeck,
-  onEditDeck,
-  onOpenResetModal,
-  sectionProgress = 0,
-}) {
-  const total = Object.values(groups).reduce(
-    (acc, arr) => acc + arr.length,
-    0,
-  );
-  if (total === 0) return null;
-
-  const progClass = sectionProgress === 0 ? "progress-0"
-    : sectionProgress === 100 ? "progress-done"
-    : sectionProgress <= 33 ? "progress-start"
-    : sectionProgress <= 66 ? "progress-mid"
-    : "progress-high";
-
-  return (
-    <div className={`materias-section section-progress ${progClass}`} data-progress={sectionProgress}>
-      <button
-        className="materias-toggle"
-        onClick={onToggle}
-        aria-expanded={show}
-      >
-        <span className="materias-icon">📁</span>
-        <span className="materias-label">Materias</span>
-        <span className="exam-folder-dot" title="Materia de examen"></span>
-        <span className="materias-count">
-          {total} mazo{total !== 1 ? "s" : ""}
-        </span>
-        <span className={`materias-chevron ${show ? "open" : ""}`}>
-          {show ? Icons.chevronUp : Icons.chevronDown}
-        </span>
-      </button>
-
-      {show && (
-        <div className="materias-content animate-fade-in">
-          {Object.entries(groups).map(([subject, subjectDecks]) => {
-            const subjectColor = getSubjectColor(subject);
-            const subjectIcon = getSubjectIcon(subject);
-            return (
-              <div key={subject} className="materias-subgroup">
-                <div
-                  className="materias-subject-header"
-                  style={{ borderLeftColor: subjectColor.accent }}
-                >
-                  <span className="materias-subject-icon">
-                    {subjectIcon}
-                  </span>
-                  <span className="materias-subject-name">{subject}</span>
-                  <span className="materias-subject-count">
-                    {subjectDecks.length} mazo
-                    {subjectDecks.length !== 1 ? "s" : ""}
-                  </span>
-                </div>
-                <div className="decks-grid materias-subgrid">
-                  {subjectDecks.map((d) => (
-                    <DeckCard
-                      key={d.id}
-                      deck={d}
-                      doneMap={doneMap}
-                      onToggleDone={onToggleDone}
-                      theme="theme-green"
-                      onStudyDeck={onStudyDeck}
-                      onStatsDeck={onStatsDeck}
-                      onEditDeck={onEditDeck}
-                      onOpenResetModal={onOpenResetModal}
-                    />
-                  ))}
-                </div>
-              </div>
-            );
-          })}
         </div>
       )}
     </div>
@@ -304,11 +207,8 @@ export function PracticasFolder({
         onClick={onToggle}
         aria-expanded={show}
       >
-        <span className="practicas-icon">📝</span>
+        <span className="practicas-icon">🧪</span>
         <span className="practicas-label">Prácticas</span>
-        {decks.some((d) => isExamDeck(d)) && (
-          <span className="exam-folder-dot" title="Materia de examen"></span>
-        )}
         <span className="practicas-count">
           {decks.length} mazo{decks.length !== 1 ? "s" : ""}
         </span>
@@ -325,7 +225,7 @@ export function PracticasFolder({
               deck={d}
               doneMap={doneMap}
               onToggleDone={onToggleDone}
-              theme="theme-practica"
+              theme="theme-green"
               onStudyDeck={onStudyDeck}
               onStatsDeck={onStatsDeck}
               onEditDeck={onEditDeck}
@@ -350,11 +250,13 @@ export function ExamenesFolder({
   onOpenResetModal,
   sectionProgress = 0,
 }) {
-  const total = Object.values(groups).reduce(
-    (acc, arr) => acc + arr.length,
+  const subjects = Object.keys(groups);
+  if (subjects.length === 0) return null;
+
+  const totalExamenDecks = subjects.reduce(
+    (acc, s) => acc + groups[s].length,
     0,
   );
-  if (total === 0) return null;
 
   const progClass = sectionProgress === 0 ? "progress-0"
     : sectionProgress === 100 ? "progress-done"
@@ -369,10 +271,10 @@ export function ExamenesFolder({
         onClick={onToggle}
         aria-expanded={show}
       >
-        <span className="examenes-icon">📋</span>
+        <span className="examenes-icon">📝</span>
         <span className="examenes-label">Exámenes</span>
         <span className="examenes-count">
-          {total} mazo{total !== 1 ? "s" : ""}
+          {totalExamenDecks} mazo{totalExamenDecks !== 1 ? "s" : ""}
         </span>
         <span className={`examenes-chevron ${show ? "open" : ""}`}>
           {show ? Icons.chevronUp : Icons.chevronDown}
@@ -381,22 +283,16 @@ export function ExamenesFolder({
 
       {show && (
         <div className="examenes-content animate-fade-in">
-          {Object.entries(groups).map(([subject, subjectDecks]) => {
-            const subjectColor = getSubjectColor(subject);
-            const subjectIcon = getSubjectIcon(subject);
+          {subjects.map((subj) => {
+            const subjectDecks = groups[subj] || [];
+            const icon = getSubjectIcon(subj);
             return (
-              <div key={subject} className="examenes-subgroup">
-                <div
-                  className="examenes-subject-header"
-                  style={{ borderLeftColor: subjectColor.accent }}
-                >
-                  <span className="examenes-subject-icon">
-                    {subjectIcon}
-                  </span>
-                  <span className="examenes-subject-name">{subject}</span>
+              <div key={subj} className="examenes-subject-group">
+                <div className="examenes-subject-header">
+                  <span className="examenes-subject-icon">{icon}</span>
+                  <span className="examenes-subject-title">{subj}</span>
                   <span className="examenes-subject-count">
-                    {subjectDecks.length} mazo
-                    {subjectDecks.length !== 1 ? "s" : ""}
+                    {subjectDecks.length}
                   </span>
                 </div>
                 <div className="decks-grid examenes-subgrid">
@@ -406,7 +302,7 @@ export function ExamenesFolder({
                       deck={d}
                       doneMap={doneMap}
                       onToggleDone={onToggleDone}
-                      theme="theme-examen"
+                      theme="theme-green"
                       onStudyDeck={onStudyDeck}
                       onStatsDeck={onStatsDeck}
                       onEditDeck={onEditDeck}
@@ -435,11 +331,13 @@ export function PruebasFolder({
   onOpenResetModal,
   sectionProgress = 0,
 }) {
-  const total = Object.values(groups).reduce(
-    (acc, arr) => acc + arr.length,
+  const subjects = Object.keys(groups);
+  if (subjects.length === 0) return null;
+
+  const totalPruebaDecks = subjects.reduce(
+    (acc, s) => acc + groups[s].length,
     0,
   );
-  if (total === 0) return null;
 
   const progClass = sectionProgress === 0 ? "progress-0"
     : sectionProgress === 100 ? "progress-done"
@@ -454,10 +352,10 @@ export function PruebasFolder({
         onClick={onToggle}
         aria-expanded={show}
       >
-        <span className="pruebas-icon">📁</span>
+        <span className="pruebas-icon">📋</span>
         <span className="pruebas-label">Pruebas</span>
         <span className="pruebas-count">
-          {total} mazo{total !== 1 ? "s" : ""}
+          {totalPruebaDecks} mazo{totalPruebaDecks !== 1 ? "s" : ""}
         </span>
         <span className={`pruebas-chevron ${show ? "open" : ""}`}>
           {show ? Icons.chevronUp : Icons.chevronDown}
@@ -466,22 +364,16 @@ export function PruebasFolder({
 
       {show && (
         <div className="pruebas-content animate-fade-in">
-          {Object.entries(groups).map(([subject, subjectDecks]) => {
-            const subjectColor = getSubjectColor(subject);
-            const subjectIcon = getSubjectIcon(subject);
+          {subjects.map((subj) => {
+            const subjectDecks = groups[subj] || [];
+            const icon = getSubjectIcon(subj);
             return (
-              <div key={subject} className="pruebas-subgroup">
-                <div
-                  className="pruebas-subject-header"
-                  style={{ borderLeftColor: subjectColor.accent }}
-                >
-                  <span className="pruebas-subject-icon">
-                    {subjectIcon}
-                  </span>
-                  <span className="pruebas-subject-name">{subject}</span>
+              <div key={subj} className="pruebas-subject-group">
+                <div className="pruebas-subject-header">
+                  <span className="pruebas-subject-icon">{icon}</span>
+                  <span className="pruebas-subject-title">{subj}</span>
                   <span className="pruebas-subject-count">
-                    {subjectDecks.length} mazo
-                    {subjectDecks.length !== 1 ? "s" : ""}
+                    {subjectDecks.length}
                   </span>
                 </div>
                 <div className="decks-grid pruebas-subgrid">
@@ -543,7 +435,7 @@ export function MasFolder({
         onClick={onToggleMas}
         aria-expanded={showMas}
       >
-        <span className="mas-icon">➕</span>
+        <span className="mas-icon">📂</span>
         <span className="mas-label">Más</span>
         <span className="mas-count">
           {librosDecks.length + materiasSalvadasDecks.length} mazo
@@ -618,7 +510,7 @@ function LibrosFolder({
         }}
         aria-expanded={show}
       >
-        <span className="pd-icon">📚</span>
+        <span className="pd-icon">📖</span>
         <span className="pd-label">Libros</span>
         <span className="pd-count">
           {decks.length} mazo{decks.length !== 1 ? "s" : ""}
