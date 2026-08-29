@@ -1,45 +1,48 @@
-/* === VARIABLES CSS - Apple Pro Dark Design System === */
+/* === APPLE DESIGN SYSTEM - Dark Mode (apple.com / iOS HIG) === */
 :root {
+  /* System Backgrounds */
   --bg-primary: #000000;
-  --bg-secondary: #121214;
-  --bg-tertiary: #1c1c1e;
-  --bg-elevated: #242426;
+  --bg-secondary: #161617;
+  --bg-tertiary: #242426;
+  --bg-elevated: #2c2c2e;
   
+  /* System Labels */
   --text-primary: #f5f5f7;
   --text-secondary: #86868b;
-  --text-muted: #636366;
+  --text-muted: #6e6e73;
   
-  /* Apple Palette */
-  --accent-primary: #30D158;      /* Apple Green */
-  --accent-secondary: #28CD41;
-  --accent-blue: #0A84FF;         /* Apple Blue */
-  --accent-warning: #FF9F0A;      /* Apple Orange */
-  --accent-indigo: #5E5CE6;       /* Apple Indigo */
+  /* Apple System Accents */
+  --apple-blue: #0071e3;
+  --apple-blue-hover: #0077ed;
+  --apple-green: #30d158;
+  --apple-orange: #ff9f0a;
+  --apple-indigo: #5e5ce6;
+  --apple-teal: #64d2ff;
   
-  /* Apple Frosted Materials (Vibrancy) */
-  --glass-bg: rgba(28, 28, 30, 0.72);
-  --glass-bg-subtle: rgba(28, 28, 30, 0.45);
-  --glass-bg-card: rgba(22, 22, 24, 0.7);
-  --glass-bg-card-hover: rgba(30, 30, 34, 0.85);
-  --glass-border: rgba(255, 255, 255, 0.09);
-  --glass-border-hover: rgba(255, 255, 255, 0.18);
-  --glass-blur: blur(28px) saturate(190%);
-  --glass-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.08);
-  --glass-shadow-hover: 0 12px 32px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.14);
+  /* Semantic Tokens */
+  --accent-primary: var(--apple-blue);
+  --accent-secondary: var(--apple-blue-hover);
+  --accent-success: var(--apple-green);
+  --accent-warning: var(--apple-orange);
   
+  /* Apple Separator & Material */
   --border-color: rgba(255, 255, 255, 0.08);
-  --border-light: rgba(255, 255, 255, 0.04);
+  --border-subtle: rgba(255, 255, 255, 0.05);
+  --border-hover: rgba(255, 255, 255, 0.18);
   
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.25);
-  --shadow-md: 0 6px 16px rgba(0, 0, 0, 0.35);
-  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.45);
+  --card-bg: #161617;
+  --card-bg-hover: #1c1c1e;
+  
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.4);
+  --shadow-card-hover: 0 12px 36px rgba(0, 0, 0, 0.6);
   
   --radius-sm: 8px;
   --radius-md: 12px;
-  --radius-lg: 16px;
-  --radius-xl: 22px;
+  --radius-lg: 18px;
+  --radius-card: 22px;
+  --radius-pill: 980px;
   
-  --transition: all 0.22s cubic-bezier(0.25, 1, 0.5, 1);
+  --transition: all 0.2s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 /* === RESET & BASE === */
@@ -52,17 +55,20 @@
 }
 
 html {
-  scroll-behavior: smooth;
   background: #000000 !important;
+  color-scheme: dark;
+  scroll-behavior: smooth;
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", "Segoe UI", Roboto, sans-serif;
-  letter-spacing: -0.011em;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "SF Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  letter-spacing: -0.015em;
   background: #000000 !important;
   color: var(--text-primary);
   min-height: 100vh;
   overflow-x: hidden;
+  font-size: 15px;
+  line-height: 1.47059;
 }
 
 #root {
@@ -70,52 +76,49 @@ body {
   background: #000000;
 }
 
-/* Text Selection (Apple style) */
+/* Selection */
 ::selection {
-  background: rgba(48, 209, 88, 0.3);
+  background: rgba(0, 113, 227, 0.35);
   color: #ffffff;
 }
 
 /* Links */
 a {
-  color: var(--accent-primary);
+  color: #2997ff;
   text-decoration: none;
   transition: var(--transition);
 }
 
 a:hover {
-  color: var(--accent-secondary);
+  text-decoration: underline;
 }
 
 /* Code */
 code {
-  font-family: "SF Mono", Menlo, Monaco, Consolas, monospace;
+  font-family: "SF Mono", Monaco, Menlo, Consolas, monospace;
   font-size: 0.88em;
   padding: 3px 6px;
-  background: rgba(255, 255, 255, 0.07);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #242426;
   border-radius: 6px;
+  color: #f5f5f7;
 }
 
 pre {
-  background: rgba(18, 18, 20, 0.85);
-  backdrop-filter: blur(16px);
-  padding: 16px;
+  background: #161617;
+  padding: 18px;
   border-radius: var(--radius-md);
   overflow-x: auto;
-  border: 1px solid var(--glass-border);
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--border-color);
 }
 
 pre code {
   background: none;
-  border: none;
   padding: 0;
 }
 
-/* Focus indicator */
+/* Focus */
 :focus-visible {
-  outline: 2px solid var(--accent-primary);
+  outline: 2px solid var(--apple-blue);
   outline-offset: 2px;
 }
 

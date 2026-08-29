@@ -47,7 +47,7 @@ export function DeckList({
   const [showExtras, setShowExtras] = useState(false);
   const [showPruebas, setShowPruebas] = useState(false);
   const [showPracticas, setShowPracticas] = useState(false);
-  const [showExamenes, setShowExamenes] = useState(true); // abierto por defecto para ver el área Examen
+  const [showExamenes, setShowExamenes] = useState(true); // abierto por defecto para ver el ÃƒÆ’Ã‚Â¡rea Examen
   const [showPreguntasDirectas, setShowPreguntasDirectas] = useState(false);
   const [showLibros, setShowLibros] = useState(false);
   const [showMateriasSalvadas, setShowMateriasSalvadas] = useState(false);
@@ -159,7 +159,7 @@ export function DeckList({
       d.subject !== "Materias salvadas",
   );
   const examenGroups = examenDecks.reduce((acc, deck) => {
-    const subject = deck.subject || "Exámenes";
+    const subject = deck.subject || "ExÃƒÆ’Ã‚Â¡menes";
     if (!acc[subject]) acc[subject] = [];
     acc[subject].push(deck);
     return acc;
@@ -237,42 +237,31 @@ export function DeckList({
 
   return (
     <div className="deck-list animate-fade-in">
-      <div className="deck-stats">
-        <div className="stat-card stat-card-blue">
-          <div className="stat-icon">{Icons.folder}</div>
-          <div className="stat-content">
-            <span className="stat-value">{decks.length}</span>
-            <span className="stat-label">Mazos</span>
-          </div>
-        </div>
-        <div className="stat-card stat-card-purple">
-          <div className="stat-icon">{Icons.cards}</div>
-          <div className="stat-content">
-            <span className="stat-value">{totalCards}</span>
-            <span className="stat-label">Tarjetas</span>
-          </div>
-        </div>
-        <div className="stat-card stat-card-green">
-          <div className="stat-icon">{Icons.target}</div>
-          <div className="stat-content">
-            <span className="stat-value">
-              {Math.round((totalStudied / totalCards) * 100) || 0}%
-            </span>
-            <span className="stat-label">Progreso</span>
-          </div>
-        </div>
-      </div>
-
       <div className="deck-header">
         <div className="deck-header-title">
-          <div className="header-icon">{Icons.book}</div>
-          <div>
-            <h2>Mis Materias</h2>
-            <p className="deck-header-subtitle">
-              Selecciona un mazo para estudiar
-            </p>
-          </div>
+          <h2>Mis Materias</h2>
+          <p className="deck-header-subtitle">
+            Selecciona un mazo para estudiar
+          </p>
         </div>
+
+
+      <div className="deck-stats">
+        <div className="stat-card">
+          <span className="stat-label">Mazos</span>
+          <span className="stat-value">{decks.length}</span>
+        </div>
+        <div className="stat-card">
+          <span className="stat-label">Tarjetas</span>
+          <span className="stat-value">{totalCards}</span>
+        </div>
+        <div className="stat-card">
+          <span className="stat-label">Progreso</span>
+          <span className="stat-value">
+            {Math.round((totalStudied / totalCards) * 100) || 0}%
+          </span>
+        </div>
+      </div>
         <div className="header-buttons">
           <button
             className="btn btn-primary btn-create"
@@ -290,7 +279,7 @@ export function DeckList({
             className={`filter-pill ${filterSubject === "all" ? "active" : ""}`}
             onClick={() => setFilterSubject("all")}
           >
-            📚 Todos
+            ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã…Â¡ Todos
           </button>
           {uniqueSubjects.map((subject) => {
             const color = getSubjectColor(subject);
