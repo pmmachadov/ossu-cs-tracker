@@ -142,8 +142,11 @@ function App() {
   };
 
   const handleUpdateDeck = (updatedDeck) => {
-    setDecks(decks.map((d) => (d.id === updatedDeck.id ? updatedDeck : d)));
+    const nextDecks = decks.map((d) => (d.id === updatedDeck.id ? updatedDeck : d));
+    setDecks(nextDecks);
     setSelectedDeck(updatedDeck);
+    // Guardado inmediato y seguro en localStorage
+    DataStore.saveDecks(nextDecks);
   };
 
   const handleBack = () => {

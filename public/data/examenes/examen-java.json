@@ -393,7 +393,7 @@
     {
       "id": "ex-java-04-06",
       "front": "(Examen 4 · Herencia, polimorfismo, interfaces y clases abstractas)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nPara que una clase implemente una interfaz se usa la palabra clave:\n\na) extends\n\nb) uses\n\nc) implements\n\nd) inherits",
-      "back": "RESPUESTA / SOLUCIÓN\n\nc) implements — Una clase implementa una interfaz; puede implementar varias separadas por comas.",
+      "back": "RESPUESTA / SOLUCIÓN\n\nc) implements — Una clase implementa una interfaz usando `implements`; puede implementar varias interfaces separadas por comas.\n\n```java\ninterface Volador { void volar(); }\ninterface Nadador { void nadar(); }\n\n// Una clase implementando múltiples interfaces:\nclass Pato implements Volador, Nadador {\n    public void volar() { System.out.println(\"Volando\"); }\n    public void nadar() { System.out.println(\"Nadando\"); }\n}\n```",
       "tags": [
         "java",
         "examen",

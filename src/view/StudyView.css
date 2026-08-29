@@ -1494,33 +1494,6 @@
     0 4px 16px -6px rgba(46, 125, 50, 0.45);
 }
 
-/* Reflejo: banda de luz que recorre la respuesta correcta cada 3 s */
-.mc-option.correct::after {
-  content: "";
-  position: absolute;
-  top: -10%;
-  bottom: -10%;
-  left: -45%;
-  width: 35%;
-  background: linear-gradient(105deg,
-    transparent 0%,
-    rgba(255, 255, 255, 0.18) 45%,
-    rgba(52, 168, 83, 0.12) 55%,
-    transparent 100%);
-  transform: skewX(-18deg);
-  animation: mc-shine 3s linear infinite;
-  pointer-events: none;
-}
-
-@keyframes mc-shine {
-  0% {
-    left: -45%;
-  }
-  100% {
-    left: 115%;
-  }
-}
-
 .mc-option.correct .mc-letter {
   background: linear-gradient(135deg, #34A853, #34A853);
   color: #141414;

@@ -760,7 +760,7 @@ EXAMENES.append({
                     "tipo": "test",
                     "enunciado": "Para que una clase implemente una interfaz se usa la palabra clave:",
                     "opciones": ["a) extends", "b) uses", "c) implements", "d) inherits"],
-                    "respuesta": "c) implements — Una clase implementa una interfaz; puede implementar varias separadas por comas.",
+                    "respuesta": "c) implements — Una clase implementa una interfaz usando `implements`; puede implementar varias interfaces separadas por comas.\n\n```java\ninterface Volador { void volar(); }\ninterface Nadador { void nadar(); }\n\n// Una clase implementando múltiples interfaces:\nclass Pato implements Volador, Nadador {\n    public void volar() { System.out.println(\"Volando\"); }\n    public void nadar() { System.out.println(\"Nadando\"); }\n}\n```",
                 },
                 {
                     "tipo": "test",
