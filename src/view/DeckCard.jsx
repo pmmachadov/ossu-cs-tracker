@@ -20,14 +20,15 @@ export function DeckCard({
   const themeClass = theme || (isExtra ? "theme-blue" : "");
 
   // Estrellas brillantes que cruzan y rotan a distintas velocidades
+  // Estrellas brillantes que rotan y cruzan la barra a diferentes velocidades
   const stars = useMemo(() => {
     return [
-      { id: 1, size: 13, top: 25, opacity: 0.95, drift: 7.0, rotate: 2.0, dir: "normal", delay: -1.0 },
-      { id: 2, size: 9, top: 40, opacity: 0.8, drift: 9.5, rotate: 4.5, dir: "reverse", delay: -3.5 },
-      { id: 3, size: 15, top: 20, opacity: 1.0, drift: 6.0, rotate: 1.5, dir: "normal", delay: -2.2 },
-      { id: 4, size: 11, top: 35, opacity: 0.85, drift: 10.0, rotate: 3.5, dir: "reverse", delay: -4.8 },
-      { id: 5, size: 8, top: 22, opacity: 0.75, drift: 11.5, rotate: 5.5, dir: "normal", delay: -0.5 },
-      { id: 6, size: 12, top: 30, opacity: 0.9, drift: 8.0, rotate: 2.5, dir: "reverse", delay: -5.8 },
+      { id: 1, size: 16, top: 22, opacity: 0.95, drift: 7.0, rotate: 2.0, dir: "normal", delay: -1.0 },
+      { id: 2, size: 12, top: 38, opacity: 0.85, drift: 9.5, rotate: 4.5, dir: "reverse", delay: -3.5 },
+      { id: 3, size: 18, top: 16, opacity: 1.0, drift: 6.0, rotate: 1.5, dir: "normal", delay: -2.2 },
+      { id: 4, size: 14, top: 32, opacity: 0.9, drift: 10.0, rotate: 3.5, dir: "reverse", delay: -4.8 },
+      { id: 5, size: 10, top: 20, opacity: 0.8, drift: 11.5, rotate: 5.5, dir: "normal", delay: -0.5 },
+      { id: 6, size: 15, top: 26, opacity: 0.95, drift: 8.0, rotate: 2.5, dir: "reverse", delay: -5.8 },
     ];
   }, [deck.id]);
 
@@ -167,7 +168,7 @@ export function DeckCard({
           <button
             className="btn btn-icon-only btn-stats"
             onClick={() => onStatsDeck(deck)}
-            title="Ver estadísticas"
+            title="Ver estadÃ­sticas"
           >
             {Icons.stats}
           </button>
