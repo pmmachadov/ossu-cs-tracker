@@ -441,16 +441,6 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
       </div>
 
       <div className="flashcard-container">
-        <motion.span
-          key={`badge-${currentCardIndex}`}
-          initial={{ scale: 0.8, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.2 }}
-          className="card-number-badge"
-        >
-          {currentCardIndex + 1}
-        </motion.span>
-
         <motion.div
           key={currentCardIndex}
           initial={{ opacity: 0, x: 20, scale: 0.98 }}

@@ -426,7 +426,7 @@
     {
       "id": "ex-java-04-09",
       "front": "(Examen 4 · Herencia, polimorfismo, interfaces y clases abstractas)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué elemento NO se puede heredar en una subclase?\n\na) Métodos public\n\nb) Atributos protected\n\nc) Constructores\n\nd) Métodos protected",
-      "back": "RESPUESTA / SOLUCIÓN\n\nc) Los constructores no se heredan; el hijo los invoca mediante super(), pero no son miembros heredados.",
+      "back": "RESPUESTA / SOLUCIÓN\n\nc) Los constructores no se heredan; la subclase debe definir sus propios constructores e invocar al del padre usando `super()`.\n\n```java\nclass Persona {\n    Persona(String nombre) { System.out.println(\"Padre: \" + nombre); }\n}\n\nclass Empleado extends Persona {\n    Empleado(String nombre) {\n        super(nombre); // Invoca el constructor del padre con super()\n    }\n}\n```",
       "tags": [
         "java",
         "examen",

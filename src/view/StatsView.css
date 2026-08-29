@@ -13,25 +13,98 @@
   margin-bottom: 32px;
   padding-bottom: 20px;
   border-bottom: 1px solid var(--border-color);
+  gap: 16px;
+  flex-wrap: wrap;
 }
 
+/* Botón Volver con borde de gradiente Google girando en sentido horario y fondo negro */
+.stats-header .btn-back,
 .btn-back {
-  display: flex;
+  position: relative;
+  display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 12px 20px !important;
-  font-size: 0.9375rem !important;
+  gap: 8px;
+  padding: 8px 22px !important;
+  font-size: 0.875rem !important;
+  font-weight: 700;
+  color: #ffffff !important;
+  border-radius: 999px;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  border: 2px solid transparent !important;
+  background:
+    linear-gradient(#000000, #000000) padding-box,
+    conic-gradient(
+      from var(--border-angle),
+      #4285f4 0%,
+      #ea4335 25%,
+      #fbbc05 50%,
+      #34a853 75%,
+      #4285f4 100%
+    ) border-box !important;
+  animation: rotateClockwiseGoogle 3.5s linear infinite;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.stats-header .btn-back span,
+.btn-back span {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+}
+
+.stats-header .btn-back .btn-icon,
+.btn-back .btn-icon {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+  width: 18px;
+  height: 18px;
+}
+
+.stats-header .btn-back:hover,
+.btn-back:hover {
+  transform: translateX(-3px) scale(1.03);
+  background:
+    linear-gradient(#0a0a0d, #0a0a0d) padding-box,
+    conic-gradient(
+      from var(--border-angle),
+      #4285f4 0%,
+      #ea4335 25%,
+      #fbbc05 50%,
+      #34a853 75%,
+      #4285f4 100%
+    ) border-box !important;
+  color: #ffffff !important;
+  box-shadow:
+    0 4px 18px rgba(66, 133, 244, 0.45),
+    0 0 12px rgba(234, 67, 53, 0.35);
 }
 
 .btn-back .btn-icon {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
 }
 
 .btn-reset {
   display: flex;
   align-items: center;
   gap: 8px;
+  background: rgba(234, 67, 53, 0.12);
+  border: 1px solid rgba(234, 67, 53, 0.3);
+  color: #ff857a;
+  border-radius: var(--radius-pill);
+  padding: 8px 18px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn-reset:hover {
+  background: rgba(234, 67, 53, 0.25);
+  border-color: #ea4335;
+  color: #ffffff;
+  transform: translateY(-1px);
 }
 
 .btn-reset .btn-icon {
@@ -46,19 +119,20 @@
 }
 
 .title-icon {
-  width: 40px;
-  height: 40px;
-  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-  border-radius: 10px;
+  width: 44px;
+  height: 44px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #141414;
+  color: #5ac8fa;
 }
 
 .title-icon svg {
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
 }
 
 .stats-title h2 {
@@ -66,6 +140,7 @@
   font-weight: 700;
   margin: 0;
   color: var(--text-primary);
+  letter-spacing: -0.02em;
 }
 
 .stats-title span {
@@ -86,10 +161,13 @@
 }
 
 .stat-card {
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-color);
-  border-radius: 16px;
-  padding: 20px;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--glass-shadow);
+  padding: 20px 24px;
   display: flex;
   align-items: center;
   gap: 16px;
@@ -98,9 +176,10 @@
 }
 
 .stat-card:hover {
-  border-color: var(--bg-elevated);
+  background: var(--glass-bg-hover);
+  border-color: var(--glass-border-hover);
   transform: translateY(-3px);
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--glass-shadow-hover);
 }
 
 .stat-card:nth-child(1) { animation-delay: 0.05s; }
@@ -109,11 +188,20 @@
 .stat-card:nth-child(4) { animation-delay: 0.26s; }
 
 .chart-card {
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-color);
-  border-radius: 16px;
-  padding: 24px;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--glass-shadow);
+  padding: 26px;
   animation: fadeSlideUp 0.6s ease-out both;
+  transition: var(--transition);
+}
+
+.chart-card:hover {
+  background: var(--glass-bg-hover);
+  border-color: var(--glass-border-hover);
 }
 
 .chart-card:nth-child(1) { animation-delay: 0.1s; }

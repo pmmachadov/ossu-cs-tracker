@@ -767,7 +767,7 @@ EXAMENES.append({
                     "enunciado": "¿Cuál es el propósito de `@Override`?",
                     "opciones": ["a) Crear un método nuevo", "b) Indicar que se sobrescribe un método heredado",
                                   "c) Hacer el método estático", "d) Hacer el método público"],
-                    "respuesta": "b) @Override es una anotación que indica que el método sobrescribe uno de la clase padre; ayuda al compilador a detectar errores de firma.",
+                    "respuesta": "b) @Override es una anotación que indica que el método sobrescribe un método heredado; ayuda al compilador a detectar errores de firma.",
                 },
                 {
                     "tipo": "vf",
@@ -778,7 +778,7 @@ EXAMENES.append({
                     "tipo": "test",
                     "enunciado": "¿Qué elemento NO se puede heredar en una subclase?",
                     "opciones": ["a) Métodos public", "b) Atributos protected", "c) Constructores", "d) Métodos protected"],
-                    "respuesta": "c) Los constructores no se heredan; el hijo los invoca mediante super(), pero no son miembros heredados.",
+                    "respuesta": "c) Los constructores no se heredan; la subclase debe definir sus propios constructores e invocar al del padre usando `super()`.\n\n```java\nclass Persona {\n    Persona(String nombre) { System.out.println(\"Padre: \" + nombre); }\n}\n\nclass Empleado extends Persona {\n    Empleado(String nombre) {\n        super(nombre); // Invoca el constructor del padre con super()\n    }\n}\n```",
                 },
                 {
                     "tipo": "test",

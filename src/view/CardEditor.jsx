@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
+import { CardContent, codeTheme } from './CardContent'
 import './CardEditor.css'
 
 export function CardEditor({ deck, onBack, onUpdateDeck }) {
@@ -87,18 +88,34 @@ export function CardEditor({ deck, onBack, onUpdateDeck }) {
   return (
     <div className="card-editor animate-fade-in">
       <div className="editor-header">
-        <button className="btn btn-secondary btn-sm" onClick={onBack}>
-          ← Volver
+        <button className="btn-back" onClick={onBack} title="Volver al menú">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            style={{ width: "18px", height: "18px" }}
+          >
+            <line x1="19" y1="12" x2="5" y2="12" />
+            <polyline points="12 19 5 12 12 5" />
+          </svg>
+          <span>Volver</span>
         </button>
         <div className="editor-title">
           <h2>{deck.name}</h2>
           <span>{cards.length} tarjetas</span>
         </div>
         <button 
-          className="btn btn-primary btn-sm"
+          className="btn-add-card"
           onClick={() => setShowAddForm(true)}
         >
-          + Añadir
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{ width: '16px', height: '16px' }}>
+            <line x1="12" y1="5" x2="12" y2="19" />
+            <line x1="5" y1="12" x2="19" y2="12" />
+          </svg>
+          <span>Añadir tarjeta</span>
         </button>
       </div>
 
@@ -207,11 +224,18 @@ export function CardEditor({ deck, onBack, onUpdateDeck }) {
             <div className="card-item-content">
               <div className="card-item-front">
                 <span className="item-label">Frente</span>
-                <p>{card.front}</p>
+                <CardContent
+                  text={card.front}
+                  cardImageUrl={card.imageUrl}
+                  codeTheme={codeTheme}
+                />
               </div>
               <div className="card-item-back">
                 <span className="item-label">Reverso</span>
-                <p style={{ whiteSpace: 'pre-line' }}>{card.back}</p>
+                <CardContent
+                  text={card.back}
+                  codeTheme={codeTheme}
+                />
               </div>
             </div>
             <div className="card-item-meta">
