@@ -17,7 +17,13 @@ const INTERVAL_FACTORS = {
 
 export class Card {
   constructor(id, front, back, tags = [], imageUrl = '') {
-    this.id = id;
+    // ID inmutable y protegido contra modificaciones
+    Object.defineProperty(this, 'id', {
+      value: id,
+      writable: false,
+      configurable: false,
+      enumerable: true
+    });
     this.front = front;
     this.back = back;
     this.tags = tags;

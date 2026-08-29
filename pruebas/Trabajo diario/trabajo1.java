@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class ArraysUtils {
+public class trabajo1 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int[] nums = new int[8];
