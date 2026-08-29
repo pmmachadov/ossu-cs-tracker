@@ -273,7 +273,7 @@
   align-items: stretch;
 }
 
-/* SeparaciÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â³n entre el rectÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡ngulo Examen Java y su card */
+/* SeparaciÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â³n entre el rectÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ngulo Examen Java y su card */
 .examenes-grid {
   margin-top: 20px;
 }
@@ -308,16 +308,15 @@
 /* Due Badge Inline */
 .due-badge-inline {
   display: inline-flex;
-  align-self: flex-start;
-  color: white;
-  padding: 5px 12px;
-  border-radius: 20px;
+  align-items: center;
   font-size: 0.75rem;
-  font-weight: 600;
-  margin-bottom: 12px;
-  position: relative;
-  overflow: hidden;
-  animation: due-breathe 14s ease-in-out infinite;
+  padding: 4px 10px;
+  background: rgba(255, 159, 10, 0.15);
+  color: #FFB340;
+  border: 1px solid rgba(255, 159, 10, 0.25);
+  border-radius: 20px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
 }
 
 .due-badge-inline::before {
@@ -380,15 +379,13 @@
   align-items: center;
   gap: 4px;
   font-size: 0.75rem;
-  padding: 5px 12px;
-  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-  color: #141414;
+  padding: 4px 10px;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-primary);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 20px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-bottom: 10px;
-  align-self: flex-start;
+  font-weight: 500;
+  letter-spacing: -0.01em;
 }
 
 .deck-description {
@@ -468,10 +465,10 @@
 
 /* Ciclo de color de la barra de progreso de los mazos de examen.
    Cada capa se mueve a su propia velocidad:
-   - relieve 3D: quieto (tamaÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±o 100%)
-   - arcoÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â­ris: 0% -> 150% (1 perÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â­odo exacto, sin cortes)
-   - estrellas del fondo: 0% -> 300% (el DOBLE de rÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡pido: las estrellas
-     "viajan" por el arcoÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â­ris mientras los colores cambian) */
+   - relieve 3D: quieto (tamaÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â±o 100%)
+   - arcoÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â­ris: 0% -> 150% (1 perÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â­odo exacto, sin cortes)
+   - estrellas del fondo: 0% -> 300% (el DOBLE de rÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡pido: las estrellas
+     "viajan" por el arcoÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â­ris mientras los colores cambian) */
 @keyframes deck-progress-fill-cycle {
   0% {
     background-position: 0% 50%, 0% 50%, 0% 50%;
@@ -613,100 +610,41 @@
 /* Prominent top-right badge showing done state */
 .deck-done-badge {
   position: absolute;
-  top: 12px;
-  right: 12px;
-  z-index: 30;
-  padding: 8px 14px;
+  top: 20px;
+  right: 20px;
+  padding: 5px 12px;
   border-radius: 999px;
-  font-weight: 800;
-  font-size: 0.95rem;
-  letter-spacing: 0.4px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.6);
-  border: 1px solid rgba(255,255,255,0.04);
-  backdrop-filter: blur(4px);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  transition: var(--transition);
+  user-select: none;
+  z-index: 5;
+  border: 1px solid transparent;
 }
-.deck-done-badge { cursor: pointer; }
-.deck-done-badge:focus { outline: none; box-shadow: 0 0 0 4px rgba(66,133,244,0.12); }
+
+.deck-done-badge.off {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-secondary);
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+.deck-done-badge.off:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+}
+
 .deck-done-badge.progress {
-  color: white;
-  overflow: hidden;
-  animation: badge-breathe-progress 14s ease-in-out infinite;
-}
-
-.deck-done-badge.progress::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  border-radius: inherit;
-  background: linear-gradient(135deg, rgba(251,188,4,0.6), rgba(251,188,4,0.6));
-}
-
-.deck-done-badge.progress::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  border-radius: inherit;
-  background: rgba(20,15,0,0.95);
-  animation: due-overlay-progress 14s ease-in-out infinite;
-}
-
-.deck-done-badge.progress > * {
-  position: relative;
-  z-index: 2;
-}
-
-@keyframes badge-breathe-progress {
-  0%, 100% { box-shadow: 0 0 1px rgba(251,188,4,0.02); }
-  50% { box-shadow: 0 0 6px rgba(251,188,4,0.2); }
-}
-
-@keyframes due-overlay-progress {
-  0%, 100% { opacity: 0.85; }
-  50% { opacity: 0.65; }
+  background: rgba(255, 159, 10, 0.15);
+  color: #FFB340;
+  border-color: rgba(255, 159, 10, 0.25);
 }
 
 .deck-done-badge.on {
-  color: white;
-  overflow: hidden;
-  animation: badge-breathe 14s ease-in-out infinite;
-}
-
-.deck-done-badge.on::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  border-radius: inherit;
-  background: linear-gradient(135deg, rgba(46,125,50,0.6), rgba(46,125,50,0.6));
-}
-
-.deck-done-badge.on::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  border-radius: inherit;
-  background: rgba(0,10,0,0.95);
-  animation: due-overlay 14s ease-in-out infinite;
-}
-
-.deck-done-badge.on > * {
-  position: relative;
-  z-index: 2;
-}
-
-.badge-text { pointer-events: none; }
-
-@keyframes badge-breathe {
-  0%, 100% { box-shadow: 0 0 1px rgba(46,125,50,0.02); }
-  50% { box-shadow: 0 0 6px rgba(46,125,50,0.2); }
-}
-.deck-done-badge.off {
-  background: rgba(0,0,0,0.45);
-  color: var(--text-secondary);
-  border-color: rgba(255,255,255,0.04);
+  background: rgba(48, 209, 88, 0.15);
+  color: #30D158;
+  border-color: rgba(48, 209, 88, 0.3);
 }
 
 /* On small screens reduce badge size slightly */
@@ -851,7 +789,7 @@
 }
 
 .modal-reset .modal-list li::before {
-  content: 'ÃƒÆ’Ã‚Â¢Ãƒâ€¦Ã¢â‚¬Å“ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢';
+  content: 'ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â¦ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢';
   position: absolute;
   left: 0;
   color: #10B981;
@@ -1108,9 +1046,17 @@
   }
   
   .due-badge-inline {
-    font-size: 0.6875rem;
-    padding: 4px 10px;
-  }
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  background: rgba(255, 159, 10, 0.15);
+  color: #FFB340;
+  border: 1px solid rgba(255, 159, 10, 0.25);
+  border-radius: 20px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
 }
 
 @media (max-width: 480px) {
@@ -1144,7 +1090,7 @@
   }
 }
 
-/* MÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â³viles pequeÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±os (iPhone SE, Galaxy S8) */
+/* MÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â³viles pequeÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â±os (iPhone SE, Galaxy S8) */
 @media (max-width: 375px) {
   .deck-stats {
     grid-template-columns: 1fr;
@@ -1181,7 +1127,7 @@
   }
 }
 
-/* MÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â³viles muy pequeÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±os (iPhone 5, antiguos) */
+/* MÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â³viles muy pequeÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â±os (iPhone 5, antiguos) */
 @media (max-width: 320px) {
   .app-main {
     padding: 12px;
@@ -1222,7 +1168,7 @@
 }
 
 
-/* Clear Data Section - BotÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â³n para borrar todos los datos */
+/* Clear Data Section - BotÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â³n para borrar todos los datos */
 .clear-data-section {
   display: flex;
   flex-direction: column;
@@ -1287,7 +1233,16 @@
 }
 
 .deck-card.theme-blue .due-badge-inline {
-  background: none;
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  background: rgba(255, 159, 10, 0.15);
+  color: #FFB340;
+  border: 1px solid rgba(255, 159, 10, 0.25);
+  border-radius: 20px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
 }
 
 .deck-card.theme-blue .progress-value {
@@ -1391,7 +1346,7 @@
   margin-top: 20px;
 }
 
-/* Modal Clear Data - Estilos especÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â­ficos */
+/* Modal Clear Data - Estilos especÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â­ficos */
 .modal-clear {
   max-width: 480px;
 }
@@ -1410,7 +1365,7 @@
 }
 
 .modal-clear .modal-list li::before {
-  content: 'ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â¢';
+  content: 'ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢';
   position: absolute;
   left: 8px;
   color: var(--text-muted);
@@ -1777,7 +1732,7 @@
   margin-top: 20px;
 }
 
-/* ExÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡menes Section */
+/* ExÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡menes Section */
 .examenes-section {
   margin-top: 32px;
   border-top: 1px solid var(--border-color);
@@ -1822,7 +1777,7 @@
   animation: exam-area-drift 16s ease-in-out infinite alternate;
 }
 
-/* Reflejo eliminado por peticiÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â³n del usuario (banda de luz que barrÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â­a el rectÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡ngulo) */
+/* Reflejo eliminado por peticiÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â³n del usuario (banda de luz que barrÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â­a el rectÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ngulo) */
 .examen-java-area {
   position: relative;
   overflow: hidden;
@@ -2064,7 +2019,16 @@
 }
 
 .deck-card.theme-green .due-badge-inline {
-  background: none;
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  background: rgba(255, 159, 10, 0.15);
+  color: #FFB340;
+  border: 1px solid rgba(255, 159, 10, 0.25);
+  border-radius: 20px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
 }
 
 .deck-card.theme-green .progress-value {
@@ -2089,94 +2053,70 @@
   color: #2E7D32;
 }
 
-/* Theme Examen (Java): violeta sobrio con gradiente en movimiento lento,
-   diferente al resto de temas (que son estÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡ticos) */
-@keyframes exam-area-drift {
-  0% {
-    background-position: 0% 50%;
-  }
-  100% {
-    background-position: 100% 50%;
-  }
-}
-
+/* Theme Examen (Java) - Apple Pro Glass */
 .deck-card.theme-examen {
-  /* Card mÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡s clara: base gris claro + velos de lavanda pastel mÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡s intensos.
-     La barra de progreso (negra) queda igual y ahora contrasta mÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡s */
-  background:
-    radial-gradient(130% 130% at 0% 0%, rgba(124, 108, 240, 0.30), transparent 55%),
-    radial-gradient(130% 130% at 100% 100%, rgba(124, 108, 240, 0.20), transparent 55%),
-    #1c1c21;
-  background-size: 220% 220%, 220% 220%, auto;
-  animation: exam-drift 18s ease-in-out infinite alternate;
+  background: var(--glass-bg-card);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
 }
 
-@keyframes exam-drift {
-  0% {
-    background-position: 0% 0%, 100% 100%, 0 0;
-  }
-  100% {
-    background-position: 100% 100%, 0% 0%, 0 0;
-  }
-}
-
-/* ===== 3D REAL en TODOS los elementos de la card del tema examen ===== */
-
-/* Card: placa elevada con bisel (borde claro arriba, oscuro abajo) y
-   volumen; al pasar el ratÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â³n se inclina levemente en perspectiva */
-.deck-card.theme-examen {
-  border: 1px solid #3a3a42;
-  border-top-color: #4d4d58;
-  border-bottom-color: #0d0d10;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.10),
-    0 16px 36px rgba(0, 0, 0, 0.6),
-    0 5px 12px rgba(0, 0, 0, 0.5);
-  transition: box-shadow 0.25s ease;
-}
 .deck-card.theme-examen:hover {
-  /* Anula el translateY(-4px) del hover base: la card examen NO se mueve */
-  transform: none;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.12),
-    0 22px 44px rgba(0, 0, 0, 0.65),
-    0 8px 16px rgba(0, 0, 0, 0.5);
+  transform: translateY(-2px);
+  background: var(--glass-bg-card-hover);
+  border-color: var(--glass-border-hover);
+  box-shadow: var(--glass-shadow-hover);
 }
+
 .deck-card.theme-examen.has-due {
-  border-color: #7C6CF0;
-  border-top-color: #7C6CF0;
-  border-bottom-color: #0d0d10;
-  box-shadow:
-    0 0 0 1px #7C6CF0,
-    inset 0 1px 0 rgba(255, 255, 255, 0.10),
-    0 16px 36px rgba(0, 0, 0, 0.6),
-    0 5px 12px rgba(0, 0, 0, 0.5);
+  border-color: rgba(94, 92, 230, 0.4);
+  box-shadow: 0 0 0 1px rgba(94, 92, 230, 0.4), var(--glass-shadow);
 }
 
 /* Badge de materia: ficha con bisel */
 .deck-card.theme-examen .deck-subject {
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.55),
-    inset 0 -3px 6px rgba(90, 70, 160, 0.4),
-    0 4px 10px rgba(0, 0, 0, 0.5);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-primary);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
 }
 
-/* Badge "ÃƒÆ’Ã‚Â°Ãƒâ€¦Ã‚Â¸ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œÃƒâ€¹Ã…â€œ Examen" y "pendientes": sombra de texto profunda */
+/* Badge "ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â°ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â¦ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¸ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â¹ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ Examen" y "pendientes": sombra de texto profunda */
 .deck-card.theme-examen .exam-badge,
 .deck-card.theme-examen .due-badge-inline {
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  background: rgba(255, 159, 10, 0.15);
+  color: #FFB340;
+  border: 1px solid rgba(255, 159, 10, 0.25);
+  border-radius: 20px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
 }
 .deck-card.theme-examen .due-badge-inline {
-  border: 1px solid #3a3a42;
-  border-top-color: #4d4d58;
-  border-bottom-color: #101013;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.10),
-    0 4px 12px rgba(0, 0, 0, 0.55);
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  background: rgba(255, 159, 10, 0.15);
+  color: #FFB340;
+  border: 1px solid rgba(255, 159, 10, 0.25);
+  border-radius: 20px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
 }
 
-/* TÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â­tulo, descripciÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â³n y porcentaje: relieve de texto */
+/* TÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â­tulo, descripciÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â³n y porcentaje: relieve de texto */
 .deck-card.theme-examen .deck-name {
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8), 0 3px 6px rgba(0, 0, 0, 0.4);
 }
@@ -2187,7 +2127,7 @@
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
 }
 
-/* Cajas de estadÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â­sticas: tarjetas con bisel */
+/* Cajas de estadÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â­sticas: tarjetas con bisel */
 .deck-card.theme-examen .deck-stat {
   background: linear-gradient(180deg, #26262d 0%, #1a1a1f 55%, #111115 100%);
   border: 1px solid #2f2f37;
@@ -2198,7 +2138,7 @@
     0 5px 12px rgba(0, 0, 0, 0.5);
 }
 
-/* Iconos de estadÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â­sticas: fichas brillantes */
+/* Iconos de estadÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â­sticas: fichas brillantes */
 .deck-card.theme-examen .stat-icon-small {
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.25),
@@ -2206,7 +2146,7 @@
     0 3px 7px rgba(0, 0, 0, 0.45);
 }
 
-/* BotÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â³n Estudiar: botÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â³n 3D con bisel, se hunde al pulsar */
+/* BotÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â³n Estudiar: botÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â³n 3D con bisel, se hunde al pulsar */
 .deck-card.theme-examen .btn-study {
   border: 1px solid rgba(255, 255, 255, 0.35);
   border-bottom-color: rgba(90, 70, 160, 0.65);
@@ -2278,78 +2218,25 @@
   box-shadow: 0 0 0 1px #7C6CF0;
 }
 
-/* Barra mÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡s alta y redondeada solo en el tema examen.
+/* Barra mÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡s alta y redondeada solo en el tema examen.
    Efecto 3D: carril hundido (bisel iluminado arriba, sombra interior) y la
    barra elevada del fondo de la card */
 .deck-card.theme-examen .progress-bar {
-  height: 44px;
-  border-radius: 8px;
-  /* Negro con volumen: mÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡s hundido arriba, luz tenue reflejada abajo */
-  background: linear-gradient(180deg, #0b0b0d 0%, #050506 45%, #111114 100%);
-  border: 1px solid #3a3a3f;
-  border-top-color: #56565c;
-  border-bottom-color: #161619;
-  position: relative;
-  box-shadow:
-    inset 0 3px 7px rgba(0, 0, 0, 0.95),
-    inset 0 1px 1px rgba(255, 255, 255, 0.12),
-    inset 0 -2px 5px rgba(255, 255, 255, 0.05),
-    inset 0 -1px 2px rgba(0, 0, 0, 0.8),
-    0 6px 16px rgba(0, 0, 0, 0.6);
-}
-
-/* Reflejo que recorre la parte vacÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â­a (gris oscuro) de la barra.
-   Solo se ve donde el relleno no cubre: el fill es opaco y va por encima */
-.deck-card.theme-examen .progress-bar::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(105deg,
-    transparent 25%,
-    rgba(255, 255, 255, 0.08) 45%,
-    rgba(255, 255, 255, 0.12) 50%,
-    rgba(255, 255, 255, 0.08) 55%,
-    transparent 75%);
-  animation: deck-progress-shine 18s ease-in-out infinite;
-  pointer-events: none;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  border: none;
+  box-shadow: none;
 }
 
 .deck-card.theme-examen .progress-fill {
-  /* Colores VIVOS de Google: rojo -> azul -> verde -> amarillo -> rojo.
-     Paradas intermedias (mezclas 50/50) + background-size 300% => transiciones sutiles.
-     La 2ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Âª capa (SVG de estrellitas) se desliza junto al gradiente; el bucle 0%->150% es
-     exacto (1 perÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â­odo), asÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â­ que el movimiento es continuo y sin cortes. */
-  background-image:
-    /* Capa de relieve 3D: luz arriba, sombra abajo ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â el relleno parece un bloque sÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â³lido */
-    linear-gradient(180deg,
-      rgba(255, 255, 255, 0.32) 0%,
-      rgba(255, 255, 255, 0.10) 35%,
-      rgba(255, 255, 255, 0.03) 55%,
-      rgba(0, 0, 0, 0.10) 78%,
-      rgba(0, 0, 0, 0.40) 100%),
-    linear-gradient(90deg,
-      #064E3B,  /* verde bosque profundo */
-      #047857,  /* esmeralda medio */
-      #059669,  /* esmeralda */
-      #10B981,  /* esmeralda brillante */
-      #34D399,  /* menta claro */
-      #14B8A6,  /* teal */
-      #059669,  /* esmeralda */
-      #047857,  /* esmeralda medio */
-      #064E3B)
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='100'%3E%3Cdefs%3E%3Cpolygon id='s' points='0,-10 2.35,-3.24 9.51,-3.09 3.8,1.24 5.88,8.09 0,4 -5.88,8.09 -3.8,1.24 -9.51,-3.09 -2.35,-3.24' fill='white'/%3E%3C/defs%3E%3Cuse href='%23s' transform='translate(12,28) scale(0.7)' fill-opacity='1'/%3E%3Cuse href='%23s' transform='translate(62,64) scale(0.5)' fill-opacity='0.85'/%3E%3Cuse href='%23s' transform='translate(98,34) scale(0.4)' fill-opacity='0.75'/%3E%3Cuse href='%23s' transform='translate(122,72) scale(0.6)' fill-opacity='0.9'/%3E%3Cuse href='%23s' transform='translate(38,88) scale(0.45)' fill-opacity='0.8'/%3E%3Cuse href='%23s' transform='translate(140,18) scale(0.35)' fill-opacity='0.7'/%3E%3Cuse href='%23s' transform='translate(26,8) scale(0.3)' fill-opacity='0.65'/%3E%3Cuse href='%23s' transform='translate(85,90) scale(0.4)' fill-opacity='0.75'/%3E%3Cuse href='%23s' transform='translate(6,56) scale(0.35)' fill-opacity='0.7'/%3E%3Cuse href='%23s' transform='translate(115,48) scale(0.3)' fill-opacity='0.6'/%3E%3C/svg%3E");
-  background-size: 100% 100%, 300% 100%, 150px 100%;
-  border-radius: 8px;
-  /* Redondeo 3D del relleno: filo iluminado arriba, sombra interior abajo */
-  box-shadow:
-    inset 0 2px 4px rgba(255, 255, 255, 0.18),
-    inset 0 -4px 8px rgba(0, 0, 0, 0.35);
-  animation: deck-progress-fill-cycle 6s linear infinite;
-  /* Sin deck-progress-pulse: el pulso brightness(1.45) blanqueaba la barra por momentos */
+  background: var(--accent-primary);
+  border-radius: 999px;
+  box-shadow: 0 0 8px rgba(48, 209, 88, 0.35);
 }
 
 /* Estrellas que cruzan la barra del tema examen: varias a la vez, cada una con
-   su tamaÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±o, altura, velocidad y trayectoria (React las genera con valores
+   su tamaÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â±o, altura, velocidad y trayectoria (React las genera con valores
    aleatorios por deck; 3 trayectorias distintas se reparten en bucle) */
 .stars-layer {
   position: absolute;
@@ -2389,7 +2276,7 @@
   }
 }
 
-/* Trayectoria B: mÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡s baja, parpadea y va a contrarritmo */
+/* Trayectoria B: mÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡s baja, parpadea y va a contrarritmo */
 @keyframes star-drift-b {
   0% {
     left: -12%;
@@ -2413,7 +2300,7 @@
   }
 }
 
-/* Trayectoria C: frena un momento en el centro y continÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Âºa */
+/* Trayectoria C: frena un momento en el centro y continÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Âºa */
 @keyframes star-drift-c {
   0% {
     left: -10%;
@@ -2437,7 +2324,7 @@
 }
 
 /* Reflejo blanco muy atenuado en el tema examen: con tonos pastel, el brillo
-   original (0.28) lavaba los colores y hacÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â­a la barra parecer blanca */
+   original (0.28) lavaba los colores y hacÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â­a la barra parecer blanca */
 .deck-card.theme-examen .progress-fill::after {
   background: linear-gradient(105deg,
     transparent 30%,
@@ -2460,12 +2347,16 @@
 
 /* Green exam badge on cards */
 .exam-badge {
-  display: inline-block;
-  font-size: 11px;
-  color: #34A853;
-  margin-left: 8px;
-  font-weight: 600;
-  vertical-align: middle;
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  background: rgba(94, 92, 230, 0.15);
+  color: #8E8CF8;
+  border: 1px solid rgba(94, 92, 230, 0.25);
+  border-radius: 20px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
 }
 
 /* Green dot on folder headers */
@@ -2495,7 +2386,7 @@
   }
 }
 
-/* MÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡s Section (wrapper for Libros + Materias salvadas) */
+/* MÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡s Section (wrapper for Libros + Materias salvadas) */
 .mas-section {
   margin-top: 20px;
 }

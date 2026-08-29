@@ -6,7 +6,7 @@
   -webkit-tap-highlight-color: transparent;
 }
 
-/* Mejoras tactiles para tablets */
+/* Touch improvements */
 @media (hover: none) and (pointer: coarse) {
   .btn,
   .rating-btn,
@@ -16,27 +16,21 @@
     min-height: 44px;
     min-width: 44px;
   }
-  
-  .rating-btn {
-    padding: 20px 10px;
-  }
 }
 
 html, body {
   height: 100%;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-  font-size: 16px;
-  line-height: 1.5;
-  background: var(--bg-primary);
+  background: #000000;
   color: var(--text-primary);
   scrollbar-gutter: stable;
 }
 
 #root {
   min-height: 100vh;
+  background: #000000;
 }
 
-/* === AMBIENT BACKGROUND GLOW === */
+/* === APPLE AMBIENT SUBTLE BACKDROP === */
 .ambient-background {
   position: fixed;
   inset: 0;
@@ -48,50 +42,32 @@ html, body {
 .ambient-orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(100px);
-  opacity: 0.45;
-  animation: orb-drift 18s ease-in-out infinite alternate;
+  filter: blur(140px);
+  opacity: 0.22;
 }
 
 .orb-1 {
-  width: 550px;
-  height: 550px;
-  background: radial-gradient(circle, rgba(16, 185, 129, 0.25) 0%, rgba(6, 78, 59, 0.05) 70%, transparent 100%);
-  top: -100px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(48, 209, 88, 0.28) 0%, transparent 70%);
+  top: -80px;
   right: -50px;
-  animation-duration: 22s;
 }
 
 .orb-2 {
-  width: 650px;
-  height: 650px;
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.18) 0%, rgba(30, 58, 138, 0.05) 70%, transparent 100%);
-  bottom: -150px;
-  left: -100px;
-  animation-duration: 26s;
-  animation-delay: -7s;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(10, 132, 255, 0.18) 0%, transparent 70%);
+  bottom: -100px;
+  left: -80px;
 }
 
 .orb-3 {
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, rgba(20, 184, 166, 0.15) 0%, rgba(13, 148, 136, 0.03) 70%, transparent 100%);
-  top: 45%;
-  left: 35%;
-  animation-duration: 30s;
-  animation-delay: -12s;
-}
-
-@keyframes orb-drift {
-  0% {
-    transform: translate(0, 0) scale(1);
-  }
-  50% {
-    transform: translate(40px, -30px) scale(1.1);
-  }
-  100% {
-    transform: translate(-30px, 40px) scale(0.95);
-  }
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(94, 92, 230, 0.14) 0%, transparent 70%);
+  top: 40%;
+  left: 30%;
 }
 
 /* === APP LAYOUT === */
@@ -100,15 +76,15 @@ html, body {
   display: flex;
   flex-direction: column;
   position: relative;
-  background: transparent;
+  background: #000000;
   z-index: 1;
 }
 
 .app-main {
   flex: 1;
-  max-width: 1280px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 32px 24px;
+  padding: 36px 24px 64px 24px;
   width: 100%;
   position: relative;
   z-index: 2;
@@ -121,18 +97,19 @@ html, body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 20px;
+  gap: 16px;
   color: var(--text-secondary);
+  font-size: 0.95rem;
+  letter-spacing: -0.01em;
 }
 
 .spinner {
-  width: 44px;
-  height: 44px;
-  border: 3px solid rgba(16, 185, 129, 0.15);
-  border-top-color: var(--accent-primary);
+  width: 36px;
+  height: 36px;
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  border-top-color: var(--text-primary);
   border-radius: 50%;
-  animation: spin 0.8s cubic-bezier(0.6, 0.2, 0.4, 0.8) infinite;
-  box-shadow: 0 0 20px rgba(16, 185, 129, 0.2);
+  animation: spin 0.75s linear infinite;
 }
 
 @keyframes spin {
@@ -142,87 +119,87 @@ html, body {
 }
 
 /* === ANIMATIONS === */
-@keyframes fadeIn {
+@keyframes appleFadeIn {
   from {
     opacity: 0;
-    transform: translateY(8px);
+    transform: scale(0.99) translateY(6px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: scale(1) translateY(0);
   }
 }
 
 .animate-fade-in {
-  animation: fadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: appleFadeIn 0.3s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
-/* === BUTTONS (Glassmorphic) === */
+/* === APPLE CONTROLS & BUTTONS === */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 10px 18px;
-  font-size: 0.9rem;
-  font-weight: 600;
+  padding: 9px 16px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
   border-radius: var(--radius-md);
   border: 1px solid var(--border-color);
   cursor: pointer;
   transition: var(--transition);
-  background: var(--glass-bg);
+  background: rgba(255, 255, 255, 0.08);
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
   color: var(--text-primary);
   text-decoration: none;
   position: relative;
-  overflow: hidden;
-}
-
-.btn::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, transparent 100%);
-  opacity: 0;
-  transition: opacity 0.2s ease;
-}
-
-.btn:hover::before {
-  opacity: 1;
+  user-select: none;
 }
 
 .btn:hover {
-  transform: translateY(-2px);
-  border-color: var(--glass-border-hover);
-  box-shadow: var(--shadow-md);
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.16);
+  transform: translateY(-1px);
 }
 
 .btn:active {
-  transform: translateY(0);
+  transform: scale(0.98);
+  background: rgba(255, 255, 255, 0.06);
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #10B981 0%, #059669 100%);
-  color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 4px 16px rgba(16, 185, 129, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  background: #30D158;
+  color: #000000 !important;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 2px 8px rgba(48, 209, 88, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.4);
 }
 
 .btn-primary:hover {
-  background: linear-gradient(135deg, #34D399 0%, #059669 100%);
-  box-shadow: 0 6px 24px rgba(16, 185, 129, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.3);
-  border-color: rgba(255, 255, 255, 0.3);
+  background: #34E060;
+  box-shadow: 0 4px 14px rgba(48, 209, 88, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+  background: #28CD41;
 }
 
 .btn-icon-only {
-  width: 38px;
-  height: 38px;
+  width: 40px;
+  height: 40px;
   padding: 0;
   border-radius: var(--radius-md);
+  color: var(--text-secondary);
+}
+
+.btn-icon-only:hover {
+  color: var(--text-primary);
 }
 
 .btn-icon-only svg {
-  width: 18px;
-  height: 18px;
+  width: 17px;
+  height: 17px;
 }

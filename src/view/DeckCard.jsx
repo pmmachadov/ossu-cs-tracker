@@ -1,4 +1,3 @@
-import { useMemo } from "react";
 import { Icons } from "./Icons";
 import { isExamDeck, getSubjectIcon, getSubjectColor } from "./deckHelpers";
 
@@ -19,21 +18,6 @@ export function DeckCard({
   const hasDueCards = stats.due > 0;
   const themeClass = theme || (isExtra ? "theme-blue" : "");
 
-  const stars = useMemo(() => {
-    if (themeClass !== "theme-examen") return [];
-    const anims = ["star-drift-a", "star-drift-b", "star-drift-c"];
-    return Array.from({ length: 10 }, (_, i) => ({
-      id: i,
-      size: 10 + Math.random() * 14,
-      top: 8 + Math.random() * 72,
-      left: 5 + Math.random() * 85,
-      opacity: 0.7 + Math.random() * 0.3,
-      duration: 4.5 + Math.random() * 5.5,
-      delay: -(Math.random() * 10),
-      anim: anims[i % anims.length],
-    }));
-  }, [deck.id, themeClass]);
-
   const status = doneMap[deck.id];
   const isProgress = status === "progress";
   const isDone = status === true;
@@ -44,9 +28,8 @@ export function DeckCard({
       className={`deck-card ${hasDueCards ? "has-due" : ""} ${themeClass} ${
         isDone ? "done" : isProgress ? "in-progress" : ""
       }`}
-      style={{ borderLeft: `3px solid ${subjectColor.accent}` }}
     >
-      {/* Large top-right done badge */}
+      {/* Apple style done badge */}
       <div
         className={`deck-done-badge ${isDone ? "on" : isProgress ? "progress" : "off"}`}
         title={
@@ -68,29 +51,28 @@ export function DeckCard({
         }}
       >
         <span className="badge-text">
-          {isDone ? "Hecho ✓" : isProgress ? "En proceso" : "Pendiente"}
+          {isDone ? "Completado" : isProgress ? "En curso" : "Pendiente"}
         </span>
       </div>
+
       {/* Card Content */}
       <div className="deck-card-content">
-        {deck.subject && (
-          <span
-            className="deck-subject"
-            style={{ background: subjectColor.badge }}
-          >
-            {subjectIcon} {deck.subject}
-          </span>
-        )}
-        {isExamDeck(deck) && (
-          <span className="exam-badge">📝 Examen</span>
-        )}
-        {hasDueCards && (
-          <div className="due-badge-inline">
-            <span>
+        <div className="deck-card-meta">
+          {deck.subject && (
+            <span className="deck-subject">
+              {subjectIcon} {deck.subject}
+            </span>
+          )}
+          {isExamDeck(deck) && (
+            <span className="exam-badge">Examen</span>
+          )}
+          {hasDueCards && (
+            <span className="due-badge-inline">
               {stats.due} de {stats.total} pendientes
             </span>
-          </div>
-        )}
+          )}
+        </div>
+
         <div className="deck-card-header">
           <h3 className="deck-name">{deck.name}</h3>
         </div>
@@ -110,26 +92,6 @@ export function DeckCard({
               className="progress-fill"
               style={{ width: `${stats.mastery}%` }}
             />
-            {stars.length > 0 && (
-              <div className="stars-layer" aria-hidden="true">
-                {stars.map((s) => (
-                  <span
-                    key={s.id}
-                    className="drift-star"
-                    style={{
-                      width: `${s.size}px`,
-                      height: `${s.size}px`,
-                      top: `${s.top}%`,
-                      left: `${s.left}%`,
-                      opacity: s.opacity,
-                      animationDuration: `${s.duration}s`,
-                      animationDelay: `${s.delay}s`,
-                      animationName: s.anim,
-                    }}
-                  />
-                ))}
-              </div>
-            )}
           </div>
         </div>
 
