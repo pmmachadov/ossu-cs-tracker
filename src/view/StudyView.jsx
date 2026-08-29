@@ -425,17 +425,7 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
           <div
             className="card-progress-fill"
             style={{ width: `${progressPct}%` }}
-          >
-            {/* Cabezal indicador dinámico estilo Cometa / Flecha Cyber */}
-            <div className="card-progress-thumb-head" title="Posición actual">
-              <span className="thumb-head-halo" />
-              <div className="thumb-head-core">
-                <svg viewBox="0 0 24 24" fill="currentColor" className="thumb-head-icon">
-                  <path d="M12 2l3 7h7l-5.5 4.5 2 7.5-6.5-5-6.5 5 2-7.5-5.5-4.5h7z" />
-                </svg>
-              </div>
-            </div>
-          </div>
+          />
         </div>
         <div className="card-progress-count">
           <span className="card-progress-pos">

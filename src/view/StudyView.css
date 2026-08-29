@@ -7,7 +7,7 @@
   z-index: 1;
 }
 
-/* Botón Volver con borde de gradiente Google animado y centro oscuro */
+/* Botón Volver con borde de gradiente Google girando en sentido horario y fondo negro #000000 */
 .btn-back-inline {
   position: relative;
   display: flex;
@@ -24,17 +24,16 @@
   flex-shrink: 0;
   border: 2px solid transparent;
   background:
-    linear-gradient(#121216, #121216) padding-box,
-    linear-gradient(
-      125deg,
+    linear-gradient(#000000, #000000) padding-box,
+    conic-gradient(
+      from var(--border-angle),
       #4285f4 0%,
       #ea4335 25%,
       #fbbc05 50%,
       #34a853 75%,
       #4285f4 100%
     ) border-box;
-  background-size: 100% 100%, 300% 300%;
-  animation: googleBorderFlow 5s ease-in-out infinite;
+  animation: rotateClockwiseGoogle 3.5s linear infinite;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
@@ -42,31 +41,27 @@
 .btn-back-inline:hover {
   transform: translateX(-3px) scale(1.03);
   background:
-    linear-gradient(#18181f, #18181f) padding-box,
-    linear-gradient(
-      125deg,
+    linear-gradient(#0a0a0d, #0a0a0d) padding-box,
+    conic-gradient(
+      from var(--border-angle),
       #4285f4 0%,
       #ea4335 25%,
       #fbbc05 50%,
       #34a853 75%,
       #4285f4 100%
     ) border-box;
-  background-size: 100% 100%, 300% 300%;
   color: #ffffff;
   box-shadow:
-    0 4px 18px rgba(66, 133, 244, 0.4),
-    0 0 12px rgba(234, 67, 53, 0.3);
+    0 4px 18px rgba(66, 133, 244, 0.45),
+    0 0 12px rgba(234, 67, 53, 0.35);
 }
 
-@keyframes googleBorderFlow {
+@keyframes rotateClockwiseGoogle {
   0% {
-    background-position: 0% 0%, 0% 50%;
-  }
-  50% {
-    background-position: 0% 0%, 100% 50%;
+    --border-angle: 0deg;
   }
   100% {
-    background-position: 0% 0%, 0% 50%;
+    --border-angle: 360deg;
   }
 }
 
@@ -137,25 +132,17 @@
 .card-progress-track {
   flex: 1;
   height: 34px;
-  background:
-    repeating-linear-gradient(
-      90deg,
-      transparent 0,
-      transparent calc(100% / var(--card-count, 1) * 0.50),
-      rgba(255,255,255,0.08) calc(100% / var(--card-count, 1) * 0.50),
-      rgba(255,255,255,0.08) calc(100% / var(--card-count, 1) * 0.53)
-    ),
-    #08080c;
+  background: #000000;
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 999px;
   position: relative;
   cursor: grab;
   user-select: none;
   -webkit-user-select: none;
-  border: 1px solid rgba(255, 255, 255, 0.12);
   box-shadow:
-    inset 0 3px 8px rgba(0,0,0,0.9),
-    inset 0 -1px 2px rgba(255,255,255,0.06),
-    0 4px 16px rgba(0,0,0,0.4);
+    inset 0 3px 8px rgba(0, 0, 0, 0.95),
+    inset 0 -1px 2px rgba(255, 255, 255, 0.04),
+    0 4px 16px rgba(0, 0, 0, 0.5);
   overflow: visible;
 }
 
@@ -186,7 +173,6 @@
 .card-progress-track .drift-star svg {
   width: 100%;
   height: 100%;
-  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.95)) drop-shadow(0 0 8px rgba(255, 255, 255, 0.6));
   animation: study-star-spin var(--rotate-duration, 2.5s) linear infinite;
   animation-direction: var(--rotate-dir, normal);
 }
@@ -201,154 +187,28 @@
   100% { transform: rotate(360deg); }
 }
 
+/* Relleno de progreso: aumenta con las tarjetas aprendidas, con borde de colores Google girando y centro negro puro #000000 */
 .card-progress-fill {
   height: 100%;
-  background: linear-gradient(
-    90deg,
-    rgba(66, 133, 244, 0.32),
-    rgba(234, 67, 53, 0.32),
-    rgba(251, 188, 5, 0.32),
-    rgba(52, 168, 83, 0.32),
-    rgba(66, 133, 244, 0.32)
-  );
-  background-size: 300% 100%;
+  border: 2px solid transparent;
+  background:
+    linear-gradient(#000000, #000000) padding-box,
+    conic-gradient(
+      from var(--border-angle),
+      #4285f4 0%,
+      #ea4335 25%,
+      #fbbc05 50%,
+      #34a853 75%,
+      #4285f4 100%
+    ) border-box;
+  animation: rotateClockwiseGoogle 3.5s linear infinite;
   border-radius: 999px;
   position: relative;
   z-index: 3;
   transition: width 0.5s cubic-bezier(0.34, 1.25, 0.4, 1);
   box-shadow:
-    0 0 14px rgba(66, 133, 244, 0.18),
-    inset 0 1px 2px rgba(255, 255, 255, 0.25),
-    inset 0 -1px 2px rgba(0, 0, 0, 0.15);
-  animation: googleProgressFlow 6s ease-in-out infinite;
-}
-
-@keyframes googleProgressFlow {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-/* Nuevo Cabezal Indicador Dinámico: Cometa / Prisma de Energía (Superpuesto encima) */
-.card-progress-thumb-head {
-  position: absolute;
-  right: -16px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 32px;
-  height: 32px;
-  z-index: 20;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: grab;
-  user-select: none;
-}
-
-.card-progress-thumb-head:active {
-  cursor: grabbing;
-}
-
-/* Halo de energía exterior sutil con los 4 colores de Google */
-.thumb-head-halo {
-  position: absolute;
-  inset: -2px;
-  border-radius: 50%;
-  background: conic-gradient(
-    from 0deg,
-    rgba(66, 133, 244, 0.75),
-    rgba(234, 67, 53, 0.75),
-    rgba(251, 188, 5, 0.75),
-    rgba(52, 168, 83, 0.75),
-    rgba(66, 133, 244, 0.75)
-  );
-  filter: blur(4px);
-  animation:
-    googleHaloSpin 5s linear infinite,
-    googleHaloPulse 2s ease-in-out infinite alternate;
-  pointer-events: none;
-  z-index: 1;
-}
-
-@keyframes googleHaloSpin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-@keyframes googleHaloPulse {
-  0% {
-    transform: scale(0.95);
-    opacity: 0.7;
-  }
-  100% {
-    transform: scale(1.12);
-    opacity: 1;
-  }
-}
-
-/* Núcleo de cristal geométrico tipo Prisma / Diamante */
-.thumb-head-core {
-  width: 28px;
-  height: 28px;
-  border-radius: 9px;
-  background: linear-gradient(
-    135deg,
-    #ffffff 0%,
-    #e8e8ed 30%,
-    #a2a2aa 65%,
-    #3a3a3c 100%
-  );
-  border: 1.5px solid rgba(255, 255, 255, 0.85);
-  box-shadow:
-    0 4px 14px rgba(0, 0, 0, 0.9),
-    0 0 16px rgba(255, 255, 255, 0.6),
-    inset 0 1px 3px rgba(255, 255, 255, 0.9),
-    inset -1px -2px 3px rgba(0, 0, 0, 0.6);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  z-index: 2;
-  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.card-progress-thumb-head:hover .thumb-head-core {
-  transform: scale(1.12) rotate(45deg);
-}
-
-/* Icono estelar de energía en el centro */
-.thumb-head-icon {
-  width: 15px;
-  height: 15px;
-  color: #1a1a1c;
-  filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.8));
-  animation: headStarSpin 6s linear infinite;
-}
-
-@keyframes headPulse {
-  0% {
-    transform: scale(0.85);
-    opacity: 0.5;
-  }
-  100% {
-    transform: scale(1.3);
-    opacity: 0.95;
-  }
-}
-
-@keyframes headStarSpin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+    0 0 14px rgba(66, 133, 244, 0.35),
+    inset 0 1px 2px rgba(255, 255, 255, 0.15);
 }
 
 .card-progress-count {
@@ -710,20 +570,23 @@
 
 /* Subtitulos en color diferente */
 .card-subtitle {
-  color: #1a73e8;
+  color: #4285F4;
   font-size: 1.35rem;
-  font-weight: 600;
-  margin-top: 20px;
-  margin-bottom: 4px;
+  font-weight: 700;
+  margin-top: 16px;
+  margin-bottom: 6px;
+  letter-spacing: -0.01em;
 }
 
 /* La pregunta (enunciado) de las tarjetas de examen, en color propio */
 .card-question {
   color: #ffd479;
-  font-size: 1.35rem;
-  font-weight: 600;
-  margin-top: 20px;
-  margin-bottom: 4px;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.5;
+  margin-top: 16px;
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
 }
 
 /* CÃƒÂ³digo inline estilo VSCode */
@@ -1572,15 +1435,16 @@
   gap: 14px;
   width: 100%;
   text-align: left;
-  padding: 14px 16px;
-  background: linear-gradient(180deg, #262626, #1d1d1d);
-  border: 1px solid #333333;
+  padding: 13px 18px;
+  background: linear-gradient(180deg, #242426, #1a1a1c);
+  border: 1px solid #333336;
   border-radius: 14px;
   color: var(--text-primary);
   font-size: 1.05rem;
+  font-weight: 500;
   font-family: inherit;
   cursor: pointer;
-  transition: all 0.25s ease;
+  transition: all 0.22s ease;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
@@ -1596,8 +1460,8 @@
 }
 
 .mc-letter {
-  width: 34px;
-  height: 34px;
+  width: 32px;
+  height: 32px;
   flex-shrink: 0;
   display: flex;
   align-items: center;
@@ -1609,7 +1473,7 @@
     var(--pb-accent, #4285F4)
   );
   color: #141414;
-  font-weight: 700;
+  font-weight: 800;
   font-size: 0.95rem;
   line-height: 1;
   box-shadow: 0 2px 6px -2px color-mix(in srgb, var(--pb-accent, #4285F4) 70%, transparent);
@@ -1623,7 +1487,7 @@
 .mc-option.correct {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(180deg, rgba(46, 125, 50, 0.18), rgba(46, 125, 50, 0.08));
+  background: linear-gradient(180deg, rgba(46, 125, 50, 0.22), rgba(46, 125, 50, 0.10));
   border-color: #34A853;
   box-shadow:
     0 0 0 1px rgba(46, 125, 50, 0.4),
@@ -1668,14 +1532,13 @@
 }
 
 .mc-option.wrong {
-  background: linear-gradient(180deg, rgba(185, 28, 28, 0.14), rgba(185, 28, 28, 0.05));
-  border-color: #991B1B;
-  box-shadow: 0 0 0 1px rgba(185, 28, 28, 0.3);
+  background: linear-gradient(180deg, rgba(185, 28, 28, 0.18), rgba(185, 28, 28, 0.08));
+  border-color: #B91C1C;
 }
 
 .mc-option.wrong .mc-letter {
-  background: linear-gradient(135deg, #F87171, #B91C1C);
-  color: #141414;
+  background: #B91C1C;
+  color: #ffffff;
 }
 
 .mc-option.wrong .mc-text {
@@ -1707,17 +1570,17 @@
 
 /* Nueva área de Respuesta y Solución reescrita */
 .mc-answer-card {
-  margin-top: 24px;
+  margin-top: 22px;
   width: 100%;
   box-sizing: border-box;
   background: #141416 !important;
   border: 1px solid rgba(255, 255, 255, 0.15) !important;
   border-left: 4px solid var(--pb-accent, #4285F4) !important;
   border-radius: 12px;
-  padding: 18px 20px;
+  padding: 16px 20px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
   text-align: left;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
   opacity: 1 !important;
@@ -1730,7 +1593,7 @@
   align-items: center;
   gap: 12px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  padding-bottom: 10px;
+  padding-bottom: 8px;
 }
 
 .mc-answer-badge {
@@ -1756,10 +1619,10 @@
 }
 
 .mc-answer-body .card-text-paragraph {
-  font-size: 1rem !important;
-  line-height: 1.6 !important;
+  font-size: 0.95rem !important;
+  line-height: 1.65 !important;
   color: #f5f5f7 !important;
-  margin-bottom: 0.6em !important;
+  margin-bottom: 0.5em !important;
   padding: 0 !important;
   text-align: left !important;
   opacity: 1 !important;
@@ -1780,7 +1643,7 @@
 
 .flashcard-back .card-text-paragraph {
   font-size: 1.05rem !important;
-  line-height: 1.6 !important;
+  line-height: 1.65 !important;
   text-align: left !important;
   color: #f5f5f7 !important;
 }
