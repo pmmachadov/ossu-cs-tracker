@@ -1,17 +1,17 @@
-/* === APPLE DESIGN SYSTEM - Dark Mode (apple.com / iOS HIG) === */
+/* === APPLE GLASSMORPHISM DESIGN SYSTEM - Dark Mode === */
 :root {
   /* System Backgrounds */
   --bg-primary: #000000;
-  --bg-secondary: #161617;
-  --bg-tertiary: #242426;
-  --bg-elevated: #2c2c2e;
+  --bg-secondary: rgba(22, 22, 26, 0.7);
+  --bg-tertiary: rgba(32, 32, 38, 0.7);
+  --bg-elevated: rgba(44, 44, 52, 0.8);
   
   /* System Labels */
   --text-primary: #f5f5f7;
-  --text-secondary: #86868b;
+  --text-secondary: #a1a1a6;
   --text-muted: #6e6e73;
   
-  /* Apple System Accents */
+  /* Apple Accents */
   --apple-blue: #0071e3;
   --apple-blue-hover: #0077ed;
   --apple-green: #30d158;
@@ -19,22 +19,21 @@
   --apple-indigo: #5e5ce6;
   --apple-teal: #64d2ff;
   
-  /* Semantic Tokens */
   --accent-primary: var(--apple-blue);
   --accent-secondary: var(--apple-blue-hover);
   --accent-success: var(--apple-green);
   --accent-warning: var(--apple-orange);
   
-  /* Apple Separator & Material */
-  --border-color: rgba(255, 255, 255, 0.08);
-  --border-subtle: rgba(255, 255, 255, 0.05);
-  --border-hover: rgba(255, 255, 255, 0.18);
+  /* Glassmorphism Tokens */
+  --glass-bg: rgba(22, 22, 26, 0.65);
+  --glass-bg-hover: rgba(30, 30, 36, 0.8);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-border-hover: rgba(255, 255, 255, 0.22);
+  --glass-blur: blur(24px) saturate(180%);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  --glass-shadow-hover: 0 16px 48px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.2);
   
-  --card-bg: #161617;
-  --card-bg-hover: #1c1c1e;
-  
-  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.4);
-  --shadow-card-hover: 0 12px 36px rgba(0, 0, 0, 0.6);
+  --border-color: rgba(255, 255, 255, 0.1);
   
   --radius-sm: 8px;
   --radius-md: 12px;
@@ -42,7 +41,7 @@
   --radius-card: 22px;
   --radius-pill: 980px;
   
-  --transition: all 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+  --transition: all 0.22s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 /* === RESET & BASE === */
@@ -78,7 +77,7 @@ body {
 
 /* Selection */
 ::selection {
-  background: rgba(0, 113, 227, 0.35);
+  background: rgba(0, 113, 227, 0.4);
   color: #ffffff;
 }
 
@@ -98,21 +97,26 @@ code {
   font-family: "SF Mono", Monaco, Menlo, Consolas, monospace;
   font-size: 0.88em;
   padding: 3px 6px;
-  background: #242426;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 6px;
   color: #f5f5f7;
+  backdrop-filter: blur(8px);
 }
 
 pre {
-  background: #161617;
+  background: rgba(18, 18, 22, 0.8);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
   padding: 18px;
   border-radius: var(--radius-md);
   overflow-x: auto;
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--glass-border);
 }
 
 pre code {
   background: none;
+  border: none;
   padding: 0;
 }
 

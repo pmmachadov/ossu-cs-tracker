@@ -1,4 +1,4 @@
-/* === APPLE DESIGN SYSTEM - DeckList Styles === */
+/* === APPLE GLASSMORPHISM - DeckList Styles === */
 
 .deck-list {
   display: flex;
@@ -12,7 +12,7 @@
   align-items: flex-end;
   justify-content: space-between;
   gap: 20px;
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--glass-border);
   padding-bottom: 24px;
 }
 
@@ -35,7 +35,7 @@
   display: none;
 }
 
-/* Stats Bento Row */
+/* Stats Glass Bento Row */
 .deck-stats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -43,20 +43,24 @@
 }
 
 .stat-card {
-  background: var(--card-bg);
-  border: 1px solid var(--border-color);
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
   border-radius: var(--radius-lg);
   padding: 22px 26px;
   display: flex;
   flex-direction: column;
   gap: 6px;
+  box-shadow: var(--glass-shadow);
   transition: var(--transition);
 }
 
 .stat-card:hover {
-  background: var(--card-bg-hover);
-  border-color: var(--border-hover);
+  background: var(--glass-bg-hover);
+  border-color: var(--glass-border-hover);
   transform: translateY(-2px);
+  box-shadow: var(--glass-shadow-hover);
 }
 
 .stat-icon {
@@ -79,15 +83,18 @@
   line-height: 1.1;
 }
 
-/* Subject Filter (Apple Segmented Pill Controls) */
+/* Subject Filter (Apple Glass Pill Controls) */
 .subject-filter {
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
-  padding: 4px;
-  background: #161617;
-  border: 1px solid var(--border-color);
+  padding: 5px;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
   border-radius: var(--radius-pill);
+  box-shadow: var(--glass-shadow);
   width: fit-content;
   max-width: 100%;
 }
@@ -98,7 +105,7 @@
   font-size: 0.8125rem;
   font-weight: 500;
   letter-spacing: -0.01em;
-  border: none;
+  border: 1px solid transparent;
   background: transparent;
   color: var(--text-secondary);
   cursor: pointer;
@@ -108,17 +115,18 @@
 
 .filter-pill:hover {
   color: #f5f5f7;
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .filter-pill.active {
-  background: #2c2c2e !important;
+  background: rgba(255, 255, 255, 0.15) !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
   color: #ffffff !important;
   font-weight: 600;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
-/* Section Toggle / Accordions (Apple List Group) */
+/* Section Toggle / Accordions (Apple Glass Group) */
 .examenes-section {
   display: flex;
   flex-direction: column;
@@ -137,9 +145,12 @@
   align-items: center;
   gap: 12px;
   padding: 16px 22px;
-  background: var(--card-bg);
-  border: 1px solid var(--border-color);
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
   border-radius: var(--radius-lg);
+  box-shadow: var(--glass-shadow);
   color: #f5f5f7;
   font-size: 1rem;
   font-weight: 600;
@@ -156,8 +167,9 @@
 .mas-toggle:hover,
 .extras-toggle:hover,
 .pd-toggle:hover {
-  background: var(--card-bg-hover);
-  border-color: var(--border-hover);
+  background: var(--glass-bg-hover);
+  border-color: var(--glass-border-hover);
+  box-shadow: var(--glass-shadow-hover);
 }
 
 .examenes-icon {
@@ -177,7 +189,7 @@
   font-size: 0.8125rem;
   font-weight: 500;
   color: var(--text-secondary);
-  background: #242426;
+  background: rgba(255, 255, 255, 0.08);
   padding: 3px 10px;
   border-radius: var(--radius-pill);
 }
@@ -195,7 +207,7 @@
   transform: rotate(180deg);
 }
 
-/* Bento Decks Grid */
+/* Glass Bento Decks Grid */
 .decks-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(460px, 1fr));
@@ -203,11 +215,14 @@
   align-items: stretch;
 }
 
-/* Apple Bento Deck Card */
+/* Apple Frosted Glass Deck Card */
 .deck-card {
-  background: var(--card-bg);
-  border: 1px solid var(--border-color);
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
   border-radius: var(--radius-card);
+  box-shadow: var(--glass-shadow);
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -216,10 +231,10 @@
 }
 
 .deck-card:hover {
-  background: var(--card-bg-hover);
-  border-color: var(--border-hover);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-card-hover);
+  background: var(--glass-bg-hover);
+  border-color: var(--glass-border-hover);
+  transform: translateY(-3px);
+  box-shadow: var(--glass-shadow-hover);
 }
 
 .deck-card-content {
@@ -242,7 +257,8 @@
   font-size: 0.75rem;
   font-weight: 500;
   padding: 4px 10px;
-  background: #242426;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   color: var(--text-primary);
   border-radius: var(--radius-pill);
   letter-spacing: -0.01em;
@@ -252,8 +268,9 @@
   font-size: 0.75rem;
   font-weight: 500;
   padding: 4px 10px;
-  background: rgba(94, 92, 230, 0.15);
-  color: #a5a3ff;
+  background: rgba(94, 92, 230, 0.18);
+  border: 1px solid rgba(94, 92, 230, 0.3);
+  color: #b5b3ff;
   border-radius: var(--radius-pill);
   letter-spacing: -0.01em;
 }
@@ -262,7 +279,8 @@
   font-size: 0.75rem;
   font-weight: 500;
   padding: 4px 10px;
-  background: rgba(255, 159, 10, 0.15);
+  background: rgba(255, 159, 10, 0.18);
+  border: 1px solid rgba(255, 159, 10, 0.3);
   color: #ffb340;
   border-radius: var(--radius-pill);
   letter-spacing: -0.01em;
@@ -293,7 +311,7 @@
   overflow: hidden;
 }
 
-/* Apple Progress Bar */
+/* Liquid Capsule Glass Progress Bar */
 .deck-progress {
   margin-bottom: 20px;
 }
@@ -316,7 +334,8 @@
 
 .progress-bar {
   height: 28px;
-  background: rgba(18, 18, 22, 0.95);
+  background: rgba(14, 14, 18, 0.8);
+  backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: var(--radius-pill);
   overflow: hidden;
@@ -339,7 +358,7 @@
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.5),
     inset 0 -2px 4px rgba(0, 0, 0, 0.3),
-    0 0 16px rgba(48, 209, 88, 0.3);
+    0 0 16px rgba(48, 209, 88, 0.35);
 }
 
 .progress-fill::after {
@@ -348,7 +367,7 @@
   inset: 0;
   background: linear-gradient(105deg,
     transparent 20%,
-    rgba(255, 255, 255, 0.22) 50%,
+    rgba(255, 255, 255, 0.25) 50%,
     transparent 80%);
   animation: fill-shimmer 5s ease-in-out infinite;
 }
@@ -399,12 +418,13 @@
   100% { transform: rotate(360deg); }
 }
 
-/* Stats Row (Apple Pill Group) */
+/* Glass Stats Row */
 .deck-stats-row {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 8px;
-  background: #1c1c1e;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: var(--radius-md);
   padding: 10px 14px;
   margin-bottom: 22px;
@@ -447,7 +467,7 @@
   color: var(--text-secondary);
 }
 
-/* Actions Row */
+/* Glass Actions Row */
 .deck-actions {
   display: flex;
   align-items: stretch;
@@ -469,9 +489,17 @@
   min-width: 0;
   height: 42px;
   border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* Status Badge Top Right */
+.deck-actions .btn-icon-only:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+/* Glass Status Badge Top Right */
 .deck-done-badge {
   position: absolute;
   top: 22px;
@@ -485,25 +513,29 @@
   transition: var(--transition);
   user-select: none;
   z-index: 5;
+  backdrop-filter: blur(12px);
 }
 
 .deck-done-badge.off {
-  background: #242426;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   color: var(--text-secondary);
 }
 
 .deck-done-badge.off:hover {
-  background: #2c2c2e;
+  background: rgba(255, 255, 255, 0.12);
   color: #f5f5f7;
 }
 
 .deck-done-badge.progress {
-  background: rgba(255, 159, 10, 0.15);
+  background: rgba(255, 159, 10, 0.2);
+  border: 1px solid rgba(255, 159, 10, 0.35);
   color: #ffb340;
 }
 
 .deck-done-badge.on {
-  background: rgba(48, 209, 88, 0.15);
+  background: rgba(48, 209, 88, 0.2);
+  border: 1px solid rgba(48, 209, 88, 0.35);
   color: #30d158;
 }
 
@@ -515,22 +547,23 @@
   gap: 8px;
   margin-top: 48px;
   padding-top: 32px;
-  border-top: 1px solid var(--border-color);
+  border-top: 1px solid var(--glass-border);
 }
 
 .btn-clear-data {
-  background: transparent;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
   color: var(--text-secondary);
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--glass-border);
   font-size: 0.8125rem;
   padding: 8px 16px;
   border-radius: var(--radius-pill);
 }
 
 .btn-clear-data:hover {
-  background: #1c1c1e;
+  background: var(--glass-bg-hover);
   color: #f5f5f7;
-  border-color: var(--border-hover);
+  border-color: var(--glass-border-hover);
 }
 
 .clear-data-hint {
@@ -538,13 +571,13 @@
   color: var(--text-muted);
 }
 
-/* Modals */
+/* Glass Modals */
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -553,13 +586,15 @@
 }
 
 .modal-content {
-  background: #1c1c1e;
-  border: 1px solid var(--border-color);
+  background: rgba(26, 26, 32, 0.85);
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
+  border: 1px solid var(--glass-border-hover);
   border-radius: var(--radius-card);
   padding: 32px;
   width: 100%;
   max-width: 480px;
-  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 32px 64px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 .modal-header h3 {
