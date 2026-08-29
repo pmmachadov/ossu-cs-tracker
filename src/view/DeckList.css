@@ -6,81 +6,190 @@
   gap: 32px;
 }
 
-/* Hero Header */
+/* Apple Hero Header */
 .deck-header {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: space-between;
-  gap: 20px;
+  gap: 24px;
+  padding: 12px 0 20px 0;
   border-bottom: 1px solid var(--glass-border);
-  padding-bottom: 24px;
 }
 
-.deck-header-title h2 {
-  font-size: 2.25rem;
+.deck-header-left {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.deck-header-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  padding: 4px 12px;
+  background: rgba(0, 113, 227, 0.12);
+  border: 1px solid rgba(0, 113, 227, 0.25);
+  border-radius: var(--radius-pill);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #5ac8fa;
+  text-transform: uppercase;
+}
+
+.badge-dot {
+  width: 6px;
+  height: 6px;
+  background: #30d158;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #30d158;
+}
+
+.deck-header-title {
+  font-size: 2.5rem;
   font-weight: 700;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.035em;
   color: #f5f5f7;
   line-height: 1.1;
-  margin-bottom: 6px;
+  margin: 0;
 }
 
 .deck-header-subtitle {
-  font-size: 1rem;
+  font-size: 0.95rem;
   color: var(--text-secondary);
   letter-spacing: -0.01em;
+  margin: 0;
 }
 
-.header-icon {
-  display: none;
+.deck-header-actions .btn-create-deck {
+  padding: 12px 24px;
+  font-size: 0.9375rem;
+  box-shadow: 0 4px 16px rgba(0, 113, 227, 0.35);
 }
 
-/* Stats Glass Bento Row */
-.deck-stats {
+/* Apple Stats Bento Row */
+.deck-stats-bento {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
 }
 
-.stat-card {
+.bento-card {
   background: var(--glass-bg);
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
   border: 1px solid var(--glass-border);
-  border-radius: var(--radius-lg);
-  padding: 22px 26px;
+  border-radius: var(--radius-card);
+  padding: 20px 24px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  justify-content: space-between;
+  gap: 14px;
   box-shadow: var(--glass-shadow);
   transition: var(--transition);
+  position: relative;
+  overflow: hidden;
 }
 
-.stat-card:hover {
+.bento-card:hover {
   background: var(--glass-bg-hover);
   border-color: var(--glass-border-hover);
   transform: translateY(-2px);
   box-shadow: var(--glass-shadow-hover);
 }
 
-.stat-icon {
-  display: none;
+.bento-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.stat-label {
-  font-size: 0.8125rem;
-  font-weight: 500;
+.bento-icon-wrapper {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+}
+
+.bento-icon-wrapper svg {
+  width: 20px;
+  height: 20px;
+}
+
+.bento-icon-blue {
+  background: rgba(10, 132, 255, 0.15);
+  border-color: rgba(10, 132, 255, 0.25);
+  color: #0a84ff;
+}
+
+.bento-icon-purple {
+  background: rgba(191, 90, 242, 0.15);
+  border-color: rgba(191, 90, 242, 0.25);
+  color: #bf5af2;
+}
+
+.bento-icon-green {
+  background: rgba(48, 209, 88, 0.15);
+  border-color: rgba(48, 209, 88, 0.25);
+  color: #30d158;
+}
+
+.bento-pill {
+  font-size: 0.75rem;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: var(--text-secondary);
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
 }
 
-.stat-value {
+.bento-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.bento-number {
   font-size: 2.25rem;
   font-weight: 700;
   letter-spacing: -0.035em;
   color: #f5f5f7;
   line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+
+.bento-label {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.bento-progress-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.bento-mini-bar {
+  flex: 1;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+  position: relative;
+}
+
+.bento-mini-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #0071e3, #30d158);
+  border-radius: var(--radius-pill);
+  transition: width 0.5s ease;
 }
 
 /* Subject Filter (Apple Glass Pill Controls) */

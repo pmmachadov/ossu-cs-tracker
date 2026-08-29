@@ -47,7 +47,7 @@ export function DeckList({
   const [showExtras, setShowExtras] = useState(false);
   const [showPruebas, setShowPruebas] = useState(false);
   const [showPracticas, setShowPracticas] = useState(false);
-  const [showExamenes, setShowExamenes] = useState(true); // abierto por defecto para ver el ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡rea Examen
+  const [showExamenes, setShowExamenes] = useState(true); // abierto por defecto para ver el ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡rea Examen
   const [showPreguntasDirectas, setShowPreguntasDirectas] = useState(false);
   const [showLibros, setShowLibros] = useState(false);
   const [showMateriasSalvadas, setShowMateriasSalvadas] = useState(false);
@@ -159,7 +159,7 @@ export function DeckList({
       d.subject !== "Materias salvadas",
   );
   const examenGroups = examenDecks.reduce((acc, deck) => {
-    const subject = deck.subject || "ExÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡menes";
+    const subject = deck.subject || "ExÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡menes";
     if (!acc[subject]) acc[subject] = [];
     acc[subject].push(deck);
     return acc;
@@ -237,41 +237,82 @@ export function DeckList({
 
   return (
     <div className="deck-list animate-fade-in">
-      <div className="deck-header">
-        <div className="deck-header-title">
-          <h2>Mis Materias</h2>
+      {/* Apple Hero Header */}
+      <header className="deck-header">
+        <div className="deck-header-left">
+          <div className="deck-header-badge">
+            <span className="badge-dot"></span>
+            <span>Panel de Estudio</span>
+          </div>
+          <h1 className="deck-header-title">Mis Materias</h1>
           <p className="deck-header-subtitle">
-            Selecciona un mazo para estudiar
+            Selecciona un mazo para comenzar tu sesión de repaso
           </p>
         </div>
-
-
-      <div className="deck-stats">
-        <div className="stat-card">
-          <span className="stat-label">Mazos</span>
-          <span className="stat-value">{decks.length}</span>
-        </div>
-        <div className="stat-card">
-          <span className="stat-label">Tarjetas</span>
-          <span className="stat-value">{totalCards}</span>
-        </div>
-        <div className="stat-card">
-          <span className="stat-label">Progreso</span>
-          <span className="stat-value">
-            {Math.round((totalStudied / totalCards) * 100) || 0}%
-          </span>
-        </div>
-      </div>
-        <div className="header-buttons">
+        <div className="deck-header-actions">
           <button
-            className="btn btn-primary btn-create"
+            className="btn btn-primary btn-create-deck"
             onClick={() => setShowCreateModal(true)}
           >
             <span className="btn-icon">{Icons.plus}</span>
             <span>Nuevo Mazo</span>
           </button>
         </div>
-      </div>
+      </header>
+
+      {/* Apple Stats Bento Row */}
+      <section className="deck-stats-bento" aria-label="Estadísticas generales">
+        <div className="bento-card bento-decks">
+          <div className="bento-card-header">
+            <div className="bento-icon-wrapper bento-icon-blue">
+              {Icons.folder}
+            </div>
+            <span className="bento-pill">Total</span>
+          </div>
+          <div className="bento-card-body">
+            <span className="bento-number">{decks.length}</span>
+            <span className="bento-label">Mazos Activos</span>
+          </div>
+        </div>
+
+        <div className="bento-card bento-cards">
+          <div className="bento-card-header">
+            <div className="bento-icon-wrapper bento-icon-purple">
+              {Icons.cards}
+            </div>
+            <span className="bento-pill">Tarjetas</span>
+          </div>
+          <div className="bento-card-body">
+            <span className="bento-number">{totalCards}</span>
+            <span className="bento-label">{totalStudied} repasadas</span>
+          </div>
+        </div>
+
+        <div className="bento-card bento-progress">
+          <div className="bento-card-header">
+            <div className="bento-icon-wrapper bento-icon-green">
+              {Icons.target}
+            </div>
+            <span className="bento-pill">Dominio</span>
+          </div>
+          <div className="bento-card-body">
+            <div className="bento-progress-row">
+              <span className="bento-number">
+                {Math.round((totalStudied / (totalCards || 1)) * 100) || 0}%
+              </span>
+              <div className="bento-mini-bar">
+                <div
+                  className="bento-mini-fill"
+                  style={{
+                    width: `${Math.round((totalStudied / (totalCards || 1)) * 100) || 0}%`,
+                  }}
+                />
+              </div>
+            </div>
+            <span className="bento-label">Progreso global</span>
+          </div>
+        </div>
+      </section>
 
       {uniqueSubjects.length > 1 && (
         <div className="subject-filter">
@@ -279,7 +320,7 @@ export function DeckList({
             className={`filter-pill ${filterSubject === "all" ? "active" : ""}`}
             onClick={() => setFilterSubject("all")}
           >
-            ✨ Todos
+            âœ¨ Todos
           </button>
           {uniqueSubjects.map((subject) => {
             const color = getSubjectColor(subject);
