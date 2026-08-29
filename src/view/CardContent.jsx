@@ -132,73 +132,97 @@ const renderInlineCode = (code, key) => (
   </code>
 );
 
-// Render text and wrap different parentheses types with colored spans
+// Render text and wrap markdown bold/italic, urls, and parentheses
 const renderTextWithParens = (text, baseKey) => {
   if (!text) return [];
-  // Split keeping parentheses characters
-  const tokens = text.split(/([()\[\]{}<>])/g);
-  return tokens
-    .map((t, i) => {
-      if (!t) return null;
-      const key = `${baseKey}-${i}`;
-      switch (t) {
-        case "(":
-        case ")":
-          return (
-            <span key={key} className="paren paren-round">
-              {t}
-            </span>
-          );
-        case "[":
-        case "]":
-          return (
-            <span key={key} className="paren paren-square">
-              {t}
-            </span>
-          );
-        case "{":
-        case "}":
-          return (
-            <span key={key} className="paren paren-curly">
-              {t}
-            </span>
-          );
-        case "<":
-        case ">":
-          return (
-            <span key={key} className="paren paren-angle">
-              {t}
-            </span>
-          );
-        default:
-          // Detectar URLs en medio del texto y convertirlas en enlaces clicables
-          const urlWithinRegex = /(https?:\/\/[^\s]+)/g;
-          const parts = t.split(urlWithinRegex);
-          if (parts.length > 1) {
-            return parts.map((part, pi) => {
-              if (urlWithinRegex.test(part)) {
-                urlWithinRegex.lastIndex = 0;
-                return (
-                  <a key={`${key}-url-${pi}`} href={part} target="_blank" rel="noopener noreferrer" className="card-link" onClick={(e) => e.stopPropagation()}>
-                    {part}
-                  </a>
-                );
-              }
-              return part;
-            });
-          }
-          const fullTokenRegex = /^(https?:\/\/[^\s]+)$/;
-          if (fullTokenRegex.test(t)) {
+
+  // Parse **bold** and *italic* first
+  const mdParts = text.split(/(\*\*[^*]+\*\*|\*[^*]+\*)/g);
+  return mdParts.map((mdPart, mdi) => {
+    if (!mdPart) return null;
+    const mKey = `${baseKey}-md-${mdi}`;
+    if (mdPart.startsWith("**") && mdPart.endsWith("**") && mdPart.length >= 4) {
+      const boldContent = mdPart.slice(2, -2);
+      return (
+        <strong key={mKey} className="card-bold-text" style={{ color: "#ffffff", fontWeight: "700" }}>
+          {renderTextWithParens(boldContent, `${mKey}-b`)}
+        </strong>
+      );
+    }
+    if (mdPart.startsWith("*") && mdPart.endsWith("*") && mdPart.length >= 2) {
+      const italicContent = mdPart.slice(1, -1);
+      return (
+        <em key={mKey} className="card-italic-text" style={{ color: "var(--text-secondary)", fontStyle: "italic" }}>
+          {renderTextWithParens(italicContent, `${mKey}-i`)}
+        </em>
+      );
+    }
+
+    // Split keeping parentheses characters
+    const tokens = mdPart.split(/([()\[\]{}<>])/g);
+    return tokens
+      .map((t, i) => {
+        if (!t) return null;
+        const key = `${mKey}-${i}`;
+        switch (t) {
+          case "(":
+          case ")":
             return (
-              <a key={key} href={t} target="_blank" rel="noopener noreferrer" className="card-link" onClick={(e) => e.stopPropagation()}>
+              <span key={key} className="paren paren-round">
                 {t}
-              </a>
+              </span>
             );
-          }
-          return t;
-      }
-    })
-    .filter(Boolean);
+          case "[":
+          case "]":
+            return (
+              <span key={key} className="paren paren-square">
+                {t}
+              </span>
+            );
+          case "{":
+          case "}":
+            return (
+              <span key={key} className="paren paren-curly">
+                {t}
+              </span>
+            );
+          case "<":
+          case ">":
+            return (
+              <span key={key} className="paren paren-angle">
+                {t}
+              </span>
+            );
+          default:
+            // Detectar URLs en medio del texto y convertirlas en enlaces clicables
+            const urlWithinRegex = /(https?:\/\/[^\s]+)/g;
+            const parts = t.split(urlWithinRegex);
+            if (parts.length > 1) {
+              return parts.map((part, pi) => {
+                if (urlWithinRegex.test(part)) {
+                  urlWithinRegex.lastIndex = 0;
+                  return (
+                    <a key={`${key}-url-${pi}`} href={part} target="_blank" rel="noopener noreferrer" className="card-link" onClick={(e) => e.stopPropagation()}>
+                      {part}
+                    </a>
+                  );
+                }
+                return part;
+              });
+            }
+            const fullTokenRegex = /^(https?:\/\/[^\s]+)$/;
+            if (fullTokenRegex.test(t)) {
+              return (
+                <a key={key} href={t} target="_blank" rel="noopener noreferrer" className="card-link" onClick={(e) => e.stopPropagation()}>
+                  {t}
+                </a>
+              );
+            }
+            return t;
+        }
+      })
+      .filter(Boolean);
+  }).filter(Boolean);
 };
 
 // Función para procesar texto y resaltar código

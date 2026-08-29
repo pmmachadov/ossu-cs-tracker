@@ -427,10 +427,13 @@
   display: flex;
   flex-direction: column;
   position: relative;
+  transition: var(--transition);
 }
 
 .deck-card:hover {
-  /* Sin efectos de movimiento en hover */
+  background: var(--glass-bg-hover);
+  border-color: var(--glass-border-hover);
+  box-shadow: var(--glass-shadow-hover);
 }
 
 /* Examen Java Card: Diseño balanceado, limpio y espacioso */
@@ -685,53 +688,49 @@
   100% { transform: rotate(360deg); }
 }
 
-/* Glass Stats Row */
+/* Glass Stats Row (Limpio y bien distribuido sin iconos) */
 .deck-stats-row {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  grid-template-columns: 1fr auto 1fr auto 1fr;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.07);
   border-radius: var(--radius-md);
-  padding: 10px 14px;
-  margin-bottom: 22px;
+  padding: 12px 18px;
+  margin-bottom: 20px;
 }
 
 .deck-stat {
   display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.stat-icon-small {
-  width: 24px;
-  height: 24px;
-  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: var(--text-secondary);
+  gap: 3px;
+  text-align: center;
 }
 
-.stat-icon-small svg {
-  width: 16px;
-  height: 16px;
-}
-
-.stat-info {
-  display: flex;
-  align-items: baseline;
-  gap: 4px;
+.deck-stat-divider {
+  width: 1px;
+  height: 24px;
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .stat-number {
-  font-size: 0.95rem;
-  font-weight: 600;
+  font-size: 1.15rem;
+  font-weight: 700;
   color: #f5f5f7;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
 }
 
 .stat-text {
   font-size: 0.75rem;
+  font-weight: 500;
   color: var(--text-secondary);
+  text-transform: capitalize;
+  letter-spacing: 0.01em;
 }
 
 /* Glass Actions Row */

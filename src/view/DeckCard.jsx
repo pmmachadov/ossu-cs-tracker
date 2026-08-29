@@ -151,25 +151,18 @@ export function DeckCard({
         {/* Stats Row */}
         <div className="deck-stats-row">
           <div className="deck-stat" title="Total de tarjetas del mazo">
-            <div className="stat-icon-small icon-total">{Icons.cards}</div>
-            <div className="stat-info">
-              <span className="stat-number">{stats.total}</span>
-              <span className="stat-text">total</span>
-            </div>
+            <span className="stat-number">{stats.total}</span>
+            <span className="stat-text">total</span>
           </div>
+          <div className="deck-stat-divider" />
           <div className="deck-stat" title="Nuevas">
-            <div className="stat-icon-small icon-new">{Icons.newCard}</div>
-            <div className="stat-info">
-              <span className="stat-number">{stats.new}</span>
-              <span className="stat-text">nuevas</span>
-            </div>
+            <span className="stat-number">{stats.new}</span>
+            <span className="stat-text">nuevas</span>
           </div>
+          <div className="deck-stat-divider" />
           <div className="deck-stat" title="Aprendidas">
-            <div className="stat-icon-small icon-review">{Icons.review}</div>
-            <div className="stat-info">
-              <span className="stat-number">{stats.aprendido}</span>
-              <span className="stat-text">aprendidas</span>
-            </div>
+            <span className="stat-number">{stats.aprendido}</span>
+            <span className="stat-text">aprendidas</span>
           </div>
         </div>
 

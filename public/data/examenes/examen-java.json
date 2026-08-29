@@ -272,7 +272,7 @@
     {
       "id": "ex-java-03-05",
       "front": "(Examen 3 · Programación Orientada a Objetos)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nLa sobrecarga de métodos se define como:\n\na) Métodos que se llaman igual pero con distinta firma\n\nb) Métodos que se heredan\n\nc) Métodos con distinto nombre e igual parámetros\n\nd) Métodos que devuelven el mismo tipo",
-      "back": "RESPUESTA / SOLUCIÓN\n\na) Sobrecarga = mismo nombre, distinta lista de parámetros (tipo/número). No depende solo del tipo de retorno.",
+      "back": "RESPUESTA / SOLUCIÓN\n\n✓ **a) Métodos que se llaman igual pero con distinta firma**\n\n📌 **Explicación:**\n- **Sobrecarga (Overloading)**: Ocurre cuando en una misma clase existen dos o más métodos con el **mismo nombre**, pero con **distinta lista de parámetros** (diferente número de argumentos, tipos de datos o su orden en la firma).\n- **Firma del método (*Method Signature*)**: Está compuesta por el *nombre del método + los tipos/orden de sus parámetros*.\n\n⚠️ **Puntos clave de examen:**\n- **El tipo de retorno NO forma parte de la firma**: Cambiar únicamente el tipo que devuelve un método (ej: de `void` a `int`) manteniendo los mismos parámetros provocará un **error de compilación**.\n- No confundir con la **Sobrescritura (@Override)**, que ocurre al redefinir en una clase hija un método heredado con la *misma firma exacta*.",
       "tags": [
         "java",
         "examen",

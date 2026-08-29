@@ -227,7 +227,7 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
     (difficulty) => {
       if (!currentCard) return;
 
-      // Actualizar tarjeta
+      // Actualizar estado de la tarjeta en el modelo
       currentCard.review(difficulty);
 
       // Registrar evaluación en log permanente
@@ -244,14 +244,28 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
       deck.recordReview(difficulty);
       onUpdateDeck(deck);
 
-      const isLast = currentCardIndex >= cards.length - 1;
-
-      if (!isLast) {
-        setCurrentCardIndex((prev) => prev + 1);
+      if (difficulty === DIFFICULTY.APRENDIDO) {
+        // Si se marca como "Aprendido", se elimina INMEDIATAMENTE de la cola actual de estudio
+        const updatedCards = cards.filter((c) => c.id !== currentCard.id);
+        setCards(updatedCards);
         setIsFlipped(false);
         setFlipRotation(0);
+
+        if (updatedCards.length === 0) {
+          setShowComplete(true);
+        } else if (currentCardIndex >= updatedCards.length) {
+          setCurrentCardIndex(updatedCards.length - 1);
+        }
       } else {
-        setShowComplete(true);
+        // Si es "Procesando", pasa a la siguiente tarjeta de la cola
+        const isLast = currentCardIndex >= cards.length - 1;
+        if (!isLast) {
+          setCurrentCardIndex((prev) => prev + 1);
+          setIsFlipped(false);
+          setFlipRotation(0);
+        } else {
+          setShowComplete(true);
+        }
       }
     },
     [
