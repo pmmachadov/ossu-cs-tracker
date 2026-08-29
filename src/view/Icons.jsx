@@ -134,15 +134,15 @@ export const Icons = {
 
 // Iconos emoji por materia
 export const SubjectIcons = {
-  "Sistemas Informaticos": "💻",
-  "Entornos de Desarrollo": "🔧",
-  "Bases de Datos": "🗄️",
-  Programacion: "⚡",
-  "Lenguajes de Marcas": "🏷️",
-  "Desarrollo Web en Entorno Cliente": "🌐",
-  Practicas: "📝",
-  Examen: "📋",
-  default: "📚",
+  "Sistemas Informaticos": "ðŸ’»",
+  "Entornos de Desarrollo": "ðŸ”§",
+  "Bases de Datos": "ðŸ—„ï¸",
+  Programacion: "âš¡",
+  "Lenguajes de Marcas": "ðŸ·ï¸",
+  "Desarrollo Web en Entorno Cliente": "ðŸŒ",
+  Practicas: "ðŸ“",
+  Examen: "ðŸ“‹",
+  default: "ðŸ“š",
 };
 
 // Colores Google por materia

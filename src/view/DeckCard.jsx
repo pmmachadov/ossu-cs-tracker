@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo, useCallback } from "react";
 import { Icons } from "./Icons";
 import { isExamDeck, getSubjectIcon, getSubjectColor } from "./deckHelpers";
 
@@ -19,10 +19,25 @@ export function DeckCard({
   const hasDueCards = stats.due > 0;
   const themeClass = theme || (isExtra ? "theme-blue" : "");
 
-  // Estrellas que cruzan la barra de progreso (solo tema examen): varias a la
-  // vez, cada una con tamaño, altura, opacidad, velocidad y trayectoria
-  // distintos (3 trayectorias distintas repartidas en bucle). left inicial
-  // aleatorio: si la animación está desactivada quedan repartidas y visibles.
+  const handleMouseMove = useCallback((e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = ((y - centerY) / centerY) * -3.5;
+    const rotateY = ((x - centerX) / centerX) * 3.5;
+    e.currentTarget.style.setProperty("--mouse-x", `${x}px`);
+    e.currentTarget.style.setProperty("--mouse-y", `${y}px`);
+    e.currentTarget.style.setProperty("--rot-x", `${rotateX.toFixed(2)}deg`);
+    e.currentTarget.style.setProperty("--rot-y", `${rotateY.toFixed(2)}deg`);
+  }, []);
+
+  const handleMouseLeave = useCallback((e) => {
+    e.currentTarget.style.setProperty("--rot-x", "0deg");
+    e.currentTarget.style.setProperty("--rot-y", "0deg");
+  }, []);
+
   const stars = useMemo(() => {
     if (themeClass !== "theme-examen") return [];
     const anims = ["star-drift-a", "star-drift-b", "star-drift-c"];
@@ -49,6 +64,8 @@ export function DeckCard({
         isDone ? "done" : isProgress ? "in-progress" : ""
       }`}
       style={{ borderLeft: `3px solid ${subjectColor.accent}` }}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
     >
       {/* Large top-right done badge */}
       <div
@@ -72,7 +89,7 @@ export function DeckCard({
         }}
       >
         <span className="badge-text">
-          {isDone ? "Hecho ✓" : isProgress ? "En proceso" : "Pendiente"}
+          {isDone ? "Hecho ?" : isProgress ? "En proceso" : "Pendiente"}
         </span>
       </div>
       {/* Card Content */}
@@ -86,7 +103,7 @@ export function DeckCard({
           </span>
         )}
         {isExamDeck(deck) && (
-          <span className="exam-badge">📘 Examen</span>
+          <span className="exam-badge">?? Examen</span>
         )}
         {hasDueCards && (
           <div className="due-badge-inline">

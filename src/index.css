@@ -1,33 +1,45 @@
-/* === VARIABLES CSS - Black Theme === */
+/* === VARIABLES CSS - Modern Glassmorphism Dark Mode === */
 :root {
-  --bg-primary: #000000;
-  --bg-secondary: #0a0a0a;
-  --bg-tertiary: #141414;
-  --bg-elevated: #1a1a1a;
+  --bg-primary: #080c14;
+  --bg-secondary: #0d1322;
+  --bg-tertiary: #131c31;
+  --bg-elevated: #1a243d;
   
-  --text-primary: #f0f6fc;
-  --text-secondary: #8b949e;
-  --text-muted: #6e7681;
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
   
-  --accent-primary: #4285F4;
-  --accent-secondary: #1A73E8;
-  --accent-success: #34A853;
-  --accent-warning: #FBBC04;
+  --accent-primary: #10B981;
+  --accent-secondary: #059669;
+  --accent-success: #34D399;
+  --accent-warning: #F59E0B;
   --accent-danger: #059669;
+  --accent-glow: rgba(16, 185, 129, 0.25);
   
-  --border-color: #1f1f1f;
-  --border-light: #0f0f0f;
+  --glass-bg: rgba(13, 20, 36, 0.65);
+  --glass-bg-subtle: rgba(13, 20, 36, 0.4);
+  --glass-bg-card: rgba(16, 24, 44, 0.6);
+  --glass-bg-card-hover: rgba(22, 34, 60, 0.75);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-border-hover: rgba(52, 211, 153, 0.35);
+  --glass-blur: blur(16px);
+  --glass-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), inset 0 1px 1px 0 rgba(255, 255, 255, 0.1);
+  --glass-shadow-hover: 0 20px 40px -12px rgba(0, 0, 0, 0.7), 0 0 25px 0 rgba(16, 185, 129, 0.18), inset 0 1px 1px 0 rgba(255, 255, 255, 0.2);
   
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
-  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
-  --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.6);
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-light: rgba(255, 255, 255, 0.04);
   
-  --radius-sm: 6px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 16px 36px rgba(0, 0, 0, 0.5);
+  --shadow-xl: 0 24px 48px rgba(0, 0, 0, 0.6);
   
-  --transition: all 0.2s ease;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+  
+  --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* === RESET & BASE === */
@@ -46,9 +58,10 @@ body {
                Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #000000 !important;
-  color: #f0f6fc;
+  background: var(--bg-primary) !important;
+  color: var(--text-primary);
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 #root {
@@ -57,49 +70,47 @@ body {
 
 /* Seleccion de texto */
 ::selection {
-  background: rgba(66, 133, 244, 0.3);
-  color: #f0f6fc;
+  background: rgba(16, 185, 129, 0.3);
+  color: #ffffff;
 }
 
 /* Enlaces */
 a {
-  color: #8AB8FF;
+  color: #34D399;
   text-decoration: none;
+  transition: var(--transition);
 }
 
 a:hover {
-  text-decoration: underline;
+  color: #6EE7B7;
+  text-decoration: none;
 }
 
 /* Codigo */
 code {
   font-family: 'SF Mono', Monaco, Inconsolata, 'Fira Code', monospace;
   font-size: 0.9em;
-  padding: 2px 6px;
-  background: #141414;
-  border-radius: 4px;
+  padding: 3px 7px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  backdrop-filter: blur(4px);
 }
 
 pre {
-  background: #0a0a0a;
-  padding: 16px;
-  border-radius: 8px;
+  background: rgba(10, 15, 28, 0.85);
+  backdrop-filter: blur(12px);
+  padding: 18px;
+  border-radius: var(--radius-md);
   overflow-x: auto;
-  border: 1px solid #1f1f1f;
+  border: 1px solid var(--glass-border);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4);
 }
 
 pre code {
   background: none;
+  border: none;
   padding: 0;
-}
-
-/* Listas */
-ul, ol {
-  padding-left: 20px;
-}
-
-li {
-  margin-bottom: 4px;
 }
 
 /* Tablas */
@@ -112,33 +123,25 @@ table {
 th, td {
   padding: 12px;
   text-align: left;
-  border-bottom: 1px solid #1f1f1f;
+  border-bottom: 1px solid var(--border-color);
 }
 
 th {
   font-weight: 600;
-  color: #f0f6fc;
-  background: #0a0a0a;
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.03);
 }
 
 tr:hover {
-  background: #0a0a0a;
+  background: rgba(255, 255, 255, 0.02);
 }
 
-/* Imagenes */
-img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-}
-
-/* Focus visible para accesibilidad */
+/* Focus visible */
 :focus-visible {
-  outline: 2px solid #8AB8FF;
+  outline: 2px solid #34D399;
   outline-offset: 2px;
 }
 
-/* Deshabilitar animaciones para usuarios que lo prefieren */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

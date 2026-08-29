@@ -16,11 +16,21 @@
   align-items: center;
   gap: 16px;
   padding: 24px;
-  border-radius: 16px;
-  border: 1px solid var(--border-color);
-  transition: all 0.3s ease;
+  border-radius: 18px;
+  background: var(--glass-bg-card);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
   overflow: hidden;
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--glass-border-hover);
+  box-shadow: var(--glass-shadow-hover);
 }
 
 .stat-card::before {
@@ -263,22 +273,49 @@
   align-items: stretch;
 }
 
-/* Separación entre el rectángulo Examen Java y su card */
+/* SeparaciÃ³n entre el rectÃ¡ngulo Examen Java y su card */
 .examenes-grid {
   margin-top: 20px;
 }
 
 /* Deck Card */
 .deck-card {
-  background: var(--bg-secondary);
-  border: 3px solid var(--border-color);
+  background: var(--glass-bg-card);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
   border-radius: 20px;
   overflow: hidden;
-  transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
   height: 100%;
-  position: relative; /* allow absolute badge */
+  position: relative;
+  box-shadow: var(--glass-shadow);
+  transform: perspective(1000px) rotateX(var(--rot-x, 0deg)) rotateY(var(--rot-y, 0deg)) translateY(0);
+  transform-style: preserve-3d;
+  transition: transform 0.15s ease-out, box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.deck-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(450px circle at var(--mouse-x, -999px) var(--mouse-y, -999px), rgba(52, 211, 153, 0.14), transparent 70%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.deck-card:hover::after {
+  opacity: 1;
+}
+
+.deck-card:hover {
+  border-color: var(--glass-border-hover);
+  box-shadow: var(--glass-shadow-hover);
+  transform: perspective(1000px) rotateX(var(--rot-x, 0deg)) rotateY(var(--rot-y, 0deg)) translateY(-4px);
 }
 
 .deck-card:hover {
@@ -454,10 +491,10 @@
 
 /* Ciclo de color de la barra de progreso de los mazos de examen.
    Cada capa se mueve a su propia velocidad:
-   - relieve 3D: quieto (tamaño 100%)
-   - arcoíris: 0% -> 150% (1 período exacto, sin cortes)
-   - estrellas del fondo: 0% -> 300% (el DOBLE de rápido: las estrellas
-     "viajan" por el arcoíris mientras los colores cambian) */
+   - relieve 3D: quieto (tamaÃ±o 100%)
+   - arcoÃ­ris: 0% -> 150% (1 perÃ­odo exacto, sin cortes)
+   - estrellas del fondo: 0% -> 300% (el DOBLE de rÃ¡pido: las estrellas
+     "viajan" por el arcoÃ­ris mientras los colores cambian) */
 @keyframes deck-progress-fill-cycle {
   0% {
     background-position: 0% 50%, 0% 50%, 0% 50%;
@@ -811,7 +848,7 @@
 }
 
 .modal-reset .modal-list li::before {
-  content: '✕';
+  content: 'âœ•';
   position: absolute;
   left: 0;
   color: #10B981;
@@ -1104,7 +1141,7 @@
   }
 }
 
-/* Móviles pequeños (iPhone SE, Galaxy S8) */
+/* MÃ³viles pequeÃ±os (iPhone SE, Galaxy S8) */
 @media (max-width: 375px) {
   .deck-stats {
     grid-template-columns: 1fr;
@@ -1141,7 +1178,7 @@
   }
 }
 
-/* Móviles muy pequeños (iPhone 5, antiguos) */
+/* MÃ³viles muy pequeÃ±os (iPhone 5, antiguos) */
 @media (max-width: 320px) {
   .app-main {
     padding: 12px;
@@ -1182,7 +1219,7 @@
 }
 
 
-/* Clear Data Section - Botón para borrar todos los datos */
+/* Clear Data Section - BotÃ³n para borrar todos los datos */
 .clear-data-section {
   display: flex;
   flex-direction: column;
@@ -1351,7 +1388,7 @@
   margin-top: 20px;
 }
 
-/* Modal Clear Data - Estilos específicos */
+/* Modal Clear Data - Estilos especÃ­ficos */
 .modal-clear {
   max-width: 480px;
 }
@@ -1370,7 +1407,7 @@
 }
 
 .modal-clear .modal-list li::before {
-  content: '•';
+  content: 'â€¢';
   position: absolute;
   left: 8px;
   color: var(--text-muted);
@@ -1737,7 +1774,7 @@
   margin-top: 20px;
 }
 
-/* Exámenes Section */
+/* ExÃ¡menes Section */
 .examenes-section {
   margin-top: 32px;
   border-top: 1px solid var(--border-color);
@@ -1745,6 +1782,11 @@
 }
 
 .examenes-toggle {
+  background: var(--glass-bg-card);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
   display: flex;
   align-items: center;
   gap: 12px;
@@ -1777,7 +1819,7 @@
   animation: exam-area-drift 16s ease-in-out infinite alternate;
 }
 
-/* Reflejo eliminado por petición del usuario (banda de luz que barría el rectángulo) */
+/* Reflejo eliminado por peticiÃ³n del usuario (banda de luz que barrÃ­a el rectÃ¡ngulo) */
 .examen-java-area {
   position: relative;
   overflow: hidden;
@@ -2045,7 +2087,7 @@
 }
 
 /* Theme Examen (Java): violeta sobrio con gradiente en movimiento lento,
-   diferente al resto de temas (que son estáticos) */
+   diferente al resto de temas (que son estÃ¡ticos) */
 @keyframes exam-area-drift {
   0% {
     background-position: 0% 50%;
@@ -2056,8 +2098,8 @@
 }
 
 .deck-card.theme-examen {
-  /* Card más clara: base gris claro + velos de lavanda pastel más intensos.
-     La barra de progreso (negra) queda igual y ahora contrasta más */
+  /* Card mÃ¡s clara: base gris claro + velos de lavanda pastel mÃ¡s intensos.
+     La barra de progreso (negra) queda igual y ahora contrasta mÃ¡s */
   background:
     radial-gradient(130% 130% at 0% 0%, rgba(124, 108, 240, 0.30), transparent 55%),
     radial-gradient(130% 130% at 100% 100%, rgba(124, 108, 240, 0.20), transparent 55%),
@@ -2078,7 +2120,7 @@
 /* ===== 3D REAL en TODOS los elementos de la card del tema examen ===== */
 
 /* Card: placa elevada con bisel (borde claro arriba, oscuro abajo) y
-   volumen; al pasar el ratón se inclina levemente en perspectiva */
+   volumen; al pasar el ratÃ³n se inclina levemente en perspectiva */
 .deck-card.theme-examen {
   border: 1px solid #3a3a42;
   border-top-color: #4d4d58;
@@ -2117,7 +2159,7 @@
     0 4px 10px rgba(0, 0, 0, 0.5);
 }
 
-/* Badge "📘 Examen" y "pendientes": sombra de texto profunda */
+/* Badge "ðŸ“˜ Examen" y "pendientes": sombra de texto profunda */
 .deck-card.theme-examen .exam-badge,
 .deck-card.theme-examen .due-badge-inline {
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
@@ -2131,7 +2173,7 @@
     0 4px 12px rgba(0, 0, 0, 0.55);
 }
 
-/* Título, descripción y porcentaje: relieve de texto */
+/* TÃ­tulo, descripciÃ³n y porcentaje: relieve de texto */
 .deck-card.theme-examen .deck-name {
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8), 0 3px 6px rgba(0, 0, 0, 0.4);
 }
@@ -2142,7 +2184,7 @@
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
 }
 
-/* Cajas de estadísticas: tarjetas con bisel */
+/* Cajas de estadÃ­sticas: tarjetas con bisel */
 .deck-card.theme-examen .deck-stat {
   background: linear-gradient(180deg, #26262d 0%, #1a1a1f 55%, #111115 100%);
   border: 1px solid #2f2f37;
@@ -2153,7 +2195,7 @@
     0 5px 12px rgba(0, 0, 0, 0.5);
 }
 
-/* Iconos de estadísticas: fichas brillantes */
+/* Iconos de estadÃ­sticas: fichas brillantes */
 .deck-card.theme-examen .stat-icon-small {
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.25),
@@ -2161,7 +2203,7 @@
     0 3px 7px rgba(0, 0, 0, 0.45);
 }
 
-/* Botón Estudiar: botón 3D con bisel, se hunde al pulsar */
+/* BotÃ³n Estudiar: botÃ³n 3D con bisel, se hunde al pulsar */
 .deck-card.theme-examen .btn-study {
   border: 1px solid rgba(255, 255, 255, 0.35);
   border-bottom-color: rgba(90, 70, 160, 0.65);
@@ -2233,13 +2275,13 @@
   box-shadow: 0 0 0 1px #7C6CF0;
 }
 
-/* Barra más alta y redondeada solo en el tema examen.
+/* Barra mÃ¡s alta y redondeada solo en el tema examen.
    Efecto 3D: carril hundido (bisel iluminado arriba, sombra interior) y la
    barra elevada del fondo de la card */
 .deck-card.theme-examen .progress-bar {
   height: 44px;
   border-radius: 8px;
-  /* Negro con volumen: más hundido arriba, luz tenue reflejada abajo */
+  /* Negro con volumen: mÃ¡s hundido arriba, luz tenue reflejada abajo */
   background: linear-gradient(180deg, #0b0b0d 0%, #050506 45%, #111114 100%);
   border: 1px solid #3a3a3f;
   border-top-color: #56565c;
@@ -2253,7 +2295,7 @@
     0 6px 16px rgba(0, 0, 0, 0.6);
 }
 
-/* Reflejo que recorre la parte vacía (gris oscuro) de la barra.
+/* Reflejo que recorre la parte vacÃ­a (gris oscuro) de la barra.
    Solo se ve donde el relleno no cubre: el fill es opaco y va por encima */
 .deck-card.theme-examen .progress-bar::after {
   content: "";
@@ -2272,10 +2314,10 @@
 .deck-card.theme-examen .progress-fill {
   /* Colores VIVOS de Google: rojo -> azul -> verde -> amarillo -> rojo.
      Paradas intermedias (mezclas 50/50) + background-size 300% => transiciones sutiles.
-     La 2ª capa (SVG de estrellitas) se desliza junto al gradiente; el bucle 0%->150% es
-     exacto (1 período), así que el movimiento es continuo y sin cortes. */
+     La 2Âª capa (SVG de estrellitas) se desliza junto al gradiente; el bucle 0%->150% es
+     exacto (1 perÃ­odo), asÃ­ que el movimiento es continuo y sin cortes. */
   background-image:
-    /* Capa de relieve 3D: luz arriba, sombra abajo — el relleno parece un bloque sólido */
+    /* Capa de relieve 3D: luz arriba, sombra abajo â€” el relleno parece un bloque sÃ³lido */
     linear-gradient(180deg,
       rgba(255, 255, 255, 0.32) 0%,
       rgba(255, 255, 255, 0.10) 35%,
@@ -2304,7 +2346,7 @@
 }
 
 /* Estrellas que cruzan la barra del tema examen: varias a la vez, cada una con
-   su tamaño, altura, velocidad y trayectoria (React las genera con valores
+   su tamaÃ±o, altura, velocidad y trayectoria (React las genera con valores
    aleatorios por deck; 3 trayectorias distintas se reparten en bucle) */
 .stars-layer {
   position: absolute;
@@ -2344,7 +2386,7 @@
   }
 }
 
-/* Trayectoria B: más baja, parpadea y va a contrarritmo */
+/* Trayectoria B: mÃ¡s baja, parpadea y va a contrarritmo */
 @keyframes star-drift-b {
   0% {
     left: -12%;
@@ -2368,7 +2410,7 @@
   }
 }
 
-/* Trayectoria C: frena un momento en el centro y continúa */
+/* Trayectoria C: frena un momento en el centro y continÃºa */
 @keyframes star-drift-c {
   0% {
     left: -10%;
@@ -2392,7 +2434,7 @@
 }
 
 /* Reflejo blanco muy atenuado en el tema examen: con tonos pastel, el brillo
-   original (0.28) lavaba los colores y hacía la barra parecer blanca */
+   original (0.28) lavaba los colores y hacÃ­a la barra parecer blanca */
 .deck-card.theme-examen .progress-fill::after {
   background: linear-gradient(105deg,
     transparent 30%,
@@ -2450,7 +2492,7 @@
   }
 }
 
-/* Más Section (wrapper for Libros + Materias salvadas) */
+/* MÃ¡s Section (wrapper for Libros + Materias salvadas) */
 .mas-section {
   margin-top: 20px;
 }

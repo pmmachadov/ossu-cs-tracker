@@ -1,8 +1,10 @@
 .study-view {
   max-width: 1300px;
   margin: 0 auto;
-  background: #000000;
+  background: transparent;
   min-height: 100vh;
+  position: relative;
+  z-index: 1;
 }
 
 .study-header {
@@ -54,13 +56,17 @@
   gap: 16px;
   margin-bottom: 24px;
   padding: 16px 24px;
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-color);
+  background: var(--glass-bg-card);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
   border-radius: 24px;
+  box-shadow: var(--glass-shadow);
   max-width: 100%;
   width: 100%;
   margin-left: auto;
   margin-right: auto;
+  transition: all 0.3s ease;
 }
 
 .card-progress-wrapper::before {
@@ -179,7 +185,7 @@
   min-height: auto;
 }
 
-/* Número de tarjeta: arriba a la derecha, estable por tarjeta */
+/* NÃºmero de tarjeta: arriba a la derecha, estable por tarjeta */
 .card-number-badge {
   position: absolute;
   top: 12px;
@@ -255,8 +261,8 @@
   box-shadow: var(--shadow-lg);
 }
 
-/* El código se ajusta (wrap) para que ninguna línea quede cortada; la
-   tarjeta crece con su contenido y la página hace scroll normalmente. */
+/* El cÃ³digo se ajusta (wrap) para que ninguna lÃ­nea quede cortada; la
+   tarjeta crece con su contenido y la pÃ¡gina hace scroll normalmente. */
 .flashcard code,
 .flashcard pre,
 .flashcard code[class*="language-"],
@@ -316,7 +322,7 @@
   text-align: left !important;
 }
 
-/* Contenido con código */
+/* Contenido con cÃ³digo */
 .card-content-code {
   align-items: center;
   text-align: center;
@@ -416,7 +422,7 @@
   box-shadow: 0 0 12px rgba(46, 125, 50, 0.2);
 }
 
-/* Botón Diagrama en cabecera de estudio */
+/* BotÃ³n Diagrama en cabecera de estudio */
 .study-header-actions {
   display: flex;
   align-items: center;
@@ -444,7 +450,7 @@
   color: #1a73e8;
 }
 
-/* Botón dentro de la tarjeta (diagrama HTML) */
+/* BotÃ³n dentro de la tarjeta (diagrama HTML) */
 .btn-card-diagram {
   display: flex;
   align-items: center;
@@ -496,7 +502,7 @@
   margin-bottom: 4px;
 }
 
-/* Código inline estilo VSCode */
+/* CÃ³digo inline estilo VSCode */
 .inline-code {
   font-family: 'Fira Code', 'JetBrains Mono', 'Consolas', 'Courier New', monospace;
   font-size: 0.92em;
@@ -509,7 +515,7 @@
   word-break: break-word;
 }
 
-/* Pista de código en el frente de la tarjeta */
+/* Pista de cÃ³digo en el frente de la tarjeta */
 .card-code-hint {
   margin-top: 24px;
   padding: 14px 18px;
@@ -547,7 +553,7 @@
   padding: 10px 14px !important;
 }
 
-/* Bloque de código estilo VSCode */
+/* Bloque de cÃ³digo estilo VSCode */
 .code-block-wrapper {
   width: 100%;
   margin: 16px 0;
@@ -1175,7 +1181,7 @@
   object-fit: contain;
   display: block;
 }
-/* Botón colapsable para diagramas Mermaid */
+/* BotÃ³n colapsable para diagramas Mermaid */
 .mermaid-collapsible {
   background: #000000;
   border: none;
@@ -1278,7 +1284,7 @@
   }
 }
 
-/* Cartel de felicitación al volver a la primera tarjeta (repaso de aprendidas) */
+/* Cartel de felicitaciÃ³n al volver a la primera tarjeta (repaso de aprendidas) */
 .congrats-overlay {
   position: fixed;
   inset: 0;
@@ -1318,7 +1324,7 @@
   color: var(--text-secondary);
 }
 
-/* Opción múltiple / V-F interactivos: elegir y ver correcta en verde, resto en rojo */
+/* OpciÃ³n mÃºltiple / V-F interactivos: elegir y ver correcta en verde, resto en rojo */
 .mc-options {
   display: flex;
   flex-direction: column;
@@ -1483,7 +1489,7 @@
   }
 }
 
-/* ===== Checkbox "¿Lo entiendo?" en líneas de código con // ✅ ===== */
+/* ===== Checkbox "Â¿Lo entiendo?" en lÃ­neas de cÃ³digo con // âœ… ===== */
 .code-line-check {
   display: flex;
   align-items: center;
@@ -1491,7 +1497,7 @@
   min-width: 0;
 }
 
-/* Línea con error en las respuestas: marcado en rojo */
+/* LÃ­nea con error en las respuestas: marcado en rojo */
 .code-line-error {
   background: rgba(255, 77, 77, 0.1);
   border-left: 3px solid #ff4d4d;
@@ -1502,7 +1508,7 @@
   box-shadow: inset 0 -2px 0 rgba(255, 77, 77, 0.6); /* subrayado rojo */
 }
 
-/* Números de línea legibles (evitan equivocarse de línea) */
+/* NÃºmeros de lÃ­nea legibles (evitan equivocarse de lÃ­nea) */
 .react-syntax-highlighter-line-number {
   color: #6e7681 !important;
   font-style: normal !important;
