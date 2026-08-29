@@ -184,7 +184,9 @@
   100% { transform: rotate(360deg); }
 }
 
-/* Relleno de progreso: aumenta con las tarjetas aprendidas, con borde de colores Google girando y centro negro puro #000000 */
+/* Relleno de progreso: aumenta con las tarjetas aprendidas, con borde de colores
+   Google girando y centro negro puro #000000. Toda la barra también late
+   (se desvanece y vuelve) igual que la opción correcta. */
 .card-progress-fill {
   height: 100%;
   border: 2px solid transparent;
@@ -193,12 +195,16 @@
     conic-gradient(
       from var(--border-angle),
       #4285f4 0%,
-      #ea4335 25%,
-      #fbbc05 50%,
-      #34a853 75%,
+      #ea4335 10%,
+      #fbbc05 20%,
+      #34a853 30%,
+      #000000 40%,
+      #000000 85%,
       #4285f4 100%
     ) border-box;
-  animation: rotateClockwiseGoogle 3.5s linear infinite;
+  animation:
+    rotateClockwiseGoogle 5s linear infinite,
+    googleFadePulse 7s ease-in-out infinite;
   border-radius: 999px;
   position: relative;
   z-index: 3;
@@ -1500,24 +1506,53 @@
   line-height: 1.5;
 }
 
-/* ===== RESPUESTA CORRECTA: Fondo negro puro #000000 con borde giratorio de colores Google ===== */
+/* ===== RESPUESTA CORRECTA: Fondo negro puro #000000 con borde giratorio de colores
+   Google que se desvanece y vuelve (pulso), manteniendo el texto siempre visible ===== */
 .mc-option.correct {
   position: relative;
   overflow: hidden;
   border: 2px solid transparent !important;
+  background: #000000 !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5) !important;
+  transform: none !important;
+}
+
+/* Anillo de colores Google: gira 5s y late (desvanece y vuelve) en 4s */
+.mc-option.correct::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 2px solid transparent;
   background:
     linear-gradient(#000000, #000000) padding-box,
     conic-gradient(
       from var(--border-angle),
       #4285f4 0%,
-      #ea4335 25%,
-      #fbbc05 50%,
-      #34a853 75%,
+      #ea4335 10%,
+      #fbbc05 20%,
+      #34a853 30%,
+      #000000 40%,
+      #000000 85%,
       #4285f4 100%
-    ) border-box !important;
-  animation: rotateClockwiseGoogle 3.5s linear infinite;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5) !important;
-  transform: none !important;
+    ) border-box;
+  animation:
+    rotateClockwiseGoogle 5s linear infinite,
+    googleFadePulse 7s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* El contenido (letra, texto, icono) queda por encima del anillo y no parpadea */
+.mc-option.correct > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Pulso: los colores del borde se desvanecen hasta casi desaparecer y vuelven */
+@keyframes googleFadePulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.15; }
 }
 
 .mc-option.correct .mc-letter {
@@ -1534,7 +1569,7 @@
   text-shadow: none !important;
 }
 
-/* ===== RESPUESTA INCORRECTA: Fondo negro puro #000000 con borde rojo sutil ===== */
+/* ===== RESPUESTA INCORRECTA: estática, fondo negro con borde rojo sutil ===== */
 .mc-option.wrong {
   position: relative;
   overflow: hidden;
@@ -1542,6 +1577,7 @@
   border-color: rgba(234, 67, 53, 0.45) !important;
   box-shadow: none !important;
   transform: none !important;
+  animation: none !important;
 }
 
 .mc-option.wrong .mc-letter {

@@ -602,7 +602,7 @@
     {
       "id": "ex-java-06-05",
       "front": "(Examen 6 · Recursividad y algoritmos recursivos)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nUsando el algoritmo de Euclides recursivo, ¿qué devuelve mcd(48, 18)?\n\n```java\nstatic int mcd(int a, int b) {\n if (b == 0) {\n     return a;\n }\n return mcd(b, a % b);\n}\n```\n\na) 3\n\nb) 6\n\nc) 9\n\nd) 12",
-      "back": "RESPUESTA / SOLUCIÓN\n\nb) 6 — mcd(48,18) → mcd(18,12) → mcd(12,6) → mcd(6,0) = 6.",
+      "back": "RESPUESTA / SOLUCIÓN\n\nb) 6 — mcd(48, 18) = 6\n\nEl algoritmo de Euclides usa la propiedad mcd(a, b) = mcd(b, a % b): se repite hasta que el resto sea 0, y entonces se devuelve el divisor actual.\n\nCascada de llamadas:\n• mcd(48, 18) → resto 48 % 18 = 12 → mcd(18, 12)\n• mcd(18, 12) → resto 18 % 12 = 6  → mcd(12, 6)\n• mcd(12, 6)  → resto 12 % 6 = 0   → mcd(6, 0)\n• mcd(6, 0)   → b == 0 (caso base) → devuelve 6\n\nResultado que sube por toda la cadena: mcd(48, 18) = 6.\n\nTruco rápido: el mcd es el último resto distinto de cero de la división en cascada. Aquí la secuencia es 48 → 18 → 12 → 6 → 0, así que el mcd es 6.",
       "tags": [
         "java",
         "examen",

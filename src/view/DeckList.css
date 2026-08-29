@@ -623,12 +623,16 @@
     conic-gradient(
       from var(--border-angle),
       #4285f4 0%,
-      #ea4335 25%,
-      #fbbc05 50%,
-      #34a853 75%,
+      #ea4335 10%,
+      #fbbc05 20%,
+      #34a853 30%,
+      #000000 40%,
+      #000000 85%,
       #4285f4 100%
     ) border-box;
-  animation: rotateClockwiseGoogle 3.5s linear infinite;
+  animation:
+    rotateClockwiseGoogle 5s linear infinite,
+    googleFadePulse 7s ease-in-out infinite;
   border-radius: var(--radius-pill);
   transition: width 0.6s cubic-bezier(0.25, 1, 0.5, 1);
   position: relative;
@@ -750,12 +754,14 @@
     conic-gradient(
       from var(--border-angle),
       #4285f4 0%,
-      #ea4335 25%,
-      #fbbc05 50%,
-      #34a853 75%,
+      #ea4335 10%,
+      #fbbc05 20%,
+      #34a853 30%,
+      #000000 40%,
+      #000000 85%,
       #4285f4 100%
     ) border-box;
-  animation: rotateClockwiseGoogle 3.5s linear infinite;
+  animation: rotateClockwiseGoogle 5s linear infinite;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
@@ -766,9 +772,11 @@
     conic-gradient(
       from var(--border-angle),
       #4285f4 0%,
-      #ea4335 25%,
-      #fbbc05 50%,
-      #34a853 75%,
+      #ea4335 10%,
+      #fbbc05 20%,
+      #34a853 30%,
+      #000000 40%,
+      #000000 85%,
       #4285f4 100%
     ) border-box;
   color: #ffffff;
