@@ -101,8 +101,8 @@ const codeRenderer = ({ rows, stylesheet, useInlineStyles }, blockHash) => {
       lineText.includes("✅") ||
       lineText.includes("❌") ||
       /\berror\b/i.test(lineText);
-    // Línea con error: se resalta en rojo (solo las que llevan ❌)
-    const isErrorLine = lineText.includes("❌");
+    // Línea con error: se resalta en rojo con resplandor (las que llevan ❌ o mencionan error)
+    const isErrorLine = lineText.includes("❌") || (/\berror\b/i.test(lineText) && !lineText.includes("✅"));
     if (!isMarkedLine) {
       return createElement({
         node: row,

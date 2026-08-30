@@ -1,17 +1,15 @@
 /**
- * StarCelebration: Lluvia de estrellas ultra-fluida (60/120 FPS) con colores Google brillantes.
- * Duración: 1.5 segundos.
- * Optimizado al máximo mediante pre-renderizado de sprites (sin lag ni tirones).
+ * StarCelebration: Lluvia de estrellas ultra-fluida (60/120 FPS) con colores Google puros
+ * (Azul #4285F4, Rojo #EA4335, Amarillo #FBBC05, Verde #34A853).
+ * Duración: 1.5 segundos. Sin color blanco.
  */
 
-// Paleta Google brillante
+// Paleta oficial Google pura (sin blanco)
 const GOOGLE_COLORS = [
-  { fill: "#4285F4", glow: "#8AB4F8" }, // Azul
-  { fill: "#EA4335", glow: "#F28B82" }, // Rojo
-  { fill: "#FBBC05", glow: "#FDD663" }, // Amarillo
-  { fill: "#34A853", glow: "#81C995" }, // Verde
-  { fill: "#00E5FF", glow: "#E0F7FA" }, // Cyan brillante
-  { fill: "#FFFFFF", glow: "#FFFFFF" }, // Diamante blanco
+  { fill: "#4285F4", glow: "#8AB4F8" }, // Azul Google
+  { fill: "#EA4335", glow: "#F28B82" }, // Rojo Google
+  { fill: "#FBBC05", glow: "#FDD663" }, // Amarillo Google
+  { fill: "#34A853", glow: "#81C995" }, // Verde Google
 ];
 
 // Caché de sprites pre-renderizados en memoria para 0 coste de GPU/CPU en tiempo real
@@ -25,7 +23,7 @@ const initSprites = (dpr) => {
 
   GOOGLE_COLORS.forEach((color) => {
     sizes.forEach((size) => {
-      // 1. Sprite: Estrella de 5 puntas
+      // 1. Sprite: Estrella de 5 puntas con color Google puro
       const c1 = document.createElement("canvas");
       const pad = size * 0.8;
       c1.width = size * 2 + pad * 2;
@@ -34,8 +32,7 @@ const initSprites = (dpr) => {
       const cx = c1.width / 2;
       const cy = c1.height / 2;
 
-      // Glow suave precalculado una sola vez
-      ctx1.shadowBlur = size * 0.6;
+      ctx1.shadowBlur = size * 0.7;
       ctx1.shadowColor = color.glow;
       ctx1.fillStyle = color.fill;
 
@@ -53,19 +50,13 @@ const initSprites = (dpr) => {
       ctx1.closePath();
       ctx1.fill();
 
-      // Centro blanco reflectante
-      ctx1.fillStyle = "#FFFFFF";
-      ctx1.beginPath();
-      ctx1.arc(cx, cy, size * 0.22, 0, Math.PI * 2);
-      ctx1.fill();
-
-      // 2. Sprite: Destello 4 puntas estilo Gemini / Sparkle
+      // 2. Sprite: Destello 4 puntas estilo Gemini / Sparkle con color Google puro
       const c2 = document.createElement("canvas");
       c2.width = c1.width;
       c2.height = c1.height;
       const ctx2 = c2.getContext("2d");
 
-      ctx2.shadowBlur = size * 0.6;
+      ctx2.shadowBlur = size * 0.7;
       ctx2.shadowColor = color.glow;
       ctx2.fillStyle = color.fill;
 
@@ -80,11 +71,6 @@ const initSprites = (dpr) => {
         ctx2.rotate(Math.PI / 2);
       }
       ctx2.closePath();
-      ctx2.fill();
-
-      ctx2.fillStyle = "#FFFFFF";
-      ctx2.beginPath();
-      ctx2.arc(0, 0, size * 0.25, 0, Math.PI * 2);
       ctx2.fill();
       ctx2.restore();
 
@@ -127,7 +113,6 @@ export const triggerStarCelebration = () => {
       const x = Math.random() * width;
       const y = fromTop ? -20 - Math.random() * 80 : Math.random() * height * 0.4;
       
-      // Velocidad de lluvia en ángulo suave hacia abajo
       const speedY = (Math.random() * 6 + 7) * dpr;
       const speedX = (Math.random() * 4 - 2) * dpr;
 
@@ -146,19 +131,18 @@ export const triggerStarCelebration = () => {
     }
   };
 
-  // Explosión inicial + lluvia masiva de estrellas
+  // Explosión inicial + lluvia de estrellas
   spawnStarShower(70, false);
   spawnStarShower(60, true);
 
   const startTime = Date.now();
-  const duration = 1500; // Exactamente 1.5 segundos
+  const duration = 1500; // 1.5 segundos
   let lastShowerTime = 0;
   let animFrameId = null;
 
   const animate = () => {
     const elapsed = Date.now() - startTime;
 
-    // Oleadas continuas durante los 1.5s
     if (elapsed < duration) {
       if (elapsed - lastShowerTime > 90) {
         lastShowerTime = elapsed;
@@ -168,7 +152,6 @@ export const triggerStarCelebration = () => {
 
     ctx.clearRect(0, 0, width, height);
 
-    // Pintar estrellas ultra rápido mediante blit de sprites
     for (let i = particles.length - 1; i >= 0; i--) {
       const p = particles[i];
       p.x += p.vx;

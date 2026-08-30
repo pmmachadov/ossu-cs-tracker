@@ -1,13 +1,21 @@
 public class trabajo1 {
- public static void main(String[] args) {
- int a = 3;
- int b = 5;
- int c = metodo(a, b);
- System.out.println(a + " " + b + " " + c);
- }
- static int metodo(int x, int y) {
- x = x + 2;
- y = y + 1;
- return x * y;
- }
+    public static void main(String[] args) {
+        int[][] m = new int[3][3];
+        int diagP = 0, diagS = 0;
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                m[i][j] = i * j;
+                if (i == j) {
+                    diagP += m[i][j];
+                }
+                if (i + j == 2) {
+                    diagS += m[i][j];
+                }
+            }
+        }
+
+        System.out.println("Diagonal principal: " + diagP);
+        System.out.println("Diagonal secundaria: " + diagS);
+    }
 }

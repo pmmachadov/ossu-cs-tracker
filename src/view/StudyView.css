@@ -1955,16 +1955,53 @@
   min-width: 0;
 }
 
-/* LÃƒÂ­nea con error en las respuestas: marcado en rojo */
+/* Línea con error en el código: marcado en rojo con resplandor de 1px */
 .code-line-error {
-  background: rgba(255, 77, 77, 0.1);
-  border-left: 3px solid #ff4d4d;
+  background: rgba(255, 77, 77, 0.12) !important;
+  border-left: 3px solid #ff4d4d !important;
   border-radius: 4px;
+  box-shadow: 0 0 1px 1px #ff4d4d, 0 0 8px rgba(255, 77, 77, 0.35) !important;
+  padding: 2px 6px;
+  margin: 1px 0;
 }
 
 .code-line-error .code-line-text {
-  box-shadow: inset 0 -2px 0 rgba(255, 77, 77, 0.6);
-  /* subrayado rojo */
+  text-shadow: 0 0 1px #ff4d4d;
+}
+
+.code-line-error .code-line-text span,
+.code-line-error .code-line-text .token.comment {
+  text-shadow: 0 0 1px rgba(255, 77, 77, 0.9) !important;
+}
+
+.code-line-error .code-line-text .token.comment,
+.code-line-error .code-line-text span[style*="rgb(52, 168, 83)"] {
+  color: #ff6b6b !important;
+  font-weight: 600;
+}
+
+/* En líneas con error los ticks son negros limpios sin superposición de rojo */
+.code-line-error .code-check {
+  text-shadow: none !important;
+}
+
+.code-line-error .code-check-box {
+  background: #141414 !important;
+  border-color: #383838 !important;
+  text-shadow: none !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.8) !important;
+}
+
+.code-line-error .code-check:hover .code-check-box {
+  border-color: #666666 !important;
+}
+
+.code-line-error .code-check input:checked + .code-check-box {
+  background: #000000 !important;
+  border-color: #444444 !important;
+  color: #ffffff !important;
+  text-shadow: none !important;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.9) !important;
 }
 
 /* NÃƒÂºmeros de lÃƒÂ­nea legibles (evitan equivocarse de lÃƒÂ­nea) */

@@ -493,3 +493,55 @@ pre code {
     filter: brightness(1.15) saturate(190%);
   }
 }
+
+/* ===== Resaltado en ROJO con resplandor de 1px para líneas con error ===== */
+.code-line-error {
+  background: rgba(255, 45, 45, 0.2) !important;
+  border: 1px solid #ff4d4d !important;
+  border-left: 5px solid #ff2222 !important;
+  border-radius: 6px !important;
+  box-shadow: 0 0 1px 1px #ff4d4d, 0 0 10px rgba(255, 77, 77, 0.45) !important;
+  padding: 3px 8px !important;
+  margin: 3px 0 !important;
+}
+
+.code-line-error .code-line-text,
+.code-line-error .code-line-text span,
+.code-line-error .code-line-text .token {
+  color: #ff6666 !important;
+  text-shadow: 0 0 1px #ff2222, 0 0 4px rgba(255, 77, 77, 0.7) !important;
+  font-weight: 600 !important;
+}
+
+.code-line-error .code-line-text .token.comment,
+.code-line-error .code-line-text span[class*="comment"] {
+  color: #ff8585 !important;
+  text-shadow: 0 0 1px #ff3333 !important;
+  font-style: italic !important;
+}
+
+/* Checkboxes / Ticks negros en las líneas de error sin tinte rojo */
+.code-line-error .code-check {
+  text-shadow: none !important;
+  box-shadow: none !important;
+}
+
+.code-line-error .code-check-box {
+  background: #000000 !important;
+  border: 3px solid #555555 !important;
+  color: #000000 !important;
+  text-shadow: none !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.9) !important;
+}
+
+.code-line-error .code-check:hover .code-check-box {
+  border-color: #888888 !important;
+}
+
+.code-line-error .code-check input:checked + .code-check-box {
+  background: #000000 !important;
+  border-color: #888888 !important;
+  color: #ffffff !important;
+  text-shadow: none !important;
+  box-shadow: 0 0 0 1px #000000, 0 2px 5px rgba(0, 0, 0, 0.9) !important;
+}
