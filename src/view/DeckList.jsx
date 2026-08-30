@@ -256,22 +256,21 @@ export function DeckList({
           <div className="stat-compact-divider" />
 
           <div className="stat-compact-item stat-compact-progress">
-            <div className="stat-compact-icon bento-icon-green">{Icons.target}</div>
             <div className="stat-compact-info">
               <div className="stat-compact-val-row">
-                <span className="stat-compact-val">
-                  {Math.round((totalLearned / (totalCards || 1)) * 100) || 0}%
-                </span>
                 <div className="bento-mini-bar">
                   <div
                     className="bento-mini-fill"
                     style={{
                       width: `${Math.round((totalLearned / (totalCards || 1)) * 100) || 0}%`,
                     }}
-                  />
+                  >
+                    <span className="bento-fill-pct-badge">
+                      {Math.round((totalLearned / (totalCards || 1)) * 100) || 0}%
+                    </span>
+                  </div>
                 </div>
               </div>
-              <div className="stat-compact-lbl">Progreso global</div>
             </div>
           </div>
         </div>

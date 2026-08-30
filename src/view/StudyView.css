@@ -196,8 +196,8 @@
       #ffffff 100%
     ) border-box;
   animation:
-    rotateClockwiseGoogle var(--rotate-duration, 2.8s) linear infinite,
-    googleFadePulseBar var(--bar-pulse-duration, 10s) ease-in-out infinite;
+    rotateClockwiseGoogle var(--rotate-duration, 3.2s) linear infinite,
+    googleFadePulse15 var(--bar-pulse-duration, 9.5s) ease-in-out infinite;
   animation-delay: var(--bar-delay, 0s), var(--bar-fade-delay, 0s);
   pointer-events: none;
   z-index: 2;
@@ -207,25 +207,8 @@
   cursor: grabbing;
 }
 
-/* (Estrellas de la barra de progreso eliminadas) */
-
-/* Pulso: 15% del tiempo en negro */
-@keyframes googleFadePulse {
-  0%, 75% { opacity: 1; }
-  80%, 95% { opacity: 0; }
-  100% { opacity: 1; }
-}
-
-/* Pulso de las barras de progreso: 15% del ciclo en negro */
-@keyframes googleFadePulseBar {
-  0%, 75% { opacity: 1; }
-  80%, 95% { opacity: 0; }
-  100% { opacity: 1; }
-}
-
 /* Relleno de progreso: aumenta con las tarjetas aprendidas, con borde de colores
-   Google girando y centro negro puro #000000. Toda la barra también late
-   (se desvanece y vuelve) igual que la opción correcta. */
+   Google girando y centro negro puro #000000. Desaparece y vuelve suavemente a destiempo del carril */
 .card-progress-fill {
   height: 100%;
   border: 2px solid transparent;
@@ -243,9 +226,9 @@
       #ffffff 100%
     ) border-box;
   animation:
-    rotateClockwiseGoogleAlt var(--fill-rotate-duration, var(--rotate-duration, 2.2s)) linear infinite,
-    var(--fill-pulse-anim, googleFadePulse60) var(--fill-pulse-duration, 8.2s) ease-in-out infinite;
-  animation-delay: var(--fill-delay, -3.8s), var(--fill-fade-delay, -4.5s);
+    rotateClockwiseGoogleAlt var(--fill-rotate-duration, var(--rotate-duration, 2.4s)) linear infinite,
+    googleFadePulse25 var(--fill-pulse-duration, 8.2s) ease-in-out infinite;
+  animation-delay: var(--fill-delay, -3.2s), var(--fill-fade-delay, -4.5s);
   border-radius: 999px;
   position: relative;
   z-index: 4;
@@ -290,21 +273,130 @@
   gap: 6px;
 }
 
+/* 2D Multidirectional y Diagonal Swirling Siri Google Colors Vortex */
+@keyframes siriGoogle2DSwirl {
+  0% {
+    background-position: 0% 0%; /* Arriba izquierda */
+    filter: hue-rotate(0deg) brightness(1.08);
+  }
+  20% {
+    background-position: 100% 100%; /* Diagonal profunda abajo derecha */
+    filter: hue-rotate(90deg) brightness(1.3);
+  }
+  40% {
+    background-position: 0% 100%; /* Esquina inferior izquierda */
+    filter: hue-rotate(180deg) brightness(1.1);
+  }
+  60% {
+    background-position: 100% 0%; /* Diagonal ascendente arriba derecha */
+    filter: hue-rotate(270deg) brightness(1.32);
+  }
+  80% {
+    background-position: 50% 100%; /* Deslizamiento diagonal */
+    filter: hue-rotate(315deg) brightness(1.18);
+  }
+  100% {
+    background-position: 0% 0%; /* Retorno diagonal */
+    filter: hue-rotate(360deg) brightness(1.08);
+  }
+}
+
+@keyframes siriJewelGlow {
+  0%, 100% {
+    border-color: rgba(66, 133, 244, 0.65);
+    box-shadow:
+      0 0 14px rgba(66, 133, 244, 0.45),
+      0 0 28px rgba(52, 168, 83, 0.25),
+      inset 0 1px 0 rgba(255, 255, 255, 0.45);
+  }
+  33% {
+    border-color: rgba(234, 67, 53, 0.65);
+    box-shadow:
+      0 0 14px rgba(234, 67, 53, 0.45),
+      0 0 28px rgba(251, 188, 5, 0.25),
+      inset 0 1px 0 rgba(255, 255, 255, 0.45);
+  }
+  66% {
+    border-color: rgba(52, 168, 83, 0.65);
+    box-shadow:
+      0 0 14px rgba(52, 168, 83, 0.45),
+      0 0 28px rgba(66, 133, 244, 0.25),
+      inset 0 1px 0 rgba(255, 255, 255, 0.45);
+  }
+}
+
 .card-progress-pct {
-  font-size: 0.8125rem;
-  font-weight: 800;
-  letter-spacing: 0.03em;
-  color: #ffffff;
-  background: linear-gradient(135deg, rgba(52, 168, 83, 0.35) 0%, rgba(66, 133, 244, 0.35) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.28);
-  padding: 4px 12px;
+  font-size: 1.15rem;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  padding: 5px 18px;
   border-radius: 999px;
   font-variant-numeric: tabular-nums;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(145deg, rgba(38, 38, 48, 0.95), rgba(20, 20, 26, 0.98));
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1.5px solid rgba(66, 133, 244, 0.65);
+  animation: siriJewelGlow 5.5s ease-in-out infinite;
   box-shadow:
-    0 2px 8px rgba(0, 0, 0, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.35);
-  transition: all 0.3s ease;
+    0 4px 16px rgba(0, 0, 0, 0.7),
+    inset 0 1px 1px rgba(255, 255, 255, 0.35),
+    inset 0 -1px 2px rgba(0, 0, 0, 0.8);
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.28s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.card-progress-pct:hover {
+  transform: translateY(-2px) scale(1.05);
+  border-color: rgba(66, 133, 244, 0.9);
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.85),
+    0 0 20px rgba(66, 133, 244, 0.45),
+    inset 0 1px 1.5px rgba(255, 255, 255, 0.55),
+    inset 0 -1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.card-progress-pct:active {
+  transform: scale(0.96);
+}
+
+.card-progress-pct-text {
+  background:
+    radial-gradient(
+      ellipse 120% 80% at 50% 50%,
+      rgba(255, 255, 255, 0.4) 0%,
+      transparent 65%
+    ),
+    linear-gradient(
+      var(--siri-angle),
+      #000000 0%,
+      #000000 20%,
+      #4285f4 28%,
+      #4285f4 45%,
+      #ea4335 53%,
+      #ea4335 68%,
+      #fbbc05 74%,
+      #fbbc05 84%,
+      #34a853 90%,
+      #34a853 96%,
+      #000000 100%
+    );
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  animation:
+    siriAngleSpin 6.6s linear infinite,
+    siriGoogle2DSwirl 7.8s cubic-bezier(0.35, 0.1, 0.25, 1) infinite;
+  display: inline-block;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  filter: drop-shadow(0 2px 8px rgba(66, 133, 244, 0.45));
 }
 
 @media (prefers-reduced-motion: reduce) {

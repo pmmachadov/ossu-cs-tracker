@@ -418,7 +418,7 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
             {deckStats.aprendido} / {deckStats.total}
           </span>
           <span className="card-progress-pct">
-            {masteryPct}%
+            <span className="card-progress-pct-text">{masteryPct}%</span>
           </span>
         </div>
       </div>

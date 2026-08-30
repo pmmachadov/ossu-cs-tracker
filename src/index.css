@@ -4,6 +4,28 @@
   initial-value: 0deg;
 }
 
+@property --siri-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+/* Rotación estilo 'Dado de 100 lados' con saltos y giros aleatorios d100 */
+@keyframes siriAngleSpin {
+  0%   { --siri-angle: 0deg; }
+  8%   { --siri-angle: 274deg; } /* Tirada #76 */
+  17%  { --siri-angle: 42deg; }  /* Tirada #12 */
+  26%  { --siri-angle: 319deg; } /* Tirada #89 */
+  35%  { --siri-angle: 153deg; } /* Tirada #43 */
+  46%  { --siri-angle: 218deg; } /* Tirada #61 */
+  57%  { --siri-angle: 12deg; }  /* Tirada #3  */
+  68%  { --siri-angle: 187deg; } /* Tirada #52 */
+  79%  { --siri-angle: 341deg; } /* Tirada #95 */
+  89%  { --siri-angle: 98deg; }  /* Tirada #27 */
+  96%  { --siri-angle: 255deg; } /* Tirada #71 */
+  100% { --siri-angle: 360deg; }
+}
+
 /* Recorrido con velocidades variables: aceleraciones y deceleraciones cinéticas */
 @keyframes rotateClockwiseGoogle {
   0% {

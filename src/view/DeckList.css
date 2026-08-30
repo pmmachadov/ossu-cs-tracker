@@ -85,13 +85,13 @@
 /* Stats Row inside the same unified card */
 .hero-stats-row {
   display: grid;
-  grid-template-columns: 1fr auto 1fr auto 1.4fr;
+  grid-template-columns: auto auto auto auto 1fr;
   align-items: center;
-  gap: 16px;
-  padding: 14px 20px;
+  gap: 22px;
+  padding: 16px 24px;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 14px;
+  border-radius: 16px;
 }
 
 .stat-compact-item {
@@ -142,25 +142,277 @@
   background: rgba(255, 255, 255, 0.08);
 }
 
+/* 2D Multidirectional y Diagonal Swirling Siri Google Colors con 10% de negro puro */
+@keyframes siriGoogle2DSwirlGlobal {
+  0% {
+    background-position: 0% 0%;
+    filter: brightness(1.15) contrast(1.05);
+  }
+  20% {
+    background-position: 100% 100%;
+    filter: brightness(1.3) contrast(1.1);
+  }
+  40% {
+    background-position: 0% 100%;
+    filter: brightness(0.9) contrast(1.15); /* Paso oscuro del 10% */
+  }
+  60% {
+    background-position: 100% 0%;
+    filter: brightness(1.35) contrast(1.1);
+  }
+  80% {
+    background-position: 50% 100%;
+    filter: brightness(1.1) contrast(1.05);
+  }
+  100% {
+    background-position: 0% 0%;
+    filter: brightness(1.15) contrast(1.05);
+  }
+}
+
+@keyframes siriJewelGlowGlobal {
+  0%, 100% {
+    border-color: rgba(66, 133, 244, 0.8);
+    box-shadow:
+      0 0 16px rgba(66, 133, 244, 0.5),
+      0 0 30px rgba(52, 168, 83, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  }
+  25% {
+    border-color: rgba(234, 67, 53, 0.8);
+    box-shadow:
+      0 0 16px rgba(234, 67, 53, 0.5),
+      0 0 30px rgba(251, 188, 5, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  }
+  50% {
+    border-color: rgba(251, 188, 5, 0.8);
+    box-shadow:
+      0 0 16px rgba(251, 188, 5, 0.5),
+      0 0 30px rgba(52, 168, 83, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  }
+  75% {
+    border-color: rgba(52, 168, 83, 0.8);
+    box-shadow:
+      0 0 16px rgba(52, 168, 83, 0.5),
+      0 0 30px rgba(66, 133, 244, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  }
+}
+
 .stat-compact-progress .stat-compact-val-row {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 14px;
+}
+
+.global-pct-siri {
+  font-size: 1.55rem !important;
+  font-weight: 900 !important;
+  letter-spacing: -0.02em;
+  padding: 6px 18px;
+  border-radius: var(--radius-pill);
+  font-variant-numeric: tabular-nums;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(145deg, rgba(38, 38, 48, 0.95), rgba(20, 20, 26, 0.98));
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1.5px solid rgba(66, 133, 244, 0.7);
+  animation: siriJewelGlowGlobal 9.6s ease-in-out infinite;
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.7),
+    inset 0 1px 1px rgba(255, 255, 255, 0.35),
+    inset 0 -1px 2px rgba(0, 0, 0, 0.8);
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.28s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.global-pct-siri:hover {
+  transform: translateY(-2px) scale(1.05);
+  border-color: rgba(66, 133, 244, 0.95);
+  box-shadow:
+    0 8px 26px rgba(0, 0, 0, 0.85),
+    0 0 24px rgba(66, 133, 244, 0.55),
+    inset 0 1px 1.5px rgba(255, 255, 255, 0.55),
+    inset 0 -1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.global-pct-siri:active {
+  transform: scale(0.96);
+}
+
+.global-pct-siri-text {
+  background:
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(255, 255, 255, 0.85) 0%,
+      transparent 65%
+    ),
+    conic-gradient(
+      from var(--siri-angle) at 50% 50%,
+      #000000 0%,
+      #000000 10%,
+      #4285f4 20%,
+      #4285f4 35%,
+      #ea4335 45%,
+      #ea4335 60%,
+      #fbbc05 70%,
+      #fbbc05 80%,
+      #34a853 88%,
+      #34a853 96%,
+      #000000 100%
+    );
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  animation:
+    siriAngleSpin 6.6s linear infinite,
+    siriGoogle2DSwirlGlobal 7.8s cubic-bezier(0.35, 0.1, 0.25, 1) infinite;
+  display: inline-block;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  filter: drop-shadow(0 2px 8px rgba(66, 133, 244, 0.45));
+}
+
+/* Animación Siri Google Colors estilo 'Dado de 100 lados' con colores puros, blanco y negro */
+@keyframes siriGoogleMiniBarRandom {
+  0% {
+    background-position: 5% 10%;
+  }
+  9% {
+    background-position: 95% 85%;
+  }
+  19% {
+    background-position: 15% 95%;
+  }
+  31% {
+    background-position: 85% 10%;
+  }
+  44% {
+    background-position: 10% 45%;
+  }
+  56% {
+    background-position: 95% 90%;
+  }
+  69% {
+    background-position: 45% 10%;
+  }
+  81% {
+    background-position: 80% 65%;
+  }
+  92% {
+    background-position: 25% 80%;
+  }
+  100% {
+    background-position: 5% 10%;
+  }
 }
 
 .stat-compact-progress .bento-mini-bar {
   flex: 1;
-  height: 7px;
-  background: rgba(255, 255, 255, 0.08);
+  width: 100%;
+  height: 48px;
+  background: #0e0e12;
   border-radius: var(--radius-pill);
-  overflow: hidden;
+  padding: 4px;
+  box-shadow:
+    0 6px 24px rgba(0, 0, 0, 0.45),
+    inset 0 1px 1px rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.stat-compact-progress .bento-mini-bar::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 3.5px solid transparent;
+  background:
+    linear-gradient(#0e0e12, #0e0e12) padding-box,
+    conic-gradient(
+      from var(--border-angle),
+      transparent 0%,
+      transparent 50%,
+      rgba(66, 133, 244, 0.2) 64%,
+      #4285f4 76%,
+      #ea4335 85%,
+      #fbbc05 92%,
+      #34a853 97%,
+      #ffffff 100%
+    ) border-box;
+  animation:
+    rotateClockwiseGoogle 7.5s linear infinite,
+    googleFadePulseMedium 12s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.stat-compact-progress .bento-mini-bar > * {
+  position: relative;
+  z-index: 2;
 }
 
 .stat-compact-progress .bento-mini-fill {
   height: 100%;
-  background: linear-gradient(90deg, #0071e3, #30d158);
+  min-width: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.18) 0%,
+      transparent 55%,
+      rgba(0, 0, 0, 0.15) 100%
+    ),
+    linear-gradient(
+      var(--siri-angle),
+      rgba(66, 133, 244, 0.38) 0%,
+      rgba(234, 67, 53, 0.38) 30%,
+      rgba(251, 188, 5, 0.38) 60%,
+      rgba(52, 168, 83, 0.38) 85%,
+      rgba(66, 133, 244, 0.38) 100%
+    );
+  background-size: 200% 200%;
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
   border-radius: var(--radius-pill);
-  transition: width 0.5s ease;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  animation:
+    siriAngleSpin 8.0s linear infinite,
+    siriGoogleMiniBarRandom 8.5s cubic-bezier(0.25, 0.8, 0.25, 1) infinite;
+  box-shadow:
+    0 2px 10px rgba(66, 133, 244, 0.25),
+    inset 0 1px 1px rgba(255, 255, 255, 0.3);
+  transition: width 0.6s cubic-bezier(0.34, 1.25, 0.4, 1);
+  position: relative;
+}
+
+.bento-fill-pct-badge {
+  font-size: 1.125rem;
+  font-weight: 900;
+  color: #ffffff;
+  background: transparent;
+  border: none;
+  padding: 0 6px;
+  border-radius: 999px;
+  text-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.9),
+    0 0 6px rgba(0, 0, 0, 0.7);
+  letter-spacing: 0.02em;
+  font-variant-numeric: tabular-nums;
+  user-select: none;
+  pointer-events: none;
+  white-space: nowrap;
 }
 
 @media (max-width: 860px) {
@@ -598,7 +850,8 @@
 .progress-value {
   color: #f5f5f7;
   font-variant-numeric: tabular-nums;
-  font-weight: 600;
+  font-weight: 700;
+  font-size: 0.875rem;
 }
 
 .progress-bar {
@@ -658,7 +911,7 @@
     ) border-box;
   animation:
     rotateClockwiseGoogleAlt var(--fill-rotate-duration, var(--rotate-duration, 2.2s)) linear infinite,
-    var(--fill-pulse-anim, googleFadePulse50) var(--fill-pulse-duration, 8s) ease-in-out infinite;
+    var(--fill-pulse-anim, googleFadePulse20) var(--fill-pulse-duration, 8s) ease-in-out infinite;
   animation-delay: var(--fill-delay, -2.5s), var(--fill-fade-delay, -3s);
   border-radius: var(--radius-pill);
   transition: width 0.6s cubic-bezier(0.25, 1, 0.5, 1);

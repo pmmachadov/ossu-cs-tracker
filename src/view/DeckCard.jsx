@@ -169,7 +169,9 @@ export function DeckCard({
         <div className="deck-progress">
           <div className="progress-info">
             <span className="progress-label">Progreso</span>
-            <span className="progress-value">{stats.mastery}%</span>
+            <span className="progress-value">
+              <span className="progress-value-text">{stats.mastery}%</span>
+            </span>
           </div>
           <div
             className="progress-bar"
