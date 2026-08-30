@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { motion } from "motion/react";
 import { Icons } from "./Icons";
 import { isExamDeck, getSubjectIcon, getSubjectColor } from "./deckHelpers";
@@ -25,6 +25,16 @@ export function DeckCard({
   onEditDeck,
   onOpenResetModal,
 }) {
+  // Los colores de Google solo se muestran durante los primeros 10 segundos
+  const [isFirstTenSeconds, setIsFirstTenSeconds] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsFirstTenSeconds(false);
+    }, 10000); // 10 segundos
+    return () => clearTimeout(timer);
+  }, []);
+
   const stats = deck.getStats();
   const subjectIcon = getSubjectIcon(deck.subject);
   const subjectColor = getSubjectColor(deck.subject);
@@ -132,7 +142,7 @@ export function DeckCard({
       transition={{ duration: 0.25, ease: "easeOut" }}
       className={`deck-card ${hasDueCards ? "has-due" : ""} ${themeClass} ${
         isDone ? "done" : isProgress ? "in-progress" : ""
-      }`}
+      } ${isFirstTenSeconds ? "google-active" : "google-expired"}`}
       style={{
         "--card-rotate-duration": cardRotateDuration,
         "--card-delay": cardDelay,

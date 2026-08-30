@@ -370,6 +370,7 @@ pre code {
 
 .deck-card {
   background: #000000 !important; /* El cuerpo de la tarjeta NUNCA cambia de color */
+  transition: border-color 1.5s ease;
 }
 
 .deck-card::before {
@@ -390,6 +391,22 @@ pre code {
     rotateClockwiseGoogle var(--card-rotate-duration, 7.5s) linear infinite,
     googleFadePulseMedium 12s ease-in-out infinite;
   animation-delay: var(--card-delay, 0s), var(--card-fade-delay, 0s);
+  transition: opacity 4.5s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 1;
+}
+
+/* Los colores se apagan muy suave y gradualmente tras los 10 segundos */
+.deck-card.google-expired::before {
+  opacity: 0 !important;
+}
+
+.deck-card.google-expired {
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.deck-card.google-expired .google-aura {
+  opacity: 0 !important;
+  transition: opacity 4.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
 .bento-card::before,
@@ -456,4 +473,28 @@ pre code {
   animation:
     rotateClockwiseGoogle 7.2s linear infinite,
     googleFadePulseLong 12.5s ease-in-out infinite;
+}
+
+/* Pulso de colores detrás del porcentaje: 2 segundos encendido de cada 5 segundos (2s ON / 3s OFF) */
+@keyframes siriPctPulse2sOf5s {
+  0% {
+    opacity: 1;
+    filter: brightness(1.15) saturate(190%);
+  }
+  38% {
+    opacity: 1;
+    filter: brightness(1.15) saturate(190%);
+  }
+  48% {
+    opacity: 0;
+    filter: brightness(0.9) saturate(100%);
+  }
+  88% {
+    opacity: 0;
+    filter: brightness(0.9) saturate(100%);
+  }
+  100% {
+    opacity: 1;
+    filter: brightness(1.15) saturate(190%);
+  }
 }

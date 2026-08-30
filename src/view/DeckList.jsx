@@ -48,6 +48,41 @@ export function DeckList({
   const [showPreguntasDirectas, setShowPreguntasDirectas] = useState(false);
   const [showLibros, setShowLibros] = useState(false);
   const [showMateriasSalvadas, setShowMateriasSalvadas] = useState(false);
+  const [isFirstTenSeconds, setIsFirstTenSeconds] = useState(true);
+  const [showHeroPctGlow, setShowHeroPctGlow] = useState(true);
+
+  // Ciclo aleatorio de encendido y apagado detrás del porcentaje (número random de segundos)
+  useEffect(() => {
+    let loopTimer = null;
+    let activeTimer = null;
+
+    const scheduleRandomPulse = () => {
+      // Tiempo apagado: número aleatorio de segundos (3s a 7s)
+      const sleepTime = 3000 + Math.random() * 4000;
+      loopTimer = setTimeout(() => {
+        setShowHeroPctGlow(true);
+        // Tiempo encendido: número aleatorio de segundos (2.5s a 5.5s)
+        const glowDuration = 2500 + Math.random() * 3000;
+        activeTimer = setTimeout(() => {
+          setShowHeroPctGlow(false);
+          scheduleRandomPulse();
+        }, glowDuration);
+      }, sleepTime);
+    };
+
+    // Primeros 10 segundos todo encendido, luego apagar borde e iniciar ciclo aleatorio
+    const initialTimer = setTimeout(() => {
+      setIsFirstTenSeconds(false);
+      setShowHeroPctGlow(false);
+      scheduleRandomPulse();
+    }, 10000);
+
+    return () => {
+      clearTimeout(initialTimer);
+      clearTimeout(loopTimer);
+      clearTimeout(activeTimer);
+    };
+  }, []);
   const [showMas, setShowMas] = useState(false);
   const [openSubjects, setOpenSubjects] = useState({}); // cada materia se abre/cierra individualmente
 
@@ -258,9 +293,9 @@ export function DeckList({
           <div className="stat-compact-item stat-compact-progress">
             <div className="stat-compact-info">
               <div className="stat-compact-val-row">
-                <div className="bento-mini-bar">
+                <div className={`bento-mini-bar ${isFirstTenSeconds ? "google-active" : "google-expired"}`}>
                   <div
-                    className="bento-mini-fill"
+                    className={`bento-mini-fill ${showHeroPctGlow ? "pct-glow-active" : "pct-glow-off"}`}
                     style={{
                       width: `${Math.round((totalLearned / (totalCards || 1)) * 100) || 0}%`,
                     }}

@@ -112,6 +112,41 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
   });
   const [showComplete, setShowComplete] = useState(false);
   const [mcSelection, setMcSelection] = useState(null); // opción elegida en cards de opción múltiple
+  const [isFirstTenSeconds, setIsFirstTenSeconds] = useState(true);
+  const [showPctGlow, setShowPctGlow] = useState(true);
+
+  // Ciclo aleatorio de encendido y apagado detrás del porcentaje (número random de segundos)
+  useEffect(() => {
+    let loopTimer = null;
+    let activeTimer = null;
+
+    const scheduleRandomPulse = () => {
+      // Tiempo apagado: número aleatorio de segundos (3s a 7s)
+      const sleepTime = 3000 + Math.random() * 4000;
+      loopTimer = setTimeout(() => {
+        setShowPctGlow(true);
+        // Tiempo encendido: número aleatorio de segundos (2.5s a 5.5s)
+        const glowDuration = 2500 + Math.random() * 3000;
+        activeTimer = setTimeout(() => {
+          setShowPctGlow(false);
+          scheduleRandomPulse();
+        }, glowDuration);
+      }, sleepTime);
+    };
+
+    // Primeros 10 segundos todo encendido, luego apagar borde e iniciar ciclo aleatorio
+    const initialTimer = setTimeout(() => {
+      setIsFirstTenSeconds(false);
+      setShowPctGlow(false);
+      scheduleRandomPulse();
+    }, 10000);
+
+    return () => {
+      clearTimeout(initialTimer);
+      clearTimeout(loopTimer);
+      clearTimeout(activeTimer);
+    };
+  }, []);
 
   // Drag-to-scroll para la fila de puntos
   const dotsContainerRef = useRef(null);
@@ -392,7 +427,7 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
             dotsContainerRef.current = el;
             borderSpeed("track", 0.85)(el);
           }}
-          className="card-progress-track"
+          className={`card-progress-track ${isFirstTenSeconds ? "google-active" : "google-expired"}`}
           style={{ "--card-count": cards.length }}
           onMouseDown={handleMouseDown}
           onMouseMove={handleMouseMove}
@@ -403,7 +438,7 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
           onTouchEnd={handleTouchEnd}
         >
           <div
-            className="card-progress-fill"
+            className={`card-progress-fill ${showPctGlow ? "pct-glow-active" : "pct-glow-off"}`}
             style={{ width: `${Math.max(masteryPct, 0)}%` }}
             ref={borderSpeed("fill", 1.4)}
           >
