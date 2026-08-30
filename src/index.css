@@ -47,72 +47,96 @@
   }
 }
 
-/* Variantes de tiempo en negro aleatorio (10% a 35%) */
+/* Variantes de desaparición suave, lenta y cinematográfica */
 @keyframes googleFadePulse10 {
-  0%, 84% { opacity: 1; }
-  88%, 98% { opacity: 0; }
+  0%, 65% { opacity: 1; }
+  73% { opacity: 0.7; }
+  81% { opacity: 0.3; }
+  88%, 97% { opacity: 0; }
   100% { opacity: 1; }
 }
 
 @keyframes googleFadePulse15 {
-  0%, 79% { opacity: 1; }
-  84%, 99% { opacity: 0; }
+  0%, 58% { opacity: 1; }
+  67% { opacity: 0.7; }
+  76% { opacity: 0.3; }
+  84%, 97% { opacity: 0; }
   100% { opacity: 1; }
 }
 
 @keyframes googleFadePulse20 {
-  0%, 74% { opacity: 1; }
-  79%, 99% { opacity: 0; }
+  0%, 50% { opacity: 1; }
+  60% { opacity: 0.7; }
+  70% { opacity: 0.3; }
+  79%, 96% { opacity: 0; }
   100% { opacity: 1; }
 }
 
 @keyframes googleFadePulse25 {
-  0%, 69% { opacity: 1; }
-  74%, 99% { opacity: 0; }
+  0%, 45% { opacity: 1; }
+  55% { opacity: 0.65; }
+  65% { opacity: 0.28; }
+  74%, 95% { opacity: 0; }
   100% { opacity: 1; }
 }
 
 @keyframes googleFadePulse30 {
-  0%, 64% { opacity: 1; }
-  69%, 99% { opacity: 0; }
+  0%, 40% { opacity: 1; }
+  50% { opacity: 0.65; }
+  60% { opacity: 0.25; }
+  69%, 95% { opacity: 0; }
   100% { opacity: 1; }
 }
 
 @keyframes googleFadePulse35 {
-  0%, 59% { opacity: 1; }
-  64%, 99% { opacity: 0; }
+  0%, 35% { opacity: 1; }
+  45% { opacity: 0.6; }
+  55% { opacity: 0.2; }
+  64%, 94% { opacity: 0; }
   100% { opacity: 1; }
 }
 
 /* Compatibilidad con alias */
 @keyframes googleFadePulseShort {
-  0%, 82% { opacity: 1; }
-  87%, 99% { opacity: 0; }
+  0%, 60% { opacity: 1; }
+  70% { opacity: 0.7; }
+  80% { opacity: 0.3; }
+  88%, 98% { opacity: 0; }
   100% { opacity: 1; }
 }
 @keyframes googleFadePulseMedium {
-  0%, 74% { opacity: 1; }
-  79%, 99% { opacity: 0; }
+  0%, 52% { opacity: 1; }
+  62% { opacity: 0.7; }
+  72% { opacity: 0.3; }
+  80%, 97% { opacity: 0; }
   100% { opacity: 1; }
 }
 @keyframes googleFadePulseLong {
-  0%, 60% { opacity: 1; }
-  65%, 99% { opacity: 0; }
+  0%, 42% { opacity: 1; }
+  52% { opacity: 0.65; }
+  62% { opacity: 0.25; }
+  70%, 95% { opacity: 0; }
   100% { opacity: 1; }
 }
 @keyframes googleFadePulseWave {
-  0%, 70% { opacity: 1; }
-  76%, 98% { opacity: 0; }
+  0%, 50% { opacity: 1; }
+  62% { opacity: 0.65; }
+  74% { opacity: 0.25; }
+  82%, 96% { opacity: 0; }
   100% { opacity: 1; }
 }
 @keyframes googleFadePulse {
-  0%, 75% { opacity: 1; }
-  80%, 98% { opacity: 0; }
+  0%, 52% { opacity: 1; }
+  64% { opacity: 0.65; }
+  74% { opacity: 0.28; }
+  82%, 97% { opacity: 0; }
   100% { opacity: 1; }
 }
 @keyframes googleFadePulseBar {
-  0%, 75% { opacity: 1; }
-  80%, 98% { opacity: 0; }
+  0%, 52% { opacity: 1; }
+  64% { opacity: 0.65; }
+  74% { opacity: 0.28; }
+  82%, 97% { opacity: 0; }
   100% { opacity: 1; }
 }
 
