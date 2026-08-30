@@ -25,15 +25,8 @@ export function DeckCard({
   onEditDeck,
   onOpenResetModal,
 }) {
-  // Los colores de Google solo se muestran durante los primeros 10 segundos
-  const [isFirstTenSeconds, setIsFirstTenSeconds] = useState(true);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsFirstTenSeconds(false);
-    }, 10000); // 10 segundos
-    return () => clearTimeout(timer);
-  }, []);
+  // Los colores de Google y bordes están siempre activos
+  const [isFirstTenSeconds] = useState(true);
 
   const stats = deck.getStats();
   const subjectIcon = getSubjectIcon(deck.subject);
@@ -152,12 +145,12 @@ export function DeckCard({
       {/* Card Content */}
       <div className="deck-card-content">
         <div className="deck-card-meta">
-          {deck.subject && (
+          {deck.subject && theme !== "theme-examen" && (
             <span className="deck-subject">
               {subjectIcon} {deck.subject}
             </span>
           )}
-          {isExamDeck(deck) && (
+          {isExamDeck(deck) && theme !== "theme-examen" && (
             <span className="exam-badge">Examen</span>
           )}
           {hasDueCards && (
@@ -165,6 +158,18 @@ export function DeckCard({
               {stats.due} de {stats.total} pendientes
             </span>
           )}
+          <span
+            className={`deck-pct-badge ${
+              stats.mastery === 100
+                ? "pct-100"
+                : stats.mastery > 0
+                ? "pct-positive"
+                : "pct-zero"
+            }`}
+            title={`Porcentaje completado de este mazo: ${stats.mastery}%`}
+          >
+            {stats.mastery}% completado
+          </span>
         </div>
 
         <div className="deck-card-header">
@@ -175,9 +180,7 @@ export function DeckCard({
           <p className="deck-description">{deck.description}</p>
         )}
 
-
-
-        {/* Stats Row */}
+        {/* Stats Row con porcentaje individual */}
         <div className="deck-stats-row">
           <div className="deck-stat" title="Total de tarjetas del mazo">
             <span className="stat-number">{stats.total}</span>
@@ -192,6 +195,11 @@ export function DeckCard({
           <div className="deck-stat" title="Aprendidas">
             <span className="stat-number">{stats.aprendido}</span>
             <span className="stat-text">aprendidas</span>
+          </div>
+          <div className="deck-stat-divider" />
+          <div className="deck-stat" title="Porcentaje completado de este mazo">
+            <span className="stat-number stat-pct">{stats.mastery}%</span>
+            <span className="stat-text">progreso</span>
           </div>
         </div>
 

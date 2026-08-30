@@ -32,8 +32,6 @@ export function DeckList({
   onBackup,
   onRestoreBackup,
 }) {
-  const [filterSubject, setFilterSubject] = useState("all");
-
   const [showResetModal, setShowResetModal] = useState(false);
   const [resetStep, setResetStep] = useState(1);
   const [deckToReset, setDeckToReset] = useState(null);
@@ -48,41 +46,8 @@ export function DeckList({
   const [showPreguntasDirectas, setShowPreguntasDirectas] = useState(false);
   const [showLibros, setShowLibros] = useState(false);
   const [showMateriasSalvadas, setShowMateriasSalvadas] = useState(false);
-  const [isFirstTenSeconds, setIsFirstTenSeconds] = useState(true);
-  const [showHeroPctGlow, setShowHeroPctGlow] = useState(true);
-
-  // Ciclo aleatorio de encendido y apagado detrás del porcentaje (número random de segundos)
-  useEffect(() => {
-    let loopTimer = null;
-    let activeTimer = null;
-
-    const scheduleRandomPulse = () => {
-      // Tiempo apagado: número aleatorio de segundos (3s a 7s)
-      const sleepTime = 3000 + Math.random() * 4000;
-      loopTimer = setTimeout(() => {
-        setShowHeroPctGlow(true);
-        // Tiempo encendido: número aleatorio de segundos (2.5s a 5.5s)
-        const glowDuration = 2500 + Math.random() * 3000;
-        activeTimer = setTimeout(() => {
-          setShowHeroPctGlow(false);
-          scheduleRandomPulse();
-        }, glowDuration);
-      }, sleepTime);
-    };
-
-    // Primeros 10 segundos todo encendido, luego apagar borde e iniciar ciclo aleatorio
-    const initialTimer = setTimeout(() => {
-      setIsFirstTenSeconds(false);
-      setShowHeroPctGlow(false);
-      scheduleRandomPulse();
-    }, 10000);
-
-    return () => {
-      clearTimeout(initialTimer);
-      clearTimeout(loopTimer);
-      clearTimeout(activeTimer);
-    };
-  }, []);
+  const [isFirstTenSeconds] = useState(true);
+  const [showHeroPctGlow] = useState(true);
   const [showMas, setShowMas] = useState(false);
   const [openSubjects, setOpenSubjects] = useState({}); // cada materia se abre/cierra individualmente
 
@@ -159,20 +124,13 @@ export function DeckList({
     0,
   );
 
-  const uniqueSubjects = [
-    ...new Set(decks.map((d) => d.subject).filter(Boolean)),
-  ];
+  const filteredDecks = decks;
 
-  const filteredDecks =
-    filterSubject === "all"
-      ? decks
-      : decks.filter((d) => d.subject === filterSubject);
-
-  const examenJavaDeck = filteredDecks.find((d) => d.id === "examen-java");
+  const examenJavaDecks = filteredDecks.filter((d) => d.id?.startsWith("examen-java"));
   const examenDecks = filteredDecks.filter(
     (d) =>
       d.id?.startsWith("examen-") &&
-      d.id !== "examen-java" &&
+      !d.id?.startsWith("examen-java") &&
       d.subject !== "Materias salvadas",
   );
   const pruebaDecks = filteredDecks.filter(
@@ -311,42 +269,7 @@ export function DeckList({
         </div>
       </section>
 
-      {uniqueSubjects.length > 1 && (
-        <div className="subject-filter">
-          <button
-            className={`filter-pill ${filterSubject === "all" ? "active" : ""}`}
-            onClick={() => setFilterSubject("all")}
-          >
-            âœ¨ Todos
-          </button>
-          {uniqueSubjects.map((subject) => {
-            const color = getSubjectColor(subject);
-            const icon = getSubjectIcon(subject);
-            return (
-              <button
-                key={subject}
-                className={`filter-pill ${
-                  filterSubject === subject ? "active" : ""
-                }`}
-                onClick={() => setFilterSubject(subject)}
-                style={
-                  filterSubject === subject
-                    ? {
-                        borderColor: color.accent,
-                        background: color.bg,
-                        color: color.accent,
-                      }
-                    : {}
-                }
-              >
-                {icon} {subject}
-              </button>
-            );
-          })}
-        </div>
-      )}
-
-      <ExamenJavaFolder deck={examenJavaDeck} {...folderProps} />
+      <ExamenJavaFolder decks={examenJavaDecks} {...folderProps} />
 
       <PreguntasDirectasFolder
         decks={preguntasDirectasDecks}

@@ -335,7 +335,7 @@
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  border: 3.5px solid transparent;
+  border: 2.5px solid transparent;
   background:
     linear-gradient(#0e0e12, #0e0e12) padding-box,
     conic-gradient(
@@ -416,14 +416,14 @@
   box-shadow:
     0 2px 10px rgba(66, 133, 244, 0.25),
     inset 0 1px 1px rgba(255, 255, 255, 0.3);
-  opacity: 0;
-  transition: opacity 4.2s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 1;
+  transition: opacity 1s ease;
   pointer-events: none;
   z-index: 1;
 }
 
-/* Pulso aleatorio con desvanecimiento muy lento (fade in / fade out de 4.2s) */
-.stat-compact-progress .bento-mini-fill.pct-glow-active::after {
+.stat-compact-progress .bento-mini-fill.pct-glow-active::after,
+.stat-compact-progress .bento-mini-fill::after {
   opacity: 1 !important;
 }
 
@@ -705,10 +705,9 @@
   width: 100%;
 }
 
-/* Las secciones con un solo mazo como Examen Java ocupan todo el ancho (100%) */
 .examenes-section .decks-grid,
 .examenes-grid {
-  grid-template-columns: 1fr !important;
+  grid-template-columns: repeat(auto-fit, minmax(440px, 1fr));
   width: 100%;
 }
 
@@ -845,6 +844,33 @@
   letter-spacing: -0.01em;
 }
 
+.deck-pct-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 11px;
+  background: rgba(52, 168, 83, 0.16);
+  border: 1px solid rgba(52, 168, 83, 0.35);
+  color: #34d399;
+  border-radius: var(--radius-pill);
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+  margin-left: auto;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+.deck-pct-badge.pct-zero {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.12);
+  color: var(--text-secondary);
+}
+
+.deck-pct-badge.pct-100 {
+  background: rgba(66, 133, 244, 0.22);
+  border-color: rgba(66, 133, 244, 0.45);
+  color: #60a5fa;
+  box-shadow: 0 0 10px rgba(66, 133, 244, 0.3);
+}
+
 /* Card Title & Description */
 .deck-card-header {
   margin-bottom: 8px;
@@ -962,13 +988,13 @@
 /* Glass Stats Row (Limpio, con números siempre visibles e inmutables) */
 .deck-stats-row {
   display: grid;
-  grid-template-columns: 1fr auto 1fr auto 1fr;
+  grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-md);
-  padding: 12px 18px;
+  padding: 12px 14px;
   margin-bottom: 20px;
   position: relative;
   z-index: 10;
@@ -1005,8 +1031,13 @@
   opacity: 1 !important;
 }
 
+.stat-number.stat-pct {
+  color: #34d399 !important;
+  font-weight: 800;
+}
+
 .stat-text {
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 500;
   color: var(--text-secondary) !important;
   text-transform: capitalize;

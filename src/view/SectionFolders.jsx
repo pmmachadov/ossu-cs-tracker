@@ -9,6 +9,7 @@ import {
 import { DeckCard } from "./DeckCard";
 
 export function ExamenJavaFolder({
+  decks,
   deck,
   doneMap,
   onToggleDone,
@@ -17,58 +18,24 @@ export function ExamenJavaFolder({
   onEditDeck,
   onOpenResetModal,
 }) {
-  const [show, setShow] = useState(true);
-  if (!deck) return null;
-
-  const total = deck.cards.length;
-  const learned = deck.cards.filter((c) => c.status === "aprendido").length;
-  const sectionProgress = total === 0 ? 0 : Math.round((learned / total) * 100);
-  const progClass = sectionProgress === 0 ? "progress-0"
-    : sectionProgress === 100 ? "progress-done"
-    : sectionProgress <= 33 ? "progress-start"
-    : sectionProgress <= 66 ? "progress-mid"
-    : "progress-high";
+  const deckList = decks ? (Array.isArray(decks) ? decks : [decks]) : (deck ? [deck] : []);
+  if (deckList.length === 0) return null;
 
   return (
-    <div className={`examenes-section section-progress ${progClass}`} data-progress={sectionProgress}>
-      <button
-        className="examenes-toggle examen-java-area"
-        onClick={() => setShow(!show)}
-        aria-expanded={show}
-      >
-        <span className="examenes-icon">📝</span>
-        <span className="examenes-label">Examen Java</span>
-        <span className="examenes-count">{total} tarjetas</span>
-        <span className={`examenes-chevron ${show ? "open" : ""}`}>
-          {show ? Icons.chevronUp : Icons.chevronDown}
-        </span>
-      </button>
-
-      <AnimatePresence initial={false}>
-        {show && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
-            style={{ overflow: "hidden" }}
-          >
-            <div className="decks-grid examenes-grid">
-              <DeckCard
-                key={deck.id}
-                deck={deck}
-                doneMap={doneMap}
-                onToggleDone={onToggleDone}
-                theme="theme-examen"
-                onStudyDeck={onStudyDeck}
-                onStatsDeck={onStatsDeck}
-                onEditDeck={onEditDeck}
-                onOpenResetModal={onOpenResetModal}
-              />
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+    <div className="decks-grid examenes-grid" style={{ marginBottom: "20px" }}>
+      {deckList.map((d) => (
+        <DeckCard
+          key={d.id}
+          deck={d}
+          doneMap={doneMap}
+          onToggleDone={onToggleDone}
+          theme="theme-examen"
+          onStudyDeck={onStudyDeck}
+          onStatsDeck={onStatsDeck}
+          onEditDeck={onEditDeck}
+          onOpenResetModal={onOpenResetModal}
+        />
+      ))}
     </div>
   );
 }

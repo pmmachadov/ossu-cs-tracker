@@ -61,7 +61,7 @@ EXAMENES.append({
                     "tipo": "test",
                     "enunciado": "¿Qué estructura sigue el principio FIFO (primero en entrar, primero en salir)?",
                     "opciones": ["a) Pila", "b) Cola", "c) Lista", "d) Conjunto"],
-                    "respuesta": "b) Cola — En una cola el primer elemento encolado es el primero en salir (FIFO).",
+                    "respuesta": "b) Cola (Queue) — Sigue el principio FIFO (First In, First Out: primero en entrar, primero en salir).\n\n¿Cómo funciona?\n• Analogía: Como una fila en el supermercado o una cola de impresión; el primero que llega es el primero en ser atendido.\n• Diferencia con Pila (Stack): La pila es LIFO (Last In, First Out; como una pila de platos o Ctrl+Z).\n\nEjemplo en Java:\n```java\nQueue<String> cola = new LinkedList<>();\ncola.offer(\"Ana\");   // 1ª en entrar\ncola.offer(\"Luis\");  // 2º en entrar\n\nSystem.out.println(cola.poll()); // \"Ana\" (es la 1ª en salir)\nSystem.out.println(cola.poll()); // \"Luis\"\n```",
                 },
                 {
                     "tipo": "test",
@@ -79,7 +79,7 @@ EXAMENES.append({
                     "tipo": "test",
                     "enunciado": "¿Qué método de Deque extrae y devuelve el primer elemento (comportamiento de cola)?",
                     "opciones": ["a) pollFirst()", "b) pop()", "c) peekLast()", "d) removeLast()"],
-                    "respuesta": "a) pollFirst() — Extrae el primer elemento (o poll(), equivalente); pop() extrae del principio con comportamiento de pila.",
+                    "respuesta": "a) pollFirst() — Extrae y devuelve el primer elemento (comportamiento de Cola FIFO).\n\n¿Cómo funcionan los métodos de Deque?\n• pollFirst() / poll(): Devuelve y elimina el primer elemento. Si la cola está vacía, devuelve null (sin lanzar excepción).\n• pop() / removeFirst(): Extrae del principio con comportamiento de Pila (LIFO), pero si está vacía LANZA NoSuchElementException.\n• peekLast(): Solo consulta el último elemento sin extraerlo.\n• removeLast(): Extrae del final, no del principio.\n\nEjemplo en Java:\n```java\nDeque<String> deque = new ArrayDeque<>();\ndeque.offerLast(\"Primero\"); // entra por el final\ndeque.offerLast(\"Segundo\");\n\nString sale = deque.pollFirst(); // \"Primero\" (comportamiento FIFO)\n```",
                 },
                 {
                     "tipo": "vf",
@@ -289,7 +289,7 @@ EXAMENES.append({
                     "tipo": "test",
                     "enunciado": "¿Qué construcción cierra automáticamente los recursos al final del bloque?",
                     "opciones": ["a) try-with-resources", "b) try-catch normal", "c) finally manual", "d) try-alone"],
-                    "respuesta": "a) try-with-resources — Declara los recursos entre paréntesis y los cierra automáticamente al salir del bloque.",
+                    "respuesta": "a) try-with-resources — Declara los recursos entre paréntesis tras el try y los cierra automáticamente al finalizar el bloque.\n\n¿Por qué es la mejor opción?\n• Cierre garantizado: Cierra el flujo siempre, tanto si la ejecución termina con éxito como si ocurre una excepción.\n• Requisito: El recurso debe implementar AutoCloseable (ej. BufferedReader, FileWriter, Scanner, etc.).\n• Evita el bloque finally manual, eliminando código repetitivo y posibles fugas de memoria.\n\nEjemplo en Java:\n```java\n// Se declara y abre dentro del try (...)\ntry (BufferedReader br = new BufferedReader(new FileReader(\"notas.txt\"))) {\n    String linea = br.readLine();\n    System.out.println(linea);\n} catch (IOException e) {\n    e.printStackTrace();\n}\n// Al salir del bloque, br.close() se ejecuta automáticamente\n```",
                 },
                 {
                     "tipo": "test",

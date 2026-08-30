@@ -112,41 +112,8 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
   });
   const [showComplete, setShowComplete] = useState(false);
   const [mcSelection, setMcSelection] = useState(null); // opción elegida en cards de opción múltiple
-  const [isFirstTenSeconds, setIsFirstTenSeconds] = useState(true);
-  const [showPctGlow, setShowPctGlow] = useState(true);
-
-  // Ciclo aleatorio de encendido y apagado detrás del porcentaje (número random de segundos)
-  useEffect(() => {
-    let loopTimer = null;
-    let activeTimer = null;
-
-    const scheduleRandomPulse = () => {
-      // Tiempo apagado: número aleatorio de segundos (3s a 7s)
-      const sleepTime = 3000 + Math.random() * 4000;
-      loopTimer = setTimeout(() => {
-        setShowPctGlow(true);
-        // Tiempo encendido: número aleatorio de segundos (2.5s a 5.5s)
-        const glowDuration = 2500 + Math.random() * 3000;
-        activeTimer = setTimeout(() => {
-          setShowPctGlow(false);
-          scheduleRandomPulse();
-        }, glowDuration);
-      }, sleepTime);
-    };
-
-    // Primeros 10 segundos todo encendido, luego apagar borde e iniciar ciclo aleatorio
-    const initialTimer = setTimeout(() => {
-      setIsFirstTenSeconds(false);
-      setShowPctGlow(false);
-      scheduleRandomPulse();
-    }, 10000);
-
-    return () => {
-      clearTimeout(initialTimer);
-      clearTimeout(loopTimer);
-      clearTimeout(activeTimer);
-    };
-  }, []);
+  const [isFirstTenSeconds] = useState(true);
+  const [showPctGlow] = useState(true);
 
   // Drag-to-scroll para la fila de puntos
   const dotsContainerRef = useRef(null);
@@ -250,12 +217,13 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
     cards.length > 1 ? (currentCardIndex / (cards.length - 1)) * 100 : 100;
 
   // Análisis de opciones de la tarjeta actual (opción múltiple o V/F; null si no aplica)
+  // En el mazo de Ejercicios, TODAS las tarjetas son tarjetas de desarrollo/análisis con giro 3D completo
   const mc = useMemo(
     () =>
-      currentCard
+      currentCard && deck?.id !== "examen-java-ejercicios"
         ? analyzeAnswerOptions(currentCard.front, currentCard.back)
         : null,
-    [currentCard],
+    [currentCard, deck?.id],
   );
 
   // Color del mazo para la barra de progreso (p. ej. violeta en Examen Java)
@@ -321,9 +289,11 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
     ],
   );
 
-  // Scroll al inicio cuando cambia la tarjeta
+  // Scroll al inicio y reiniciar estado de giro cuando cambia la tarjeta
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
+    setIsFlipped(false);
+    setFlipRotation(0);
   }, [currentCardIndex]);
 
   // Nueva tarjeta => reiniciar selección de opción múltiple
@@ -455,16 +425,23 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
       <div className="flashcard-container">
         <motion.div
           key={currentCardIndex}
-          initial={{ opacity: 0, x: 20, scale: 0.98 }}
-          animate={{ opacity: 1, x: 0, scale: 1 }}
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.25, ease: "easeOut" }}
-          className="flashcard"
-          onClick={handleFlip}
-          style={flipRotation ? { transform: `rotateY(${flipRotation}deg)`, transformStyle: 'preserve-3d', transition: 'transform 0.8s ease' } : undefined}
+          style={{ width: "100%", display: "flex", justifyContent: "center" }}
         >
-          <div className="flashcard-inner">
-            <div className="flashcard-front">
-              <div className="card-content">
+          <div
+            className={`flashcard ${isFlipped ? "is-flipped" : ""}`}
+            onClick={handleFlip}
+            style={{
+              transform: `rotateY(${flipRotation}deg)`,
+              transformStyle: "preserve-3d",
+              transition: "transform 0.65s cubic-bezier(0.4, 0, 0.2, 1)",
+            }}
+          >
+            <div className="flashcard-inner">
+              <div className="flashcard-front">
+                <div className="card-content">
                 {mc ? (
                   <>
                     {mc.before && (
@@ -588,8 +565,9 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
               </div>
             </div>
           </div>
-        </motion.div>
-      </div>
+        </div>
+      </motion.div>
+    </div>
 
       <AnimatePresence>
         {(isFlipped || (mc && mcSelection !== null)) ? (

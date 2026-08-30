@@ -111,14 +111,57 @@ def main():
         "cards": cards,
     }
 
+    OUT_TEST = os.path.join(ROOT, "public", "data", "examenes", "examen-java-test.json")
+    OUT_EJER = os.path.join(ROOT, "public", "data", "examenes", "examen-java-ejercicios.json")
+
+    test_cards = []
+    ejer_cards = []
+
+    for c in cards:
+        lines = c["front"].split("\n\n")
+        has_options = any(l.strip().startswith(("a)", "b)", "c)", "d)")) for l in lines)
+        is_vf = "Verdadero/Falso" in c["front"] or "V/F" in c["front"]
+        is_part_1 = len(lines) > 1 and "Parte 1:" in lines[1] and ("Opción múltiple" in lines[1] or "Verdadero" in lines[1])
+
+        if is_part_1 or has_options or (len(lines) > 1 and lines[1].startswith("Parte 1:") and not ("Ejercicios" in lines[1] or "programación" in lines[1])):
+            test_cards.append(c)
+        else:
+            ejer_cards.append(c)
+
+    deck_test = {
+        "id": "examen-java-test",
+        "name": "Múltiple opción",
+        "description": "Preguntas de opción múltiple y Verdadero/Falso de los 20 exámenes oficiales de Java.",
+        "subject": "",
+        "cards": test_cards,
+    }
+
+    deck_ejer = {
+        "id": "examen-java-ejercicios",
+        "name": "Ejercicios",
+        "description": "Ejercicios prácticos de programación, desarrollo y análisis de código de los 20 exámenes.",
+        "subject": "Ejercicios",
+        "cards": ejer_cards,
+    }
+
     os.makedirs(os.path.dirname(OUT_PATH), exist_ok=True)
     with open(OUT_PATH, "w", encoding="utf-8") as f:
         json.dump(deck, f, ensure_ascii=False, indent=2)
 
+    with open(OUT_TEST, "w", encoding="utf-8") as f:
+        json.dump(deck_test, f, ensure_ascii=False, indent=2)
+
+    with open(OUT_EJER, "w", encoding="utf-8") as f:
+        json.dump(deck_ejer, f, ensure_ascii=False, indent=2)
+
     stats["total"] = len(cards)
+    stats["total_test"] = len(test_cards)
+    stats["total_ejercicios"] = len(ejer_cards)
     with open(os.path.join(ROOT, "_gen_examen_cards_summary.json"), "w", encoding="utf-8") as f:
         json.dump(stats, f, ensure_ascii=False, indent=2)
     print(f"OK: {len(cards)} cards -> {OUT_PATH}")
+    print(f"OK: {len(test_cards)} test/vf cards -> {OUT_TEST}")
+    print(f"OK: {len(ejer_cards)} ejercicios cards -> {OUT_EJER}")
 
 
 if __name__ == "__main__":

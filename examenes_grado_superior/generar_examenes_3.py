@@ -516,7 +516,7 @@ EXAMENES.append({
                         "c) UI.launch(new MiVentana());",
                         "d) Swing.start(new MiVentana());",
                     ],
-                    "respuesta": "a) SwingUtilities.invokeLater(...) — Encola la creación de la ventana en el EDT.",
+                    "respuesta": "a) SwingUtilities.invokeLater(...) — Encola la tarea en el EDT (Event Dispatch Thread).\n\n¿Qué es el EDT y por qué se usa?\n• El EDT es el único hilo de Swing responsable de gestionar eventos (clics, teclas) y pintar/actualizar componentes.\n• Swing NO es seguro para hilos (no es thread-safe). Modificar la GUI desde hilos secundarios o desde el 'main' puede causar fallos gráficos y condiciones de carrera.\n• SwingUtilities.invokeLater() recibe un Runnable y lo encola para que el EDT lo ejecute de forma segura.",
                 },
                 {
                     "tipo": "test",
@@ -740,7 +740,7 @@ EXAMENES.append({
                 {
                     "tipo": "vf",
                     "enunciado": "En el código fuente Java, para representar la regex de un dígito hay que escribir \"\\\\d\" (doble barra).",
-                    "respuesta": "Verdadero — La barra invertida es carácter de escape en los literales String, por lo que se necesita \\\\ para que la regex reciba \\d.",
+                    "respuesta": "Verdadero — En Java hay un «doble escape» (compilador de Java + motor de Regex).\n\n¿Por qué ocurre esto?\n• En Java, la barra invertida (\\) inicia una secuencia de escape en los Strings (ej. \\n, \\t).\n• La secuencia \"\\d\" NO es válida en Java y genera un error de compilación (Invalid escape sequence).\n• Para enviar un carácter '\\' real al motor de expresiones regulares, hay que escribir \"\\\\\", por lo que queda \"\\\\d\".\n\nEjemplo:\n```java\n// ❌ ERROR de compilación:\n// String regex = \"\\d+\"; \n\n// ✔️ CORRECTO:\nString texto = \"Habitacion 402\";\nboolean tieneNumero = texto.matches(\".*\\\\d+.*\"); // true\n```",
                 },
                 {
                     "tipo": "test",

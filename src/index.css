@@ -363,7 +363,7 @@ pre code {
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  border: 1px solid transparent;
+  border: 2.5px solid transparent;
   pointer-events: none;
   z-index: 1;
 }
@@ -395,18 +395,13 @@ pre code {
   opacity: 1;
 }
 
-/* Los colores se apagan muy suave y gradualmente tras los 10 segundos */
-.deck-card.google-expired::before {
-  opacity: 0 !important;
+/* Los colores y auras de las tarjetas se mantienen siempre activos */
+.deck-card::before {
+  opacity: 1 !important;
 }
 
-.deck-card.google-expired {
-  border: 1px solid rgba(255, 255, 255, 0.08) !important;
-}
-
-.deck-card.google-expired .google-aura {
-  opacity: 0 !important;
-  transition: opacity 4.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
+.deck-card .google-aura {
+  opacity: 1 !important;
 }
 
 .bento-card::before,

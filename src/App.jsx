@@ -24,8 +24,9 @@ function App() {
         const savedDecks = DataStore.loadDecks();
         
         const deckFiles = [
-          // Mazo Examen Java (los 20 exÃƒÂ¡menes de Grado Superior)
-          "/data/examenes/examen-java.json",
+          // Mazos Examen Java (los 20 exámenes de Grado Superior divididos en Test/VF y Ejercicios)
+          "/data/examenes/examen-java-test.json",
+          "/data/examenes/examen-java-ejercicios.json",
         ];
 
         const results = await Promise.allSettled(
@@ -52,27 +53,41 @@ function App() {
 
         // Fusionar progreso guardado (localStorage) con los datos frescos (JSON)
         if (savedDecks.length > 0) {
-          newDecks.forEach(deck => {
-            const savedDeck = savedDecks.find(d => d.id === deck.id);
-            if (savedDeck) {
-              // Restaurar progreso de cada tarjeta por ID estable
-              deck.cards.forEach(card => {
-                const savedCard = savedDeck.cards.find(c => c.id === card.id);
-                if (savedCard) {
-                  card.interval = savedCard.interval;
-                  card.repetitions = savedCard.repetitions;
-                  card.easinessFactor = savedCard.easinessFactor;
-                  card.nextReview = savedCard.nextReview;
-                  card.lastReviewed = savedCard.lastReviewed;
-                  card.status = savedCard.status;
+          newDecks.forEach((deck) => {
+            const savedDeck = savedDecks.find((d) => d.id === deck.id);
+
+            // Restaurar progreso de cada tarjeta por ID estable (incluso desde el mazo previo 'examen-java')
+            deck.cards.forEach((card) => {
+              let savedCard = savedDeck?.cards?.find((c) => c.id === card.id);
+              if (!savedCard) {
+                for (const sd of savedDecks) {
+                  const match = sd.cards?.find((c) => c.id === card.id);
+                  if (match) {
+                    savedCard = match;
+                    break;
+                  }
                 }
-              });
-              // Restaurar estadÃƒÂ­sticas del mazo
+              }
+
+              if (savedCard) {
+                card.interval = savedCard.interval ?? card.interval;
+                card.repetitions = savedCard.repetitions ?? card.repetitions;
+                card.easinessFactor = savedCard.easinessFactor ?? card.easinessFactor;
+                card.nextReview = savedCard.nextReview ?? card.nextReview;
+                card.lastReviewed = savedCard.lastReviewed ?? card.lastReviewed;
+                card.status = savedCard.status || card.status;
+                if (savedCard.reviewCount !== undefined) card.reviewCount = savedCard.reviewCount;
+                if (savedCard.streak !== undefined) card.streak = savedCard.streak;
+                if (savedCard.lapseCount !== undefined) card.lapseCount = savedCard.lapseCount;
+              }
+            });
+
+            // Restaurar estadísticas del mazo
+            if (savedDeck) {
               deck.lastStudied = savedDeck.lastStudied;
               if (savedDeck.studyStats) {
                 deck.studyStats = savedDeck.studyStats;
               }
-              // Restaurar registro de visualizaciones (datos del grÃƒÂ¡fico de progreso)
               if (savedDeck.viewLog) {
                 deck.viewLog = savedDeck.viewLog;
               }

@@ -1,0 +1,2219 @@
+{
+  "id": "examen-java-test",
+  "name": "Múltiple opción",
+  "description": "Preguntas de opción múltiple y Verdadero/Falso de los 20 exámenes oficiales de Java.",
+  "subject": "",
+  "cards": [
+    {
+      "id": "ex-java-01-01",
+      "front": "(Examen 1 · Fundamentos de Java y control de flujo)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nDado el código siguiente, ¿qué se imprime?\n\n```java\nint a = 7;\ndouble b = 2.0;\nSystem.out.println(a / b);\n```\n\na) 3\n\nb) 3.0\n\nc) 3.5\n\nd) Error de compilación",
+      "back": "RESPUESTA / SOLUCIÓN\n\nc) 3.5 — Al dividir un int por un double, Java promociona el int a double y el resultado es 3.5.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-1"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "ex-java-01-02",
+      "front": "(Examen 1 · Fundamentos de Java y control de flujo)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Cuál de estos bucles garantiza que el cuerpo se ejecute al menos una vez?\n\na) while (cond) { }\n\nb) for (int i=0; i<n; i++) { }\n\nc) do { } while (cond);\n\nd) Ninguno lo garantiza",
+      "back": "RESPUESTA / SOLUCIÓN\n\nc) do-while — Evalúa la condición al final, por lo que ejecuta el cuerpo al menos una vez.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-1"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-01-03",
+      "front": "(Examen 1 · Fundamentos de Java y control de flujo)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nSi ejecutamos números con tipo byte, ¿qué operación causaría un error de compilación por posible pérdida de precisión?\n\na) byte r = (byte) (a + b);\n\nb) byte r = a + b;\n\nc) int r = a + b;\n\nd) long r = a + b;",
+      "back": "RESPUESTA / SOLUCIÓN\n\nb) byte r = a + b; — a + b se promociona a int al operar, por lo que asignarlo a byte requiere un cast explícito.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-1"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-01-04",
+      "front": "(Examen 1 · Fundamentos de Java y control de flujo)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nEn Java, cuando se pasa un array a un método, las modificaciones que haga el método sobre los elementos se reflejan en el array original.",
+      "back": "RESPUESTA / SOLUCIÓN\n\nVerdadero — En Java todo se pasa por valor, pero las referencias a objetos (incluidos los arrays) copian la dirección. Al modificar elementos a través de esa referencia, se modifica el objeto original.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-1"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-01-05",
+      "front": "(Examen 1 · Fundamentos de Java y control de flujo)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nDado el switch, ¿qué valor se imprime si op = 2?\n\n```java\nint op = 2;\nswitch (op) {\n case 1: System.out.print(\"A\"); break;\n case 2: System.out.print(\"B\");\n case 3: System.out.print(\"C\"); break;\n default: System.out.print(\"D\");\n}\n```\n\na) B\n\nb) BC\n\nc) BCD\n\nd) A",
+      "back": "RESPUESTA / SOLUCIÓN\n\nb) BC — El case 2 no tiene break, por lo que 'cae' (fall-through) hacia el case 3 y también imprime C antes de llegar al break.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-1"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "ex-java-01-06",
+      "front": "(Examen 1 · Fundamentos de Java y control de flujo)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nEn Java, todas las variables de tipo primitivo se almacenan en el montículo (heap) cuando se declaran dentro de un método.",
+      "back": "RESPUESTA / SOLUCIÓN\n\nFalso — Las variables locales de tipo primitivo se almacenan en la pila (stack), no en el heap.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-1"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-01-07",
+      "front": "(Examen 1 · Fundamentos de Java y control de flujo)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué imprime el siguiente bucle?\n\n```java\nint i = 0;\nwhile (i < 5) {\n if (i % 2 == 0) {\n     System.out.print(i);\n }\n i++;\n}\n```\n\na) 024\n\nb) 135\n\nc) 01234\n\nd) 1234",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) 024 — Imprime los valores de i que son pares (0, 2, 4).",
+      "tags": [
+        "java",
+        "examen",
+        "examen-1"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "ex-java-01-08",
+      "front": "(Examen 1 · Fundamentos de Java y control de flujo)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué método de Scanner permite leer un número entero correctamente?\n\na) sc.next()\n\nb) sc.nextInt()\n\nc) sc.nextDouble()\n\nd) sc.nextLine()",
+      "back": "RESPUESTA / SOLUCIÓN\n\nb) sc.nextInt() — Lee y devuelve el siguiente token como int.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-1"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-01-09",
+      "front": "(Examen 1 · Fundamentos de Java y control de flujo)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nDado el código:\n\n```java\nint x = 10;\nint z = (x > 5) ? x * 2 : x / 2;\nSystem.out.println(z);\n```\n\na) 10\n\nb) 5\n\nc) 20\n\nd) 2",
+      "back": "RESPUESTA / SOLUCIÓN\n\nc) 20 — El operador ternario evalúa la condición (true), por lo que z = 10 * 2 = 20.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-1"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "ex-java-01-10",
+      "front": "(Examen 1 · Fundamentos de Java y control de flujo)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Cuál de estas declaraciones de un método es el correcto para un método que no devuelve nada y no recibe parámetros?\n\na) public static int main()\n\nb) public static void ejemplo()\n\nc) public static String ejemplo()\n\nd) public static example()",
+      "back": "RESPUESTA / SOLUCIÓN\n\nb) public static void ejemplo() — void indica que no devuelve nada.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-1"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-02-01",
+      "front": "(Examen 2 · Arrays y Strings)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nDeclaración correcta de un array de 5 enteros:\n\na) int [] nums = int[5];\n\nb) int[] nums = new int[5];\n\nc) int nums[]; nums = [5];\n\nd) int nums = new int[5];",
+      "back": "RESPUESTA / SOLUCIÓN\n\nb) int[] nums = new int[5]; — Crea un array de 5 enteros, inicializados a 0.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-2"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-02-02",
+      "front": "(Examen 2 · Arrays y Strings)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Cuántos elementos hay en la matriz `int[][] m = {{1,2,3},{4,5}};`?\n\na) 6\n\nb) 5\n\nc) 3\n\nd) 2",
+      "back": "RESPUESTA / SOLUCIÓN\n\nb) 5 — La primera fila tiene 3 elementos y la segunda 2: 3 + 2 = 5.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-2"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-02-03",
+      "front": "(Examen 2 · Arrays y Strings)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nDado:\n\n```java\nString a = \"Hola\";\nString b = new String(\"Hola\");\nSystem.out.println(a == b);\n```\n\na) true\n\nb) false\n\nc) Error de compilación\n\nd) Hola",
+      "back": "RESPUESTA / SOLUCIÓN\n\nb) false — `==` compara referencias. `new String(...)` crea un nuevo objeto en el heap, distinto del literal del pool, por lo que las referencias son distintas aunque el contenido sea igual.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-2"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "ex-java-02-04",
+      "front": "(Examen 2 · Arrays y Strings)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué devuelve `\"programacion\".substring(3, 7)`?\n\na) gram\n\nb) ogra\n\nc) grama\n\nd) ogram",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) gram — substring(3,7) devuelve los caracteres desde el índice 3 (inclusive) hasta el 7 (exclusivo): g,r,a,m = 'gram'.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-2"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-02-05",
+      "front": "(Examen 2 · Arrays y Strings)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nLas cadenas String en Java son mutables, es decir, su contenido se puede cambiar una vez creadas.",
+      "back": "RESPUESTA / SOLUCIÓN\n\nFalso — La clase String es inmutable. Cada operación que parece 'modificarla' crea una nueva cadena.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-2"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-02-06",
+      "front": "(Examen 2 · Arrays y Strings)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nTras ejecutar `int[] a = {5,3,8,1}; Arrays.sort(a);` el array queda:\n\na) {5,3,8,1}\n\nb) {1,3,5,8}\n\nc) {8,5,3,1}\n\nd) No se puede ordenar",
+      "back": "RESPUESTA / SOLUCIÓN\n\nb) {1,3,5,8} — Arrays.sort ordena ascendentemente.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-2"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-02-07",
+      "front": "(Examen 2 · Arrays y Strings)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nLa búsqueda binaria (binarySearch) requiere que el array esté:\n\na) Al revés\n\nb) Sin importar el orden\n\nc) Ordenado ascendentemente\n\nd) Lleno de números únicos",
+      "back": "RESPUESTA / SOLUCIÓN\n\nc) Ordenado ascendentemente — La búsqueda binaria divide el intervalo, lo que solo es correcto si el array está ordenado.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-2"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-02-08",
+      "front": "(Examen 2 · Arrays y Strings)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Cuál es la sintaxis correcta para recorrer un array con for-each?\n\na) for (int i : numeros) { }\n\nb) for (int numeros[0]) { }\n\nc) for-each (int n) { }\n\nd) for (int i = numeros) { }",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) for (int i : numeros) { } — El for-each declara una variable y usa ':' seguido del array.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-2"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-02-09",
+      "front": "(Examen 2 · Arrays y Strings)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué imprime este código?\n\n```java\nString s = \"Abc\";\nSystem.out.println(s.concat(\"DEF\") + s);\n```\n\na) AbcDEFAbc\n\nb) AbcDEF\n\nc) AbcAbcDEF\n\nd) abcDEF",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) AbcDEFAbc — concat devuelve una nueva cadena \"AbcDEF\"; como String es inmutable, s sigue siendo \"Abc\". Al concatenar queda \"AbcDEFAbc\".",
+      "tags": [
+        "java",
+        "examen",
+        "examen-2"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "ex-java-02-10",
+      "front": "(Examen 2 · Arrays y Strings)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nPara comparar el contenido de dos Strings correctamente se usa:\n\na) a == b\n\nb) a.equals(b)\n\nc) a.compare(b)\n\nd) String.equals(a,b)",
+      "back": "RESPUESTA / SOLUCIÓN\n\nb) a.equals(b) — Compara el contenido textual; `==` compara referencias.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-2"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-03-01",
+      "front": "(Examen 3 · Programación Orientada a Objetos)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué palabra clave se usa para impedir que una clase sea heredada?\n\na) static\n\nb) final\n\nc) abstract\n\nd) private",
+      "back": "RESPUESTA / SOLUCIÓN\n\nb) final — Una clase marcada como final no puede ser heredada.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-3"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-03-02",
+      "front": "(Examen 3 · Programación Orientada a Objetos)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nUn atributo declarado como `protected` es accesible desde:\n\na) Solo la misma clase\n\nb) Cualquier clase del programa\n\nc) La misma clase, paquete y subclases\n\nd) Solo la clase padre",
+      "back": "RESPUESTA / SOLUCIÓN\n\nc) protected — accesible desde la misma clase, el mismo paquete y las subclases (incluso en otros paquetes).",
+      "tags": [
+        "java",
+        "examen",
+        "examen-3"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-03-03",
+      "front": "(Examen 3 · Programación Orientada a Objetos)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Cuál es el valor de `contador` tras ejecutar este código?\n\n```java\nclass A {\n static int contador = 0;\n A() { contador++; }\n}\npublic class Main { public static void main(String[] a) {\n new A(); new A(); new A();\n A.contador = A.contador + 1;\n System.out.println(A.contador);\n} }\n```\n\na) 3\n\nb) 4\n\nc) 2\n\nd) 1",
+      "back": "RESPUESTA / SOLUCIÓN\n\nb) 4 — Cada `new A()` incrementa el atributo estático (3), y luego se suma 1 → 4.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-3"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "ex-java-03-04",
+      "front": "(Examen 3 · Programación Orientada a Objetos)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nUn campo `private` de una clase puede leerse desde otra clase del mismo paquete sin usar getters.",
+      "back": "RESPUESTA / SOLUCIÓN\n\nFalso — `private` solo es accesible desde la propia clase; las demás clases, incluso del mismo paquete, requieren accesores (getter/setter).",
+      "tags": [
+        "java",
+        "examen",
+        "examen-3"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-03-05",
+      "front": "(Examen 3 · Programación Orientada a Objetos)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nLa sobrecarga de métodos se define como:\n\na) Métodos que se llaman igual pero con distinta firma\n\nb) Métodos que se heredan\n\nc) Métodos con distinto nombre e igual parámetros\n\nd) Métodos que devuelven el mismo tipo",
+      "back": "RESPUESTA / SOLUCIÓN\n\n✓ **a) Métodos que se llaman igual pero con distinta firma**\n\n📌 **Explicación:**\n- **Sobrecarga (Overloading)**: Ocurre cuando en una misma clase existen dos o más métodos con el **mismo nombre**, pero con **distinta lista de parámetros** (diferente número de argumentos, tipos de datos o su orden en la firma).\n- **Firma del método (*Method Signature*)**: Está compuesta por el *nombre del método + los tipos/orden de sus parámetros*.\n\n⚠️ **Puntos clave de examen:**\n- **El tipo de retorno NO forma parte de la firma**: Cambiar únicamente el tipo que devuelve un método (ej: de `void` a `int`) manteniendo los mismos parámetros provocará un **error de compilación**.\n- No confundir con la **Sobrescritura (@Override)**, que ocurre al redefinir en una clase hija un método heredado con la *misma firma exacta*.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-3"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-03-06",
+      "front": "(Examen 3 · Programación Orientada a Objetos)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Cuál es la función de `this` dentro de un constructor?\n\na) Referirse al objeto actual\n\nb) Llamar al constructor padre\n\nc) Devolver el valor actual de la variable\n\nd) Crear un nuevo objeto",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) this refiere al objeto actual y permite distinguir atributos de parámetros del mismo nombre.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-3"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-03-07",
+      "front": "(Examen 3 · Programación Orientada a Objetos)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué imprime este código?\n\n```java\nclass Persona {\n String nombre;\n Persona(String nombre) { this.nombre = nombre; }\n}\npublic class Main {\n public static void main(String[] a) {\n Persona p1 = new Persona(\"Ana\");\n Persona p2 = p1;\n p2.nombre = \"Luis\";\n System.out.println(p1.nombre);\n }\n}\n```\n\na) Ana\n\nb) Luis\n\nc) null\n\nd) Error",
+      "back": "RESPUESTA / SOLUCIÓN\n\nb) Luis — p2 apunta al mismo objeto que p1 (se copia la referencia), por lo que `p2.nombre = \"Luis\"` cambia el nombre del objeto compartido, y p1.nombre es \"Luis\".",
+      "tags": [
+        "java",
+        "examen",
+        "examen-3"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "ex-java-03-08",
+      "front": "(Examen 3 · Programación Orientada a Objetos)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué constructor se invoca con `new Animal()` si la clase Animal define un constructor con parámetros?\n\na) El constructor con parámetros por defecto\n\nb) Error de compilación si no existe constructor sin parámetros\n\nc) El constructor por defecto implícito\n\nd) Ninguno",
+      "back": "RESPUESTA / SOLUCIÓN\n\nb) Si defines un constructor con parámetros, Java NO genera el constructor sin parámetros automáticamente, por lo que `new Animal()` provoca error de compilación a menos que lo definas.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-3"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-03-09",
+      "front": "(Examen 3 · Programación Orientada a Objetos)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nUn método `static` puede acceder directamente a atributos de instancia de la clase.",
+      "back": "RESPUESTA / SOLUCIÓN\n\nFalso — Un método estático pertenece a la clase y no puede acceder a atributos de instancia sin un objeto (no existe 'this' en contexto estático).",
+      "tags": [
+        "java",
+        "examen",
+        "examen-3"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-03-10",
+      "front": "(Examen 3 · Programación Orientada a Objetos)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Cuál es la diferencia entre `public`, `private` y `protected`?\n\na) Solo afectan a la velocidad del programa\n\nb) public accesible desde cualquier clase; private solo desde la propia; protected desde paquete y subclases\n\nc) Son sinónimos en Java\n\nd) No existen estos modificadores en Java",
+      "back": "RESPUESTA / SOLUCIÓN\n\nb) public (todos), private (solo la clase), protected (paquete + subclases).",
+      "tags": [
+        "java",
+        "examen",
+        "examen-3"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-04-01",
+      "front": "(Examen 4 · Herencia, polimorfismo, interfaces y clases abstractas)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nPara hacer que la clase `Perro` herede de `Animal` se usa:\n\na) class Perro implements Animal\n\nb) class Perro extends Animal\n\nc) class Perro inherits Animal\n\nd) class Perro : Animal",
+      "back": "RESPUESTA / SOLUCIÓN\n\nb) class Perro extends Animal — extends indica herencia de clase; implements se usa con interfaces.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-4"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-04-02",
+      "front": "(Examen 4 · Herencia, polimorfismo, interfaces y clases abstractas)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué palabra clave se usa para llamar al constructor de la clase padre dentro de un constructor hijo?\n\na) this()\n\nb) base()\n\nc) super()\n\nd) parent()",
+      "back": "RESPUESTA / SOLUCIÓN\n\nc) super() — invoca el constructor del padre. this() invoca un constructor de la propia clase.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-4"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-04-03",
+      "front": "(Examen 4 · Herencia, polimorfismo, interfaces y clases abstractas)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nUna clase abstracta puede contener métodos concretos (con implementación).",
+      "back": "RESPUESTA / SOLUCIÓN\n\nVerdadero — Una clase abstracta puede mezclar métodos abstractos y métodos concretos.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-4"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-04-04",
+      "front": "(Examen 4 · Herencia, polimorfismo, interfaces y clases abstractas)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nDado:\n\n```java\nclass Animal { void sonido() { System.out.println(\"genérico\"); } }\nclass Perro extends Animal { void sonido() { System.out.println(\"guau\"); } }\nAnimal a = new Perro();\na.sonido();\n```\n\na) genérico\n\nb) guau\n\nc) Error de compilación\n\nd) Nada",
+      "back": "RESPUESTA / SOLUCIÓN\n\nb) guau — El enlace dinámico (polimorfismo) invoca la implementación de la clase real del objeto (Perro) aunque la referencia sea de tipo Animal.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-4"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "ex-java-04-05",
+      "front": "(Examen 4 · Herencia, polimorfismo, interfaces y clases abstractas)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nUna interfaz en Java:\n\na) Solo puede tener métodos abstractos (hasta Java 8 también default/static)\n\nb) Puede ser instanciada con new\n\nc) Solo puede heredar de una interfaz\n\nd) No puede tener constantes",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) Una interfaz declara métodos abstractos (y desde Java 8 métodos default/static) que las clases que la implementan deben completar. No se puede instanciar con new.\n\n💡 **¿Qué es un método abstracto?** Es un método que solo tiene su firma o cabecera (nombre, parámetros y tipo de retorno) pero **no tiene cuerpo ni código** ({ ... }); termina con punto y coma (;). La clase que implementa la interfaz está obligada a programar su funcionamiento.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-4"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-04-06",
+      "front": "(Examen 4 · Herencia, polimorfismo, interfaces y clases abstractas)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nPara que una clase implemente una interfaz se usa la palabra clave:\n\na) extends\n\nb) uses\n\nc) implements\n\nd) inherits",
+      "back": "RESPUESTA / SOLUCIÓN\n\nc) implements — Una clase implementa una interfaz usando `implements`; puede implementar varias interfaces separadas por comas.\n\n```java\ninterface Volador { void volar(); }\ninterface Nadador { void nadar(); }\n\n// Una clase implementando múltiples interfaces:\nclass Pato implements Volador, Nadador {\n    public void volar() { System.out.println(\"Volando\"); }\n    public void nadar() { System.out.println(\"Nadando\"); }\n}\n```",
+      "tags": [
+        "java",
+        "examen",
+        "examen-4"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-04-07",
+      "front": "(Examen 4 · Herencia, polimorfismo, interfaces y clases abstractas)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Cuál es el propósito de `@Override`?\n\na) Crear un método nuevo\n\nb) Indicar que se sobrescribe un método heredado\n\nc) Hacer el método estático\n\nd) Hacer el método público",
+      "back": "RESPUESTA / SOLUCIÓN\n\nb) @Override es una anotación que indica que el método sobrescribe uno de la clase padre; ayuda al compilador a detectar errores de firma.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-4"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-04-08",
+      "front": "(Examen 4 · Herencia, polimorfismo, interfaces y clases abstractas)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nEn Java una clase puede heredar de varias clases simultáneamente (herencia múltiple).",
+      "back": "RESPUESTA / SOLUCIÓN\n\nFalso — Java no permite herencia múltiple de clases. Sí permite implementar varias interfaces.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-4"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-04-09",
+      "front": "(Examen 4 · Herencia, polimorfismo, interfaces y clases abstractas)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué elemento NO se puede heredar en una subclase?\n\na) Métodos public\n\nb) Atributos protected\n\nc) Constructores\n\nd) Métodos protected",
+      "back": "RESPUESTA / SOLUCIÓN\n\nc) Los constructores no se heredan; la subclase debe definir sus propios constructores e invocar al del padre usando `super()`.\n\n```java\nclass Persona {\n    Persona(String nombre) { System.out.println(\"Padre: \" + nombre); }\n}\n\nclass Empleado extends Persona {\n    Empleado(String nombre) {\n        super(nombre); // Invoca el constructor del padre con super()\n    }\n}\n```",
+      "tags": [
+        "java",
+        "examen",
+        "examen-4"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-04-10",
+      "front": "(Examen 4 · Herencia, polimorfismo, interfaces y clases abstractas)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nDado un método `abstract`, la clase que lo contiene debe ser:\n\na) final\n\nb) abstract\n\nc) static\n\nd) Una interfaz o clase abstracta",
+      "back": "RESPUESTA / SOLUCIÓN\n\nb) abstract — Un método abstract declarado obliga a que su clase sea abstracta o sea una interfaz.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-4"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-05-01",
+      "front": "(Examen 5 · Ficheros, excepciones y colecciones)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué bloque se ejecuta SIEMPRE, haya o no excepción?\n\na) try\n\nb) catch\n\nc) finally\n\nd) throws",
+      "back": "RESPUESTA / SOLUCIÓN\n\nc) finally — El bloque finally se ejecuta en todos los casos (con o sin excepción), salvo System.exit().",
+      "tags": [
+        "java",
+        "examen",
+        "examen-5"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-05-02",
+      "front": "(Examen 5 · Ficheros, excepciones y colecciones)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué clase es la base de todas las excepciones en Java?\n\na) Error\n\nb) Exception\n\nc) Throwable\n\nd) RuntimeException",
+      "back": "RESPUESTA / SOLUCIÓN\n\nc) Throwable — Es la raíz de la jerarquía; de él derivan Exception y Error.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-5"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-05-03",
+      "front": "(Examen 5 · Ficheros, excepciones y colecciones)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nUna excepción comprobada (checked) obliga a:\n\na) Capturarla o declararla con throws\n\nb) Ignorarla\n\nc) Lanzarla siempre\n\nd) Convertirla a RuntimeException",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) Las excepciones comprobadas deben capturarse (try/catch) o declararse en la firma con throws.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-5"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-05-04",
+      "front": "(Examen 5 · Ficheros, excepciones y colecciones)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nLa sentencia try-with-resources cierra automáticamente los recursos definidos dentro de ella.",
+      "back": "RESPUESTA / SOLUCIÓN\n\nVerdadero — try-with-resources (Java 7+) cierra automáticamente los recursos AutoCloseable al final del bloque, sin necesidad de finally.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-5"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-05-05",
+      "front": "(Examen 5 · Ficheros, excepciones y colecciones)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nLa clase `PrintWriter` se usa principalmente para:\n\na) Leer de un fichero\n\nb) Escribir texto formateado en un fichero de salida\n\nc) Crear un directorio\n\nd) Borrar un fichero",
+      "back": "RESPUESTA / SOLUCIÓN\n\nb) PrintWriter escribe texto, a menudo con formato (printf/println), en un archivo de salida.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-5"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-05-06",
+      "front": "(Examen 5 · Ficheros, excepciones y colecciones)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué estructura permite almacenar pares clave-valor y no admite claves duplicadas?\n\na) ArrayList\n\nb) HashSet\n\nc) HashMap\n\nd) LinkedList",
+      "back": "RESPUESTA / SOLUCIÓN\n\nc) HashMap — Almacena pares clave-valor; las claves son únicas (si se inserta una clave existente, se reemplaza el valor).",
+      "tags": [
+        "java",
+        "examen",
+        "examen-5"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-05-07",
+      "front": "(Examen 5 · Ficheros, excepciones y colecciones)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué imprime este código?\n\n```java\nList<Integer> l = new ArrayList<>();\nl.add(10); l.add(20); l.add(10);\nSystem.out.println(l.size());\n```\n\na) 2\n\nb) 3\n\nc) 4\n\nd) Error",
+      "back": "RESPUESTA / SOLUCIÓN\n\nb) 3 — ArrayList permite elementos duplicados, por lo que hay 3 elementos pese a repetir el 10.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-5"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "ex-java-05-08",
+      "front": "(Examen 5 · Ficheros, excepciones y colecciones)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nUn HashSet garantiza el orden de los elementos en la inserción.",
+      "back": "RESPUESTA / SOLUCIÓN\n\nFalso — HashSet no garantiza ningún orden de los elementos; para orden de inserción se usa LinkedHashSet o List.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-5"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-05-09",
+      "front": "(Examen 5 · Ficheros, excepciones y colecciones)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué ocurre al intentar leer un fichero que no existe?\n\na) Se crea automáticamente\n\nb) Se lanza FileNotFoundException\n\nc) Devuelve un fichero vacío\n\nd) Se lanza NumberFormatException",
+      "back": "RESPUESTA / SOLUCIÓN\n\nb) FileNotFoundException (subclase de IOException, comprobada) se lanza cuando se intenta abrir un fichero inexistente para lectura.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-5"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-05-10",
+      "front": "(Examen 5 · Ficheros, excepciones y colecciones)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nPara lanzar una excepción propia dentro de un método se usa la palabra clave:\n\na) throw\n\nb) throws\n\nc) try\n\nd) new",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) throw lanza una excepción; `throws` declara las excepciones que un método puede propagar.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-5"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-06-01",
+      "front": "(Examen 6 · Recursividad y algoritmos recursivos)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nDado el siguiente método recursivo, ¿qué devuelve fact(4)?\n\n```java\nstatic int fact(int n) {\n    if (n <= 1) {\n        return 1;\n    }\n    return n * fact(n - 1);\n}\n```\n\na) 12\n\nb) 24\n\nc) 4\n\nd) 120",
+      "back": "RESPUESTA / SOLUCIÓN\n\n**b) 24** — El método calcula el factorial de 4 (4 * 3 * 2 * 1 = 24).\n\n### 📋 Tabla paso a paso de la ejecución:\n\n| Paso | Llamada | n <= 1? | Operación que espera | Valor que devuelve |\n| :--- | :--- | :--- | :--- | :--- |\n| **1** | `fact(4)` | No (4 > 1) | 4 * fact(3) | 4 * 6 = **24** |\n| **2** | `fact(3)` | No (3 > 1) | 3 * fact(2) | 3 * 2 = **6** |\n| **3** | `fact(2)` | No (2 > 1) | 2 * fact(1) | 2 * 1 = **2** |\n| **4** | `fact(1)` | **Sí (1 <= 1)** | *(Caso base)* | **1** |\n\n💡 **Explicación sencilla:**\n1. El programa va **bajando** en llamadas: `fact(4)` ➔ `fact(3)` ➔ `fact(2)` ➔ `fact(1)`.\n2. Al llegar a `fact(1)`, se detiene la bajada porque entra en el `if (n <= 1)` y devuelve `1`.\n3. Ahora va **subiendo y multiplicando los resultados acumulados**:\n   - `fact(2) = 2 * 1 = 2`\n   - `fact(3) = 3 * 2 = 6`\n   - `fact(4) = 4 * 6 = 24`",
+      "tags": [
+        "java",
+        "examen",
+        "examen-6"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "ex-java-06-02",
+      "front": "(Examen 6 · Recursividad y algoritmos recursivos)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nCon el método Fibonacci clásico (fib(0)=0, fib(1)=1, fib(n)=fib(n-1)+fib(n-2)), ¿cuánto vale fib(6)?\n\na) 5\n\nb) 6\n\nc) 8\n\nd) 13",
+      "back": "RESPUESTA / SOLUCIÓN\n\nc) 8 — La sucesión es: fib(0)=0, fib(1)=1, fib(2)=1, fib(3)=2, fib(4)=3, fib(5)=5, fib(6)=8.\n\n```java\npublic static int fib(int n) {\n    if (n <= 0) return 0;\n    if (n == 1) return 1;\n    return fib(n - 1) + fib(n - 2);\n}\n```\n\n**Desglose paso a paso:**\n- `fib(0) = 0` (caso base)\n- `fib(1) = 1` (caso base)\n- `fib(2) = fib(1) + fib(0) = 1 + 0 = 1`\n- `fib(3) = fib(2) + fib(1) = 1 + 1 = 2`\n- `fib(4) = fib(3) + fib(2) = 2 + 1 = 3`\n- `fib(5) = fib(4) + fib(3) = 3 + 2 = 5`\n- `fib(6) = fib(5) + fib(4) = 5 + 3 = 8`",
+      "tags": [
+        "java",
+        "examen",
+        "examen-6"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-06-03",
+      "front": "(Examen 6 · Recursividad y algoritmos recursivos)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nToda función recursiva debe tener al menos un caso base; sin él se produce un desbordamiento de pila (StackOverflowError).",
+      "back": "RESPUESTA / SOLUCIÓN\n\nVerdadero — Sin caso base la función se llama a sí misma indefinidamente y agota la memoria de la pila de llamadas, lanzando StackOverflowError.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-6"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-06-04",
+      "front": "(Examen 6 · Recursividad y algoritmos recursivos)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nEn las Torres de Hanoi, ¿cuántos movimientos son necesarios como mínimo para mover una torre de 3 discos?\n\na) 3\n\nb) 5\n\nc) 7\n\nd) 9",
+      "back": "RESPUESTA / SOLUCIÓN\n\nc) 7 — El número mínimo de movimientos es 2ⁿ − 1; para n = 3 discos: 2³ − 1 = 7.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-6"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-06-05",
+      "front": "(Examen 6 · Recursividad y algoritmos recursivos)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nUsando el algoritmo de Euclides recursivo, ¿qué devuelve mcd(48, 18)?\n\n```java\nstatic int mcd(int a, int b) {\n if (b == 0) {\n     return a;\n }\n return mcd(b, a % b);\n}\n```\n\na) 3\n\nb) 6\n\nc) 9\n\nd) 12",
+      "back": "RESPUESTA / SOLUCIÓN\n\nb) 6 — mcd(48, 18) = 6\n\nEl algoritmo de Euclides usa la propiedad mcd(a, b) = mcd(b, a % b): se repite hasta que el resto sea 0, y entonces se devuelve el divisor actual.\n\nCascada de llamadas:\n• mcd(48, 18) → resto 48 % 18 = 12 → mcd(18, 12)\n• mcd(18, 12) → resto 18 % 12 = 6  → mcd(12, 6)\n• mcd(12, 6)  → resto 12 % 6 = 0   → mcd(6, 0)\n• mcd(6, 0)   → b == 0 (caso base) → devuelve 6\n\nResultado que sube por toda la cadena: mcd(48, 18) = 6.\n\nTruco rápido: el mcd es el último resto distinto de cero de la división en cascada. Aquí la secuencia es 48 → 18 → 12 → 6 → 0, así que el mcd es 6.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-6"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "ex-java-06-06",
+      "front": "(Examen 6 · Recursividad y algoritmos recursivos)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nCon la búsqueda binaria recursiva sobre el array ordenado {2, 5, 8, 12, 19, 25}, ¿qué índice devuelve buscar(19)?\n\na) 3\n\nb) 4\n\nc) 5\n\nd) -1",
+      "back": "RESPUESTA / SOLUCIÓN\n\nb) 4 — El valor 19 está en la posición 4 del array (los índices empiezan en 0).",
+      "tags": [
+        "java",
+        "examen",
+        "examen-6"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-06-07",
+      "front": "(Examen 6 · Recursividad y algoritmos recursivos)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nEn la recursión de cola (tail recursion), la llamada recursiva es la última operación que ejecuta el método, lo que permite en algunos lenguajes optimizar la llamada reutilizando el marco de pila.",
+      "back": "RESPUESTA / SOLUCIÓN\n\nVerdadero — En la recursión de cola no queda trabajo pendiente después de la llamada recursiva; algunos compiladores/VMs la optimizan (aunque Java no la optimiza de forma general).",
+      "tags": [
+        "java",
+        "examen",
+        "examen-6"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-06-08",
+      "front": "(Examen 6 · Recursividad y algoritmos recursivos)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué devuelve sumaDig(345) con el siguiente método?\n\n```java\nstatic int sumaDig(int n) {\n if (n < 10) {\n     return n;\n }\n return n % 10 + sumaDig(n / 10);\n}\n```\n\na) 12\n\nb) 15\n\nc) 8\n\nd) 345",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) 12 — 5 + sumaDig(34) = 5 + 4 + sumaDig(3) = 5 + 4 + 3 = 12.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-6"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "ex-java-07-01",
+      "front": "(Examen 7 · POO avanzada: enum, wrappers, StringBuilder, equals y hashCode)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nDado el enum: enum Dia { LUNES, MARTES, MIÉRCOLES, JUEVES }, ¿qué devuelve Dia.MARTES.ordinal()?\n\na) 0\n\nb) 1\n\nc) 2\n\nd) Error de compilación",
+      "back": "RESPUESTA / SOLUCIÓN\n\nb) 1 — ordinal() devuelve la posición del valor dentro del enum empezando en 0 (LUNES=0, MARTES=1).",
+      "tags": [
+        "java",
+        "examen",
+        "examen-7"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-07-02",
+      "front": "(Examen 7 · POO avanzada: enum, wrappers, StringBuilder, equals y hashCode)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué imprime este código?\n\n```java\nInteger a = 500;\nInteger b = 500;\nSystem.out.println(a == b);\n```\n\na) true\n\nb) false\n\nc) Error de compilación\n\nd) NullPointerException",
+      "back": "RESPUESTA / SOLUCIÓN\n\nb) false — a == b compara referencias, y el valor 500 está fuera de la caché de Integer (-128..127), por lo que son objetos distintos. Para comparar valores debe usarse a.equals(b) o a.intValue() == b.intValue().",
+      "tags": [
+        "java",
+        "examen",
+        "examen-7"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "ex-java-07-03",
+      "front": "(Examen 7 · POO avanzada: enum, wrappers, StringBuilder, equals y hashCode)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nStringBuilder es una clase inmutable: una vez creado un objeto StringBuilder no se puede modificar su contenido.",
+      "back": "RESPUESTA / SOLUCIÓN\n\nFalso — StringBuilder es mutable: métodos como append(), insert() o reverse() modifican el mismo objeto. La clase inmutable es String.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-7"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-07-04",
+      "front": "(Examen 7 · POO avanzada: enum, wrappers, StringBuilder, equals y hashCode)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nCon estas declaraciones, ¿qué línea imprime true?\n\n```java\nString s1 = new String(\"hola\");\nString s2 = new String(\"hola\");\nSystem.out.println(s1 == s2); // línea 1\nSystem.out.println(s1.equals(s2)); // línea 2\n```\n\na) Solo la línea 1\n\nb) Solo la línea 2\n\nc) Ambas líneas\n\nd) Ninguna",
+      "back": "RESPUESTA / SOLUCIÓN\n\nb) Solo la línea 2 — == compara referencias (s1 y s2 son objetos distintos → false), mientras que equals() compara el contenido («hola» == «hola» → true).",
+      "tags": [
+        "java",
+        "examen",
+        "examen-7"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "ex-java-07-05",
+      "front": "(Examen 7 · POO avanzada: enum, wrappers, StringBuilder, equals y hashCode)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué imprime este código?\n\n```java\nInteger a = 100;\nInteger b = 100;\nSystem.out.println(a == b);\n```\n\na) true\n\nb) false\n\nc) Error de compilación\n\nd) 100",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) true — Los valores entre -128 y 127 están en la caché de Integer, por lo que a y b referencian el mismo objeto y == devuelve true.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-7"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "ex-java-07-06",
+      "front": "(Examen 7 · POO avanzada: enum, wrappers, StringBuilder, equals y hashCode)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nSi una clase sobrescribe equals(), debe sobrescribir también hashCode() para cumplir el contrato: dos objetos iguales según equals() deben tener el mismo hashCode().",
+      "back": "RESPUESTA / SOLUCIÓN\n\nVerdadero — Contrato equals/hashCode: si a.equals(b) es true, entonces a.hashCode() debe ser igual a b.hashCode(). El recíproco NO es obligatorio: objetos distintos pueden tener el mismo hash (colisión).\n\n¿Por qué importa? HashSet y HashMap reparten los objetos en cubetas (buckets) según su hashCode(): el hash decide en qué cubeta cae el objeto, y solo compara con equals() a los que caen en la misma cubeta.\n\nEjemplo: clase Persona que sobrescribe equals() pero NO hashCode()\n```java\nclass Persona {\n    String nombre;\n    Persona(String nombre) { this.nombre = nombre; }\n\n    @Override\n    public boolean equals(Object o) {\n        if (!(o instanceof Persona)) return false;\n        return ((Persona) o).nombre.equals(this.nombre);\n    }\n    // ❌ sin hashCode() sobrescrito → usa el de memoria (dirección)\n}\n\nPersona p1 = new Persona(\"Ana\");\nPersona p2 = new Persona(\"Ana\");\nSystem.out.println(p1.equals(p2)); // true\n\nHashSet<Persona> set = new HashSet<>();\nset.add(p1);\nset.add(p2);\nSystem.out.println(set.size());   // ¡2! duplicado ❌\n```\n\nSin hashCode(), p1 y p2 tienen hashes distintos (basados en memoria), caen en cubetas diferentes y HashSet ni siquiera los compara con equals(): los guarda como si fueran objetos distintos → set.size() = 2 (hay dos \"Anas\").\n\nCon hashCode() bien implementado (mismo campo que equals):\n```java\n@Override\npublic int hashCode() { return nombre.hashCode(); }\n// p1 y p2 → misma cubeta → el set los compara con equals() → no duplica → size() = 1 ✅\n```\n\nEn resumen: equals() define la igualdad lógica y hashCode() decide en qué cubeta buscar. Si dos objetos iguales caen en cubetas distintas, HashMap/HashSet fallan (duplicados o búsquedas que no encuentran). Por eso siempre van juntos: mismo campo en ambos.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-7"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-07-07",
+      "front": "(Examen 7 · POO avanzada: enum, wrappers, StringBuilder, equals y hashCode)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nUn objeto Coche crea en su constructor un objeto Motor y este no puede existir sin el coche. La relación entre Coche y Motor se llama…\n\na) Herencia\n\nb) Composición\n\nc) Polimorfismo\n\nd) Agregación",
+      "back": "RESPUESTA / SOLUCIÓN\n\nb) Composición — Relación fuerte «tiene-un» (has-a) en la que el ciclo de vida del Motor está ligado al del Coche. En la agregación el objeto se crea fuera y se pasa al contenedor.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-7"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-07-08",
+      "front": "(Examen 7 · POO avanzada: enum, wrappers, StringBuilder, equals y hashCode)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué imprime este código?\n\n```java\nStringBuilder sb = new StringBuilder(\"abc\");\nsb.append(\"def\").insert(3, \"-\");\nSystem.out.println(sb);\n```\n\na) abc-def\n\nb) abcdef-\n\nc) -abcdef\n\nd) abc-def-",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) abc-def — append(\"def\") deja «abcdef» y insert(3, \"-\") coloca el guion en el índice 3: «abc-def».",
+      "tags": [
+        "java",
+        "examen",
+        "examen-7"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "ex-java-08-01",
+      "front": "(Examen 8 · Colecciones y genéricos)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué implementación de List es más eficiente para insertar y eliminar elementos en posiciones intermedias?\n\na) ArrayList\n\nb) LinkedList\n\nc) TreeSet\n\nd) HashMap",
+      "back": "RESPUESTA / SOLUCIÓN\n\nb) LinkedList — La inserción/eliminación en medio solo requiere reenlazar nodos; en ArrayList hay que desplazar todos los elementos posteriores.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-8"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-08-02",
+      "front": "(Examen 8 · Colecciones y genéricos)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué imprime el siguiente código?\n\n```java\nTreeSet<Integer> ts = new TreeSet<>();\nts.add(5); ts.add(1); ts.add(5); ts.add(3);\nSystem.out.println(ts.size() + \" \" + ts);\n```\n\na) 4 [1, 3, 5, 5]\n\nb) 3 [1, 3, 5]\n\nc) 3 [5, 3, 1]\n\nd) 4 [5, 3, 1, 5]",
+      "back": "RESPUESTA / SOLUCIÓN\n\nb) 3 [1, 3, 5] — TreeSet no admite duplicados (el segundo 5 se descarta) y mantiene el orden natural ascendente.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-8"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "ex-java-08-03",
+      "front": "(Examen 8 · Colecciones y genéricos)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nDado el código, ¿qué se imprime?\n\n```java\nMap<String, Integer> m = new HashMap<>();\nm.put(\"a\", 1);\nSystem.out.println(m.put(\"a\", 2));\n```\n\na) null\n\nb) 1\n\nc) 2\n\nd) a",
+      "back": "RESPUESTA / SOLUCIÓN\n\nb) 1 — put() devuelve el valor ANTERIOR asociado a la clave, no el que acabas de poner.\n\nput(clave, valor) hace dos cosas a la vez:\n1. Guarda la pareja clave → valor.\n2. Devuelve el valor que había ANTES (o null si la clave no existía).\n\nPaso a paso:\n• m.put(\"a\", 1) → la clave \"a\" no existía: guarda {\"a\"→1} y devuelve null (retorno ignorado).\n• m.put(\"a\", 2) → la clave \"a\" YA existe: sustituye el valor (queda {\"a\"→2}) y devuelve el valor viejo: 1.\n\nPor eso imprime 1.\n\nRegla rápida para el examen:\n• Si la clave NO existía → put() devuelve null (y la añade).\n• Si la clave YA existía → put() devuelve el valor viejo (y lo reemplaza).\n\nVisualmente:\nANTES:   m = { \"a\" → 1 }\n        put(\"a\", 2)\nDESPUÉS: m = { \"a\" → 2 }   ⬆ devuelve lo que salió: 1\n\nNota: HashMap.put() con clave repetida solo reemplaza el valor, NO crea una segunda entrada; la clave sigue siendo única. En HashSet, add() hace lo mismo pero devuelve boolean (false si ya estaba).",
+      "tags": [
+        "java",
+        "examen",
+        "examen-8"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "ex-java-08-04",
+      "front": "(Examen 8 · Colecciones y genéricos)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nHashSet permite almacenar elementos duplicados.",
+      "back": "RESPUESTA / SOLUCIÓN\n\nFalso — HashSet rechaza duplicados: si se añade un elemento igual (según equals/hashCode) a uno existente, add() devuelve false y no lo inserta.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-8"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-08-05",
+      "front": "(Examen 8 · Colecciones y genéricos)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nAl recorrer un ArrayList con for-each y llamar a remove() dentro del bucle se lanza una excepción. ¿Cuál?\n\na) NullPointerException\n\nb) ConcurrentModificationException\n\nc) IndexOutOfBoundsException\n\nd) No lanza ninguna excepción",
+      "back": "RESPUESTA / SOLUCIÓN\n\nb) ConcurrentModificationException — El iterador del for-each detecta que la lista se modificó y falla; hay que usar Iterator y su método remove().",
+      "tags": [
+        "java",
+        "examen",
+        "examen-8"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-08-06",
+      "front": "(Examen 8 · Colecciones y genéricos)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nPara que una clase tenga un orden natural y pueda usarse en TreeSet o Collections.sort() debe implementar una interfaz. ¿Cuál?\n\na) Comparator con compare()\n\nb) Comparable con compareTo()\n\nc) Iterator con hasNext()\n\nd) Serializable",
+      "back": "RESPUESTA / SOLUCIÓN\n\nb) Comparable con compareTo() — El orden natural se define implementando Comparable; Comparator permite definir órdenes alternativos sin tocar la clase.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-8"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-08-07",
+      "front": "(Examen 8 · Colecciones y genéricos)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nDada la clase genérica class Caja<T> { ... }, ¿qué tipo concreto tiene T en la declaración Caja<String> c = new Caja<>();?\n\na) String\n\nb) Object\n\nc) T\n\nd) Error de compilación",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) String — El parámetro de tipo se instancia con String; el operador diamante <> infiere el tipo en el constructor.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-8"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-08-08",
+      "front": "(Examen 8 · Colecciones y genéricos)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nTreeMap mantiene sus claves ordenadas según el orden natural de la clave o el Comparator proporcionado.",
+      "back": "RESPUESTA / SOLUCIÓN\n\nVerdadero — TreeMap ordena las claves (orden natural o Comparator); HashMap no garantiza ningún orden y LinkedHashMap mantiene el orden de inserción.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-8"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-09-01",
+      "front": "(Examen 9 · Ficheros binarios, serialización y NIO)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué interfaz debe implementar una clase para poder guardar sus objetos con ObjectOutputStream?\n\na) Cloneable\n\nb) Comparable\n\nc) Serializable\n\nd) Iterator",
+      "back": "RESPUESTA / SOLUCIÓN\n\nc) Serializable — Es una interfaz de marcado (sin métodos) que indica que el objeto puede serializarse.\n\n💡 Explicación detallada con ejemplo:\n\n1. ¿Qué es una interfaz de marcado (marker interface)?\nEs una interfaz vacía (0 métodos). Solo sirve para dar permiso a la JVM de que los campos del objeto pueden transformarse a una secuencia de bytes.\n\n2. ¿Qué ocurre si no la implementas?\nAl llamar a `out.writeObject(obj)` se lanzará la excepción `NotSerializableException` en tiempo de ejecución.\n\n3. Ejemplo completo de guardado y lectura:\n\n```java\nimport java.io.*;\n\n// 1. La clase DEBE implementar Serializable\nclass Alumno implements Serializable {\n    private static final long serialVersionUID = 1L;\n    private String nombre;\n    private int nota;\n    private transient String pass; // transient: NO se guarda en el archivo\n\n    public Alumno(String nombre, int nota, String pass) {\n        this.nombre = nombre;\n        this.nota = nota;\n        this.pass = pass;\n    }\n\n    @Override\n    public String toString() {\n        return nombre + \" (Nota: \" + nota + \", Pass: \" + pass + \")\";\n    }\n}\n\npublic class DemoSerializable {\n    public static void main(String[] args) {\n        Alumno a = new Alumno(\"Pablo\", 10, \"clave123\");\n\n        // GUARDAR objeto con ObjectOutputStream\n        try (ObjectOutputStream out = new ObjectOutputStream(\n                new FileOutputStream(\"alumno.dat\"))) {\n            out.writeObject(a); // Guarda el objeto serializado en disco\n            System.out.println(\"Objeto guardado correctamente.\");\n        } catch (IOException e) {\n            e.printStackTrace();\n        }\n\n        // LEER objeto con ObjectInputStream\n        try (ObjectInputStream in = new ObjectInputStream(\n                new FileInputStream(\"alumno.dat\"))) {\n            Alumno recuperado = (Alumno) in.readObject();\n            System.out.println(\"Leído: \" + recuperado);\n            // Muestra: Pablo (Nota: 10, Pass: null) -> transient queda null\n        } catch (IOException | ClassNotFoundException e) {\n            e.printStackTrace();\n        }\n    }\n}\n```",
+      "tags": [
+        "java",
+        "examen",
+        "examen-9"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-09-02",
+      "front": "(Examen 9 · Ficheros binarios, serialización y NIO)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nUn campo declarado como transient no se guarda al serializar el objeto.",
+      "back": "RESPUESTA / SOLUCIÓN\n\nVerdadero — transient excluye el campo de la serialización; al deserializar queda con el valor por defecto (0, null, false...).",
+      "tags": [
+        "java",
+        "examen",
+        "examen-9"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-09-03",
+      "front": "(Examen 9 · Ficheros binarios, serialización y NIO)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nSi guardamos un int con out.writeInt(7), ¿qué método hay que usar para leerlo en el mismo orden?\n\na) readDouble()\n\nb) readInt()\n\nc) readLine()\n\nd) readObject()",
+      "back": "RESPUESTA / SOLUCIÓN\n\nb) readInt() — Los flujos de datos (DataInputStream/DataOutputStream) exigen leer los tipos en el mismo orden en que se escribieron.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-9"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-09-04",
+      "front": "(Examen 9 · Ficheros binarios, serialización y NIO)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nCon try-with-resources (try (BufferedReader br = ...) { ... }), al terminar el bloque, ¿qué ocurre con br?\n\na) hay que cerrar br manualmente\n\nb) br se cierra automáticamente\n\nc) br se borra del disco\n\nd) se lanza IOException siempre",
+      "back": "RESPUESTA / SOLUCIÓN\n\nb) br se cierra automáticamente — try-with-resources cierra todos los recursos declarados entre paréntesis al finalizar el bloque, incluso si hay una excepción.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-9"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-09-05",
+      "front": "(Examen 9 · Ficheros binarios, serialización y NIO)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nFiles.write(Path, List<String>) permite escribir un fichero de texto a partir de una lista de líneas.",
+      "back": "RESPUESTA / SOLUCIÓN\n\nVerdadero — java.nio.file.Files.write() crea (o sobrescribe) el fichero y escribe cada String de la lista como una línea.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-9"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-09-06",
+      "front": "(Examen 9 · Ficheros binarios, serialización y NIO)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué excepción lanza ObjectOutputStream al intentar serializar un objeto que NO implementa Serializable?\n\na) IOException\n\nb) NotSerializableException\n\nc) ClassNotFoundException\n\nd) FileNotFoundException",
+      "back": "RESPUESTA / SOLUCIÓN\n\nb) NotSerializableException — Es una subclase de IOException que se lanza cuando un objeto no es serializable.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-9"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-09-07",
+      "front": "(Examen 9 · Ficheros binarios, serialización y NIO)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nEl método read() de FileInputStream devuelve un valor. ¿Cuál?\n\na) un char\n\nb) un int con el byte leído (o -1 si es fin de fichero)\n\nc) un boolean\n\nd) un String con la línea",
+      "back": "RESPUESTA / SOLUCIÓN\n\nb) un int con el byte leído (o -1 si es fin de fichero) — Por eso el bucle típico de copia es while ((b = in.read()) != -1).",
+      "tags": [
+        "java",
+        "examen",
+        "examen-9"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-09-08",
+      "front": "(Examen 9 · Ficheros binarios, serialización y NIO)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nUn fichero binario puede leerse con Scanner igual que un fichero de texto.",
+      "back": "RESPUESTA / SOLUCIÓN\n\nFalso — Scanner está pensado para texto; para datos binarios hay que usar flujos de bytes o de datos (FileInputStream, DataInputStream, ObjectInputStream...).",
+      "tags": [
+        "java",
+        "examen",
+        "examen-9"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-10-01",
+      "front": "(Examen 10 · Programación funcional: lambdas, streams, Optional y java.time)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Cuál de estas expresiones es una lambda válida para sumar dos enteros?\n\na) (a, b) -> a + b\n\nb) a + b -> (a, b)\n\nc) (a, b) => a + b\n\nd) int a, int b -> a + b",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) (a, b) -> a + b — La sintaxis de una lambda es (parámetros) -> expresión; el tipo de los parámetros se infiere.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-10"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-10-02",
+      "front": "(Examen 10 · Programación funcional: lambdas, streams, Optional y java.time)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué imprime el siguiente código?\n\n```java\nList<Integer> nums = List.of(1, 2, 3, 4, 5);\nint r = nums.stream()\n .filter(n -> n % 2 == 0)\n .mapToInt(n -> n * n)\n .sum();\nSystem.out.println(r);\n```\n\na) 6\n\nb) 20\n\nc) 55\n\nd) 30",
+      "back": "RESPUESTA / SOLUCIÓN\n\nb) 20 — Filtra los pares (2 y 4), calcula sus cuadrados (4 y 16) y los suma: 4 + 16 = 20.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-10"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "ex-java-10-03",
+      "front": "(Examen 10 · Programación funcional: lambdas, streams, Optional y java.time)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nUn stream solo puede recorrerse una vez: después de consumirlo no puede reutilizarse.",
+      "back": "RESPUESTA / SOLUCIÓN\n\nVerdadero — Un stream es un flujo de una sola pasada; intentar volver a operar sobre el mismo stream lanza IllegalStateException.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-10"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-10-04",
+      "front": "(Examen 10 · Programación funcional: lambdas, streams, Optional y java.time)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué imprime este código?\n\n```java\nOptional<String> o = Optional.empty();\nSystem.out.println(o.orElse(\"vacio\"));\n```\n\na) Optional.empty\n\nb) vacio\n\nc) null\n\nd) NoSuchElementException",
+      "back": "RESPUESTA / SOLUCIÓN\n\nb) vacio — orElse() devuelve el valor si está presente y, si no, el valor alternativo indicado.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-10"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "ex-java-10-05",
+      "front": "(Examen 10 · Programación funcional: lambdas, streams, Optional y java.time)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nLa referencia a método String::length equivale a la lambda de una expresión. ¿Cuál?\n\na) () -> String.length()\n\nb) s -> s.length()\n\nc) s -> String.length(s)\n\nd) String -> length",
+      "back": "RESPUESTA / SOLUCIÓN\n\nb) s -> s.length() — Una method reference sobre un parámetro de instancia equivale a invocar el método sobre ese parámetro.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-10"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-10-06",
+      "front": "(Examen 10 · Programación funcional: lambdas, streams, Optional y java.time)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nCollectors.toList() recoge los elementos de un stream en una nueva lista.",
+      "back": "RESPUESTA / SOLUCIÓN\n\nVerdadero — Es el collector más habitual: stream.collect(Collectors.toList()) devuelve una List con los elementos resultantes.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-10"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-10-07",
+      "front": "(Examen 10 · Programación funcional: lambdas, streams, Optional y java.time)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué fecha imprime este código?\n\n```java\nLocalDate hoy = LocalDate.of(2026, 3, 10);\nSystem.out.println(hoy.plusDays(20));\n```\n\na) 2026-03-30\n\nb) 2026-03-20\n\nc) 2026-04-01\n\nd) 2026-04-30",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) 2026-03-30 — LocalDate es inmutable; plusDays(20) devuelve una nueva fecha: 10 de marzo + 20 días = 30 de marzo.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-10"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "ex-java-10-08",
+      "front": "(Examen 10 · Programación funcional: lambdas, streams, Optional y java.time)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué interfaz funcional se usa para representar una condición que devuelve true o false sobre un objeto?\n\na) Consumer<T>\n\nb) Supplier<T>\n\nc) Predicate<T>\n\nd) Function<T, R>",
+      "back": "RESPUESTA / SOLUCIÓN\n\nc) Predicate<T> — Su método funcional es `boolean test(T t)`; recibe un elemento de tipo T y evalúa una condición devolviendo `true` o `false`.\n\n💡 Comparativa de interfaces funcionales de `java.util.function`:\n• `Predicate<T>`: `T -> boolean` (evalúa condiciones, usado en `.filter()`, `removeIf()`).\n• `Function<T, R>`: `T -> R` (transforma un dato, usado en `.map()`).\n• `Consumer<T>`: `T -> void` (consume o realiza una acción, usado en `.forEach()`).\n• `Supplier<T>`: `() -> T` (genera o suministra un valor, usado en `Optional.orElseGet()`).\n\n💻 Ejemplo práctico de Predicate<T>:\n\n```java\nimport java.util.*;\nimport java.util.function.Predicate;\n\npublic class DemoPredicate {\n    public static void main(String[] args) {\n        List<String> nombres = Arrays.asList(\"Ana\", \"Pablo\", \"Alejandro\", \"Eva\", \"Beatriz\");\n\n        // 1. Declarar un Predicate explícito\n        Predicate<String> empiezaPorA = s -> s.startsWith(\"A\");\n\n        // 2. Evaluar manualmente con .test()\n        System.out.println(empiezaPorA.test(\"Ana\"));   // true\n        System.out.println(empiezaPorA.test(\"Pablo\")); // false\n\n        // 3. Componer condiciones con .and(), .or(), .negate()\n        Predicate<String> largo = s -> s.length() > 4;\n        Predicate<String> empiezaPorAYEsLargo = empiezaPorA.and(largo);\n\n        // 4. Uso habitual en Streams con .filter(Predicate)\n        List<String> filtrados = nombres.stream()\n            .filter(empiezaPorA) // Solo deja pasar los que devuelven true\n            .toList();\n\n        System.out.println(\"Empiezan por A: \" + filtrados); // [Ana, Alejandro]\n    }\n}\n```",
+      "tags": [
+        "java",
+        "examen",
+        "examen-10"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-11-01",
+      "front": "(Examen 11 · Hilos y programación concurrente)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué método pone en marcha un hilo nuevo?\n\na) run()\n\nb) start()\n\nc) execute()\n\nd) begin()",
+      "back": "RESPUESTA / SOLUCIÓN\n\nb) start() — Crea el hilo del sistema y ejecuta run() en él. Llamar a run() directamente lo ejecuta en el hilo actual.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-11"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-11-02",
+      "front": "(Examen 11 · Hilos y programación concurrente)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Cuál de estas expresiones crea correctamente un hilo con una lambda?\n\na) new Thread(() -> System.out.println(\"Hola\"));\n\nb) new Thread(\"Hola\");\n\nc) Thread.start(() -> System.out.println(\"Hola\"));\n\nd) new Runnable(() -> System.out.println(\"Hola\"));",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) new Thread(() -> ...) — Runnable es una interfaz funcional, por lo que la lambda es válida como argumento del constructor de Thread.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-11"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-11-03",
+      "front": "(Examen 11 · Hilos y programación concurrente)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nLlamar directamente a run() sobre un objeto Thread lanza el código en un hilo nuevo en paralelo.",
+      "back": "RESPUESTA / SOLUCIÓN\n\nFalso — run() invocado directamente se ejecuta de forma síncrona en el hilo que lo llama. Para ejecutarlo en paralelo hay que usar start().",
+      "tags": [
+        "java",
+        "examen",
+        "examen-11"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-11-04",
+      "front": "(Examen 11 · Hilos y programación concurrente)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué palabra clave impide que dos hilos entren a la vez en un método?\n\na) volatile\n\nb) synchronized\n\nc) locked\n\nd) atomic",
+      "back": "RESPUESTA / SOLUCIÓN\n\nb) synchronized — Serializa el acceso al método o bloque de código. Solo un hilo a la vez puede adquirir el \"monitor\" (lock intrínseco) del objeto; los demás hilos esperan en cola hasta que se libere.\n\n💡 ¿Por qué es fundamental?\nSin `synchronized`, operaciones no atómicas como `contador++` (leer valor -> sumar 1 -> guardar) sufren **condiciones de carrera** (*race conditions*) y se pierden incrementos si varios hilos acceden a la vez.\n\n💻 Ejemplo práctico de Contador Seguro:\n\n```java\nclass ContadorSeguro {\n    private int valor = 0;\n\n    // Con synchronized, solo 1 hilo puede ejecutar este método a la vez\n    public synchronized void incrementar() {\n        valor++; // Operación protegida contra condiciones de carrera\n    }\n\n    public synchronized int getValor() {\n        return valor;\n    }\n}\n\npublic class DemoSynchronized {\n    public static void main(String[] args) throws InterruptedException {\n        ContadorSeguro c = new ContadorSeguro();\n\n        // 2 hilos que incrementan 1000 veces cada uno\n        Thread h1 = new Thread(() -> { for (int i = 0; i < 1000; i++) c.incrementar(); });\n        Thread h2 = new Thread(() -> { for (int i = 0; i < 1000; i++) c.incrementar(); });\n\n        h1.start();\n        h2.start();\n        h1.join(); // Espera a que termine h1\n        h2.join(); // Espera a que termine h2\n\n        System.out.println(\"Total esperado 2000 -> Total obtenido: \" + c.getValor());\n    }\n}\n```",
+      "tags": [
+        "java",
+        "examen",
+        "examen-11"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-11-05",
+      "front": "(Examen 11 · Hilos y programación concurrente)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nSi un hilo llama a wait() sin haber adquirido el monitor (sin estar en un bloque synchronized), ¿qué ocurre?\n\na) Se bloquea hasta que otro hilo la notifique\n\nb) Se lanza IllegalMonitorStateException\n\nc) Se lanza InterruptedException\n\nd) No ocurre nada",
+      "back": "RESPUESTA / SOLUCIÓN\n\nb) IllegalMonitorStateException — En Java, los métodos `wait()`, `notify()` y `notifyAll()` provienen de la clase `Object` y EXIGEN que el hilo actual sea dueño del monitor del objeto (es decir, la llamada DEBE estar dentro de un bloque o método `synchronized` sobre ese mismo objeto).\n\n💡 Explicación detallada:\n• Si invocas `obj.wait()` fuera de `synchronized (obj)`, la JVM no puede liberar el cerrojo ni gestionar la cola de espera, por lo que lanza `IllegalMonitorStateException` (es una `RuntimeException` no comprobada).\n• `InterruptedException` solo se lanzaría si otro hilo interrumpe al hilo mientras ya está en espera válida dentro del monitor.\n\n💻 Comparativa de código Incorrecto vs Correcto:\n\n```java\nObject cerrojo = new Object();\n\n// ❌ INCORRECTO: Lanza IllegalMonitorStateException al instante\n// cerrojo.wait(); \n\n// ✅ CORRECTO: Adquiere primero el monitor con synchronized\nsynchronized (cerrojo) {\n    try {\n        System.out.println(\"Esperando notificación de otro hilo...\");\n        cerrojo.wait(); // Libera el monitor temporalmente y espera notify()\n        System.out.println(\"Reanudado tras recibir notify()\");\n    } catch (InterruptedException e) {\n        Thread.currentThread().interrupt();\n    }\n}\n```",
+      "tags": [
+        "java",
+        "examen",
+        "examen-11"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-11-06",
+      "front": "(Examen 11 · Hilos y programación concurrente)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nvolatile garantiza la visibilidad de una variable entre hilos, pero no la atomicidad de operaciones compuestas como contador++.",
+      "back": "RESPUESTA / SOLUCIÓN\n\nVerdadero — volatile evita que cada hilo use una copia en caché, pero no serializa lecturas-modificaciones-escrituras; para eso se necesita synchronized o clases atómicas.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-11"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-11-07",
+      "front": "(Examen 11 · Hilos y programación concurrente)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué interfaz de java.util.concurrent permite ejecutar tareas en un pool de hilos?\n\na) ThreadPool\n\nb) ExecutorService\n\nc) RunnableService\n\nd) FuturePool",
+      "back": "RESPUESTA / SOLUCIÓN\n\nb) ExecutorService — Es la interfaz principal de concurrencia en Java que gestiona un pool de hilos reutilizables, desacoplando la creación de hilos de la ejecución de tareas.\n\n💡 Características clave:\n• `submit(Callable<T>)` / `submit(Runnable)`: Envía tareas y devuelve un `Future<T>` para obtener el resultado de forma asíncrona con `.get()`.\n• `shutdown()`: Cierra el pool ordenadamente tras terminar las tareas en curso.\n• Se instancia comúnmente con la factoría `Executors.newFixedThreadPool(n)`.\n\n💻 Ejemplo práctico de ExecutorService:\n\n```java\nimport java.util.concurrent.*;\n\npublic class DemoExecutor {\n    public static void main(String[] args) throws Exception {\n        // 1. Crear un pool de 2 hilos reutilizables\n        ExecutorService pool = Executors.newFixedThreadPool(2);\n\n        // 2. Enviar una tarea Callable que calcula un valor\n        Callable<String> tarea = () -> {\n            Thread.sleep(500);\n            return \"Procesado por: \" + Thread.currentThread().getName();\n        };\n\n        Future<String> futuro = pool.submit(tarea);\n\n        System.out.println(\"Haciendo otras tareas mientras el hilo calcula...\");\n        \n        // 3. Obtener el resultado (.get() espera si aún no ha terminado)\n        String resultado = futuro.get();\n        System.out.println(\"Resultado: \" + resultado);\n\n        // 4. SIEMPRE cerrar el pool al finalizar\n        pool.shutdown();\n    }\n}\n```",
+      "tags": [
+        "java",
+        "examen",
+        "examen-11"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-11-08",
+      "front": "(Examen 11 · Hilos y programación concurrente)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué método de Thread hace que el hilo actual espere a que termine otro?\n\na) sleep()\n\nb) yield()\n\nc) join()\n\nd) wait()",
+      "back": "RESPUESTA / SOLUCIÓN\n\nc) join() — El hilo que lo invoca espera a que el hilo destino finalice.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-11"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-11-09",
+      "front": "(Examen 11 · Hilos y programación concurrente)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nUn deadlock ocurre cuando dos o más hilos esperan, cada uno, un recurso que otro mantiene, bloqueándose indefinidamente.",
+      "back": "RESPUESTA / SOLUCIÓN\n\nVerdadero — Es una espera circular: A espera el recurso de B y B espera el de A. Se evita, por ejemplo, adquiriendo los recursos siempre en el mismo orden.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-11"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-11-10",
+      "front": "(Examen 11 · Hilos y programación concurrente)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué excepción hay que capturar o declarar al usar Thread.sleep()?\n\na) IOException\n\nb) InterruptedException\n\nc) RuntimeException\n\nd) SleepException",
+      "back": "RESPUESTA / SOLUCIÓN\n\nb) InterruptedException — sleep() la lanza si otro hilo interrumpe al que duerme.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-11"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-12-01",
+      "front": "(Examen 12 · JDBC y bases de datos)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Cuál es la forma habitual de cargar el driver JDBC en aplicaciones clásicas?\n\na) Class.forName(\"com.mysql.cj.jdbc.Driver\")\n\nb) new Driver(\"mysql\")\n\nc) Driver.load(\"mysql\")\n\nd) JDBC.register(\"mysql\")",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) Class.forName(...) — Carga la clase del driver, que se registra sola en DriverManager (en JDBC 4+ ni siquiera es necesario si el driver está en el classpath).",
+      "tags": [
+        "java",
+        "examen",
+        "examen-12"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-12-02",
+      "front": "(Examen 12 · JDBC y bases de datos)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué método de DriverManager establece la conexión con la base de datos?\n\na) DriverManager.connect(url)\n\nb) DriverManager.getConnection(url, user, pass)\n\nc) Connection.open(url, user, pass)\n\nd) JDBC.connect(url, user, pass)",
+      "back": "RESPUESTA / SOLUCIÓN\n\nb) getConnection(url, user, pass) — Devuelve un objeto Connection con la sesión abierta contra la BD.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-12"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-12-03",
+      "front": "(Examen 12 · JDBC y bases de datos)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué objeto se recomienda para ejecutar consultas SQL con parámetros de forma segura?\n\na) Statement\n\nb) PreparedStatement\n\nc) CallableStatement\n\nd) ResultSet",
+      "back": "RESPUESTA / SOLUCIÓN\n\nb) PreparedStatement — La consulta se precompila y los parámetros se envían por separado con setString/setInt, evitando la inyección SQL.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-12"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-12-04",
+      "front": "(Examen 12 · JDBC y bases de datos)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nUsar PreparedStatement con parámetros (?) protege frente a inyección SQL porque el usuario nunca puede alterar la estructura de la consulta.",
+      "back": "RESPUESTA / SOLUCIÓN\n\nVerdadero — La consulta se precompila en el motor de base de datos antes de recibir los valores. Los parámetros asignados con `?` se tratan estrictamente como **datos literales** (cadenas de texto o números), por lo que cualquier comando malicioso inyectado (como comillas, `' OR '1'='1'`, o `DROP TABLE`) queda neutralizado sin alterar la sintaxis SQL.\n\n💡 Comparativa Código Vulnerable vs Seguro:\n\n```java\nString usuario = \"' OR '1'='1\"; // Intento de inyección SQL maliciosa\nString clave   = \"' OR '1'='1\";\n\n// ❌ VULNERABLE (Statement concatenado):\n// Genera: SELECT * FROM usuarios WHERE user = '' OR '1'='1' AND pass = '' OR '1'='1'\n// Da acceso de administrador a cualquiera sin verificar la clave real.\nStatement st = conexion.createStatement();\nResultSet rs1 = st.executeQuery(\n    \"SELECT * FROM usuarios WHERE user = '\" + usuario + \"' AND pass = '\" + clave + \"'\");\n\n// ✅ SEGURO (PreparedStatement parametrizado):\n// La estructura SQL ya está fijada. Busca un usuario cuyo nombre literal sea \"' OR '1'='1\"\nString sql = \"SELECT * FROM usuarios WHERE user = ? AND pass = ?\";\ntry (PreparedStatement ps = conexion.prepareStatement(sql)) {\n    ps.setString(1, usuario); // Se escapa y parametriza como dato seguro\n    ps.setString(2, clave);\n    try (ResultSet rs2 = ps.executeQuery()) {\n        if (rs2.next()) {\n            System.out.println(\"Login exitoso\");\n        }\n    }\n}\n```",
+      "tags": [
+        "java",
+        "examen",
+        "examen-12"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-12-05",
+      "front": "(Examen 12 · JDBC y bases de datos)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué método ejecuta un SELECT y devuelve las filas?\n\na) executeUpdate()\n\nb) executeQuery()\n\nc) executeSelect()\n\nd) query()",
+      "back": "RESPUESTA / SOLUCIÓN\n\nb) executeQuery() — Devuelve un ResultSet con las filas de la consulta.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-12"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-12-06",
+      "front": "(Examen 12 · JDBC y bases de datos)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué método de ResultSet avanza a la siguiente fila?\n\na) next()\n\nb) hasNext()\n\nc) moveNext()\n\nd) advance()",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) next() — Devuelve true si hay fila siguiente y false al llegar al final; se usa como condición del bucle de recorrido.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-12"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-12-07",
+      "front": "(Examen 12 · JDBC y bases de datos)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué método de ResultSet obtiene el valor de la columna 1 como cadena?\n\na) getString(1)\n\nb) getText(1)\n\nc) getValue(1)\n\nd) read(1)",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) getString(1) — Los índices de columna empiezan en 1 (no en 0).",
+      "tags": [
+        "java",
+        "examen",
+        "examen-12"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-12-08",
+      "front": "(Examen 12 · JDBC y bases de datos)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nexecuteUpdate() devuelve el número de filas afectadas por un INSERT, UPDATE o DELETE.",
+      "back": "RESPUESTA / SOLUCIÓN\n\nVerdadero — Para INSERT/UPDATE/DELETE se usa executeUpdate(); executeQuery() es solo para SELECT.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-12"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-12-09",
+      "front": "(Examen 12 · JDBC y bases de datos)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué método confirma los cambios de una transacción?\n\na) conn.commit()\n\nb) conn.save()\n\nc) conn.end()\n\nd) conn.flush()",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) commit() — Hace permanentes los cambios desde el último commit/rollback.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-12"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-12-10",
+      "front": "(Examen 12 · JDBC y bases de datos)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Cómo se obtienen las claves autogeneradas tras un INSERT (p. ej. un AUTO_INCREMENT)?\n\na) ps.getGeneratedKeys() tras preparar con Statement.RETURN_GENERATED_KEYS\n\nb) ps.getLastId()\n\nc) conn.getIdentity()\n\nd) No es posible con JDBC",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) getGeneratedKeys() — Se prepara la sentencia con Statement.RETURN_GENERATED_KEYS y se lee el ResultSet devuelto.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-12"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-13-01",
+      "front": "(Examen 13 · Swing y eventos de interfaz gráfica)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué método hace visible una ventana JFrame?\n\na) setVisible(true)\n\nb) show()\n\nc) display()\n\nd) open()",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) setVisible(true) — Sin esta llamada (o equivalente) la ventana no se muestra.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-13"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-13-02",
+      "front": "(Examen 13 · Swing y eventos de interfaz gráfica)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué layout coloca los componentes en las regiones NORTE, SUR, ESTE, OESTE y CENTRO?\n\na) FlowLayout\n\nb) BorderLayout\n\nc) GridLayout\n\nd) BoxLayout",
+      "back": "RESPUESTA / SOLUCIÓN\n\nb) BorderLayout — Es el layout por defecto de JFrame; cada región puede contener un componente.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-13"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-13-03",
+      "front": "(Examen 13 · Swing y eventos de interfaz gráfica)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué método registra la acción que se ejecuta al pulsar un JButton?\n\na) addActionListener()\n\nb) setOnClick()\n\nc) onClick()\n\nd) addClickListener()",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) addActionListener() — Recibe un ActionListener; con lambdas: boton.addActionListener(e -> { ... }).",
+      "tags": [
+        "java",
+        "examen",
+        "examen-13"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-13-04",
+      "front": "(Examen 13 · Swing y eventos de interfaz gráfica)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nSegún las buenas prácticas de Swing, toda modificación de componentes debe hacerse en el hilo de despacho de eventos (EDT).",
+      "back": "RESPUESTA / SOLUCIÓN\n\nVerdadero — Swing no es seguro para hilos; las actualizaciones fuera del EDT pueden provocar fallos intermitentes. Se usa SwingUtilities.invokeLater() para encolarlas.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-13"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-13-05",
+      "front": "(Examen 13 · Swing y eventos de interfaz gráfica)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué construcción lanza la interfaz en el EDT desde el main?\n\na) SwingUtilities.invokeLater(() -> new MiVentana());\n\nb) Thread.startUI(() -> new MiVentana());\n\nc) UI.launch(new MiVentana());\n\nd) Swing.start(new MiVentana());",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) SwingUtilities.invokeLater(...) — Encola la tarea en el EDT (Event Dispatch Thread).\n\n¿Qué es el EDT y por qué se usa?\n• El EDT es el único hilo de Swing responsable de gestionar eventos (clics, teclas) y pintar/actualizar componentes.\n• Swing NO es seguro para hilos (no es thread-safe). Modificar la GUI desde hilos secundarios o desde el hilo 'main' puede causar fallos gráficos y bloqueos.\n• SwingUtilities.invokeLater() recibe un Runnable y lo encola para que el EDT lo ejecute de forma segura tan pronto como esté libre.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-13"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-13-06",
+      "front": "(Examen 13 · Swing y eventos de interfaz gráfica)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué componente muestra una etiqueta de texto no editable?\n\na) JLabel\n\nb) JText\n\nc) JLabelField\n\nd) JField",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) JLabel — Se usa para textos informativos; con setText() se cambia su contenido.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-13"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-13-07",
+      "front": "(Examen 13 · Swing y eventos de interfaz gráfica)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué componente permite editar texto multilínea?\n\na) JTextField\n\nb) JTextArea\n\nc) JPasswordField\n\nd) JLabel",
+      "back": "RESPUESTA / SOLUCIÓN\n\nb) JTextArea — Acepta varias líneas; JTextField es de una sola línea.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-13"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-13-08",
+      "front": "(Examen 13 · Swing y eventos de interfaz gráfica)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nsetDefaultCloseOperation(EXIT_ON_CLOSE) hace que al pulsar la X de la ventana finalice la aplicación (System.exit).",
+      "back": "RESPUESTA / SOLUCIÓN\n\nVerdadero — EXIT_ON_CLOSE cierra la JVM; DO_NOTHING_ON_CLOSE o DISPOSE_ON_CLOSE son las alternativas para controlar el cierre.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-13"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-13-09",
+      "front": "(Examen 13 · Swing y eventos de interfaz gráfica)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué método de JTextField devuelve el texto introducido?\n\na) getText()\n\nb) getValue()\n\nc) text()\n\nd) getContent()",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) getText() — Devuelve el contenido actual del campo como String.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-13"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-13-10",
+      "front": "(Examen 13 · Swing y eventos de interfaz gráfica)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué interfaz permite reaccionar a eventos de ratón como clic o entrada del cursor?\n\na) MouseListener\n\nb) ButtonListener\n\nc) InputListener\n\nd) PointerListener",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) MouseListener — Define métodos como mouseClicked, mouseEntered, mouseExited.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-13"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-14-01",
+      "front": "(Examen 14 · Expresiones regulares y procesamiento de texto)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué clase compila una expresión regular en Java?\n\na) Pattern\n\nb) Regex\n\nc) Matcher\n\nd) RegexCompiler",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) Pattern — Pattern.compile(\"...\") compila la regex; Matcher se obtiene con pattern.matcher(texto).",
+      "tags": [
+        "java",
+        "examen",
+        "examen-14"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-14-02",
+      "front": "(Examen 14 · Expresiones regulares y procesamiento de texto)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué método comprueba si TODA la cadena coincide con la expresión?\n\na) matches()\n\nb) find()\n\nc) lookingAt()\n\nd) contains()",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) matches() — Exige que la expresión cubra la cadena completa (equivale a anclar con ^ y $).",
+      "tags": [
+        "java",
+        "examen",
+        "examen-14"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-14-03",
+      "front": "(Examen 14 · Expresiones regulares y procesamiento de texto)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué cuantificador significa 'una o más veces'?\n\na) *\n\nb) +\n\nc) ?\n\nd) {1}",
+      "back": "RESPUESTA / SOLUCIÓN\n\nb) + — a+ acepta 'a', 'aa', 'aaa'...; * acepta cero o más; ? cero o una.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-14"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-14-04",
+      "front": "(Examen 14 · Expresiones regulares y procesamiento de texto)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué método de Matcher busca la siguiente coincidencia dentro de la cadena?\n\na) find()\n\nb) next()\n\nc) match()\n\nd) search()",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) find() — Avanza por la cadena localizando coincidencias parciales; se repite mientras devuelva true.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-14"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-14-05",
+      "front": "(Examen 14 · Expresiones regulares y procesamiento de texto)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nEn el código fuente Java, para representar la regex de un dígito hay que escribir \"\\\\d\" (doble barra).",
+      "back": "RESPUESTA / SOLUCIÓN\n\nVerdadero — En Java hay un «doble escape» (compilador de Java + motor de Regex).\n\n¿Por qué ocurre esto?\n• En Java, la barra invertida (\\) inicia una secuencia de escape en los Strings (ej. \\n, \\t).\n• La secuencia \"\\d\" NO es válida en Java y genera un error de compilación (Invalid escape sequence).\n• Para enviar un carácter '\\' real al motor de expresiones regulares, hay que escribir \"\\\\\", por lo que queda \"\\\\d\".\n\nEjemplo:\n```java\n// ❌ ERROR de compilación:\n// String regex = \"\\d+\"; \n\n// ✔️ CORRECTO:\nString texto = \"Habitacion 402\";\nboolean tieneNumero = texto.matches(\".*\\\\d+.*\"); // true\n```",
+      "tags": [
+        "java",
+        "examen",
+        "examen-14"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-14-06",
+      "front": "(Examen 14 · Expresiones regulares y procesamiento de texto)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué expresión valida un teléfono de 9 dígitos que empieza por 6, 7 o 9?\n\na) [679]\\\\d{8}\n\nb) \\\\d{9}\n\nc) [6-9]{9}\n\nd) 6|7|9\\\\d{8}",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) [679]\\\\d{8} — Primera cifra 6, 7 o 9, seguidas de exactamente 8 dígitos.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-14"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-14-07",
+      "front": "(Examen 14 · Expresiones regulares y procesamiento de texto)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué método de String reemplaza todas las coincidencias de una regex?\n\na) replaceAll()\n\nb) replace()\n\nc) replaceFirst()\n\nd) replaceAllMatches()",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) replaceAll(regex, reemplazo) — Sustituye todas las apariciones; replace() (sin regex) reemplaza literales.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-14"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-14-08",
+      "front": "(Examen 14 · Expresiones regulares y procesamiento de texto)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué construcción permite capturar una parte de la coincidencia para recuperarla después?\n\na) (grupo)\n\nb) [grupo]\n\nc) {grupo}\n\nd) <grupo>",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) (grupo) — Los paréntesis crean grupos; con matcher.group(1) se recupera el primero.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-14"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-14-09",
+      "front": "(Examen 14 · Expresiones regulares y procesamiento de texto)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nLa regex ^abc$ solo coincide con cadenas que empiecen y terminen exactamente en 'abc' (coincidencia completa).",
+      "back": "RESPUESTA / SOLUCIÓN\n\nVerdadero — ^ ancla el inicio y $ el final; con matches() las anclas son redundantes porque ya exige la cadena completa.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-14"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-14-10",
+      "front": "(Examen 14 · Expresiones regulares y procesamiento de texto)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué método de String divide la cadena usando una expresión regular como separador?\n\na) split()\n\nb) cut()\n\nc) divide()\n\nd) tokenize()",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) split(regex) — Devuelve un String[]; p. ej. \"a;b;c\".split(\";\") → [\"a\", \"b\", \"c\"].",
+      "tags": [
+        "java",
+        "examen",
+        "examen-14"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-15-01",
+      "front": "(Examen 15 · Ordenación y búsqueda: algoritmos y complejidad)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué complejidad temporal tiene la ordenación por burbuja en el peor caso?\n\na) O(n²)\n\nb) O(n log n)\n\nc) O(n)\n\nd) O(log n)",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) O(n²) — Dos bucles anidados sobre n elementos; lo mismo aplica a selección e inserción en el peor caso.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-15"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-15-02",
+      "front": "(Examen 15 · Ordenación y búsqueda: algoritmos y complejidad)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué método de la clase Arrays ordena un array?\n\na) Arrays.sort()\n\nb) Arrays.order()\n\nc) Arrays.sortArray()\n\nd) Arrays.quickSort()",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) Arrays.sort() — Ordena arrays de primitivos o de objetos (con Comparable o Comparator).",
+      "tags": [
+        "java",
+        "examen",
+        "examen-15"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-15-03",
+      "front": "(Examen 15 · Ordenación y búsqueda: algoritmos y complejidad)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué requisito imprescindible tiene la búsqueda binaria?\n\na) El array debe estar ordenado\n\nb) El array no puede tener duplicados\n\nc) Solo funciona con enteros\n\nd) El array debe ser pequeño",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) Estar ordenado — Divide el espacio en dos en cada paso; sin orden previo las comparaciones con el medio no garantizan nada.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-15"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-15-04",
+      "front": "(Examen 15 · Ordenación y búsqueda: algoritmos y complejidad)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué interfaz deben implementar los objetos para que Arrays.sort los ordene con su orden natural?\n\na) Comparable\n\nb) Comparator\n\nc) Orderable\n\nd) Sortable",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) Comparable — Define compareTo(T otro); p. ej. los String ya son Comparable.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-15"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-15-05",
+      "front": "(Examen 15 · Ordenación y búsqueda: algoritmos y complejidad)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué método define la interfaz Comparable?\n\na) compareTo(T o)\n\nb) compare(T a, T b)\n\nc) compareTo(T a, T b)\n\nd) equals(T o)",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) compareTo(T o) — Devuelve negativo, cero o positivo según este objeto sea menor, igual o mayor que el argumento.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-15"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-15-06",
+      "front": "(Examen 15 · Ordenación y búsqueda: algoritmos y complejidad)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué interfaz permite ordenar una colección con criterios externos sin tocar la clase?\n\na) Comparator\n\nb) Comparable\n\nc) Orderable\n\nd) Sortable",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) Comparator — Con compare(a, b); se puede pasar a Arrays.sort/Collections.sort y combinarse con lambdas o comparing().",
+      "tags": [
+        "java",
+        "examen",
+        "examen-15"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-15-07",
+      "front": "(Examen 15 · Ordenación y búsqueda: algoritmos y complejidad)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué método de Collections ordena una List?\n\na) Collections.sort(lista)\n\nb) Collections.order(lista)\n\nc) Collections.sortList(lista)\n\nd) Arrays.sort(lista)",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) Collections.sort(lista) — Ordena la lista in-place; acepta un Comparator opcional como segundo argumento.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-15"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-15-08",
+      "front": "(Examen 15 · Ordenación y búsqueda: algoritmos y complejidad)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nAplicar búsqueda binaria a un array desordenado puede devolver resultados incorrectos sin lanzar ninguna excepción.",
+      "back": "RESPUESTA / SOLUCIÓN\n\nVerdadero — El algoritmo asume orden y no lo comprueba: puede devolver -1 o una posición equivocada silenciosamente.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-15"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-15-09",
+      "front": "(Examen 15 · Ordenación y búsqueda: algoritmos y complejidad)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué algoritmo usa internamente Arrays.sort para objetos en Java moderno (caso promedio O(n log n))?\n\na) TimSort (variante de merge sort)\n\nb) Burbuja\n\nc) Selección\n\nd) Inserción",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) TimSort — Ordenación estable O(n log n) en el caso promedio; para primitivos usa dual-pivot quicksort.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-15"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-15-10",
+      "front": "(Examen 15 · Ordenación y búsqueda: algoritmos y complejidad)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nEn la búsqueda binaria, si el valor buscado es MAYOR que el elemento central, ¿en qué mitad se continúa?\n\na) En la mitad derecha\n\nb) En la mitad izquierda\n\nc) Se termina\n\nd) Se reinicia el algoritmo",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) Mitad derecha — El elemento central descarta toda la mitad izquierda (incluido él mismo).",
+      "tags": [
+        "java",
+        "examen",
+        "examen-15"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-16-01",
+      "front": "(Examen 16 · Estructuras de datos dinámicas: pilas, colas y listas enlazadas)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué clase de Java implementa una lista doblemente enlazada?\n\na) ArrayList\n\nb) LinkedList\n\nc) ArrayDeque\n\nd) Vector",
+      "back": "RESPUESTA / SOLUCIÓN\n\nb) LinkedList — Está implementada como lista doblemente enlazada; cada nodo guarda referencia al anterior y al siguiente.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-16"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-16-02",
+      "front": "(Examen 16 · Estructuras de datos dinámicas: pilas, colas y listas enlazadas)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué estructura sigue el principio FIFO (primero en entrar, primero en salir)?\n\na) Pila\n\nb) Cola\n\nc) Lista\n\nd) Conjunto",
+      "back": "RESPUESTA / SOLUCIÓN\n\nb) Cola (Queue) — Sigue el principio FIFO (First In, First Out: primero en entrar, primero en salir).\n\n¿Cómo funciona?\n• Analogía: Como una fila en el supermercado o una cola de impresión; el primero que llega es el primero en ser atendido.\n• Diferencia con Pila (Stack): La pila es LIFO (Last In, First Out; como una pila de platos o Ctrl+Z).\n\nEjemplo en Java:\n```java\nQueue<String> cola = new LinkedList<>();\ncola.offer(\"Ana\");   // 1ª en entrar\ncola.offer(\"Luis\");  // 2º en entrar\n\nSystem.out.println(cola.poll()); // \"Ana\" (es la 1ª en salir)\nSystem.out.println(cola.poll()); // \"Luis\"\n```",
+      "tags": [
+        "java",
+        "examen",
+        "examen-16"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-16-03",
+      "front": "(Examen 16 · Estructuras de datos dinámicas: pilas, colas y listas enlazadas)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué estructura sigue el principio LIFO (último en entrar, primero en salir)?\n\na) Pila\n\nb) Cola\n\nc) Deque\n\nd) Vector",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) Pila — En una pila el último elemento apilado es el primero en salir (LIFO).",
+      "tags": [
+        "java",
+        "examen",
+        "examen-16"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-16-04",
+      "front": "(Examen 16 · Estructuras de datos dinámicas: pilas, colas y listas enlazadas)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué método de Deque añade un elemento al final de la estructura?\n\na) addLast()\n\nb) addFirst()\n\nc) push()\n\nd) insert()",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) addLast() — Añade el elemento al final; addFirst() y push() lo añaden al principio.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-16"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-16-05",
+      "front": "(Examen 16 · Estructuras de datos dinámicas: pilas, colas y listas enlazadas)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué método de Deque extrae y devuelve el primer elemento (comportamiento de cola)?\n\na) pollFirst()\n\nb) pop()\n\nc) peekLast()\n\nd) removeLast()",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) pollFirst() — Extrae y devuelve el primer elemento (comportamiento de Cola FIFO).\n\n¿Cómo funcionan los métodos de Deque?\n• pollFirst() / poll(): Devuelve y elimina el primer elemento. Si la cola está vacía, devuelve null (sin lanzar excepción).\n• pop() / removeFirst(): Extrae del principio con comportamiento de Pila (LIFO), pero si está vacía LANZA NoSuchElementException.\n• peekLast(): Solo consulta el último elemento sin extraerlo.\n• removeLast(): Extrae del final, no del principio.\n\nEjemplo en Java:\n```java\nDeque<String> deque = new ArrayDeque<>();\ndeque.offerLast(\"Primero\"); // entra por el final\ndeque.offerLast(\"Segundo\");\n\nString sale = deque.pollFirst(); // \"Primero\" (comportamiento FIFO)\n```",
+      "tags": [
+        "java",
+        "examen",
+        "examen-16"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-16-06",
+      "front": "(Examen 16 · Estructuras de datos dinámicas: pilas, colas y listas enlazadas)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nArrayList es más eficiente que LinkedList para accesos aleatorios por índice (get(i)).",
+      "back": "RESPUESTA / SOLUCIÓN\n\nVerdadero — ArrayList accede por índice en O(1) al estar respaldado por un array; LinkedList debe recorrer nodos hasta la posición (O(n)).",
+      "tags": [
+        "java",
+        "examen",
+        "examen-16"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-16-07",
+      "front": "(Examen 16 · Estructuras de datos dinámicas: pilas, colas y listas enlazadas)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué interfaz permite recorrer una colección con hasNext() y next()?\n\na) Iterator\n\nb) Iterable\n\nc) Enumerator\n\nd) Loopable",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) Iterator — El bucle for-each usa internamente un Iterator sobre la colección (Iterable).",
+      "tags": [
+        "java",
+        "examen",
+        "examen-16"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-16-08",
+      "front": "(Examen 16 · Estructuras de datos dinámicas: pilas, colas y listas enlazadas)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nModificar una lista con remove() mientras se recorre con for-each lanza ConcurrentModificationException.",
+      "back": "RESPUESTA / SOLUCIÓN\n\nVerdadero — El iterador interno detecta modificaciones estructurales; hay que usar iterator.remove() o copiar la lista.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-16"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-16-09",
+      "front": "(Examen 16 · Estructuras de datos dinámicas: pilas, colas y listas enlazadas)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué método usa la clase Stack (java.util) para añadir un elemento encima?\n\na) push()\n\nb) addTop()\n\nc) insert()\n\nd) put()",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) push() — Stack (clase legacy) usa push() para apilar y pop() para desapilar.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-16"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-16-10",
+      "front": "(Examen 16 · Estructuras de datos dinámicas: pilas, colas y listas enlazadas)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Cuál es la implementación recomendada de pila en Java moderno?\n\na) ArrayDeque\n\nb) Stack\n\nc) Vector\n\nd) ArrayList",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) ArrayDeque — Más rápida que Stack (que es sincronizada y hereda de Vector) y no limitada por el tamaño del array.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-16"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-17-01",
+      "front": "(Examen 17 · Flujos de texto: Reader, Writer y try-with-resources)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué clase envuelve un FileReader para leer el fichero línea a línea con eficiencia?\n\na) BufferedReader\n\nb) DataInputStream\n\nc) ObjectReader\n\nd) LineReader",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) BufferedReader — Añade un buffer de memoria y el método readLine(), evitando una lectura del disco por carácter.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-17"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-17-02",
+      "front": "(Examen 17 · Flujos de texto: Reader, Writer y try-with-resources)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué método de BufferedReader lee una línea completa?\n\na) readLine()\n\nb) read()\n\nc) nextLine()\n\nd) line()",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) readLine() — Devuelve la línea sin el salto de línea, o null cuando se llega al final del fichero.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-17"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-17-03",
+      "front": "(Examen 17 · Flujos de texto: Reader, Writer y try-with-resources)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué clase combina buffer y métodos print()/println() para escribir texto cómodamente?\n\na) PrintWriter\n\nb) FileWriter\n\nc) DataWriter\n\nd) BufferedOutput",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) PrintWriter — Ofrece print()/println() sobre cualquier Writer y no lanza IOException en esos métodos.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-17"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-17-04",
+      "front": "(Examen 17 · Flujos de texto: Reader, Writer y try-with-resources)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué construcción cierra automáticamente los recursos al final del bloque?\n\na) try-with-resources\n\nb) try-catch normal\n\nc) finally manual\n\nd) try-alone",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) try-with-resources — Declara los recursos entre paréntesis tras el try y los cierra automáticamente al finalizar el bloque.\n\n¿Por qué es la mejor opción?\n• Cierre garantizado: Cierra el flujo siempre, tanto si la ejecución termina con éxito como si ocurre una excepción.\n• Requisito: El recurso debe implementar AutoCloseable (ej. BufferedReader, FileWriter, Scanner, etc.).\n• Evita el bloque finally manual, eliminando código repetitivo y posibles fugas de memoria.\n\nEjemplo en Java:\n```java\n// Se declara y abre dentro del try (...)\ntry (BufferedReader br = new BufferedReader(new FileReader(\"notas.txt\"))) {\n    String linea = br.readLine();\n    System.out.println(linea);\n} catch (IOException e) {\n    e.printStackTrace();\n}\n// Al salir del bloque, br.close() se ejecuta automáticamente\n```",
+      "tags": [
+        "java",
+        "examen",
+        "examen-17"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-17-05",
+      "front": "(Examen 17 · Flujos de texto: Reader, Writer y try-with-resources)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué interfaz deben implementar los recursos usados en try-with-resources?\n\na) AutoCloseable\n\nb) Serializable\n\nc) Resource\n\nd) Disposable",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) AutoCloseable — (o su subinterfaz Closeable). Sin ella el compilador rechaza el recurso.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-17"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-17-06",
+      "front": "(Examen 17 · Flujos de texto: Reader, Writer y try-with-resources)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nFileWriter, por defecto, sobrescribe el contenido del fichero si ya existe.",
+      "back": "RESPUESTA / SOLUCIÓN\n\nVerdadero — Por defecto abre en modo escritura (trunca el fichero); hay que pasar el flag true al constructor para añadir al final (append).",
+      "tags": [
+        "java",
+        "examen",
+        "examen-17"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-17-07",
+      "front": "(Examen 17 · Flujos de texto: Reader, Writer y try-with-resources)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Cuál es la forma correcta de leer un fichero con Scanner?\n\na) new Scanner(new File(\"datos.txt\"))\n\nb) Scanner.readFile(\"datos.txt\")\n\nc) File.scanner(\"datos.txt\")\n\nd) Scanner.open(\"datos.txt\")",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) new Scanner(new File(\"datos.txt\")) — Scanner acepta un File (o Path) y permite leer con nextLine(), nextInt(), etc.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-17"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-17-08",
+      "front": "(Examen 17 · Flujos de texto: Reader, Writer y try-with-resources)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué clase se recomienda para leer un fichero de texto con codificación explícita (p. ej. UTF-8)?\n\na) Files.newBufferedReader(path, StandardCharsets.UTF_8)\n\nb) new BufferedReader(new FileReader(path)) sin charset\n\nc) new DataReader(path)\n\nd) new TextFile(path)",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) Files.newBufferedReader(path, charset) — Permite indicar la codificación; FileReader sin charset usa la codificación por defecto de la plataforma.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-17"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-17-09",
+      "front": "(Examen 17 · Flujos de texto: Reader, Writer y try-with-resources)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué método de PrintWriter escribe sin salto de línea al final?\n\na) print()\n\nb) println()\n\nc) writeLine()\n\nd) newLineOnly()",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) print() — Escribe el texto sin añadir salto de línea; println() lo añade.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-17"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-17-10",
+      "front": "(Examen 17 · Flujos de texto: Reader, Writer y try-with-resources)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nSi no se cierra un BufferedWriter, parte del contenido puede quedarse en el buffer y no escribirse en el fichero.",
+      "back": "RESPUESTA / SOLUCIÓN\n\nVerdadero — Al cerrar (o hacer flush()) se vacía el buffer al disco; si el programa termina sin cerrar, puede perderse contenido.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-17"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-18-01",
+      "front": "(Examen 18 · Testing con JUnit y depuración)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué anotación de JUnit 5 marca un método como test?\n\na) @Test\n\nb) @Run\n\nc) @TestCase\n\nd) @Check",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) @Test — Los métodos anotados con @Test se ejecutan como pruebas unitarias.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-18"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-18-02",
+      "front": "(Examen 18 · Testing con JUnit y depuración)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué método de Assertions compara un valor esperado con el real?\n\na) assertEquals(esperado, real)\n\nb) assertSame(esperado, real)\n\nc) assertEqual(esperado, real)\n\nd) compare(esperado, real)",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) assertEquals(esperado, real) — Usa equals() para comparar; admite un mensaje opcional como tercer argumento.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-18"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-18-03",
+      "front": "(Examen 18 · Testing con JUnit y depuración)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué anotación ejecuta un método de inicialización antes de CADA test de la clase?\n\na) @BeforeEach\n\nb) @BeforeAll\n\nc) @Setup\n\nd) @Init",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) @BeforeEach — Se ejecuta antes de cada @Test; @BeforeAll lo hace una sola vez antes de todos.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-18"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-18-04",
+      "front": "(Examen 18 · Testing con JUnit y depuración)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nLos tests de una clase deben ser independientes entre sí: no deben depender del orden de ejecución ni del estado dejado por otro test.",
+      "back": "RESPUESTA / SOLUCIÓN\n\nVerdadero — Si un test depende de otro, fallará de forma intermitente; cada test debe preparar su propio estado (p. ej. con @BeforeEach).",
+      "tags": [
+        "java",
+        "examen",
+        "examen-18"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-18-05",
+      "front": "(Examen 18 · Testing con JUnit y depuración)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué assertion falla cuando la condición que recibe es falsa?\n\na) assertTrue(cond)\n\nb) assertFalse(cond)\n\nc) assertNull(x)\n\nd) assertSame(a, b)",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) assertTrue(cond) — Falla si cond es false; assertFalse es la contraria.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-18"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-18-06",
+      "front": "(Examen 18 · Testing con JUnit y depuración)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Cómo se comprueba en JUnit 5 que un método lanza una excepción concreta?\n\na) assertThrows(Tipo.class, () -> metodo())\n\nb) try-catch manual siempre\n\nc) assertException(Tipo.class)\n\nd) @Expected(Tipo.class)",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) assertThrows — Ejecuta el lambda y verifica que lanza la excepción indicada; además devuelve la excepción para inspeccionarla.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-18"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-18-07",
+      "front": "(Examen 18 · Testing con JUnit y depuración)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué assertion comprueba que dos variables apuntan a la MISMA referencia (no equivalentes)?\n\na) assertSame(a, b)\n\nb) assertEquals(a, b)\n\nc) assertIdentical(a, b)\n\nd) assertRef(a, b)",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) assertSame(a, b) — Usa ==; assertEquals usa equals(). Para comparar contenido se usa assertEquals.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-18"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-18-08",
+      "front": "(Examen 18 · Testing con JUnit y depuración)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nUn test sin ninguna assertion siempre pasa aunque el código probado esté mal.",
+      "back": "RESPUESTA / SOLUCIÓN\n\nVerdadero — Si no se aserta nada, JUnit solo comprueba que no haya excepciones; por eso todo test debe verificar resultados con assertions.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-18"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-18-09",
+      "front": "(Examen 18 · Testing con JUnit y depuración)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Por qué falla assertEquals(2.5, resultado) al comparar doubles?\n\na) Por la precisión binaria: hay que usar assertEquals(2.5, resultado, 0.001)\n\nb) Porque double no se puede comparar\n\nc) Porque assertEquals no acepta double\n\nd) No falla nunca",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) Por la precisión binaria — Los doubles no siempre se representan exactamente; JUnit exige un delta (tercer argumento) en la comparación.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-18"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-18-10",
+      "front": "(Examen 18 · Testing con JUnit y depuración)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué anotación ejecuta código una sola vez ANTES de todos los tests de la clase?\n\na) @BeforeAll\n\nb) @BeforeEach\n\nc) @BeforeClass (JUnit 4)\n\nd) @SetupAll",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) @BeforeAll (JUnit 5) — Se ejecuta una vez; el método debe ser static (o de instancia con @TestInstance(PER_CLASS)).",
+      "tags": [
+        "java",
+        "examen",
+        "examen-18"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-19-01",
+      "front": "(Examen 19 · Patrones de diseño: Singleton, Factory, Observer, DAO y MVC)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué patrón garantiza que una clase tenga una única instancia en toda la aplicación?\n\na) Singleton\n\nb) Factory\n\nc) Observer\n\nd) Adapter",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) Singleton — Controla la creación para que solo exista una instancia, accesible globalmente (getInstance()).",
+      "tags": [
+        "java",
+        "examen",
+        "examen-19"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-19-02",
+      "front": "(Examen 19 · Patrones de diseño: Singleton, Factory, Observer, DAO y MVC)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué patrón crea objetos sin que el cliente conozca la clase concreta?\n\na) Factory Method\n\nb) Singleton\n\nc) Observer\n\nd) Iterator",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) Factory Method — Centraliza la creación en un método que decide qué clase concreta instanciar según un parámetro o condición.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-19"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-19-03",
+      "front": "(Examen 19 · Patrones de diseño: Singleton, Factory, Observer, DAO y MVC)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué patrón notifica automáticamente a varios objetos cuando otro cambia de estado?\n\na) Observer\n\nb) Strategy\n\nc) Proxy\n\nd) Decorator",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) Observer — El sujeto mantiene una lista de observadores y los notifica sin conocer sus clases concretas.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-19"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-19-04",
+      "front": "(Examen 19 · Patrones de diseño: Singleton, Factory, Observer, DAO y MVC)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué patrón separa la lógica de negocio, la interfaz de usuario y los datos en tres componentes?\n\na) MVC\n\nb) DAO\n\nc) Singleton\n\nd) Facade",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) MVC (Modelo-Vista-Controlador) — El modelo gestiona los datos, la vista los muestra y el controlador gestiona las acciones del usuario.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-19"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-19-05",
+      "front": "(Examen 19 · Patrones de diseño: Singleton, Factory, Observer, DAO y MVC)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nEl constructor de una clase Singleton suele ser privado para impedir que se creen instancias desde fuera.",
+      "back": "RESPUESTA / SOLUCIÓN\n\nVerdadero — El constructor privado fuerza a usar getInstance(), que controla la creación de la única instancia.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-19"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-19-06",
+      "front": "(Examen 19 · Patrones de diseño: Singleton, Factory, Observer, DAO y MVC)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué patrón encapsula el acceso a la base de datos separándolo de la lógica de negocio?\n\na) DAO\n\nb) MVC\n\nc) Factory\n\nd) Template",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) DAO (Data Access Object) — Aísla las operaciones de persistencia (INSERT, SELECT...) en una clase dedicada.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-19"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-19-07",
+      "front": "(Examen 19 · Patrones de diseño: Singleton, Factory, Observer, DAO y MVC)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué método expone normalmente un Singleton?\n\na) getInstance()\n\nb) newInstance()\n\nc) create()\n\nd) instance()",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) getInstance() — Devuelve la instancia única, creándola la primera vez si no existe.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-19"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-19-08",
+      "front": "(Examen 19 · Patrones de diseño: Singleton, Factory, Observer, DAO y MVC)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nEn el patrón Observer, el sujeto conoce las clases concretas de sus observadores.",
+      "back": "RESPUESTA / SOLUCIÓN\n\nFalso — El sujeto solo conoce la interfaz Observador (o un Consumer), lo que desacopla ambas partes.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-19"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-19-09",
+      "front": "(Examen 19 · Patrones de diseño: Singleton, Factory, Observer, DAO y MVC)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nEn MVC, ¿qué componente gestiona las acciones del usuario (clics, teclado)?\n\na) Controlador\n\nb) Modelo\n\nc) Vista\n\nd) DAO",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) Controlador — Recibe las acciones del usuario, modifica el modelo y actualiza la vista.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-19"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-19-10",
+      "front": "(Examen 19 · Patrones de diseño: Singleton, Factory, Observer, DAO y MVC)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué patrón permite añadir responsabilidades a un objeto en tiempo de ejecución sin modificar su clase?\n\na) Decorator\n\nb) Singleton\n\nc) Factory\n\nd) Template Method",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) Decorator — Envuelve el objeto con otro que añade comportamiento (p. ej. BufferedReader envuelve a FileReader).",
+      "tags": [
+        "java",
+        "examen",
+        "examen-19"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-20-01",
+      "front": "(Examen 20 · Repaso integral de Java)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué devuelve \"Hola\".substring(1, 3)?\n\na) \"ol\"\n\nb) \"ola\"\n\nc) \"Ho\"\n\nd) \"lo\"",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) \"ol\" — substring(inicio, fin) toma los caracteres desde el índice 1 (incluido) hasta el 3 (excluido): 'o' y 'l'.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-20"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-20-02",
+      "front": "(Examen 20 · Repaso integral de Java)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué ocurre al ejecutar List.of(1, 2, 3).add(4)?\n\na) UnsupportedOperationException\n\nb) Se añade el 4\n\nc) NullPointerException\n\nd) ArrayIndexOutOfBoundsException",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) UnsupportedOperationException — List.of() devuelve una lista inmutable; no permite add/remove/set.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-20"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-20-03",
+      "front": "(Examen 20 · Repaso integral de Java)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Cuál es el resultado de la expresión 5 % 2?\n\na) 1\n\nb) 2\n\nc) 2.5\n\nd) 0",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) 1 — % es el operador módulo (resto de la división entera): 5 entre 2 da cociente 2 y resto 1.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-20"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-20-04",
+      "front": "(Examen 20 · Repaso integral de Java)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué clase se recomienda para concatenar muchas cadenas dentro de un bucle?\n\na) StringBuilder\n\nb) String con +\n\nc) StringBuffer solo en un hilo\n\nd) char[]",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) StringBuilder — Cada + crea un String nuevo (O(n²) en bucles); StringBuilder muta el buffer en O(1) amortizado por append.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-20"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-20-05",
+      "front": "(Examen 20 · Repaso integral de Java)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nEn try-with-resources, si el cuerpo lanza una excepción y el cierre del recurso también, ¿qué ocurre?\n\na) Se lanza la del cuerpo y la del cierre se añade como suprimida (addSuppressed)\n\nb) Se lanza la del cierre\n\nc) Se lanzan ambas como RuntimeException\n\nd) No se lanza ninguna",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) Se lanza la excepción del cuerpo y la del cierre se registra como suprimida — accesible con getSuppressed().",
+      "tags": [
+        "java",
+        "examen",
+        "examen-20"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-20-06",
+      "front": "(Examen 20 · Repaso integral de Java)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nUn método static puede invocarse sin crear una instancia de su clase.",
+      "back": "RESPUESTA / SOLUCIÓN\n\nVerdadero — Los miembros static pertenecen a la clase, no a los objetos; se invocan con NombreClase.metodo().",
+      "tags": [
+        "java",
+        "examen",
+        "examen-20"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-20-07",
+      "front": "(Examen 20 · Repaso integral de Java)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Cuánto suma IntStream.range(1, 4).sum()?\n\na) 6\n\nb) 10\n\nc) 3\n\nd) 7",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) 6 — range(1, 4) genera 1, 2, 3 (el fin se excluye) y su suma es 6.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-20"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-20-08",
+      "front": "(Examen 20 · Repaso integral de Java)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué método de Map devuelve un valor por defecto si la clave no existe?\n\na) getOrDefault(clave, defecto)\n\nb) getOrNull(clave)\n\nc) get(clave)\n\nd) valueOrDefault(clave)",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) getOrDefault(clave, defecto) — Devuelve el valor asociado o el defecto si la clave no está en el mapa.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-20"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-20-09",
+      "front": "(Examen 20 · Repaso integral de Java)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\n¿Qué excepción lanza Integer.parseInt(\"abc\")?\n\na) NumberFormatException\n\nb) IOException\n\nc) ParseException\n\nd) ClassCastException",
+      "back": "RESPUESTA / SOLUCIÓN\n\na) NumberFormatException — Es una RuntimeException lanzada cuando la cadena no representa un entero válido.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-20"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-20-10",
+      "front": "(Examen 20 · Repaso integral de Java)\n\nParte 1: Opción múltiple y Verdadero/Falso\n\nLos records de Java generan automáticamente equals(), hashCode() y toString() basados en sus componentes.",
+      "back": "RESPUESTA / SOLUCIÓN\n\nVerdadero — Un record declara los campos en el encabezado y el compilador genera el constructor canónico, acceso, equals, hashCode y toString.",
+      "tags": [
+        "java",
+        "examen",
+        "examen-20"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-21-01",
+      "front": "(Conceptos · Fundamentos de Java)\n\nParte 1: Conceptos básicos\n\n¿Qué es Java?\n\na) Un lenguaje interpretado que se ejecuta directamente en el navegador\n\nb) Un lenguaje compilado a bytecode que se ejecuta en la JVM (Máquina Virtual de Java)\n\nc) Un lenguaje de consulta de bases de datos\n\nd) Un lenguaje de marcado para páginas web",
+      "back": "RESPUESTA / SOLUCIÓN\n\n**b) Un lenguaje compilado a bytecode que se ejecuta en la JVM.**\n\n- Java se **compila** a *bytecode* (archivos `.class`) y ese bytecode se ejecuta en la **JVM** (Java Virtual Machine), lo que lo hace multiplataforma: \"escríbelo una vez, ejecútalo en cualquier sitio\".\n- Es un lenguaje **orientado a objetos**, de **tipado estático** (hay que declarar el tipo de cada variable).\n- A diferencia de JavaScript (que se ejecuta en el navegador del cliente), Java suele ejecutarse en servidores o en la máquina local.",
+      "tags": [
+        "java",
+        "examen",
+        "conceptos"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "ex-java-21-02",
+      "front": "(Conceptos · Fundamentos de Java)\n\nParte 1: Conceptos básicos\n\n¿Cuál es la estructura mínima de un programa Java?\n\na) Solo una función main suelta\n\nb) Una clase que contiene el método main\n\nc) Un archivo HTML con etiqueta <script>\n\nd) Una función llamada principal()",
+      "back": "RESPUESTA / SOLUCIÓN\n\n**b) Una clase que contiene el método main.**\n\n```java\npublic class Hola {\n    public static void main(String[] args) {\n        System.out.println(\"¡Hola Mundo!\");\n    }\n}\n```\n\n- El punto de entrada es **`public static void main(String[] args)`**.\n- El nombre del archivo debe coincidir con el nombre de la clase pública (`Hola.java`).\n- En Java **no** hay funciones sueltas: todo vive dentro de clases.",
+      "tags": [
+        "java",
+        "examen",
+        "conceptos"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "ex-java-21-03",
+      "front": "(Conceptos · Fundamentos de Java)\n\nParte 1: Conceptos básicos\n\n¿Cómo se compila y se ejecuta un programa Java desde la terminal?\n\na) java Hola.java y luego javac Hola\n\nb) javac Hola.java (compila) y java Hola (ejecuta)\n\nc) java run Hola.java\n\nd) compile Hola.java",
+      "back": "RESPUESTA / SOLUCIÓN\n\n**b) `javac Hola.java` compila y `java Hola` ejecuta.**\n\n```bash\njavac Hola.java   # compila → genera Hola.class (bytecode)\njava Hola         # ejecuta el bytecode en la JVM\n```\n\n- **`javac`** (Java Compiler) genera el archivo `.class` con bytecode.\n- **`java`** arranca la JVM y ejecuta el método `main` de la clase indicada (sin extensión `.class`).",
+      "tags": [
+        "java",
+        "examen",
+        "conceptos"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "ex-java-21-04",
+      "front": "(Conceptos · Fundamentos de Java)\n\nParte 1: Conceptos básicos\n\n¿Cómo se escriben los comentarios en Java?",
+      "back": "RESPUESTA / SOLUCIÓN\n\nHay **tres formas**:\n\n```java\n// Comentario de una sola línea\n\n/*\n  Comentario de varias líneas\n*/\n\n/** Comentario Javadoc: documenta clases y métodos */\npublic class Ejemplo { }\n```\n\n- **`//`** → comentario de una línea.\n- **`/* ... */`** → comentario de varias líneas.\n- **`/** ... */`** → Javadoc, genera documentación automática.\n\nLos comentarios no interfieren con la ejecución; el compilador los ignora.",
+      "tags": [
+        "java",
+        "examen",
+        "conceptos"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "ex-java-21-05",
+      "front": "(Conceptos · Fundamentos de Java)\n\nParte 1: Conceptos básicos\n\n¿Cómo se declara e inicializa una variable en Java?\n\na) var x = 5;\n\nb) int x = 5;\n\nc) x = 5;\n\nd) declare int x;",
+      "back": "RESPUESTA / SOLUCIÓN\n\n**b) `int x = 5;` — en Java se declara el TIPO antes del nombre.**\n\n```java\nint numero = 5;          // tipo + nombre + valor\ndouble precio = 5.5;\nString nombre = \"Ana\";\nboolean esMayor = true;\n\nint a, b, c;             // varias declaraciones\na = b = c = 2;           // asignación en cascada\n```\n\n💡 Java es de **tipado estático**: cada variable tiene un tipo fijo y no puede cambiar al asignar otro tipo (a diferencia de JavaScript con `var`).",
+      "tags": [
+        "java",
+        "examen",
+        "conceptos"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "ex-java-21-06",
+      "front": "(Conceptos · Fundamentos de Java)\n\nParte 1: Conceptos básicos\n\n¿Qué significa que Java sea de tipado estático?",
+      "back": "RESPUESTA / SOLUCIÓN\n\nQue **cada variable tiene un tipo fijo declarado** y no puede contener valores de otro tipo sin conversión:\n\n```java\nint dato = 42;\ndato = \"Hola\";   // ❌ ERROR de compilación: String no cabe en int\n```\n\n- En JavaScript el tipo se adapta al valor (tipado dinámico).\n- En Java hay que convertir explícitamente: `String s = String.valueOf(42);` o `int n = Integer.parseInt(\"42\");`.\n\nVentaja: muchos errores se detectan **en compilación**, antes de ejecutar.",
+      "tags": [
+        "java",
+        "examen",
+        "conceptos"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "ex-java-21-07",
+      "front": "(Conceptos · Fundamentos de Java)\n\nParte 1: Conceptos básicos\n\n¿Cuáles son los tipos primitivos más usados en Java y qué guardan?",
+      "back": "RESPUESTA / SOLUCIÓN\n\n| Tipo | Guarda | Ejemplo |\n|------|--------|---------|\n| `int` | número entero | `int n = 5;` |\n| `double` | número decimal | `double p = 5.5;` |\n| `boolean` | verdadero/falso | `boolean b = true;` |\n| `char` | un solo carácter | `char c = 'A';` |\n| `long` | entero grande | `long l = 3000000000L;` |\n| `float` | decimal (menor precisión) | `float f = 1.5f;` |\n\nAdemás está **`String`**, que **no es primitivo**: es una clase (tipo de referencia).\n\n💡 Los primitivos guardan el **valor** directamente; los objetos (como `String`) guardan una **referencia**.",
+      "tags": [
+        "java",
+        "examen",
+        "conceptos"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "ex-java-21-08",
+      "front": "(Conceptos · Fundamentos de Java)\n\nParte 1: Conceptos básicos\n\n¿Cómo se comprueba el tipo de un objeto en Java?\n\na) typeof(obj)\n\nb) obj instanceof Clase\n\nc) obj.getClass().name()\n\nd) type(obj)",
+      "back": "RESPUESTA / SOLUCIÓN\n\n**b) `obj instanceof Clase`** (y también `obj.getClass()` para el tipo exacto):\n\n```java\nObject obj = \"texto\";\nif (obj instanceof String) {          // true\n    System.out.println(\"Es un String\");\n}\n\nSystem.out.println(obj.getClass());   // class java.lang.String\n```\n\n- **`instanceof`** comprueba si el objeto es de una clase (o subclase/implementación).\n- **`getClass()`** devuelve la clase exacta en tiempo de ejecución.\n- Para saber si una variable de referencia está vacía se usa `obj == null`.",
+      "tags": [
+        "java",
+        "examen",
+        "conceptos"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "ex-java-21-09",
+      "front": "(Conceptos · Fundamentos de Java)\n\nParte 1: Conceptos básicos\n\n¿Cómo se escriben caracteres especiales dentro de un String en Java?",
+      "back": "RESPUESTA / SOLUCIÓN\n\nCon el carácter de escape **`\\`**:\n\n```java\nString t1 = \"Dijo: \"hola\"\";      // comillas dentro de comillas\nString t2 = \"It's fine\";          // apóstrofo normal, sin escape\nchar c = ''';                    // carácter comilla simple\n\nString salto = \"Línea1\\nLínea2\"; // salto de línea\nString tab = \"A\\tB\";             // tabulación\n```\n\n💡 En Java los Strings se delimitan con **comillas dobles** (`\"`), y los `char` con **comillas simples** (`'`). El apóstrofo no requiere escape dentro de un String.",
+      "tags": [
+        "java",
+        "examen",
+        "conceptos"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ex-java-21-13",
+      "front": "(Conceptos · Fundamentos de Java)\n\nParte 2: Entrada por teclado\n\n¿Cómo se lee texto y números del teclado en Java?\n\na) prompt(\"Texto\")\n\nb) Scanner con System.in\n\nc) readLine() global\n\nd) input()",
+      "back": "RESPUESTA / SOLUCIÓN\n\n**b) Con la clase `Scanner` y `System.in`:**\n\n```java\nimport java.util.Scanner;\n\npublic class Ejemplo {\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n\n        System.out.print(\"Introduce tu nombre: \");\n        String nombre = sc.nextLine();     // lee una línea de texto\n\n        System.out.print(\"Introduce tu edad: \");\n        int edad = sc.nextInt();           // lee un número entero\n\n        System.out.println(\"Hola \" + nombre + \", tienes \" + edad + \" años\");\n    }\n}\n```\n\n⚠️ `nextLine()` devuelve **String** (texto); `nextInt()`, `nextDouble()` devuelven números. Todo lo leído del teclado empieza siendo texto.",
+      "tags": [
+        "java",
+        "examen",
+        "conceptos"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": "ex-java-21-26",
+      "front": "(Conceptos · Fundamentos de Java)\n\nParte 3: Condiciones\n\n¿Cómo se comprueba si una variable de referencia está vacía en Java?\n\na) if (variable) — se evalúa como false si está vacía\n\nb) if (variable == null)\n\nc) if (variable.isEmpty())\n\nd) if (!variable)",
+      "back": "RESPUESTA / SOLUCIÓN\n\n**b) `if (variable == null)`** — y para Strings vacíos, `\".equals()`` o `isEmpty()`:\n\n```java\nString nombre = null;              // sin referencia\nif (nombre == null) {\n    System.out.println(\"No hay nombre\");\n}\n\nString texto = \"\";\nif (texto.isEmpty()) {             // cadena vacía\n    System.out.println(\"Está vacío\");\n}\nif (texto == null || texto.isEmpty()) {   // ambas comprobaciones\n    System.out.println(\"Nulo o vacío\");\n}\n```\n\n⚠️ A diferencia de JavaScript, en Java **no hay valores \"falsy\"**: las condiciones deben ser `boolean` puras. `if (variable)` no compila si variable no es booleana. Un String \"0\" o \" \" **es** true en una condición booleana real.",
+      "tags": [
+        "java",
+        "examen",
+        "conceptos"
+      ],
+      "difficulty": "medium"
+    }
+  ]
+}

@@ -205,7 +205,7 @@
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  border: 3.5px solid transparent;
+  border: 2.5px solid transparent;
   background:
     linear-gradient(#0e0e12, #0e0e12) padding-box,
     conic-gradient(from var(--border-angle),
@@ -285,14 +285,14 @@
   box-shadow:
     0 2px 10px rgba(66, 133, 244, 0.25),
     inset 0 1px 1px rgba(255, 255, 255, 0.3);
-  opacity: 0;
-  transition: opacity 4.2s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 1;
+  transition: opacity 1s ease;
   pointer-events: none;
   z-index: 1;
 }
 
-/* Pulso aleatorio con desvanecimiento muy lento (fade in / fade out de 4.2s) */
-.card-progress-fill.pct-glow-active::after {
+.card-progress-fill.pct-glow-active::after,
+.card-progress-fill::after {
   opacity: 1 !important;
 }
 
@@ -494,9 +494,11 @@
   align-items: center;
   justify-content: center;
   min-height: auto;
+  perspective: 1400px;
+  -webkit-perspective: 1400px;
 }
 
-/* NÃƒÂºmero de tarjeta: arriba a la derecha, estable por tarjeta */
+/* Número de tarjeta: arriba a la derecha, estable por tarjeta */
 .card-number-badge {
   position: absolute;
   top: 12px;
@@ -525,6 +527,8 @@
   position: relative;
   cursor: pointer;
   display: flex;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
 }
 
 .flashcard-inner {
@@ -532,29 +536,34 @@
   width: 100%;
   min-height: 100%;
   display: grid;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
 }
 
 .flashcard-front,
 .flashcard-back {
   width: 100%;
   background: #000000;
-  border: 5px solid #2a2a2a;
+  border: 2.5px solid #2a2a2a;
   border-radius: var(--radius-lg);
   padding: 40px 48px;
   display: flex;
   flex-direction: column;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
-  transition: var(--transition);
   grid-area: 1 / 1;
   min-height: 100%;
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  backface-visibility: hidden !important;
+  -webkit-backface-visibility: hidden !important;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
 }
 
 .flashcard-front {
   position: relative;
-  z-index: 2;
+  transform: rotateY(0deg);
 }
 
 /* La pregunta se alinea arriba, no al centro, para que se vea sin hacer scroll */
