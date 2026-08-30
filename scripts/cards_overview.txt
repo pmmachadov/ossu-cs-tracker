@@ -1,0 +1,5120 @@
+=== CARD 1: ex-java-01-11 ===
+FRONT:
+(Examen 1 · Fundamentos de Java y control de flujo)
+
+Parte 2: Análisis y depuración
+
+El siguiente programa tiene 3 errores. Encuéntralos y explica por qué fallan.
+
+```java
+public class Promedio {
+ public static void main(String[] args) {
+ int[] notas = {4, 7, 3, 9};
+ double media = calcular(notas[]);
+ System.out.println("Media: " + media);
+ }
+ static double calcular(int[] n) {
+ int suma = 0;
+ for (int i = 0; i <= n.length; i++) {
+ suma += n[i];
+ }
+ return suma;
+ }
+}
+```
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+Código original con los errores marcados:
+
+```java
+public class Promedio {
+ public static void main(String[] args) {
+ int[] notas = {4, 7, 3, 9};
+ double media = calcular(notas[]);       // ← ❌ ERROR ①: sobran los corchetes al invocar
+ System.out.println("Media: " + media);
+ }
+ static double calcular(int[] n) {
+ int suma = 0;
+ for (int i = 0; i <= n.length; i++) {   // ← ❌ ERROR ②: con `<=` i llega a n.length y n[n.length] no existe
+ suma += n[i];
+ }
+ return suma;                            // ← ❌ ERROR ③: devuelve la suma, no la media
+ }
+}
+```
+
+1. `calcular(notas[])` → no se pasan los corchetes al invocar: debe ser `calcular(notas)`.
+2. `i <= n.length` → desbordamiento: el último índice válido es length-1. Debe ser `i < n.length`.
+3. `return suma;` → no devuelve la media: debe ser `return suma / (double) n.length;` para que el resultado sea 5,75 (doble división real y no entera).
+
+Código corregido (con los 3 errores arreglados):
+
+```java
+public class Promedio {
+    public static void main(String[] args) {
+        int[] notas = {4, 7, 3, 9};
+        double media = calcular(notas);                // ✅ ERROR ① corregido: sin corchetes
+        System.out.println("Media: " + media);
+    }
+    static double calcular(int[] n) {
+        int suma = 0;
+        for (int i = 0; i < n.length; i++) {          // ✅ ERROR ② corregido: i < n.length
+            suma += n[i];
+        }
+        return suma / (double) n.length;              // ✅ ERROR ③ corregido: devuelve la media (5,75)
+    }
+}
+```
+
+============================================================
+
+=== CARD 2: ex-java-01-12 ===
+FRONT:
+(Examen 1 · Fundamentos de Java y control de flujo)
+
+Parte 2: Análisis y depuración
+
+Analiza el siguiente código y determina qué imprime (traza manual).
+
+```java
+public class Traza {
+ public static void main(String[] args) {
+ int a = 3;
+ int b = 5;
+ int c = metodo(a, b);
+ System.out.println(a + " " + b + " " + c);
+ }
+ static int metodo(int x, int y) {
+ x = x + 2;
+ y = y + 1;
+ return x * y;
+ }
+}
+```
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+En Java los primitivos se pasan por valor: dentro de `metodo`, x se convierte en 5 e y en 6, y devuelve 5*6 = 30.
+Sin embargo, a y b en `main` NO cambian porque el paso es por valor (se copian).
+Salida: `3 5 30`
+
+============================================================
+
+=== CARD 3: ex-java-01-13 ===
+FRONT:
+(Examen 1 · Fundamentos de Java y control de flujo)
+
+Parte 3: Ejercicios de programación
+
+Escribe un programa que pida un número entero positivo n y calcule la suma de todos los múltiplos de 3 o de 5 menores que n. 
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+import java.util.Scanner;
+public class Multiplos {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("n: ");
+        int n = sc.nextInt();
+        int suma = 0;
+        for (int i = 1; i < n; i++) {
+            if (i % 3 == 0 || i % 5 == 0) {
+                suma += i;
+            }
+        }
+        System.out.println("Suma: " + suma);
+    }
+}
+```
+
+============================================================
+
+=== CARD 4: ex-java-01-14 ===
+FRONT:
+(Examen 1 · Fundamentos de Java y control de flujo)
+
+Parte 3: Ejercicios de programación
+
+Implementa un método que reciba un número entero y devuelva true si es primo y false en caso contrario. Úsalo en un programa que muestre los primeros 10 números primos. 
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+public class Primos {
+    static boolean esPrimo(int n) {
+        if (n < 2) {
+            return false;
+        }
+        for (int i = 2; i * i <= n; i++) {
+            if (n % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+    public static void main(String[] args) {
+        int encontrados = 0, n = 2;
+        while (encontrados < 10) {
+            if (esPrimo(n)) { System.out.println(n); encontrados++; }
+            n++;
+        }
+    }
+}
+```
+
+============================================================
+
+=== CARD 5: ex-java-01-15 ===
+FRONT:
+(Examen 1 · Fundamentos de Java y control de flujo)
+
+Parte 3: Ejercicios de programación
+
+Escribe un programa que lea dos números por teclado y muestre un menú (sumar, restar, multiplicar, dividir). Usa un bucle do-while que se repita mientras el usuario no elija salir, y gestiona la división entre cero. 
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+import java.util.Scanner;
+public class Calculadora {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int opcion;
+        do {
+            System.out.println("1.Sumar 2.Restar 3.Multiplicar 4.Dividir 0.Salir");
+            opcion = sc.nextInt();
+            if (opcion == 0) {
+                break;
+            }
+            System.out.print("a y b: ");
+            double a = sc.nextDouble(), b = sc.nextDouble();
+            switch (opcion) {
+                case 1: System.out.println("Suma: " + (a + b)); break;
+                case 2: System.out.println("Resta: " + (a - b)); break;
+                case 3: System.out.println("Prod: " + (a * b)); break;
+                case 4: if (b == 0) { System.out.println("División entre cero"); }
+                         else {
+                             System.out.println("Div: " + (a / b)); break;
+                         }
+                default: System.out.println("Opción no válida");
+            }
+        } while (opcion != 0);
+    }
+}
+```
+
+============================================================
+
+=== CARD 6: ex-java-01-16 ===
+FRONT:
+(Examen 1 · Fundamentos de Java y control de flujo)
+
+Parte 3: Ejercicios de programación
+
+Explica con tus palabras la diferencia entre pasar un parámetro por valor y por referencia en Java, y entre tipos primitivos y de referencia. Pon un ejemplo en el que se aprecie la diferencia. 
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+Java SIEMPRE pasa parámetros por valor: se copia el valor de la variable (primitivos) o la referencia del objeto (objetos/arrays).
+
+Regla clave:
+- Primitivos → se copia el VALOR → los cambios dentro del método NO afectan a la variable original.
+- Objetos/arrays → se copia la REFERENCIA → modificar el CONTENIDO (p.ej. notas[0] = 5) SÍ afecta al original, pero REASIGNAR la variable (p.ej. obj = new ...) NO afecta fuera.
+
+Tipos primitivos de Java (8):
+1. `byte` — entero de 8 bits (−128 a 127)
+2. `short` — entero de 16 bits (−32.768 a 32.767)
+3. `int` — entero de 32 bits (el más usado)
+4. `long` — entero de 64 bits (sufijo L: 10L)
+5. `float` — decimal de 32 bits (sufijo f: 3.14f)
+6. `double` — decimal de 64 bits (el más usado: 3.14)
+7. `char` — carácter Unicode de 16 bits ('a')
+8. `boolean` — lógico (true / false)
+
+Todo lo demás (String, arrays, clases...) son tipos de REFERENCIA.
+
+```java
+public class PasarPorValor {
+    public static void main(String[] args) {
+        // CASO 1: PRIMITIVO → se copia el valor 10
+        int num = 10;
+        modificarPrimitivo(num);
+        System.out.println("num = " + num);       // 10 (NO cambió)
+
+        // CASO 2: ARRAY → se copia la referencia; apunta al MISMO
+        //         array, por eso modificar el contenido SÍ afecta
+        int[] notas = {1, 2, 3};
+        modificarContenido(notas);
+        System.out.println("notas[0] = " + notas[0]); // 5 (SÍ cambió)
+
+        // CASO 3: ARRAY → se copia la referencia, pero reasignar
+        //         solo cambia la copia local → NO afecta fuera
+        int[] otro = {7, 8, 9};
+        reasignar(otro);
+        System.out.println("otro[0] = " + otro[0]);   // 7 (NO cambió)
+
+        // CASO 4: OBJETO MUTABLE (StringBuilder) → se copia la
+        //         referencia; modificar el objeto SÍ afecta
+        StringBuilder sb = new StringBuilder("Hola");
+        modificarObjeto(sb);
+        System.out.println("sb = " + sb);        // Hola mundo (SÍ cambió)
+
+        // CASO 5: STRING (INMUTABLE) → "modificarlo" crea OTRO
+        //         objeto nuevo; el original nunca cambia
+        String s = "Hola";
+        intentarCambiarString(s);
+        System.out.println("s = " + s);          // Hola (NO cambió)
+    }
+
+    // x es una COPIA del valor → x = 99 no afecta a num
+    static void modificarPrimitivo(int x) {
+        x = 99;
+    }
+
+    // arr apunta al MISMO array → arr[0] = 5 modifica notas
+    static void modificarContenido(int[] arr) {
+        arr[0] = 5;
+    }
+
+    // arr ahora apunta a un array NUEVO → otro sigue igual
+    static void reasignar(int[] arr) {
+        arr = new int[]{100, 200};
+    }
+
+    // sb apunta al MISMO StringBuilder → append() modifica el objeto
+    static void modificarObjeto(StringBuilder sb) {
+        sb.append(" mundo");
+    }
+
+    // s = ... NO modifica el String: apunta a un objeto NUEVO
+    static void intentarCambiarString(String s) {
+        s = s + " mundo";
+    }
+}
+```
+
+Resumen: se pasa SIEMPRE una copia (del valor o de la referencia). La copia de la referencia apunta al MISMO objeto, por eso mutarlo se ve fuera, pero el puntero en sí es solo una copia, por eso reasignarlo no cambia nada fuera.
+
+Extra (trampa de examen): String es INMUTABLE, cualquier "modificación" crea un objeto NUEVO, por eso nunca cambia fuera (se comporta como un primitivo). StringBuilder SÍ es mutable: append() modifica el MISMO objeto y el cambio SÍ se refleja fuera.
+
+============================================================
+
+=== CARD 7: ex-java-01-17 ===
+FRONT:
+(Examen 1 · Fundamentos de Java y control de flujo)
+
+Parte 4: Pregunta teórica
+
+Explica la diferencia entre los bucles `while`, `do-while` y `for`. ¿Cuándo conviene usar cada uno? Razonar la respuesta.
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+`while`: evalúa la condición al inicio → 0 o más iteraciones. Útil cuando no sabemos cuántas veces iteraremos y solo conocemos la condición.
+`do-while`: evalúa al final → 1 o más iteraciones. Útil cuando el cuerpo debe ejecutarse como mínimo una vez (p. ej., menús).
+`for`: compacto para iteraciones con contador conocido (índice + condición + incremento). Útil para recorrer arrays o rangos determinados.
+
+============================================================
+
+=== CARD 8: ex-java-02-11 ===
+FRONT:
+(Examen 2 · Arrays y Strings)
+
+Parte 2: Análisis y depuración
+
+El siguiente código tiene 3 errores. Localízalos y explica cómo corregirlos. Además, indica qué se esperaría imprimir si funcionara.
+
+```java
+public class ArraysBug {
+ public static void main(String[] args) {
+ int[] nums = {3, 1, 4, 1, 5};
+ System.out.println(suma(nums));
+ System.out.println(nums);
+ }
+ static int suma(int[] n) {
+ int t = 0;
+ for (int i = 0; i <= n.length; i++) {
+ t += n[i];
+ }
+ return t;
+ }
+}
+```
+
+BACK:
+RESPUESTA / SOLUCIÓN — código con los 3 errores marcados:
+
+```java
+import java.util.Arrays;   // ← ❌ ERROR ③: faltaba esta línea (sin ella no compila)
+
+public class ArraysBug {                          // ✅ clase correcta
+    public static void main(String[] args) {      // ✅ main correcto
+        int[] nums = {3, 1, 4, 1, 5};             // ✅ array de 5 elementos, índices válidos 0..4
+        System.out.println(suma(nums));           // ✅ correcto: imprime el resultado de la suma
+        System.out.println(nums);                 // ← ❌ ERROR ②: imprime la referencia [I@..., no el contenido
+    }                                             //    → corrección: System.out.println(Arrays.toString(nums));
+
+    static int suma(int[] n) {                    // ✅ método correcto
+        int t = 0;                                // ✅ acumulador empieza en 0
+        for (int i = 0; i <= n.length; i++) {     // ← ❌ ERROR ①: con `<=` i llega a 5 y n[5] no existe
+            t += n[i];                            // ← ❌ ERROR ①b: con i = 5 accede a n[5], que NO existe (índices válidos 0..4) → aquí salta la excepción
+        }                                         //    cierre del bucle (faltaba en el enunciado)
+        return t;                                 // ✅ devuelve la suma
+    }                                             //    → corrección: i < n.length
+}
+```
+
+¿Por qué salta la excepción en esa línea?
+
+`t += n[i]` es la línea que accede al array, y la excepción se lanza al ejecutarla. En la última vuelta del bucle i vale 5 (por el `<=`), así que el programa intenta leer `n[5]`. Pero un array de 5 elementos tiene índices válidos 0..4: `n[5]` no existe. Java detecta el índice fuera de rango en el momento del acceso y lanza `ArrayIndexOutOfBoundsException`.
+
+Código corregido (con los 3 errores arreglados):
+
+```java
+import java.util.Arrays;                           // ✅ ERROR ③ corregido: faltaba el import
+
+public class ArraysBug {
+    public static void main(String[] args) {
+        int[] nums = {3, 1, 4, 1, 5};
+        System.out.println(suma(nums));            // ✅ imprime 14
+        System.out.println(Arrays.toString(nums)); // ✅ ERROR ② corregido: imprime [3, 1, 4, 1, 5]
+    }
+
+    static int suma(int[] n) {
+        int t = 0;
+        for (int i = 0; i < n.length; i++) {       // ✅ ERROR ① corregido: i < n.length (antes i <= n.length)
+            t += n[i];                             // ✅ esta línea era correcta: suma el elemento
+        }
+        return t;
+    }
+}
+```
+
+Salida esperada si funcionara:
+
+```
+14
+[3, 1, 4, 1, 5]
+```
+
+14 = 3 + 1 + 4 + 1 + 5 · [3, 1, 4, 1, 5] = contenido con Arrays.toString(nums)
+
+============================================================
+
+=== CARD 9: ex-java-02-12 ===
+FRONT:
+(Examen 2 · Arrays y Strings)
+
+Parte 2: Análisis y depuración
+
+Analiza y determina la salida exacta de este código (traza).
+
+```java
+public class MatrizT {
+ public static void main(String[] args) {
+ int[][] m = {{1, 2}, {3, 4}, {5, 6}};
+ System.out.println("F: " + m.length);
+ System.out.println("C: " + m[0].length);
+ System.out.println(m[2][1] - m[0][0]);
+ for (int i = 0; i < m.length; i++) {
+ System.out.print(m[i][i%2] + " ");
+ }
+ }
+}
+```
+
+BACK:
+RESPUESTA / SOLUCIÓN — concisa:
+
+```java
+public class MatrizT {
+    public static void main(String[] args) {
+        int[][] m = {{1, 2}, {3, 4}, {5, 6}};   // 3 filas × 2 columnas
+        System.out.println("F: " + m.length);    // m.length = nº filas = 3
+        System.out.println("C: " + m[0].length); // m[0].length = nº columnas = 2
+        System.out.println(m[2][1] - m[0][0]);   // m[2][1]=6, m[0][0]=1 → 5
+        for (int i = 0; i < m.length; i++) {     // i = 0, 1, 2
+            System.out.print(m[i][i % 2] + " "); // i%2 → columna 0, 1, 0
+    }
+}
+```
+
+CLAVE: i % 2 alterna la columna (fila PAR → col 0, fila IMPAR → col 1):
+m[0][0]=1, m[1][1]=4, m[2][0]=5.
+print (sin salto de línea) → los 3 números en la misma línea con espacio.
+
+SALIDA:
+```
+F: 3
+C: 2
+5
+1 4 5 
+```
+
+============================================================
+
+=== CARD 10: ex-java-02-13 ===
+FRONT:
+(Examen 2 · Arrays y Strings)
+
+Parte 3: Ejercicios de programación
+
+Pide 8 números por teclado y guárdalos en un array. Implementa métodos para: (1) contar cuántos son pares, (2) calcular el mayor y el menor, y (3) invertir el array. Muestra el resultado. 
+
+BACK:
+RESPUESTA / SOLUCIÓN — código formateado (estilo VSCode):
+
+```java
+import java.util.Scanner;
+
+public class ArraysUtils {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);            // ✅ lector de teclado
+        int[] nums = new int[8];                             // ✅ array de 8 posiciones
+
+        for (int indice = 0; indice < nums.length; indice++) {     // ✅ lee los 8 números
+            nums[indice] = scanner.nextInt();
+        }
+
+        System.out.println("Pares: " + contarPares(nums));                  // ✅ cuenta pares
+        System.out.println("Mayor: " + mayor(nums) + " Menor: " + menor(nums)); // ✅ mayor y menor
+
+        int[] invertidos = invertir(nums);                   // ✅ array invertido
+        System.out.println("Invertido: " + java.util.Arrays.toString(invertidos));
+    }
+
+    // ✅ Cuenta cuántos números son pares (valor % 2 == 0)
+    static int contarPares(int[] numeros) {
+        int contadorPares = 0;
+        for (int valor : numeros) {
+            if (valor % 2 == 0) {
+                contadorPares++;
+            }
+        }
+        return contadorPares;
+    }
+
+    // ✅ Devuelve el valor más grande del array
+    static int mayor(int[] numeros) {
+        int maximo = numeros[0];
+        for (int valor : numeros) {
+            if (valor > maximo) {
+                maximo = valor;
+            }
+        }
+        return maximo;
+    }
+
+    // ✅ Devuelve el valor más pequeño del array
+    static int menor(int[] numeros) {
+        int minimo = numeros[0];
+        for (int valor : numeros) {
+            if (valor < minimo) {
+                minimo = valor;
+            }
+        }
+        return minimo;
+    }
+
+    // ✅ Crea un array NUEVO con los elementos en orden inverso
+    //   (el original no se modifica: invertido[0] = último, invertido[1] = penúltimo...)
+    static int[] invertir(int[] numeros) {
+        int[] invertido = new int[numeros.length];
+        for (int indice = 0; indice < numeros.length; indice++) {
+            invertido[indice] = numeros[numeros.length - 1 - indice];
+        }
+        return invertido;
+    }
+}
+```
+
+============================================================
+
+=== CARD 11: ex-java-02-14 ===
+FRONT:
+(Examen 2 · Arrays y Strings)
+
+Parte 3: Ejercicios de programación
+
+Una matriz de 3x3 representa una tabla de números. Escribe un programa que la rellene con los valores de la multiplicación i*j (tabla de multiplicar) y que luego sume la diagonal principal y la diagonal secundaria. 
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+public class MatrizDiag {
+    public static void main(String[] args) {
+        int[][] m = new int[3][3];
+        int diagP = 0, diagS = 0;
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                m[i][j] = i * j;
+                if (i == j) {
+                if (i + j == 2) {
+            }
+        System.out.println("Diagonal principal: " + diagP);
+        System.out.println("Diagonal secundaria: " + diagS);
+    }
+}
+```
+
+============================================================
+
+=== CARD 12: ex-java-02-15 ===
+FRONT:
+(Examen 2 · Arrays y Strings)
+
+Parte 3: Ejercicios de programación
+
+Escribe un programa que, dada una cadena introducida por teclado, cuente cuántas vocales contiene, cuántas consonantes y cuántas palabras tiene (separadas por espacios). 
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+import java.util.Scanner;
+public class ContadorTexto {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String t = sc.nextLine().toLowerCase();
+        int voc = 0, cons = 0;
+        for (char c : t.toCharArray()) {
+            if (c >= 'a' && c <= 'z') {
+                if ("aeiou".indexOf(c) {
+                    != -1) voc++; else cons++;
+                }
+            }
+        }
+        String[] pal = t.trim().split("\\s+");
+        int n = (t.trim().isEmpty()) ? 0 : pal.length;
+        System.out.println("Vocales: " + voc + " Consonantes: " + cons + " Palabras: " + n);
+    }
+}
+```
+
+============================================================
+
+=== CARD 13: ex-java-02-16 ===
+FRONT:
+(Examen 2 · Arrays y Strings)
+
+Parte 3: Ejercicios de programación
+
+Escribe un programa que ordene un array usando el método de la burbuja y, tras ordenarlo, busque un valor introducido por teclado mediante búsqueda binaria, mostrando su posición o -1 si no existe. 
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+import java.util.Scanner;
+import java.util.Arrays;
+public class OrdenaBusca {
+    static void burbuja(int[] a) {
+        for (int i = 0; i < a.length-1; i++) {
+            for (int j = 0; j < a.length-1-i; j++) {
+                if (a[j] > a[j+1]) { int t=a[j]; a[j]=a[j+1]; a[j+1]=t; }
+            }
+        }
+    }
+    static int binaria(int[] a, int valor) {
+        int izq=0, der=a.length-1;
+        while (izq <= der) {
+            int med = (izq+der)/2;
+            if (a[med]==valor) {
+                return med;
+            }
+            if (a[med] < valor) {
+                izq = med+1; else der = med-1;
+            }
+        }
+        return -1;
+    }
+    public static void main(String[] args) {
+        int[] arr = {9, 3, 7, 1, 5, 2, 8, 4};
+        burbuja(arr);
+        System.out.println(Arrays.toString(arr));
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Buscar: ");
+        System.out.println("Posición: " + binaria(arr, sc.nextInt()));
+    }
+}
+```
+
+============================================================
+
+=== CARD 14: ex-java-02-17 ===
+FRONT:
+(Examen 2 · Arrays y Strings)
+
+Parte 4: Pregunta teórica
+
+¿Por qué es importante que un array esté ordenado para aplicar búsqueda binaria? Explica el funcionamiento paso a paso y su complejidad en notación O grande.
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+La búsqueda binaria divide repetidamente el intervalo de búsqueda a la mitad comparando el elemento central. Esto solo funciona si el array está ordenado, porque permite descartar la mitad izquierda o derecha con una sola comparación.
+Complejidad: O(log n) en el peor caso porque se reduce a la mitad en cada paso (log2 n pasos). Es mucho más eficiente que la búsqueda lineal O(n) para datos grandes.
+
+============================================================
+
+=== CARD 15: ex-java-03-11 ===
+FRONT:
+(Examen 3 · Programación Orientada a Objetos)
+
+Parte 2: Análisis y depuración
+
+El siguiente código tiene errores de diseño y de sintaxis. Encuéntralos y corrige la clase para que sea correcta y encapsulada.
+
+```java
+public class Cuenta {
+ String titular;
+ double saldo;
+ public Cuenta(String titular, double saldo) {
+ titular = titular;
+ saldo = saldo;
+ }
+ public void depositar(double m) { saldo += m; }
+ public void retirar(double m) { if (saldo >= m) { saldo -= m; } }
+ public void mostrar() { System.out.println(titular + " " + saldo); }
+}
+```
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+Código original con los errores marcados:
+
+```java
+public class Cuenta {
+ String titular;                         // ← ❌ ERROR ①: falta el modificador private
+ double saldo;                           // ← ❌ ERROR ①: falta el modificador private
+ public Cuenta(String titular, double saldo) {
+ titular = titular;                      // ← ❌ ERROR ②: se asigna el parámetro a sí mismo → this.titular
+ saldo = saldo;                          // ← ❌ ERROR ②: se asigna el parámetro a sí mismo → this.saldo
+ }
+ public void depositar(double m) { saldo += m; }
+ public void retirar(double m) { if (saldo >= m) { saldo -= m; } }
+ public void mostrar() { System.out.println(titular + " " + saldo); }
+}
+```
+
+1. Faltan los modificadores `private` en titular y saldo → debe ser `private String titular; private double saldo;`.
+2. En el constructor, `titular = titular;` no hace nada (asigna el parámetro a sí mismo). Debe ser `this.titular = titular; this.saldo = saldo;`.
+3. Para una buena encapsulación, faltan getters/setters. Se recomienda añadir `getTitular()`, `getSaldo()`, etc., y validar en `retirar`.
+
+Código corregido (con los 3 errores arreglados):
+
+```java
+public class Cuenta {
+    private String titular;                          // ✅ ERROR ① corregido: atributos private
+    private double saldo;
+
+    public Cuenta(String titular, double saldo) {
+        this.titular = titular;                      // ✅ ERROR ② corregido: this.titular
+        this.saldo = saldo;                          // ✅ ERROR ② corregido: this.saldo
+    }
+
+    public String getTitular() { return titular; }   // ✅ ERROR ③ corregido: getter
+    public double getSaldo() { return saldo; }       // ✅ ERROR ③ corregido: getter
+
+    public void depositar(double m) { saldo += m; }
+    public void retirar(double m) {
+        if (saldo >= m) { saldo -= m; }
+    }
+    public void mostrar() { System.out.println(titular + " " + saldo); }
+}
+```
+
+============================================================
+
+=== CARD 16: ex-java-03-12 ===
+FRONT:
+(Examen 3 · Programación Orientada a Objetos)
+
+Parte 2: Análisis y depuración
+
+Determina la salida del siguiente programa.
+
+```java
+class Contador {
+ static int total = 0;
+ int valor;
+ Contador() { total++; valor = total; }
+ void mostrar() { System.out.println("v=" + valor + " total=" + total); }
+}
+public class Main {
+ public static void main(String[] a) {
+ Contador c1 = new Contador();
+ Contador c2 = new Contador();
+ Contador c3 = new Contador();
+ c1.mostrar(); c2.mostrar(); c3.mostrar();
+ }
+}
+```
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+total es estático (compartido): 1, luego 2, luego 3.
+valor es de instancia: c1.valor=1, c2.valor=2, c3.valor=3.
+Salida: `v=1 total=3`, `v=2 total=3`, `v=3 total=3`.
+
+============================================================
+
+=== CARD 17: ex-java-03-13 ===
+FRONT:
+(Examen 3 · Programación Orientada a Objetos)
+
+Parte 3: Ejercicios de programación
+
+Diseña la clase `Rectángulo` con atributos privados `ancho` y `alto` (double). Incluye: constructor, getters/setters, métodos `area()`, `perimetro()`, y `toString()`. Además, sobrecarga el constructor para permitir crear un cuadrado con un solo parámetro. Escribe un programa de prueba. 
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+public class Rectangulo {
+    private double ancho, alto;
+    public Rectangulo(double ancho, double alto) { this.ancho=ancho; this.alto=alto; }
+    public Rectangulo(double lado) { this(lado, lado); }  // cuadrado
+    public double getAncho() { return ancho; }
+    public void setAncho(double ancho) { this.ancho = ancho; }
+    public double getAlto() { return alto; }
+    public void setAlto(double alto) { this.alto = alto; }
+    public double area() { return ancho * alto; }
+    public double perimetro() { return 2*(ancho+alto); }
+    public String toString() { return ancho + "x" + alto; }
+}
+// Main:
+public class Main { public static void main(String[] a) {
+    Rectangulo r = new Rectangulo(4, 6);
+    Rectangulo c = new Rectangulo(5);
+    System.out.println(r + " área " + r.area());
+    System.out.println(c + " perímetro " + c.perimetro());
+} }
+```
+
+============================================================
+
+=== CARD 18: ex-java-03-14 ===
+FRONT:
+(Examen 3 · Programación Orientada a Objetos)
+
+Parte 3: Ejercicios de programación
+
+Crea la clase `Estudiante` con atributos `nombre`, `edad` y una lista de notas (ArrayList<Double>). Añade métodos para añadir nota, calcular la media, determinar si está aprobado (media >= 5) y mostrar sus datos. 
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+import java.util.ArrayList;
+public class Estudiante {
+    private String nombre;
+    private int edad;
+    private ArrayList<Double> notas = new ArrayList<>();
+    public Estudiante(String nombre, int edad) { this.nombre=nombre; this.edad=edad; }
+    public void addNota(double n) { notas.add(n); }
+    public double media() {
+       double s=0; for (double n: notas) { s+=n; } return s/notas.size(); }
+    public boolean aprobado() { return media() >= 5; }
+    public String toString() { return nombre + " (" + edad + ") media=" + media(); }
+}
+```
+
+============================================================
+
+=== CARD 19: ex-java-03-15 ===
+FRONT:
+(Examen 3 · Programación Orientada a Objetos)
+
+Parte 3: Ejercicios de programación
+
+Crea una clase `CuentaBancaria` con titular, saldo y número de cuenta. Los métodos retirar y depositar deben actualizar el saldo. Un atributo estático `totalCuentas` debe contar cuántas cuentas se han creado. Escribe un programa que cree varias cuentas, realice depósitos y retiradas, y muestre el total de cuentas. 
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+public class CuentaBancaria {
+    private String titular;
+    private double saldo;
+    private static int totalCuentas = 0;
+    public CuentaBancaria(String titular, double saldo) { this.titular=titular; this.saldo=saldo; totalCuentas++; }
+    public void depositar(double m) { saldo += m; }
+    public boolean retirar(double m) {
+        if (saldo >= m) { saldo -= m; return true; }
+        return false;
+    }
+    public static int getTotalCuentas() { return totalCuentas; }
+    public String toString() { return titular + ": " + saldo; }
+}
+```
+
+============================================================
+
+=== CARD 20: ex-java-03-16 ===
+FRONT:
+(Examen 3 · Programación Orientada a Objetos)
+
+Parte 4: Pregunta teórica
+
+Explica el concepto de encapsulación. ¿Por qué es importante declarar los atributos como `private` y proporcionar getters/setters? ¿Qué beneficios aporta al mantenimiento del código?
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+La encapsulación es el principio que oculta el estado interno de un objeto y solo expone una interfaz pública controlada.
+Declarar atributos private evita que la clase se modifique desde fuera sin control, permitiendo validar los valores (p. ej., impedir saldos negativos) y cambiando la implementación interna sin romper a los clientes de la clase.
+Beneficios: seguridad, control de acceso, mantenibilidad, y facilita el testing y la evolución del código.
+
+============================================================
+
+=== CARD 21: ex-java-04-11 ===
+FRONT:
+(Examen 4 · Herencia, polimorfismo, interfaces y clases abstractas)
+
+Parte 2: Análisis y depuración
+
+El siguiente código tiene errores de herencia. Encuéntralos y corrige el diseño.
+
+```java
+abstract class Vehiculo {
+ abstract void mover();
+}
+class Coche extends Vehiculo { }
+class Moto extends Vehiculo {
+ void mover() { System.out.println("La moto avanza"); }
+}
+public class Main { public static void main(String[] a) {
+ Vehiculo v = new Coche(); // ¿compila?
+ v.mover();
+} }
+```
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+Código original con los errores marcados:
+
+```java
+abstract class Vehiculo {
+ abstract void mover();
+}
+class Coche extends Vehiculo { }         // ← ❌ ERROR ①: no implementa mover() y no es abstracta
+class Moto extends Vehiculo {
+ void mover() { System.out.println("La moto avanza"); }
+}
+public class Main { public static void main(String[] a) {
+ Vehiculo v = new Coche(); // ¿compila?
+ v.mover();
+} }
+```
+
+1. La clase abstracta Vehiculo tiene un método abstracto `mover()`. La clase Coche no lo implementa y NO es abstracta, por lo que NO compila (debe implementar mover() o declararse abstract).
+2. Corregir: `class Coche extends Vehiculo { void mover() { System.out.println("El coche avanza"); } }`.
+3. Moto implementa mover() correctamente; con la corrección la salida sería "El coche avanza".
+
+Código corregido (con el error arreglado):
+
+```java
+abstract class Vehiculo {
+    abstract void mover();
+}
+
+class Coche extends Vehiculo {
+    void mover() { System.out.println("El coche avanza"); }   // ✅ ERROR ① corregido: implementa mover()
+}
+
+class Moto extends Vehiculo {
+    void mover() { System.out.println("La moto avanza"); }
+}
+
+public class Main {
+    public static void main(String[] a) {
+        Vehiculo v = new Coche();
+        v.mover();   // imprime "El coche avanza"
+    }
+}
+```
+
+============================================================
+
+=== CARD 22: ex-java-04-12 ===
+FRONT:
+(Examen 4 · Herencia, polimorfismo, interfaces y clases abstractas)
+
+Parte 2: Análisis y depuración
+
+Determina la salida de este programa.
+
+```java
+abstract class Figura {
+ abstract double area();
+ void mostrar() { System.out.println("Área: " + area()); }
+}
+class Circulo extends Figura {
+ private double radio;
+ Circulo(double radio) { this.radio = radio; }
+ double area() { return Math.PI * radio * radio; }
+}
+class Cuadrado extends Figura {
+ private double lado;
+ Cuadrado(double lado) { this.lado = lado; }
+ double area() { return lado * lado; }
+}
+public class Main { public static void main(String[] a) {
+ Figura[] f = { new Circulo(2), new Cuadrado(3) };
+ for (Figura x : f) {
+     x.mostrar();
+ }
+} }
+```
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+Polimorfismo: cada Figura invoca su propia implementación de area().
+Circulo de radio 2 → área = π*4 ≈ 12,566.
+Cuadrado de lado 3 → área = 9.
+Salida: `Área: 12.566370614359172` y `Área: 9.0`.
+
+============================================================
+
+=== CARD 23: ex-java-04-13 ===
+FRONT:
+(Examen 4 · Herencia, polimorfismo, interfaces y clases abstractas)
+
+Parte 3: Ejercicios de programación
+
+Crea una jerarquía de clases para `Empleado`, `Directivo` (hereda) y `Tecnico` (hereda). Empleado tiene nombre y salario. Directivo añade `departamento`; Técnico añade `especialidad`. Sobrescribe toString en las tres y demuestra el polimorfismo con un método que reciba un Empleado e imprima su información. 
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+class Empleado {
+    private String nombre; private double salario;
+    public Empleado(String nombre, double salario) { this.nombre=nombre; this.salario=salario; }
+    public String toString() { return nombre + ", " + salario + " €"; }
+}
+class Directivo extends Empleado {
+    private String departamento;
+    public Directivo(String n, double s, String dep) { super(n, s); this.departamento=dep; }
+    public String toString() { return super.toString() + " [" + departamento + "]"; }
+}
+class Tecnico extends Empleado {
+    private String especialidad;
+    public Tecnico(String n, double s, String esp) { super(n, s); this.especialidad=esp; }
+    public String toString() { return super.toString() + " <" + especialidad + ">"; }
+}
+public class Main {
+    static void mostrar(Empleado e) { System.out.println(e); }
+    public static void main(String[] a) {
+        mostrar(new Directivo("Ana", 3000, "IT"));
+        mostrar(new Tecnico("Luis", 2000, "Redes"));
+    }
+}
+```
+
+============================================================
+
+=== CARD 24: ex-java-04-14 ===
+FRONT:
+(Examen 4 · Herencia, polimorfismo, interfaces y clases abstractas)
+
+Parte 3: Ejercicios de programación
+
+Define una interfaz `Movible` con el método `void moverse()`. Define también una interfaz `Sonoro` con `void sonar()`. Crea una clase `Robot` que implemente ambas interfaces y una clase `Coche` que implemente solo Movible. Escribe un programa que cree objetos y los trate a través de las interfaces. 
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+interface Movible { void moverse(); }
+interface Sonoro { void sonar(); }
+class Robot implements Movible, Sonoro {
+    public void moverse() { System.out.println("El robot se mueve"); }
+    public void sonar() { System.out.println("Bip bip"); }
+}
+class Coche implements Movible {
+    public void moverse() { System.out.println("El coche avanza"); }
+}
+public class Main {
+    public static void main(String[] a) {
+        Movible[] m = { new Robot(), new Coche() };
+        for (Movible x : m) {
+            x.moverse();
+        }
+        ((Sonoro)m[0]).sonar();
+    }
+}
+```
+
+============================================================
+
+=== CARD 25: ex-java-04-15 ===
+FRONT:
+(Examen 4 · Herencia, polimorfismo, interfaces y clases abstractas)
+
+Parte 3: Ejercicios de programación
+
+Crea una clase abstracta `Instrumento` con un método abstracto `tocar()`. Deriva al menos tres instrumentos (Piano, Guitarra, Bateria). Prepara un arreglo de Instrumento con varios objetos y haz que todos 'toquen' usando polimorfismo. Añade un contador estático de instrumentos creados. 
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+abstract class Instrumento {
+    static int total = 0;
+    Instrumento() { total++; }
+    abstract void tocar();
+}
+class Piano extends Instrumento { void tocar() { System.out.println("Piano: plin plin"); } }
+class Guitarra extends Instrumento { void tocar() { System.out.println("Guitarra: strum"); } }
+class Bateria extends Instrumento { void tocar() { System.out.println("Batería: bom bom"); } }
+public class Main { public static void main(String[] a) {
+    Instrumento[] orq = { new Piano(), new Guitarra(), new Bateria(), new Piano() };
+    for (Instrumento i : orq) {
+        i.tocar();
+    }
+    System.out.println("Total instrumentos: " + Instrumento.total);
+} }
+```
+
+============================================================
+
+=== CARD 26: ex-java-04-16 ===
+FRONT:
+(Examen 4 · Herencia, polimorfismo, interfaces y clases abstractas)
+
+Parte 4: Pregunta teórica
+
+Explica la diferencia entre una clase abstracta y una interfaz en Java. Da un ejemplo de cuándo elegirías cada una.
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+Clase abstracta: puede tener atributos de instancia, constructores y métodos concretos. Solo se puede heredar de UNA. Ideal para compartir estado/implementación común entre clases muy relacionadas (p. ej., Figuras que comparten comportamiento).
+Interfaz: declara un 'contrato' (métodos) que las clases implementan; desde Java 8 puede tener métodos default/static y constantes. Una clase puede implementar VARIAS. Ideal para definir capacidades ('puede volar', 'puede moverse') reutilizables entre clases no relacionadas.
+Regla general: cuando hay una relación 'es-un' fuerte y código compartido → clase abstracta; cuando se quiere un contrato flexible o múltiples capacidades → interfaz.
+
+============================================================
+
+=== CARD 27: ex-java-05-11 ===
+FRONT:
+(Examen 5 · Ficheros, excepciones y colecciones)
+
+Parte 2: Análisis y depuración
+
+El siguiente código tiene errores. Encuéntralos y corrígelos.
+
+```java
+import java.io.*;
+public class LeerArchivo {
+ public static void main(String[] args) {
+ try {
+ BufferedReader br = new BufferedReader(new FileReader("datos.txt"));
+ String linea;
+ while ((linea = br.readLine()) != null) {
+ System.out.println(linea);
+ }
+ }
+ System.out.println("Fin");
+ }
+}
+```
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+Código original con los errores marcados:
+
+```java
+import java.io.*;
+public class LeerArchivo {
+ public static void main(String[] args) {
+ try {                                   // ← ❌ ERROR ①: falta catch (IOException) — es checked
+ BufferedReader br = new BufferedReader(new FileReader("datos.txt"));  // ← ❌ ERROR ②: nunca se cierra
+ String linea;
+ while ((linea = br.readLine()) != null) {
+ System.out.println(linea);
+ }
+ }
+ System.out.println("Fin");
+ }
+}
+```
+
+1. No se captura la IOException, que el compilador exige (checked). Falta `catch (IOException e) { ... }`.
+2. El BufferedReader no se cierra. Mejor usar try-with-resources: `try (BufferedReader br = new BufferedReader(new FileReader("datos.txt")))`.
+3. (opcional de diseño) Acepta también declarar `throws IOException` en main, aunque lo preferible es capturar la excepción.
+
+Código corregido (con los 2 errores arreglados):
+
+```java
+import java.io.*;
+
+public class LeerArchivo {
+    public static void main(String[] args) {
+        try (BufferedReader br =                       // ✅ ERROR ② corregido: try-with-resources
+                new BufferedReader(new FileReader("datos.txt"))) {
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                System.out.println(linea);
+            }
+        } catch (IOException e) {                      // ✅ ERROR ① corregido: se captura la excepción
+            e.printStackTrace();
+        }
+        System.out.println("Fin");
+    }
+}
+```
+
+============================================================
+
+=== CARD 28: ex-java-05-12 ===
+FRONT:
+(Examen 5 · Ficheros, excepciones y colecciones)
+
+Parte 2: Análisis y depuración
+
+Determina la salida de este código (traza con excepciones).
+
+```java
+public class ExpTraza {
+ static int dividir(int a, int b) {
+ try { return a / b; }
+ catch (ArithmeticException e) { System.out.println("Arithmetic"); return -1; }
+ finally { System.out.println("finally"); }
+ }
+ public static void main(String[] a) {
+ System.out.println(dividir(10, 2));
+ System.out.println(dividir(10, 0));
+ }
+}
+```
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+Primera llamada (10/2): no hay excepción; se ejecuta finally (imprime 'finally') y devuelve 5 → imprime 5.
+Segunda llamada (10/0): se lanza ArithmeticException, se captura (imprime 'Arithmetic'), luego finally (imprime 'finally'), devuelve -1 → imprime -1.
+Salida completa: `finally 5 Arithmetic finally -1`.
+
+============================================================
+
+=== CARD 29: ex-java-05-13 ===
+FRONT:
+(Examen 5 · Ficheros, excepciones y colecciones)
+
+Parte 3: Ejercicios de programación
+
+Escribe un programa que lea un archivo `alumnos.txt` donde cada línea contiene `nombre nota1 nota2 nota3` separados por espacio. Calcula la media de cada alumno y escribe en `resultados.txt` el nombre y la media con 2 decimales. Gestiona las excepciones con try-with-resources. 
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+import java.io.*;
+import java.util.Scanner;
+public class GestionAlumnos {
+    public static void main(String[] args) {
+        try (Scanner sc = new Scanner(new File("alumnos.txt"));
+             PrintWriter pw = new PrintWriter("resultados.txt")) {
+            while (sc.hasNextLine()) {
+                String linea = sc.nextLine().trim();
+                if (linea.isEmpty()) continue;
+                String[] p = linea.split(" ");
+                double s = 0; int n = p.length - 1;
+                for (int i = 1; i < p.length; i++) {
+                    s += Double.parseDouble(p[i]);
+                }
+                pw.printf("%s: %.2f%n", p[0], s / n);
+            }
+            System.out.println("resultados.txt generado");
+        } catch (FileNotFoundException e) {
+            System.out.println("No se encuentra alumnos.txt");
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+}
+```
+
+============================================================
+
+=== CARD 30: ex-java-05-14 ===
+FRONT:
+(Examen 5 · Ficheros, excepciones y colecciones)
+
+Parte 3: Ejercicios de programación
+
+Crea un programa que use un HashMap para guardar el número de habitantes de varias ciudades (clave=ciudad, valor=habitantes). Pide ciudades por teclado, inserta varias, y luego: recorre el mapa mostrando cada ciudad y su población, y muestra la ciudad con más habitantes. 
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+import java.util.*;
+public class Ciudades {
+    public static void main(String[] args) {
+        Map<String, Integer> hab = new HashMap<>();
+        hab.put("Madrid", 3200000);
+        hab.put("Barcelona", 1600000);
+        hab.put("Valencia", 790000);
+        hab.put("Madrid", 3300000); // reemplaza
+        String mayor = null; int max = -1;
+        for (Map.Entry<String,Integer> e : hab.entrySet()) {
+            System.out.println(e.getKey() + " -> " + e.getValue());
+            if (e.getValue() {
+                > max) { max = e.getValue(); mayor = e.getKey(); }
+        }
+        System.out.println("Más poblada: " + mayor);
+            }
+    }
+}
+```
+
+============================================================
+
+=== CARD 31: ex-java-05-15 ===
+FRONT:
+(Examen 5 · Ficheros, excepciones y colecciones)
+
+Parte 3: Ejercicios de programación
+
+Escribe un método que valide si un número de hora es correcto (entre 0 y 23) y lance una excepción personalizada `HoraInvalidaException` si no lo es. Crea la excepción y un programa que pida una hora y la muestre, capturando la excepción. 
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+class HoraInvalidaException extends Exception {
+    public HoraInvalidaException(String msg) { super(msg); }
+}
+import java.util.Scanner;
+public class Hora {
+    static void validar(int h) throws HoraInvalidaException {
+        if (h < 0 || h > 23) {
+            throw new HoraInvalidaException("Hora fuera de rango: " + h);
+        }
+    }
+    public static void main(String[] a) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Hora: ");
+        int h = sc.nextInt();
+        try { validar(h); System.out.println("Hora válida: " + h); }
+        catch (HoraInvalidaException e) { System.out.println(e.getMessage()); }
+    }
+}
+```
+
+============================================================
+
+=== CARD 32: ex-java-05-16 ===
+FRONT:
+(Examen 5 · Ficheros, excepciones y colecciones)
+
+Parte 4: Pregunta teórica
+
+Explica la diferencia entre ArrayList y HashMap, y entre ArrayList y HashSet. ¿Cuándo usarías cada una?
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+ArrayList: lista ordenada indexada, admite duplicados, acceso por posición. Ideal para una secuencia ordenada o cuando importa el índice/orden.
+HashMap: almacena pares clave→valor, claves únicas, sin orden garantizado, acceso por clave en O(1). Ideal para búsquedas por clave (diccionarios).
+HashSet: colección de elementos únicos, sin orden, no permite duplicados, operaciones de pertenencia eficientes. Ideal para eliminar duplicados o comprobar presencia.
+Regla: necesitas orden/posición → ArrayList; clave→valor → HashMap; únicidad/presencia → HashSet.
+
+============================================================
+
+=== CARD 33: ex-java-06-09 ===
+FRONT:
+(Examen 6 · Recursividad y algoritmos recursivos)
+
+Parte 2: Análisis y depuración
+
+El siguiente programa tiene 2 errores. Encuéntralos, explica qué ocurre al ejecutarlo y escribe la versión corregida.
+
+```java
+public class PotenciaBug {
+ static int potencia(int base, int exp) {
+ return base * potencia(base, exp - 1);
+ }
+ public static void main(String[] args) {
+ System.out.println(potencia(2, 3));
+ }
+}
+```
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+Código original con los errores marcados:
+
+```java
+public class PotenciaBug {
+ static int potencia(int base, int exp) {
+ return base * potencia(base, exp - 1);  // ← ❌ ERROR ① y ②: falta el caso base (exp == 0) → recursión infinita → StackOverflowError
+ }
+ public static void main(String[] args) {
+ System.out.println(potencia(2, 3));
+ }
+}
+```
+
+```java
+1. Falta el caso base: la función se llama a sí misma sin condición de parada, por lo que la recursión es infinita y el programa termina con StackOverflowError.
+2. Tampoco se contempla el caso exp == 0 (debería devolver 1) ni los exponentes negativos, que nunca llegarían a 0.
+Versión corregida:
+static int potencia(int base, int exp) {
+    if (exp == 0) {
+        return 1;                 // caso base
+    }
+    return base * potencia(base, exp - 1);  // caso recursivo
+}
+```
+
+Código corregido completo (con los 2 errores arreglados):
+
+```java
+public class PotenciaBug {
+    static int potencia(int base, int exp) {
+        if (exp == 0) {                               // ✅ ERROR ① y ② corregidos: caso base
+            return 1;
+        }
+        return base * potencia(base, exp - 1);        // ✅ caso recursivo
+    }
+
+    public static void main(String[] args) {
+        System.out.println(potencia(2, 3));           // imprime 8
+    }
+}
+```
+
+============================================================
+
+=== CARD 34: ex-java-06-10 ===
+FRONT:
+(Examen 6 · Recursividad y algoritmos recursivos)
+
+Parte 2: Análisis y depuración
+
+Analiza el siguiente método y realiza la traza de la ejecución de fib(5). Indica el valor devuelto y el número total de llamadas a fib que se realizan.
+
+```java
+static int fib(int n) {
+ if (n < 2) {
+     return n;
+ }
+ return fib(n - 1) + fib(n - 2);
+}
+```
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+Valores: fib(0)=0, fib(1)=1, fib(2)=1, fib(3)=2, fib(4)=3, fib(5)=5.
+Árbol de llamadas de fib(5): fib(5) llama a fib(4) y fib(3); fib(4) llama a fib(3) y fib(2); fib(3) llama a fib(2) y fib(1); fib(2) llama a fib(1) y fib(0).
+Total de llamadas: 15 (1 de fib(5) + 2 del nivel 2 + 4 del nivel 3 + 8 del nivel 4).
+Resultado: fib(5) = 5.
+
+============================================================
+
+=== CARD 35: ex-java-06-11 ===
+FRONT:
+(Examen 6 · Recursividad y algoritmos recursivos)
+
+Parte 3: Ejercicios de programación
+
+Implementa un método recursivo potencia(int base, int exp) que calcule base^exp para exponentes mayores o iguales que 0. Escribe también un main que pruebe 2^10, 3^0 y 5^3. 
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+public class Potencia {
+    static long potencia(int base, int exp) {
+        if (exp == 0) {
+            return 1;                // caso base
+        }
+        return base * potencia(base, exp - 1); // caso recursivo
+    }
+    public static void main(String[] args) {
+        System.out.println("2^10 = " + potencia(2, 10));  // 1024
+        System.out.println("3^0  = " + potencia(3, 0));   // 1
+        System.out.println("5^3  = " + potencia(5, 3));   // 125
+    }
+}
+Nota: para exponentes negativos haría falta trabajar con double (base^-n = 1 / base^n).
+```
+
+============================================================
+
+=== CARD 36: ex-java-06-12 ===
+FRONT:
+(Examen 6 · Recursividad y algoritmos recursivos)
+
+Parte 3: Ejercicios de programación
+
+Escribe una función recursiva que devuelva una cadena invertida y un main que la pruebe con la cadena «Hola mundo». 
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+public class InvertirCadena {
+    static String invertir(String s) {
+        if (s.length() {
+            <= 1) return s;               // caso base
+        }
+        return invertir(s.substring(1)) + s.charAt(0);
+    }
+    public static void main(String[] args) {
+        String texto = "Hola mundo";
+        System.out.println(invertir(texto));         // "odnum aloH"
+    }
+}
+Explicación: invertir("Hola") = invertir("ola") + 'H' = (invertir("la") + 'o') + 'H' = ... = "aloH".
+```
+
+============================================================
+
+=== CARD 37: ex-java-06-13 ===
+FRONT:
+(Examen 6 · Recursividad y algoritmos recursivos)
+
+Parte 3: Ejercicios de programación
+
+Implementa la solución recursiva de las Torres de Hanoi para n discos: el método debe imprimir cada movimiento («Mover disco X de A a C») y el main debe ejecutarlo con 3 discos mostrando además el número total de movimientos. 
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+public class Hanoi {
+    static int movimientos = 0;
+
+    static void hanoi(int n, char origen, char auxiliar, char destino) {
+        if (n == 1) {
+            System.out.println("Mover disco 1 de " + origen + " a " + destino);
+            movimientos++;
+        } else {
+            hanoi(n - 1, origen, destino, auxiliar);
+            System.out.println("Mover disco " + n + " de " + origen + " a " + destino);
+            movimientos++;
+            hanoi(n - 1, auxiliar, origen, destino);
+        }
+    }
+    public static void main(String[] args) {
+        hanoi(3, 'A', 'B', 'C');
+        System.out.println("Total de movimientos: " + movimientos);  // 7
+    }
+}
+El número mínimo de movimientos es 2ⁿ − 1; para 3 discos se imprimen 7 movimientos.
+```
+
+============================================================
+
+=== CARD 38: ex-java-06-14 ===
+FRONT:
+(Examen 6 · Recursividad y algoritmos recursivos)
+
+Parte 3: Ejercicios de programación
+
+Implementa la búsqueda binaria de forma recursiva sobre un array ordenado de enteros. Escribe un main que busque el 19 y el 7 en {2, 5, 8, 12, 19, 25} mostrando el índice encontrado o «No encontrado». 
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+public class BusquedaBinaria {
+    static int buscar(int[] a, int ini, int fin, int x) {
+        if (ini > fin) {
+            return -1;                 // caso base: no encontrado
+        int medio = (ini + fin) / 2;
+        }
+        if (a[medio] == x) {
+            return medio;          // caso base: encontrado
+        if (x < a[medio]) {
+            return buscar(a, ini, medio - 1, x);
+        }
+        }
+        return buscar(a, medio + 1, fin, x);
+    }
+    public static void main(String[] args) {
+        int[] a = {2, 5, 8, 12, 19, 25};
+        int pos = buscar(a, 0, a.length - 1, 19);
+        System.out.println(pos >= 0 ? "Índice: " + pos : "No encontrado");   // 4
+        pos = buscar(a, 0, a.length - 1, 7);
+        System.out.println(pos >= 0 ? "Índice: " + pos : "No encontrado");   // No encontrado
+    }
+}
+Cada llamada divide el intervalo a la mitad, por lo que la complejidad es O(log n).
+```
+
+============================================================
+
+=== CARD 39: ex-java-06-15 ===
+FRONT:
+(Examen 6 · Recursividad y algoritmos recursivos)
+
+Parte 4: Pregunta teórica
+
+Explica qué es la recursión, qué papel juegan el caso base y la pila de llamadas, y en qué situaciones conviene usar recursión en lugar de iteración. ¿Qué riesgo tiene un uso incorrecto?
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+La recursión es una técnica en la que un método se llama a sí mismo para resolver un problema dividiéndolo en versiones más pequeñas del mismo problema.
+El caso base es la condición que detiene las llamadas (p. ej., n <= 1 en el factorial); sin él la recursión es infinita. Cada llamada pendiente ocupa un marco en la pila de llamadas (stack), que guarda sus parámetros y variables locales; al llegar al caso base, los marcos se desapilan devolviendo resultados.
+Conviene usar recursión cuando el problema se define de forma natural recursiva (árboles, directorios, Hanoi, divide y vencerás) y cuando la versión iterativa sería mucho más compleja. La iteración es preferible cuando la profundidad puede ser grande, porque la recursión consume memoria de pila y un uso incorrecto (sin caso base o con demasiada profundidad) lanza StackOverflowError.
+
+============================================================
+
+=== CARD 40: ex-java-07-09 ===
+FRONT:
+(Examen 7 · POO avanzada: enum, wrappers, StringBuilder, equals y hashCode)
+
+Parte 2: Análisis y depuración
+
+El siguiente programa tiene 2 errores. Encuéntralos, explica qué ocurre en cada uno y escribe la versión corregida.
+
+```java
+public class WrapperBug {
+ public static void main(String[] args) {
+ Integer n = null;
+ int x = n; // error 1
+ Integer a = 500;
+ Integer b = 500;
+ System.out.println(a == b); // error 2
+ }
+}
+```
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+Código original con los errores marcados:
+
+```java
+public class WrapperBug {
+ public static void main(String[] args) {
+ Integer n = null;
+ int x = n;                              // ← ❌ ERROR ①: unboxing de null → NullPointerException
+ Integer a = 500;
+ Integer b = 500;
+ System.out.println(a == b);             // ← ❌ ERROR ②: compara referencias, no valores → false
+ }
+}
+```
+
+```java
+1. `int x = n;` con n = null lanza NullPointerException: el unboxing de un Integer null no está permitido. Solución: comprobar n != null antes o no asignar null.
+2. `a == b` compara referencias y no valores: con 500 (fuera de la caché) imprime false. Solución: usar a.equals(b) o a.intValue() == b.intValue().
+Versión corregida:
+    Integer a = 500;
+    Integer b = 500;
+    System.out.println(a.equals(b));   // true
+    Integer n = 10;
+    int x = n;                          // unboxing válido: n no es null
+    System.out.println(x);
+```
+
+Código corregido completo (con los 2 errores arreglados):
+
+```java
+public class WrapperBug {
+    public static void main(String[] args) {
+        Integer n = 10;
+        int x = n;                              // ✅ ERROR ① corregido: unboxing válido (n no es null)
+
+        Integer a = 500;
+        Integer b = 500;
+        System.out.println(a.equals(b));        // ✅ ERROR ② corregido: compara valores → true
+    }
+}
+```
+
+============================================================
+
+=== CARD 41: ex-java-07-10 ===
+FRONT:
+(Examen 7 · POO avanzada: enum, wrappers, StringBuilder, equals y hashCode)
+
+Parte 2: Análisis y depuración
+
+Realiza la traza del siguiente código e indica qué se imprime en cada línea, explicando la diferencia entre String y StringBuilder.
+
+```java
+StringBuilder sb = new StringBuilder("Java");
+sb.reverse();
+sb.append(" 8");
+System.out.println(sb);
+
+String s = "Java";
+String s2 = s.toUpperCase();
+System.out.println(s);
+System.out.println(s2);
+```
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+sb.reverse() invierte el contenido del MISMO objeto: «avaJ»; sb.append(" 8") añade al final: «avaJ 8». Se imprime: avaJ 8.
+String es inmutable: toUpperCase() NO modifica s, sino que devuelve un objeto nuevo. Se imprime «Java» (s intacto) y «JAVA» (s2).
+Conclusión: StringBuilder modifica el objeto en el sitio (mutable); String crea un objeto nuevo en cada operación.
+
+============================================================
+
+=== CARD 42: ex-java-07-11 ===
+FRONT:
+(Examen 7 · POO avanzada: enum, wrappers, StringBuilder, equals y hashCode)
+
+Parte 3: Ejercicios de programación
+
+Crea la clase CuentaBancaria con un enum interno TipoCuenta { AHORRO, CORRIENTE }, los atributos privados numero (String), saldo (double) y tipo, y los métodos getNumero(), getSaldo(), getTipo() e ingresar(double). Sobrescribe equals() y hashCode() para que dos cuentas sean iguales si tienen el mismo número. Escribe un main que cree dos cuentas con el mismo número y distintos tipos y compruebe que equals() devuelve true. 
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+import java.util.Objects;
+
+public class CuentaBancaria {
+    enum TipoCuenta { AHORRO, CORRIENTE }
+
+    private String numero;
+    private double saldo;
+    private TipoCuenta tipo;
+
+    public CuentaBancaria(String numero, TipoCuenta tipo) {
+        this.numero = numero;
+        this.tipo = tipo;
+        this.saldo = 0;
+    }
+    public String getNumero() { return numero; }
+    public double getSaldo() { return saldo; }
+    public TipoCuenta getTipo() { return tipo; }
+
+    public void ingresar(double cantidad) { saldo += cantidad; }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof CuentaBancaria)) return false;
+        CuentaBancaria c = (CuentaBancaria) o;
+        return numero.equals(c.numero);
+    }
+    @Override
+    public int hashCode() {
+        return Objects.hash(numero);
+    }
+
+    public static void main(String[] args) {
+        CuentaBancaria c1 = new CuentaBancaria("ES1234", TipoCuenta.AHORRO);
+        CuentaBancaria c2 = new CuentaBancaria("ES1234", TipoCuenta.CORRIENTE);
+        c1.ingresar(100);
+        System.out.println(c1.equals(c2));          // true: mismo número
+        System.out.println(c1.getSaldo());          // 100.0
+        System.out.println(TipoCuenta.AHORRO.ordinal());  // 0
+    }
+}
+equals() ignora saldo y tipo: la identidad de la cuenta es su número. hashCode() usa el mismo campo para mantener el contrato.
+```
+
+============================================================
+
+=== CARD 43: ex-java-07-12 ===
+FRONT:
+(Examen 7 · POO avanzada: enum, wrappers, StringBuilder, equals y hashCode)
+
+Parte 3: Ejercicios de programación
+
+Escribe un programa que lea una frase por teclado y la imprima con las palabras en orden inverso usando StringBuilder. Ejemplo: «hola mundo java» → «java mundo hola». 
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+import java.util.Scanner;
+
+public class InvertirFrase {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Frase: ");
+        String frase = sc.nextLine();
+        String[] palabras = frase.split(" ");
+        StringBuilder sb = new StringBuilder();
+        for (int i = palabras.length - 1; i >= 0; i--) {
+            sb.append(palabras[i]);
+            if (i > 0) {
+                sb.append(" ");
+            }
+        }
+        System.out.println("Invertida: " + sb);
+    }
+}
+Se recorre el array de palabras de atrás hacia adelante y se concatenan con StringBuilder, que es eficiente porque no crea un String nuevo en cada append.
+```
+
+============================================================
+
+=== CARD 44: ex-java-07-13 ===
+FRONT:
+(Examen 7 · POO avanzada: enum, wrappers, StringBuilder, equals y hashCode)
+
+Parte 3: Ejercicios de programación
+
+Implementa mediante composición las clases Motor (atributo caballos y método arrancar() que imprime «Motor de X CV en marcha») y Coche (marca y un Motor creado en su constructor). El método arrancar() del Coche debe delegar en el motor. Escribe un main que cree un Coche y lo arranque, y justifica por qué es composición y no herencia. 
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+public class CocheMain {
+    static class Motor {
+        private int caballos;
+        Motor(int caballos) { this.caballos = caballos; }
+        void arrancar() {
+            System.out.println("Motor de " + caballos + " CV en marcha");
+        }
+    }
+    static class Coche {
+        private String marca;
+        private Motor motor;                  // composición: Coche TIENE-UN Motor
+        Coche(String marca, int caballos) {
+            this.marca = marca;
+            this.motor = new Motor(caballos); // el Motor nace con el Coche
+        }
+        void arrancar() { motor.arrancar(); } // delega en el motor
+    }
+    public static void main(String[] args) {
+        Coche c = new Coche("Seat", 110);
+        c.arrancar();
+    }
+}
+Es composición porque Coche no «es un» Motor (no hereda), sino que lo contiene; además el Motor se crea dentro del constructor del Coche, de modo que su ciclo de vida está ligado al del Coche. La salida es: Motor de 110 CV en marcha.
+```
+
+============================================================
+
+=== CARD 45: ex-java-07-14 ===
+FRONT:
+(Examen 7 · POO avanzada: enum, wrappers, StringBuilder, equals y hashCode)
+
+Parte 3: Ejercicios de programación
+
+Escribe un programa que lea 5 números por teclado como String, los convierta con Integer.parseInt, los sume con autoboxing/unboxing (variable Integer total) y muestre el resultado. Debe capturar NumberFormatException si el texto no es un número y pedir el valor de nuevo. 
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+import java.util.Scanner;
+
+public class SumaNumeros {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Integer total = 0;                     // autoboxing
+        for (int i = 0; i < 5; i++) {
+            System.out.print("Número " + (i + 1) + ": ");
+            String texto = sc.nextLine();
+            try {
+                int n = Integer.parseInt(texto); // String -> int
+                total = total + n;               // unboxing + autoboxing
+            } catch (NumberFormatException e) {
+                System.out.println("'" + texto + "' no es un número válido");
+                i--;                             // repetir la lectura
+            }
+        }
+        System.out.println("Suma: " + total);
+    }
+}
+Integer.parseInt convierte el texto; si falla lanza NumberFormatException (subclase de IllegalArgumentException, no comprobada), que se captura para repetir la lectura.
+```
+
+============================================================
+
+=== CARD 46: ex-java-07-15 ===
+FRONT:
+(Examen 7 · POO avanzada: enum, wrappers, StringBuilder, equals y hashCode)
+
+Parte 4: Pregunta teórica
+
+Explica las diferencias entre String, StringBuilder y StringBuffer (inmutabilidad, eficiencia y sincronización) y en qué situaciones usarías cada uno.
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+String es inmutable: cualquier operación (concatenación, toUpperCase, etc.) crea un objeto nuevo. Es eficiente para valores que no cambian y para usarlo como clave en mapas.
+StringBuilder es mutable y no sincronizado: modifica el mismo objeto, por lo que es la opción recomendada para concatenar muchas cadenas en un bucle (evita crear decenas de objetos intermedios).
+StringBuffer es igual que StringBuilder pero con métodos sincronizados (thread-safe), lo que lo hace más lento; solo tiene sentido en programas multihilo donde varios hilos comparten el objeto.
+Regla práctica: String para texto fijo, StringBuilder para construir cadenas dinámicamente en un solo hilo, StringBuffer solo si hay concurrencia.
+
+============================================================
+
+=== CARD 47: ex-java-08-09 ===
+FRONT:
+(Examen 8 · Colecciones y genéricos)
+
+Parte 2: Análisis y depuración
+
+El siguiente programa tiene 2 errores. Encuéntralos, explica por qué fallan y propón la corrección.
+
+```java
+import java.util.*;
+public class BorrarPares {
+ public static void main(String[] args) {
+ List<Integer> numeros = new ArrayList<>(List.of(1, 2, 3, 4, 5, 6));
+ for (Integer n : numeros) {
+ if (n % 2 == 0) {
+     numeros.remove(n);
+ }
+ }
+ Integer x = numeros.get(0);
+ Integer y = numeros.get(1);
+ System.out.println(x == y);
+ }
+}
+```
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+Código original con los errores marcados:
+
+```java
+import java.util.*;
+public class BorrarPares {
+ public static void main(String[] args) {
+ List<Integer> numeros = new ArrayList<>(List.of(1, 2, 3, 4, 5, 6));
+ for (Integer n : numeros) {             // ← ❌ ERROR ①: remove() durante for-each → ConcurrentModificationException
+ if (n % 2 == 0) {
+     numeros.remove(n);
+ }
+ }
+ Integer x = numeros.get(0);
+ Integer y = numeros.get(1);
+ System.out.println(x == y);             // ← ❌ ERROR ②: compara referencias, no valores
+ }
+}
+```
+
+```java
+1. Modificar la lista con remove() durante un for-each lanza ConcurrentModificationException. Corrección: recorrer con Iterator y usar it.remove():
+   Iterator<Integer> it = numeros.iterator();
+   while (it.hasNext()) { if (it.next() % 2 == 0) it.remove(); }
+2. x == y compara referencias de Integer, no valores: si ambos son iguales pero están fuera de la caché (-128..127) daría false. Corrección: x.equals(y) o x.intValue() == y.intValue().
+```
+
+Código corregido (con los 2 errores arreglados):
+
+```java
+import java.util.*;
+
+public class BorrarPares {
+    public static void main(String[] args) {
+        List<Integer> numeros = new ArrayList<>(List.of(1, 2, 3, 4, 5, 6));
+        Iterator<Integer> it = numeros.iterator();   // ✅ ERROR ① corregido: Iterator en vez de for-each
+        while (it.hasNext()) {
+            if (it.next() % 2 == 0) {
+                it.remove();                         // ✅ ERROR ① corregido: it.remove()
+            }
+        }
+        Integer x = numeros.get(0);
+        Integer y = numeros.get(1);
+        System.out.println(x.equals(y));             // ✅ ERROR ② corregido: equals en vez de ==
+    }
+}
+```
+
+============================================================
+
+=== CARD 48: ex-java-08-10 ===
+FRONT:
+(Examen 8 · Colecciones y genéricos)
+
+Parte 2: Análisis y depuración
+
+Analiza el siguiente código y determina qué orden imprime el programa (traza manual).
+
+```java
+List<Alumno> lista = new ArrayList<>();
+lista.add(new Alumno("Ana", 7.5));
+lista.add(new Alumno("Luis", 5.0));
+lista.add(new Alumno("Eva", 9.2));
+lista.add(new Alumno("Juan", 6.3));
+lista.sort((a1, a2) -> Double.compare(a2.nota, a1.nota));
+for (Alumno a : lista) {
+    System.out.println(a.nombre);
+}
+```
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+El comparador usa Double.compare(a2.nota, a1.nota): al invertir los operandos, el orden queda DESCENDENTE por nota.
+Salida: Eva, Ana, Juan, Luis.
+
+============================================================
+
+=== CARD 49: ex-java-08-11 ===
+FRONT:
+(Examen 8 · Colecciones y genéricos)
+
+Parte 3: Ejercicios de programación
+
+Escribe un programa que cuente cuántas veces aparece cada palabra en una frase y muestre el resultado con un HashMap<String, Integer>. 
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+import java.util.*;
+public class Frecuencias {
+    public static void main(String[] args) {
+        String frase = "el sol brilla y el sol calienta";
+        String[] palabras = frase.split(" ");
+        Map<String, Integer> contador = new HashMap<>();
+        for (String p : palabras) {
+            contador.put(p, contador.getOrDefault(p, 0) + 1);
+        }
+        for (String p : contador.keySet()) {
+            System.out.println(p + " -> " + contador.get(p));
+        }
+    }
+}
+Salida: el -> 2, sol -> 2, brilla -> 1, y -> 1, calienta -> 1 (el orden de HashMap puede variar).
+```
+
+============================================================
+
+=== CARD 50: ex-java-08-12 ===
+FRONT:
+(Examen 8 · Colecciones y genéricos)
+
+Parte 3: Ejercicios de programación
+
+Implementa una clase genérica Par<K, V> que almacene una clave y un valor (con getClave(), getValor() y setValor()). Úsala en un main con Par<String, Integer> y Par<String, String>. 
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+public class Par<K, V> {
+    private K clave;
+    private V valor;
+    public Par(K clave, V valor) { this.clave = clave; this.valor = valor; }
+    public K getClave() { return clave; }
+    public V getValor() { return valor; }
+    public void setValor(V valor) { this.valor = valor; }
+    public static void main(String[] args) {
+        Par<String, Integer> p = new Par<>("edad", 25);
+        System.out.println(p.getClave() + " = " + p.getValor());
+        p.setValor(26);
+        System.out.println(p.getClave() + " = " + p.getValor());
+        Par<String, String> q = new Par<>("ciudad", "Madrid");
+        System.out.println(q.getClave() + " = " + q.getValor());
+    }
+}
+```
+
+============================================================
+
+=== CARD 51: ex-java-08-13 ===
+FRONT:
+(Examen 8 · Colecciones y genéricos)
+
+Parte 3: Ejercicios de programación
+
+Crea una clase Alumno (nombre, nota) y un programa que guarde varios alumnos en un ArrayList, los ordene por nota descendente con Comparator y muestre también la nota media. 
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+import java.util.*;
+public class OrdenarAlumnos {
+    static class Alumno {
+        String nombre; double nota;
+        Alumno(String nombre, double nota) { this.nombre = nombre; this.nota = nota; }
+        public String toString() { return nombre + " (" + nota + ")"; }
+    }
+    public static void main(String[] args) {
+        List<Alumno> lista = new ArrayList<>();
+        lista.add(new Alumno("Ana", 7.5));
+        lista.add(new Alumno("Luis", 5.0));
+        lista.add(new Alumno("Eva", 9.2));
+        lista.add(new Alumno("Juan", 6.3));
+        lista.sort((a1, a2) -> Double.compare(a2.nota, a1.nota));
+        double suma = 0;
+        for (Alumno a : lista) {
+            suma += a.nota;
+        }
+        System.out.println("Media: " + (suma / lista.size()));
+        for (Alumno a : lista) {
+            System.out.println(a);
+        }
+    }
+}
+Salida: Media: 7.0; Eva (9.2), Ana (7.5), Juan (6.3), Luis (5.0).
+```
+
+============================================================
+
+=== CARD 52: ex-java-08-14 ===
+FRONT:
+(Examen 8 · Colecciones y genéricos)
+
+Parte 3: Ejercicios de programación
+
+Usa un TreeSet con un Comparator que ordene las palabras primero por longitud y después alfabéticamente. Inserta {"sol", "mar", "cielo", "sol", "luna"} y muestra el tamaño y el contenido final. 
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+import java.util.*;
+public class OrdenarLongitud {
+    public static void main(String[] args) {
+        Comparator<String> porLongitud = new Comparator<>() {
+            public int compare(String a, String b) {
+                if (a.length() {
+                    != b.length()) return a.length() - b.length();
+                }
+                return a.compareTo(b);
+            }
+        };
+        TreeSet<String> set = new TreeSet<>(porLongitud);
+        set.add("sol"); set.add("mar"); set.add("cielo");
+        set.add("sol"); set.add("luna");
+        System.out.println(set.size());
+        System.out.println(set);
+    }
+}
+Salida: tamaño 4 ("sol" duplicado se descarta) y contenido [mar, sol, luna, cielo].
+```
+
+============================================================
+
+=== CARD 53: ex-java-08-15 ===
+FRONT:
+(Examen 8 · Colecciones y genéricos)
+
+Parte 4: Pregunta teórica
+
+Explica las diferencias entre List, Set y Map. ¿Qué implementación elegirías para: (a) acceso frecuente por índice, (b) evitar duplicados conservando el orden de inserción, (c) buscar valores por clave rápidamente? Razona la respuesta.
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+List: secuencia ordenada que admite duplicados y acceso por índice. Set: colección sin duplicados (igualdad por equals/hashCode). Map: pares clave-valor sin claves repetidas.
+(a) ArrayList: acceso por índice O(1). (b) LinkedHashSet: sin duplicados y mantiene orden de inserción (HashSet no garantiza orden; TreeSet ordena, no conserva inserción). (c) HashMap: búsqueda por clave O(1) media gracias al hashCode.
+
+============================================================
+
+=== CARD 54: ex-java-09-09 ===
+FRONT:
+(Examen 9 · Ficheros binarios, serialización y NIO)
+
+Parte 2: Análisis y depuración
+
+El siguiente programa tiene 2 errores. Encuéntralos, explica por qué fallan y propón la corrección.
+
+```java
+public class Guardar {
+ public static void main(String[] args) throws IOException {
+ Persona p = new Persona("Ana", 22);
+ ObjectOutputStream out =
+ new ObjectOutputStream(new FileOutputStream("p.dat"));
+ out.writeObject(p);
+ }
+}
+```
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+Código original con los errores marcados:
+
+```java
+public class Guardar {
+ public static void main(String[] args) throws IOException {
+ Persona p = new Persona("Ana", 22);
+ ObjectOutputStream out =                // ← ❌ ERROR ②: el flujo nunca se cierra
+ new ObjectOutputStream(new FileOutputStream("p.dat"));
+ out.writeObject(p);                     // ← ❌ ERROR ①: Persona no es Serializable → NotSerializableException
+ }
+}
+```
+
+```java
+1. La clase Persona no implementa Serializable: al ejecutar out.writeObject(p) se lanza NotSerializableException. Corrección: public class Persona implements Serializable { ... } (y declarar serialVersionUID).
+2. El flujo out nunca se cierra: los datos pueden no volcarse al disco y el recurso queda abierto. Corrección: usar try-with-resources:
+   try (ObjectOutputStream out =
+            new ObjectOutputStream(new FileOutputStream("p.dat"))) {
+       out.writeObject(p);
+   }
+```
+
+Código corregido (con los 2 errores arreglados):
+
+```java
+import java.io.*;
+
+public class Guardar {
+    public static void main(String[] args) {
+        Persona p = new Persona("Ana", 22);
+        try (ObjectOutputStream out =                // ✅ ERROR ② corregido: try-with-resources
+                new ObjectOutputStream(new FileOutputStream("p.dat"))) {
+            out.writeObject(p);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+class Persona implements Serializable {            // ✅ ERROR ① corregido: implements Serializable
+    private static final long serialVersionUID = 1L;
+    private String nombre;
+    private int edad;
+
+    Persona(String nombre, int edad) {
+        this.nombre = nombre;
+        this.edad = edad;
+    }
+}
+```
+
+============================================================
+
+=== CARD 55: ex-java-09-10 ===
+FRONT:
+(Examen 9 · Ficheros binarios, serialización y NIO)
+
+Parte 2: Análisis y depuración
+
+Analiza la siguiente escritura y determina qué instrucciones de lectura recuperan los datos y cuántos bytes ocupa cada valor.
+
+```java
+DataOutputStream out =
+ new DataOutputStream(new FileOutputStream("datos.dat"));
+out.writeInt(7);
+out.writeDouble(2.5);
+out.writeUTF("Hola");
+out.close();
+```
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+Los datos se leen en el MISMO orden en que se escribieron:
+   int i = in.readInt();      // 7 (4 bytes)
+   double d = in.readDouble(); // 2.5 (8 bytes)
+   String s = in.readUTF();    // "Hola" (2 bytes de longitud + 4 de texto = 6 bytes)
+Tamaño total del fichero: 4 + 8 + 6 = 18 bytes.
+```
+
+============================================================
+
+=== CARD 56: ex-java-09-11 ===
+FRONT:
+(Examen 9 · Ficheros binarios, serialización y NIO)
+
+Parte 3: Ejercicios de programación
+
+Crea la clase Persona (nombre, edad) que implemente Serializable y un programa que guarde una lista de 3 personas en personas.dat con ObjectOutputStream y después la lea con ObjectInputStream mostrándola por pantalla. 
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+import java.io.*;
+import java.util.*;
+public class GuardarPersonas {
+    static class Persona implements Serializable {
+        private static final long serialVersionUID = 1L;
+        String nombre; int edad;
+        Persona(String nombre, int edad) { this.nombre = nombre; this.edad = edad; }
+        public String toString() { return nombre + ", " + edad + " anios"; }
+    }
+    public static void main(String[] args) {
+        List<Persona> personas = List.of(
+            new Persona("Ana", 22),
+            new Persona("Luis", 19),
+            new Persona("Eva", 24));
+        try (ObjectOutputStream out =
+                new ObjectOutputStream(new FileOutputStream("personas.dat"))) {
+            out.writeObject(personas);
+        } catch (IOException e) {
+            System.out.println("Error al guardar: " + e.getMessage());
+        }
+        try (ObjectInputStream in =
+                new ObjectInputStream(new FileInputStream("personas.dat"))) {
+            List<Persona> leidas = (List<Persona>) in.readObject();
+            for (Persona p : leidas) {
+                System.out.println(p);
+            }
+        } catch (IOException | ClassNotFoundException e) {
+            System.out.println("Error al leer: " + e.getMessage());
+        }
+    }
+}
+```
+
+============================================================
+
+=== CARD 57: ex-java-09-12 ===
+FRONT:
+(Examen 9 · Ficheros binarios, serialización y NIO)
+
+Parte 3: Ejercicios de programación
+
+Escribe un programa que copie un fichero binario (por ejemplo foto.jpg) a otro (copia_foto.jpg) leyendo byte a byte con FileInputStream y escribiendo con FileOutputStream. Muestra cuántos bytes se copiaron. 
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+import java.io.*;
+public class CopiarFichero {
+    public static void main(String[] args) {
+        File origen = new File("foto.jpg");
+        File destino = new File("copia_foto.jpg");
+        int contador = 0;
+        try (FileInputStream in = new FileInputStream(origen);
+             FileOutputStream out = new FileOutputStream(destino)) {
+            int b;
+            while ((b = in.read()) != -1) {
+                out.write(b);
+                contador++;
+            }
+        } catch (IOException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+        System.out.println("Copiados " + contador + " bytes");
+    }
+}
+```
+
+============================================================
+
+=== CARD 58: ex-java-09-13 ===
+FRONT:
+(Examen 9 · Ficheros binarios, serialización y NIO)
+
+Parte 3: Ejercicios de programación
+
+Escribe un programa que pida 5 números double por teclado, los guarde en numeros.dat con DataOutputStream y después los lea con DataInputStream mostrando la suma y la media. 
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+import java.io.*;
+import java.util.Scanner;
+public class DatosBinarios {
+    public static void main(String[] args) throws IOException {
+        Scanner sc = new Scanner(System.in);
+        try (DataOutputStream out =
+                new DataOutputStream(new FileOutputStream("numeros.dat"))) {
+            for (int i = 0; i < 5; i++) {
+                System.out.print("Numero " + (i + 1) + ": ");
+                out.writeDouble(sc.nextDouble());
+            }
+        }
+        double suma = 0; int contador = 0;
+        try (DataInputStream in =
+                new DataInputStream(new FileInputStream("numeros.dat"))) {
+            while (in.available() {
+                > 0) {
+                suma += in.readDouble();
+            }
+                contador++;
+            }
+        }
+        System.out.println("Suma: " + suma);
+        System.out.println("Media: " + (suma / contador));
+    }
+}
+```
+
+============================================================
+
+=== CARD 59: ex-java-09-14 ===
+FRONT:
+(Examen 9 · Ficheros binarios, serialización y NIO)
+
+Parte 3: Ejercicios de programación
+
+Con java.nio.file: lee el fichero alumnos.csv (formato nombre;nota, una línea por alumno) con Files.readAllLines, calcula la nota media y escribe el resultado en media.txt con Files.write. 
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+import java.nio.file.*;
+import java.io.IOException;
+import java.util.*;
+public class NotaMedia {
+    public static void main(String[] args) throws IOException {
+        Path ruta = Paths.get("alumnos.csv");
+        List<String> lineas = Files.readAllLines(ruta);
+        double suma = 0; int n = 0;
+        for (String linea : lineas) {
+            String[] campos = linea.split(";");
+            if (campos.length == 2) {
+                suma += Double.parseDouble(campos[1].trim());
+                n++;
+            }
+        }
+        double media = (n > 0) ? suma / n : 0;
+        Files.write(Paths.get("media.txt"),
+            Arrays.asList("Alumnos: " + n, "Nota media: " + media));
+        System.out.println("Media calculada: " + media);
+    }
+}
+```
+
+============================================================
+
+=== CARD 60: ex-java-09-15 ===
+FRONT:
+(Examen 9 · Ficheros binarios, serialización y NIO)
+
+Parte 4: Pregunta teórica
+
+Explica las diferencias entre ficheros de texto y ficheros binarios, y entre serializar objetos y escribir los datos manualmente. ¿Qué ventajas aporta java.nio.file frente a java.io.File?
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+Texto: legible por humanos, se lee con Scanner/BufferedReader; binario: compacto y sin conversión de tipos, se lee con flujos de bytes o de datos.
+Serializar guarda el objeto completo (estado y estructura) con un solo writeObject/readObject, pero el formato depende de la clase y su versión (por eso existe serialVersionUID); escribir manualmente da control total del formato y es más estable entre versiones, pero hay que escribir cada campo.
+java.nio.file (Path, Files) ofrece métodos de alto nivel (readAllLines, write, walk, copy, move...), trata las rutas de forma multiplataforma y permite operaciones atómicas; java.io.File es más antiguo, con menos funcionalidad y métodos que devuelven boolean sin informar del error.
+
+============================================================
+
+=== CARD 61: ex-java-10-09 ===
+FRONT:
+(Examen 10 · Programación funcional: lambdas, streams, Optional y java.time)
+
+Parte 2: Análisis y depuración
+
+El siguiente programa tiene 2 errores. Encuéntralos, explica por qué fallan y propón la corrección.
+
+```java
+import java.util.*;
+import java.util.stream.*;
+public class StreamBug {
+ public static void main(String[] args) {
+ List<String> nombres = List.of("Ana", "Bea", "Carlos");
+ Stream<String> st = nombres.stream();
+ st.forEach(System.out::println);
+ st.filter(s -> s.length() > 2).forEach(System.out::println);
+
+ int limite = 2;
+ nombres.stream().filter(s -> s.length() >= limite);
+ limite = 3;
+ }
+}
+```
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+Código original con los errores marcados:
+
+```java
+import java.util.*;
+import java.util.stream.*;
+public class StreamBug {
+ public static void main(String[] args) {
+ List<String> nombres = List.of("Ana", "Bea", "Carlos");
+ Stream<String> st = nombres.stream();
+ st.forEach(System.out::println);        // ← ❌ ERROR ①: consume el stream
+ st.filter(s -> s.length() > 2).forEach(System.out::println);   // ← ❌ ERROR ①: stream ya consumido → IllegalStateException
+
+ int limite = 2;
+ nombres.stream().filter(s -> s.length() >= limite);
+ limite = 3;                             // ← ❌ ERROR ②: la variable capturada en la lambda no es effectively final
+ }
+}
+```
+
+1. Se usa el mismo stream st dos veces: tras forEach() el stream está consumido y la segunda operación lanza IllegalStateException (stream has already been operated upon). Corrección: crear un stream nuevo por operación: nombres.stream().filter(...)...
+2. La variable limite se usa dentro de una lambda y después se reasigna (limite = 3): las lambdas solo pueden capturar variables effectively final → error de compilación. Corrección: no reasignarla o usar otra variable.
+
+Código corregido (con los 2 errores arreglados):
+
+```java
+import java.util.*;
+import java.util.stream.*;
+
+public class StreamBug {
+    public static void main(String[] args) {
+        List<String> nombres = List.of("Ana", "Bea", "Carlos");
+
+        nombres.stream().forEach(System.out::println);  // ✅ ERROR ① corregido: stream nuevo por operación
+        nombres.stream()
+               .filter(s -> s.length() > 2)
+               .forEach(System.out::println);           // ✅ ERROR ① corregido
+
+        int limite = 2;                                  // ✅ ERROR ② corregido: no se reasigna
+        nombres.stream()
+               .filter(s -> s.length() >= limite)
+               .forEach(System.out::println);
+    }
+}
+```
+
+============================================================
+
+=== CARD 62: ex-java-10-10 ===
+FRONT:
+(Examen 10 · Programación funcional: lambdas, streams, Optional y java.time)
+
+Parte 2: Análisis y depuración
+
+Analiza el siguiente pipeline y determina qué nombres imprime y en qué orden (traza manual).
+
+```java
+List<String> nombres = List.of("Ana", "Bea", "Carlos", "David", "Eva");
+nombres.stream()
+ .filter(s -> s.length() >= 3)
+ .sorted()
+ .forEach(System.out::println);
+```
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+1. filter(s -> s.length() >= 3): todas las cadenas tienen 3 o más letras, así que ninguna se descarta (Eva tiene 3).
+2. sorted() ordena alfabéticamente (orden natural de String).
+Salida: Ana, Bea, Carlos, David, Eva.
+
+============================================================
+
+=== CARD 63: ex-java-10-11 ===
+FRONT:
+(Examen 10 · Programación funcional: lambdas, streams, Optional y java.time)
+
+Parte 3: Ejercicios de programación
+
+Con streams: dada la lista [1, 2, 3, 4, 5, 6, 7, 8], calcula la suma de los cuadrados de los números pares y muestra los 3 mayores pares en orden descendente. 
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+import java.util.*;
+import java.util.stream.*;
+public class StreamsNumeros {
+    public static void main(String[] args) {
+        List<Integer> numeros = List.of(1, 2, 3, 4, 5, 6, 7, 8);
+        int sumaCuadradosPares = numeros.stream()
+                .filter(n -> n % 2 == 0)
+                .mapToInt(n -> n * n)
+                .sum();
+        System.out.println("Suma de cuadrados de pares: " + sumaCuadradosPares);
+        List<Integer> paresDesc = numeros.stream()
+                .filter(n -> n % 2 == 0)
+                .sorted(Comparator.reverseOrder())
+                .limit(3)
+                .collect(Collectors.toList());
+        System.out.println("Tres mayores pares: " + paresDesc);
+    }
+}
+Salida: Suma de cuadrados de pares: 120 (4+16+36+64) y Tres mayores pares: [8, 6, 4].
+```
+
+============================================================
+
+=== CARD 64: ex-java-10-12 ===
+FRONT:
+(Examen 10 · Programación funcional: lambdas, streams, Optional y java.time)
+
+Parte 3: Ejercicios de programación
+
+Con una lista de alumnos (nombre, nota), usa streams para: (a) calcular la nota media, (b) mostrar los aprobados y (c) mostrar el alumno con mejor nota. 
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+import java.util.*;
+public class StreamsAlumnos {
+    static class Alumno {
+        String nombre; double nota;
+        Alumno(String nombre, double nota) { this.nombre = nombre; this.nota = nota; }
+        public String toString() { return nombre; }
+    }
+    public static void main(String[] args) {
+        List<Alumno> alumnos = List.of(
+            new Alumno("Ana", 7.5), new Alumno("Luis", 4.9),
+            new Alumno("Eva", 9.2), new Alumno("Juan", 5.5));
+        double media = alumnos.stream()
+                .mapToDouble(a -> a.nota)
+                .average()
+                .orElse(0);
+        System.out.println("Nota media: " + media);
+        System.out.println("Aprobados:");
+        alumnos.stream()
+                .filter(a -> a.nota >= 5)
+                .forEach(System.out::println);
+        Alumno mejor = alumnos.stream()
+                .max(Comparator.comparingDouble(a -> a.nota))
+                .orElse(null);
+        System.out.println("Mejor: " + mejor);
+    }
+}
+Salida: Nota media: 6.775; aprobados Ana, Eva y Juan; Mejor: Eva.
+```
+
+============================================================
+
+=== CARD 65: ex-java-10-13 ===
+FRONT:
+(Examen 10 · Programación funcional: lambdas, streams, Optional y java.time)
+
+Parte 3: Ejercicios de programación
+
+Implementa un método que devuelva Optional<Alumno> al buscar un alumno por nombre en una lista (sin distinguir mayúsculas). En el main usa orElse() y ifPresentOrElse() para gestionar la ausencia. 
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+import java.util.*;
+public class BuscarAlumno {
+    static class Alumno {
+        String nombre; double nota;
+        Alumno(String nombre, double nota) { this.nombre = nombre; this.nota = nota; }
+        public String toString() { return nombre + " (" + nota + ")"; }
+    }
+    static Optional<Alumno> buscar(List<Alumno> lista, String nombre) {
+        for (Alumno a : lista) {
+            if (a.nombre.equalsIgnoreCase(nombre)) return Optional.of(a);
+        }
+        return Optional.empty();
+    }
+    public static void main(String[] args) {
+        List<Alumno> alumnos = List.of(
+            new Alumno("Ana", 7.5), new Alumno("Eva", 9.2));
+        Alumno encontrado = buscar(alumnos, "eva")
+                .orElse(new Alumno("Desconocido", 0));
+        System.out.println("Resultado: " + encontrado);
+        buscar(alumnos, "Pedro").ifPresentOrElse(
+            a -> System.out.println("Nota de " + a.nombre + ": " + a.nota),
+            () -> System.out.println("Pedro no esta en la lista"));
+    }
+}
+Salida: Resultado: Eva (9.2) y Pedro no esta en la lista.
+```
+
+============================================================
+
+=== CARD 66: ex-java-10-14 ===
+FRONT:
+(Examen 10 · Programación funcional: lambdas, streams, Optional y java.time)
+
+Parte 3: Ejercicios de programación
+
+Con java.time: pide una fecha de nacimiento (AAAA-MM-DD), calcula la edad con Period.between, los días vividos con ChronoUnit.DAYS.between y muestra la fecha de hoy formateada como dd/MM/yyyy. 
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+import java.time.*;
+import java.time.format.DateTimeFormatter;
+import java.util.Scanner;
+public class Fechas {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Fecha de nacimiento (AAAA-MM-DD): ");
+        LocalDate nacimiento = LocalDate.parse(sc.nextLine());
+        LocalDate hoy = LocalDate.now();
+        Period periodo = Period.between(nacimiento, hoy);
+        System.out.println("Edad: " + periodo.getYears() + " anios, "
+            + periodo.getMonths() + " meses y " + periodo.getDays() + " dias");
+        long diasVividos = ChronoUnit.DAYS.between(nacimiento, hoy);
+        System.out.println("Dias vividos: " + diasVividos);
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        System.out.println("Hoy: " + hoy.format(formato));
+    }
+}
+```
+
+============================================================
+
+=== CARD 67: ex-java-10-15 ===
+FRONT:
+(Examen 10 · Programación funcional: lambdas, streams, Optional y java.time)
+
+Parte 4: Pregunta teórica
+
+Explica qué es una expresión lambda y qué es una interfaz funcional. ¿Qué ventajas aportan los streams frente a los bucles tradicionales? Pon un ejemplo comparativo.
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+Una lambda es una función anónima: (parámetros) -> expresión, que puede asignarse a una interfaz funcional. Una interfaz funcional tiene un único método abstracto (Predicate, Function, Consumer, Supplier, Comparator...).
+Ventajas de los streams: código más conciso y legible, operaciones encadenadas (filter, map, sorted, limit...), evaluación perezosa (las operaciones intermedias solo se ejecutan si hay una operación final) y facilidad para paralelizar con parallelStream().
+Ejemplo: filtrar y mostrar nombres que empiezan por 'A'.
+Bucle tradicional:
+   for (String s : nombres) {
+       if (s.startsWith("A")) System.out.println(s);
+   }
+Con streams:
+   nombres.stream().filter(s -> s.startsWith("A")).forEach(System.out::println);
+```
+
+============================================================
+
+=== CARD 68: ex-java-11-11 ===
+FRONT:
+(Examen 11 · Hilos y programación concurrente)
+
+Parte 2: Análisis y depuración
+
+Analiza el siguiente código. ¿Qué valor imprime normalmente? ¿Puede imprimir algo distinto? Explica por qué.
+
+```java
+public class Carrera {
+ static int contador = 0;
+ public static void main(String[] args) throws InterruptedException {
+ Thread t1 = new Thread(() -> { for (int i = 0; i < 1000; i++) { contador++; } });
+ Thread t2 = new Thread(() -> { for (int i = 0; i < 1000; i++) { contador++; } });
+ t1.start(); t2.start();
+ t1.join(); t2.join();
+ System.out.println(contador);
+ }
+}
+```
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+contador++ no es atómico: son tres operaciones (leer, sumar, escribir). Dos hilos pueden leer el mismo valor y escribir el mismo resultado, perdiendo incrementos.
+El valor esperado sería 2000, pero en la práctica suele salir menos (p. ej. 1923) y es distinto en cada ejecución: es una condición de carrera.
+Solución: declarar el método con synchronized (o usar AtomicInteger): public static synchronized void inc() { contador++; }.
+
+============================================================
+
+=== CARD 69: ex-java-11-12 ===
+FRONT:
+(Examen 11 · Hilos y programación concurrente)
+
+Parte 2: Análisis y depuración
+
+El siguiente código a veces se bloquea sin terminar. ¿Qué problema tiene y cómo se corrige?
+
+```java
+public class Bloqueo {
+ static final Object A = new Object();
+ static final Object B = new Object();
+ public static void main(String[] args) {
+ new Thread(() -> { synchronized (A) {
+ try { Thread.sleep(50); } catch (InterruptedException e) {}
+ synchronized (B) { System.out.println("Hilo 1"); }
+ } }).start();
+ new Thread(() -> { synchronized (B) {
+ try { Thread.sleep(50); } catch (InterruptedException e) {}
+ synchronized (A) { System.out.println("Hilo 2"); }
+ } }).start();
+ }
+}
+```
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+Es un deadlock clásico: el hilo 1 toma A y espera B, mientras el hilo 2 toma B y espera A. Ninguno libera su recurso y ambos quedan bloqueados para siempre.
+Corrección: adquirir los bloqueos siempre en el mismo orden (p. ej. primero A y después B en los dos hilos), o usar tryLock con java.util.concurrent.locks.Lock.
+
+============================================================
+
+=== CARD 70: ex-java-11-13 ===
+FRONT:
+(Examen 11 · Hilos y programación concurrente)
+
+Parte 3: Ejercicios de programación
+
+Escribe un programa que cree 5 hilos (Runnable con lambda). Cada hilo imprime su número y una iteración 3 veces, duerme 100 ms entre impresiones, y el main espera a todos con join() antes de imprimir el mensaje final. 
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+public class HilosBasicos {
+    public static void main(String[] args) throws InterruptedException {
+        Thread[] hilos = new Thread[5];
+        for (int i = 1; i <= 5; i++) {
+            final int num = i;
+            hilos[i - 1] = new Thread(() -> {
+                for (int j = 1; j <= 3; j++) {
+                    System.out.println("Hilo " + num + ": iteración " + j);
+                    try { Thread.sleep(100); } catch (InterruptedException e) { }
+                }
+            });
+            hilos[i - 1].start();
+        }
+        for (Thread h : hilos) {
+            h.join();
+        }
+        System.out.println("Todos los hilos han terminado");
+    }
+}
+```
+
+============================================================
+
+=== CARD 71: ex-java-11-14 ===
+FRONT:
+(Examen 11 · Hilos y programación concurrente)
+
+Parte 3: Ejercicios de programación
+
+Implementa una clase Contador con un método incrementar() sincronizado y un main que lance 10 hilos que incrementen 1000 veces cada uno. Comprueba que el resultado final es exactamente 10000. 
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+public class ContadorSeguro {
+    private int valor = 0;
+    public synchronized void incrementar() { valor++; }
+    public synchronized int getValor() { return valor; }
+    public static void main(String[] args) throws InterruptedException {
+        ContadorSeguro c = new ContadorSeguro();
+        Thread[] hilos = new Thread[10];
+        for (int i = 0; i < 10; i++) {
+            hilos[i] = new Thread(() -> {
+                for (int j = 0; j < 1000; j++) {
+                    c.incrementar();
+                }
+            });
+            hilos[i].start();
+        }
+        for (Thread h : hilos) {
+            h.join();
+        }
+        System.out.println("Valor final: " + c.getValor()); // 10000
+    }
+}
+```
+
+============================================================
+
+=== CARD 72: ex-java-11-15 ===
+FRONT:
+(Examen 11 · Hilos y programación concurrente)
+
+Parte 3: Ejercicios de programación
+
+Usa ExecutorService con un pool fijo de 3 hilos para calcular el cuadrado de los números 1 a 6. Cada tarea debe ser un Callable<Integer> y el main debe mostrar los resultados con Future.get(). 
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.*;
+public class PoolTareas {
+    public static void main(String[] args) throws Exception {
+        ExecutorService pool = Executors.newFixedThreadPool(3);
+        List<Future<Integer>> futuros = new ArrayList<>();
+        for (int n = 1; n <= 6; n++) {
+            final int v = n;
+            futuros.add(pool.submit(() -> v * v));
+        }
+        for (Future<Integer> f : futuros) {
+            System.out.println("Cuadrado: " + f.get());
+        }
+        pool.shutdown();
+    }
+}
+```
+
+============================================================
+
+=== CARD 73: ex-java-11-16 ===
+FRONT:
+(Examen 11 · Hilos y programación concurrente)
+
+Parte 4: Pregunta teórica
+
+Explica la diferencia entre sleep() y wait(), y entre heredar de Thread e implementar Runnable. ¿Cuándo conviene usar ExecutorService?
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+sleep() es estático y solo pausa el hilo actual sin liberar el monitor; wait() libera el monitor del objeto y debe llamarse desde un bloque synchronized, quedando el hilo a la espera de notify()/notifyAll().
+Implementar Runnable es preferible a heredar Thread porque no se gasta la única herencia de clase y separa la tarea del mecanismo de ejecución.
+ExecutorService conviene cuando hay muchas tareas cortas o repetidas: reutiliza hilos (evita el coste de crearlos), limita el número máximo con el pool y permite obtener resultados con Future.
+
+============================================================
+
+=== CARD 74: ex-java-12-11 ===
+FRONT:
+(Examen 12 · JDBC y bases de datos)
+
+Parte 2: Análisis y depuración
+
+El siguiente método tiene dos problemas graves. Encuéntralos y propón la corrección.
+
+```java
+public void buscar(String nombre) throws SQLException {
+ Connection conn = DriverManager.getConnection(url, user, pass);
+ Statement st = conn.createStatement();
+ ResultSet rs = st.executeQuery("SELECT * FROM alumnos WHERE nombre = '" + nombre + "'");
+ while (rs.next()) System.out.println(rs.getString("nombre"));
+}
+```
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+1) Inyección SQL: el valor del usuario se concatena directamente en el SQL. Si nombre es  ' OR '1'='1  se devuelven todas las filas. Debe usarse PreparedStatement con parámetro ? y setString(1, nombre).
+2) Fuga de recursos: la conexión, el Statement y el ResultSet nunca se cierran. Debe usarse try-with-resources para cerrarlos automáticamente, incluso si hay excepción.
+
+============================================================
+
+=== CARD 75: ex-java-12-12 ===
+FRONT:
+(Examen 12 · JDBC y bases de datos)
+
+Parte 2: Análisis y depuración
+
+¿Qué error lanza este código en tiempo de ejecución y por qué?
+
+```java
+ResultSet rs = st.executeQuery("SELECT id, nombre FROM alumnos");
+while (rs.next()) {
+ System.out.println(rs.getString(0));
+}
+```
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+Lanza SQLException: los índices de columna de ResultSet empiezan en 1, por lo que getString(0) es inválido.
+Corrección: usar getString(1) (o mejor, el nombre de la columna: rs.getString("nombre")).
+
+============================================================
+
+=== CARD 76: ex-java-12-13 ===
+FRONT:
+(Examen 12 · JDBC y bases de datos)
+
+Parte 3: Ejercicios de programación
+
+Escribe un método insertarAlumno(String nombre, int edad) que inserte un alumno en la tabla alumnos (id autoincremental, nombre, edad) usando PreparedStatement y try-with-resources. 
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+import java.sql.*;
+public class InsertarAlumno {
+    public static void insertar(String nombre, int edad) {
+        String url = "jdbc:mysql://localhost:3306/centro";
+        String sql = "INSERT INTO alumnos (nombre, edad) VALUES (?, ?)";
+        try (Connection conn = DriverManager.getConnection(url, "root", "1234");
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, nombre);
+            ps.setInt(2, edad);
+            ps.executeUpdate();
+            System.out.println("Alumno insertado");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+============================================================
+
+=== CARD 77: ex-java-12-14 ===
+FRONT:
+(Examen 12 · JDBC y bases de datos)
+
+Parte 3: Ejercicios de programación
+
+Escribe un método listarMayores(int edadMinima) que muestre nombre y edad de los alumnos con edad >= edadMinima, ordenados por edad, usando PreparedStatement. 
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+import java.sql.*;
+public class ListarAlumnos {
+    public static void listarMayores(int edadMinima) {
+        String url = "jdbc:mysql://localhost:3306/centro";
+        String sql = "SELECT nombre, edad FROM alumnos WHERE edad >= ? ORDER BY edad";
+        try (Connection conn = DriverManager.getConnection(url, "root", "1234");
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setInt(1, edadMinima);
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    System.out.println(rs.getString("nombre") + " - " + rs.getInt("edad"));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+============================================================
+
+=== CARD 78: ex-java-12-15 ===
+FRONT:
+(Examen 12 · JDBC y bases de datos)
+
+Parte 3: Ejercicios de programación
+
+Implementa una transferencia bancaria con transacción: resta el importe de la cuenta origen, lo suma a la destino y hace commit; si algo falla, rollback. Usa setAutoCommit(false). 
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+import java.sql.*;
+public class Transferencia {
+    public static void transferir(int idOrigen, int idDestino, double importe) {
+        String url = "jdbc:mysql://localhost:3306/banco";
+        String sql = "UPDATE cuentas SET saldo = saldo + ? WHERE id = ?";
+        try (Connection conn = DriverManager.getConnection(url, "root", "1234")) {
+            conn.setAutoCommit(false);
+            try (PreparedStatement ps = conn.prepareStatement(sql)) {
+                ps.setDouble(1, -importe); ps.setInt(2, idOrigen);
+                ps.executeUpdate();
+                ps.setDouble(1, importe); ps.setInt(2, idDestino);
+                ps.executeUpdate();
+                conn.commit();
+                System.out.println("Transferencia realizada");
+            } catch (SQLException e) {
+                conn.rollback();
+                throw e;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+============================================================
+
+=== CARD 79: ex-java-12-16 ===
+FRONT:
+(Examen 12 · JDBC y bases de datos)
+
+Parte 4: Pregunta teórica
+
+Explica las ventajas de PreparedStatement frente a Statement y qué es una transacción y por qué conviene usarla en operaciones de varios pasos.
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+Seguridad: los parámetros se envían separados del SQL, por lo que es inmune a la inyección SQL.
+Rendimiento: la consulta se precompila una vez y se reutiliza con distintos valores (además de permitir cache de planes en muchos SGBD).
+Legibilidad: el SQL queda limpio con ? en lugar de concatenaciones largas.
+Transacción: conjunto de operaciones que se ejecutan como una unidad (todo o nada). Con setAutoCommit(false) los cambios no se persisten hasta commit(); si algo falla, rollback() deshace todo, evitando estados a medias (p. ej. dinero que sale de una cuenta y no llega a otra).
+
+============================================================
+
+=== CARD 80: ex-java-13-11 ===
+FRONT:
+(Examen 13 · Swing y eventos de interfaz gráfica)
+
+Parte 2: Análisis y depuración
+
+El botón de esta ventana no hace nada al pulsarlo. ¿Por qué? Propón la corrección.
+
+```java
+JButton boton = new JButton("Saludar");
+JLabel saludo = new JLabel(" ");
+// ... se añaden al JFrame ...
+boton.addActionListener(new ActionListener() {
+ public void actionPerformed(ActionEvent e) {
+ saludo.setText("Hola");
+ }
+});
+```
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+El código del listener parece correcto; el problema típico es que el botón nunca llegó a registrarse porque falta la llamada o porque el listener se añadió antes de crear el JLabel (null).
+En este caso concreto la causa más habitual es que el botón añadido al frame es otro objeto distinto, o que no se llamó a setVisible(true).
+Solución: asegurar que el listener se registra sobre el mismo botón que se añade al contenedor y que la ventana se hace visible con setVisible(true).
+
+============================================================
+
+=== CARD 81: ex-java-13-12 ===
+FRONT:
+(Examen 13 · Swing y eventos de interfaz gráfica)
+
+Parte 2: Análisis y depuración
+
+Este programa actualiza un JLabel desde un hilo que cuenta. ¿Qué riesgo tiene y cómo se corrige?
+
+```java
+JLabel etiqueta = new JLabel("0");
+new Thread(() -> {
+ for (int i = 1; i <= 10; i++) {
+ etiqueta.setText(String.valueOf(i));
+ try { Thread.sleep(500); } catch (InterruptedException e) { }
+ }
+}).start();
+```
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+El hilo secundario modifica un componente Swing fuera del EDT, lo que viola el modelo de hilos de Swing y puede producir actualizaciones erráticas o excepciones.
+Corrección: encolar la actualización en el EDT: SwingUtilities.invokeLater(() -> etiqueta.setText(String.valueOf(i)));
+
+============================================================
+
+=== CARD 82: ex-java-13-13 ===
+FRONT:
+(Examen 13 · Swing y eventos de interfaz gráfica)
+
+Parte 3: Ejercicios de programación
+
+Crea una ventana con un JTextField, un JButton "Invertir" y un JLabel. Al pulsar el botón, el JLabel muestra el texto del campo invertido (usa StringBuilder.reverse()). 
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+import javax.swing.*;
+import java.awt.*;
+public class InvertirTexto extends JFrame {
+    private JTextField campo;
+    private JLabel resultado;
+    public InvertirTexto() {
+        setTitle("Invertir texto");
+        setLayout(new FlowLayout());
+        campo = new JTextField(15);
+        JButton boton = new JButton("Invertir");
+        resultado = new JLabel(" ");
+        boton.addActionListener(e ->
+            resultado.setText(new StringBuilder(campo.getText()).reverse().toString()));
+        add(campo); add(boton); add(resultado);
+        setSize(320, 120);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setVisible(true);
+    }
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(InvertirTexto::new);
+    }
+}
+```
+
+============================================================
+
+=== CARD 83: ex-java-13-14 ===
+FRONT:
+(Examen 13 · Swing y eventos de interfaz gráfica)
+
+Parte 3: Ejercicios de programación
+
+Haz una mini calculadora Swing: dos JTextField numéricos, un JButton "Sumar" y un JLabel con el resultado. Controla la excepción NumberFormatException mostrando "Error de formato". 
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+import javax.swing.*;
+import java.awt.*;
+public class MiniCalculadora extends JFrame {
+    public MiniCalculadora() {
+        setTitle("Suma");
+        setLayout(new FlowLayout());
+        JTextField a = new JTextField(5);
+        JTextField b = new JTextField(5);
+        JButton sumar = new JButton("Sumar");
+        JLabel res = new JLabel(" ");
+        sumar.addActionListener(e -> {
+            try {
+                int total = Integer.parseInt(a.getText()) + Integer.parseInt(b.getText());
+                res.setText(String.valueOf(total));
+            } catch (NumberFormatException ex) {
+                res.setText("Error de formato");
+            }
+        });
+        add(a); add(new JLabel("+")); add(b); add(sumar); add(res);
+        setSize(360, 110);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setVisible(true);
+    }
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(MiniCalculadora::new);
+    }
+}
+```
+
+============================================================
+
+=== CARD 84: ex-java-13-15 ===
+FRONT:
+(Examen 13 · Swing y eventos de interfaz gráfica)
+
+Parte 3: Ejercicios de programación
+
+Implementa un contador con dos botones (+1 y -1) y un JLabel que muestre el valor actual. Usa lambdas para los listeners. 
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+import javax.swing.*;
+import java.awt.*;
+public class Contador extends JFrame {
+    private int valor = 0;
+    private JLabel etiqueta;
+    public Contador() {
+        setTitle("Contador");
+        setLayout(new FlowLayout());
+        etiqueta = new JLabel("0");
+        JButton mas = new JButton("+1");
+        JButton menos = new JButton("-1");
+        mas.addActionListener(e -> { valor++; etiqueta.setText(String.valueOf(valor)); });
+        menos.addActionListener(e -> { valor--; etiqueta.setText(String.valueOf(valor)); });
+        add(menos); add(etiqueta); add(mas);
+        setSize(260, 100);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setVisible(true);
+    }
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(Contador::new);
+    }
+}
+```
+
+============================================================
+
+=== CARD 85: ex-java-13-16 ===
+FRONT:
+(Examen 13 · Swing y eventos de interfaz gráfica)
+
+Parte 4: Pregunta teórica
+
+¿Qué es el EDT (Event Dispatch Thread) y por qué es importante en Swing? Explica también la diferencia entre ActionListener y MouseListener.
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+El EDT es el hilo único que procesa los eventos de Swing (clics, teclado, repintados) y donde deben ejecutarse todas las modificaciones de componentes.
+Trabajar fuera del EDT provoca condiciones de carrera y fallos visuales; por eso las tareas largas se ejecutan en hilos separados y el resultado se vuelca al EDT con invokeLater.
+ActionListener responde a la acción lógica del componente (pulsar un botón, pulsar Enter en un campo) — un único método: actionPerformed.
+MouseListener responde a eventos de ratón de bajo nivel (clic, entrada, salida, pulsar/soltar) — varios métodos como mouseClicked o mouseEntered.
+
+============================================================
+
+=== CARD 86: ex-java-14-11 ===
+FRONT:
+(Examen 14 · Expresiones regulares y procesamiento de texto)
+
+Parte 2: Análisis y depuración
+
+Este validador de emails acepta direcciones incorrectas como 'a@b.com.extra'. ¿Por qué y cómo se corrige?
+
+```java
+String email = "a@b.com.extra";
+Pattern p = Pattern.compile("[a-z]+@[a-z]+\\.com");
+Matcher m = p.matcher(email);
+if (m.find()) System.out.println("Email válido");
+```
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+find() busca coincidencias parciales: 'a@b.com' aparece dentro de 'a@b.com.extra', así que el resultado es válido aunque la cadena completa no lo sea.
+Corrección: usar matches() en lugar de find() (o anclar la regex con ^...$). Además, el punto en \.com está bien escapado, pero el dominio puede incluir más niveles.
+
+============================================================
+
+=== CARD 87: ex-java-14-12 ===
+FRONT:
+(Examen 14 · Expresiones regulares y procesamiento de texto)
+
+Parte 2: Análisis y depuración
+
+El siguiente código intenta extraer los precios de un texto, pero no imprime nada. ¿Qué falla?
+
+```java
+String texto = "Pan 1,20 € - Leche 0,85 €";
+Pattern p = Pattern.compile("(\\d+,\\d{2})");
+Matcher m = p.matcher(texto);
+if (m.find()) {
+ System.out.println(m.group(1));
+}
+```
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+El código solo imprime UNA coincidencia (la primera: '1,20') porque usa if en lugar de while.
+Corrección: sustituir if (m.find()) por while (m.find()) para recorrer todas las coincidencias e imprimir también '0,85'.
+
+============================================================
+
+=== CARD 88: ex-java-14-13 ===
+FRONT:
+(Examen 14 · Expresiones regulares y procesamiento de texto)
+
+Parte 3: Ejercicios de programación
+
+Escribe un programa que valide un NIF: 8 dígitos seguidos de una letra, y que la letra sea la correcta según el algoritmo (resto de dividir el número entre 23 con la tabla TRWAGMYFPDXBNJZSQVHLCKE). 
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+import java.util.Scanner;
+public class ValidarNIF {
+    static final String LETRAS = "TRWAGMYFPDXBNJZSQVHLCKE";
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("NIF: ");
+        String nif = sc.nextLine().trim().toUpperCase();
+        if (!nif.matches("\\d{8}[A-Z]")) {
+            System.out.println("Formato incorrecto");
+            return;
+        }
+        int num = Integer.parseInt(nif.substring(0, 8));
+        char esperada = LETRAS.charAt(num % 23);
+        if (nif.charAt(8) {
+            == esperada) System.out.println("NIF válido");
+        }
+        else {
+            System.out.println("Letra incorrecta, debería ser " + esperada);
+        }
+    }
+}
+```
+
+============================================================
+
+=== CARD 89: ex-java-14-14 ===
+FRONT:
+(Examen 14 · Expresiones regulares y procesamiento de texto)
+
+Parte 3: Ejercicios de programación
+
+Escribe un programa que, dado un texto, extraiga e imprima todas las palabras que empiezan por vocal (a, e, i, o, u), usando Pattern y Matcher con find() en bucle. 
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+import java.util.regex.*;
+public class Vocales {
+    public static void main(String[] args) {
+        String texto = "El oso y el águila comen uvas en la isla";
+        Pattern p = Pattern.compile("\\b[aeiouáéíóú][a-záéíóúñ]*", Pattern.CASE_INSENSITIVE);
+        Matcher m = p.matcher(texto);
+        while (m.find()) {
+            System.out.println(m.group());
+        }
+    }
+}
+```
+
+============================================================
+
+=== CARD 90: ex-java-14-15 ===
+FRONT:
+(Examen 14 · Expresiones regulares y procesamiento de texto)
+
+Parte 3: Ejercicios de programación
+
+Escribe un programa que oculte los números de teléfono (9 dígitos) de un texto sustituyéndolos por "[OCULTO]", usando replaceAll con la regex adecuada. 
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+public class OcultarTelefonos {
+    public static void main(String[] args) {
+        String texto = "Llama al 612345678 o al 699000111 hoy";
+        String resultado = texto.replaceAll("\\d{9}", "[OCULTO]");
+        System.out.println(resultado);
+        // Llama al [OCULTO] o al [OCULTO] hoy
+    }
+}
+```
+
+============================================================
+
+=== CARD 91: ex-java-14-16 ===
+FRONT:
+(Examen 14 · Expresiones regulares y procesamiento de texto)
+
+Parte 4: Pregunta teórica
+
+Explica la diferencia entre matches() y find(), y para qué sirven los grupos de captura. Pon un ejemplo de uso de grupo.
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+matches() exige que toda la cadena encaje con la regex; find() localiza coincidencias parciales y puede llamarse repetidamente para recorrerlas.
+Los grupos de captura (paréntesis) permiten extraer partes de la coincidencia: en la regex (\\d{2})/(\\d{2})/(\\d{4}) para una fecha, group(1) sería el día, group(2) el mes y group(3) el año.
+Ejemplo: Pattern.compile("Fecha: (\\d{2})/(\\d{2})/(\\d{4})").matcher(texto).find() permite recuperar día/mes/año sin re-parsing manual.
+
+============================================================
+
+=== CARD 92: ex-java-15-11 ===
+FRONT:
+(Examen 15 · Ordenación y búsqueda: algoritmos y complejidad)
+
+Parte 2: Análisis y depuración
+
+Este programa busca un valor y a veces dice que no existe aunque sí está. ¿Por qué?
+
+```java
+int[] datos = {12, 5, 8, 23, 16, 2};
+int buscado = 16;
+int pos = Arrays.binarySearch(datos, buscado);
+System.out.println(pos >= 0 ? "Encontrado en " + pos : "No existe");
+```
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+Arrays.binarySearch exige un array ordenado; como datos no está ordenado, el resultado es impredecible (puede devolver -1 aunque 16 esté presente).
+Corrección: ordenar antes: Arrays.sort(datos); y luego buscar. Alternativa: búsqueda lineal si no se puede ordenar.
+
+============================================================
+
+=== CARD 93: ex-java-15-12 ===
+FRONT:
+(Examen 15 · Ordenación y búsqueda: algoritmos y complejidad)
+
+Parte 2: Análisis y depuración
+
+¿Por qué este código no compila y cómo se arregla de dos formas distintas?
+
+```java
+class Persona {
+ String nombre;
+ int edad;
+ Persona(String n, int e) { nombre = n; edad = e; }
+}
+// ...
+List<Persona> lista = new ArrayList<>();
+lista.add(new Persona("Ana", 25));
+Collections.sort(lista);
+```
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+Collections.sort(lista) exige que Persona implemente Comparable<Persona>; si no, el compilador falla.
+Solución 1: que Persona implemente Comparable<Persona> con compareTo por edad (o nombre).
+Solución 2: pasar un Comparator: Collections.sort(lista, Comparator.comparingInt(p -> p.edad));
+
+============================================================
+
+=== CARD 94: ex-java-15-13 ===
+FRONT:
+(Examen 15 · Ordenación y búsqueda: algoritmos y complejidad)
+
+Parte 3: Ejercicios de programación
+
+Implementa a mano la ordenación por selección: en cada pasada encuentra el mínimo de la parte no ordenada y lo coloca en su sitio. Muéstralo con un array de 5 enteros. 
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+public class Seleccion {
+    public static void ordenar(int[] a) {
+        for (int i = 0; i < a.length - 1; i++) {
+            int min = i;
+            for (int j = i + 1; j < a.length; j++) {
+                if (a[j] < a[min]) {
+                    min = j;
+                }
+            }
+            int aux = a[i]; a[i] = a[min]; a[min] = aux;
+        }
+    }
+    public static void main(String[] args) {
+        int[] a = {29, 10, 14, 37, 13};
+        ordenar(a);
+        System.out.println(java.util.Arrays.toString(a)); // [10, 13, 14, 29, 37]
+    }
+}
+```
+
+============================================================
+
+=== CARD 95: ex-java-15-14 ===
+FRONT:
+(Examen 15 · Ordenación y búsqueda: algoritmos y complejidad)
+
+Parte 3: Ejercicios de programación
+
+Ordena una lista de alumnos (nombre, nota) por nota descendente y, a igual nota, por nombre ascendente, usando Comparator con lambdas. 
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+import java.util.*;
+class Alumno {
+    String nombre; double nota;
+    Alumno(String n, double nt) { nombre = n; nota = nt; }
+    public String toString() { return nombre + " (" + nota + ")"; }
+}
+public class OrdenarAlumnos {
+    public static void main(String[] args) {
+        List<Alumno> lista = new ArrayList<>(List.of(
+            new Alumno("Ana", 7.5), new Alumno("Luis", 9.0), new Alumno("Eva", 7.5)));
+        lista.sort(Comparator.comparingDouble((Alumno a) -> a.nota).reversed()
+                    .thenComparing(a -> a.nombre));
+        System.out.println(lista); // [Luis (9.0), Ana (7.5), Eva (7.5)]
+    }
+}
+```
+
+============================================================
+
+=== CARD 96: ex-java-15-15 ===
+FRONT:
+(Examen 15 · Ordenación y búsqueda: algoritmos y complejidad)
+
+Parte 3: Ejercicios de programación
+
+Implementa la búsqueda binaria de forma recursiva (método buscar(int[] a, int objetivo, int ini, int fin)) y pruébala con un array ordenado. 
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+public class BusquedaBinaria {
+    static int buscar(int[] a, int objetivo, int ini, int fin) {
+        if (ini > fin) {
+            return -1;
+        }
+        int medio = (ini + fin) / 2;
+        if (a[medio] == objetivo) {
+            return medio;
+        }
+        if (objetivo < a[medio]) {
+            return buscar(a, objetivo, ini, medio - 1);
+        }
+        return buscar(a, objetivo, medio + 1, fin);
+    }
+    public static void main(String[] args) {
+        int[] datos = {2, 5, 8, 12, 16, 23};
+        System.out.println(buscar(datos, 16, 0, datos.length - 1)); // 4
+        System.out.println(buscar(datos, 7, 0, datos.length - 1));  // -1
+    }
+}
+```
+
+============================================================
+
+=== CARD 97: ex-java-15-16 ===
+FRONT:
+(Examen 15 · Ordenación y búsqueda: algoritmos y complejidad)
+
+Parte 4: Pregunta teórica
+
+Compara burbuja, selección e inserción en cuanto a complejidad y estabilidad. ¿Cuándo conviene usar Arrays.sort/Collections.sort en lugar de implementar uno propio?
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+Los tres son O(n²) en el peor caso; inserción es O(n) con datos casi ordenados y es estable; selección no es estable; burbuja es estable pero casi siempre la peor opción.
+Arrays.sort/Collections.sort usan algoritmos O(n log n) (TimSort/dual-pivot quicksort) y están muy optimizados, así que para datos reales siempre conviene usarlos.
+Implementar a mano solo tiene sentido didáctico, con datos muy pequeños, o cuando se necesita un criterio muy concreto de estabilidad o comportamiento.
+
+============================================================
+
+=== CARD 98: ex-java-16-11 ===
+FRONT:
+(Examen 16 · Estructuras de datos dinámicas: pilas, colas y listas enlazadas)
+
+Parte 2: Análisis y depuración
+
+El siguiente código implementa una cola con ArrayList. ¿Qué problema de rendimiento tiene y cómo lo mejorarías?
+
+```java
+import java.util.ArrayList;\npublic class ColaConLista {\n private ArrayList<String> datos = new ArrayList<>();\n public void encolar(String s) { datos.add(s); }\n public String desencolar() {\n return datos.remove(0);\n }\n}
+```
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+Problema: datos.remove(0) desplaza todos los elementos una posición hacia la izquierda → O(n) por cada desencolado.
+Con n operaciones el coste total es O(n²), inaceptable para colas grandes.
+Solución: usar ArrayDeque<String> (o la interfaz Queue) con addLast()/pollFirst(), que operan en O(1) amortizado.
+
+============================================================
+
+=== CARD 99: ex-java-16-12 ===
+FRONT:
+(Examen 16 · Estructuras de datos dinámicas: pilas, colas y listas enlazadas)
+
+Parte 2: Análisis y depuración
+
+La siguiente pila usa un array fijo. ¿Qué ocurre al apilar más elementos de los permitidos y cómo se corrige?
+
+```java
+public class PilaFija {\n private int[] datos = new int[10];\n private int tope = -1;\n public void push(int v) { datos[++tope] = v; }\n public int pop() { return datos[tope--]; }\n}
+```
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+Al apilar el elemento 11 se accede a datos[10], que está fuera del array (índices 0-9) → ArrayIndexOutOfBoundsException.
+Además pop() sobre una pila vacía devuelve datos[-1] sin control.
+Solución: usar ArrayDeque<Integer> (push/pop) o redimensionar el array manualmente (Arrays.copyOf) y comprobar tope antes de operar.
+
+============================================================
+
+=== CARD 100: ex-java-16-13 ===
+FRONT:
+(Examen 16 · Estructuras de datos dinámicas: pilas, colas y listas enlazadas)
+
+Parte 3: Ejercicios de programación
+
+Implementa una clase ColaClientes que gestione una cola de nombres con ArrayDeque: encolar(), desencolar() y mostrar() (recorrido sin vaciar). Crea un main de prueba. 
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+import java.util.ArrayDeque;
+import java.util.Deque;
+public class ColaClientes {
+    private Deque<String> cola = new ArrayDeque<>();
+    public void encolar(String nombre) { cola.addLast(nombre); }
+    public String desencolar() { return cola.pollFirst(); }
+    public void mostrar() {
+        for (String c : cola) {
+            System.out.println(c);
+        }
+    }
+    public static void main(String[] args) {
+        ColaClientes c = new ColaClientes();
+        c.encolar("Ana"); c.encolar("Luis"); c.encolar("Marta");
+        System.out.println("Atendido: " + c.desencolar()); // Ana
+        c.mostrar(); // Luis, Marta
+    }
+}
+```
+
+============================================================
+
+=== CARD 101: ex-java-16-14 ===
+FRONT:
+(Examen 16 · Estructuras de datos dinámicas: pilas, colas y listas enlazadas)
+
+Parte 3: Ejercicios de programación
+
+Escribe un programa que compruebe si una expresión con paréntesis (), corchetes [] y llaves {} está balanceada, usando una pila. 
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+import java.util.ArrayDeque;
+import java.util.Deque;
+public class ParentesisBalanceados {
+    static boolean balanceado(String expr) {
+        Deque<Character> pila = new ArrayDeque<>();
+        for (char c : expr.toCharArray()) {
+            if (c == '(' || c == '[' || c == '{') {
+                pila.push(c);
+            }
+            else {
+                if (c == ')' || c == ']' || c == '}') {
+                if (pila.isEmpty()) return false;
+            }
+                char apertura = pila.pop();
+                if (!coinciden(apertura, c)) return false;
+            }
+        }
+        return pila.isEmpty();
+    }
+    static boolean coinciden(char a, char c) {
+        return (a == '(' && c == ')') || (a == '[' && c == ']') || (a == '{' && c == '}');
+    }
+    public static void main(String[] args) {
+        System.out.println(balanceado("(a + b) * [c - {d}]")); // true
+        System.out.println(balanceado("(a + b]"));             // false
+    }
+}
+```
+
+============================================================
+
+=== CARD 102: ex-java-16-15 ===
+FRONT:
+(Examen 16 · Estructuras de datos dinámicas: pilas, colas y listas enlazadas)
+
+Parte 3: Ejercicios de programación
+
+Implementa una lista enlazada simple propia: clase Nodo (valor y siguiente) y clase ListaEnlazada con métodos agregar(int) e imprimir(). 
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+class Nodo {
+    int valor;
+    Nodo siguiente;
+    Nodo(int valor) { this.valor = valor; }
+}
+public class ListaEnlazada {
+    private Nodo cabeza;
+    public void agregar(int v) {
+        Nodo nuevo = new Nodo(v);
+        if (cabeza == null) { cabeza = nuevo; return; }
+        Nodo actual = cabeza;
+        while (actual.siguiente != null) {
+            actual = actual.siguiente;
+        }
+        actual.siguiente = nuevo;
+    }
+    public void imprimir() {
+        for (Nodo n = cabeza; n != null; n = n.siguiente) {
+            System.out.print(n.valor + " ");
+        }
+        System.out.println();
+    }
+    public static void main(String[] args) {
+        ListaEnlazada l = new ListaEnlazada();
+        l.agregar(3); l.agregar(7); l.agregar(1);
+        l.imprimir(); // 3 7 1
+    }
+}
+```
+
+============================================================
+
+=== CARD 103: ex-java-16-16 ===
+FRONT:
+(Examen 16 · Estructuras de datos dinámicas: pilas, colas y listas enlazadas)
+
+Parte 4: Pregunta teórica
+
+Compara ArrayList y LinkedList indicando en qué operaciones es mejor cada una. ¿Cuándo elegirías ArrayDeque?
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+ArrayList: acceso por índice O(1), inserción/borrado al final O(1) amortizado, pero insertar/borrar en el centro O(n) por el desplazamiento. Mejor para lecturas frecuentes por índice.
+LinkedList: inserción/borrado en posiciones conocidas O(1) (si se tiene el nodo), pero acceso por índice O(n). Mejor para muchas inserciones/borrados al principio.
+ArrayDeque: ideal para pilas y colas (push/pop, addFirst/addLast, pollFirst/pollLast) con O(1) amortizado, sin el coste de los nodos de LinkedList.
+
+============================================================
+
+=== CARD 104: ex-java-17-11 ===
+FRONT:
+(Examen 17 · Flujos de texto: Reader, Writer y try-with-resources)
+
+Parte 2: Análisis y depuración
+
+El siguiente código lee un fichero carácter a carácter. ¿Qué problemas tiene? Propón una versión mejorada.
+
+```java
+import java.io.*;\npublic class LeerLento {\n public static void main(String[] args) throws IOException {\n FileReader fr = new FileReader("datos.txt");\n int c;\n while ((c = fr.read()) != -1) {\n System.out.print((char) c);\n }\n }\n}
+```
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+1. No se cierra el recurso: si ocurre una excepción, el FileReader queda abierto (fuga de recursos).
+2. read() sin buffer hace una llamada al sistema por carácter → muy lento en ficheros grandes.
+Solución: try-with-resources + BufferedReader y readLine():
+try (BufferedReader br = new BufferedReader(new FileReader("datos.txt"))) {
+    String linea;
+    while ((linea = br.readLine()) != null) System.out.println(linea);
+}
+```
+
+============================================================
+
+=== CARD 105: ex-java-17-12 ===
+FRONT:
+(Examen 17 · Flujos de texto: Reader, Writer y try-with-resources)
+
+Parte 2: Análisis y depuración
+
+Este programa copia un fichero línea a línea pero pierde líneas. ¿Por qué? Corrígelo.
+
+```java
+import java.io.*;\npublic class CopiaBug {\n public static void main(String[] args) throws IOException {\n try (BufferedReader br = new BufferedReader(new FileReader("a.txt"));\n PrintWriter pw = new PrintWriter(new FileWriter("b.txt"))) {\n while (br.readLine() != null) {\n pw.println(br.readLine());\n }\n }\n }\n}
+```
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+El bucle llama a br.readLine() dos veces por iteración: una en la condición y otra dentro del cuerpo.
+La primera línea se lee y se descarta (solo se comprueba que no es null), y la segunda se escribe.
+Resultado: se pierden las líneas impares y la última línea puede escribirse como null.
+Corrección: guardar la línea en una variable:
+String linea;
+while ((linea = br.readLine()) != null) { pw.println(linea); }
+```
+
+============================================================
+
+=== CARD 106: ex-java-17-13 ===
+FRONT:
+(Examen 17 · Flujos de texto: Reader, Writer y try-with-resources)
+
+Parte 3: Ejercicios de programación
+
+Escribe un programa que lea un fichero notas.txt (formato: nombre;nota por línea) y muestre la nota media de la clase. 
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+import java.io.*;
+public class MediaNotas {
+    public static void main(String[] args) {
+        double suma = 0;
+        int n = 0;
+        try (BufferedReader br = new BufferedReader(new FileReader("notas.txt"))) {
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                String[] partes = linea.split(";");
+                suma += Double.parseDouble(partes[1].trim());
+                n++;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println("Media: " + (n > 0 ? suma / n : 0));
+    }
+}
+```
+
+============================================================
+
+=== CARD 107: ex-java-17-14 ===
+FRONT:
+(Examen 17 · Flujos de texto: Reader, Writer y try-with-resources)
+
+Parte 3: Ejercicios de programación
+
+Escribe un programa que genere un fichero tabla.txt con la tabla de multiplicar de un número leído por teclado, usando PrintWriter. 
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+import java.io.*;
+import java.util.Scanner;
+public class TablaMultiplicar {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Número: ");
+        int n = sc.nextInt();
+        try (PrintWriter pw = new PrintWriter(new FileWriter("tabla.txt"))) {
+            for (int i = 1; i <= 10; i++) {
+                pw.println(n + " x " + i + " = " + (n * i));
+            }
+            System.out.println("Tabla escrita en tabla.txt");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+============================================================
+
+=== CARD 108: ex-java-17-15 ===
+FRONT:
+(Examen 17 · Flujos de texto: Reader, Writer y try-with-resources)
+
+Parte 3: Ejercicios de programación
+
+Copia un fichero de texto línea a línea usando try-with-resources y Files.newBufferedReader con UTF-8. Si el fichero de origen no existe, muestra un mensaje sin romper el programa. 
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+import java.nio.charset.StandardCharsets;
+import java.nio.file.*;
+import java.io.*;
+public class CopiaTexto {
+    public static void main(String[] args) {
+        Path origen = Paths.get("origen.txt");
+        Path destino = Paths.get("copia.txt");
+        try (BufferedReader br = Files.newBufferedReader(origen, StandardCharsets.UTF_8);
+             PrintWriter pw = new PrintWriter(Files.newBufferedWriter(destino, StandardCharsets.UTF_8))) {
+            String linea;
+            while ((linea = br.readLine()) != null) pw.println(linea);
+            System.out.println("Copiado");
+        } catch (NoSuchFileException e) {
+            System.out.println("El fichero de origen no existe");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+============================================================
+
+=== CARD 109: ex-java-17-16 ===
+FRONT:
+(Examen 17 · Flujos de texto: Reader, Writer y try-with-resources)
+
+Parte 4: Pregunta teórica
+
+Explica la diferencia entre flujos de bytes (InputStream/OutputStream) y flujos de caracteres (Reader/Writer). ¿Por qué conviene usar BufferedReader y PrintWriter?
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+Los flujos de bytes trabajan con datos binarios (byte a byte): sirven para imágenes, audio, objetos serializados, etc.
+Los flujos de caracteres (Reader/Writer) traducen bytes a caracteres usando una codificación (UTF-8, ISO-8859-1...): adecuados para texto.
+BufferedReader añade un buffer y readLine(), reduciendo las llamadas al disco de una por carácter a una por bloque.
+PrintWriter ofrece print()/println() sobre Writer y no obliga a capturar IOException en cada escritura, simplificando el código de salida de texto.
+
+============================================================
+
+=== CARD 110: ex-java-18-11 ===
+FRONT:
+(Examen 18 · Testing con JUnit y depuración)
+
+Parte 2: Análisis y depuración
+
+Este test falla de forma intermitente. ¿Por qué y cómo se corrige?
+
+```java
+import org.junit.jupiter.api.Test;\nimport static org.junit.jupiter.api.Assertions.*;\npublic class PrecioTest {\n @Test\n void iva() {\n double total = 100.0 * 1.21;\n assertEquals(121.0, total);\n }\n}
+```
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+100.0 * 1.21 no es exactamente 121.0 en binario: el resultado real es 120.99999999999999 (o similar).
+assertEquals(double, double) sin delta falla por la precisión de coma flotante.
+Corrección: assertEquals(121.0, total, 0.001); — el tercer argumento es la tolerancia (delta).
+
+============================================================
+
+=== CARD 111: ex-java-18-12 ===
+FRONT:
+(Examen 18 · Testing con JUnit y depuración)
+
+Parte 2: Análisis y depuración
+
+El siguiente test debería pasar pero falla. Depura el código de la clase probada.
+
+```java
+public class Util {\n public static String iniciales(String nombre) {\n String[] partes = nombre.split(" ");\n String res = "";\n for (int i = 0; i <= partes.length; i++) {\n res += partes[i].charAt(0);\n }\n return res;\n }\n}\n// Test:\n// assertEquals("JL", Util.iniciales("Juan Lopez"));
+```
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+El bucle usa i <= partes.length en lugar de i < partes.length: para "Juan Lopez" hay 2 partes (índices 0 y 1) y el bucle intenta acceder a partes[2].
+Eso lanza ArrayIndexOutOfBoundsException (o StringIndexOutOfBounds si el array estuviera vacío), por lo que el test falla.
+Corrección: for (int i = 0; i < partes.length; i++) { res += partes[i].charAt(0); }
+
+============================================================
+
+=== CARD 112: ex-java-18-13 ===
+FRONT:
+(Examen 18 · Testing con JUnit y depuración)
+
+Parte 3: Ejercicios de programación
+
+Escribe la clase Calculadora (suma, resta, divide) y su clase de test JUnit 5 que verifique: sumas, restas, división exacta y que dividir entre cero lanza IllegalArgumentException. 
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+public class Calculadora {
+    public int suma(int a, int b) { return a + b; }
+    public int resta(int a, int b) { return a - b; }
+    public double divide(double a, double b) {
+        if (b == 0) {
+            throw new IllegalArgumentException("División entre cero");
+        }
+        return a / b;
+    }
+}
+// --- Test ---
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+public class CalculadoraTest {
+    private final Calculadora c = new Calculadora();
+    @Test void sumas() { assertEquals(5, c.suma(2, 3)); }
+    @Test void restas() { assertEquals(-1, c.resta(2, 3)); }
+    @Test void divisionExacta() { assertEquals(2.5, c.divide(5, 2), 0.0001); }
+    @Test void divisionEntreCero() {
+        assertThrows(IllegalArgumentException.class, () -> c.divide(5, 0));
+    }
+}
+```
+
+============================================================
+
+=== CARD 113: ex-java-18-14 ===
+FRONT:
+(Examen 18 · Testing con JUnit y depuración)
+
+Parte 3: Ejercicios de programación
+
+Implementa la clase EsPalindromo (método estático esPalindromo(String)) y su test con casos límite: "ana" (true), "Hola" (false), cadena vacía (true), "Ana" ignorando mayúsculas (true). 
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+public class EsPalindromo {
+    public static boolean esPalindromo(String s) {
+        if (s == null) {
+            return false;
+        }
+        String limpio = s.toLowerCase().replace(" ", "");
+        return new StringBuilder(limpio).reverse().toString().equals(limpio);
+    }
+}
+// --- Test ---
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+public class EsPalindromoTest {
+    @Test void casos() {
+        assertTrue(EsPalindromo.esPalindromo("ana"));
+        assertFalse(EsPalindromo.esPalindromo("hola"));
+        assertTrue(EsPalindromo.esPalindromo(""));
+        assertTrue(EsPalindromo.esPalindromo("Ana"));
+        assertFalse(EsPalindromo.esPalindromo(null));
+    }
+}
+```
+
+============================================================
+
+=== CARD 114: ex-java-18-15 ===
+FRONT:
+(Examen 18 · Testing con JUnit y depuración)
+
+Parte 3: Ejercicios de programación
+
+Escribe una clase ListaTareas con @BeforeEach que inicialice una lista vacía, y tests que verifiquen añadir, eliminar y contar elementos. 
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+import java.util.ArrayList;
+import java.util.List;
+public class ListaTareas {
+    private final List<String> tareas = new ArrayList<>();
+    public void anadir(String t) { tareas.add(t); }
+    public boolean eliminar(String t) { return tareas.remove(t); }
+    public int contar() { return tareas.size(); }
+}
+// --- Test ---
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+public class ListaTareasTest {
+    private ListaTareas lista;
+    @BeforeEach void setUp() { lista = new ListaTareas(); }
+    @Test void anadirIncrementa() {
+        lista.anadir("Estudiar");
+        assertEquals(1, lista.contar());
+    }
+    @Test void eliminarFunciona() {
+        lista.anadir("Estudiar");
+        assertTrue(lista.eliminar("Estudiar"));
+        assertEquals(0, lista.contar());
+    }
+    @Test void eliminarInexistente() {
+        assertFalse(lista.eliminar("No existe"));
+    }
+}
+```
+
+============================================================
+
+=== CARD 115: ex-java-18-16 ===
+FRONT:
+(Examen 18 · Testing con JUnit y depuración)
+
+Parte 4: Pregunta teórica
+
+¿Qué es la cobertura de código? ¿Un 100 % de cobertura garantiza que el programa no tiene errores? Razona la respuesta.
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+La cobertura mide el porcentaje de código (líneas, ramas o condiciones) que ejecutan los tests.
+Un 100 % de cobertura NO garantiza ausencia de errores: los tests pueden ejecutar el código sin verificar resultados correctos, o no probar valores límite, entradas inesperadas o condiciones de carrera.
+La cobertura es una herramienta de calidad útil (detecta código sin probar), pero la clave está en la calidad de las assertions y en probar casos límite.
+
+============================================================
+
+=== CARD 116: ex-java-19-11 ===
+FRONT:
+(Examen 19 · Patrones de diseño: Singleton, Factory, Observer, DAO y MVC)
+
+Parte 2: Análisis y depuración
+
+Este Singleton no es seguro para hilos. Explica qué puede ocurrir y cómo corregirlo.
+
+```java
+public class Configuracion {\n private static Configuracion instancia;\n public String idioma = "es";\n private Configuracion() { }\n public static Configuracion getInstance() {\n if (instancia == null) {\n instancia = new Configuracion();\n }\n return instancia;\n }\n}
+```
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+Problema: si dos hilos llaman a getInstance() a la vez y ambos ven instancia == null, cada uno crea su propia instancia → se rompe la unicidad.
+Además el campo idioma es público (rompe el encapsulamiento): debería ser private con getter/setter.
+Corrección (doble comprobación):
+private static volatile Configuracion instancia;
+public static Configuracion getInstance() {
+    if (instancia == null) {
+        synchronized (Configuracion.class) {
+            if (instancia == null) {
+                instancia = new Configuracion();
+            }
+        }
+    }
+    return instancia;
+}
+O más simple: usar un enum (enum Configuracion { INSTANCIA }) o inicialización estática.
+```
+
+============================================================
+
+=== CARD 117: ex-java-19-12 ===
+FRONT:
+(Examen 19 · Patrones de diseño: Singleton, Factory, Observer, DAO y MVC)
+
+Parte 2: Análisis y depuración
+
+El siguiente método fábrica tiene un problema de mantenimiento. Identifícalo y propón una mejora.
+
+```java
+public class Notificador {\n public void enviar(String tipo, String mensaje) {\n if (tipo.equals("email")) {\n System.out.println("Enviando email: " + mensaje);\n } else if (tipo.equals("sms")) {\n System.out.println("Enviando SMS: " + mensaje);\n } else if (tipo.equals("push")) {\n System.out.println("Enviando push: " + mensaje);\n }\n }\n}
+```
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+Problema: el método crece con cada nuevo canal (cadenas if-else) y mezcla la decisión de creación con el envío; viola el principio abierto/cerrado.
+Mejora: Factory Method que devuelve una interfaz Canal con su implementación:
+interface Canal { void enviar(String msg); }
+class Email implements Canal { public void enviar(String m) { System.out.println("Email: " + m); } }
+class SMS implements Canal { public void enviar(String m) { System.out.println("SMS: " + m); } }
+static Canal crear(String tipo) {
+    switch (tipo) {
+        case "email": return new Email();
+        case "sms": return new SMS();
+        default: throw new IllegalArgumentException("Canal desconocido: " + tipo);
+    }
+}
+Añadir un canal nuevo solo requiere una clase nueva y un case.
+```
+
+============================================================
+
+=== CARD 118: ex-java-19-13 ===
+FRONT:
+(Examen 19 · Patrones de diseño: Singleton, Factory, Observer, DAO y MVC)
+
+Parte 3: Ejercicios de programación
+
+Implementa un Singleton Logger thread-safe (doble comprobación) con método log(String) que imprima con marca de tiempo, y úsalo desde dos puntos del programa. 
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+import java.time.LocalTime;
+public class Logger {
+    private static volatile Logger instancia;
+    private Logger() { }
+    public static Logger getInstance() {
+        if (instancia == null) {
+            synchronized (Logger.class) {
+                if (instancia == null) {
+                    instancia = new Logger();
+                }
+            }
+        }
+        return instancia;
+    }
+    public void log(String msg) {
+        System.out.println("[" + LocalTime.now() + "] " + msg);
+    }
+    public static void main(String[] args) {
+        Logger l1 = Logger.getInstance();
+        Logger l2 = Logger.getInstance();
+        System.out.println(l1 == l2); // true: misma instancia
+        l1.log("Iniciando");
+        l2.log("Finalizando");
+    }
+}
+```
+
+============================================================
+
+=== CARD 119: ex-java-19-14 ===
+FRONT:
+(Examen 19 · Patrones de diseño: Singleton, Factory, Observer, DAO y MVC)
+
+Parte 3: Ejercicios de programación
+
+Implementa el patrón Observer: una clase Noticias (sujeto) con suscribir()/publicar(), y una clase Suscriptor que recibe las noticias. Demuestra el funcionamiento con dos suscriptores. 
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+import java.util.ArrayList;
+import java.util.List;
+interface Observador { void recibir(String noticia); }
+class Noticias {
+    private final List<Observador> suscriptores = new ArrayList<>();
+    public void suscribir(Observador o) { suscriptores.add(o); }
+    public void publicar(String noticia) {
+        for (Observador o : suscriptores) {
+            o.recibir(noticia);
+        }
+    }
+}
+class Suscriptor implements Observador {
+    private final String nombre;
+    Suscriptor(String nombre) { this.nombre = nombre; }
+    public void recibir(String noticia) {
+        System.out.println(nombre + " recibió: " + noticia);
+    }
+}
+public class DemoObserver {
+    public static void main(String[] args) {
+        Noticias n = new Noticias();
+        n.suscribir(new Suscriptor("Ana"));
+        n.suscribir(new Suscriptor("Luis"));
+        n.publicar("Notas publicadas");
+        // Ana recibió: Notas publicadas
+        // Luis recibió: Notas publicadas
+    }
+}
+```
+
+============================================================
+
+=== CARD 120: ex-java-19-15 ===
+FRONT:
+(Examen 19 · Patrones de diseño: Singleton, Factory, Observer, DAO y MVC)
+
+Parte 3: Ejercicios de programación
+
+Diseña un DAO para una clase Alumno (id, nombre, nota): interfaz AlumnoDAO con insertar() y listar(), e implementación AlumnoDAOMemoria con una lista. Escribe también un pequeño uso de ejemplo. 
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+import java.util.ArrayList;
+import java.util.List;
+class Alumno {
+    int id; String nombre; double nota;
+    Alumno(int id, String nombre, double nota) {
+        this.id = id; this.nombre = nombre; this.nota = nota;
+    }
+    public String toString() { return id + " - " + nombre + " (" + nota + ")"; }
+}
+interface AlumnoDAO {
+    void insertar(Alumno a);
+    List<Alumno> listar();
+}
+class AlumnoDAOMemoria implements AlumnoDAO {
+    private final List<Alumno> datos = new ArrayList<>();
+    public void insertar(Alumno a) { datos.add(a); }
+    public List<Alumno> listar() { return datos; }
+}
+public class DemoDAO {
+    public static void main(String[] args) {
+        AlumnoDAO dao = new AlumnoDAOMemoria();
+        dao.insertar(new Alumno(1, "Ana", 8.5));
+        dao.insertar(new Alumno(2, "Luis", 6.0));
+        for (Alumno a : dao.listar()) System.out.println(a);
+    }
+}
+```
+
+============================================================
+
+=== CARD 121: ex-java-19-16 ===
+FRONT:
+(Examen 19 · Patrones de diseño: Singleton, Factory, Observer, DAO y MVC)
+
+Parte 4: Pregunta teórica
+
+Ventajas e inconvenientes de Singleton. ¿Cuándo lo usarías y cuándo lo evitarías?
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+Ventajas: instancia única garantizada (configuración, log, pool de conexiones), acceso global cómodo, creación perezosa.
+Inconvenientes: introduce estado global (dificulta los tests, que deben poder aislar/restablecer el estado), acopla el código a la clase concreta, y en entornos multihilo exige sincronización.
+Usar: recursos compartidos de toda la aplicación (logger, configuración). Evitar: cuando basta inyección de dependencias o cuando la 'unicidad' no es un requisito real del dominio.
+
+============================================================
+
+=== CARD 122: ex-java-20-11 ===
+FRONT:
+(Examen 20 · Repaso integral de Java)
+
+Parte 2: Análisis y depuración
+
+El siguiente código calcula un valor por defecto pero se ejecuta más de lo necesario. ¿Por qué? ¿Cómo se corrige?
+
+```java
+import java.util.Optional;\npublic class Defecto {\n static String caro() {\n System.out.println("Calculando...");\n return "valor caro";\n }\n public static void main(String[] args) {\n Optional<String> opt = Optional.of("presente");\n System.out.println(opt.orElse(caro()));\n }\n}
+```
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+orElse(valor) evalúa el argumento SIEMPRE, aunque el Optional tenga valor: se imprime 'Calculando...' sin necesidad.
+El coste es doble: cálculo inútil (y efectos secundarios visibles).
+Corrección: orElseGet(() -> caro()) — el Supplier solo se ejecuta cuando el Optional está vacío:
+System.out.println(opt.orElseGet(Defecto::caro)); // no imprime 'Calculando...'
+
+============================================================
+
+=== CARD 123: ex-java-20-12 ===
+FRONT:
+(Examen 20 · Repaso integral de Java)
+
+Parte 2: Análisis y depuración
+
+Este código lanza ConcurrentModificationException. ¿Por qué y cómo se arregla?
+
+```java
+import java.util.*;\npublic class FiltroLista {\n public static void main(String[] args) {\n List<Integer> nums = new ArrayList<>(List.of(1, 2, 3, 4, 5));\n for (Integer n : nums) {\n if (n % 2 == 0) { nums.remove(n); }\n }\n System.out.println(nums);\n }\n}
+```
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+El for-each usa un Iterator interno; nums.remove() modifica estructuralmente la lista mientras se itera.
+El iterador detecta la modificación y lanza ConcurrentModificationException.
+Soluciones:
+1) Iterator explícito:
+Iterator<Integer> it = nums.iterator();
+while (it.hasNext()) { if (it.next() % 2 == 0) it.remove(); }
+2) O filtrar con streams: nums.removeIf(n -> n % 2 == 0);
+```
+
+============================================================
+
+=== CARD 124: ex-java-20-13 ===
+FRONT:
+(Examen 20 · Repaso integral de Java)
+
+Parte 3: Ejercicios de programación
+
+Usando streams, escribe un método que reciba una lista de palabras y devuelva la palabra más larga (o cadena vacía si la lista es vacía). 
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+import java.util.*;
+public class PalabraMasLarga {
+    static String masLarga(List<String> palabras) {
+        return palabras.stream()
+                .max(Comparator.comparingInt(String::length))
+                .orElse("");
+    }
+    public static void main(String[] args) {
+        List<String> lista = List.of("java", "programacion", "hola", "a");
+        System.out.println(masLarga(lista)); // programacion
+    }
+}
+```
+
+============================================================
+
+=== CARD 125: ex-java-20-14 ===
+FRONT:
+(Examen 20 · Repaso integral de Java)
+
+Parte 3: Ejercicios de programación
+
+Escribe un programa que lea un fichero numeros.txt (un entero por línea) y muestre la suma y el máximo usando Files.lines y streams. 
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+import java.nio.file.*;
+import java.io.IOException;
+public class SumaFichero {
+    public static void main(String[] args) {
+        try (var lineas = Files.lines(Paths.get("numeros.txt"))) {
+            var nums = lineas.filter(l -> !l.isBlank()).mapToInt(Integer::parseInt);
+            System.out.println("Suma: " + nums.sum());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+Nota: el stream de Files.lines se cierra con try-with-resources.
+```
+
+============================================================
+
+=== CARD 126: ex-java-20-15 ===
+FRONT:
+(Examen 20 · Repaso integral de Java)
+
+Parte 3: Ejercicios de programación
+
+Define la clase Libro (titulo, autor, paginas) con constructor y getters, y usando streams: ordena una lista por páginas ascendente y muestra solo los libros de más de 300 páginas. 
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+import java.util.*;
+public class Libro {
+    private final String titulo;
+    private final String autor;
+    private final int paginas;
+    public Libro(String titulo, String autor, int paginas) {
+        this.titulo = titulo; this.autor = autor; this.paginas = paginas;
+    }
+    public String getTitulo() { return titulo; }
+    public int getPaginas() { return paginas; }
+    public String toString() { return titulo + " (" + paginas + "p)"; }
+    public static void main(String[] args) {
+        List<Libro> libros = List.of(
+            new Libro("A", "X", 450),
+            new Libro("B", "Y", 250),
+            new Libro("C", "Z", 600));
+        libros.stream()
+              .filter(l -> l.getPaginas() > 300)
+              .sorted(Comparator.comparingInt(Libro::getPaginas))
+              .forEach(System.out::println);
+        // A (450p), C (600p)
+    }
+}
+```
+
+============================================================
+
+=== CARD 127: ex-java-20-16 ===
+FRONT:
+(Examen 20 · Repaso integral de Java)
+
+Parte 4: Pregunta teórica
+
+Compara Optional.orElse(valor) y Optional.orElseGet(supplier). ¿Cuándo usarías cada uno? Pon un ejemplo.
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+orElse(valor) recibe el valor ya calculado y lo evalúa SIEMPRE, aunque el Optional no esté vacío.
+orElseGet(supplier) recibe una función que solo se ejecuta si el Optional está vacío.
+Usar orElseGet cuando el valor por defecto es caro de calcular o tiene efectos secundarios (consultas, logs, creación de objetos pesados).
+Ejemplo: opt.orElseGet(() -> cargarDeBD()) evita la consulta cuando el valor ya existe; opt.orElse("desconocido") es correcto para constantes baratas.
+
+============================================================
+
+=== CARD 128: ex-java-21-10 ===
+FRONT:
+(Conceptos · Fundamentos de Java)
+
+Parte 2: Operadores
+
+¿Cuáles son los operadores aritméticos de Java y qué devuelve `%`?
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+| Operador | Símbolo | Ejemplo |
+|----------|---------|---------|
+| Suma | `+` | `3 + 2` → 5 |
+| Resta | `-` | `5 - 2` → 3 |
+| Multiplicación | `*` | `3 * 2` → 6 |
+| División | `/` | `10 / 3` → 3 (enteros) |
+| Módulo (resto) | `%` | `5 % 2` → 1 |
+
+```java
+int a = 10 / 3;      // 3  (división entera: trunca)
+double b = 10.0 / 3; // 3.333... (si hay double, es decimal)
+int resto = 5 % 2;   // 1
+```
+
+⚠️ **Ojo**: en Java, `int / int` siempre da `int` (trunca decimales). Para obtener decimales, al menos un operando debe ser `double` (o usar cast: `(double) 10 / 3`).
+
+============================================================
+
+=== CARD 129: ex-java-21-11 ===
+FRONT:
+(Conceptos · Fundamentos de Java)
+
+Parte 2: Operadores
+
+¿Para qué sirven los operadores de asignación compuestos como `+=`?
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+Para **simplificar** `variable = variable + algo`:
+
+```java
+int numero = 3;
+numero = numero + 5;   // 8
+// equivale a:
+numero += 5;           // 8
+```
+
+Funciona con todos: `+=`, `-=`, `*=`, `/=`, `%=`.
+
+También con String (concatenación):
+
+```java
+String texto = "Hola ";
+texto += "tu";        // « Hola tu »
+```
+
+💡 También existen los incrementos `++` y `--`: `i++` (usa y luego suma) vs `++i` (suma y luego usa).
+
+============================================================
+
+=== CARD 130: ex-java-21-12 ===
+FRONT:
+(Conceptos · Fundamentos de Java)
+
+Parte 2: Operadores
+
+¿Qué es la concatenación de Strings y con qué operador se hace?
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+Es **unir cadenas**, con el operador **`+`**:
+
+```java
+String hola = "Hola";
+String nombre = "tu";
+String resultado = hola + nombre;
+System.out.println(resultado);   // « Holatu » (sin espacio)
+
+// Con espacio:
+String resultado2 = hola + " " + nombre;   // « Hola tu »
+```
+
+Se puede concatenar String con números:
+
+```java
+String texto = "Un nombre: ";
+int numero = 42;
+System.out.println(texto + numero);   // « Un nombre: 42 »
+```
+
+💡 En Java el `+` con Strings **siempre concatena** (convierte el número a texto), no suma. Para sumar números, ambos deben ser numéricos.
+
+============================================================
+
+=== CARD 131: ex-java-21-14 ===
+FRONT:
+(Conceptos · Fundamentos de Java)
+
+Parte 2: Entrada por teclado
+
+¿Cómo se convierte un String a número en Java?
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+Con las clases envoltorio (**wrappers**):
+
+```java
+String texto = "1313";
+int numero = Integer.parseInt(texto);   // → 1313 (int)
+double decimal = Double.parseDouble("5.5");  // → 5.5
+
+// Ejemplo con Scanner: sumar dos números introducidos por el usuario
+Scanner sc = new Scanner(System.in);
+int a = Integer.parseInt(sc.nextLine());
+int b = Integer.parseInt(sc.nextLine());
+System.out.println(a + b);              // suma real, no concatenación
+```
+
+💡 **`Integer.parseInt()`** y **`Double.parseDouble()`** convierten String → número. Si el texto no es un número válido, lanzan `NumberFormatException`.
+
+============================================================
+
+=== CARD 132: ex-java-21-15 ===
+FRONT:
+(Conceptos · Fundamentos de Java)
+
+Parte 2: Conversión de tipos
+
+¿Cómo se convierte un número a String en Java?
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+Con **`String.valueOf()`** o concatenando con una cadena vacía:
+
+```java
+int numero1 = 4, numero2 = 2;
+
+String a = String.valueOf(numero1);   // « 4 »
+String b = numero2 + "";              // « 2 » (concatena con vacío)
+String c = numero1 + " " + numero2;   // « 4 2 »
+
+// También sirve para otros tipos:
+String d = String.valueOf(5.5);       // « 5.5 »
+String e = String.valueOf(true);      // « true »
+```
+
+💡 Un número se convierte automáticamente a String al concatenarlo con `+`. `String.valueOf()` es la forma explícita y recomendada.
+
+============================================================
+
+=== CARD 133: ex-java-21-16 ===
+FRONT:
+(Conceptos · Fundamentos de Java)
+
+Parte 3: Condiciones
+
+¿Cuáles son los operadores de comparación de Java y qué devuelven?
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+Devuelven un **booleano** (`true` o `false`):
+
+| Operador | Significado |
+|----------|-------------|
+| `==` | Igual a (valores primitivos / referencias) |
+| `!=` | Diferente a |
+| `>` | Mayor que |
+| `>=` | Mayor o igual que |
+| `<` | Menor que |
+| `<=` | Menor o igual que |
+
+```java
+int a = 2, b = 2, c = 4;
+System.out.println(a == b);   // true
+System.out.println(a == c);   // false
+System.out.println(a < c);    // true
+```
+
+⚠️ Para comparar **contenido** de objetos (String, arrays, etc.) NO se usa `==`, sino **`.equals()`** (ver siguiente card).
+
+============================================================
+
+=== CARD 134: ex-java-21-17 ===
+FRONT:
+(Conceptos · Fundamentos de Java)
+
+Parte 3: Condiciones
+
+¿Cuál es la diferencia entre `==` y `.equals()` al comparar Strings?
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+- **`==`** compara **referencias** (si apuntan al mismo objeto en memoria).
+- **`.equals()`** compara el **contenido** (si el texto es igual).
+
+```java
+String a = new String("hola");
+String b = new String("hola");
+
+System.out.println(a == b);      // false — objetos distintos
+System.out.println(a.equals(b)); // true — mismo contenido
+```
+
+⚠️ Regla práctica: con Strings (y cualquier objeto) usa **`.equals()`**. El `==` solo es correcto con primitivos (`int`, `double`, `boolean`, `char`) o cuando quieres comparar referencias (por ejemplo, `obj == null`).
+
+============================================================
+
+=== CARD 135: ex-java-21-18 ===
+FRONT:
+(Conceptos · Fundamentos de Java)
+
+Parte 3: Condiciones
+
+¿Cuáles son los operadores lógicos de Java y cómo funcionan?
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+Son **tres**:
+
+| Operador | Tipo | Utilización |
+|----------|------|-------------|
+| `&&` | Y (AND) | `v1 && v2` |
+| `||` | O (OR) | `v1 || v2` |
+| `!` | NO (NOT) | `!v` |
+
+- **AND** (`&&`): `true` solo si **todos** son verdaderos.
+- **OR** (`||`): `true` si **al menos uno** es verdadero.
+- **NOT** (`!`): invierte el valor.
+
+```java
+System.out.println(true && true);    // true
+System.out.println(true && false);   // false
+System.out.println(true || false);   // true
+boolean r = false;
+r = !r;                              // true
+```
+
+💡 En Java los operandos deben ser **booleanos**: `if (1)` NO compila (a diferencia de JavaScript).
+
+============================================================
+
+=== CARD 136: ex-java-21-19 ===
+FRONT:
+(Conceptos · Fundamentos de Java)
+
+Parte 3: Condiciones
+
+Escribe la estructura `if / else` en Java
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+if (condición) {
+    // código si la condición es true
+} else {
+    // código si la condición es false
+}
+```
+
+Ejemplo real:
+
+```java
+Scanner sc = new Scanner(System.in);
+System.out.print("¿Eres mayor de 18? (si/no): ");
+String respuesta = sc.nextLine();
+
+if (respuesta.equals("si")) {
+    System.out.println("Bienvenido");
+} else {
+    System.out.println("Acceso denegado");
+}
+```
+
+Las condiciones pueden combinar comparaciones y lógicos:
+
+```java
+if (edad >= 18 && dni != null) {
+    System.out.println("Puede votar");
+}
+```
+
+💡 Nota: para leer un sí/no se suele usar `nextLine()` y comparar con `.equals()`.
+
+============================================================
+
+=== CARD 137: ex-java-21-20 ===
+FRONT:
+(Conceptos · Fundamentos de Java)
+
+Parte 3: Condiciones
+
+¿Cómo se pide confirmación sí/no en una aplicación Java de consola?
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+Con **Scanner** leyendo el teclado y comparando con `.equals()`:
+
+```java
+import java.util.Scanner;
+
+Scanner sc = new Scanner(System.in);
+System.out.print("¿Desea continuar? (s/n): ");
+String opcion = sc.nextLine();
+
+if (opcion.equalsIgnoreCase("s")) {
+    System.out.println("Continuamos");
+} else {
+    System.out.println("Operación cancelada");
+}
+```
+
+💡 **`.equalsIgnoreCase()`** compara sin distinguir mayúsculas/minúsculas, así "S" y "s" valen igual.
+
+(En interfaces gráficas Swing se usaría `JOptionPane.showConfirmDialog(...)`, que devuelve `JOptionPane.YES_OPTION` / `NO_OPTION`.)
+
+============================================================
+
+=== CARD 138: ex-java-21-21 ===
+FRONT:
+(Conceptos · Fundamentos de Java)
+
+Parte 3: Condiciones
+
+¿Cómo se encadenan varias condiciones con `else if`?
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+Para probar condiciones en orden: si la primera falla, prueba la siguiente, y si ninguna se cumple actúa `else`:
+
+```java
+int nota = sc.nextInt();
+
+if (nota >= 9) {
+    System.out.println("Sobresaliente");
+} else if (nota >= 7) {
+    System.out.println("Notable");
+} else if (nota >= 5) {
+    System.out.println("Aprobado");
+} else {
+    System.out.println("Suspenso");
+}
+```
+
+💡 `else if` se puede repetir todas las veces que quieras, siempre detrás de un `if`. Java evalúa en orden y se detiene en el primer `true`.
+
+============================================================
+
+=== CARD 139: ex-java-21-22 ===
+FRONT:
+(Conceptos · Fundamentos de Java)
+
+Parte 3: Condiciones
+
+¿Cuándo conviene usar `switch` y cómo se escribe?
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+Cuando hay que comparar **una variable contra muchos valores**, `switch` es más organizado que una cadena larga de `else if`:
+
+```java
+int cajon = sc.nextInt();
+
+switch (cajon) {
+    case 1:
+        System.out.println("Herramientas de dibujo");
+        break;
+    case 2:
+        System.out.println("Hardware: cables");
+        break;
+    case 3:
+        System.out.println("Cajón cerrado");
+        break;
+    case 4:
+        System.out.println("Ropa");
+        break;
+    default:
+        System.out.println("No existe ese cajón");
+}
+```
+
+- `case` define cada valor a comparar (números, `char`, `String` desde Java 7).
+- `break` **rompe el switch** y evita ejecutar el resto (¡sin él hay "fall-through"!).
+- `default` es opcional: se ejecuta si ningún case coincide.
+
+============================================================
+
+=== CARD 140: ex-java-21-23 ===
+FRONT:
+(Conceptos · Fundamentos de Java)
+
+Parte 3: Condiciones
+
+⚠️ ¿Qué pasa si olvidas `break` en un `switch`?
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+Se ejecuta **todo el código desde el `case` elegido en adelante** (comportamiento *fall-through*):
+
+```java
+int cajon = 2;
+switch (cajon) {
+    case 1:
+        System.out.println("Uno");
+    case 2:
+        System.out.println("Dos");     // ← se ejecuta
+    case 3:
+        System.out.println("Tres");    // ← también
+    default:
+        System.out.println("Fin");     // ← y también
+}
+```
+
+En la mayoría de los casos es un **error**: cada `case` debe terminar con **`break;`** (o `return;`). Raramente el fall-through es intencional.
+
+============================================================
+
+=== CARD 141: ex-java-21-24 ===
+FRONT:
+(Conceptos · Fundamentos de Java)
+
+Parte 3: Condiciones
+
+⚠️ ¿Qué tipos acepta `switch` en Java?
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+`switch` acepta:
+
+- **`int`** (y `char`, `byte`, `short`, `long`)
+- **`String`** (desde Java 7)
+- **Enums** (muy común)
+
+```java
+String dia = "LUNES";
+switch (dia) {
+    case "LUNES":
+        System.out.println("Inicio de semana");
+        break;
+    case "VIERNES":
+        System.out.println("Casi finde");
+        break;
+    default:
+        System.out.println("Otro día");
+}
+```
+
+⚠️ Con `String`, `switch` compara con **`.equals()`** (contenido), no con `==`. Y **no acepta** `double`/otros decimales — para eso se usa `if/else if`.
+
+============================================================
+
+=== CARD 142: ex-java-21-25 ===
+FRONT:
+(Conceptos · Fundamentos de Java)
+
+Parte 3: Condiciones
+
+¿Cómo se escribe una condición ternaria y qué devuelve?
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+Es un `if/else` compacto que **devuelve un valor**:
+
+```java
+tipo variable = condición ? valorSiTrue : valorSiFalse;
+```
+
+Ejemplo:
+
+```java
+boolean adulto = sc.nextBoolean();
+String categoria = adulto ? "18+" : "-18";
+System.out.println("Su categoría: " + categoria);
+```
+
+Equivale a:
+
+```java
+String categoria;
+if (adulto) {
+    categoria = "18+";
+} else {
+    categoria = "-18";
+}
+```
+
+💡 Es muy útil para **asignaciones simples** en una línea. Úsalo con moderación: menos legible que `if/else` cuando la lógica es compleja.
+
+============================================================
+
+=== CARD 143: ex-java-21-27 ===
+FRONT:
+(Conceptos · Fundamentos de Java)
+
+Parte 4: Bucles
+
+Escribe el bucle `while` en Java
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+Repite un bloque **mientras la condición sea verdadera** (se evalúa antes de cada iteración):
+
+```java
+int i = 0;
+while (i < 5) {
+    System.out.println("Vuelta " + i);
+    i++;
+}
+```
+
+⚠️ Si la condición nunca se cumple, el bloque **no se ejecuta ninguna vez**. Cuida el incremento para no crear un bucle infinito.
+
+============================================================
+
+=== CARD 144: ex-java-21-28 ===
+FRONT:
+(Conceptos · Fundamentos de Java)
+
+Parte 4: Bucles
+
+¿En qué se diferencia `do...while` de `while`?
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+El bucle **`do...while`** ejecuta el bloque **al menos una vez**, porque evalúa la condición **al final**:
+
+```java
+int i = 0;
+do {
+    System.out.println("Se ejecuta aunque sea una vez");
+    i++;
+} while (i < 5);
+```
+
+En cambio, `while` evalúa la condición **antes**, así que puede no ejecutarse nunca si la condición es falsa desde el principio.
+
+💡 Uso típico: menús que deben mostrarse al menos una vez (por ejemplo, repetir hasta que el usuario escriba "salir").
+
+============================================================
+
+=== CARD 145: ex-java-21-29 ===
+FRONT:
+(Conceptos · Fundamentos de Java)
+
+Parte 4: Bucles
+
+Escribe el bucle `for` y explica sus tres bloques
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+```java
+for (inicio; condición; incremento) {
+    // bloque a repetir
+}
+```
+
+Los tres bloques **no se ejecutan a la vez**:
+
+1. **Inicio**: justo antes de comenzar el bucle (una sola vez).
+2. **Condición**: antes de cada iteración — si es falsa, se sale.
+3. **Incremento**: después de cada ciclo.
+
+```java
+for (int i = 0; i < 10; i++) {
+    System.out.println(i);
+}
+```
+
+💡 El `for` es el bucle más usado en Java, sobre todo para **recorrer arrays**:
+
+```java
+int[] nums = {10, 20, 30};
+for (int i = 0; i < nums.length; i++) {
+    System.out.println(nums[i]);
+}
+```
+
+============================================================
+
+=== CARD 146: ex-java-21-30 ===
+FRONT:
+(Conceptos · Fundamentos de Java)
+
+Parte 4: Bucles
+
+¿Para qué sirven `break` y `continue` en los bucles?
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+- **`break`**: **sale del bucle** inmediatamente.
+- **`continue`**: **salta a la siguiente iteración** (ignora el resto del bloque actual).
+
+```java
+for (int i = 0; i < 10; i++) {
+    if (i == 3) continue;   // se salta el 3
+    if (i == 7) break;      // termina en el 7
+    System.out.println(i);  // 0,1,2,4,5,6
+}
+```
+
+⚠️ `break` también se usa en `switch`. En bucles anidados, `break` solo rompe el bucle **más interno**.
+
+============================================================
+
+=== CARD 147: ex-java-21-31 ===
+FRONT:
+(Conceptos · Fundamentos de Java)
+
+Parte 4: Bucles
+
+¿Dónde vive la variable declarada en la cabecera de un `for`?
+
+BACK:
+RESPUESTA / SOLUCIÓN
+
+**Solo dentro del bucle** (ámbito de bloque): al terminar, deja de existir.
+
+```java
+for (int i = 0; i < 10; i++) {
+    System.out.println(i);
+}
+System.out.println(i);   // ❌ ERROR: 'i' no existe fuera del bucle
+```
+
+- A diferencia de JavaScript (`var` "se escapa" del bucle), en Java la variable de `for` tiene **ámbito de bloque**.
+- Si necesitas el valor tras el bucle, declárala antes:
+
+```java
+int i;
+for (i = 0; i < 10; i++) { }
+System.out.println(i);   // ✅ 10
+```
+
+============================================================
+
