@@ -3,6 +3,16 @@ import { motion } from "motion/react";
 import { Icons } from "./Icons";
 import { isExamDeck, getSubjectIcon, getSubjectColor } from "./deckHelpers";
 import { useBorderSpeed } from "./useBorderSpeed";
+import { GoogleAura } from "./GoogleAura";
+
+const PULSE_VARIANTS = [
+  "googleFadePulse10", // 10% del tiempo en negro
+  "googleFadePulse15", // 15% del tiempo en negro
+  "googleFadePulse20", // 20% del tiempo en negro
+  "googleFadePulse25", // 25% del tiempo en negro
+  "googleFadePulse30", // 30% del tiempo en negro
+  "googleFadePulse35", // 35% del tiempo en negro
+];
 
 export function DeckCard({
   deck,
@@ -24,18 +34,79 @@ export function DeckCard({
   // Velocidad lineal de los colores: bordes largos tardan más en recorrerlos.
   const borderSpeed = useBorderSpeed();
 
-  // Desfase único por mazo: botón Estudiar y barra de progreso pulsan y giran
-  // en momentos distintos (retardo negativo = ya van a mitad de ciclo).
-  const { btnDelay, barDelay } = useMemo(() => {
+  // Variación única de velocidad de recorrido, duración de oscuridad, desfases y expansión de halo (salida de bordes):
+  const {
+    btnDelay,
+    barDelay,
+    fillDelay,
+    btnFadeDelay,
+    barFadeDelay,
+    fillFadeDelay,
+    btnPulseDuration,
+    barPulseDuration,
+    fillPulseDuration,
+    btnPulseAnim,
+    barPulseAnim,
+    fillPulseAnim,
+    btnSpeedFactor,
+    barSpeedFactor,
+    fillSpeedFactor,
+  } = useMemo(() => {
     let h = 0;
     const s = String(deck.id || "");
     for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) >>> 0;
-    const btn = -((h % 14) * 0.5); // -0.0s .. -6.5s (ciclo 7s de pulso)
-    const bar = -(((h + 7) % 14) * 0.5); // desfasado ~3.5s respecto al botón
-    return { btnDelay: `${btn}s`, barDelay: `${bar}s` };
-  }, [deck.id]);
 
-  // (Estrellas de la barra de progreso eliminadas)
+    // Factores de velocidad de recorrido lineal rápidos y ágiles:
+    const barSpeedFactor = 1.0 + ((h % 23) / 22) * 0.7;
+    const fillSpeedFactor = 1.15 + (((h * 17 + 5) % 29) / 28) * 0.75;
+    const btnSpeedFactor = 1.05 + (((h * 13) % 27) / 26) * 0.7;
+
+    // Duración de pulso/oscurecimiento única para cada elemento (6.8s .. 11.8s)
+    const btnPulseNum = 6.8 + ((h * 3) % 40) * 0.11;
+    const barPulseNum = 7.5 + ((h * 11) % 45) * 0.09;
+    const fillPulseNum = 7.0 + ((h * 19 + 7) % 42) * 0.1;
+
+    const btnPulseDuration = `${btnPulseNum.toFixed(2)}s`;
+    const barPulseDuration = `${barPulseNum.toFixed(2)}s`;
+    const fillPulseDuration = `${fillPulseNum.toFixed(2)}s`;
+
+    // Variante de tiempo en oscuridad distinta para el carril exterior y el relleno:
+    const barPulseAnim = PULSE_VARIANTS[h % PULSE_VARIANTS.length];
+    const fillPulseAnim = PULSE_VARIANTS[(h + 1) % PULSE_VARIANTS.length];
+    const btnPulseAnim = PULSE_VARIANTS[(h + 2) % PULSE_VARIANTS.length];
+
+    // Desfases de apagado garantizados en momentos opuestos:
+    const barFadeOffset = (h % 30) * 0.15;
+    const fillFadeOffset = barFadeOffset + fillPulseNum * 0.5; // Exactamente medio ciclo desfasado
+    const btnFadeOffset = barFadeOffset + btnPulseNum * 0.25;
+
+    const barFadeDelay = `${(-barFadeOffset).toFixed(2)}s`;
+    const fillFadeDelay = `${(-fillFadeOffset).toFixed(2)}s`;
+    const btnFadeDelay = `${(-btnFadeOffset).toFixed(2)}s`;
+
+    // Desfase angular de rotación
+    const btnDelay = `${(-((h % 16) * 0.35)).toFixed(2)}s`;
+    const barDelay = `${(-(((h + 23) % 18) * 0.35)).toFixed(2)}s`;
+    const fillDelay = `${(-(((h * 11 + 7) % 21) * 0.35)).toFixed(2)}s`;
+
+    return {
+      btnDelay,
+      barDelay,
+      fillDelay,
+      btnFadeDelay,
+      barFadeDelay,
+      fillFadeDelay,
+      btnPulseDuration,
+      barPulseDuration,
+      fillPulseDuration,
+      btnPulseAnim,
+      barPulseAnim,
+      fillPulseAnim,
+      btnSpeedFactor,
+      barSpeedFactor,
+      fillSpeedFactor,
+    };
+  }, [deck.id]);
 
   const status = doneMap[deck.id];
   const isProgress = status === "progress";
@@ -104,18 +175,36 @@ export function DeckCard({
           <p className="deck-description">{deck.description}</p>
         )}
 
-        {/* Progress Bar con encanto y mayor altura */}
+        {/* Progress Bar con encanto y dos bordes independientes */}
         <div className="deck-progress">
           <div className="progress-info">
             <span className="progress-label">Progreso</span>
             <span className="progress-value">{stats.mastery}%</span>
           </div>
-          <div className="progress-bar" style={{ "--bar-delay": barDelay }} ref={borderSpeed("bar")}>
+          <div
+            className="progress-bar"
+            style={{
+              "--bar-delay": barDelay,
+              "--bar-fade-delay": barFadeDelay,
+              "--bar-pulse-duration": barPulseDuration,
+              "--bar-pulse-anim": barPulseAnim,
+            }}
+            ref={borderSpeed(`bar-track-${deck.id}`, barSpeedFactor)}
+          >
+            <GoogleAura duration={6.5} delay={0} showSparkles={true} />
             <div
               className="progress-fill"
-              style={{ width: `${Math.max(stats.mastery, 0)}%` }}
-            />
-            {/* (Estrellas de la barra de progreso eliminadas) */}
+              style={{
+                width: `${Math.max(stats.mastery, 0)}%`,
+                "--fill-delay": fillDelay,
+                "--fill-fade-delay": fillFadeDelay,
+                "--fill-pulse-duration": fillPulseDuration,
+                "--fill-pulse-anim": fillPulseAnim,
+              }}
+              ref={borderSpeed(`bar-fill-${deck.id}`, fillSpeedFactor)}
+            >
+              <GoogleAura duration={4.5} delay={0.2} showSparkles={false} />
+            </div>
           </div>
         </div>
 
@@ -143,10 +232,16 @@ export function DeckCard({
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.97 }}
             className="btn btn-primary btn-study"
-            style={{ "--btn-delay": btnDelay }}
-            ref={borderSpeed("btn")}
+            style={{
+              "--btn-delay": btnDelay,
+              "--btn-fade-delay": btnFadeDelay,
+              "--btn-pulse-duration": btnPulseDuration,
+              "--btn-pulse-anim": btnPulseAnim,
+            }}
+            ref={borderSpeed(`btn-${deck.id}`, btnSpeedFactor)}
             onClick={() => onStudyDeck(deck)}
           >
+            <GoogleAura duration={5.2} delay={0.5} showSparkles={true} />
             <span className="btn-icon">{Icons.study}</span>
             <span>Estudiar</span>
           </motion.button>

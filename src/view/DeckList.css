@@ -14,10 +14,9 @@
   -webkit-backdrop-filter: var(--glass-blur);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-card);
-  padding: 24px 28px;
+  padding: 14px 18px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
   box-shadow: var(--glass-shadow);
   position: relative;
   overflow: hidden;
@@ -604,23 +603,7 @@
 
 .progress-bar {
   height: 44px;
-  border: 1px solid transparent;
-  background:
-    linear-gradient(#000000, #000000) padding-box,
-    conic-gradient(
-      from var(--border-angle),
-      #4285f4 0%,
-      #ea4335 10%,
-      #fbbc05 20%,
-      #34a853 30%,
-      #000000 40%,
-      #000000 60%,
-      #4285f4 100%
-    ) border-box;
-  animation:
-    rotateClockwiseGoogle var(--rotate-duration, 4s) linear infinite,
-    googleFadePulseBar 9s ease-in-out infinite;
-  animation-delay: var(--bar-delay, 0s);
+  background: #000000;
   border-radius: var(--radius-pill);
   overflow: visible;
   position: relative;
@@ -630,6 +613,33 @@
     0 4px 14px rgba(0, 0, 0, 0.5);
 }
 
+.progress-bar::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid transparent;
+  background:
+    linear-gradient(#000000, #000000) padding-box,
+    conic-gradient(
+      from var(--border-angle),
+      transparent 0%,
+      transparent 55%,
+      rgba(66, 133, 244, 0.15) 68%,
+      #4285f4 78%,
+      #ea4335 86%,
+      #fbbc05 93%,
+      #34a853 97%,
+      #ffffff 100%
+    ) border-box;
+  animation:
+    rotateClockwiseGoogle var(--rotate-duration, 3.5s) linear infinite,
+    var(--bar-pulse-anim, googleFadePulseMedium) var(--bar-pulse-duration, 9s) ease-in-out infinite;
+  animation-delay: var(--bar-delay, 0s), var(--bar-fade-delay, 0s);
+  pointer-events: none;
+  z-index: 2;
+}
+
 .progress-fill {
   height: 100%;
   border: 2px solid transparent;
@@ -637,25 +647,23 @@
     linear-gradient(#000000, #000000) padding-box,
     conic-gradient(
       from var(--border-angle),
-      #4285f4 0%,
-      #ea4335 10%,
-      #fbbc05 20%,
-      #34a853 30%,
-      #000000 40%,
-      #000000 60%,
-      #4285f4 100%
+      transparent 0%,
+      transparent 50%,
+      rgba(66, 133, 244, 0.2) 65%,
+      #4285f4 76%,
+      #ea4335 84%,
+      #fbbc05 91%,
+      #34a853 96%,
+      #ffffff 100%
     ) border-box;
   animation:
-    rotateClockwiseGoogle var(--rotate-duration, 4s) linear infinite,
-    googleFadePulseBar 9s ease-in-out infinite;
-  animation-delay: var(--bar-delay, 0s);
+    rotateClockwiseGoogleAlt var(--fill-rotate-duration, var(--rotate-duration, 2.2s)) linear infinite,
+    var(--fill-pulse-anim, googleFadePulse50) var(--fill-pulse-duration, 8s) ease-in-out infinite;
+  animation-delay: var(--fill-delay, -2.5s), var(--fill-fade-delay, -3s);
   border-radius: var(--radius-pill);
   transition: width 0.6s cubic-bezier(0.25, 1, 0.5, 1);
   position: relative;
-  z-index: 3;
-  box-shadow:
-    0 0 14px rgba(66, 133, 244, 0.35),
-    inset 0 1px 2px rgba(255, 255, 255, 0.15);
+  z-index: 4;
 }
 
 /* (Estrellas de la barra de progreso eliminadas) */
@@ -748,26 +756,27 @@
     linear-gradient(#000000, #000000) padding-box,
     conic-gradient(
       from var(--border-angle),
-      #4285f4 0%,
-      #ea4335 10%,
-      #fbbc05 20%,
-      #34a853 30%,
-      #000000 40%,
-      #000000 60%,
-      #4285f4 100%
+      transparent 0%,
+      transparent 50%,
+      rgba(66, 133, 244, 0.2) 65%,
+      #4285f4 76%,
+      #ea4335 84%,
+      #fbbc05 91%,
+      #34a853 96%,
+      #ffffff 100%
     ) border-box;
   animation:
-    rotateClockwiseGoogle var(--rotate-duration, 5s) linear infinite,
-    googleFadePulse 8.5s ease-in-out infinite;
-  animation-delay: var(--btn-delay, 0s);
+    rotateClockwiseGoogleAlt var(--rotate-duration, 2.4s) linear infinite,
+    var(--btn-pulse-anim, googleFadePulseShort) var(--btn-pulse-duration, 8.5s) ease-in-out infinite;
+  animation-delay: var(--btn-delay, 0s), var(--btn-fade-delay, 0s);
   pointer-events: none;
-  z-index: 0;
+  z-index: 1;
 }
 
-/* El contenido (icono + texto) queda por encima del anillo y no parpadea */
+/* El contenido (icono + texto) queda por encima del borde */
 .deck-actions .btn-study > * {
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 .deck-actions .btn-study:hover {

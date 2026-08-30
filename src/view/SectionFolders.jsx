@@ -21,8 +21,8 @@ export function ExamenJavaFolder({
   if (!deck) return null;
 
   const total = deck.cards.length;
-  const studied = deck.cards.filter((c) => c.status !== "new").length;
-  const sectionProgress = total === 0 ? 0 : Math.round((studied / total) * 100);
+  const learned = deck.cards.filter((c) => c.status === "aprendido").length;
+  const sectionProgress = total === 0 ? 0 : Math.round((learned / total) * 100);
   const progClass = sectionProgress === 0 ? "progress-0"
     : sectionProgress === 100 ? "progress-done"
     : sectionProgress <= 33 ? "progress-start"

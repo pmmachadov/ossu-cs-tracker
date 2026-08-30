@@ -53,9 +53,43 @@
   transform: scale(0.96) translateX(-1px);
 }
 
+/* Recorrido con velocidades variables: aceleraciones, tramos rápidos y desaceleraciones orgánicas */
 @keyframes rotateClockwiseGoogle {
   0% {
     --border-angle: 0deg;
+  }
+  18% {
+    --border-angle: 105deg; /* Ráfaga inicial rápida */
+  }
+  42% {
+    --border-angle: 160deg; /* Tramo de deslizamiento lento */
+  }
+  64% {
+    --border-angle: 280deg; /* Fuerte acelerón secundario */
+  }
+  86% {
+    --border-angle: 325deg; /* Desaceleración suave con inercia */
+  }
+  100% {
+    --border-angle: 360deg; /* Ciclo continuo */
+  }
+}
+
+@keyframes rotateClockwiseGoogleAlt {
+  0% {
+    --border-angle: 0deg;
+  }
+  26% {
+    --border-angle: 65deg;  /* Inicio suave y pausado */
+  }
+  48% {
+    --border-angle: 220deg; /* Ráfaga súper rápida */
+  }
+  74% {
+    --border-angle: 270deg; /* Frenado con elegancia */
+  }
+  90% {
+    --border-angle: 342deg; /* Impulso final */
   }
   100% {
     --border-angle: 360deg;
@@ -129,23 +163,7 @@
 .card-progress-track {
   flex: 1;
   height: 44px;
-  border: 1px solid transparent;
-  background:
-    linear-gradient(#000000, #000000) padding-box,
-    conic-gradient(
-      from var(--border-angle),
-      #4285f4 0%,
-      #ea4335 10%,
-      #fbbc05 20%,
-      #34a853 30%,
-      #000000 40%,
-      #000000 60%,
-      #4285f4 100%
-    ) border-box;
-  animation:
-    rotateClockwiseGoogle var(--rotate-duration, 6s) linear infinite,
-    googleFadePulseBar 10s ease-in-out infinite;
-  animation-delay: var(--bar-delay, 0s);
+  background: #000000;
   border-radius: 999px;
   position: relative;
   cursor: grab;
@@ -158,23 +176,50 @@
   overflow: visible;
 }
 
+.card-progress-track::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid transparent;
+  background:
+    linear-gradient(#000000, #000000) padding-box,
+    conic-gradient(
+      from var(--border-angle),
+      transparent 0%,
+      transparent 55%,
+      rgba(66, 133, 244, 0.15) 68%,
+      #4285f4 78%,
+      #ea4335 86%,
+      #fbbc05 93%,
+      #34a853 97%,
+      #ffffff 100%
+    ) border-box;
+  animation:
+    rotateClockwiseGoogle var(--rotate-duration, 2.8s) linear infinite,
+    googleFadePulseBar var(--bar-pulse-duration, 10s) ease-in-out infinite;
+  animation-delay: var(--bar-delay, 0s), var(--bar-fade-delay, 0s);
+  pointer-events: none;
+  z-index: 2;
+}
+
 .card-progress-track:active {
   cursor: grabbing;
 }
 
 /* (Estrellas de la barra de progreso eliminadas) */
 
-/* Pulso: los colores del borde se desvanecen hasta casi desaparecer y vuelven */
+/* Pulso: 15% del tiempo en negro */
 @keyframes googleFadePulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.15; }
+  0%, 75% { opacity: 1; }
+  80%, 95% { opacity: 0; }
+  100% { opacity: 1; }
 }
 
-/* Pulso de las barras de progreso: encendidas el 90% del tiempo,
-   solo se apagan brevemente al final del ciclo. */
+/* Pulso de las barras de progreso: 15% del ciclo en negro */
 @keyframes googleFadePulseBar {
-  0%, 90% { opacity: 1; }
-  97% { opacity: 0.15; }
+  0%, 75% { opacity: 1; }
+  80%, 95% { opacity: 0; }
   100% { opacity: 1; }
 }
 
@@ -188,24 +233,23 @@
     linear-gradient(#000000, #000000) padding-box,
     conic-gradient(
       from var(--border-angle),
-      #4285f4 0%,
-      #ea4335 10%,
-      #fbbc05 20%,
-      #34a853 30%,
-      #000000 40%,
-      #000000 60%,
-      #4285f4 100%
+      transparent 0%,
+      transparent 50%,
+      rgba(66, 133, 244, 0.2) 65%,
+      #4285f4 76%,
+      #ea4335 84%,
+      #fbbc05 91%,
+      #34a853 96%,
+      #ffffff 100%
     ) border-box;
   animation:
-    rotateClockwiseGoogle var(--rotate-duration, 6s) linear infinite,
-    googleFadePulseBar 10s ease-in-out infinite;
+    rotateClockwiseGoogleAlt var(--fill-rotate-duration, var(--rotate-duration, 2.2s)) linear infinite,
+    var(--fill-pulse-anim, googleFadePulse60) var(--fill-pulse-duration, 8.2s) ease-in-out infinite;
+  animation-delay: var(--fill-delay, -3.8s), var(--fill-fade-delay, -4.5s);
   border-radius: 999px;
   position: relative;
-  z-index: 3;
+  z-index: 4;
   transition: width 0.5s cubic-bezier(0.34, 1.25, 0.4, 1);
-  box-shadow:
-    0 0 14px rgba(66, 133, 244, 0.35),
-    inset 0 1px 2px rgba(255, 255, 255, 0.15);
 }
 
 /* Indicador de píldora de progreso: Estilo Cápsula Joya Apple Cyberpunk / OLED */

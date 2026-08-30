@@ -8,6 +8,7 @@ import { getSubjectColor } from "./deckHelpers";
 import { useBorderSpeed } from "./useBorderSpeed";
 import { SessionComplete } from "./SessionComplete";
 import { EmptyStudyView } from "./EmptyStudyView";
+import { GoogleAura } from "./GoogleAura";
 
 import "./StudyView.css";
 
@@ -389,7 +390,7 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
         <div
           ref={(el) => {
             dotsContainerRef.current = el;
-            borderSpeed("track")(el);
+            borderSpeed("track", 0.85)(el);
           }}
           className="card-progress-track"
           style={{ "--card-count": cards.length }}
@@ -402,11 +403,15 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
           onTouchEnd={handleTouchEnd}
         >
           {/* (Estrellas flotantes eliminadas de la barra de progreso) */}
+          <GoogleAura duration={6.2} delay={0} showSparkles={true} />
 
           <div
             className="card-progress-fill"
             style={{ width: `${Math.max(masteryPct, 0)}%` }}
-          />
+            ref={borderSpeed("fill", 1.4)}
+          >
+            <GoogleAura duration={4.8} delay={0.3} showSparkles={false} />
+          </div>
         </div>
         <div className="card-progress-count" title="Progreso del mazo">
           <span className="card-progress-pos">

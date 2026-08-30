@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useRef } from "react";
 
 // Velocidad lineal de los colores a lo largo del borde (px por segundo).
-// Con velocidad lineal constante, un borde largo tarda más en recorrerlo.
-const DEFAULT_SPEED = 65;
+// Aumentada para una rotación notablemente más rápida y dinámica.
+const DEFAULT_SPEED = 160;
 
 // Perímetro aproximado de un rectángulo redondeado en "pastilla" (radio = h/2).
 function borderPerimeter(w, h) {
@@ -24,7 +24,7 @@ export function useBorderSpeed(speed = DEFAULT_SPEED) {
   const observers = useRef(new Map());
 
   const borderSpeed = useCallback(
-    (key) => (el) => {
+    (key, speedFactor = 1) => (el) => {
       const prev = observers.current.get(key);
       if (prev) {
         prev.disconnect();
@@ -35,7 +35,10 @@ export function useBorderSpeed(speed = DEFAULT_SPEED) {
       const apply = () => {
         const w = el.offsetWidth || 1;
         const h = el.offsetHeight || 1;
-        const duration = borderPerimeter(w, h) / speed;
+        const actualSpeed = typeof speedFactor === "number" && speedFactor > 0
+          ? (speedFactor > 10 ? speedFactor : speed * speedFactor)
+          : speed;
+        const duration = borderPerimeter(w, h) / actualSpeed;
         el.style.setProperty("--rotate-duration", `${duration.toFixed(2)}s`);
       };
 

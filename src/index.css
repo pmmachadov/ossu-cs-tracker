@@ -4,8 +4,125 @@
   initial-value: 0deg;
 }
 
+/* Recorrido con velocidades variables: aceleraciones y deceleraciones cinéticas */
+@keyframes rotateClockwiseGoogle {
+  0% {
+    --border-angle: 0deg;
+  }
+  18% {
+    --border-angle: 105deg; /* Ráfaga inicial rápida */
+  }
+  42% {
+    --border-angle: 160deg; /* Deslizamiento pausado */
+  }
+  64% {
+    --border-angle: 280deg; /* Fuerte acelerón secundario */
+  }
+  86% {
+    --border-angle: 325deg; /* Desaceleración con inercia */
+  }
+  100% {
+    --border-angle: 360deg; /* Enlace continuo */
+  }
+}
+
+@keyframes rotateClockwiseGoogleAlt {
+  0% {
+    --border-angle: 0deg;
+  }
+  26% {
+    --border-angle: 65deg;  /* Inicio pausado */
+  }
+  48% {
+    --border-angle: 220deg; /* Ráfaga rápida */
+  }
+  74% {
+    --border-angle: 270deg; /* Frenado elegante */
+  }
+  90% {
+    --border-angle: 342deg; /* Impulso final */
+  }
+  100% {
+    --border-angle: 360deg;
+  }
+}
+
+/* Variantes de tiempo en negro aleatorio (10% a 35%) */
+@keyframes googleFadePulse10 {
+  0%, 84% { opacity: 1; }
+  88%, 98% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes googleFadePulse15 {
+  0%, 79% { opacity: 1; }
+  84%, 99% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes googleFadePulse20 {
+  0%, 74% { opacity: 1; }
+  79%, 99% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes googleFadePulse25 {
+  0%, 69% { opacity: 1; }
+  74%, 99% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes googleFadePulse30 {
+  0%, 64% { opacity: 1; }
+  69%, 99% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes googleFadePulse35 {
+  0%, 59% { opacity: 1; }
+  64%, 99% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* Compatibilidad con alias */
+@keyframes googleFadePulseShort {
+  0%, 82% { opacity: 1; }
+  87%, 99% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes googleFadePulseMedium {
+  0%, 74% { opacity: 1; }
+  79%, 99% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes googleFadePulseLong {
+  0%, 60% { opacity: 1; }
+  65%, 99% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes googleFadePulseWave {
+  0%, 70% { opacity: 1; }
+  76%, 98% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes googleFadePulse {
+  0%, 75% { opacity: 1; }
+  80%, 98% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes googleFadePulseBar {
+  0%, 75% { opacity: 1; }
+  80%, 98% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
 /* === APPLE GLASSMORPHISM DESIGN SYSTEM - Dark Mode === */
 :root {
+  /* Google Colors Vivos, Nítidos y Visibles */
+  --google-blue: #4285f4;
+  --google-red: #ea4335;
+  --google-yellow: #fbbc05;
+  --google-green: #34a853;
   /* System Backgrounds */
   --bg-primary: #000000;
   --bg-secondary: rgba(22, 22, 26, 0.7);

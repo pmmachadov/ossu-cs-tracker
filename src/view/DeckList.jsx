@@ -119,8 +119,8 @@ export function DeckList({
   };
 
   const totalCards = decks.reduce((acc, d) => acc + d.cards.length, 0);
-  const totalStudied = decks.reduce(
-    (acc, d) => acc + d.cards.filter((c) => c.status !== "new").length,
+  const totalLearned = decks.reduce(
+    (acc, d) => acc + d.cards.filter((c) => c.status === "aprendido").length,
     0,
   );
 
@@ -146,45 +146,53 @@ export function DeckList({
       d.subject !== "Materias salvadas",
   );
   const examenGroups = examenDecks.reduce((acc, deck) => {
-    const subject = deck.subject || "ExÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡menes";
+    const subject = deck.subject || "Exámenes";
     if (!acc[subject]) acc[subject] = [];
     acc[subject].push(deck);
     return acc;
   }, {});
+
+  const subjectOrder = ["Programación", "Bases de Datos", "Sistemas", "Marcas"];
+  const sortedSubjects = Object.keys(examenGroups).sort((a, b) => {
+    const ia = subjectOrder.indexOf(a);
+    const ib = subjectOrder.indexOf(b);
+    if (ia !== -1 && ib !== -1) return ia - ib;
+    if (ia !== -1) return -1;
+    if (ib !== -1) return 1;
+    return a.localeCompare(b);
+  });
+
   const pruebaGroups = pruebaDecks.reduce((acc, deck) => {
     const subject = deck.subject || "Sin materia";
     if (!acc[subject]) acc[subject] = [];
     acc[subject].push(deck);
     return acc;
   }, {});
-  const practicaDecks = filteredDecks.filter(
-    (d) => d.subject === "Practicas",
+  const practicaDecks = filteredDecks.filter((d) =>
+    d.id?.startsWith("practica-"),
   );
   const materiasSalvadasDecks = filteredDecks.filter(
     (d) => d.subject === "Materias salvadas",
   );
   const preguntasDirectasDecks = filteredDecks.filter(
-    (d) => d.id?.startsWith("pd-") && !materiasSalvadasDecks.includes(d),
+    (d) => d.id?.startsWith("pd-") && !d.id?.startsWith("libro-"),
   );
-  const librosDecks = filteredDecks.filter((d) => d.subject === "Libros");
+  const librosDecks = filteredDecks.filter(
+    (d) =>
+      (d.id?.startsWith("libro-") || d.subject?.startsWith("Libro:")) &&
+      d.subject !== "Materias salvadas",
+  );
   const mainDecks = filteredDecks.filter(
     (d) =>
-      MAIN_SUBJECTS.includes(d.subject) &&
-      !pruebaDecks.includes(d) &&
-      !examenDecks.includes(d) &&
-      !preguntasDirectasDecks.includes(d) &&
-      !materiasSalvadasDecks.includes(d),
+      !d.id?.startsWith("pd-") &&
+      !d.id?.startsWith("examen-") &&
+      !d.id?.startsWith("prueba-") &&
+      !d.name?.startsWith("Prueba -") &&
+      !d.id?.startsWith("libro-") &&
+      d.subject !== "Materias salvadas",
   );
   const extraDecks = filteredDecks.filter(
-    (d) =>
-      d.id !== "examen-java" &&
-      !MAIN_SUBJECTS.includes(d.subject) &&
-      !pruebaDecks.includes(d) &&
-      !practicaDecks.includes(d) &&
-      !examenDecks.includes(d) &&
-      !preguntasDirectasDecks.includes(d) &&
-      !librosDecks.includes(d) &&
-      !materiasSalvadasDecks.includes(d),
+    (d) => d.id?.startsWith("pd-") && !materiasSalvadasDecks.includes(d),
   );
   const mainGroups = mainDecks.reduce((acc, deck) => {
     const subject = deck.subject || "Sin materia";
@@ -197,11 +205,11 @@ export function DeckList({
     if (!sectionDecks || sectionDecks.length === 0) return 0;
     const total = sectionDecks.reduce((acc, d) => acc + d.cards.length, 0);
     if (total === 0) return 0;
-    const studied = sectionDecks.reduce(
-      (acc, d) => acc + d.cards.filter((c) => c.status !== "new").length,
+    const learned = sectionDecks.reduce(
+      (acc, d) => acc + d.cards.filter((c) => c.status === "aprendido").length,
       0,
     );
-    return Math.round((studied / total) * 100);
+    return Math.round((learned / total) * 100);
   };
 
   const preguntasDirectasProgress = calcSectionProgress(preguntasDirectasDecks);
@@ -224,21 +232,8 @@ export function DeckList({
 
   return (
     <div className="deck-list animate-fade-in">
-      {/* Header & Stats unificados en un único cuadro compacto */}
+      {/* Stats unificados en un único cuadro compacto */}
       <section className="deck-hero-compact">
-        <div className="hero-top-row">
-          <div className="hero-title-group">
-            <div className="deck-header-badge">
-              <span className="badge-dot"></span>
-              <span>Panel de Estudio</span>
-            </div>
-            <h1 className="deck-header-title">Mis Materias</h1>
-            <p className="deck-header-subtitle">
-              Selecciona un mazo para comenzar tu sesión de repaso
-            </p>
-          </div>
-        </div>
-
         <div className="hero-stats-row">
           <div className="stat-compact-item">
             <div className="stat-compact-icon bento-icon-blue">{Icons.folder}</div>
@@ -253,8 +248,8 @@ export function DeckList({
           <div className="stat-compact-item">
             <div className="stat-compact-icon bento-icon-purple">{Icons.cards}</div>
             <div className="stat-compact-info">
-              <div className="stat-compact-val">{totalCards}</div>
-              <div className="stat-compact-lbl">{totalStudied} repasadas</div>
+              <div className="stat-compact-val">{totalLearned}</div>
+              <div className="stat-compact-lbl">aprendidas</div>
             </div>
           </div>
 
@@ -265,13 +260,13 @@ export function DeckList({
             <div className="stat-compact-info">
               <div className="stat-compact-val-row">
                 <span className="stat-compact-val">
-                  {Math.round((totalStudied / (totalCards || 1)) * 100) || 0}%
+                  {Math.round((totalLearned / (totalCards || 1)) * 100) || 0}%
                 </span>
                 <div className="bento-mini-bar">
                   <div
                     className="bento-mini-fill"
                     style={{
-                      width: `${Math.round((totalStudied / (totalCards || 1)) * 100) || 0}%`,
+                      width: `${Math.round((totalLearned / (totalCards || 1)) * 100) || 0}%`,
                     }}
                   />
                 </div>
