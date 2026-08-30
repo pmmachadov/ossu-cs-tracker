@@ -668,17 +668,25 @@
 
 /* (Estrellas de la barra de progreso eliminadas) */
 
-/* Glass Stats Row (Limpio y bien distribuido sin iconos) */
+/* Glass Stats Row (Limpio, con números siempre visibles e inmutables) */
 .deck-stats-row {
   display: grid;
   grid-template-columns: 1fr auto 1fr auto 1fr;
   align-items: center;
   gap: 12px;
-  background: rgba(255, 255, 255, 0.035);
-  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-md);
   padding: 12px 18px;
   margin-bottom: 20px;
+  position: relative;
+  z-index: 10;
+}
+
+.deck-stats-row * {
+  position: relative;
+  z-index: 11;
+  opacity: 1 !important;
 }
 
 .deck-stat {
@@ -699,18 +707,20 @@
 .stat-number {
   font-size: 1.15rem;
   font-weight: 700;
-  color: #f5f5f7;
+  color: #ffffff !important;
   line-height: 1.1;
   font-variant-numeric: tabular-nums;
   letter-spacing: -0.02em;
+  opacity: 1 !important;
 }
 
 .stat-text {
   font-size: 0.75rem;
   font-weight: 500;
-  color: var(--text-secondary);
+  color: var(--text-secondary) !important;
   text-transform: capitalize;
   letter-spacing: 0.01em;
+  opacity: 1 !important;
 }
 
 /* Glass Actions Row */
@@ -766,17 +776,17 @@
       #ffffff 100%
     ) border-box;
   animation:
-    rotateClockwiseGoogleAlt var(--rotate-duration, 2.4s) linear infinite,
-    var(--btn-pulse-anim, googleFadePulseShort) var(--btn-pulse-duration, 8.5s) ease-in-out infinite;
-  animation-delay: var(--btn-delay, 0s), var(--btn-fade-delay, 0s);
+    rotateClockwiseGoogleAlt var(--rotate-duration, 2.4s) linear infinite;
+  animation-delay: var(--btn-delay, 0s);
   pointer-events: none;
   z-index: 1;
 }
 
-/* El contenido (icono + texto) queda por encima del borde */
+/* El contenido (icono + texto) queda por encima del borde y 100% visible */
 .deck-actions .btn-study > * {
   position: relative;
   z-index: 2;
+  opacity: 1 !important;
 }
 
 .deck-actions .btn-study:hover {
@@ -801,46 +811,6 @@
 .deck-actions .btn-icon-only:hover {
   background: rgba(255, 255, 255, 0.12);
   border-color: rgba(255, 255, 255, 0.18);
-}
-
-/* Glass Status Badge Top Right */
-.deck-done-badge {
-  position: absolute;
-  top: 22px;
-  right: 22px;
-  padding: 4px 12px;
-  border-radius: var(--radius-pill);
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: -0.01em;
-  cursor: pointer;
-  transition: var(--transition);
-  user-select: none;
-  z-index: 5;
-  backdrop-filter: blur(12px);
-}
-
-.deck-done-badge.off {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  color: var(--text-secondary);
-}
-
-.deck-done-badge.off:hover {
-  background: rgba(255, 255, 255, 0.12);
-  color: #f5f5f7;
-}
-
-.deck-done-badge.progress {
-  background: rgba(255, 159, 10, 0.2);
-  border: 1px solid rgba(255, 159, 10, 0.35);
-  color: #ffb340;
-}
-
-.deck-done-badge.on {
-  background: rgba(48, 209, 88, 0.2);
-  border: 1px solid rgba(48, 209, 88, 0.35);
-  color: #30d158;
 }
 
 /* Clear Data Section */

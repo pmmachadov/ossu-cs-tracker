@@ -281,3 +281,157 @@ pre code {
     scroll-behavior: auto !important;
   }
 }
+
+/* ==========================================================================
+   UNIVERSAL GOOGLE COMET LASER BORDER SYSTEM (Apple Intelligence & Linear)
+   El contenedor y su contenido NUNCA desaparecen (opacidad 100% fija).
+   Solo el trazo del borde fino en ::before rota y se desvanece suavemente.
+   ========================================================================== */
+
+.google-comet-border,
+.deck-card,
+.bento-card,
+.search-input-wrapper,
+.subject-filter,
+.modal-content,
+.card-editor-modal,
+.reset-modal-content,
+.stat-card,
+.stats-summary-card,
+.chart-card,
+.retention-card,
+.heatmap-card {
+  position: relative !important;
+  opacity: 1 !important;
+}
+
+/* El contenido interno queda por encima del borde y siempre 100% visible */
+.deck-card > *,
+.deck-card-content,
+.deck-stats-row,
+.deck-stat,
+.stat-number,
+.stat-text,
+.deck-name,
+.deck-description,
+.card-text,
+.card-content,
+.bento-card > *,
+.modal-content > *,
+.stat-card > * {
+  position: relative;
+  z-index: 10;
+  opacity: 1 !important;
+}
+
+/* Capa de borde láser en ::before */
+.deck-card::before,
+.bento-card::before,
+.search-input-wrapper::before,
+.subject-filter::before,
+.modal-content::before,
+.card-editor-modal::before,
+.reset-modal-content::before,
+.stat-card::before,
+.stats-summary-card::before,
+.chart-card::before,
+.retention-card::before,
+.heatmap-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid transparent;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.deck-card {
+  background: #000000 !important; /* El cuerpo de la tarjeta NUNCA cambia de color */
+}
+
+.deck-card::before {
+  background:
+    linear-gradient(#000000, #000000) padding-box,
+    conic-gradient(
+      from var(--border-angle),
+      transparent 0%,
+      transparent 55%,
+      rgba(66, 133, 244, 0.15) 68%,
+      #4285f4 78%,
+      #ea4335 86%,
+      #fbbc05 93%,
+      #34a853 97%,
+      #ffffff 100%
+    ) border-box;
+  animation:
+    rotateClockwiseGoogle var(--card-rotate-duration, 7.5s) linear infinite,
+    googleFadePulseMedium 12s ease-in-out infinite;
+  animation-delay: var(--card-delay, 0s), var(--card-fade-delay, 0s);
+}
+
+.bento-card::before,
+.stat-card::before,
+.stats-summary-card::before,
+.chart-card::before,
+.retention-card::before,
+.heatmap-card::before {
+  background:
+    linear-gradient(#0c0c10, #0c0c10) padding-box,
+    conic-gradient(
+      from var(--border-angle),
+      transparent 0%,
+      transparent 60%,
+      rgba(66, 133, 244, 0.15) 72%,
+      #4285f4 80%,
+      #ea4335 88%,
+      #fbbc05 94%,
+      #34a853 98%,
+      #ffffff 100%
+    ) border-box;
+  animation:
+    rotateClockwiseGoogle 8.2s linear infinite,
+    googleFadePulseMedium 11.5s ease-in-out infinite;
+}
+
+.search-input-wrapper::before,
+.subject-filter::before {
+  background:
+    linear-gradient(#0a0a0d, #0a0a0d) padding-box,
+    conic-gradient(
+      from var(--border-angle),
+      transparent 0%,
+      transparent 58%,
+      rgba(66, 133, 244, 0.18) 70%,
+      #4285f4 80%,
+      #ea4335 88%,
+      #fbbc05 94%,
+      #34a853 98%,
+      #ffffff 100%
+    ) border-box;
+  animation:
+    rotateClockwiseGoogleAlt 6.2s linear infinite,
+    googleFadePulseMedium 10.5s ease-in-out infinite;
+}
+
+.modal-content::before,
+.card-editor-modal::before,
+.reset-modal-content::before {
+  border-width: 1.5px;
+  background:
+    linear-gradient(#0b0b10, #0b0b10) padding-box,
+    conic-gradient(
+      from var(--border-angle),
+      transparent 0%,
+      transparent 50%,
+      rgba(66, 133, 244, 0.2) 65%,
+      #4285f4 76%,
+      #ea4335 84%,
+      #fbbc05 91%,
+      #34a853 96%,
+      #ffffff 100%
+    ) border-box;
+  animation:
+    rotateClockwiseGoogle 7.2s linear infinite,
+    googleFadePulseLong 12.5s ease-in-out infinite;
+}

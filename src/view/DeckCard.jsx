@@ -51,10 +51,18 @@ export function DeckCard({
     btnSpeedFactor,
     barSpeedFactor,
     fillSpeedFactor,
+    cardRotateDuration,
+    cardDelay,
+    cardFadeDelay,
   } = useMemo(() => {
     let h = 0;
     const s = String(deck.id || "");
     for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) >>> 0;
+
+    // Velocidades aleatorias únicas para el borde exterior de cada tarjeta (5s a 11s)
+    const cardRotateDuration = `${(5.2 + ((h * 7) % 40) * 0.14).toFixed(2)}s`;
+    const cardDelay = `${(-((h % 28) * 0.38)).toFixed(2)}s`;
+    const cardFadeDelay = `${(-(((h * 13 + 5) % 36) * 0.28)).toFixed(2)}s`;
 
     // Factores de velocidad de recorrido lineal rápidos y ágiles:
     const barSpeedFactor = 1.0 + ((h % 23) / 22) * 0.7;
@@ -90,6 +98,9 @@ export function DeckCard({
     const fillDelay = `${(-(((h * 11 + 7) % 21) * 0.35)).toFixed(2)}s`;
 
     return {
+      cardRotateDuration,
+      cardDelay,
+      cardFadeDelay,
       btnDelay,
       barDelay,
       fillDelay,
@@ -122,33 +133,12 @@ export function DeckCard({
       className={`deck-card ${hasDueCards ? "has-due" : ""} ${themeClass} ${
         isDone ? "done" : isProgress ? "in-progress" : ""
       }`}
+      style={{
+        "--card-rotate-duration": cardRotateDuration,
+        "--card-delay": cardDelay,
+        "--card-fade-delay": cardFadeDelay,
+      }}
     >
-      {/* Apple style done badge */}
-      <div
-        className={`deck-done-badge ${isDone ? "on" : isProgress ? "progress" : "off"}`}
-        title={
-          isDone
-            ? "Mazo completado"
-            : isProgress
-              ? "Mazo en progreso"
-              : "Mazo pendiente"
-        }
-        role="button"
-        tabIndex={0}
-        aria-pressed={isDone ? true : isProgress ? "mixed" : false}
-        onClick={() => onToggleDone(deck.id)}
-        onKeyDown={(e) => {
-          if (e.key === "Enter" || e.key === " ") {
-            e.preventDefault();
-            onToggleDone(deck.id);
-          }
-        }}
-      >
-        <span className="badge-text">
-          {isDone ? "Completado" : isProgress ? "En curso" : "Pendiente"}
-        </span>
-      </div>
-
       {/* Card Content */}
       <div className="deck-card-content">
         <div className="deck-card-meta">
