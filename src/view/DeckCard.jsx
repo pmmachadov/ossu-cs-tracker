@@ -165,40 +165,7 @@ export function DeckCard({
           <p className="deck-description">{deck.description}</p>
         )}
 
-        {/* Progress Bar con encanto y dos bordes independientes */}
-        <div className="deck-progress">
-          <div className="progress-info">
-            <span className="progress-label">Progreso</span>
-            <span className="progress-value">
-              <span className="progress-value-text">{stats.mastery}%</span>
-            </span>
-          </div>
-          <div
-            className="progress-bar"
-            style={{
-              "--bar-delay": barDelay,
-              "--bar-fade-delay": barFadeDelay,
-              "--bar-pulse-duration": barPulseDuration,
-              "--bar-pulse-anim": barPulseAnim,
-            }}
-            ref={borderSpeed(`bar-track-${deck.id}`, barSpeedFactor)}
-          >
-            <GoogleAura duration={6.5} delay={0} showSparkles={true} />
-            <div
-              className="progress-fill"
-              style={{
-                width: `${Math.max(stats.mastery, 0)}%`,
-                "--fill-delay": fillDelay,
-                "--fill-fade-delay": fillFadeDelay,
-                "--fill-pulse-duration": fillPulseDuration,
-                "--fill-pulse-anim": fillPulseAnim,
-              }}
-              ref={borderSpeed(`bar-fill-${deck.id}`, fillSpeedFactor)}
-            >
-              <GoogleAura duration={4.5} delay={0.2} showSparkles={false} />
-            </div>
-          </div>
-        </div>
+
 
         {/* Stats Row */}
         <div className="deck-stats-row">

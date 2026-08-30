@@ -402,23 +402,17 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
         >
-          {/* (Estrellas flotantes eliminadas de la barra de progreso) */}
-          <GoogleAura duration={6.2} delay={0} showSparkles={true} />
-
           <div
             className="card-progress-fill"
             style={{ width: `${Math.max(masteryPct, 0)}%` }}
             ref={borderSpeed("fill", 1.4)}
           >
-            <GoogleAura duration={4.8} delay={0.3} showSparkles={false} />
+            <span className="bento-fill-pct-badge">{masteryPct}%</span>
           </div>
         </div>
         <div className="card-progress-count" title="Progreso del mazo">
           <span className="card-progress-pos">
             {deckStats.aprendido} / {deckStats.total}
-          </span>
-          <span className="card-progress-pct">
-            <span className="card-progress-pct-text">{masteryPct}%</span>
           </span>
         </div>
       </div>
