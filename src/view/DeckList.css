@@ -416,17 +416,15 @@
   box-shadow:
     0 2px 10px rgba(66, 133, 244, 0.25),
     inset 0 1px 1px rgba(255, 255, 255, 0.3);
-  opacity: 1;
+  opacity: 0;
+  transition: opacity 4.2s cubic-bezier(0.4, 0, 0.2, 1);
   pointer-events: none;
   z-index: 1;
 }
 
-/* Tras 10 segundos, se enciende 2 segundos de cada 5 segundos de forma continua (pulso 2s ON / 3s OFF) */
-.stat-compact-progress .bento-mini-bar.google-expired .bento-mini-fill::after {
-  animation:
-    siriPctPulse2sOf5s 5s cubic-bezier(0.4, 0, 0.2, 1) infinite,
-    siriAngleSpin 28.0s linear infinite,
-    siriGoogleMiniBarRandom 32.0s cubic-bezier(0.25, 0.8, 0.25, 1) infinite !important;
+/* Pulso aleatorio con desvanecimiento muy lento (fade in / fade out de 4.2s) */
+.stat-compact-progress .bento-mini-fill.pct-glow-active::after {
+  opacity: 1 !important;
 }
 
 .stat-compact-progress .bento-mini-fill > * {
