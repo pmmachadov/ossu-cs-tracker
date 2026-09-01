@@ -242,14 +242,18 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
   const progressPct =
     cards.length > 1 ? (currentCardIndex / (cards.length - 1)) * 100 : 100;
 
-  // Análisis de opciones de la tarjeta actual (opción múltiple o V/F; null si no aplica)
-  // En el mazo de Ejercicios, TODAS las tarjetas son tarjetas de desarrollo/análisis con giro 3D completo
+  // Resetear selección al cambiar de tarjeta
+  useEffect(() => {
+    setMcSelection(null);
+  }, [currentCardIndex, currentCard?.id]);
+
+  // Análisis y mezclado aleatorio de opciones de la tarjeta actual (opción múltiple o V/F)
   const mc = useMemo(
     () =>
       currentCard && deck?.id !== "examen-java-ejercicios"
         ? analyzeAnswerOptions(currentCard.front, currentCard.back)
         : null,
-    [currentCard, deck?.id],
+    [currentCard, currentCardIndex, deck?.id],
   );
 
   // Color del mazo para la barra de progreso (p. ej. violeta en Examen Java)
