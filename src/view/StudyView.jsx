@@ -487,17 +487,18 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
                     >
                       {mc.options.map((opt, optIndex) => {
                         const revealed = mcSelection !== null;
-                        const isCorrect = opt.letter === mc.correctLetter;
+                        const isCorrect = opt.isCorrect;
+                        const isSelected = mcSelection === opt.letter;
                         return (
                           <motion.button
-                            key={opt.letter}
+                            key={`${opt.origLetter || opt.badge}-${optIndex}`}
                             initial={{ opacity: 0, y: 8 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.2, delay: optIndex * 0.04 }}
                             whileHover={!revealed ? { scale: 1.01, x: 2 } : {}}
                             whileTap={!revealed ? { scale: 0.99 } : {}}
                             className={`mc-option ${
-                              revealed ? (isCorrect ? "correct" : "wrong") : ""
+                              revealed ? (isCorrect ? "correct" : isSelected ? "wrong" : "") : ""
                             }`}
                             disabled={revealed}
                             onClick={(e) => {
@@ -517,7 +518,7 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
                                 ) : null,
                               )}
                             </span>
-                            {revealed && (
+                            {revealed && (isCorrect || isSelected) && (
                               <span className="mc-icon">
                                 {isCorrect ? "✓" : "✗"}
                               </span>
