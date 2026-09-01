@@ -12,17 +12,24 @@ import { GoogleAura } from "./GoogleAura";
 
 import "./StudyView.css";
 
-// --- Opción múltiple / Verdadero-Falso interactivos ---
+// --- Opción múltiple / Verdadero-Falso interactivos con orden aleatorio ---
 const MC_OPTION_RE = /^([a-hA-H])\s*[\)\.]\s*(.+)$/;
 
 function stripCodeBlocks(text) {
   return (text || "").replace(/```[\s\S]*?```/g, "\n");
 }
 
+function shuffleArray(array) {
+  const result = [...array];
+  for (let i = result.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [result[i], result[j]] = [result[j], result[i]];
+  }
+  return result;
+}
+
 function analyzeMultipleChoice(front, back) {
   // Solo cards con opciones tipo "a) ...", "b) ..." en el frente.
-  // Se recorren las líneas ORIGINALES (con su código) y solo se ignoran
-  // las opciones que estén dentro de un bloque ```...```.
   const frontLines = (front || "").split("\n");
   const matches = [];
   let inCode = false;
@@ -37,25 +44,43 @@ function analyzeMultipleChoice(front, back) {
   });
   if (matches.length < 2) return null;
 
-  // La respuesta correcta es la primera opción del dorso (p. ej. "a) ...", "✓ **a) ...**", "a) ...")
-  let correctLetter = null;
+  // Encontrar la letra correcta original del dorso
+  let origCorrectLetter = null;
   const backClean = stripCodeBlocks(back).replace(/[*_~`✓]/g, "");
   for (const line of backClean.split("\n")) {
     const m = line.trim().match(MC_OPTION_RE);
     if (m) {
-      correctLetter = m[1].toLowerCase();
+      origCorrectLetter = m[1].toLowerCase();
       break;
     }
   }
-  if (!correctLetter) return null;
+  if (!origCorrectLetter) return null;
+
+  // Mezclar aleatoriamente las opciones (random shuffle en cada visualización)
+  const rawOptions = matches.map((m) => ({
+    origLetter: m.letter,
+    text: m.text,
+    isCorrect: m.letter === origCorrectLetter,
+  }));
+  const shuffled = shuffleArray(rawOptions);
+
+  // Asignar nuevas letras consecutivas (a, b, c, d...) según el nuevo orden aleatorio
+  const options = shuffled.map((item, idx) => {
+    const newBadge = String.fromCharCode(97 + idx); // 'a', 'b', 'c', 'd'...
+    return {
+      letter: newBadge,
+      badge: newBadge,
+      text: item.text,
+      isCorrect: item.isCorrect,
+      origLetter: item.origLetter,
+    };
+  });
+
+  const correctOption = options.find((o) => o.isCorrect);
 
   return {
-    options: matches.map((m) => ({
-      letter: m.letter,
-      text: m.text,
-      badge: m.letter,
-    })),
-    correctLetter,
+    options,
+    correctLetter: correctOption ? correctOption.letter : null,
     before: frontLines.slice(0, matches[0].index).join("\n").trim(),
     after: frontLines.slice(matches[matches.length - 1].index + 1).join("\n").trim(),
   };
@@ -66,9 +91,7 @@ function analyzeAnswerOptions(front, back) {
   const mc = analyzeMultipleChoice(front, back);
   if (mc) return mc;
 
-  // 2) Verdadero / Falso: alguna de las primeras líneas del dorso
-  //    empieza por "Verdadero" o "Falso" (las backs llevan prefijo
-  //    "RESPUESTA / SOLUCIÓN" u otras cabeceras)
+  // 2) Verdadero / Falso: orden aleatorio de opciones
   const backLines = stripCodeBlocks(back)
     .split("\n")
     .map((l) => l.trim())
@@ -86,11 +109,14 @@ function analyzeAnswerOptions(front, back) {
     }
   }
   if (vf) {
+    const vfList = [
+      { letter: "V", text: "Verdadero", badge: "V", isCorrect: vf === "V" },
+      { letter: "F", text: "Falso", badge: "F", isCorrect: vf === "F" },
+    ];
+    const shuffledVf = shuffleArray(vfList);
+
     return {
-      options: [
-        { letter: "V", text: "Verdadero", badge: "V" },
-        { letter: "F", text: "Falso", badge: "F" },
-      ],
+      options: shuffledVf,
       correctLetter: vf,
       before: front,
       after: "",
