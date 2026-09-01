@@ -143,23 +143,23 @@
   }
 }
 
-/* Card Progress Bar - Look vitrificado Apple */
+/* Barra de control superior con glassmorphism oscuro y sobrio */
 .card-progress-wrapper {
   position: relative;
   isolation: isolate;
   display: flex;
   align-items: center;
-  gap: 18px;
-  margin-bottom: 28px;
-  padding: 14px 22px;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.01) 100%),
-    rgba(10, 10, 14, 0.85);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  gap: 16px;
+  margin-bottom: 56px;
+  padding: 10px 18px;
+  background: rgba(15, 17, 23, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.09);
   border-radius: 999px;
   box-shadow:
-    0 16px 40px -12px rgba(0, 0, 0, 0.9),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    0 12px 32px -8px rgba(0, 0, 0, 0.75),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
   max-width: 100%;
   width: 100%;
   margin-left: auto;
@@ -173,7 +173,7 @@
   inset: 0;
   z-index: 0;
   border-radius: inherit;
-  background: linear-gradient(120deg, rgba(255, 255, 255, 0.05), transparent 40%);
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.03), transparent 50%);
   pointer-events: none;
 }
 
@@ -182,16 +182,17 @@
   z-index: 1;
 }
 
-/* Carril de progreso con borde de colores Google girando (igual que la página principal) */
+/* Carril de progreso moderno y minimalista */
 .card-progress-track {
   flex: 1;
-  height: 48px;
-  background: #0e0e12;
-  border-radius: var(--radius-pill);
-  padding: 4px;
+  height: 38px;
+  background: rgba(0, 0, 0, 0.55);
+  border-radius: 999px;
+  padding: 3px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow:
-    0 6px 24px rgba(0, 0, 0, 0.45),
-    inset 0 1px 1px rgba(255, 255, 255, 0.15);
+    inset 0 2px 6px rgba(0, 0, 0, 0.6),
+    0 1px 2px rgba(255, 255, 255, 0.04);
   display: flex;
   align-items: center;
   position: relative;
@@ -200,143 +201,114 @@
   -webkit-user-select: none;
 }
 
-.card-progress-track::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  border: 2.5px solid transparent;
-  background:
-    linear-gradient(#0e0e12, #0e0e12) padding-box,
-    conic-gradient(from var(--border-angle),
-      transparent 0%,
-      transparent 50%,
-      rgba(66, 133, 244, 0.2) 64%,
-      #4285f4 76%,
-      #ea4335 85%,
-      #fbbc05 92%,
-      #34a853 97%,
-      #ffffff 100%) border-box;
-  animation:
-    rotateClockwiseGoogle 7.5s linear infinite,
-    googleFadePulseMedium 12s ease-in-out infinite;
-  transition: opacity 3s cubic-bezier(0.4, 0, 0.2, 1);
-  opacity: 1;
-  pointer-events: none;
-  z-index: 1;
-}
-
-/* Tras 10 segundos, el borde vuelve a modo normal sin colores */
-.card-progress-track.google-expired::before {
-  opacity: 0 !important;
-}
-
-.card-progress-track.google-expired {
-  border: 1px solid rgba(255, 255, 255, 0.08) !important;
-}
-
-.card-progress-track>* {
-  position: relative;
-  z-index: 2;
-}
-
 .card-progress-track:active {
   cursor: grabbing;
 }
 
-/* Relleno de progreso: base oscura fija y capa de luz */
+/* Relleno de progreso: Flujo dinámico no concéntrico y puro de colores Google */
 .card-progress-fill {
   height: 100%;
-  min-width: 72px;
+  min-width: 58px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(145deg, rgba(45, 45, 58, 0.95), rgba(28, 28, 36, 0.98));
-  border-radius: var(--radius-pill);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-  transition: width 0.6s cubic-bezier(0.34, 1.25, 0.4, 1);
+  background:
+    linear-gradient(
+      125deg,
+      #4285f4 0%,
+      #ea4335 25%,
+      #fbbc05 50%,
+      #34a853 75%,
+      #4285f4 100%
+    );
+  background-size: 260% 260%;
+  animation: googleOrganicFlow 12s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+  border-radius: 999px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.45),
+    0 2px 14px rgba(66, 133, 244, 0.35);
+  transition: width 0.45s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
   overflow: hidden;
 }
 
+@keyframes googleOrganicFlow {
+  0% {
+    background-position: 0% 35%;
+  }
+  22% {
+    background-position: 75% 90%;
+  }
+  48% {
+    background-position: 100% 15%;
+  }
+  73% {
+    background-position: 25% 100%;
+  }
+  100% {
+    background-position: 0% 35%;
+  }
+}
+
+/* Brillo sutil y natural en la parte superior */
 .card-progress-fill::after {
   content: '';
   position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background:
-    linear-gradient(180deg,
-      rgba(255, 255, 255, 0.18) 0%,
-      transparent 55%,
-      rgba(0, 0, 0, 0.15) 100%),
-    linear-gradient(var(--siri-angle),
-      rgba(66, 133, 244, 0.42) 0%,
-      rgba(234, 67, 53, 0.42) 30%,
-      rgba(251, 188, 5, 0.42) 60%,
-      rgba(52, 168, 83, 0.42) 85%,
-      rgba(66, 133, 244, 0.42) 100%);
-  background-size: 200% 200%;
-  backdrop-filter: blur(16px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
-  animation:
-    siriAngleSpin 28.0s linear infinite,
-    siriGoogleMiniBarRandom 32.0s cubic-bezier(0.25, 0.8, 0.25, 1) infinite;
-  box-shadow:
-    0 2px 10px rgba(66, 133, 244, 0.25),
-    inset 0 1px 1px rgba(255, 255, 255, 0.3);
-  opacity: 1;
-  transition: opacity 1s ease;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.25) 0%, transparent 100%);
+  border-radius: 999px 999px 0 0;
   pointer-events: none;
-  z-index: 1;
 }
 
-.card-progress-fill.pct-glow-active::after,
-.card-progress-fill::after {
-  opacity: 1 !important;
-}
-
-.card-progress-fill>* {
+/* Badge de porcentaje moderno, nítido y legible */
+.bento-fill-pct-badge {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 2px 8px;
+  border-radius: 999px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+  letter-spacing: 0.01em;
+  font-variant-numeric: tabular-nums;
+  user-select: none;
+  pointer-events: none;
+  white-space: nowrap;
   position: relative;
   z-index: 2;
 }
 
-/* Indicador de píldora de progreso: Estilo Cápsula Joya Apple Cyberpunk / OLED */
+/* Indicador de conteo de tarjetas (ej. 6 / 201) */
 .card-progress-count {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
   white-space: nowrap;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.10) 0%, rgba(255, 255, 255, 0.02) 100%),
-    rgba(14, 14, 18, 0.95);
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 999px;
-  padding: 6px 16px 6px 20px;
-  box-shadow:
-    0 6px 20px rgba(0, 0, 0, 0.6),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.5);
-  transition: all 0.3s ease;
+  padding: 6px 14px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition: all 0.25s ease;
 }
 
 .card-progress-count:hover {
-  border-color: rgba(255, 255, 255, 0.3);
-  box-shadow:
-    0 8px 24px rgba(0, 0, 0, 0.7),
-    0 0 16px rgba(52, 168, 83, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 .card-progress-pos {
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: #ffffff;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #e2e8f0;
   font-variant-numeric: tabular-nums;
-  letter-spacing: 0.03em;
-  display: flex;
-  align-items: center;
-  gap: 6px;
+  letter-spacing: 0.02em;
 }
 
 /* 2D Multidirectional y Diagonal Swirling Siri Google Colors Vortex */
@@ -1361,6 +1333,7 @@
   .card-progress-wrapper {
     gap: 12px;
     padding: 12px 16px;
+    margin-bottom: 44px;
   }
 
   .card-progress-track {
@@ -1425,6 +1398,7 @@
   .card-progress-wrapper {
     gap: 10px;
     padding: 10px 12px;
+    margin-bottom: 38px;
   }
 
   .card-progress-track {
@@ -1953,6 +1927,23 @@
   align-items: center;
   gap: 10px;
   min-width: 0;
+}
+
+/* Línea con corrección/éxito en el código: marcado en verde con resplandor */
+.code-line-success {
+  background: rgba(52, 168, 83, 0.12) !important;
+  border-left: 3px solid #34a853 !important;
+  border-radius: 4px;
+  box-shadow: 0 0 1px 1px #34a853, 0 0 8px rgba(52, 168, 83, 0.35) !important;
+  padding: 2px 6px;
+  margin: 1px 0;
+}
+
+.code-line-success .code-line-text .token.comment,
+.code-line-success .code-line-text span[class*="comment"],
+.code-line-success .code-line-text span[style*="rgb(52, 168, 83)"] {
+  color: #4ade80 !important;
+  font-weight: 600;
 }
 
 /* Línea con error en el código: marcado en rojo con resplandor de 1px */

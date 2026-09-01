@@ -103,6 +103,8 @@ const codeRenderer = ({ rows, stylesheet, useInlineStyles }, blockHash) => {
       /\berror\b/i.test(lineText);
     // Línea con error: se resalta en rojo con resplandor (las que llevan ❌ o mencionan error)
     const isErrorLine = lineText.includes("❌") || (/\berror\b/i.test(lineText) && !lineText.includes("✅"));
+    // Línea con corrección/éxito: se resalta en verde con resplandor (las que llevan ✅ o mencionan correcto)
+    const isSuccessLine = lineText.includes("✅") || (/\bcorrect[oa]\b/i.test(lineText) && !lineText.includes("❌"));
     if (!isMarkedLine) {
       return createElement({
         node: row,
@@ -114,7 +116,7 @@ const codeRenderer = ({ rows, stylesheet, useInlineStyles }, blockHash) => {
     return (
       <div
         key={`lc-${i}`}
-        className={`code-line-check${isErrorLine ? " code-line-error" : ""}`}
+        className={`code-line-check${isErrorLine ? " code-line-error" : ""}${isSuccessLine ? " code-line-success" : ""}`}
       >
         <div className="code-line-text">
           {createElement({ node: row, stylesheet, useInlineStyles })}

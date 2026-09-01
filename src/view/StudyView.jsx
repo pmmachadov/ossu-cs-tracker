@@ -9,7 +9,6 @@ import { useBorderSpeed } from "./useBorderSpeed";
 import { SessionComplete } from "./SessionComplete";
 import { EmptyStudyView } from "./EmptyStudyView";
 import { GoogleAura } from "./GoogleAura";
-import { triggerStarCelebration } from "./StarCelebration";
 
 import "./StudyView.css";
 
@@ -258,9 +257,6 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
       onUpdateDeck(deck);
 
       if (difficulty === DIFFICULTY.APRENDIDO) {
-        // Lanzar animación de estrellas por 3 segundos
-        triggerStarCelebration();
-
         // Si se marca como "Aprendido", se elimina INMEDIATAMENTE de la cola actual de estudio
         const updatedCards = cards.filter((c) => c.id !== currentCard.id);
         setCards(updatedCards);
