@@ -626,18 +626,3 @@ body.google-borders-hidden .btn-toggle-google-borders::before {
   display: none !important;
   animation: none !important;
 }
-
-/* Eliminar completamente las capas animadas de colores Google detrás del porcentaje */
-body.google-borders-hidden .bento-mini-fill::before,
-body.google-borders-hidden .bento-mini-fill::after,
-body.google-borders-hidden .card-progress-fill::before,
-body.google-borders-hidden .card-progress-fill::after {
-  display: none !important;
-  animation: none !important;
-}
-
-/* Detener animaciones de texto en porcentajes */
-body.google-borders-hidden .global-pct-siri-text,
-body.google-borders-hidden .bento-fill-pct-badge {
-  animation: none !important;
-}
