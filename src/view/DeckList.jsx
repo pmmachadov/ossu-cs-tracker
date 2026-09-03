@@ -259,8 +259,6 @@ export function DeckList({
             </div>
           </div>
 
-          <div className="stat-compact-divider" />
-
           <div className="stat-compact-item stat-compact-pill stat-pill-aprendidas">
             <div className="stat-compact-info">
               <div className="stat-compact-val">{totalLearned}</div>
@@ -268,31 +266,23 @@ export function DeckList({
             </div>
           </div>
 
-          <div className="stat-compact-divider" />
-
           <div className="stat-compact-item stat-compact-progress">
             <div className="stat-compact-info">
                 {(() => {
                   const heroPct = Math.round((totalLearned / (totalCards || 1)) * 100) || 0;
                   return (
                     <div className={`bento-mini-bar ${isFirstTenSeconds ? "google-active" : "google-expired"}`}>
-                      <div
-                        className={`bento-mini-fill ${showHeroPctGlow ? "pct-glow-active" : "pct-glow-off"}`}
-                        style={{
-                          width: `${heroPct}%`,
-                        }}
-                      >
-                        <span className="hero-fill-pct-text">
-                          {heroPct}%
-                        </span>
-                      </div>
-                      {heroPct < 100 && (
-                        <div
-                          className="bento-mini-unfilled"
-                          title={`Pendiente: ${100 - heroPct}%`}
-                        />
-                      )}
+                    <div
+                      className={`bento-mini-fill ${showHeroPctGlow ? "pct-glow-active" : "pct-glow-off"}`}
+                      style={{
+                        width: `${heroPct}%`,
+                      }}
+                    >
+                      <span className="hero-fill-pct-text">
+                        {heroPct}%
+                      </span>
                     </div>
+                  </div>
                   );
                 })()}
               </div>

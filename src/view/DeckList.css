@@ -123,7 +123,7 @@
 .hero-stats-row {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
   padding: 6px 0;
   width: 100%;
   background: transparent;
@@ -133,12 +133,11 @@
 .stat-compact-item {
   display: flex;
   align-items: center;
-  gap: 12px;
 }
 
 .stat-compact-progress {
-  flex: 0 1 360px;
-  min-width: 180px;
+  flex: 1;
+  min-width: 260px;
   display: flex;
   align-items: center;
 }
@@ -152,12 +151,10 @@
 /* Cápsulas de estadísticas con borde animado de Google a velocidades cambiantes */
 .stat-compact-pill {
   position: relative;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  gap: 12px;
-  padding: 6px 22px;
+  padding: 0 16px;
   height: 48px;
   background: #000000;
   border-radius: var(--radius-pill);
@@ -256,32 +253,31 @@
 }
 
 .stat-compact-info {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: baseline;
   justify-content: center;
-  text-align: center;
-  gap: 1px;
-  flex: 1;
+  gap: 7px;
+  white-space: nowrap;
 }
 
 .stat-compact-val {
   font-family: 'Outfit', 'Inter', -apple-system, sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.35rem;
   font-weight: 800;
   color: #ffffff;
   line-height: 1;
-  letter-spacing: -0.025em;
+  letter-spacing: -0.02em;
   font-variant-numeric: tabular-nums;
 }
 
 .stat-compact-lbl {
   font-family: 'Inter', -apple-system, sans-serif;
-  font-size: 0.75rem;
+  font-size: 0.8125rem;
   font-weight: 600;
   color: rgba(255, 255, 255, 0.75);
-  letter-spacing: 0.015em;
-  line-height: 1.2;
+  letter-spacing: 0.01em;
+  line-height: 1;
 }
 
 .stat-compact-divider {
@@ -466,14 +462,13 @@
 .stat-compact-progress .bento-mini-bar {
   flex: 1;
   width: 100%;
-  height: 48px;
+  height: 62px;
   background: #000000;
   border-radius: var(--radius-pill);
-  padding: 4px;
+  padding: 5px;
   box-shadow: none;
   display: flex;
   align-items: center;
-  gap: 6px;
   position: relative;
 }
 
@@ -509,15 +504,31 @@
   z-index: 2;
 }
 
-/* Relleno de progreso: Con su propio borde de colores Google girando a velocidad diferente (2.2s) como las demás barras */
+/* Relleno de progreso: Los 4 colores clásicos de Google (Azul, Rojo, Amarillo, Verde) en flujo continuo */
 .stat-compact-progress .bento-mini-fill {
   height: 100%;
-  min-width: 68px;
+  min-width: 76px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: var(--radius-pill);
+  border-radius: 9999px !important;
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    inset 0 1px 2px rgba(255, 255, 255, 0.55),
+    inset 0 -2px 6px rgba(0, 0, 0, 0.45),
+    0 4px 18px rgba(66, 133, 244, 0.4);
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  transition: width 0.6s cubic-bezier(0.34, 1.25, 0.4, 1);
+}
+
+.stat-compact-progress .bento-mini-fill::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
   background:
+    radial-gradient(ellipse 100% 120% at 25% -20%, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0) 55%),
     linear-gradient(
       115deg,
       #4285f4 0%,
@@ -526,51 +537,10 @@
       #34a853 75%,
       #4285f4 100%
     );
-  background-size: 200% 200%;
-  animation: googleVibrantFlow 6.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-  box-shadow: none;
-  transition: width 0.6s cubic-bezier(0.34, 1.25, 0.4, 1);
-  position: relative;
-  overflow: hidden;
-}
-
-/* Parte no llena de la barra de progreso: con su propio borde animado de Google */
-.stat-compact-progress .bento-mini-unfilled {
-  flex: 1;
-  height: 100%;
-  min-width: 14px;
-  background: #000000;
-  border-radius: var(--radius-pill);
-  position: relative;
-  box-shadow: none;
-  transition: width 0.6s cubic-bezier(0.34, 1.25, 0.4, 1);
-}
-
-.stat-compact-progress .bento-mini-unfilled::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  border: 2px solid transparent;
-  background:
-    linear-gradient(#000000, #000000) padding-box,
-    conic-gradient(
-      from var(--border-angle),
-      transparent 0%,
-      transparent 55%,
-      rgba(66, 133, 244, 0.2) 68%,
-      #4285f4 78%,
-      #ea4335 86%,
-      #fbbc05 93%,
-      #34a853 97%,
-      #ffffff 100%
-    ) border-box;
-  animation:
-    rotateRandomChaos3 var(--rnd-dur-bar-unfilled, 6.2s) linear infinite,
-    googleFadePulse10 11s ease-in-out infinite;
-  animation-delay: -2s, -4s;
+  background-size: 100% 100%, 300% 300%;
+  animation: googleClassicVibrantFlow 4s ease-in-out infinite;
+  z-index: 1;
   pointer-events: none;
-  z-index: 2;
 }
 
 /* Sin reflejos ni destellos artificiales */
@@ -578,21 +548,22 @@
   display: none;
 }
 
-@keyframes googleVibrantFlow {
+/* Flujo cromático activo de los 4 colores Google clásicos */
+@keyframes googleClassicVibrantFlow {
   0% {
-    background-position: 0% 35%;
+    background-position: 0% 0%, 0% 0%;
   }
   25% {
-    background-position: 85% 85%;
+    background-position: 0% 0%, 100% 0%;
   }
   50% {
-    background-position: 100% 15%;
+    background-position: 0% 0%, 100% 100%;
   }
   75% {
-    background-position: 15% 95%;
+    background-position: 0% 0%, 0% 100%;
   }
   100% {
-    background-position: 0% 35%;
+    background-position: 0% 0%, 0% 0%;
   }
 }
 
@@ -601,27 +572,60 @@
   z-index: 2;
 }
 
-/* Porcentaje completado: Limpio, directo sobre el color y sin bordes interiores */
+/* Porcentaje completado: Color dinámico que oscila suavemente entre negro y tonos de gris */
 .hero-fill-pct-text,
 .bento-fill-pct-badge {
   font-family: 'Outfit', 'Inter', -apple-system, sans-serif !important;
-  font-size: 1.35rem !important;
+  font-size: 1.55rem !important;
   font-weight: 900 !important;
   line-height: 1 !important;
-  color: #000000 !important;
   background: transparent !important;
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
   border: none !important;
   border-radius: 0 !important;
-  padding: 0 !important;
+  padding: 0 10px !important;
   box-shadow: none !important;
-  text-shadow: none !important;
   letter-spacing: -0.01em;
   font-variant-numeric: tabular-nums;
   user-select: none;
   pointer-events: none;
   white-space: nowrap;
+  animation: pctColorShiftBlackGray 8s ease-in-out infinite;
+}
+
+@keyframes pctColorShiftBlackGray {
+  0% {
+    color: #000000;
+    text-shadow:
+      0 1px 1px rgba(255, 255, 255, 0.5),
+      0 -1px 1px rgba(0, 0, 0, 0.85);
+  }
+  25% {
+    color: #24242c;
+    text-shadow:
+      0 1px 1px rgba(255, 255, 255, 0.45),
+      0 -1px 1px rgba(0, 0, 0, 0.75);
+  }
+  50% {
+    color: #585866;
+    text-shadow:
+      0 1px 2px rgba(255, 255, 255, 0.6),
+      0 -1px 2px rgba(0, 0, 0, 0.9),
+      0 0 10px rgba(0, 0, 0, 0.4);
+  }
+  75% {
+    color: #2c2c36;
+    text-shadow:
+      0 1px 1px rgba(255, 255, 255, 0.45),
+      0 -1px 1px rgba(0, 0, 0, 0.75);
+  }
+  100% {
+    color: #000000;
+    text-shadow:
+      0 1px 1px rgba(255, 255, 255, 0.5),
+      0 -1px 1px rgba(0, 0, 0, 0.85);
+  }
 }
 
 @media (max-width: 860px) {
@@ -1642,8 +1646,9 @@
       #ffffff 100%
     ) border-box;
   animation:
-    rotateClockwiseGoogleAlt var(--rotate-duration, 2.4s) linear infinite;
-  animation-delay: var(--btn-delay, 0s);
+    rotateClockwiseGoogleAlt var(--rotate-duration, 2.4s) linear infinite,
+    googleFadePulse10 10.5s ease-in-out infinite;
+  animation-delay: var(--btn-delay, 0s), -3s;
   pointer-events: none;
   z-index: 1;
 }
@@ -1927,7 +1932,10 @@
       #34a853 97%,
       #ffffff 100%
     ) border-box;
-  animation: rotateRandomChaos1 var(--rnd-dur-btn, 3.4s) linear infinite;
+  animation:
+    rotateRandomChaos1 var(--rnd-dur-btn, 3.4s) linear infinite,
+    googleFadePulse10 11s ease-in-out infinite;
+  animation-delay: 0s, -5s;
   pointer-events: none;
   z-index: 1;
 }
@@ -1984,13 +1992,11 @@
 }
 
 /* ==========================================================================
-   DESACTIVACIÓN DE TODOS LOS BORDES GOOGLE CUANDO ESTÁ EN MODO OFF
+   MODO BORDES OFF: BORDES GRISES ESTÁTICOS
    ========================================================================== */
 body.google-borders-hidden .stat-compact-pill::before,
 body.google-borders-hidden .stat-compact-icon::before,
 body.google-borders-hidden .bento-mini-bar::before,
-body.google-borders-hidden .bento-mini-unfilled::before,
-body.google-borders-hidden .card-progress-unfilled::before,
 body.google-borders-hidden .bento-icon-wrapper::before,
 body.google-borders-hidden .filter-pill::before,
 body.google-borders-hidden .filter-pill.active::before,
@@ -2009,16 +2015,28 @@ body.google-borders-hidden .exam-badge::before,
 body.google-borders-hidden .due-badge-inline::before,
 body.google-borders-hidden .deck-pct-badge::before,
 body.google-borders-hidden .deck-stat::before,
+body.google-borders-hidden .deck-actions .btn-study::after,
 body.google-borders-hidden .deck-actions .btn-icon-only::before,
 body.google-borders-hidden .hero-actions-group .btn-create-deck::before,
 body.google-borders-hidden .btn-back-inline::before,
 body.google-borders-hidden .card-progress-count::before,
 body.google-borders-hidden .mc-option::before,
 body.google-borders-hidden .mc-letter::before,
-body.google-borders-hidden .deck-card::before,
+body.google-borders-hidden .deck-card::before {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  animation: none !important;
+  background: transparent !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.22) !important;
+  box-shadow: none !important;
+  filter: none !important;
+}
+
 body.google-borders-hidden .deck-card-border-glow,
 body.google-borders-hidden .deck-border-rotating {
+  display: none !important;
   opacity: 0 !important;
   visibility: hidden !important;
-  transition: opacity 0.4s ease, visibility 0.4s ease;
+  animation: none !important;
 }

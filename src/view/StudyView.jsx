@@ -444,9 +444,6 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
           >
             <span className="bento-fill-pct-badge">{masteryPct}%</span>
           </div>
-          {masteryPct < 100 && (
-            <div className="card-progress-unfilled" />
-          )}
         </div>
         <div className="card-progress-count" title="Progreso del mazo">
           <span className="card-progress-pos">

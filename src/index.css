@@ -414,19 +414,9 @@ pre code {
     ) border-box;
   animation:
     rotateClockwiseGoogle var(--card-rotate-duration, 7.5s) linear infinite,
-    googleFadePulseMedium 12s ease-in-out infinite;
+    googleFadePulse10 12s ease-in-out infinite;
   animation-delay: var(--card-delay, 0s), var(--card-fade-delay, 0s);
-  transition: opacity 4.5s cubic-bezier(0.4, 0, 0.2, 1);
-  opacity: 1;
-}
-
-/* Los colores y auras de las tarjetas se mantienen activos cuando los bordes están habilitados */
-body:not(.google-borders-hidden) .deck-card::before {
-  opacity: 1;
-}
-
-body:not(.google-borders-hidden) .deck-card .google-aura {
-  opacity: 1;
+  pointer-events: none;
 }
 
 .bento-card::before,
@@ -599,51 +589,28 @@ body:not(.google-borders-hidden) .deck-card .google-aura {
 }
 
 /* ==========================================================================
-   DESACTIVACIÓN GLOBAL ABSOLUTA DE BORDES (MODO BORDES OFF)
-   No queda ningún borde animado o Google activo en toda la app
+   MODO BORDES OFF: BORDES GRISES ESTÁTICOS
+   Al desactivar los bordes de Google, todos los bordes se transforman en grises
+   elegantes, fijos, sin animación ni colores rotatorios.
    ========================================================================== */
 body.google-borders-hidden .deck-card::before,
-body.google-borders-hidden .deck-card::after,
 body.google-borders-hidden .bento-card::before,
-body.google-borders-hidden .bento-card::after,
 body.google-borders-hidden .stat-card::before,
-body.google-borders-hidden .stat-card::after,
 body.google-borders-hidden .stats-summary-card::before,
-body.google-borders-hidden .stats-summary-card::after,
 body.google-borders-hidden .chart-card::before,
-body.google-borders-hidden .chart-card::after,
 body.google-borders-hidden .retention-card::before,
-body.google-borders-hidden .retention-card::after,
 body.google-borders-hidden .heatmap-card::before,
-body.google-borders-hidden .heatmap-card::after,
 body.google-borders-hidden .search-input-wrapper::before,
-body.google-borders-hidden .search-input-wrapper::after,
 body.google-borders-hidden .subject-filter::before,
-body.google-borders-hidden .subject-filter::after,
 body.google-borders-hidden .modal-content::before,
-body.google-borders-hidden .modal-content::after,
 body.google-borders-hidden .card-editor-modal::before,
-body.google-borders-hidden .card-editor-modal::after,
 body.google-borders-hidden .reset-modal-content::before,
-body.google-borders-hidden .reset-modal-content::after,
 body.google-borders-hidden .stat-compact-pill::before,
-body.google-borders-hidden .stat-compact-pill::after,
 body.google-borders-hidden .stat-compact-icon::before,
-body.google-borders-hidden .stat-compact-icon::after,
 body.google-borders-hidden .bento-mini-bar::before,
-body.google-borders-hidden .bento-mini-bar::after,
-body.google-borders-hidden .bento-mini-unfilled::before,
-body.google-borders-hidden .bento-mini-unfilled::after,
-body.google-borders-hidden .card-progress-unfilled::before,
-body.google-borders-hidden .card-progress-unfilled::after,
 body.google-borders-hidden .card-progress-track::before,
-body.google-borders-hidden .card-progress-track::after,
-body.google-borders-hidden .card-progress-fill::before,
-body.google-borders-hidden .card-progress-fill::after,
 body.google-borders-hidden .bento-icon-wrapper::before,
-body.google-borders-hidden .bento-icon-wrapper::after,
 body.google-borders-hidden .filter-pill::before,
-body.google-borders-hidden .filter-pill::after,
 body.google-borders-hidden .filter-pill.active::before,
 body.google-borders-hidden .examenes-toggle::before,
 body.google-borders-hidden .subject-toggle::before,
@@ -656,45 +623,35 @@ body.google-borders-hidden .examenes-count::before,
 body.google-borders-hidden .subject-count::before,
 body.google-borders-hidden .pd-count::before,
 body.google-borders-hidden .deck-subject::before,
-body.google-borders-hidden .deck-subject::after,
 body.google-borders-hidden .exam-badge::before,
-body.google-borders-hidden .exam-badge::after,
 body.google-borders-hidden .due-badge-inline::before,
-body.google-borders-hidden .due-badge-inline::after,
 body.google-borders-hidden .deck-pct-badge::before,
-body.google-borders-hidden .deck-pct-badge::after,
 body.google-borders-hidden .deck-stat::before,
-body.google-borders-hidden .deck-stat::after,
-body.google-borders-hidden .deck-actions .btn-study::before,
 body.google-borders-hidden .deck-actions .btn-study::after,
-body.google-borders-hidden .btn-study::before,
 body.google-borders-hidden .btn-study::after,
 body.google-borders-hidden .deck-actions .btn-icon-only::before,
-body.google-borders-hidden .deck-actions .btn-icon-only::after,
 body.google-borders-hidden .hero-actions-group .btn-create-deck::before,
-body.google-borders-hidden .hero-actions-group .btn-create-deck::after,
 body.google-borders-hidden .btn-back-inline::before,
-body.google-borders-hidden .btn-back-inline::after,
 body.google-borders-hidden .card-progress-count::before,
-body.google-borders-hidden .card-progress-count::after,
 body.google-borders-hidden .mc-option::before,
-body.google-borders-hidden .mc-option::after,
 body.google-borders-hidden .mc-letter::before,
-body.google-borders-hidden .mc-letter::after,
 body.google-borders-hidden .rating-btn::before,
-body.google-borders-hidden .rating-btn::after,
-body.google-borders-hidden .progress-bar::before,
-body.google-borders-hidden .progress-bar::after,
-body.google-borders-hidden .progress-fill::before,
-body.google-borders-hidden .progress-fill::after,
+body.google-borders-hidden .progress-bar::before {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  animation: none !important;
+  background: transparent !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.22) !important;
+  box-shadow: none !important;
+  filter: none !important;
+}
+
 body.google-borders-hidden .deck-card-border-glow,
 body.google-borders-hidden .deck-border-rotating,
-body.google-borders-hidden .btn-toggle-google-borders::before,
-body.google-borders-hidden .btn-toggle-google-borders::after {
+body.google-borders-hidden .btn-toggle-google-borders::before {
   display: none !important;
   opacity: 0 !important;
   visibility: hidden !important;
   animation: none !important;
-  background: none !important;
-  border-color: transparent !important;
 }
