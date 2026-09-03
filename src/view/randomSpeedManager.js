@@ -1,31 +1,31 @@
 // randomSpeedManager.js
-// Controlador de cambio de velocidad gradual y progresivo ("de a poco") para los bordes Google.
-// Las velocidades se desplazan de forma suave y continua sin saltos bruscos ni cambios repentinos.
+// Controlador de cambio de velocidad gradual, progresivo y pausado ("mucho más lento") para los bordes Google.
+// Las velocidades se desplazan con gran suavidad en rangos lentos y majestuosos (10s a 45s).
 
 const SPEED_VARS = [
-  { name: "--rnd-dur-mazos", min: 4.5, max: 10.5 },
-  { name: "--rnd-dur-aprendidas", min: 4.0, max: 9.5 },
-  { name: "--rnd-dur-bar", min: 4.0, max: 10.0 },
-  { name: "--rnd-dur-btn", min: 3.5, max: 8.5 },
-  { name: "--rnd-dur-folder-1", min: 6.5, max: 13.5 },
-  { name: "--rnd-dur-folder-2", min: 5.5, max: 12.5 },
-  { name: "--rnd-dur-folder-3", min: 5.8, max: 12.0 },
-  { name: "--rnd-dur-folder-4", min: 5.0, max: 11.0 },
-  { name: "--rnd-dur-folder-5", min: 6.2, max: 13.0 },
-  { name: "--rnd-dur-folder-6", min: 5.2, max: 11.5 },
-  { name: "--rnd-dur-icon", min: 3.5, max: 7.5 },
-  { name: "--rnd-dur-badge", min: 3.2, max: 6.8 },
-  { name: "--rnd-dur-card-1", min: 7.5, max: 14.0 },
-  { name: "--rnd-dur-card-2", min: 8.5, max: 15.5 },
-  { name: "--rnd-dur-card-3", min: 6.5, max: 13.0 },
-  { name: "--rnd-dur-mc-1", min: 4.8, max: 10.0 },
-  { name: "--rnd-dur-mc-2", min: 4.0, max: 9.0 },
-  { name: "--rnd-dur-mc-3", min: 5.0, max: 11.0 },
-  { name: "--rnd-dur-mc-4", min: 4.2, max: 8.8 },
-  { name: "--rnd-dur-stat-total", min: 4.2, max: 10.2 },
-  { name: "--rnd-dur-stat-new", min: 3.8, max: 9.2 },
-  { name: "--rnd-dur-stat-learned", min: 4.5, max: 11.0 },
-  { name: "--rnd-dur-stat-pct", min: 3.8, max: 9.5 },
+  { name: "--rnd-dur-mazos", min: 13.0, max: 28.0 },
+  { name: "--rnd-dur-aprendidas", min: 12.0, max: 26.0 },
+  { name: "--rnd-dur-bar", min: 12.0, max: 27.0 },
+  { name: "--rnd-dur-btn", min: 10.0, max: 22.0 },
+  { name: "--rnd-dur-folder-1", min: 18.0, max: 38.0 },
+  { name: "--rnd-dur-folder-2", min: 16.0, max: 34.0 },
+  { name: "--rnd-dur-folder-3", min: 17.0, max: 35.0 },
+  { name: "--rnd-dur-folder-4", min: 15.0, max: 32.0 },
+  { name: "--rnd-dur-folder-5", min: 19.0, max: 39.0 },
+  { name: "--rnd-dur-folder-6", min: 16.0, max: 33.0 },
+  { name: "--rnd-dur-icon", min: 10.0, max: 20.0 },
+  { name: "--rnd-dur-badge", min: 9.0, max: 18.0 },
+  { name: "--rnd-dur-card-1", min: 20.0, max: 42.0 },
+  { name: "--rnd-dur-card-2", min: 22.0, max: 45.0 },
+  { name: "--rnd-dur-card-3", min: 18.0, max: 38.0 },
+  { name: "--rnd-dur-mc-1", min: 14.0, max: 28.0 },
+  { name: "--rnd-dur-mc-2", min: 12.0, max: 25.0 },
+  { name: "--rnd-dur-mc-3", min: 15.0, max: 30.0 },
+  { name: "--rnd-dur-mc-4", min: 13.0, max: 26.0 },
+  { name: "--rnd-dur-stat-total", min: 12.0, max: 27.0 },
+  { name: "--rnd-dur-stat-new", min: 11.0, max: 25.0 },
+  { name: "--rnd-dur-stat-learned", min: 13.0, max: 28.0 },
+  { name: "--rnd-dur-stat-pct", min: 11.0, max: 25.0 },
 ];
 
 let isRunning = false;
@@ -52,17 +52,17 @@ export function startRandomSpeedManager() {
     root.style.setProperty(item.name, `${item.current.toFixed(2)}s`);
   });
 
-  // Ticker de transición gradual: cada 400ms avanza una fracción mínima (~0.05s)
+  // Ticker de transición gradual: cada 400ms avanza una fracción mínima
   intervalId = setInterval(() => {
     state.forEach((item) => {
       // Si está muy cerca del objetivo, asigna un nuevo destino suave
-      if (Math.abs(item.target - item.current) < 0.3) {
+      if (Math.abs(item.target - item.current) < 0.4) {
         item.target = Math.random() * (item.max - item.min) + item.min;
       }
 
-      // Desplazamiento progresivo ("de a poco")
+      // Desplazamiento progresivo y calmado ("de a poco")
       const direction = item.target > item.current ? 1 : -1;
-      const step = direction * (Math.random() * 0.04 + 0.03); // Paso suave de ~0.05s
+      const step = direction * (Math.random() * 0.05 + 0.03); // Paso suave de ~0.05s
       item.current = Math.min(Math.max(item.current + step, item.min), item.max);
 
       root.style.setProperty(item.name, `${item.current.toFixed(2)}s`);

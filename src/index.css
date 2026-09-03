@@ -413,7 +413,7 @@ pre code {
       #ffffff 100%
     ) border-box;
   animation:
-    rotateClockwiseGoogle var(--card-rotate-duration, 7.5s) linear infinite,
+    rotateClockwiseGoogle var(--card-rotate-duration, 22s) linear infinite,
     googleFadePulse10 12s ease-in-out infinite;
   animation-delay: var(--card-delay, 0s), var(--card-fade-delay, 0s);
   pointer-events: none;
@@ -439,7 +439,7 @@ pre code {
       #ffffff 100%
     ) border-box;
   animation:
-    rotateClockwiseGoogle 8.2s linear infinite,
+    rotateClockwiseGoogle 24s linear infinite,
     googleFadePulseMedium 11.5s ease-in-out infinite;
 }
 
@@ -459,7 +459,7 @@ pre code {
       #ffffff 100%
     ) border-box;
   animation:
-    rotateClockwiseGoogleAlt 6.2s linear infinite,
+    rotateClockwiseGoogleAlt 18s linear infinite,
     googleFadePulseMedium 10.5s ease-in-out infinite;
 }
 
@@ -481,7 +481,7 @@ pre code {
       #ffffff 100%
     ) border-box;
   animation:
-    rotateClockwiseGoogle 7.2s linear infinite,
+    rotateClockwiseGoogle 20s linear infinite,
     googleFadePulseLong 12.5s ease-in-out infinite;
 }
 
