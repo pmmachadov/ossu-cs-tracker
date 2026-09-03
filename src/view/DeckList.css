@@ -95,8 +95,7 @@
   border: 2px solid transparent;
   background:
     linear-gradient(#000000, #000000) padding-box,
-    conic-gradient(
-      from var(--border-angle),
+    conic-gradient(from var(--border-angle),
       transparent 0%,
       transparent 55%,
       rgba(66, 133, 244, 0.2) 68%,
@@ -104,8 +103,7 @@
       #ea4335 86%,
       #fbbc05 93%,
       #34a853 97%,
-      #ffffff 100%
-    ) border-box;
+      #ffffff 100%) border-box;
   animation:
     rotateRandomChaos1 var(--rnd-dur-btn, 3.4s) linear infinite,
     googleFadePulse10 10.5s ease-in-out infinite;
@@ -114,7 +112,7 @@
   z-index: 1;
 }
 
-.hero-actions-group .btn-create-deck > * {
+.hero-actions-group .btn-create-deck>* {
   position: relative;
   z-index: 2;
 }
@@ -170,8 +168,7 @@
   border: 2px solid transparent;
   background:
     linear-gradient(#000000, #000000) padding-box,
-    conic-gradient(
-      from var(--border-angle),
+    conic-gradient(from var(--border-angle),
       transparent 0%,
       transparent 55%,
       rgba(66, 133, 244, 0.15) 68%,
@@ -179,13 +176,15 @@
       #ea4335 86%,
       #fbbc05 93%,
       #34a853 97%,
-      #ffffff 100%
-    ) border-box;
+      #ffffff 100%) border-box;
+  animation:
+    rotateRandomChaos1 var(--rnd-dur-mazos, 18s) linear infinite,
+    googleFadePulse10 11s ease-in-out infinite;
   pointer-events: none;
   z-index: 1;
 }
 
-.stat-compact-pill > * {
+.stat-compact-pill>* {
   position: relative;
   z-index: 2;
 }
@@ -193,7 +192,7 @@
 /* 2 Mazos Activos: velocidad caótica e impredecible con mutación continua y desaparición suave 10% */
 .stat-pill-mazos::before {
   animation:
-    rotateRandomChaos2 var(--rnd-dur-mazos, 4.8s) linear infinite,
+    rotateRandomChaos2 var(--rnd-dur-mazos, 18s) linear infinite,
     googleFadePulse10 11s ease-in-out infinite;
   animation-delay: -1.5s, -4.5s;
 }
@@ -201,7 +200,7 @@
 /* 45 Aprendidas: velocidad caótica independiente con ritmo desfasado y desaparición suave 10% */
 .stat-pill-aprendidas::before {
   animation:
-    rotateRandomChaos3 var(--rnd-dur-aprendidas, 3.2s) linear infinite,
+    rotateRandomChaos3 var(--rnd-dur-aprendidas, 16s) linear infinite,
     googleFadePulse10 9.5s ease-in-out infinite;
   animation-delay: -3s, -1.8s;
 }
@@ -226,8 +225,7 @@
   border: 1.5px solid transparent;
   background:
     linear-gradient(#000000, #000000) padding-box,
-    conic-gradient(
-      from var(--border-angle),
+    conic-gradient(from var(--border-angle),
       transparent 0%,
       transparent 50%,
       rgba(66, 133, 244, 0.25) 65%,
@@ -235,8 +233,7 @@
       #ea4335 84%,
       #fbbc05 91%,
       #34a853 96%,
-      #ffffff 100%
-    ) border-box;
+      #ffffff 100%) border-box;
   animation:
     rotateRandomChaos4 var(--rnd-dur-icon, 2.8s) linear infinite,
     googleFadePulse10 12s ease-in-out infinite;
@@ -290,22 +287,28 @@
     background-position: 0% 0%;
     filter: brightness(1.15) contrast(1.05);
   }
+
   20% {
     background-position: 100% 100%;
     filter: brightness(1.3) contrast(1.1);
   }
+
   40% {
     background-position: 0% 100%;
-    filter: brightness(0.9) contrast(1.15); /* Paso oscuro del 10% */
+    filter: brightness(0.9) contrast(1.15);
+    /* Paso oscuro del 10% */
   }
+
   60% {
     background-position: 100% 0%;
     filter: brightness(1.35) contrast(1.1);
   }
+
   80% {
     background-position: 50% 100%;
     filter: brightness(1.1) contrast(1.05);
   }
+
   100% {
     background-position: 0% 0%;
     filter: brightness(1.15) contrast(1.05);
@@ -313,13 +316,16 @@
 }
 
 @keyframes siriJewelGlowGlobal {
-  0%, 100% {
+
+  0%,
+  100% {
     border-color: rgba(66, 133, 244, 0.8);
     box-shadow:
       0 0 16px rgba(66, 133, 244, 0.5),
       0 0 30px rgba(52, 168, 83, 0.3),
       inset 0 1px 0 rgba(255, 255, 255, 0.5);
   }
+
   25% {
     border-color: rgba(234, 67, 53, 0.8);
     box-shadow:
@@ -327,6 +333,7 @@
       0 0 30px rgba(251, 188, 5, 0.3),
       inset 0 1px 0 rgba(255, 255, 255, 0.5);
   }
+
   50% {
     border-color: rgba(251, 188, 5, 0.8);
     box-shadow:
@@ -334,6 +341,7 @@
       0 0 30px rgba(52, 168, 83, 0.3),
       inset 0 1px 0 rgba(255, 255, 255, 0.5);
   }
+
   75% {
     border-color: rgba(52, 168, 83, 0.8);
     box-shadow:
@@ -390,13 +398,10 @@
 
 .global-pct-siri-text {
   background:
-    radial-gradient(
-      circle at 50% 50%,
+    radial-gradient(circle at 50% 50%,
       rgba(255, 255, 255, 0.85) 0%,
-      transparent 65%
-    ),
-    conic-gradient(
-      from var(--siri-angle) at 50% 50%,
+      transparent 65%),
+    conic-gradient(from var(--siri-angle) at 50% 50%,
       #000000 0%,
       #000000 10%,
       #4285f4 20%,
@@ -407,8 +412,7 @@
       #fbbc05 80%,
       #34a853 88%,
       #34a853 96%,
-      #000000 100%
-    );
+      #000000 100%);
   background-size: 200% 200%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -428,30 +432,39 @@
   0% {
     background-position: 5% 10%;
   }
+
   9% {
     background-position: 95% 85%;
   }
+
   19% {
     background-position: 15% 95%;
   }
+
   31% {
     background-position: 85% 10%;
   }
+
   44% {
     background-position: 10% 45%;
   }
+
   56% {
     background-position: 95% 90%;
   }
+
   69% {
     background-position: 45% 10%;
   }
+
   81% {
     background-position: 80% 65%;
   }
+
   92% {
     background-position: 25% 80%;
   }
+
   100% {
     background-position: 5% 10%;
   }
@@ -480,8 +493,7 @@
   border: 2px solid transparent;
   background:
     linear-gradient(#000000, #000000) padding-box,
-    conic-gradient(
-      from var(--border-angle),
+    conic-gradient(from var(--border-angle),
       transparent 0%,
       transparent 55%,
       rgba(66, 133, 244, 0.15) 68%,
@@ -489,8 +501,7 @@
       #ea4335 86%,
       #fbbc05 93%,
       #34a853 97%,
-      #ffffff 100%
-    ) border-box;
+      #ffffff 100%) border-box;
   animation:
     rotateRandomChaos1 var(--rnd-dur-bar, 3.5s) linear infinite,
     googleFadePulse10 10s ease-in-out infinite;
@@ -499,12 +510,12 @@
   z-index: 1;
 }
 
-.stat-compact-progress .bento-mini-bar > * {
+.stat-compact-progress .bento-mini-bar>* {
   position: relative;
   z-index: 2;
 }
 
-/* Relleno de progreso: Colores Google clásicos sobrios (menos brillantes) en flujo suave */
+/* Relleno de progreso: Colores Google clásicos marcados y nítidos */
 .stat-compact-progress .bento-mini-fill {
   height: 100%;
   min-width: 76px;
@@ -515,98 +526,73 @@
   position: relative;
   overflow: hidden;
   box-shadow:
-    inset 0 1px 2px rgba(255, 255, 255, 0.25),
+    inset 0 1px 2px rgba(255, 255, 255, 0.35),
     inset 0 -2px 6px rgba(0, 0, 0, 0.6),
     0 2px 8px rgba(0, 0, 0, 0.5);
-  border: 1.5px solid rgba(255, 255, 255, 0.22);
+  border: 1.5px solid rgba(255, 255, 255, 0.28);
   transition: width 0.6s cubic-bezier(0.34, 1.25, 0.4, 1);
 }
 
-/* Capa 1: Oleada principal diagonal con tonos Google mate y equilibrados (menos brillantes) */
+/* Capa 1: Bloques de colores Google puros 5 veces más anchos que fluyen siempre hacia la derecha */
 .stat-compact-progress .bento-mini-fill::before {
   content: '';
   position: absolute;
   inset: 0;
   border-radius: inherit;
   background:
-    radial-gradient(ellipse 100% 120% at 25% -20%, rgba(255, 255, 255, 0.12) 0%, transparent 55%),
-    linear-gradient(
-      115deg,
-      #2565b8 0%,
-      #2565b8 14%,
-      #be3426 28%,
-      #be3426 42%,
-      #cb8000 56%,
-      #cb8000 70%,
-      #247d3d 84%,
-      #247d3d 98%
-    );
-  background-size: 100% 100%, 320% 320%;
-  animation: googleColorsEbbAndFlow1 3.6s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite alternate;
+    linear-gradient(90deg,
+      #1a73e8 0%,
+      #1a73e8 11.5%,
+      #d93025 12.5%,
+      #d93025 24%,
+      #f9ab00 25%,
+      #f9ab00 36.5%,
+      #1e8e3e 37.5%,
+      #1e8e3e 49%,
+      #1a73e8 50%,
+      /* Segundo ciclo idéntico para continuidad perfecta al fluir a la derecha */
+      #1a73e8 50%,
+      #1a73e8 61.5%,
+      #d93025 62.5%,
+      #d93025 74%,
+      #f9ab00 75%,
+      #f9ab00 86.5%,
+      #1e8e3e 87.5%,
+      #1e8e3e 99%,
+      #1a73e8 100%);
+  background-size: 800% 100%;
+  animation: googleColorsFlowRight 100s linear infinite;
   z-index: 1;
   pointer-events: none;
 }
 
-/* Capa 2: Contracorriente suave sin brillo estridente */
+/* Capa 2: Relieve y brillo de cristal sin mezclar ni enturbiar los 4 colores */
 .stat-compact-progress .bento-mini-fill::after {
   content: '';
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  background:
-    radial-gradient(circle at 80% 20%, rgba(203, 128, 0, 0.5) 0%, transparent 60%),
-    radial-gradient(circle at 20% 80%, rgba(36, 125, 61, 0.5) 0%, transparent 60%),
-    linear-gradient(
-      -55deg,
-      rgba(37, 101, 184, 0.75) 0%,
-      rgba(190, 52, 38, 0.75) 35%,
-      rgba(203, 128, 0, 0.75) 65%,
-      rgba(36, 125, 61, 0.75) 100%
-    );
-  background-size: 280% 280%;
-  opacity: 0.55;
-  animation: googleColorsEbbAndFlow2 5.4s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite alternate;
+  background: linear-gradient(180deg,
+      rgba(255, 255, 255, 0.3) 0%,
+      rgba(255, 255, 255, 0.08) 45%,
+      rgba(0, 0, 0, 0.05) 55%,
+      rgba(0, 0, 0, 0.3) 100%);
   z-index: 2;
   pointer-events: none;
 }
 
-/* Movimiento Capa 1: Oleada cromática que va y viene en diagonal */
-@keyframes googleColorsEbbAndFlow1 {
+/* Movimiento continuo, lento y pausado de los colores Google SIEMPRE hacia la derecha (sin retroceder) */
+@keyframes googleColorsFlowRight {
   0% {
-    background-position: 0% 0%, 0% 15%;
+    background-position: 400% 0;
   }
-  35% {
-    background-position: 0% 0%, 75% 85%;
-  }
-  68% {
-    background-position: 0% 0%, 100% 30%;
-  }
+
   100% {
-    background-position: 0% 0%, 20% 100%;
+    background-position: 0% 0;
   }
 }
 
-/* Movimiento Capa 2: Contracorriente cruzada que va y viene a diferente ritmo */
-@keyframes googleColorsEbbAndFlow2 {
-  0% {
-    background-position: 100% 90%;
-    opacity: 0.7;
-  }
-  38% {
-    background-position: 15% 15%;
-    opacity: 0.95;
-  }
-  72% {
-    background-position: 85% 35%;
-    opacity: 0.75;
-  }
-  100% {
-    background-position: 10% 95%;
-    opacity: 0.95;
-  }
-}
-
-.stat-compact-progress .bento-mini-fill > * {
+.stat-compact-progress .bento-mini-fill>* {
   position: relative;
   z-index: 5;
 }
@@ -640,12 +626,14 @@
       0 1px 1px rgba(255, 255, 255, 0.5),
       0 -1px 1px rgba(0, 0, 0, 0.85);
   }
+
   25% {
     color: #24242c;
     text-shadow:
       0 1px 1px rgba(255, 255, 255, 0.45),
       0 -1px 1px rgba(0, 0, 0, 0.75);
   }
+
   50% {
     color: #585866;
     text-shadow:
@@ -653,12 +641,14 @@
       0 -1px 2px rgba(0, 0, 0, 0.9),
       0 0 10px rgba(0, 0, 0, 0.4);
   }
+
   75% {
     color: #2c2c36;
     text-shadow:
       0 1px 1px rgba(255, 255, 255, 0.45),
       0 -1px 1px rgba(0, 0, 0, 0.75);
   }
+
   100% {
     color: #000000;
     text-shadow:
@@ -673,6 +663,7 @@
     align-items: stretch;
     gap: 12px;
   }
+
   .stat-compact-pill {
     width: 100%;
     justify-content: flex-start;
@@ -704,8 +695,7 @@
   border: 1.5px solid transparent;
   background:
     linear-gradient(#000000, #000000) padding-box,
-    conic-gradient(
-      from var(--border-angle),
+    conic-gradient(from var(--border-angle),
       transparent 0%,
       transparent 55%,
       rgba(66, 133, 244, 0.2) 68%,
@@ -713,8 +703,7 @@
       #ea4335 86%,
       #fbbc05 93%,
       #34a853 97%,
-      #ffffff 100%
-    ) border-box;
+      #ffffff 100%) border-box;
   animation:
     rotateRandomChaos2 var(--rnd-dur-icon, 3.8s) linear infinite,
     googleFadePulse10 11s ease-in-out infinite;
@@ -842,8 +831,7 @@
   border: 1.5px solid transparent;
   background:
     linear-gradient(#000000, #000000) padding-box,
-    conic-gradient(
-      from var(--border-angle),
+    conic-gradient(from var(--border-angle),
       transparent 0%,
       transparent 55%,
       rgba(66, 133, 244, 0.2) 68%,
@@ -851,8 +839,7 @@
       #ea4335 86%,
       #fbbc05 93%,
       #34a853 97%,
-      #ffffff 100%
-    ) border-box;
+      #ffffff 100%) border-box;
   animation:
     rotateRandomChaos3 var(--rnd-dur-badge, 4.5s) linear infinite,
     googleFadePulse10 12s ease-in-out infinite;
@@ -861,7 +848,7 @@
   z-index: 1;
 }
 
-.filter-pill > * {
+.filter-pill>* {
   position: relative;
   z-index: 2;
 }
@@ -930,8 +917,7 @@
   border: 2px solid transparent;
   background:
     linear-gradient(#000000, #000000) padding-box,
-    conic-gradient(
-      from var(--border-angle),
+    conic-gradient(from var(--border-angle),
       transparent 0%,
       transparent 55%,
       rgba(66, 133, 244, 0.15) 68%,
@@ -939,52 +925,52 @@
       #ea4335 86%,
       #fbbc05 93%,
       #34a853 97%,
-      #ffffff 100%
-    ) border-box;
+      #ffffff 100%) border-box;
+  animation: rotateRandomChaos1 var(--rnd-dur-folder-1, 24s) linear infinite, googleFadePulse10 12s ease-in-out infinite;
   pointer-events: none;
   z-index: 1;
 }
 
-.examenes-toggle > *,
-.subject-toggle > *,
-.practicas-toggle > *,
-.pruebas-toggle > *,
-.mas-toggle > *,
-.extras-toggle > *,
-.pd-toggle > * {
+.examenes-toggle>*,
+.subject-toggle>*,
+.practicas-toggle>*,
+.pruebas-toggle>*,
+.mas-toggle>*,
+.extras-toggle>*,
+.pd-toggle>* {
   position: relative;
   z-index: 2;
 }
 
 /* Diferentes velocidades cambiantes y aleatorias para cada sección con desaparición del 10% */
 .examenes-toggle::before {
-  animation: rotateRandomChaos1 var(--rnd-dur-folder-1, 6.8s) linear infinite, googleFadePulse10 11.5s ease-in-out infinite;
+  animation: rotateRandomChaos1 var(--rnd-dur-folder-1, 24s) linear infinite, googleFadePulse10 11.5s ease-in-out infinite;
   animation-delay: -1.2s, -3.5s;
 }
 
 .subject-toggle::before {
-  animation: rotateRandomChaos2 var(--rnd-dur-folder-2, 5.4s) linear infinite, googleFadePulse10 9.8s ease-in-out infinite;
+  animation: rotateRandomChaos2 var(--rnd-dur-folder-2, 22s) linear infinite, googleFadePulse10 9.8s ease-in-out infinite;
   animation-delay: -3.4s, -1.2s;
 }
 
 .practicas-toggle::before {
-  animation: rotateRandomChaos3 var(--rnd-dur-folder-3, 4.6s) linear infinite, googleFadePulse10 10.5s ease-in-out infinite;
+  animation: rotateRandomChaos3 var(--rnd-dur-folder-3, 20s) linear infinite, googleFadePulse10 10.5s ease-in-out infinite;
   animation-delay: -2s, -5s;
 }
 
 .pruebas-toggle::before {
-  animation: rotateRandomChaos4 var(--rnd-dur-folder-4, 6.2s) linear infinite, googleFadePulse10 12.2s ease-in-out infinite;
+  animation: rotateRandomChaos4 var(--rnd-dur-folder-4, 23s) linear infinite, googleFadePulse10 12.2s ease-in-out infinite;
   animation-delay: -4s, -2.8s;
 }
 
 .mas-toggle::before,
 .extras-toggle::before {
-  animation: rotateRandomChaos5 var(--rnd-dur-folder-5, 7.4s) linear infinite, googleFadePulse10 13s ease-in-out infinite;
+  animation: rotateRandomChaos5 var(--rnd-dur-folder-5, 26s) linear infinite, googleFadePulse10 13s ease-in-out infinite;
   animation-delay: -0.8s, -4s;
 }
 
 .pd-toggle::before {
-  animation: rotateRandomChaos6 var(--rnd-dur-folder-6, 4.2s) linear infinite, googleFadePulse10 8.8s ease-in-out infinite;
+  animation: rotateRandomChaos6 var(--rnd-dur-folder-6, 21s) linear infinite, googleFadePulse10 8.8s ease-in-out infinite;
   animation-delay: -2.8s, -1.5s;
 }
 
@@ -1038,8 +1024,7 @@
   border: 1.5px solid transparent;
   background:
     linear-gradient(#000000, #000000) padding-box,
-    conic-gradient(
-      from var(--border-angle),
+    conic-gradient(from var(--border-angle),
       transparent 0%,
       transparent 50%,
       rgba(66, 133, 244, 0.25) 65%,
@@ -1047,8 +1032,7 @@
       #ea4335 84%,
       #fbbc05 91%,
       #34a853 96%,
-      #ffffff 100%
-    ) border-box;
+      #ffffff 100%) border-box;
   animation:
     rotateRandomChaos1 var(--rnd-dur-badge, 3.1s) linear infinite,
     googleFadePulse10 11s ease-in-out infinite;
@@ -1057,9 +1041,9 @@
   z-index: 1;
 }
 
-.examenes-count > *,
-.subject-count > *,
-.pd-count > * {
+.examenes-count>*,
+.subject-count>*,
+.pd-count>* {
   position: relative;
   z-index: 2;
 }
@@ -1214,8 +1198,7 @@
   border: 1.5px solid transparent;
   background:
     linear-gradient(#000000, #000000) padding-box,
-    conic-gradient(
-      from var(--border-angle),
+    conic-gradient(from var(--border-angle),
       transparent 0%,
       transparent 55%,
       rgba(66, 133, 244, 0.2) 68%,
@@ -1223,8 +1206,7 @@
       #ea4335 86%,
       #fbbc05 93%,
       #34a853 97%,
-      #ffffff 100%
-    ) border-box;
+      #ffffff 100%) border-box;
   animation:
     rotateRandomChaos2 var(--rnd-dur-badge, 4.7s) linear infinite,
     googleFadePulse10 12s ease-in-out infinite;
@@ -1234,7 +1216,7 @@
 }
 
 .deck-subject .badge-text,
-.deck-subject > * {
+.deck-subject>* {
   position: relative;
   z-index: 3;
   color: #f8fafc !important;
@@ -1261,8 +1243,7 @@
   border: 1.5px solid transparent;
   background:
     linear-gradient(#000000, #000000) padding-box,
-    conic-gradient(
-      from var(--border-angle),
+    conic-gradient(from var(--border-angle),
       transparent 0%,
       transparent 55%,
       rgba(66, 133, 244, 0.2) 68%,
@@ -1270,8 +1251,7 @@
       #ea4335 86%,
       #fbbc05 93%,
       #34a853 97%,
-      #ffffff 100%
-    ) border-box;
+      #ffffff 100%) border-box;
   animation:
     rotateRandomChaos3 var(--rnd-dur-badge, 3.6s) linear infinite,
     googleFadePulse10 10s ease-in-out infinite;
@@ -1281,7 +1261,7 @@
 }
 
 .exam-badge .badge-text,
-.exam-badge > * {
+.exam-badge>* {
   position: relative;
   z-index: 3;
   color: #c4b5fd !important;
@@ -1308,8 +1288,7 @@
   border: 1.5px solid transparent;
   background:
     linear-gradient(#000000, #000000) padding-box,
-    conic-gradient(
-      from var(--border-angle),
+    conic-gradient(from var(--border-angle),
       transparent 0%,
       transparent 55%,
       rgba(66, 133, 244, 0.2) 68%,
@@ -1317,8 +1296,7 @@
       #ea4335 86%,
       #fbbc05 93%,
       #34a853 97%,
-      #ffffff 100%
-    ) border-box;
+      #ffffff 100%) border-box;
   animation:
     rotateRandomChaos4 var(--rnd-dur-badge, 2.9s) linear infinite,
     googleFadePulse10 9s ease-in-out infinite;
@@ -1328,7 +1306,7 @@
 }
 
 .due-badge-inline .badge-text,
-.due-badge-inline > * {
+.due-badge-inline>* {
   position: relative;
   z-index: 3;
   color: #ffc107 !important;
@@ -1359,8 +1337,7 @@
   border: 1.5px solid transparent;
   background:
     linear-gradient(#000000, #000000) padding-box,
-    conic-gradient(
-      from var(--border-angle),
+    conic-gradient(from var(--border-angle),
       transparent 0%,
       transparent 55%,
       rgba(66, 133, 244, 0.2) 68%,
@@ -1368,8 +1345,7 @@
       #ea4335 86%,
       #fbbc05 93%,
       #34a853 97%,
-      #ffffff 100%
-    ) border-box;
+      #ffffff 100%) border-box;
   animation:
     rotateRandomChaos5 var(--rnd-dur-badge, 2.5s) linear infinite,
     googleFadePulse10 8.5s ease-in-out infinite;
@@ -1379,7 +1355,7 @@
 }
 
 .deck-pct-badge .badge-text,
-.deck-pct-badge > * {
+.deck-pct-badge>* {
   position: relative;
   z-index: 3;
   color: #ffffff !important;
@@ -1469,8 +1445,7 @@
   border: 1px solid transparent;
   background:
     linear-gradient(#000000, #000000) padding-box,
-    conic-gradient(
-      from var(--border-angle),
+    conic-gradient(from var(--border-angle),
       transparent 0%,
       transparent 55%,
       rgba(66, 133, 244, 0.15) 68%,
@@ -1478,8 +1453,7 @@
       #ea4335 86%,
       #fbbc05 93%,
       #34a853 97%,
-      #ffffff 100%
-    ) border-box;
+      #ffffff 100%) border-box;
   animation:
     rotateClockwiseGoogle var(--rotate-duration, 3.5s) linear infinite,
     var(--bar-pulse-anim, googleFadePulseMedium) var(--bar-pulse-duration, 9s) ease-in-out infinite;
@@ -1493,8 +1467,7 @@
   border: 2px solid transparent;
   background:
     linear-gradient(#000000, #000000) padding-box,
-    conic-gradient(
-      from var(--border-angle),
+    conic-gradient(from var(--border-angle),
       transparent 0%,
       transparent 50%,
       rgba(66, 133, 244, 0.2) 65%,
@@ -1502,8 +1475,7 @@
       #ea4335 84%,
       #fbbc05 91%,
       #34a853 96%,
-      #ffffff 100%
-    ) border-box;
+      #ffffff 100%) border-box;
   animation:
     rotateClockwiseGoogleAlt var(--fill-rotate-duration, var(--rotate-duration, 2.2s)) linear infinite,
     var(--fill-pulse-anim, googleFadePulse20) var(--fill-pulse-duration, 8s) ease-in-out infinite;
@@ -1558,8 +1530,7 @@
   border: 1.5px solid transparent;
   background:
     linear-gradient(#000000, #000000) padding-box,
-    conic-gradient(
-      from var(--border-angle),
+    conic-gradient(from var(--border-angle),
       transparent 0%,
       transparent 55%,
       rgba(66, 133, 244, 0.2) 68%,
@@ -1567,13 +1538,12 @@
       #ea4335 86%,
       #fbbc05 93%,
       #34a853 97%,
-      #ffffff 100%
-    ) border-box;
+      #ffffff 100%) border-box;
   pointer-events: none;
   z-index: 1;
 }
 
-.deck-stat > * {
+.deck-stat>* {
   position: relative;
   z-index: 2;
   opacity: 1 !important;
@@ -1673,8 +1643,7 @@
   border: 2px solid transparent;
   background:
     linear-gradient(#000000, #000000) padding-box,
-    conic-gradient(
-      from var(--border-angle),
+    conic-gradient(from var(--border-angle),
       transparent 0%,
       transparent 50%,
       rgba(66, 133, 244, 0.2) 65%,
@@ -1682,8 +1651,7 @@
       #ea4335 84%,
       #fbbc05 91%,
       #34a853 96%,
-      #ffffff 100%
-    ) border-box;
+      #ffffff 100%) border-box;
   animation:
     rotateClockwiseGoogleAlt var(--rotate-duration, 2.4s) linear infinite,
     googleFadePulse10 10.5s ease-in-out infinite;
@@ -1693,7 +1661,7 @@
 }
 
 /* El contenido (icono + texto) queda por encima del borde y 100% visible */
-.deck-actions .btn-study > * {
+.deck-actions .btn-study>* {
   position: relative;
   z-index: 2;
   opacity: 1 !important;
@@ -1726,8 +1694,7 @@
   border: 1.5px solid transparent;
   background:
     linear-gradient(#000000, #000000) padding-box,
-    conic-gradient(
-      from var(--border-angle),
+    conic-gradient(from var(--border-angle),
       transparent 0%,
       transparent 50%,
       rgba(66, 133, 244, 0.2) 65%,
@@ -1735,38 +1702,37 @@
       #ea4335 84%,
       #fbbc05 91%,
       #34a853 96%,
-      #ffffff 100%
-    ) border-box;
+      #ffffff 100%) border-box;
   animation:
-    rotateRandomChaos6 var(--rnd-dur-icon, 3.8s) linear infinite,
+    rotateClockwiseGoogle var(--rnd-dur-icon, 6.5s) linear infinite,
     googleFadePulse10 11s ease-in-out infinite;
   animation-delay: 0s, -3s;
   pointer-events: none;
   z-index: 1;
 }
 
-.deck-actions .btn-icon-only > * {
+.deck-actions .btn-icon-only>* {
   position: relative;
   z-index: 2;
 }
 
 .deck-actions .btn-icon-only.btn-stats::before {
   animation:
-    rotateRandomChaos6 var(--rnd-dur-icon, 4.1s) linear infinite,
+    rotateClockwiseGoogle var(--rnd-dur-icon, 6.5s) linear infinite,
     googleFadePulse10 12s ease-in-out infinite;
-  animation-delay: -1.8s, -4s;
+  animation-delay: -1.5s, -4s;
 }
 
 .deck-actions .btn-icon-only.btn-edit::before {
   animation:
-    rotateRandomChaos2 var(--rnd-dur-btn, 3.2s) linear infinite,
+    rotateClockwiseGoogleAlt var(--rnd-dur-btn, 7.2s) linear infinite,
     googleFadePulse10 10s ease-in-out infinite;
   animation-delay: -0.6s, -2.5s;
 }
 
 .deck-actions .btn-icon-only.btn-reset::before {
   animation:
-    rotateRandomChaos3 var(--rnd-dur-icon, 5.1s) linear infinite,
+    rotateClockwiseGoogle var(--rnd-dur-icon, 7.8s) linear infinite,
     googleFadePulse10 13s ease-in-out infinite;
   animation-delay: -2.7s, -6s;
 }
@@ -1812,18 +1778,18 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: linear-gradient(180deg, rgba(255,255,255,0.09), rgba(255,255,255,0.02));
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.02));
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
   color: var(--text-primary);
-  border: 1px solid rgba(255,255,255,0.12);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   font-size: 0.8125rem;
   font-weight: 600;
   padding: 10px 18px;
   border-radius: var(--radius-pill);
   cursor: pointer;
   transition: all 0.2s ease;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 4px 14px rgba(0,0,0,0.3);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 4px 14px rgba(0, 0, 0, 0.3);
 }
 
 .btn-backup .btn-icon,
@@ -1907,9 +1873,11 @@
   .deck-stats {
     grid-template-columns: 1fr;
   }
+
   .decks-grid {
     grid-template-columns: 1fr;
   }
+
   .deck-header {
     flex-direction: column;
     align-items: flex-start;
@@ -1960,8 +1928,7 @@
   border: 2px solid transparent;
   background:
     linear-gradient(#000000, #000000) padding-box,
-    conic-gradient(
-      from var(--border-angle),
+    conic-gradient(from var(--border-angle),
       transparent 0%,
       transparent 55%,
       rgba(66, 133, 244, 0.2) 68%,
@@ -1969,8 +1936,7 @@
       #ea4335 86%,
       #fbbc05 93%,
       #34a853 97%,
-      #ffffff 100%
-    ) border-box;
+      #ffffff 100%) border-box;
   animation:
     rotateRandomChaos1 var(--rnd-dur-btn, 3.4s) linear infinite,
     googleFadePulse10 11s ease-in-out infinite;
@@ -1985,7 +1951,7 @@
   color: rgba(255, 255, 255, 0.65);
 }
 
-.btn-toggle-google-borders > * {
+.btn-toggle-google-borders>* {
   position: relative;
   z-index: 2;
 }
@@ -2078,4 +2044,85 @@ body.google-borders-hidden .deck-border-rotating {
   opacity: 0 !important;
   visibility: hidden !important;
   animation: none !important;
+}
+
+/* Keyframes universales de rotación de bordes para DeckList: 100% fluidos y continuos */
+@keyframes rotateClockwiseGoogle {
+  0% {
+    --border-angle: 0deg;
+  }
+
+  100% {
+    --border-angle: 360deg;
+  }
+}
+
+@keyframes rotateClockwiseGoogleAlt {
+  0% {
+    --border-angle: 0deg;
+  }
+
+  100% {
+    --border-angle: 360deg;
+  }
+}
+
+@keyframes rotateRandomChaos1 {
+  0% {
+    --border-angle: 0deg;
+  }
+
+  100% {
+    --border-angle: 360deg;
+  }
+}
+
+@keyframes rotateRandomChaos2 {
+  0% {
+    --border-angle: 0deg;
+  }
+
+  100% {
+    --border-angle: 360deg;
+  }
+}
+
+@keyframes rotateRandomChaos3 {
+  0% {
+    --border-angle: 0deg;
+  }
+
+  100% {
+    --border-angle: 360deg;
+  }
+}
+
+@keyframes rotateRandomChaos4 {
+  0% {
+    --border-angle: 0deg;
+  }
+
+  100% {
+    --border-angle: 360deg;
+  }
+}
+
+@keyframes rotateRandomChaos5 {
+  0% {
+    --border-angle: 0deg;
+  }
+
+  100% {
+    --border-angle: 360deg;
+  }
+}
+
+@keyframes rotateRandomChaos6 {
+  0% {
+    --border-angle: 0deg;
+  }
+
+  100% {
+    --border-angle: 360deg;
+  }
 }

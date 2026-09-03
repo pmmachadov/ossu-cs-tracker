@@ -1,12 +1,12 @@
 @property --border-angle {
   syntax: "<angle>";
-  inherits: false;
+  inherits: true;
   initial-value: 0deg;
 }
 
 @property --siri-angle {
   syntax: "<angle>";
-  inherits: false;
+  inherits: true;
   initial-value: 0deg;
 }
 
@@ -27,69 +27,44 @@
 }
 
 /* Recorridos caóticos con cambios de velocidad aleatorios e impredecibles:
-   ninguno tiene velocidad constante ni repeticiones regulares */
+/* Recorridos continuos, 100% fluidos y suaves sin saltos bruscos */
 @keyframes rotateClockwiseGoogle {
   0%   { --border-angle: 0deg; }
-  15%  { --border-angle: 80deg; }
-  30%  { --border-angle: 115deg; }
-  45%  { --border-angle: 135deg; }
-  60%  { --border-angle: 250deg; }
-  75%  { --border-angle: 280deg; }
-  88%  { --border-angle: 315deg; }
   100% { --border-angle: 360deg; }
 }
 
 @keyframes rotateClockwiseGoogleAlt {
   0%   { --border-angle: 0deg; }
-  20%  { --border-angle: 40deg; }
-  35%  { --border-angle: 160deg; }
-  50%  { --border-angle: 195deg; }
-  65%  { --border-angle: 220deg; }
-  80%  { --border-angle: 315deg; }
   100% { --border-angle: 360deg; }
 }
 
 @keyframes rotateRandomChaos1 {
   0%   { --border-angle: 0deg; }
-  14%  { --border-angle: 75deg; }
-  28%  { --border-angle: 105deg; }
-  42%  { --border-angle: 125deg; }
-  58%  { --border-angle: 240deg; }
-  72%  { --border-angle: 275deg; }
-  86%  { --border-angle: 305deg; }
   100% { --border-angle: 360deg; }
 }
 
 @keyframes rotateRandomChaos2 {
   0%   { --border-angle: 0deg; }
-  16%  { --border-angle: 35deg; }
-  32%  { --border-angle: 150deg; }
-  48%  { --border-angle: 185deg; }
-  62%  { --border-angle: 215deg; }
-  78%  { --border-angle: 315deg; }
-  90%  { --border-angle: 340deg; }
   100% { --border-angle: 360deg; }
 }
 
 @keyframes rotateRandomChaos3 {
   0%   { --border-angle: 0deg; }
-  12%  { --border-angle: 65deg; }
-  28%  { --border-angle: 95deg; }
-  44%  { --border-angle: 120deg; }
-  60%  { --border-angle: 235deg; }
-  76%  { --border-angle: 270deg; }
-  88%  { --border-angle: 310deg; }
   100% { --border-angle: 360deg; }
 }
 
 @keyframes rotateRandomChaos4 {
   0%   { --border-angle: 0deg; }
-  18%  { --border-angle: 100deg; }
-  34%  { --border-angle: 135deg; }
-  50%  { --border-angle: 160deg; }
-  66%  { --border-angle: 265deg; }
-  82%  { --border-angle: 300deg; }
-  92%  { --border-angle: 335deg; }
+  100% { --border-angle: 360deg; }
+}
+
+@keyframes rotateRandomChaos5 {
+  0%   { --border-angle: 0deg; }
+  100% { --border-angle: 360deg; }
+}
+
+@keyframes rotateRandomChaos6 {
+  0%   { --border-angle: 0deg; }
   100% { --border-angle: 360deg; }
 }
 
