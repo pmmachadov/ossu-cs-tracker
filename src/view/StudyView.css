@@ -227,7 +227,7 @@
   cursor: grabbing;
 }
 
-/* Relleno de progreso: Los 4 colores clásicos de Google (Azul, Rojo, Amarillo, Verde) en flujo continuo */
+/* Relleno de progreso: Colores Google clásicos que van y vienen en distintas velocidades y direcciones */
 .card-progress-fill {
   height: 100%;
   min-width: 64px;
@@ -238,13 +238,14 @@
   position: relative;
   overflow: hidden;
   box-shadow:
-    inset 0 1px 2px rgba(255, 255, 255, 0.55),
-    inset 0 -2px 6px rgba(0, 0, 0, 0.45),
-    0 4px 18px rgba(66, 133, 244, 0.4);
-  border: 1.5px solid rgba(255, 255, 255, 0.35);
+    inset 0 1px 2px rgba(255, 255, 255, 0.6),
+    inset 0 -2px 6px rgba(0, 0, 0, 0.5),
+    0 4px 20px rgba(66, 133, 244, 0.45);
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
   transition: width 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* Capa 1: Oleada principal diagonal a velocidad activa (3.6s) con ida y vuelta (alternate) */
 .card-progress-fill::before {
   content: '';
   position: absolute;
@@ -254,15 +255,41 @@
     radial-gradient(ellipse 100% 120% at 25% -20%, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0) 55%),
     linear-gradient(
       115deg,
-      #4285f4 0%,
-      #ea4335 25%,
-      #fbbc05 50%,
-      #34a853 75%,
-      #4285f4 100%
+      #1a73e8 0%,
+      #1a73e8 14%,
+      #ea4335 28%,
+      #ea4335 42%,
+      #fbbc05 56%,
+      #fbbc05 70%,
+      #34a853 84%,
+      #34a853 98%
     );
-  background-size: 100% 100%, 300% 300%;
-  animation: googleClassicVibrantFlow 4s ease-in-out infinite;
+  background-size: 100% 100%, 320% 320%;
+  animation: googleColorsEbbAndFlow1 3.6s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite alternate;
   z-index: 1;
+  pointer-events: none;
+}
+
+/* Capa 2: Contracorriente en dirección opuesta (-55°) y diferente velocidad (5.4s) con pulsos radiales */
+.card-progress-fill::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    radial-gradient(circle at 80% 20%, #fbbc05 0%, transparent 60%),
+    radial-gradient(circle at 20% 80%, #34a853 0%, transparent 60%),
+    linear-gradient(
+      -55deg,
+      rgba(26, 115, 232, 0.92) 0%,
+      rgba(234, 67, 53, 0.95) 35%,
+      rgba(251, 188, 5, 0.95) 65%,
+      rgba(52, 168, 83, 0.92) 100%
+    );
+  background-size: 280% 280%;
+  mix-blend-mode: hard-light;
+  animation: googleColorsEbbAndFlow2 5.4s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite alternate;
+  z-index: 2;
   pointer-events: none;
 }
 
@@ -278,6 +305,8 @@
   border: none !important;
   padding: 0 8px !important;
   border-radius: 0 !important;
+  position: relative;
+  z-index: 5;
   box-shadow: none !important;
   letter-spacing: -0.01em;
   font-variant-numeric: tabular-nums;
@@ -285,8 +314,78 @@
   pointer-events: none;
   white-space: nowrap;
   position: relative;
-  z-index: 2;
+  z-index: 5;
   animation: pctColorShiftBlackGray 8s ease-in-out infinite;
+}
+
+/* Movimiento Capa 1: Oleada cromática que va y viene en diagonal */
+@keyframes googleColorsEbbAndFlow1 {
+  0% {
+    background-position: 0% 0%, 0% 15%;
+  }
+  35% {
+    background-position: 0% 0%, 75% 85%;
+  }
+  68% {
+    background-position: 0% 0%, 100% 30%;
+  }
+  100% {
+    background-position: 0% 0%, 20% 100%;
+  }
+}
+
+/* Movimiento Capa 2: Contracorriente cruzada que va y viene a diferente ritmo */
+@keyframes googleColorsEbbAndFlow2 {
+  0% {
+    background-position: 100% 90%;
+    opacity: 0.7;
+  }
+  38% {
+    background-position: 15% 15%;
+    opacity: 0.95;
+  }
+  72% {
+    background-position: 85% 35%;
+    opacity: 0.75;
+  }
+  100% {
+    background-position: 10% 95%;
+    opacity: 0.95;
+  }
+}
+
+@keyframes pctColorShiftBlackGray {
+  0% {
+    color: #000000;
+    text-shadow:
+      0 1px 2px rgba(255, 255, 255, 0.65),
+      0 -1px 2px rgba(0, 0, 0, 0.85);
+  }
+  25% {
+    color: #24242c;
+    text-shadow:
+      0 1px 2px rgba(255, 255, 255, 0.6),
+      0 -1px 2px rgba(0, 0, 0, 0.8);
+  }
+  50% {
+    color: #585866;
+    text-shadow:
+      0 1px 2px rgba(255, 255, 255, 0.7),
+      0 -1px 2px rgba(0, 0, 0, 0.95),
+      0 0 10px rgba(0, 0, 0, 0.5);
+  }
+  75% {
+    color: #2c2c36;
+    text-shadow:
+      0 1px 2px rgba(255, 255, 255, 0.6),
+      0 -1px 2px rgba(0, 0, 0, 0.8);
+  }
+  100% {
+    color: #000000;
+    text-shadow:
+      0 1px 2px rgba(255, 255, 255, 0.65),
+      0 -1px 2px rgba(0, 0, 0, 0.85);
+  }
 }
 
 /* Indicador de conteo de tarjetas (ej. 6 / 201) */
