@@ -147,15 +147,17 @@ export function DeckCard({
         <div className="deck-card-meta">
           {deck.subject && theme !== "theme-examen" && (
             <span className="deck-subject">
-              {subjectIcon} {deck.subject}
+              <span className="badge-text">{subjectIcon} {deck.subject}</span>
             </span>
           )}
           {isExamDeck(deck) && theme !== "theme-examen" && (
-            <span className="exam-badge">Examen</span>
+            <span className="exam-badge">
+              <span className="badge-text">Examen</span>
+            </span>
           )}
           {hasDueCards && (
             <span className="due-badge-inline">
-              {stats.due} de {stats.total} pendientes
+              <span className="badge-text">{stats.due} de {stats.total} pendientes</span>
             </span>
           )}
           <span
@@ -168,7 +170,7 @@ export function DeckCard({
             }`}
             title={`Porcentaje completado de este mazo: ${stats.mastery}%`}
           >
-            {stats.mastery}% completado
+            <span className="badge-text">{stats.mastery}% completado</span>
           </span>
         </div>
 
@@ -182,22 +184,22 @@ export function DeckCard({
 
         {/* Stats Row con porcentaje individual */}
         <div className="deck-stats-row">
-          <div className="deck-stat" title="Total de tarjetas del mazo">
+          <div className="deck-stat stat-item-total" title="Total de tarjetas del mazo">
             <span className="stat-number">{stats.total}</span>
             <span className="stat-text">total</span>
           </div>
           <div className="deck-stat-divider" />
-          <div className="deck-stat" title="Nuevas">
+          <div className="deck-stat stat-item-new" title="Nuevas">
             <span className="stat-number">{stats.new}</span>
             <span className="stat-text">nuevas</span>
           </div>
           <div className="deck-stat-divider" />
-          <div className="deck-stat" title="Aprendidas">
+          <div className="deck-stat stat-item-learned" title="Aprendidas">
             <span className="stat-number">{stats.aprendido}</span>
             <span className="stat-text">aprendidas</span>
           </div>
           <div className="deck-stat-divider" />
-          <div className="deck-stat" title="Porcentaje completado de este mazo">
+          <div className="deck-stat stat-item-pct" title="Porcentaje completado de este mazo">
             <span className="stat-number stat-pct">{stats.mastery}%</span>
             <span className="stat-text">progreso</span>
           </div>

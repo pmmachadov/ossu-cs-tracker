@@ -26,55 +26,80 @@
   100% { --siri-angle: 360deg; }
 }
 
-/* Recorrido con velocidades variables: aceleraciones y deceleraciones cinéticas */
+/* Recorridos caóticos con cambios de velocidad aleatorios e impredecibles:
+   ninguno tiene velocidad constante ni repeticiones regulares */
 @keyframes rotateClockwiseGoogle {
-  0% {
-    --border-angle: 0deg;
-  }
-  18% {
-    --border-angle: 105deg; /* Ráfaga inicial rápida */
-  }
-  42% {
-    --border-angle: 160deg; /* Deslizamiento pausado */
-  }
-  64% {
-    --border-angle: 280deg; /* Fuerte acelerón secundario */
-  }
-  86% {
-    --border-angle: 325deg; /* Desaceleración con inercia */
-  }
-  100% {
-    --border-angle: 360deg; /* Enlace continuo */
-  }
+  0%   { --border-angle: 0deg; }
+  15%  { --border-angle: 80deg; }
+  30%  { --border-angle: 115deg; }
+  45%  { --border-angle: 135deg; }
+  60%  { --border-angle: 250deg; }
+  75%  { --border-angle: 280deg; }
+  88%  { --border-angle: 315deg; }
+  100% { --border-angle: 360deg; }
 }
 
 @keyframes rotateClockwiseGoogleAlt {
-  0% {
-    --border-angle: 0deg;
-  }
-  26% {
-    --border-angle: 65deg;  /* Inicio pausado */
-  }
-  48% {
-    --border-angle: 220deg; /* Ráfaga rápida */
-  }
-  74% {
-    --border-angle: 270deg; /* Frenado elegante */
-  }
-  90% {
-    --border-angle: 342deg; /* Impulso final */
-  }
-  100% {
-    --border-angle: 360deg;
-  }
+  0%   { --border-angle: 0deg; }
+  20%  { --border-angle: 40deg; }
+  35%  { --border-angle: 160deg; }
+  50%  { --border-angle: 195deg; }
+  65%  { --border-angle: 220deg; }
+  80%  { --border-angle: 315deg; }
+  100% { --border-angle: 360deg; }
+}
+
+@keyframes rotateRandomChaos1 {
+  0%   { --border-angle: 0deg; }
+  14%  { --border-angle: 75deg; }
+  28%  { --border-angle: 105deg; }
+  42%  { --border-angle: 125deg; }
+  58%  { --border-angle: 240deg; }
+  72%  { --border-angle: 275deg; }
+  86%  { --border-angle: 305deg; }
+  100% { --border-angle: 360deg; }
+}
+
+@keyframes rotateRandomChaos2 {
+  0%   { --border-angle: 0deg; }
+  16%  { --border-angle: 35deg; }
+  32%  { --border-angle: 150deg; }
+  48%  { --border-angle: 185deg; }
+  62%  { --border-angle: 215deg; }
+  78%  { --border-angle: 315deg; }
+  90%  { --border-angle: 340deg; }
+  100% { --border-angle: 360deg; }
+}
+
+@keyframes rotateRandomChaos3 {
+  0%   { --border-angle: 0deg; }
+  12%  { --border-angle: 65deg; }
+  28%  { --border-angle: 95deg; }
+  44%  { --border-angle: 120deg; }
+  60%  { --border-angle: 235deg; }
+  76%  { --border-angle: 270deg; }
+  88%  { --border-angle: 310deg; }
+  100% { --border-angle: 360deg; }
+}
+
+@keyframes rotateRandomChaos4 {
+  0%   { --border-angle: 0deg; }
+  18%  { --border-angle: 100deg; }
+  34%  { --border-angle: 135deg; }
+  50%  { --border-angle: 160deg; }
+  66%  { --border-angle: 265deg; }
+  82%  { --border-angle: 300deg; }
+  92%  { --border-angle: 335deg; }
+  100% { --border-angle: 360deg; }
 }
 
 /* Variantes de desaparición suave, lenta y cinematográfica */
 @keyframes googleFadePulse10 {
-  0%, 65% { opacity: 1; }
-  73% { opacity: 0.7; }
-  81% { opacity: 0.3; }
-  88%, 97% { opacity: 0; }
+  0%, 68% { opacity: 1; }
+  76% { opacity: 0.7; }
+  83% { opacity: 0.25; }
+  87%, 97% { opacity: 0; } /* Desaparece por completo el 10% del tiempo */
+  99% { opacity: 0.45; }   /* Reaparece despacio */
   100% { opacity: 1; }
 }
 
@@ -230,7 +255,7 @@ html {
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "SF Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "SF Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
   letter-spacing: -0.015em;
   background: #000000 !important;
   color: var(--text-primary);
@@ -395,13 +420,13 @@ pre code {
   opacity: 1;
 }
 
-/* Los colores y auras de las tarjetas se mantienen siempre activos */
-.deck-card::before {
-  opacity: 1 !important;
+/* Los colores y auras de las tarjetas se mantienen activos cuando los bordes están habilitados */
+body:not(.google-borders-hidden) .deck-card::before {
+  opacity: 1;
 }
 
-.deck-card .google-aura {
-  opacity: 1 !important;
+body:not(.google-borders-hidden) .deck-card .google-aura {
+  opacity: 1;
 }
 
 .bento-card::before,
@@ -571,4 +596,105 @@ pre code {
   color: #ffffff !important;
   text-shadow: none !important;
   box-shadow: 0 0 0 1px #000000, 0 2px 5px rgba(0, 0, 0, 0.9) !important;
+}
+
+/* ==========================================================================
+   DESACTIVACIÓN GLOBAL ABSOLUTA DE BORDES (MODO BORDES OFF)
+   No queda ningún borde animado o Google activo en toda la app
+   ========================================================================== */
+body.google-borders-hidden .deck-card::before,
+body.google-borders-hidden .deck-card::after,
+body.google-borders-hidden .bento-card::before,
+body.google-borders-hidden .bento-card::after,
+body.google-borders-hidden .stat-card::before,
+body.google-borders-hidden .stat-card::after,
+body.google-borders-hidden .stats-summary-card::before,
+body.google-borders-hidden .stats-summary-card::after,
+body.google-borders-hidden .chart-card::before,
+body.google-borders-hidden .chart-card::after,
+body.google-borders-hidden .retention-card::before,
+body.google-borders-hidden .retention-card::after,
+body.google-borders-hidden .heatmap-card::before,
+body.google-borders-hidden .heatmap-card::after,
+body.google-borders-hidden .search-input-wrapper::before,
+body.google-borders-hidden .search-input-wrapper::after,
+body.google-borders-hidden .subject-filter::before,
+body.google-borders-hidden .subject-filter::after,
+body.google-borders-hidden .modal-content::before,
+body.google-borders-hidden .modal-content::after,
+body.google-borders-hidden .card-editor-modal::before,
+body.google-borders-hidden .card-editor-modal::after,
+body.google-borders-hidden .reset-modal-content::before,
+body.google-borders-hidden .reset-modal-content::after,
+body.google-borders-hidden .stat-compact-pill::before,
+body.google-borders-hidden .stat-compact-pill::after,
+body.google-borders-hidden .stat-compact-icon::before,
+body.google-borders-hidden .stat-compact-icon::after,
+body.google-borders-hidden .bento-mini-bar::before,
+body.google-borders-hidden .bento-mini-bar::after,
+body.google-borders-hidden .bento-mini-unfilled::before,
+body.google-borders-hidden .bento-mini-unfilled::after,
+body.google-borders-hidden .card-progress-unfilled::before,
+body.google-borders-hidden .card-progress-unfilled::after,
+body.google-borders-hidden .card-progress-track::before,
+body.google-borders-hidden .card-progress-track::after,
+body.google-borders-hidden .card-progress-fill::before,
+body.google-borders-hidden .card-progress-fill::after,
+body.google-borders-hidden .bento-icon-wrapper::before,
+body.google-borders-hidden .bento-icon-wrapper::after,
+body.google-borders-hidden .filter-pill::before,
+body.google-borders-hidden .filter-pill::after,
+body.google-borders-hidden .filter-pill.active::before,
+body.google-borders-hidden .examenes-toggle::before,
+body.google-borders-hidden .subject-toggle::before,
+body.google-borders-hidden .practicas-toggle::before,
+body.google-borders-hidden .pruebas-toggle::before,
+body.google-borders-hidden .mas-toggle::before,
+body.google-borders-hidden .extras-toggle::before,
+body.google-borders-hidden .pd-toggle::before,
+body.google-borders-hidden .examenes-count::before,
+body.google-borders-hidden .subject-count::before,
+body.google-borders-hidden .pd-count::before,
+body.google-borders-hidden .deck-subject::before,
+body.google-borders-hidden .deck-subject::after,
+body.google-borders-hidden .exam-badge::before,
+body.google-borders-hidden .exam-badge::after,
+body.google-borders-hidden .due-badge-inline::before,
+body.google-borders-hidden .due-badge-inline::after,
+body.google-borders-hidden .deck-pct-badge::before,
+body.google-borders-hidden .deck-pct-badge::after,
+body.google-borders-hidden .deck-stat::before,
+body.google-borders-hidden .deck-stat::after,
+body.google-borders-hidden .deck-actions .btn-study::before,
+body.google-borders-hidden .deck-actions .btn-study::after,
+body.google-borders-hidden .btn-study::before,
+body.google-borders-hidden .btn-study::after,
+body.google-borders-hidden .deck-actions .btn-icon-only::before,
+body.google-borders-hidden .deck-actions .btn-icon-only::after,
+body.google-borders-hidden .hero-actions-group .btn-create-deck::before,
+body.google-borders-hidden .hero-actions-group .btn-create-deck::after,
+body.google-borders-hidden .btn-back-inline::before,
+body.google-borders-hidden .btn-back-inline::after,
+body.google-borders-hidden .card-progress-count::before,
+body.google-borders-hidden .card-progress-count::after,
+body.google-borders-hidden .mc-option::before,
+body.google-borders-hidden .mc-option::after,
+body.google-borders-hidden .mc-letter::before,
+body.google-borders-hidden .mc-letter::after,
+body.google-borders-hidden .rating-btn::before,
+body.google-borders-hidden .rating-btn::after,
+body.google-borders-hidden .progress-bar::before,
+body.google-borders-hidden .progress-bar::after,
+body.google-borders-hidden .progress-fill::before,
+body.google-borders-hidden .progress-fill::after,
+body.google-borders-hidden .deck-card-border-glow,
+body.google-borders-hidden .deck-border-rotating,
+body.google-borders-hidden .btn-toggle-google-borders::before,
+body.google-borders-hidden .btn-toggle-google-borders::after {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  animation: none !important;
+  background: none !important;
+  border-color: transparent !important;
 }

@@ -20,6 +20,10 @@ import {
   ResetProgressModal,
   ClearAllDataModal,
 } from "./DeckModals";
+import {
+  startRandomSpeedManager,
+  stopRandomSpeedManager,
+} from "./randomSpeedManager";
 
 export function DeckList({
   decks,
@@ -50,6 +54,26 @@ export function DeckList({
   const [showHeroPctGlow] = useState(true);
   const [showMas, setShowMas] = useState(false);
   const [openSubjects, setOpenSubjects] = useState({}); // cada materia se abre/cierra individualmente
+
+  const [googleBordersVisible, setGoogleBordersVisible] = useState(() => {
+    const saved = localStorage.getItem("google_borders_visible");
+    return saved !== null ? saved === "true" : true;
+  });
+
+  useEffect(() => {
+    localStorage.setItem("google_borders_visible", String(googleBordersVisible));
+    if (googleBordersVisible) {
+      document.body.classList.remove("google-borders-hidden");
+      startRandomSpeedManager();
+    } else {
+      document.body.classList.add("google-borders-hidden");
+      stopRandomSpeedManager();
+    }
+  }, [googleBordersVisible]);
+
+  const toggleGoogleBorders = () => {
+    setGoogleBordersVisible((prev) => !prev);
+  };
 
   const [doneMap, setDoneMap] = useState(() => {
     try {
@@ -228,8 +252,7 @@ export function DeckList({
       {/* Stats unificados en un único cuadro compacto */}
       <section className="deck-hero-compact">
         <div className="hero-stats-row">
-          <div className="stat-compact-item">
-            <div className="stat-compact-icon bento-icon-blue">{Icons.folder}</div>
+          <div className="stat-compact-item stat-compact-pill stat-pill-mazos">
             <div className="stat-compact-info">
               <div className="stat-compact-val">{decks.length}</div>
               <div className="stat-compact-lbl">Mazos Activos</div>
@@ -238,11 +261,10 @@ export function DeckList({
 
           <div className="stat-compact-divider" />
 
-          <div className="stat-compact-item">
-            <div className="stat-compact-icon bento-icon-purple">{Icons.cards}</div>
+          <div className="stat-compact-item stat-compact-pill stat-pill-aprendidas">
             <div className="stat-compact-info">
               <div className="stat-compact-val">{totalLearned}</div>
-              <div className="stat-compact-lbl">aprendidas</div>
+              <div className="stat-compact-lbl">Aprendidas</div>
             </div>
           </div>
 
@@ -250,22 +272,64 @@ export function DeckList({
 
           <div className="stat-compact-item stat-compact-progress">
             <div className="stat-compact-info">
-              <div className="stat-compact-val-row">
-                <div className={`bento-mini-bar ${isFirstTenSeconds ? "google-active" : "google-expired"}`}>
-                  <div
-                    className={`bento-mini-fill ${showHeroPctGlow ? "pct-glow-active" : "pct-glow-off"}`}
-                    style={{
-                      width: `${Math.round((totalLearned / (totalCards || 1)) * 100) || 0}%`,
-                    }}
-                  >
-                    <span className="bento-fill-pct-badge">
-                      {Math.round((totalLearned / (totalCards || 1)) * 100) || 0}%
-                    </span>
-                  </div>
-                </div>
+                {(() => {
+                  const heroPct = Math.round((totalLearned / (totalCards || 1)) * 100) || 0;
+                  return (
+                    <div className={`bento-mini-bar ${isFirstTenSeconds ? "google-active" : "google-expired"}`}>
+                      <div
+                        className={`bento-mini-fill ${showHeroPctGlow ? "pct-glow-active" : "pct-glow-off"}`}
+                        style={{
+                          width: `${heroPct}%`,
+                        }}
+                      >
+                        <span className="hero-fill-pct-text">
+                          {heroPct}%
+                        </span>
+                      </div>
+                      {heroPct < 100 && (
+                        <div
+                          className="bento-mini-unfilled"
+                          title={`Pendiente: ${100 - heroPct}%`}
+                        />
+                      )}
+                    </div>
+                  );
+                })()}
               </div>
             </div>
-          </div>
+
+            <button
+              type="button"
+            className={`btn-toggle-google-borders ${googleBordersVisible ? "borders-on" : "borders-off"}`}
+            onClick={toggleGoogleBorders}
+            title={
+              googleBordersVisible
+                ? "Ocultar bordes animados de Google"
+                : "Mostrar bordes animados de Google"
+            }
+          >
+            <span className="google-borders-icon">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <circle cx="12" cy="12" r="4" />
+                <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+              </svg>
+            </span>
+            <span className="google-borders-text">
+              Bordes {googleBordersVisible ? "ON" : "OFF"}
+            </span>
+            <span
+              className={`google-borders-status-dot ${googleBordersVisible ? "dot-on" : "dot-off"}`}
+            />
+          </button>
         </div>
       </section>
 

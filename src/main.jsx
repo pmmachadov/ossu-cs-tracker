@@ -3,6 +3,13 @@ import ReactDOM from 'react-dom/client'
 import { Toaster } from 'react-hot-toast'
 import App from './App.jsx'
 import './index.css'
+import { startRandomSpeedManager } from './view/randomSpeedManager.js'
+
+if (localStorage.getItem("google_borders_visible") !== "false") {
+  startRandomSpeedManager();
+} else {
+  document.body.classList.add("google-borders-hidden");
+}
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
