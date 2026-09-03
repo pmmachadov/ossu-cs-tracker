@@ -612,12 +612,10 @@ body.google-borders-hidden .mc-option::before,
 body.google-borders-hidden .mc-letter::before,
 body.google-borders-hidden .rating-btn::before,
 body.google-borders-hidden .progress-bar::before {
-  display: block !important;
-  opacity: 1 !important;
-  visibility: visible !important;
+  display: none !important;
   animation: none !important;
-  background: transparent !important;
-  border: 1.5px solid rgba(255, 255, 255, 0.22) !important;
+  background: none !important;
+  border: none !important;
   box-shadow: none !important;
   filter: none !important;
 }
@@ -626,7 +624,20 @@ body.google-borders-hidden .deck-card-border-glow,
 body.google-borders-hidden .deck-border-rotating,
 body.google-borders-hidden .btn-toggle-google-borders::before {
   display: none !important;
-  opacity: 0 !important;
-  visibility: hidden !important;
+  animation: none !important;
+}
+
+/* Eliminar completamente las capas animadas de colores Google detrás del porcentaje */
+body.google-borders-hidden .bento-mini-fill::before,
+body.google-borders-hidden .bento-mini-fill::after,
+body.google-borders-hidden .card-progress-fill::before,
+body.google-borders-hidden .card-progress-fill::after {
+  display: none !important;
+  animation: none !important;
+}
+
+/* Detener animaciones de texto en porcentajes */
+body.google-borders-hidden .global-pct-siri-text,
+body.google-borders-hidden .bento-fill-pct-badge {
   animation: none !important;
 }

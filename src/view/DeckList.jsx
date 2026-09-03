@@ -57,7 +57,7 @@ export function DeckList({
 
   const [googleBordersVisible, setGoogleBordersVisible] = useState(() => {
     const saved = localStorage.getItem("google_borders_visible");
-    return saved !== null ? saved === "true" : true;
+    return saved === "true";
   });
 
   useEffect(() => {

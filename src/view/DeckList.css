@@ -2028,12 +2028,10 @@ body.google-borders-hidden .card-progress-count::before,
 body.google-borders-hidden .mc-option::before,
 body.google-borders-hidden .mc-letter::before,
 body.google-borders-hidden .deck-card::before {
-  display: block !important;
-  opacity: 1 !important;
-  visibility: visible !important;
+  display: none !important;
   animation: none !important;
-  background: transparent !important;
-  border: 1.5px solid rgba(255, 255, 255, 0.22) !important;
+  background: none !important;
+  border: none !important;
   box-shadow: none !important;
   filter: none !important;
 }
@@ -2041,8 +2039,6 @@ body.google-borders-hidden .deck-card::before {
 body.google-borders-hidden .deck-card-border-glow,
 body.google-borders-hidden .deck-border-rotating {
   display: none !important;
-  opacity: 0 !important;
-  visibility: hidden !important;
   animation: none !important;
 }
 

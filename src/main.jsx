@@ -5,7 +5,7 @@ import App from './App.jsx'
 import './index.css'
 import { startRandomSpeedManager } from './view/randomSpeedManager.js'
 
-if (localStorage.getItem("google_borders_visible") !== "false") {
+if (localStorage.getItem("google_borders_visible") === "true") {
   startRandomSpeedManager();
 } else {
   document.body.classList.add("google-borders-hidden");
