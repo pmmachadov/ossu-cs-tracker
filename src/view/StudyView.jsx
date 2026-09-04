@@ -140,39 +140,22 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
   const [mcSelection, setMcSelection] = useState(null); // opción elegida en cards de opción múltiple
   const [isFirstTenSeconds] = useState(true);
   const [showPctGlow] = useState(true);
+  const [isScrubbing, setIsScrubbing] = useState(false);
 
-  // Drag-to-scroll para la fila de puntos
+  // Drag-to-scrub para la barra de progreso
   const dotsContainerRef = useRef(null);
   const isDragging = useRef(false);
-  const startX = useRef(0);
-  const startCardIndex = useRef(0);
-  const dragMoved = useRef(false);
 
   // Velocidad lineal de los colores del borde según su longitud real
   const borderSpeed = useBorderSpeed();
 
-  const handleMouseDown = (e) => {
+  const updateCardFromPointer = (clientX) => {
     if (!dotsContainerRef.current || cards.length === 0) return;
-    isDragging.current = true;
-    dragMoved.current = false;
-    startX.current = e.clientX;
-    startCardIndex.current = currentCardIndex;
-  };
-
-  const handleMouseMove = (e) => {
-    if (!isDragging.current || !dotsContainerRef.current || cards.length === 0)
-      return;
     const rect = dotsContainerRef.current.getBoundingClientRect();
-    const deltaX = e.clientX - startX.current;
-    const pxPerCard = rect.width / cards.length;
-    const deltaCards = Math.round(deltaX / pxPerCard);
-    const newIndex = Math.max(
-      0,
-      Math.min(cards.length - 1, startCardIndex.current + deltaCards),
-    );
-    if (Math.abs(newIndex - currentCardIndex) > 0 || Math.abs(deltaX) > 3) {
-      dragMoved.current = true;
-    }
+    if (rect.width <= 0) return;
+    const clickX = clientX - rect.left;
+    const ratio = Math.max(0, Math.min(1, clickX / rect.width));
+    const newIndex = Math.min(cards.length - 1, Math.floor(ratio * cards.length));
     if (newIndex !== currentCardIndex) {
       setCurrentCardIndex(newIndex);
       setIsFlipped(false);
@@ -180,49 +163,59 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
     }
   };
 
-  const handleMouseUp = () => {
-    isDragging.current = false;
+  const handleMouseDown = (e) => {
+    if (!dotsContainerRef.current || cards.length === 0) return;
+    isDragging.current = true;
+    setIsScrubbing(true);
+    updateCardFromPointer(e.clientX);
   };
 
   const handleTouchStart = (e) => {
     if (!dotsContainerRef.current || cards.length === 0) return;
-    isDragging.current = true;
-    dragMoved.current = false;
-    startX.current = e.touches[0].clientX;
-    startCardIndex.current = currentCardIndex;
-  };
-
-  const handleTouchMove = (e) => {
-    if (!isDragging.current || !dotsContainerRef.current || cards.length === 0)
-      return;
-    const rect = dotsContainerRef.current.getBoundingClientRect();
-    const deltaX = e.touches[0].clientX - startX.current;
-    const pxPerCard = rect.width / cards.length;
-    const deltaCards = Math.round(deltaX / pxPerCard);
-    const newIndex = Math.max(
-      0,
-      Math.min(cards.length - 1, startCardIndex.current + deltaCards),
-    );
-    if (Math.abs(newIndex - currentCardIndex) > 0 || Math.abs(deltaX) > 3) {
-      dragMoved.current = true;
-    }
-    if (newIndex !== currentCardIndex) {
-      setCurrentCardIndex(newIndex);
-      setIsFlipped(false);
-      setFlipRotation(0);
+    if (e.touches && e.touches[0]) {
+      isDragging.current = true;
+      setIsScrubbing(true);
+      updateCardFromPointer(e.touches[0].clientX);
     }
   };
 
-  const handleTouchEnd = () => {
-    isDragging.current = false;
-  };
+  // Seguimiento global para que al arrastrar no se corte si el cursor sale de la barra
+  useEffect(() => {
+    const handleGlobalMouseMove = (e) => {
+      if (isDragging.current) {
+        updateCardFromPointer(e.clientX);
+      }
+    };
+    const handleGlobalMouseUp = () => {
+      if (isDragging.current) {
+        isDragging.current = false;
+        setIsScrubbing(false);
+      }
+    };
+    const handleGlobalTouchMove = (e) => {
+      if (isDragging.current && e.touches && e.touches[0]) {
+        updateCardFromPointer(e.touches[0].clientX);
+      }
+    };
+    const handleGlobalTouchEnd = () => {
+      if (isDragging.current) {
+        isDragging.current = false;
+        setIsScrubbing(false);
+      }
+    };
 
-  const handleDotClick = (index) => {
-    if (dragMoved.current) return;
-    setCurrentCardIndex(index);
-    setIsFlipped(false);
-    setFlipRotation(0);
-  };
+    window.addEventListener("mousemove", handleGlobalMouseMove);
+    window.addEventListener("mouseup", handleGlobalMouseUp);
+    window.addEventListener("touchmove", handleGlobalTouchMove);
+    window.addEventListener("touchend", handleGlobalTouchEnd);
+
+    return () => {
+      window.removeEventListener("mousemove", handleGlobalMouseMove);
+      window.removeEventListener("mouseup", handleGlobalMouseUp);
+      window.removeEventListener("touchmove", handleGlobalTouchMove);
+      window.removeEventListener("touchend", handleGlobalTouchEnd);
+    };
+  }, [cards.length, currentCardIndex]);
 
   // Preparar tarjetas para estudio: SOLO las no aprendidas (nuevas +
   // en procesamiento). Las marcadas como "aprendido" NO vuelven a
@@ -427,15 +420,10 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
             dotsContainerRef.current = el;
             borderSpeed("track", 0.85)(el);
           }}
-          className={`card-progress-track ${isFirstTenSeconds ? "google-active" : "google-expired"}`}
+          className={`card-progress-track ${isFirstTenSeconds ? "google-active" : "google-expired"} ${isScrubbing ? "is-scrubbing" : ""}`}
           style={{ "--card-count": cards.length }}
           onMouseDown={handleMouseDown}
-          onMouseMove={handleMouseMove}
-          onMouseUp={handleMouseUp}
-          onMouseLeave={handleMouseUp}
           onTouchStart={handleTouchStart}
-          onTouchMove={handleTouchMove}
-          onTouchEnd={handleTouchEnd}
         >
           <div
             className={`card-progress-fill ${showPctGlow ? "pct-glow-active" : "pct-glow-off"}`}
@@ -444,6 +432,23 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
           >
             <span className="bento-fill-pct-badge">{masteryPct}%</span>
           </div>
+
+          {cards.length > 0 && (
+            <div
+              className={`card-scrubber-marker ${isScrubbing ? "active" : ""}`}
+              style={{
+                left: `calc(44px + (${progressPct} / 100) * (100% - 88px))`,
+              }}
+            >
+              <div className="scrubber-badge">
+                <span className="scrubber-card-num">{currentCardIndex + 1}</span>
+                <span className="scrubber-card-total">/{cards.length}</span>
+              </div>
+              <div className="scrubber-tooltip">
+                Tarjeta {currentCardIndex + 1} de {cards.length}
+              </div>
+            </div>
+          )}
         </div>
         <div className="card-progress-count" title="Progreso del mazo">
           <span className="card-progress-pos">

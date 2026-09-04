@@ -620,6 +620,13 @@ body.google-borders-hidden .progress-bar::before {
   filter: none !important;
 }
 
+/* Bordes estáticos visibles para las barras de progreso cuando los bordes Google están OFF */
+body.google-borders-hidden .progress-bar,
+body.google-borders-hidden .bento-mini-bar,
+body.google-borders-hidden .card-progress-track {
+  border: 1px solid rgba(255, 255, 255, 0.16) !important;
+}
+
 body.google-borders-hidden .deck-card-border-glow,
 body.google-borders-hidden .deck-border-rotating,
 body.google-borders-hidden .btn-toggle-google-borders::before {
