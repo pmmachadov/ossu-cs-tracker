@@ -1084,7 +1084,7 @@
 /* Glass Bento Decks Grid */
 .decks-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(460px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
   gap: 20px;
   align-items: stretch;
   width: 100%;
@@ -1092,7 +1092,7 @@
 
 .examenes-section .decks-grid,
 .examenes-grid {
-  grid-template-columns: repeat(auto-fit, minmax(440px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
   width: 100%;
 }
 
