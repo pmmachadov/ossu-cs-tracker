@@ -580,8 +580,8 @@
       #1e8e3e 87.5%,
       #1e8e3e 99%,
       #1a73e8 100%);
-  background-size: 800% 100%;
-  animation: googleColorsFlowRight 100s linear infinite;
+  background-size: 8000% 100%;
+  animation: googleColorsFlowRight 800s linear infinite;
   z-index: 1;
   pointer-events: none;
 }
@@ -604,7 +604,7 @@
 /* Movimiento continuo, lento y pausado de los colores Google SIEMPRE hacia la derecha (sin retroceder) */
 @keyframes googleColorsFlowRight {
   0% {
-    background-position: 400% 0;
+    background-position: 4000% 0;
   }
 
   100% {

@@ -468,7 +468,7 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
           >
             <div className="flashcard-inner">
               <div className="flashcard-front">
-                <div className="card-content">
+                <div className="card-content" style={{ width: "100%", textAlign: "left", alignItems: "flex-start" }}>
                 {mc ? (
                   <>
                     {mc.before && (
@@ -586,7 +586,7 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
               </div>
             </div>
             <div className="flashcard-back">
-              <div className="card-content card-content-code">
+              <div className="card-content card-content-code" style={{ width: "100%", textAlign: "left", alignItems: "flex-start" }}>
                 <div style={{ width: "100%", textAlign: "left" }}>
                   <CardContent text={currentCard.back} cardImageUrl={currentCard.imageUrl} codeTheme={codeTheme} />
                 </div>

@@ -246,14 +246,14 @@ import java.io.*;
 
 public class LeerArchivo {
     public static void main(String[] args) {
-        // try { BufferedReader br = new BufferedReader(new FileReader("datos.txt")); // ❌ ERROR ①: fuga de recursos (br nunca se cierra)
-        try (BufferedReader br = new BufferedReader(new FileReader("datos.txt"))) {   // ✅ CORRECTO ①: try-with-resources para cierre automático de br
+        // try { BufferedReader br = new BufferedReader(new FileReader("datos.txt")); // ❌ ERROR ①: fuga de recursos (br no se cierra)
+        try (BufferedReader br = new BufferedReader(new FileReader("datos.txt"))) {   // ✅ CORRECTO ①: try-with-resources
             String linea;
             while ((linea = br.readLine()) != null) {
                 System.out.println(linea);
             }
-        // }                      // ❌ ERROR ②: try sin catch (IOException no capturada y error de compilación)
-        } catch (IOException e) { // ✅ CORRECTO ②: capturar la excepción específica IOException
+        // }                      // ❌ ERROR ②: try sin catch (IOException no capturada)
+        } catch (IOException e) { // ✅ CORRECTO ②: capturar IOException específica
             e.printStackTrace();
         }
         System.out.println("Fin");

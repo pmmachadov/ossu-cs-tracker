@@ -318,8 +318,8 @@
       #1e8e3e 99%,
       #1a73e8 100%
     );
-  background-size: 800% 100%;
-  animation: googleColorsFlowRight 100s linear infinite;
+  background-size: 8000% 100%;
+  animation: googleColorsFlowRight 800s linear infinite;
   z-index: 1;
   pointer-events: none;
 }
@@ -367,7 +367,7 @@
 /* Movimiento continuo, lento y pausado de los colores Google SIEMPRE hacia la derecha (sin retroceder) */
 @keyframes googleColorsFlowRight {
   0% {
-    background-position: 400% 0;
+    background-position: 4000% 0;
   }
   100% {
     background-position: 0% 0;
@@ -863,11 +863,12 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+  align-items: flex-start;
+  justify-content: flex-start;
+  text-align: left;
   padding: 24px 0;
   gap: 16px;
+  width: 100%;
 }
 
 .card-label {
@@ -884,7 +885,7 @@
   line-height: 1.8;
   color: var(--text-primary);
   overflow-y: visible;
-  text-align: center;
+  text-align: left;
   width: 100%;
   word-break: break-word;
   white-space: pre-wrap;
@@ -895,10 +896,11 @@
   line-height: 1.7;
   color: var(--text-primary);
   margin: 0 0 0.6em 0;
-  padding-left: 24px;
-  padding-right: 24px;
+  padding-left: 0;
+  padding-right: 0;
   text-align: left;
   white-space: pre-wrap;
+  width: 100%;
 }
 
 /* El dorso de las cartas alineado a la izquierda */
@@ -906,11 +908,12 @@
   text-align: left !important;
 }
 
-/* Contenido con cÃƒÂ³digo */
+/* Contenido con código */
 .card-content-code {
-  align-items: center;
-  text-align: center;
+  align-items: flex-start;
+  text-align: left;
   gap: 16px;
+  width: 100%;
 }
 
 /* Parenthesis highlighting */
@@ -1094,9 +1097,9 @@
   margin-bottom: 12px;
 }
 
-/* Las preguntas (frente) siguen centradas */
+/* Las preguntas (frente) alineadas a la izquierda */
 .flashcard-front .card-text-paragraph {
-  text-align: center;
+  text-align: left !important;
 }
 
 /* Subtitulos en color diferente */
@@ -1107,6 +1110,8 @@
   margin-top: 16px;
   margin-bottom: 6px;
   letter-spacing: -0.01em;
+  text-align: left !important;
+  width: 100%;
 }
 
 /* La pregunta (enunciado) de las tarjetas de examen, en color propio */
@@ -1118,6 +1123,8 @@
   margin-top: 16px;
   margin-bottom: 8px;
   letter-spacing: -0.01em;
+  text-align: left !important;
+  width: 100%;
 }
 
 /* CÃƒÂ³digo inline estilo VSCode */
@@ -2289,88 +2296,36 @@
   }
 }
 
-/* ===== Checkbox "Ã‚Â¿Lo entiendo?" en lÃƒÂ­neas de cÃƒÂ³digo con // Ã¢Å“â€¦ ===== */
-.code-line-check {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  min-width: 0;
-}
-
 /* Línea con corrección/éxito en el código: solo texto verde (sin recuadro) */
-.code-line-success {
+.code-line-success,
+.code-line-success *,
+.code-line-success span,
+.code-line-success .token {
+  color: #4ade80 !important;
   background: transparent !important;
   border: none !important;
-  border-left: none !important;
-  border-radius: 0 !important;
   box-shadow: none !important;
-  padding: 0 !important;
-  margin: 0 !important;
-}
-
-.code-line-success .code-line-text,
-.code-line-success .code-line-text span,
-.code-line-success .code-line-text .token {
-  color: #4ade80 !important;
   text-shadow: none !important;
 }
 
-.code-line-success .code-line-text .token.comment,
-.code-line-success .code-line-text span[class*="comment"],
-.code-line-success .code-line-text span[style*="rgb(52, 168, 83)"] {
-  color: #4ade80 !important;
-  text-shadow: none !important;
-  font-style: italic !important;
+.code-line-success .react-syntax-highlighter-line-number {
+  color: #6e7681 !important;
 }
 
 /* Línea con error en el código: solo texto rojo (sin recuadro) */
-.code-line-error {
+.code-line-error,
+.code-line-error *,
+.code-line-error span,
+.code-line-error .token {
+  color: #ff4d4d !important;
   background: transparent !important;
   border: none !important;
-  border-left: none !important;
-  border-radius: 0 !important;
   box-shadow: none !important;
-  padding: 0 !important;
-  margin: 0 !important;
-}
-
-.code-line-error .code-line-text,
-.code-line-error .code-line-text span,
-.code-line-error .code-line-text .token {
-  color: #ff4d4d !important;
   text-shadow: none !important;
 }
 
-.code-line-error .code-line-text .token.comment,
-.code-line-error .code-line-text span[class*="comment"],
-.code-line-error .code-line-text span[style*="rgb(52, 168, 83)"] {
-  color: #ff4d4d !important;
-  text-shadow: none !important;
-  font-style: italic !important;
-}
-
-/* En líneas con error los ticks son negros limpios sin superposición de rojo */
-.code-line-error .code-check {
-  text-shadow: none !important;
-}
-
-.code-line-error .code-check-box {
-  background: #141414 !important;
-  border-color: #383838 !important;
-  text-shadow: none !important;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.8) !important;
-}
-
-.code-line-error .code-check:hover .code-check-box {
-  border-color: #666666 !important;
-}
-
-.code-line-error .code-check input:checked + .code-check-box {
-  background: #000000 !important;
-  border-color: #444444 !important;
-  color: #ffffff !important;
-  text-shadow: none !important;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.9) !important;
+.code-line-error .react-syntax-highlighter-line-number {
+  color: #6e7681 !important;
 }
 
 /* NÃƒÂºmeros de lÃƒÂ­nea legibles (evitan equivocarse de lÃƒÂ­nea) */

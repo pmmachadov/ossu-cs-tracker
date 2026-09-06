@@ -484,82 +484,36 @@ pre code {
   }
 }
 
-/* ===== Solo letras VERDES (sin recuadro) para líneas correctas ===== */
-.code-line-success {
+/* ===== Solo letras VERDES (sin recuadro) para líneas con corrección/éxito ===== */
+.code-line-success,
+.code-line-success *,
+.code-line-success span,
+.code-line-success .token {
+  color: #4ade80 !important;
   background: transparent !important;
   border: none !important;
-  border-left: none !important;
-  border-radius: 0 !important;
   box-shadow: none !important;
-  padding: 0 !important;
-  margin: 0 !important;
-}
-
-.code-line-success .code-line-text,
-.code-line-success .code-line-text span,
-.code-line-success .code-line-text .token {
-  color: #4ade80 !important;
   text-shadow: none !important;
 }
 
-.code-line-success .code-line-text .token.comment,
-.code-line-success .code-line-text span[class*="comment"],
-.code-line-success .code-line-text span[style*="rgb(52, 168, 83)"] {
-  color: #4ade80 !important;
-  text-shadow: none !important;
-  font-style: italic !important;
+.code-line-success .react-syntax-highlighter-line-number {
+  color: #6e7681 !important;
 }
 
 /* ===== Solo letras ROJAS (sin recuadro) para líneas con error ===== */
-.code-line-error {
+.code-line-error,
+.code-line-error *,
+.code-line-error span,
+.code-line-error .token {
+  color: #ff4d4d !important;
   background: transparent !important;
   border: none !important;
-  border-left: none !important;
-  border-radius: 0 !important;
   box-shadow: none !important;
-  padding: 0 !important;
-  margin: 0 !important;
-}
-
-.code-line-error .code-line-text,
-.code-line-error .code-line-text span,
-.code-line-error .code-line-text .token {
-  color: #ff4d4d !important;
   text-shadow: none !important;
 }
 
-.code-line-error .code-line-text .token.comment,
-.code-line-error .code-line-text span[class*="comment"],
-.code-line-error .code-line-text span[style*="rgb(52, 168, 83)"] {
-  color: #ff4d4d !important;
-  text-shadow: none !important;
-  font-style: italic !important;
-}
-
-/* Checkboxes / Ticks negros en las líneas de error sin tinte rojo */
-.code-line-error .code-check {
-  text-shadow: none !important;
-  box-shadow: none !important;
-}
-
-.code-line-error .code-check-box {
-  background: #000000 !important;
-  border: 3px solid #555555 !important;
-  color: #000000 !important;
-  text-shadow: none !important;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.9) !important;
-}
-
-.code-line-error .code-check:hover .code-check-box {
-  border-color: #888888 !important;
-}
-
-.code-line-error .code-check input:checked + .code-check-box {
-  background: #000000 !important;
-  border-color: #888888 !important;
-  color: #ffffff !important;
-  text-shadow: none !important;
-  box-shadow: 0 0 0 1px #000000, 0 2px 5px rgba(0, 0, 0, 0.9) !important;
+.code-line-error .react-syntax-highlighter-line-number {
+  color: #6e7681 !important;
 }
 
 /* ==========================================================================

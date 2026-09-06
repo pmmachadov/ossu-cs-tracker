@@ -43,44 +43,7 @@ export const extractCodeHint = (backText) => {
   return null;
 };
 
-// Hash simple para identificar el bloque de código (clave de persistencia)
-const simpleHash = (str) => {
-  let h = 5381;
-  for (let i = 0; i < str.length; i++) h = ((h << 5) + h + str.charCodeAt(i)) >>> 0;
-  return h.toString(36);
-};
 
-// Checkbox "¿Lo entiendo?" — bonito, a la derecha de la línea, persistente
-const CheckItem = ({ storageKey }) => {
-  const [checked, setChecked] = useState(() => {
-    try {
-      return localStorage.getItem(storageKey) === "1";
-    } catch {
-      return false;
-    }
-  });
-  return (
-    <label
-      className="code-check"
-      title={checked ? "Entendido ✓" : "Marca si lo entiendes"}
-      onClick={(e) => e.stopPropagation()}
-    >
-      <input
-        type="checkbox"
-        checked={checked}
-        onChange={(e) => {
-          setChecked(e.target.checked);
-          try {
-            localStorage.setItem(storageKey, e.target.checked ? "1" : "0");
-          } catch {
-            // localStorage no disponible: solo estado en memoria
-          }
-        }}
-      />
-      <span className="code-check-box">{checked ? "✓" : ""}</span>
-    </label>
-  );
-};
 
 // Renderer de código: añade un checkbox a la derecha de cada línea con // ✅
 // Nota: react-syntax-highlighter >= 16 invoca el renderer como
@@ -524,7 +487,7 @@ const renderCardContent = (text, cardImageUrl) => {
             code.split("\n").some(
               (l) => l.includes("✅") || l.includes("❌") || /\berror\b/i.test(l),
             )
-              ? (rendererArgs) => codeRenderer(rendererArgs, simpleHash(code))
+              ? codeRenderer
               : undefined
           }
         >
