@@ -5,7 +5,6 @@ import { DIFFICULTY } from "../model/Deck";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { CardContent, codeTheme, extractCodeHint } from "./CardContent";
 import { getSubjectColor } from "./deckHelpers";
-import { useBorderSpeed } from "./useBorderSpeed";
 import { SessionComplete } from "./SessionComplete";
 import { EmptyStudyView } from "./EmptyStudyView";
 import { GoogleAura } from "./GoogleAura";
@@ -145,9 +144,6 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
   // Drag-to-scrub para la barra de progreso
   const dotsContainerRef = useRef(null);
   const isDragging = useRef(false);
-
-  // Velocidad lineal de los colores del borde según su longitud real
-  const borderSpeed = useBorderSpeed();
 
   const updateCardFromPointer = (clientX) => {
     if (!dotsContainerRef.current || cards.length === 0) return;
@@ -416,10 +412,7 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
         </button>
 
         <div
-          ref={(el) => {
-            dotsContainerRef.current = el;
-            borderSpeed("track", 0.85)(el);
-          }}
+          ref={dotsContainerRef}
           className={`card-progress-track ${isFirstTenSeconds ? "google-active" : "google-expired"} ${isScrubbing ? "is-scrubbing" : ""}`}
           style={{ "--card-count": cards.length }}
           onMouseDown={handleMouseDown}
@@ -428,7 +421,6 @@ export function StudyView({ deck, onBack, onUpdateDeck }) {
           <div
             className={`card-progress-fill ${showPctGlow ? "pct-glow-active" : "pct-glow-off"}`}
             style={{ width: `${Math.max(masteryPct, 0)}%` }}
-            ref={borderSpeed("fill", 1.4)}
           >
             <span className="bento-fill-pct-badge">{masteryPct}%</span>
           </div>

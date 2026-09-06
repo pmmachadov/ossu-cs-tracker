@@ -286,7 +286,7 @@
     inset 0 2px 4px rgba(255, 255, 255, 0.6),
     inset 0 -3px 8px rgba(0, 0, 0, 0.7);
   border: 1.5px solid rgba(255, 255, 255, 0.35);
-  transition: width 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: width 0.6s cubic-bezier(0.34, 1.25, 0.4, 1);
 }
 
 /* Capa 1: Bloques de colores Google puros 5 veces más anchos que fluyen siempre hacia la derecha */
@@ -318,8 +318,8 @@
       #1e8e3e 99%,
       #1a73e8 100%
     );
-  background-size: 4000% 100%;
-  animation: googleColorsFlowRight 800s linear infinite;
+  background-size: 800% 100%;
+  animation: googleColorsFlowRight 100s linear infinite;
   z-index: 1;
   pointer-events: none;
 }
@@ -367,7 +367,7 @@
 /* Movimiento continuo, lento y pausado de los colores Google SIEMPRE hacia la derecha (sin retroceder) */
 @keyframes googleColorsFlowRight {
   0% {
-    background-position: 2000% 0;
+    background-position: 400% 0;
   }
   100% {
     background-position: 0% 0;
