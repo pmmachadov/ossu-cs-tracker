@@ -581,7 +581,7 @@
       #1e8e3e 99%,
       #1a73e8 100%);
   background-size: 8000% 100%;
-  animation: googleColorsFlowRight 800s linear infinite;
+  animation: googleColorsFlowRight 2400s linear infinite;
   z-index: 1;
   pointer-events: none;
 }
