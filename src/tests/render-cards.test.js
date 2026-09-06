@@ -113,4 +113,15 @@ describe("render de todas las tarjetas", () => {
     await act(async () => root.unmount());
     container.remove();
   });
+
+  it("la tarjeta ex-java-04-13 incluye la imagen del diagrama de clases en su respuesta", () => {
+    const card = deck.cards.find((c) => c.id === "ex-java-04-13");
+    expect(card).toBeTruthy();
+    const html = renderToString(
+      h(CardContent, { text: card.back, cardImageUrl: card.imageUrl, codeTheme }),
+    );
+    expect(html).toContain('src="/images/jerarquia-empleados.png"');
+    expect(html).toContain('alt="Diagrama UML - Jerarquía Empleado, Directivo y Técnico"');
+  });
 });
+

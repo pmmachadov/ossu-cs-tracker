@@ -247,7 +247,60 @@ const renderCardContent = (text, cardImageUrl) => {
     if (!line.trim()) return;
 
     const trimmed = line.trim();
-    const isSection = /^Parte\s+\d+:\s*[A-ZÁÉÍÓÚÑ]/.test(trimmed);
+
+    // Imagen markdown en línea completa: ![alt](url)
+    const standaloneImgMatch = trimmed.match(/^!\[([^\]]*)\]\(([^)]+)\)$/);
+    if (standaloneImgMatch) {
+      elements.push(
+        <div key={`img-${keyIdx}`} className="card-image-wrapper" style={{ margin: "24px 0", textAlign: "center", width: "100%", display: "flex", justifyContent: "center" }}>
+          <img
+            src={standaloneImgMatch[2]}
+            alt={standaloneImgMatch[1] || "Diagrama"}
+            className="card-image"
+            style={{
+              width: "100%",
+              maxWidth: "1020px",
+              height: "auto",
+              maxHeight: "880px",
+              borderRadius: "10px",
+              border: "1px solid rgba(255, 255, 255, 0.18)",
+              boxShadow: "0 8px 32px rgba(0, 0, 0, 0.55)",
+              objectFit: "contain",
+              display: "block",
+              background: "#121212",
+            }}
+          />
+        </div>
+      );
+      return;
+    }
+
+    // Separador horizontal --- o ***
+    if (trimmed === "---" || trimmed === "***" || trimmed === "___") {
+      elements.push(
+        <hr
+          key={`hr-${keyIdx}`}
+          className="card-divider"
+          style={{
+            border: "none",
+            borderTop: "1px solid rgba(255, 255, 255, 0.15)",
+            margin: "18px 0",
+          }}
+        />
+      );
+      return;
+    }
+
+    let contentLine = line;
+    let isHeading = false;
+    const headingMatch = trimmed.match(/^(#{1,4})\s+(.*)$/);
+    if (headingMatch) {
+      isHeading = true;
+      contentLine = headingMatch[2];
+    }
+
+    const contentTrimmed = contentLine.trim();
+    const isSection = /^Parte\s+\d+:\s*[A-ZÁÉÍÓÚÑ]/.test(contentTrimmed);
     const isQuestion = pendingQuestion;
     if (isSection) {
       pendingQuestion = true;
@@ -255,23 +308,28 @@ const renderCardContent = (text, cardImageUrl) => {
       pendingQuestion = false;
     }
 
-    // Procesa enlaces markdown [texto](url) ANTES de dividir por paréntesis
-    const mdLinkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
+    // Procesa imágenes (![alt](url)) y enlaces ([texto](url)) markdown ANTES de dividir por paréntesis
+    const mdTokenRegex = /(!?)\[([^\]]*)\]\(([^)]+)\)/g;
     const linkParts = [];
     let lastMdIdx = 0;
     let mdMatch;
-    while ((mdMatch = mdLinkRegex.exec(line)) !== null) {
+    while ((mdMatch = mdTokenRegex.exec(contentLine)) !== null) {
       if (mdMatch.index > lastMdIdx) {
-        linkParts.push(line.slice(lastMdIdx, mdMatch.index));
+        linkParts.push(contentLine.slice(lastMdIdx, mdMatch.index));
       }
-      linkParts.push({ type: "link", text: mdMatch[1], url: mdMatch[2] });
+      const isImg = mdMatch[1] === "!";
+      linkParts.push({
+        type: isImg ? "image" : "link",
+        text: mdMatch[2],
+        url: mdMatch[3],
+      });
       lastMdIdx = mdMatch.index + mdMatch[0].length;
     }
-    if (lastMdIdx < line.length) {
-      linkParts.push(line.slice(lastMdIdx));
+    if (lastMdIdx < contentLine.length) {
+      linkParts.push(contentLine.slice(lastMdIdx));
     }
 
-    const isSubtitle = /^(?:[¿¡]?[A-ZÁÉÍÓÚÑ]|\d+\.\s*)[A-Za-zÁÉÍÓÚÑáéíóúñ0-9 (),./@]{0,70}[:?]$/.test(line.trim());
+    const isSubtitle = isHeading || /^(?:[¿¡]?[A-ZÁÉÍÓÚÑ]|\d+\.\s*)[A-Za-zÁÉÍÓÚÑáéíóúñ0-9 (),./@]{0,70}[:?]$/.test(contentTrimmed);
     let pClassName = "card-text-paragraph";
     if (isQuestion) {
       pClassName += " card-question";
@@ -279,35 +337,60 @@ const renderCardContent = (text, cardImageUrl) => {
       pClassName += " card-subtitle";
     }
 
-    // Si hay enlaces markdown, usa el nuevo pipeline
+    // Si hay enlaces o imágenes markdown, usa el pipeline de tokens
     if (linkParts.some((p) => typeof p === "object")) {
       const mixed = linkParts.map((part, lpi) => {
-        if (typeof part === "object" && part.type === "link") {
-          // Detectar YouTube y mostrar thumbnail con overlay play
-          const ytMatch = part.url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
-          if (ytMatch) {
-            const videoId = ytMatch[1];
+        if (typeof part === "object") {
+          if (part.type === "image") {
             return (
-              <YouTubeEmbed
-                key={`mdlink-${keyIdx}-${lpi}`}
-                videoId={videoId}
-                label={part.text}
-                stopPropagation={true}
-              />
+              <span key={`mdimg-${keyIdx}-${lpi}`} className="card-image-wrapper" style={{ display: "flex", justifyContent: "center", margin: "24px 0", textAlign: "center", width: "100%" }}>
+                <img
+                  src={part.url}
+                  alt={part.text || "Diagrama"}
+                  className="card-image"
+                  style={{
+                    width: "100%",
+                    maxWidth: "1020px",
+                    height: "auto",
+                    maxHeight: "880px",
+                    borderRadius: "10px",
+                    border: "1px solid rgba(255, 255, 255, 0.18)",
+                    boxShadow: "0 8px 32px rgba(0, 0, 0, 0.55)",
+                    objectFit: "contain",
+                    display: "block",
+                    background: "#121212",
+                  }}
+                />
+              </span>
             );
           }
-          return (
-            <a
-              key={`mdlink-${keyIdx}-${lpi}`}
-              href={part.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="card-link"
-              onClick={(e) => e.stopPropagation()}
-            >
-              {part.text}
-            </a>
-          );
+          if (part.type === "link") {
+            // Detectar YouTube y mostrar thumbnail con overlay play
+            const ytMatch = part.url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+            if (ytMatch) {
+              const videoId = ytMatch[1];
+              return (
+                <YouTubeEmbed
+                  key={`mdlink-${keyIdx}-${lpi}`}
+                  videoId={videoId}
+                  label={part.text}
+                  stopPropagation={true}
+                />
+              );
+            }
+            return (
+              <a
+                key={`mdlink-${keyIdx}-${lpi}`}
+                href={part.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="card-link"
+                onClick={(e) => e.stopPropagation()}
+              >
+                {part.text}
+              </a>
+            );
+          }
         }
         // Procesar inline code y paréntesis en el texto sobrante
         const innerParts = part.split(/`([^`]+)`/g);
@@ -333,7 +416,7 @@ const renderCardContent = (text, cardImageUrl) => {
     }
 
     // Divide la línea en partes para detectar código inline `...`
-    const parts = line.split(/`([^`]+)`/g);
+    const parts = contentLine.split(/`([^`]+)`/g);
     const mixed = [];
     parts.forEach((part, idx) => {
       if (idx % 2 === 1) {
