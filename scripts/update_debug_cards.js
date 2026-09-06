@@ -165,15 +165,17 @@ import java.io.*;
 
 public class LeerArchivo {
     public static void main(String[] args) {
-        // BufferedReader br = new BufferedReader(new FileReader("datos.txt")); // ❌ ERROR ①: fuga de recursos (nunca se cierra)
-        // catch (Throwable e) { ... }             // ❌ ERROR ②: Throwable oculta errores críticos de la JVM
-        // ✅ CORRECTO ① y ②: try-with-resources para cierre automático y captura de IOException
-        try (BufferedReader br = new BufferedReader(new FileReader("datos.txt"))) {
-            String linea = br.readLine();
-            System.out.println(linea);
+        // try { BufferedReader br = new BufferedReader(new FileReader("datos.txt")); // ❌ ERROR ①: fuga de recursos (br nunca se cierra)
+        try (BufferedReader br = new BufferedReader(new FileReader("datos.txt"))) {  // ✅ CORRECTO ①: try-with-resources para cierre automático de br
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                System.out.println(linea);
+            }
+        // }                                                                         // ❌ ERROR ②: try sin catch (IOException no capturada y error de compilación)
         } catch (IOException e) {
-            e.printStackTrace();
+            e.printStackTrace();                                                 // ✅ CORRECTO ②: capturar la excepción específica IOException
         }
+        System.out.println("Fin");
     }
 }
 \`\`\`
@@ -424,15 +426,13 @@ FinAlgoritmo
 
 Código con cada error y su corrección directa:
 
-\`\`\`java
+```java
 public void buscar(Connection conn, String nombre) {
     // String sql = "SELECT * FROM alumnos WHERE nombre = '" + nombre + "'"; // ❌ ERROR ①: inyección SQL por concatenación de parámetros
-    // Statement st = conn.createStatement();   // ❌ ERROR ②: fuga de recursos (no se cierran Statement ni ResultSet)
-    // ResultSet rs = st.executeQuery(sql);
-    
-    // ✅ CORRECTO ① y ②: usar PreparedStatement con comodín '?' y try-with-resources
-    String sql = "SELECT id, nombre FROM alumnos WHERE nombre = ?";
-    try (PreparedStatement ps = conn.prepareStatement(sql)) {
+    String sql = "SELECT id, nombre FROM alumnos WHERE nombre = ?";        // ✅ CORRECTO ①: consulta parametrizada con '?'
+
+    // Statement st = conn.createStatement();                               // ❌ ERROR ②: fuga de recursos (Statement y ResultSet nunca se cierran)
+    try (PreparedStatement ps = conn.prepareStatement(sql)) {              // ✅ CORRECTO ②: try-with-resources para cierre automático de ps y rs
         ps.setString(1, nombre);
         try (ResultSet rs = ps.executeQuery()) {
             while (rs.next()) {
