@@ -484,56 +484,55 @@ pre code {
   }
 }
 
-/* ===== Resaltado en VERDE con resplandor para líneas correctas ===== */
+/* ===== Solo letras VERDES (sin recuadro) para líneas correctas ===== */
 .code-line-success {
-  background: rgba(52, 168, 83, 0.18) !important;
-  border: 1px solid #34a853 !important;
-  border-left: 5px solid #2e7d32 !important;
-  border-radius: 6px !important;
-  box-shadow: 0 0 1px 1px #34a853, 0 0 10px rgba(52, 168, 83, 0.4) !important;
-  padding: 3px 8px !important;
-  margin: 3px 0 !important;
+  background: transparent !important;
+  border: none !important;
+  border-left: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
 .code-line-success .code-line-text,
 .code-line-success .code-line-text span,
 .code-line-success .code-line-text .token {
-  color: #c8f5d0 !important;
-  text-shadow: 0 0 1px #2e7d32, 0 0 4px rgba(52, 168, 83, 0.6) !important;
+  color: #4ade80 !important;
+  text-shadow: none !important;
 }
 
 .code-line-success .code-line-text .token.comment,
 .code-line-success .code-line-text span[class*="comment"],
 .code-line-success .code-line-text span[style*="rgb(52, 168, 83)"] {
   color: #4ade80 !important;
-  text-shadow: 0 0 1px #34a853 !important;
+  text-shadow: none !important;
   font-style: italic !important;
-  font-weight: 600 !important;
 }
 
-/* ===== Resaltado en ROJO con resplandor de 1px para líneas con error ===== */
+/* ===== Solo letras ROJAS (sin recuadro) para líneas con error ===== */
 .code-line-error {
-  background: rgba(255, 45, 45, 0.2) !important;
-  border: 1px solid #ff4d4d !important;
-  border-left: 5px solid #ff2222 !important;
-  border-radius: 6px !important;
-  box-shadow: 0 0 1px 1px #ff4d4d, 0 0 10px rgba(255, 77, 77, 0.45) !important;
-  padding: 3px 8px !important;
-  margin: 3px 0 !important;
+  background: transparent !important;
+  border: none !important;
+  border-left: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
 .code-line-error .code-line-text,
 .code-line-error .code-line-text span,
 .code-line-error .code-line-text .token {
-  color: #ff6666 !important;
-  text-shadow: 0 0 1px #ff2222, 0 0 4px rgba(255, 77, 77, 0.7) !important;
-  font-weight: 600 !important;
+  color: #ff4d4d !important;
+  text-shadow: none !important;
 }
 
 .code-line-error .code-line-text .token.comment,
-.code-line-error .code-line-text span[class*="comment"] {
-  color: #ff8585 !important;
-  text-shadow: 0 0 1px #ff3333 !important;
+.code-line-error .code-line-text span[class*="comment"],
+.code-line-error .code-line-text span[style*="rgb(52, 168, 83)"] {
+  color: #ff4d4d !important;
+  text-shadow: none !important;
   font-style: italic !important;
 }
 

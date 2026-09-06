@@ -57,61 +57,14 @@ describe("render de todas las tarjetas", () => {
     expect(failures).toEqual([]);
   });
 
-  it("las líneas con ✅, ❌ o 'error' generan checkbox (regresión renderer)", () => {
+  it("las líneas con ✅ o ❌ reciben las clases code-line-error y code-line-success", () => {
     const card = deck.cards.find((c) => c.id === "ex-java-02-11");
     expect(card).toBeTruthy();
     const html = renderToString(
       h(CardContent, { text: card.back, cardImageUrl: card.imageUrl, codeTheme }),
     );
-    // Líneas marcadas de TODOS los bloques de código del dorso
-    const blocks = [...card.back.matchAll(/```(\w*)\n([\s\S]*?)```/g)];
-    const markLines = blocks.reduce(
-      (acc, m) =>
-        acc +
-        m[2]
-          .split("\n")
-          .filter(
-            (l) =>
-              l.includes("✅") || l.includes("❌") || /\berror\b/i.test(l),
-          ).length,
-      0,
-    );
-    expect(markLines).toBeGreaterThan(0);
-    const checkCount = (html.match(/code-line-check/g) || []).length;
-    const checkboxCount = (html.match(/type="checkbox"/g) || []).length;
-    expect(checkCount).toBe(markLines);
-    expect(checkboxCount).toBe(checkCount);
-  });
-
-  it("el click en el checkbox no se propaga (no voltea la tarjeta)", async () => {
-    const card = deck.cards.find((c) => c.id === "ex-java-02-11");
-    expect(card).toBeTruthy();
-    const container = document.createElement("div");
-    document.body.appendChild(container);
-    const spy = vi.fn();
-    // Simula la tarjeta: el onClick del contenedor es el que voltearía (handleFlip)
-    const root = createRoot(container);
-    await act(async () => {
-      root.render(
-        h(
-          "div",
-          { onClick: spy },
-          h(CardContent, {
-            text: card.back,
-            cardImageUrl: card.imageUrl,
-            codeTheme,
-          }),
-        ),
-      );
-    });
-    const label = container.querySelector(".code-check");
-    expect(label).toBeTruthy();
-    await act(async () => {
-      label.dispatchEvent(new MouseEvent("click", { bubbles: true }));
-    });
-    expect(spy).not.toHaveBeenCalled();
-    await act(async () => root.unmount());
-    container.remove();
+    expect(html).toContain("code-line-error");
+    expect(html).toContain("code-line-success");
   });
 
   it("la tarjeta ex-java-04-13 incluye la imagen del diagrama de clases en su respuesta", () => {

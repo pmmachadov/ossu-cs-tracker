@@ -93,37 +93,27 @@ const nodeText = (node) => {
   return "";
 };
 
-const codeRenderer = ({ rows, stylesheet, useInlineStyles }, blockHash) => {
+const codeRenderer = ({ rows, stylesheet, useInlineStyles }) => {
   return rows.map((row, i) => {
     const lineText = (row.children || []).map(nodeText).join("");
-    // Checkbox en líneas marcadas: ✅ (tick), ❌ (cross) o que mencionen "error"
-    const isMarkedLine =
-      lineText.includes("✅") ||
-      lineText.includes("❌") ||
-      /\berror\b/i.test(lineText);
-    // Línea con error: se resalta en rojo con resplandor (las que llevan ❌ o mencionan error)
     const isErrorLine = lineText.includes("❌") || (/\berror\b/i.test(lineText) && !lineText.includes("✅"));
-    // Línea con corrección/éxito: se resalta en verde con resplandor (las que llevan ✅ o mencionan correcto)
     const isSuccessLine = lineText.includes("✅") || (/\bcorrect[oa]\b/i.test(lineText) && !lineText.includes("❌"));
-    if (!isMarkedLine) {
-      return createElement({
-        node: row,
-        stylesheet,
-        useInlineStyles,
-        key: `l-${i}`,
-      });
+
+    if (isErrorLine || isSuccessLine) {
+      row.properties = { ...row.properties };
+      const classes = Array.isArray(row.properties.className)
+        ? [...row.properties.className]
+        : (row.properties.className ? [row.properties.className] : []);
+      classes.push(isErrorLine ? "code-line-error" : "code-line-success");
+      row.properties.className = classes;
     }
-    return (
-      <div
-        key={`lc-${i}`}
-        className={`code-line-check${isErrorLine ? " code-line-error" : ""}${isSuccessLine ? " code-line-success" : ""}`}
-      >
-        <div className="code-line-text">
-          {createElement({ node: row, stylesheet, useInlineStyles })}
-        </div>
-        <CheckItem storageKey={`ankicards.check.${blockHash}.${i}`} />
-      </div>
-    );
+
+    return createElement({
+      node: row,
+      stylesheet,
+      useInlineStyles,
+      key: `l-${i}`,
+    });
   });
 };
 
@@ -528,7 +518,7 @@ const renderCardContent = (text, cardImageUrl) => {
             background: "#1e1e1e",
             padding: "16px 20px",
           }}
-          wrapLongLines={true}
+          wrapLongLines={false}
           showLineNumbers={isErrorCard && lang !== "text"}
           renderer={
             code.split("\n").some(
