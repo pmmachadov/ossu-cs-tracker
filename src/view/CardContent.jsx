@@ -252,23 +252,11 @@ const renderCardContent = (text, cardImageUrl) => {
     const standaloneImgMatch = trimmed.match(/^!\[([^\]]*)\]\(([^)]+)\)$/);
     if (standaloneImgMatch) {
       elements.push(
-        <div key={`img-${keyIdx}`} className="card-image-wrapper" style={{ margin: "24px 0", textAlign: "center", width: "100%", display: "flex", justifyContent: "center" }}>
+        <div key={`img-${keyIdx}`} className="card-image-wrapper">
           <img
             src={standaloneImgMatch[2]}
             alt={standaloneImgMatch[1] || "Diagrama"}
             className="card-image"
-            style={{
-              width: "100%",
-              maxWidth: "1020px",
-              height: "auto",
-              maxHeight: "880px",
-              borderRadius: "10px",
-              border: "1px solid rgba(255, 255, 255, 0.18)",
-              boxShadow: "0 8px 32px rgba(0, 0, 0, 0.55)",
-              objectFit: "contain",
-              display: "block",
-              background: "#121212",
-            }}
           />
         </div>
       );
@@ -343,23 +331,11 @@ const renderCardContent = (text, cardImageUrl) => {
         if (typeof part === "object") {
           if (part.type === "image") {
             return (
-              <span key={`mdimg-${keyIdx}-${lpi}`} className="card-image-wrapper" style={{ display: "flex", justifyContent: "center", margin: "24px 0", textAlign: "center", width: "100%" }}>
+              <span key={`mdimg-${keyIdx}-${lpi}`} className="card-image-wrapper">
                 <img
                   src={part.url}
                   alt={part.text || "Diagrama"}
                   className="card-image"
-                  style={{
-                    width: "100%",
-                    maxWidth: "1020px",
-                    height: "auto",
-                    maxHeight: "880px",
-                    borderRadius: "10px",
-                    border: "1px solid rgba(255, 255, 255, 0.18)",
-                    boxShadow: "0 8px 32px rgba(0, 0, 0, 0.55)",
-                    objectFit: "contain",
-                    display: "block",
-                    background: "#121212",
-                  }}
                 />
               </span>
             );

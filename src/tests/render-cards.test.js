@@ -123,5 +123,27 @@ describe("render de todas las tarjetas", () => {
     expect(html).toContain('src="/images/jerarquia-empleados.png"');
     expect(html).toContain('alt="Diagrama UML - Jerarquía Empleado, Directivo y Técnico"');
   });
+
+  it("la tarjeta ex-java-04-14 incluye la imagen del diagrama de interfaces en su respuesta", () => {
+    const card = deck.cards.find((c) => c.id === "ex-java-04-14");
+    expect(card).toBeTruthy();
+    const html = renderToString(
+      h(CardContent, { text: card.back, cardImageUrl: card.imageUrl, codeTheme }),
+    );
+    expect(html).toContain('src="/images/jerarquia-movible.png"');
+    expect(html).toContain('alt="Diagrama UML - Jerarquía Movible, Sonoro, Robot y Coche"');
+  });
+
+  it("la tarjeta ex-java-04-15 incluye la imagen del diagrama de clases en su respuesta", () => {
+    const card = deck.cards.find((c) => c.id === "ex-java-04-15");
+    expect(card).toBeTruthy();
+    const html = renderToString(
+      h(CardContent, { text: card.back, cardImageUrl: card.imageUrl, codeTheme }),
+    );
+    expect(html).toContain('src="/images/instrumento.png"');
+    expect(html).toContain('alt="Diagrama UML - Jerarquía Instrumento, Piano, Guitarra y Batería"');
+  });
 });
+
+
 
